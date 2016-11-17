@@ -1,0 +1,117 @@
+\documentclass[a4paper]{scrreprt}
+ 
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[bookmarks,bookmarksnumbered]{hyperref}
+ 
+\begin{document}
+ 
+\title{Pflichtenheft mit LaTeX}
+\author{Karl Lorey}
+\maketitle
+ 
+% Die abstract-Umgebung kann bei Bedarf aus dem Pflichtenheft entfernt werden
+\begin{abstract}
+Dies ist ein beispielhaftes Pflichtenheft in \LaTeX. Das Pflichtenheft
+beschreibt in konkreter Form, wie der Auftragnehmer die Anforderungen des
+Auftraggebers zu lösen gedenkt - das sogenannte wie und womit. Der Auftraggeber
+beschreibt vorher im Lastenheft möglichst präzise die Gesamtheit der
+Forderungen - was er entwickelt oder produziert haben möchte. Erst wenn der
+Auftraggeber das Pflichtenheft akzeptiert, sollte die eigentliche Arbeit beim
+Auftragnehmer beginnen.
+\vspace{1cm}
+ 
+Quelle: \url{http://de.wikipedia.org/wiki/Pflichtenheft} und Lehrbuch der
+Objektmodellierung von Heide Balzert
+\vspace{0.5cm}
+ 
+Quellcode: \url{http://www.karllorey.de/informatik-studium/vorlesungen/softwarepraktikum/pflichtenheft-in-latex/}
+\end{abstract}
+ 
+% Platzierung des Inhaltsverzeichnisses
+\tableofcontents
+ 
+\chapter{Zielbestimmung}
+Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
+notwendige Funktionen.
+ 
+\section{Musskriterien}
+Musskriterien: Für das Produkt unabdingbare Leistungen, die in jedem Fall
+erfüllt werden müssen \footnote{gezwungen sein, etwas zu tun (Dies ist eine
+beispielhafte Fußnote).}. Das System ist ohne diese Funktionen für seinen
+gedachten Zweck nicht einsetzbar.
+ 
+\section{Kannkriterien}
+Kannkriterien: Die Erfüllung der Kannkriterien ist erwünscht, jedoch nicht
+unbedingt notwendig. Sie sollten nur angestrebt werden, falls noch ausreichend
+Kapazitäten vorhanden sind.
+ 
+\section{Abgrenzungskriterien}
+Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
+ 
+\chapter{Produkteinsatz}
+Der geplante Einsatz des Systems ist die Grundlage für Benutzungsoberfläche und
+Qualitätsanforderungen.
+ 
+\section{Anwendungsbereiche}
+Ein Pflichtenheft wird bspw. in einer IT-Abteilung genutzt.
+ 
+\section{Zielgruppen}
+Die Zielgruppe besteht also aus Informatikern, die mit der Projektplanung
+beauftragt wurden.
+ 
+\section{Betriebsbedingungen}
+Betriebsbedingungen: Die Betriebsbedingungen spezifiziert die physikalische
+Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
+Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
+beabsichtigt ist.
+ 
+\chapter{Produktumgebung}
+ 
+\section{Software}
+Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
+Aufteilung für Server und Client ist ggf. sinnvoll. Weiterhin sind unbedingt die
+kleinsten benötigten Versionsnummern anzugeben.
+ 
+\section{Hardware}
+Hardware: Hardware-Anforderungen des Systems.
+ 
+\chapter{Funktionale Anforderungen}
+Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
+detaillierter Beschreibung.
+ 
+\begin{itemize}
+  \item Typische Arbeitsabläufe
+  \item Keine Angabe von typischen Verwaltungsfunktionen (CRUD \footnote{Create,
+Read, Update, Delete}
+\end{itemize}
+ 
+\chapter{Produktdaten}
+Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
+ 
+\chapter{Nichtfunktionale Anforderungen}
+Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
+ 
+\chapter{Benutzungsoberfläche}
+Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
+ 
+\begin{figure}[ht]
+  \centering
+  \rule{8cm}{6cm}
+  \caption{Dies könnte ein Bild der Benutzungsoberfläche sein}
+\end{figure}
+
+\chapter{Globale Testfälle}
+ 
+\chapter{Qualitätsziele}
+Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
+Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
+ 
+\chapter{Glossar}
+ 
+% Abbildungsverzeichnis
+\listoffigures
+ 
+\end{document}
