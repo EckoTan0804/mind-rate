@@ -22,9 +22,9 @@
         Praxis der Softwareentwicklung
         \vspace * {1.5cm}
 
-		{\bf \Huge Mind Rate}
+        {\bf \huge Mind Rate}
 		
-		\vspace*{1cm}
+        \vspace*{1cm}
 		
         {\bf \large Ein interaktives Feedbacksystem f\"ur psychologische Untersuchungen nach Experience-Sampling-Method}
         \vspace*{1cm}
@@ -129,32 +129,59 @@
             \end{itemize}
  
     \chapter{Produkteinsatz}
-        Der geplante Einsatz des Systems ist die Grundlage für Benutzungsoberfläche und
-        Qualitätsanforderungen.
+        Das Produkt dient zur Sammlung der Versuchsdaten aus psychologischen Versuchen nach ESM\footnote{Experience-Sampling-Method}. Damit bietet sie für Versuchsleiter eine Lösung, ESM-Versuchen durchzuführen. Diese Tätigkeit soll zusätzlich im Internet und auf dem Smartphone möglich sein.
  
         \section{Anwendungsbereiche}
-            Ein Pflichtenheft wird bspw. in einer IT-Abteilung genutzt.
+            \begin{itemize}
+                \item Akademischer / Sozialwissenschaftlicher Anwendungsbereich
+                \item Statistischer Anwendungsbereich
+            \end{itemize}
  
         \section{Zielgruppen}
-            Die Zielgruppe besteht also aus Informatikern, die mit der Projektplanung
-            beauftragt wurden.
+            \begin{itemize}
+                \item Versuchsleiter eines ESM-Versuchs
+                \item Teilnehmer des Versuchs
+            \end{itemize}
  
         \section{Betriebsbedingungen}
-            Betriebsbedingungen: Die Betriebsbedingungen spezifiziert die physikalische
-            Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
-            Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
-            beabsichtigt ist.
+            \begin{itemize}
+                \item Versuchsleiter: Büroumgebung
+                \item Versuchsteilnehmer: im alltäglichen Leben aufs Smartphone
+                \item Betriebszeit rund um die Uhr, läuft unbeaufsichtigt
+            \end{itemize}
  
     \chapter{Produktumgebung}
- 
+        Eine Client-Server Architektur mit 2 Client-Typen: der Web-Client für Versuchsleiter und der Smartphone-Client für Versuchsteilnehmer
+
         \section{Software}
-            Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
-            Aufteilung für Server und Client ist ggf. sinnvoll. Weiterhin sind unbedingt die
-            kleinsten benötigten Versionsnummern anzugeben.
+            \begin{itemize}
+                \item Serverseite
+                    \begin{itemize}
+                        \item  Läuft auf Linux
+                        \item Alle Softwares der Serverseite werden durch Docker verpackt
+                        \item Datenbank: SQLite, verwaltet durch das Django-Framework
+                        \item Programmiersprache: Python 3
+                        \item Web server: Nginx
+                    \end{itemize}
+                \item Clientseite
+                    \begin{itemize}
+                        \item Web-Client\\
+                             Web-Browser, Referenzstandard Google Chrome 54
+                        \item  Smartphone-Client\\
+                             Android, Referenzstandard Android 7.1 Nougat
+                    \end{itemize}
+            \end{itemize}
  
         \section{Hardware}
-            Hardware: Hardware-Anforderungen des Systems.
- 
+            \begin{itemize}
+                \item Serverseite\\
+                    Leistungsstarke Standardrechner
+                \item  Web-Client\\
+                    Standardrechner
+                \item Smartphone-Client\\
+                    Standardsmartphone
+            \end{itemize}
+
     \chapter{Funktionale Anforderungen}
         Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
         detaillierter Beschreibung.
