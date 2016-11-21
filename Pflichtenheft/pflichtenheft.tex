@@ -183,20 +183,124 @@
             \end{itemize}
 
     \chapter{Funktionale Anforderungen}
-        Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
-        detaillierter Beschreibung.
  
         \begin{itemize}
-            \item Typische Arbeitsabläufe
-            \item Keine Angabe von typischen Verwaltungsfunktionen (CRUD \footnote{Create,
-                  Read, Update, Delete}
+            \item /F10/Anmelden oder Registrieren der Leiter
+            	\par Registrieren: Der Leiter soll sich zuerst in dem Online-Verwaltungssystem mit seinem Email-Adresse registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Leiter ein Bestätigungsemail empfangen.\par
+Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Leiter sich damit anmelden.
+        \end{itemize}
+        
+        \begin{itemize}
+            \item /F20/Vergessenes Passwort neu zu setzen
+            	\par Wenn ein Leiter sein Passwort vergessen hat, kann er auf “Passwort Vergessen” klicken und in der weitergeleiteten Seite seine Email-Adresse eingeben. Danach empfängt er ein Bestätigungsemail mit einem Link. Durch dieses Link ist er in die “Passwort neu setzen” Seite weitergeleitet und sein neues Passwort wird in dem Datenbank gespeichert.
+
+        \end{itemize}
+        
+        \begin{itemize}
+            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
+
+            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
+                
+        \end{itemize}
+        
+        \begin{itemize}
+            \item /F40/Verwaltung der persönlichen Daten von Probanden
+
+            	\par Der Leiter kann die persönlichen Daten der Probanden (Email-Address, Name, Alter, Geschlecht usw.) hinfügen, löschen, abfragen und ändern.
+
+        \end{itemize}
+        
+        \begin{itemize}
+            \item /F50/Kontrolle durch Metadata
+            	\par Der Leiter kann das Metadata über seine Fragebogen sehen.
+
+        \end{itemize}
+        \begin{itemize}
+            \item /F60/Exportieren von Daten und Metadata
+            	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
+
+        \end{itemize}
+        \begin{itemize}
+            \item /F70/Anmelden oder Registrieren der Probanden
+
+            	\par Registrieren: Die Probanden sollen sich in der App zuerst registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Proband ein Bestätigungsemail empfangen.
+                \par Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Proband sich damit anmelden.
+
+
+
+        \end{itemize}
+        \begin{itemize}
+            \item /F80/Antworten eines Fragebogens
+
+            	\par Nachdem der Leiter einen Fragebogen den Probanden gesandt hat, sollen die Probanden eine Notifikation empfangen. Das Fragebogen soll in der App gezeigt werden. Danach werden die Fragen des Fragebogens geantwortet.
+                \par
+Wenn die Probanden auf alle Fragen geantwortet und auf “Senden“ geklickt haben, werden diese Ergebnisse des Fragebogens zuerst lokal automatisch gespeichert. 
+
+
+        \end{itemize}
+        \begin{itemize}
+            \item /F90/Versendung der Antworten eines Fragebogens
+
+            	\par Die lokal gespeicherten Ergebnisse werden unter Netzwerkverbindung zu dem Server geschickt. Falls keine Netzwerkverbindung vorhanden ist, soll die App dazu nichts machen. Sobald die Netzwerkverbindung wieder da ist, soll die App versuchen, die Ergebnisse zu senden.
+
+
         \end{itemize}
  
     \chapter{Produktdaten}
         Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
  
-    \chapter{Nichtfunktionale Anforderungen}
-        Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
+   \chapter{Nichtfunktionale Anforderungen}
+        \begin{itemize}
+            \item /NF10/Reaktionszeit
+
+            	\par Die App darf nicht mehr als \_ Sekunden Reaktionszeit haben und die Ladezeit muss unter \_ Sekunden liegen.
+
+                
+        \end{itemize}
+ 
+        \begin{itemize}
+            \item /NF20/Registrierung
+
+            	\par Die Registrierung erfolgt unter Angabe einer E-Mail Adresse und einem Passwort.
+                
+        \end{itemize}
+        \begin{itemize}
+            \item /NF30/Passwort
+
+            	\par Passwörter müssen mindestens 6-stellig sein. Die App kann angemeldet bleiben.
+
+                
+        \end{itemize}
+        \begin{itemize}
+            \item /NF40/Globalisierung
+
+            	\par Die App ist auf Deutsch und Englisch verfügbar.
+
+                
+        \end{itemize}
+        \begin{itemize}
+            \item /NF50/Daten speichern
+
+            	\par Die Antworten jedes Fragebogens von den Probanden muss ins Handy gespeichert werden.
+
+                
+        \end{itemize}
+        \begin{itemize}
+            \item /NF60/Größe der App
+
+            	\par Die App darf nicht mehr als \_ Mb auf dem Handy benötigen.
+
+
+                
+        \end{itemize}
+        \begin{itemize}
+            \item /NF70/Integration ins Google Play Store
+
+            	\par Die App soll ins Google Play Store integriert werden.
+
+
+                
+        \end{itemize}
  
     \chapter{Benutzungsoberfläche}
         Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
