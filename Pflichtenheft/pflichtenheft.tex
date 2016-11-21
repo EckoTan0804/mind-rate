@@ -101,20 +101,42 @@
         \section{Betriebsbedingungen}
             \begin{itemize}
                 \item Versuchsleiter: Büroumgebung
-                \item Versuchsteilnehmer: im alltäglichen Leben durch Smartphone
-                \item Betriebszeit rund um die Uhr, unbeaufsichtigt
+                \item Versuchsteilnehmer: im alltäglichen Leben aufs Smartphone
+                \item Betriebszeit rund um die Uhr, läuft unbeaufsichtigt
             \end{itemize}
  
     \chapter{Produktumgebung}
- 
+        Eine Client-Server Architektur mit 2 Client-Typen: der Web-Client für Versuchsleiter und der Smartphone-Client für Versuchsteilnehmer
+
         \section{Software}
-            Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
-            Aufteilung für Server und Client ist ggf. sinnvoll. Weiterhin sind unbedingt die
-            kleinsten benötigten Versionsnummern anzugeben.
+            \begin{itemize}
+                \item Serverseite
+                    \begin{itemize}
+                        \item  Läuft auf Linux
+                        \item Alle Softwares der Serverseite werden durch Docker verpackt
+                        \item Datenbank: SQLite, verwaltet durch das Django-Framework
+                        \item Programmiersprache: Python 3
+                        \item Web server: Nginx
+                    \end{itemize}
+                \item Clientseite
+                    \begin{itemize}
+                        \item Web-Client\\
+                             Web-Browser, Referenzstandard Google Chrome 54
+                        \item  Smartphone-Client\\
+                             Android, Referenzstandard Android 7.1 Nougat
+                    \end{itemize}
+            \end{itemize}
  
         \section{Hardware}
-            Hardware: Hardware-Anforderungen des Systems.
- 
+            \begin{itemize}
+                \item Serverseite\\
+                    Leistungsstarke Standardrechner
+                \item  Web-Client\\
+                    Standardrechner
+                \item Smartphone-Client\\
+                    Standardsmartphone
+            \end{itemize}
+
     \chapter{Funktionale Anforderungen}
         Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
         detaillierter Beschreibung.
