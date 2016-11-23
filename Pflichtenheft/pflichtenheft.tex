@@ -7,6 +7,7 @@
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
 \graphicspath{ {Images/} }
+\setcounter{secnumdepth}{5}
  
 \begin{document}
  
@@ -76,60 +77,92 @@
     \chapter{Zielbestimmung}
     % Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
     % notwendige Funktionen.
-        Die Firma soll durch das Produkt in die Lage versetzt werden, psychologische Untersuchungen nach Experience-Sampling-Method\footnote{\url{https://en.wikipedia.org/wiki/Experience_sampling_method}} (ESM) durchzuf\"uhren und Feedbacks der Untersuchungen zu erhalten.
- 
- 
+        Die Firma soll durch das Produkt in die Lage versetzt werden, psychologische Studien nach Experience-Sampling-Method (ESM) durchzuf\"uhren und Feedbacks der Studien zu erhalten.\\
 
+        \noindent Das Produkt besteht aus zwei Teilsysteme, Web Server f\"ur den Versuchsleiter und Android Anwendung f\"ur die Probanden.
+ 
+ 
         \section{Musskriterien}
             % Musskriterien: Für das Produkt unabdingbare Leistungen, die in jedem Fall
             % erfüllt werden müssen \footnote{gezwungen sein, etwas zu tun (Dies ist eine
             % beispielhafte Fußnote).}. Das System ist ohne diese Funktionen für seinen
             % gedachten Zweck nicht einsetzbar.
+            \vspace*{0.3cm}
 
-            \subsection{Verwalten von Teilnehmer der Untersuchung}
-                \begin{itemize}
-                    \item Probandsstatus erfassen (z.B. Name, Email, Alter, Geschlecht, Beruf)
-                    \item Registrieren, Anmelden f\"ur Beteiligung der Untersuchung
-                \end{itemize}
+            \subsection{Web-server f\"ur Versuchsleiter}
+                \vspace*{0.2cm}
+
+                \subsubsection{Verwalten von Teilnehmer der Untersuchung}
+                    \begin{itemize}
+                        \item Probandsstatus erfassen (z.B. Proband-ID, Alter, Geschlecht, Beruf)
+                        \item Anmelden f\"ur Durchf\"uhrung der Untersuchung
+                    \end{itemize}
             
-            \subsection{Verwalten der Frageb\"ogen}
-                \begin{itemize}
-                    \item Erstellen, \"Andern von Untersuchungsfragen
-                    \item Erstellen, \"Andern von Scale und Optionen der Antworten
-                    \item Setzen, \"Andern von G\"ultigkeitszeitbereich der Untersuchungsfragen
-                    \item Setzen, \"Andern von H\"aufigkeit der Notifikationen zur Antworten
-                    \item Ausw\"ahlen von Prob\"ande nach Bedarf
-                \end{itemize}
-            
-            \subsection{Antwort auf Untersuchungsfragen}
-                \begin{itemize}
-                    \item regelm\"assige Notifikation zur Antworten
-                    \item Untersuchungsfragen beantworten
-                \end{itemize}
+                \subsubsection{Verwalten der Frageb\"ogen}
+                    \begin{itemize}
+                        \item Ausw\"ahlen von Prob\"ande nach verschiedenen Kriterien vor Erstellung der Frageb\"ogen
+                        \item Erstellen, \"Andern von Untersuchungsfragen f\"ur unterschiedliche Probandsgruppe
+                        \item Erstellen, \"Andern von Scale und Optionen der Antworten
+                        \item Setzen, \"Andern von G\"ultigkeitszeitbereich der Untersuchungsfragen
+                        \item Setzen, \"Andern von H\"aufigkeit der Notifikationen zur Antworten
+                        % \item Senden von Feedback und Motivation zu Probanden
+                    \end{itemize}
+
+                \subsubsection{Erfassen von Ergebnisse der Untersuchung}
+                    \begin{itemize}
+                        \item Exportieren von Daten  
+                    \end{itemize}
+            \vspace*{2cm}
+
+            \subsection{Android Anwendung f\"ur Probanden}
+                \vspace*{0.2cm}
+
+                \subsubsection{Anmelden f\"ur Beteiligung der Studie}
                 
-            \subsection{Verwalten von Antworten}
-                \begin{itemize}
-                    \item lokales Speichern von Antworten
-                    \item Protokollieren von Zeitpunkt der Antwort
-                    \item Hochladen von Antworten auf den Server
-                \end{itemize}
-            
-            \subsection{Erfassen von Ergebnisse der Untersuchung}
-                \begin{itemize}
-                    \item Exportieren von Daten  
-                \end{itemize}
+                \subsubsection{Antwort auf Untersuchungsfragen}
+                    \begin{itemize}
+                        \item regelm\"assige Notifikation zur Antworten
+                        \item Untersuchungsfragen beantworten
+                    \end{itemize}
+                
+                \subsubsection{Verwalten von Antworten}
+                    \begin{itemize}
+                        \item lokales Speichern von Antworten
+                        \item Protokollieren von Zeitpunkt der Antwort
+                        \item Hochladen von Antworten auf den Server
+                    \end{itemize}
+
+                \subsubsection{Zurgreifen einiger Sensoren von Handy}
+                    \begin{itemize}
+                        \item Zugreifen von Temperatursensor
+                        \item Zugreifen von GPS
+                    \end{itemize}
+                \vspace*{0.5cm}
+
  
         \section{Wunschkriterien}
+            \vspace*{0.3cm}
             % Kannkriterien: Die Erfüllung der Kannkriterien ist erwünscht, jedoch nicht
             % unbedingt notwendig. Sie sollten nur angestrebt werden, falls noch ausreichend
             % Kapazitäten vorhanden sind.
-            \begin{itemize}
-                \item Emailbest\"atigugn beim (erfolgreichen) Anmelden
-                \item Erm\"oglichen von ``angemeldet bleiben"
-                \item Erzeugen von verschiedenen (Statistik-)Diagramme f\"ur hochgeladene Daten (z.B. S\"aulendiagramm, Kreisdiagramm) 
-                \item Unterst\"utzen von unterschiedlichen Sprachen
-                \item Wechseln von Theme der Anwendung
-            \end{itemize}
+            
+            \subsection{Web-server f\"ur Versuchsleiter}
+                \begin{itemize}
+                     % \item Emailbest\"atigugn beim (erfolgreichen) Anmelden
+                    \item Erm\"oglichen von ``angemeldet bleiben"
+                    \item Erzeugen von verschiedenen (Statistik-)Diagramme f\"ur hochgeladene Daten (z.B. S\"aulendiagramm, Kreisdiagramm) 
+                    \item Unterst\"utzen von unterschiedlichen Sprachen
+                    
+                \end{itemize}
+
+            \subsection{Android Anwendung f\"ur Probanden}
+                \begin{itemize}
+                    \item Erm\"oglichen von ``angemeldet bleiben"
+                    \item Unterst\"utzen von unterschiedlichen Sprachen
+                    \item Wechseln von Theme der Anwendung
+                \end{itemize}
+                \vspace*{0.5cm}
+
  
         \section{Abgrenzungskriterien}
             % Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
