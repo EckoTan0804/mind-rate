@@ -23,11 +23,19 @@
         Praxis der Softwareentwicklung
         \vspace * {1.5cm}
 
-        {\bf \huge Mind Rate}
+<<<<<<< HEAD
+        {\textbf \huge Mind Rate}
 		
         \vspace*{1cm}
 		
-        {\bf \large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
+        {\textbf \large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
+=======
+        \textbf{\huge Mind Rate}
+		
+        \vspace*{1cm}
+		
+        \textbf{\large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
+>>>>>>> origin/master
         \vspace*{1cm}
 
         {\large Pflichtenheft}
@@ -226,66 +234,95 @@
             \end{itemize}
 
     \chapter{Funktionale Anforderungen}
- 
-        \begin{itemize}
-            \item /F10/Anmelden oder Registrieren der Leiter
-            	\par Registrieren: Der Leiter soll sich zuerst in dem Online-Verwaltungssystem mit seinem Email-Adresse registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Leiter ein Bestätigungsemail empfangen.\par
-Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Leiter sich damit anmelden.
-        \end{itemize}
+
+		\section{Web}
+	        \begin{itemize}
+	            \item /F10/Anmelden oder Registrieren der Leiter
+		            \par Registrieren: Der Leiter soll sich zuerst in dem Online-Verwaltungssystem mit seinem Email-Adresse registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Leiter ein Bestätigungsemail empfangen.
+		            
+	            	\par Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Leiter sich damit anmelden.
+	            	
+	            \item /F20/Vergessenes Passwort neu zu setzen
+	            	\par Wenn ein Leiter sein Passwort vergessen hat, kann er auf “Passwort Vergessen” klicken und in der weitergeleiteten Seite seine Email-Adresse eingeben. Danach empfängt er ein Bestätigungsemail mit einem Link. Durch dieses Link ist er in die “Passwort neu setzen” Seite weitergeleitet und sein neues Passwort wird in dem Datenbank gespeichert.
+
+	            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
+	            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
+	            	
+	            \item /F40/Dashboard
+	            	\par 
+	            	
+	            \item /F50/Exportieren von Daten
+		         	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
+
+			\end{itemize}
+    
+		    \section{App}
+	        \begin{itemize}
+	            \item /F70/Anmelden oder Registrieren der Probanden
+	
+	            	\par Registrieren: Die Probanden sollen sich in der App zuerst registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Proband ein Bestätigungsemail empfangen.
+	                \par Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Proband sich damit anmelden.
+	
+	
+	
+	        \end{itemize}
+	        \begin{itemize}
+	            \item /F80/Antworten eines Fragebogens
+	
+	            	\par Nachdem der Leiter einen Fragebogen den Probanden gesandt hat, sollen die Probanden eine Notifikation empfangen. Das Fragebogen soll in der App gezeigt werden. Danach werden die Fragen des Fragebogens geantwortet.
+	                \par
+	                Wenn die Probanden auf alle Fragen geantwortet und auf “Senden“ geklickt haben, werden diese Ergebnisse des Fragebogens zuerst lokal automatisch gespeichert. 
+	
+	
+	        \end{itemize}
+	        \begin{itemize}
+	            \item /F90/Versendung der Antworten eines Fragebogens
+	
+	            	\par Die lokal gespeicherten Ergebnisse werden unter Netzwerkverbindung zu dem Server geschickt. Falls keine Netzwerkverbindung vorhanden ist, soll die App dazu nichts machen. Sobald die Netzwerkverbindung wieder da ist, soll die App versuchen, die Ergebnisse zu senden.
+	
+	
+	        \end{itemize}
         
         \begin{itemize}
-            \item /F20/Vergessenes Passwort neu zu setzen
-            	\par Wenn ein Leiter sein Passwort vergessen hat, kann er auf “Passwort Vergessen” klicken und in der weitergeleiteten Seite seine Email-Adresse eingeben. Danach empfängt er ein Bestätigungsemail mit einem Link. Durch dieses Link ist er in die “Passwort neu setzen” Seite weitergeleitet und sein neues Passwort wird in dem Datenbank gespeichert.
+            \item \textbf{/F70/Anmelden der Probanden}
+            
+				\par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
+				\par \textbf{Vorbedingung: }-keine-
+				\par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
+				\par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
+				\par \textbf{Akteure: }Proband
+				\par \textbf{Auslösendes Ereignis: }Proband öffnet die App
+				\par \textbf{Beschreibung: }
+				\par 1. Wenn der Proband zum ersten Mal die App öffnet: Der Proband meldet sich mit der ID des Versuchs an und gibt die 
+				 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+				\par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+				\par \textbf{Alternativen: }
+								
 
-        \end{itemize}
-        
-        \begin{itemize}
-            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
+            \item \textbf{/F80/Antworten eines Fragebogens}
 
-            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
-                
-        \end{itemize}
-        
-        \begin{itemize}
-            \item /F40/Verwaltung der persönlichen Daten von Probanden
+            	\par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
+            	\par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
+            	\par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
+            	\par \textbf{Akteure: }Proband
+            	\par \textbf{Auslösendes Ereignis: }Proband meldet sich an
+            	\par \textbf{Beschreibung: }
+            	\par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
+            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf "Senden" und die Antworten werden lokal gespeichert.
+            	\par \textbf{Alternativen: }
+            	
 
-            	\par Der Leiter kann die persönlichen Daten der Probanden (Email-Address, Name, Alter, Geschlecht usw.) hinfügen, löschen, abfragen und ändern.
-
-        \end{itemize}
-        
-        \begin{itemize}
-            \item /F50/Kontrolle durch Metadata
-            	\par Der Leiter kann das Metadata über seine Fragebogen sehen.
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F60/Exportieren von Daten und Metadata
-            	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F70/Anmelden oder Registrieren der Probanden
-
-            	\par Registrieren: Die Probanden sollen sich in der App zuerst registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Proband ein Bestätigungsemail empfangen.
-                \par Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Proband sich damit anmelden.
-
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F80/Antworten eines Fragebogens
-
-            	\par Nachdem der Leiter einen Fragebogen den Probanden gesandt hat, sollen die Probanden eine Notifikation empfangen. Das Fragebogen soll in der App gezeigt werden. Danach werden die Fragen des Fragebogens geantwortet.
-                \par
-                Wenn die Probanden auf alle Fragen geantwortet und auf “Senden“ geklickt haben, werden diese Ergebnisse des Fragebogens zuerst lokal automatisch gespeichert. 
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F90/Versendung der Antworten eines Fragebogens
-
-            	\par Die lokal gespeicherten Ergebnisse werden unter Netzwerkverbindung zu dem Server geschickt. Falls keine Netzwerkverbindung vorhanden ist, soll die App dazu nichts machen. Sobald die Netzwerkverbindung wieder da ist, soll die App versuchen, die Ergebnisse zu senden.
-
+            \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
+            
+            \par \textbf{Ziel: }Versenden der Antworten an den Server
+            \par \textbf{Vorbedingung: }die Antworten werden lokal gespeichert
+            \par \textbf{Nachbedingung (Erfolg): }die Antworten werden auf dem Server gespeichert
+            \par \textbf{Nachbedingung (Fehlschlag): }die Antworten werden nicht auf dem Server gespeichert
+            \par \textbf{Akteure: }App und Server
+            \par \textbf{Auslösendes Ereignis: }die Netzwerkverbindung ist verfügbar und es gibt lokal gespeicherte Antworten
+            \par \textbf{Beschreibung: }
+            \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert. 
+            \par \textbf{Alternativen: }
 
         \end{itemize}
  
