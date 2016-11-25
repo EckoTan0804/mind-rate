@@ -112,6 +112,7 @@
 
                 \subsubsection{Erfassen von Ergebnisse der Untersuchung}
                     \begin{itemize}
+                        \item Besichtigen von Antwortsstatus
                         \item Exportieren von Daten  
                     \end{itemize}
             \vspace*{2cm}
@@ -262,7 +263,7 @@
                     \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
                     \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
                     \par \textbf{Akteure: }Versuchsleiter
-                    \par \textbf{Auslösendes Ereignis: }Der Leiter hat den Antwortsstatus des Fragebogens erfasssen.
+                    \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter versucht, wieder anzumelden.
                     \par \textbf{Beschreibung: }
                         \begin{enumerate}
                            \item Drucken von Button ``View answers''
@@ -279,6 +280,29 @@
                             \includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
                             \caption{Antwortsstatus besichtigen}
                         \end{figure}
+
+
+                \item /F45/ \textbf{Feedback (Motivation) senden}
+                    \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
+                    \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+                    \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
+                    \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
+                    \par \textbf{Akteure: }Versuchsleiter
+                    \par \textbf{Auslösendes Ereignis: }
+                        \begin{itemize}
+                            \item Der Versuchsleiter versucht, wieder anzumelden und Feedbacks erneut zu senden.
+                            \item Der Proband pr\"uft, ob die Internetverbindung verf\"ugbar und er schon angemeldet ist.
+                        \end{itemize}
+                    \par \textbf{Beschreibung: }
+                        \begin{enumerate}
+                            \item Drucken von Button ``Send Feedback / Motivation''
+                            \item Schreiben von Feedback (Motivation) 
+                            \item Drucken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
+                        \end{enumerate}
+                    \par \textbf{Erweiterung: }
+                    \par \textbf{Alternativen: }
+
+
 
 	            \item /F50/Exportieren von Daten
 		         	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
