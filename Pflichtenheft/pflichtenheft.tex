@@ -23,11 +23,11 @@
         Praxis der Softwareentwicklung
         \vspace * {1.5cm}
 
-        {\bf \huge Mind Rate}
+        \textbf{\huge Mind Rate}
 		
         \vspace*{1cm}
 		
-        {\bf \large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
+        \textbf{\large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
         \vspace*{1cm}
 
         {\large Pflichtenheft}
@@ -264,28 +264,45 @@ Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Leiter sich damit anmelde
 
         \end{itemize}
         \begin{itemize}
-            \item /F70/Anmelden oder Registrieren der Probanden
+            \item \textbf{/F70/Anmelden der Probanden}
+            
+				\par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
+				\par \textbf{Vorbedingung: }-keine-
+				\par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
+				\par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
+				\par \textbf{Akteure: }Proband
+				\par \textbf{Auslösendes Ereignis: }Proband öffnet die App
+				\par \textbf{Beschreibung: }
+				\par 1. Wenn der Proband zum ersten Mal die App öffnet: Der Proband meldet sich mit der ID des Versuchs an und gibt die 
+				 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+				\par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+				\par \textbf{Alternativen: }
+								
 
-            	\par Registrieren: Die Probanden sollen sich in der App zuerst registrieren. Dabei soll ein gültiges Passwort zweimal eingeben. Wenn ein neues Konto in dem Datenbank erstellt ist, soll der Proband ein Bestätigungsemail empfangen.
-                \par Anmelden: Wenn ein Konto schon vorhanden ist, kann ein Proband sich damit anmelden.
+            \item \textbf{/F80/Antworten eines Fragebogens}
 
+            	\par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
+            	\par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
+            	\par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
+            	\par \textbf{Akteure: }Proband
+            	\par \textbf{Auslösendes Ereignis: }Proband meldet sich an
+            	\par \textbf{Beschreibung: }
+            	\par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
+            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf "Senden" und die Antworten werden lokal gespeichert.
+            	\par \textbf{Alternativen: }
+            	
 
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F80/Antworten eines Fragebogens
-
-            	\par Nachdem der Leiter einen Fragebogen den Probanden gesandt hat, sollen die Probanden eine Notifikation empfangen. Das Fragebogen soll in der App gezeigt werden. Danach werden die Fragen des Fragebogens geantwortet.
-                \par
-                Wenn die Probanden auf alle Fragen geantwortet und auf “Senden“ geklickt haben, werden diese Ergebnisse des Fragebogens zuerst lokal automatisch gespeichert. 
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /F90/Versendung der Antworten eines Fragebogens
-
-            	\par Die lokal gespeicherten Ergebnisse werden unter Netzwerkverbindung zu dem Server geschickt. Falls keine Netzwerkverbindung vorhanden ist, soll die App dazu nichts machen. Sobald die Netzwerkverbindung wieder da ist, soll die App versuchen, die Ergebnisse zu senden.
-
+            \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
+            
+            \par \textbf{Ziel: }Versenden der Antworten an den Server
+            \par \textbf{Vorbedingung: }die Antworten werden lokal gespeichert
+            \par \textbf{Nachbedingung (Erfolg): }die Antworten werden auf dem Server gespeichert
+            \par \textbf{Nachbedingung (Fehlschlag): }die Antworten werden nicht auf dem Server gespeichert
+            \par \textbf{Akteure: }App und Server
+            \par \textbf{Auslösendes Ereignis: }die Netzwerkverbindung ist verfügbar und es gibt lokal gespeicherte Antworten
+            \par \textbf{Beschreibung: }
+            \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert. 
+            \par \textbf{Alternativen: }
 
         \end{itemize}
  
