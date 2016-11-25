@@ -6,6 +6,7 @@
 \usepackage{ae}
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
+% \usepackage{float}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
  
@@ -253,16 +254,40 @@
 
 	            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
 	            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
-	            	
-	            \item /F40/Dashboard
-	            	\par 
-	            	
+	            
+                	
+	            \item /F40/ \textbf{Antwortsstatus besichtigen}
+	            	\par \textbf{Ziel: }Besichtigung der Antwortsstatus
+                    \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+                    \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
+                    \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
+                    \par \textbf{Akteure: }Versuchsleiter
+                    \par \textbf{Auslösendes Ereignis: }Der Leiter hat den Antwortsstatus des Fragebogens erfasssen.
+                    \par \textbf{Beschreibung: }
+                        \begin{enumerate}
+                           \item Drucken von Button ``View answers''
+                           \item Zeigen des neuen Antwortsstatus beim erfolgreichen Anmelden
+                           \item Erfassen von Antwortsstatus nach Bedarf
+                           \item Laden des neuen Antwortsstatus beim Drucken von Button ``Refresh''
+                        \end{enumerate}
+                    \par \textbf{Erweiterung: }
+                    \par \textbf{Alternativen: }
+                        \newpage
+                        \begin{figure}[ht]
+                            % \raggedleft
+                            \centering
+                            \includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
+                            \caption{Antwortsstatus besichtigen}
+                        \end{figure}
+
 	            \item /F50/Exportieren von Daten
 		         	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
 
 			\end{itemize}
     
-		    \section{App}
+
+    \newpage
+    \section{App}
         
         \begin{itemize}
             \item \textbf{/F70/Anmelden der Probanden}
