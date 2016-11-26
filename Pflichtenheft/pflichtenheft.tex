@@ -384,7 +384,7 @@
             \par \textbf{Alternativen: }
             
             
-            \item \textbf{(Wunsch) /F/ Sehen des eigenen Antwortquotienten}
+            \item \textbf{(Wunsch) /F1--/ Sehen des eigenen Antwortquotienten\footnote{Antwortquotient: der Quotient aus beantworteten Fragen und allen Fragen. (Die Antwortquotienten sind also für jeden Proband unterschiedlich.)}}
             
             \par \textbf{Ziel: }Proband kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
             \par \textbf{Vorbedingung: }Proband hat in der App angemeldet
@@ -412,22 +412,22 @@
                     \par Versuchsummern der zum Versuchsleiter gehörten Versuchen
             \end{itemize}
 
-        \section{Versuchsteilnehmerdaten}
+        \section{Probanddaten}
             \begin{itemize}
-                \item /D30/ Über einen Versuchsteilnehmer sind folgende Daten zu speichern:
-                    \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System), Telefonnummer, demographische Daten (Geburtsdatum, Beruf, Geschlecht), Notiz
+                \item /D30/ Über einen Proband sind folgende Daten zu speichern:
+                    \par Proband-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
 
-                \item /D40/ Nimmt ein Versuchsteilnehmer an Versuchen teil, dann sind folgende Daten zu speichern:
-                    \par Versuchsnummern der daran beteiligten Versuchen
+                \item /D40/ Hat ein Proband im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
+                    \par Antwortquotienten
             \end{itemize}
 
         \section{Versuchsdaten}
             \begin{itemize}
                 \item /D50/ Über einen Versuch sind folgende Daten zu speichern:
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, Mailadresse der Versuchsleiter, Notiz
+                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” des Antwortquotienten für die Probanden\footnote{Siehe funktionale Anforderungen F1--}, Mailadresse der Versuchsleiter
 
-                \item /D60/ Hat ein Versuch Teilnehmer, dann sind folgende Daten zu speichern:
-                    \par Mailadressen der Versuchsteilnehmer
+                \item /D60/ Hat ein Versuch Probanden, dann sind folgende Daten zu speichern:
+                    \par Proband-IDs
 
                 \item /D70/ Hat ein Versuch Fragen, dann sind folgende Daten zu speichern:
                     \par Fragenummer der Fragen
@@ -439,10 +439,10 @@
                     \par Fragenummer, Fragetyp, Inhalt der Frage, Versuchsnummer des zugehörigen Versuchs
 
                 \item /D90/ Wird eine Frage im Versuch erscheinen, dann sind folgende Daten zu speichern:
-                    \par Erscheinungskriterium, Abgabetermin
+                    \par Erscheinungsereignisse, Abgabetermin
 
-                \item /D100/ Wird eine Frage von Versuchsteilnehmern beantwortet, dann sind folgende Daten zu speichern:
-                    \par Mailadressen der Antwortgeber, Abgabezeit der Antworten, Inhalt der Antworten
+                \item /D100/ Wird eine Frage von Probanden beantwortet, dann sind folgende Daten zu speichern:
+                    \par Proband-IDs der Antwortgeber, Abgabezeit der Antworten, Inhalt der Antworten
             \end{itemize}
 
    \chapter{Nichtfunktionale Anforderungen}
