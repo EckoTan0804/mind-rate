@@ -206,7 +206,7 @@
 
 		\section{Web}
 	        \begin{itemize}
-	            \item \textbf{/F10/Anmelden oder Registrieren der Leiter}
+	            \item \textbf{/F10/Registrieren oder Anmelden der Leiter}
 		
 	            	\par \textbf{Ziel: }Registrieren oder Anmelden der Versuchsleiter in der Web-Verwaltungssystem
 	            	\par \textbf{Vorbedingung (Registrieren): }-keine-
@@ -229,66 +229,51 @@
 	            \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
 	            \par \textbf{Vorbedingung: }-keine-
 	            \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
-	            \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern "Konto existiert nicht" kommt auf.
+	            \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern ``Konto existiert nicht'' kommt in dem Browser auf.
 	            \par \textbf{Akteure: }Versuchsleiter
 	            \par \textbf{Auslösendes Ereignis: }Der Leiter soll prüfen, ob er falsches Email-Adresse eingegeben hat.
-	            \par \textbf{Beschreibung: }
-	            \begin{enumerate}
-	            	\item Der Leiter klickt auf "Passwort Vergessen" und wird in eine Webseite geleitet. Hier gibt er sein Email-Adresse (gleich das Konto-Name) ein.
-	            	\item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
-	            \end{enumerate}
-	            \par \textbf{Erweiterung: }
-	            \par \textbf{Alternativen: }
-
-	            \item \textbf{/F20/Veränderung des Passworts von dem Leiter}	
-	            
-	            \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
-	            \par \textbf{Vorbedingung: }Registrieren auf der Webseite
-	            \par \textbf{Nachbedingung (Erfolg): }Das neue Passwort wird in dem Datenbank gespeichert.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Das alte Passwort wird nicht übergedeckt.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “Passwort Vergessen“ Button auf der Webseite zu klicken
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Klicken auf ``Passwort Vergesse''
 	            	\item Email-Adresse eingeben
 	            	\item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
-	            	\item Der Versuchsleiter ist in die “Passwort neu setzen” Seite weitergeleitet
+	            	\item Durch den Link ist der Versuchsleiter in die “Passwort neu setzen” Seite weitergeleitet
 	            	\item Neues Passwort eingeben
 	            	\item Sein neues Passwort wird in dem Datenbank gespeichert
-	            \end{enumerate}
+            	\end{enumerate}
 	            \par \textbf{Erweiterung: }
+	            \begin{itemize}
+		            \item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
+	            \end{itemize}
 	            \par \textbf{Alternativen: }
 	            
 	            \item \textbf{/F30/Verwaltung der Fragen }
-	            \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
-	            \par \textbf{Vorbedingung: } Registrieren und anmelden auf der Webseite
-	            \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage liegt in einem festgelegten Fragebogen vor
-	            \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage fügt einem festgelegten Fragebogen nicht hinzu
+	            \par \textbf{Ziel: }Erstellung der Fragen in einem Versuch
+	            \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
+	            \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage wird nicht erstellt
 	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “neu“ Button auf der Webseite zu klicken
+	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``neu'' Button auf der Webseite zu klicken
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
-	            	\item Verwaltung des Fragebogens
-	            	\par Der Versuchsleiter wähle einen Fragebogen aus,dem eine Frage hinzugefügt werden soll.
-	            	\item Aufstellung der Fragen
-	            	\par Der Versuchsleiter entscheidet die Fragenart und Antwortart,dann soll der Versuchsleiter auch konkrete Frage eingeben.
+	            	\item Verwaltung des Versuchs
+	            	\par Der Versuchsleiter wählt zuerst einen Versuch aus oder erstellt er einen neuen Versuch. Zudem gehört die neue Frage.
+	            	\item Erstellung der Fragen
+	            	\par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
 	            	\item Zeiteinstellung
 	            	\par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
 	            	\item Hardwareunterstützung(bzw. Sensoren)
-	            	\par Der Versuchsleiter fügt die Sensoren hinzu,die während der Antwort von dem Proband benutzt werden sollen.
+	            	\par Der Versuchsleiter fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem Proband benutzt werden.
 	            	\item Abschicken und Stornieren
-	            	\par Der Versuchsleiter entscheidet sich,die Frage einem Fragenboden hinzufügen oder die zu stornieren.
+	            	\par Der Versuchsleiter entscheidet sich, ob er die Frage eines Versuchs hinfügt oder storniert.
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \begin{enumerate}
-	            	\item Wenn der ausgewählte Fragebogen nicht vorliegt,soll ein neuer Fragebogen erstellt werden können.
-	            	\item a.Es gibt vier Fragenarten,nämlich ``Ja oder Nein Frage'', ``Multiple-Choice-Fragen'', ``Skala Frage'' und ``Offene Frage''.Zur ersten Art gibt es nur ``Ja'' und ``Nein'' Option.Zur Zweiten Art sollen mehrere Optionen (mehr als zwei) eingegeben werden.Zur dritten Art soll die Antwort  auf einer Skala (Beispielsweise von eins bis zehn) angezeigt werden.Zur letzten Art soll die Antwort ein Text sein.
-	            	\par b.Es soll einen Kasten für die Eingabe einer Frage auf der Webseite vorhanden sein.
-	            	\item a.Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat.Wenn ja,soll der Versuchsleiter  einen exakten Zeitraum auswählen.
-	            	\par b.Der Versuchsleiter sollen eine Push-Zeit hinzufügen.Er kann sich eintscheiden,ob die Push-Zeit die lokale Zeit der Probanden ist.
-	            	\item Der Versuchsleiter kann sich entscheiden,wie viele und welche Sensoren benutzt werden sollen.Wenn ein Sensor hinzugefügt wird,soll der Versuchsleiter einen Zahlenwert dar\"uber eingeben.
-	            	\item Es liegt zwei Button ``submit'' und ``cancel'' auf der Webseite vor.
+	            	\item Es gibt vier Fragenarten. Die sind jeweils ``Ja/ Nein Frage'', ``Multiple-Choice-Fragen'', ``Skala Frage'' und ``Offene Frage''.
+	            	\item a. Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der Versuchsleiter  einen exakten Zeitraum auswählen.
+	            	\par b. Der Versuchsleiter soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des Probandes entsprechend ist.
+	            	\item Der Versuchsleiter kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der Versuchsleiter einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
+	            	\item Zwei Buttons ``submit'' und ``cancel'' sind auf der Webseite vorhanden.
 	            \end{enumerate}
 	            \par \textbf{Alternativen: }
 	            
@@ -345,9 +330,11 @@
 	            \par \textbf{Nachbedingung (Erfolg): }Die den Versuchen zugehörigen Daten werden in CSV-Format exportiert.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Die den Versuchen zugehörigen Daten werden nicht exportiert.
 	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Leiter nimmt Kontakt mit dem Super-User.
+	            \par \textbf{Auslösendes Ereignis: }Der Leiter nimmt Kontakt mit den Entwicklern auf.
 	            \par \textbf{Beschreibung: }
+	            \begin{itemize}
 	            	\item Der Leiter klickt auf "Daten Exportieren". Dann werden die zugehörigen Daten in CSV-Format exportiert.
+	            \end{itemize}
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
 			\end{itemize}
