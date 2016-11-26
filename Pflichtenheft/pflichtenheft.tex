@@ -223,7 +223,6 @@
 		            	\end{enumerate}
 	            	\par \textbf{Erweiterung: }
 	            	\par \textbf{Alternativen: }
-<<<<<<< HEAD
 	            	
 	            \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
 	            
@@ -241,12 +240,103 @@
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
 
-<<<<<<< HEAD
-	            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
-	            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
-	            	
-	            \item /F40/Dashboard
-	            	\par 
+	            \item \textbf{/F20/Veränderung des Passworts von dem Leiter}	
+	            
+	            \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
+	            \par \textbf{Vorbedingung: }Registrieren auf der Webseite
+	            \par \textbf{Nachbedingung (Erfolg): }Das neue Passwort wird in dem Datenbank gespeichert.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Das alte Passwort wird nicht übergedeckt.
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “Passwort Vergessen“ Button auf der Webseite zu klicken
+	            \par \textbf{Beschreibung: }
+	            \begin{enumerate}
+	            	\item Klicken auf ``Passwort Vergesse''
+	            	\item Email-Adresse eingeben
+	            	\item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
+	            	\item Der Versuchsleiter ist in die “Passwort neu setzen” Seite weitergeleitet
+	            	\item Neues Passwort eingeben
+	            	\item Sein neues Passwort wird in dem Datenbank gespeichert
+	            \end{enumerate}
+	            \par \textbf{Erweiterung: }
+	            \par \textbf{Alternativen: }
+	            
+	            \item \textbf{/F30/Verwaltung der Fragen }
+	            \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
+	            \par \textbf{Vorbedingung: } Registrieren und anmelden auf der Webseite
+	            \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage liegt in einem festgelegten Fragebogen vor
+	            \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage fügt einem festgelegten Fragebogen nicht hinzu
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “neu“ Button auf der Webseite zu klicken
+	            \par \textbf{Beschreibung: }
+	            \begin{enumerate}
+	            	\item Verwaltung des Fragebogens
+	            	\par Der Versuchsleiter wähle einen Fragebogen aus,dem eine Frage hinzugefügt werden soll.
+	            	\item Aufstellung der Fragen
+	            	\par Der Versuchsleiter entscheidet die Fragenart und Antwortart,dann soll der Versuchsleiter auch konkrete Frage eingeben.
+	            	\item Zeiteinstellung
+	            	\par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
+	            	\item Hardwareunterstützung(bzw. Sensoren)
+	            	\par Der Versuchsleiter fügt die Sensoren hinzu,die während der Antwort von dem Proband benutzt werden sollen.
+	            	\item Abschicken und Stornieren
+	            	\par Der Versuchsleiter entscheidet sich,die Frage einem Fragenboden hinzufügen oder die zu stornieren.
+	            \end{enumerate}
+	            \par \textbf{Erweiterung: }
+	            \begin{enumerate}
+	            	\item Wenn der ausgewählte Fragebogen nicht vorliegt,soll ein neuer Fragebogen erstellt werden können.
+	            	\item a.Es gibt vier Fragenarten,nämlich ``Ja oder Nein Frage'', ``Multiple-Choice-Fragen'', ``Skala Frage'' und ``Offene Frage''.Zur ersten Art gibt es nur ``Ja'' und ``Nein'' Option.Zur Zweiten Art sollen mehrere Optionen (mehr als zwei) eingegeben werden.Zur dritten Art soll die Antwort  auf einer Skala (Beispielsweise von eins bis zehn) angezeigt werden.Zur letzten Art soll die Antwort ein Text sein.
+	            	\par b.Es soll einen Kasten für die Eingabe einer Frage auf der Webseite vorhanden sein.
+	            	\item a.Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat.Wenn ja,soll der Versuchsleiter  einen exakten Zeitraum auswählen.
+	            	\par b.Der Versuchsleiter sollen eine Push-Zeit hinzufügen.Er kann sich eintscheiden,ob die Push-Zeit die lokale Zeit der Probanden ist.
+	            	\item Der Versuchsleiter kann sich entscheiden,wie viele und welche Sensoren benutzt werden sollen.Wenn ein Sensor hinzugefügt wird,soll der Versuchsleiter einen Zahlenwert dar\"uber eingeben.
+	            	\item Es liegt zwei Button ``submit'' und ``cancel'' auf der Webseite vor.
+	            \end{enumerate}
+	            \par \textbf{Alternativen: }
+	            
+	            
+	            \item /F40/ \textbf{Antwortsstatus besichtigen}
+	            \par \textbf{Ziel: }Besichtigung der Antwortsstatus
+	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+	            \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter versucht, wieder anzumelden.
+	            \par \textbf{Beschreibung: }
+	            \begin{enumerate}
+	            	\item Drucken von Button ``View answers''
+	            	\item Zeigen des neuen Antwortsstatus beim erfolgreichen Anmelden
+	            	\item Erfassen von Antwortsstatus nach Bedarf
+	            	\item Laden des neuen Antwortsstatus beim Drucken von Button ``Refresh''
+	            \end{enumerate}
+	            \par \textbf{Erweiterung: }
+	            \par \textbf{Alternativen: }
+	            \newpage
+	            \begin{figure}[ht]
+	            	% \raggedleft
+	            	\centering
+	            	\includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
+	            	\caption{Antwortsstatus besichtigen}
+	            \end{figure}
+	            
+	            
+	            \item /F45/ \textbf{Feedback (Motivation) senden}
+	            \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
+	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+	            \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }
+	            \begin{itemize}
+	            	\item Der Versuchsleiter versucht, wieder anzumelden und Feedbacks erneut zu senden.
+	            	\item Der Proband pr\"uft, ob die Internetverbindung verf\"ugbar und er schon angemeldet ist.
+	            \end{itemize}
+	            \par \textbf{Beschreibung: }
+	            \begin{enumerate}
+	            	\item Drucken von Button ``Send Feedback / Motivation''
+	            	\item Schreiben von Feedback (Motivation)
+	            	\item Drucken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
+	            \end{enumerate}
+	            \par \textbf{Erweiterung: }
+	            \par \textbf{Alternativen: }
 	            	
 	            \item \textbf{/F50/Exportieren von Daten}
 	            
@@ -260,115 +350,6 @@
 	            	\item Der Leiter klickt auf "Daten Exportieren". Dann werden die zugehörigen Daten in CSV-Format exportiert.
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
-=======
-=======
-	
-                \item \textbf{/F20/Veränderung des Passworts von dem Leiter}	
-
-                    \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
-                    \par \textbf{Vorbedingung: }Registrieren auf der Webseite
-                    \par \textbf{Nachbedingung (Erfolg): }Das neue Passwort wird in dem Datenbank gespeichert.
-                    \par \textbf{Nachbedingung (Fehlschlag): }Das alte Passwort wird nicht übergedeckt.
-                    \par \textbf{Akteure: }Versuchsleiter
-                    \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “Passwort Vergessen“ Button auf der Webseite zu klicken
-                    \par \textbf{Beschreibung: }
-		            	\begin{enumerate}
-			            	\item Klicken auf ``Passwort Vergesse''
-                            \item Email-Adresse eingeben
-                            \item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
-                            \item Der Versuchsleiter ist in die “Passwort neu setzen” Seite weitergeleitet
-                            \item Neues Passwort eingeben
-                            \item Sein neues Passwort wird in dem Datenbank gespeichert
-		            	\end{enumerate}
-	            	\par \textbf{Erweiterung: }
-	            	\par \textbf{Alternativen: }
-
-
->>>>>>> f2972887386affeadfbc8004f336e93568c42fc5
-	            \item \textbf{/F30/Verwaltung der Fragen }
-	            	\par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
-	            	\par \textbf{Vorbedingung: } Registrieren und anmelden auf der Webseite
-	            	\par \textbf{Nachbedingung (Erfolg): }Eine neue Frage liegt in einem festgelegten Fragebogen vor
-	            	\par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage fügt einem festgelegten Fragebogen nicht hinzu
-	            	\par \textbf{Akteure: }Versuchsleiter
-	            	\par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “neu“ Button auf der Webseite zu klicken
-	            	\par \textbf{Beschreibung: }
-		            	\begin{enumerate}
-			            	\item Verwaltung des Fragebogens
-                            \par Der Versuchsleiter wähle einen Fragebogen aus,dem eine Frage hinzugefügt werden soll.
-                            \item Aufstellung der Fragen
-                            \par Der Versuchsleiter entscheidet die Fragenart und Antwortart,dann soll der Versuchsleiter auch konkrete Frage eingeben.
-                            \item Zeiteinstellung
-                            \par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
-                            \item Hardwareunterstützung(bzw. Sensoren)
-                            \par Der Versuchsleiter fügt die Sensoren hinzu,die während der Antwort von dem Proband benutzt werden sollen.
-                            \item Abschicken und Stornieren
-                            \par Der Versuchsleiter entscheidet sich,die Frage einem Fragenboden hinzufügen oder die zu stornieren.
-		            	\end{enumerate}
-	            	\par \textbf{Erweiterung: }
-                            \begin{enumerate}
-                            \item Wenn der ausgewählte Fragebogen nicht vorliegt,soll ein neuer Fragebogen erstellt werden können.
-                            \item a.Es gibt vier Fragenarten,nämlich ``Ja oder Nein Frage'', ``Multiple-Choice-Fragen'', ``Skala Frage'' und ``Offene Frage''.Zur ersten Art gibt es nur ``Ja'' und ``Nein'' Option.Zur Zweiten Art sollen mehrere Optionen (mehr als zwei) eingegeben werden.Zur dritten Art soll die Antwort  auf einer Skala (Beispielsweise von eins bis zehn) angezeigt werden.Zur letzten Art soll die Antwort ein Text sein.
-                                \par b.Es soll einen Kasten für die Eingabe einer Frage auf der Webseite vorhanden sein.
-                            \item a.Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat.Wenn ja,soll der Versuchsleiter  einen exakten Zeitraum auswählen.
-                                \par b.Der Versuchsleiter sollen eine Push-Zeit hinzufügen.Er kann sich eintscheiden,ob die Push-Zeit die lokale Zeit der Probanden ist.
-                            \item Der Versuchsleiter kann sich entscheiden,wie viele und welche Sensoren benutzt werden sollen.Wenn ein Sensor hinzugefügt wird,soll der Versuchsleiter einen Zahlenwert dar\"uber eingeben.
-                            \item Es liegt zwei Button ``submit'' und ``cancel'' auf der Webseite vor.
-                            \end{enumerate}
-	            	\par \textbf{Alternativen: }
-	
-                	
-	            \item /F40/ \textbf{Antwortsstatus besichtigen}
-	            	\par \textbf{Ziel: }Besichtigung der Antwortsstatus
-                    \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-                    \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
-                    \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
-                    \par \textbf{Akteure: }Versuchsleiter
-                    \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter versucht, wieder anzumelden.
-                    \par \textbf{Beschreibung: }
-                        \begin{enumerate}
-                           \item Drucken von Button ``View answers''
-                           \item Zeigen des neuen Antwortsstatus beim erfolgreichen Anmelden
-                           \item Erfassen von Antwortsstatus nach Bedarf
-                           \item Laden des neuen Antwortsstatus beim Drucken von Button ``Refresh''
-                        \end{enumerate}
-                    \par \textbf{Erweiterung: }
-                    \par \textbf{Alternativen: }
-                        \newpage
-                        \begin{figure}[ht]
-                            % \raggedleft
-                            \centering
-                            \includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
-                            \caption{Antwortsstatus besichtigen}
-                        \end{figure}
-
-
-                \item /F45/ \textbf{Feedback (Motivation) senden}
-                    \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
-                    \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-                    \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
-                    \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
-                    \par \textbf{Akteure: }Versuchsleiter
-                    \par \textbf{Auslösendes Ereignis: }
-                        \begin{itemize}
-                            \item Der Versuchsleiter versucht, wieder anzumelden und Feedbacks erneut zu senden.
-                            \item Der Proband pr\"uft, ob die Internetverbindung verf\"ugbar und er schon angemeldet ist.
-                        \end{itemize}
-                    \par \textbf{Beschreibung: }
-                        \begin{enumerate}
-                            \item Drucken von Button ``Send Feedback / Motivation''
-                            \item Schreiben von Feedback (Motivation)
-                            \item Drucken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
-                        \end{enumerate}
-                    \par \textbf{Erweiterung: }
-                    \par \textbf{Alternativen: }
-
-
-
-	            \item /F50/Exportieren von Daten
-		         	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
->>>>>>> origin/master
-
 			\end{itemize}
 
 
