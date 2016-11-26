@@ -242,14 +242,27 @@
 	            	\par \textbf{Auslösendes Ereignis: }Der Leiter vesucht erneut sich zu registrieren oder anzumelden.
 	            	\par \textbf{Beschreibung: }
 		            	\begin{enumerate}
-		            		\item Beim Registrieren soll der Leiter eine gültige Email-Adresse und ein gültiges Passwort eintragen. Diese Daten werden von dem Datenbank gespeichert und der Server erzeugt ein neues Konto. Danach empfängt der Leiter eine Bestätigungsmail und kann sich mit dem neuen Konto anmelden.
+		            		\item Beim Registrieren soll der Leiter eine gültige Email-Adresse als Konto-Name und ein gültiges Passwort eintragen. Diese Daten werden von dem Datenbank gespeichert und der Server erzeugt ein neues Konto. Danach empfängt der Leiter eine Bestätigungsmail und kann sich mit dem neuen Konto anmelden.
 			            	\item Beim Anmelden soll der Leiter die registrierte Email-Adresse und sein Passwort eingeben. Wenn die Email-Adresse und das Passwort stimmen überein, dann wird der Leiter in die Verwaltungsseite weitergeleitet.
 		            	\end{enumerate}
 	            	\par \textbf{Erweiterung: }
 	            	\par \textbf{Alternativen: }
 	            	
-	            \item /F20/Vergessenes Passwort neu zu setzen
-	            	\par Wenn ein Leiter sein Passwort vergessen hat, kann er auf “Passwort Vergessen” klicken und in der weitergeleiteten Seite seine Email-Adresse eingeben. Danach empfängt er ein Bestätigungsemail mit einem Link. Durch dieses Link ist er in die “Passwort neu setzen” Seite weitergeleitet und sein neues Passwort wird in dem Datenbank gespeichert.
+	            \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
+	            
+	            \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
+	            \par \textbf{Vorbedingung: }-keine-
+	            \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
+	            \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern "Konto existiert nicht" kommt auf.
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }Der Leiter soll prüfen, ob er falsches Email-Adresse eingegeben hat.
+	            \par \textbf{Beschreibung: }
+	            \begin{enumerate}
+	            	\item Der Leiter klickt auf "Passwort Vergessen" und wird in eine Webseite geleitet. Hier gibt er sein Email-Adresse (gleich das Konto-Name) ein.
+	            	\item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
+	            \end{enumerate}
+	            \par \textbf{Erweiterung: }
+	            \par \textbf{Alternativen: }
 
 	            \item /F30/Erstellung eines Fragebogens (Inhalt, regelmäßige Sendungszeit, Zeitzone, gültiger Zeitraum für die Antworten)
 	            	\par Nach der Anmeldung ist der Leiter in die Verwaltungsseite geleitet. Da kann er Fragebogen erstellen und die Sendungszeit festlegen. Es gibt dabei noch eine Zeitzone-Option. Mit dieser Option kann der Leiter sich entscheiden, ob das Fragebogen abgesehen von Zeitzonen um dieselbe Uhrzeit geschickt wird oder um dieselbe Zeit je nach den Zeitzonen. Außerdem kann der Leiter festlegen, wie lange ist der Zeitraum für eine gültige Antwort.
@@ -257,8 +270,18 @@
 	            \item /F40/Dashboard
 	            	\par 
 	            	
-	            \item /F50/Exportieren von Daten
-		         	\par Der Leiter kann alle Antworten und die Metadata (z.B. Anzahl von Teilnehmer, Verhältnis zwischen positiven und negativen Antworten) hinsichtlich seiner allen Fragebogen in Form von CSV exportieren.
+	            \item \textbf{/F50/Exportieren von Daten}
+	            
+	            \par \textbf{Ziel: }Exportieren von Antworten und statistischen Daten
+	            \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem
+	            \par \textbf{Nachbedingung (Erfolg): }Die den Versuchen zugehörigen Daten werden in CSV-Format exportiert.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Die den Versuchen zugehörigen Daten werden nicht exportiert.
+	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Auslösendes Ereignis: }Der Leiter nimmt Kontakt mit dem Super-User.
+	            \par \textbf{Beschreibung: }
+	            	\item Der Leiter klickt auf "Daten Exportieren". Dann werden die zugehörigen Daten in CSV-Format exportiert.
+	            \par \textbf{Erweiterung: }
+	            \par \textbf{Alternativen: }
 
 			\end{itemize}
     
