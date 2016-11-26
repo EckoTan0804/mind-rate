@@ -223,6 +223,7 @@
 		            	\end{enumerate}
 	            	\par \textbf{Erweiterung: }
 	            	\par \textbf{Alternativen: }
+<<<<<<< HEAD
 	            	
 	            \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
 	            
@@ -260,6 +261,30 @@
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
 =======
+=======
+	
+                \item \textbf{/F20/Veränderung des Passworts von dem Leiter}	
+
+                    \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
+                    \par \textbf{Vorbedingung: }Registrieren auf der Webseite
+                    \par \textbf{Nachbedingung (Erfolg): }Das neue Passwort wird in dem Datenbank gespeichert.
+                    \par \textbf{Nachbedingung (Fehlschlag): }Das alte Passwort wird nicht übergedeckt.
+                    \par \textbf{Akteure: }Versuchsleiter
+                    \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht,den “Passwort Vergessen“ Button auf der Webseite zu klicken
+                    \par \textbf{Beschreibung: }
+		            	\begin{enumerate}
+			            	\item Klicken auf ``Passwort Vergesse''
+                            \item Email-Adresse eingeben
+                            \item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
+                            \item Der Versuchsleiter ist in die “Passwort neu setzen” Seite weitergeleitet
+                            \item Neues Passwort eingeben
+                            \item Sein neues Passwort wird in dem Datenbank gespeichert
+		            	\end{enumerate}
+	            	\par \textbf{Erweiterung: }
+	            	\par \textbf{Alternativen: }
+
+
+>>>>>>> f2972887386affeadfbc8004f336e93568c42fc5
 	            \item \textbf{/F30/Verwaltung der Fragen }
 	            	\par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
 	            	\par \textbf{Vorbedingung: } Registrieren und anmelden auf der Webseite
@@ -364,6 +389,12 @@
 				 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
 				\par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
 				\par \textbf{Alternativen: }
+				\begin{figure}[ht]
+					% \raggedleft
+					\centering
+					\includegraphics[scale=1]{AppAnmelden.jpeg}
+					\caption{Anmelden der Probanden}
+				\end{figure}
 								
 
             \item \textbf{/F80/Antworten eines Fragebogens}
@@ -372,11 +403,17 @@
             	\par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
             	\par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
             	\par \textbf{Akteure: }Proband
-            	\par \textbf{Auslösendes Ereignis: }Proband meldet sich an
+            	\par \textbf{Auslösendes Ereignis: }Proband erhaltet Notifikation
             	\par \textbf{Beschreibung: }
             	\par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
-            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf "Senden" und die Antworten werden lokal gespeichert.
+            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf ``Senden'' und die Antworten werden lokal gespeichert.
             	\par \textbf{Alternativen: }
+            	\begin{figure}[ht]
+            		% \raggedleft
+            		\centering
+            		\includegraphics[scale=0.5]{AppAntworten.jpeg}
+            		\caption{Antworten eines Fragebogens}
+            	\end{figure}
             	
 
             \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
@@ -390,10 +427,16 @@
             \par \textbf{Beschreibung: }
             \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert.
             \par \textbf{Alternativen: }
-            
-            
+            \begin{figure}[ht]
+            	% \raggedleft
+            	\centering
+            	\includegraphics[scale=1.2]{AppVersenden.jpeg}
+            	\caption{Versenden der Antworten eines Fragebogens}
+            \end{figure}
+
+
             \item \textbf{(Wunsch) /F1--/ Sehen des eigenen Antwortquotienten\footnote{Antwortquotient: der Quotient aus beantworteten Fragen und allen Fragen. (Die Antwortquotienten sind also für jeden Proband unterschiedlich.)}}
-            
+
             \par \textbf{Ziel: }Proband kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
             \par \textbf{Vorbedingung: }Proband hat in der App angemeldet
             \par \textbf{Nachbedingung (Erfolg): }die App zeigt den eigenen Antwortquotienten des Probanden
