@@ -6,11 +6,16 @@
 \usepackage{ae}
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
+\usepackage[toc]{glossaries}
 % \usepackage{float}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
+\makeglossaries
 
 \begin{document}
+    \newglossaryentry{Versuchsleiter}{name=Versuchsleiter, description={jemand, unter dessen Leitung ein Versuch durchgeführt wird}}
+    \newglossaryentry{Proband}{name=Proband, description={Versuchs-, Testperson}}
+    \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
 
     \begin{flushright}
         \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
@@ -188,7 +193,7 @@
                         \item Web-Interface\\
                              Web-Browser, Referenzstandard Google Chrome 54
                         \item  Android-App\\
-                             Android, Referenzstandard Android 7.1 Nougat
+                             Android, Referenzstandard Android 5.1.1 Lollipop
                     \end{itemize}
             \end{itemize}
 
@@ -204,7 +209,7 @@
 
     \chapter{Funktionale Anforderungen}
 
-		\section{Web}
+		\section{Web-Interface}
 	        \begin{itemize}
 	            \item \textbf{/F10/Registrieren oder Anmelden der Leiter}
 		
@@ -297,7 +302,6 @@
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
-	            \newpage
 	            \begin{figure}[ht]
 	            	% \raggedleft
 	            	\centering
@@ -340,7 +344,7 @@
 
 
     \newpage
-    \section{App}
+    \section{Android-App}
 
         \begin{itemize}
             \item \textbf{/F60/Anmelden der Probanden}
@@ -519,12 +523,12 @@
     \chapter{Benutzungsoberfläche}
     %     Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
         % \vspace*{1.5cm}
-        \subsection{Web}
+        \subsection{Web-Interface}
             % \vspace*{1.5cm}
             \begin{figure}[ht]
                 \centering
                 \includegraphics[scale = 0.4]{web.jpg}
-                \caption{GUI Entwurf - Web interface}
+                \caption{GUI Entwurf - Web-Interface}
             \end{figure}
 
             \begin{figure}[ht]
@@ -554,7 +558,7 @@
 
         Folgende Funktionssequenzen sind zu \"uberpr\"ufen:
 
-        \subsection{Web}
+        \subsection{Web-Interface}
 
             \begin{itemize}
                 \item \textbf{/TF10/ Registrieren oder Anmelden der Leiter}
@@ -745,7 +749,6 @@
 
         \section{Anwendungsf\"alle}
 
-            \newpage
             \subsection{Anwendungsfalldiagramm}
                 \vspace{0.4cm}
                 \begin{figure}
@@ -754,13 +757,12 @@
                     \caption{Anwendungsfalldiagramm}
                 \end{figure}
 
-        \newpage
+%    \chapter{Qualitätsziele}
+%        Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
+%        Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
 
-    \chapter{Qualitätsziele}
-        Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
-        Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
-
-    \chapter{Glossar}
+    \glsaddall
+    \printglossaries
 
     % Abbildungsverzeichnis
     \listoffigures
