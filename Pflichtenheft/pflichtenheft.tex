@@ -559,18 +559,18 @@
             \begin{itemize}
                 \item \textbf{/TF10/ Registrieren oder Anmelden der Leiter}
 	                \begin{itemize}
-	                	\item Registrieren: 
+	                	\item Registrieren:
 		                	\begin{enumerate}
 			                	\item Klick auf den Button ``Sign Up'' und werden zu der Registrieren-Seite geleitet
 			                	\item Eine Email-Adresse und ein Passwort eingeben
 			                \end{enumerate}
-	                	\item Anmelden: 
+	                	\item Anmelden:
 		                	\begin{enumerate}
 		                		\item Registrierte Email-Adresse und Passwort eingeben
 		                		\item Klicken auf ``Sign in''
-		                	\end{enumerate}. 
+		                	\end{enumerate}.
 	                \end{itemize}
-                
+
                 \item \textbf{/TF20/ Vergessenes Passwort neu zu setzen}
 	                \begin{enumerate}
 	                	\item Klicken auf ``Forgot Passwort'' und werden zu der Email-Adresse-Eingeben-Seite geleitet
@@ -579,9 +579,73 @@
 	                	\item Klicken auf den Link und werden zu der Passwort-Setzen-Seite geleitet
 	                	\item Neues Passwort zweimal eingeben
 	                \end{enumerate}
-                
-                \item \textbf{/TF30/}
-                
+
+                \item \textbf{/TF30/ Verwaltung der Fragen}
+
+	                	\begin{enumerate}
+                        \item \par \textbf{Stand: } Der Versuchsleiter ist  angemeldet
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``neu'' Button
+                              \par \textbf{Reaktion: }  Der Browser wechselt zur Webseite für die Verwaltung der Fragen
+
+                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
+                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``hinzufügen'' im Combobox ``Versuch'' aus
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Versuch 1 erfolgreich hinzugefügt.'' erscheint
+
+                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Kein Versuch vorhanden.'' erscheint
+
+
+                        \item \par \textbf{Stand: } Versuch 1 ist vorhanden
+                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``Versuch 1'' im Combobox ``Versuch'' aus
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann die konkrete Frage eingeben
+
+                        \item \par \textbf{Stand: } Versuch 1 ist vorhanden
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Frage vorhanden.'' erscheint
+
+                        \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
+                              \par \textbf{Aktion: } Der Versuchsleiter wählt eine Art im Combobox ``Fragenart'' aus
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann die passende Antwortart auswählen
+
+                        \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Fragenart auswählen.'' erscheint
+
+                        \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Push-Zeit''
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeitpunkt eingeben (00:00:00-23:59:59)
+
+                        \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Push-Zeit eingeben.'' Erscheint
+
+                        \item \par \textbf{Stand: } Push-Zeit ist eingegeben
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Antwortfrist''.
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeit eingeben.(eine Zahl eingeben und die Einheit auswählen)
+
+
+                        \item \par \textbf{Stand: } Antwortfrist ist eingegeben
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Sensor''
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Sensor oder mehrere Sensoren hinzufügen.
+
+                        \item \par \textbf{Stand: } Sensor ist aufgestellt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Vorgesetzte Frage''
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann eine vorhandene Frage als die Voraussetzung dieser Frage auswählen
+
+ 
+                        \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit''
+                              \par \textbf{Reaktion: } Ein Dialogfeld ``Diese Frage ist erfolgreich hinzugefügt.'' erscheint
+
+                        \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``cancel''
+                              \par \textbf{Reaktion: } Alle Aufstellung abtragen
+
+                              
+                    \end{enumerate}
+	                
+
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
                     \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
@@ -598,13 +662,13 @@
 
                         \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``View Answers''
                               \par \textbf{Aktion: } Der Versuchsleiter gibt einige Bedingungen ein und klickt er den Button ``Confirm''
-                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht  
+                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht
                     \end{enumerate}
                     % \begin{itemize}
                     %     \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
                     %     (Abbildung \ref*{web_ViewAnswer})
                     %     \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
-                    %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten Probanden gezeigt. 
+                    %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten Probanden gezeigt.
                     % \end{itemize}
 
                 \item \textbf{/TF45/ Feedback (Motivation) senden}
@@ -619,12 +683,12 @@
                         \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``Send Motivation / Feedback''
                               \par \textbf{Aktion: } Der Versuchsleiter hat die Motivation fertig geschrieben und klickt er den Button ``send''.
                               \par \textbf{Reaktion: } Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
-                        % \item \par \textbf{Stand: } 
-                        %       \par \textbf{Aktion: } 
-                        %       \par \textbf{Reaktion: } 
-                        % \item \par \textbf{Stand: } 
-                        %       \par \textbf{Aktion: } 
-                        %       \par \textbf{Reaktion: } 
+                        % \item \par \textbf{Stand: }
+                        %       \par \textbf{Aktion: }
+                        %       \par \textbf{Reaktion: }
+                        % \item \par \textbf{Stand: }
+                        %       \par \textbf{Aktion: }
+                        %       \par \textbf{Reaktion: }
                     \end{enumerate}
                     % \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
                     % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
@@ -633,12 +697,12 @@
                     \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
                     \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
                     \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
-                    
+
                 \item \textbf{/TF50/ Exportieren von Daten}
 	                \begin{itemize}
 	                	\item Klicken auf den Button ``Export data''
 	                \end{itemize}
-                    
+
 
             \end{itemize}
 
