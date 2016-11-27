@@ -535,19 +535,19 @@
             \end{figure}
 	
         \newpage
-        \subsection{Android-Anwendung}
+        \subsection{Android-App}
+	        \vspace*{2cm}
+	        \begin{figure}[ht]
+                \centering
+                \includegraphics[scale = 0.3]{android_login.jpg}
+                \caption{GUI Entwurf - App Login}
+            \end{figure}
+	
             \vspace*{1cm}
 	        \begin{figure}[ht]
                 \centering
-                \includegraphics[scale = 0.3]{android1.jpg}
-                \caption{GUI Entwurf - Android App [1]}
-            \end{figure}
-	
-            \vspace*{2cm}
-	        \begin{figure}[ht]
-                \centering
-                \includegraphics[scale = 0.3]{android2.jpg}
-                \caption{GUI Entwurf - Android App [2]}
+                \includegraphics[scale = 0.3]{android_answer.jpg}
+                \caption{GUI Entwurf - App Answer Question}
             \end{figure}
 
     \chapter{Globale Testfälle}
@@ -557,9 +557,31 @@
         \subsection{Web}
 
             \begin{itemize}
-                \item
-                \item
-                \item
+                \item \textbf{/TF10/ Registrieren oder Anmelden der Leiter}
+	                \begin{itemize}
+	                	\item Registrieren: 
+		                	\begin{enumerate}
+			                	\item Klick auf den Button ``Sign Up'' und werden zu der Registrieren-Seite geleitet
+			                	\item Eine Email-Adresse und ein Passwort eingeben
+			                \end{enumerate}
+	                	\item Anmelden: 
+		                	\begin{enumerate}
+		                		\item Registrierte Email-Adresse und Passwort eingeben
+		                		\item Klicken auf ``Sign in''
+		                	\end{enumerate}. 
+	                \end{itemize}
+                
+                \item \textbf{/TF20/ Vergessenes Passwort neu zu setzen}
+	                \begin{enumerate}
+	                	\item Klicken auf ``Forgot Passwort'' und werden zu der Email-Adresse-Eingeben-Seite geleitet
+	                	\item Email-Adresse eingeben
+	                	\item Eine Bestätigungsmail mit einem Link in der Email-Adresse empfangen
+	                	\item Klicken auf den Link und werden zu der Passwort-Setzen-Seite geleitet
+	                	\item Neues Passwort zweimal eingeben
+	                \end{enumerate}
+                
+                \item \textbf{/TF30/}
+                
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
                     \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
@@ -586,6 +608,7 @@
                     % \end{itemize}
 
                 \item \textbf{/TF45/ Feedback (Motivation) senden}
+<<<<<<< HEAD
                     \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
                               \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``Send Motivation / Feedback''
@@ -606,6 +629,17 @@
                     % \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
                     % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
                     % \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+=======
+                    \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
+                    \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
+                    \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                    
+                \item \textbf{/TF50/ Exportieren von Daten}
+	                \begin{itemize}
+	                	\item Klicken auf den Button ``Export data''
+	                \end{itemize}
+                    
+>>>>>>> refs/remotes/origin/master
             \end{itemize}
 
 
