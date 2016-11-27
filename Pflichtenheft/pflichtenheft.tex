@@ -518,13 +518,20 @@
 
     \chapter{Benutzungsoberfläche}
     %     Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
-        \vspace*{1.5cm}
+        % \vspace*{1.5cm}
         \subsection{Web}
-            \vspace*{1.5cm}
+            % \vspace*{1.5cm}
             \begin{figure}[ht]
                 \centering
                 \includegraphics[scale = 0.4]{web.jpg}
                 \caption{GUI Entwurf - Web interface}
+            \end{figure}
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=0.25]{web_ViewAnswer.png}
+                \caption{GUI Entwurf - Seite ``View answer''}
+                \label{web_ViewAnswer}
             \end{figure}
 	
         \newpage
@@ -555,9 +562,16 @@
                 \item
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
                     \begin{itemize}
-                        \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens.
+                        \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
+                        (Abbildung \ref*{web_ViewAnswer})
                         \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
                     \end{itemize}
+
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=0.25]{web_ViewAnswer.png}
+                        \caption{GUI Entwurf - Seite ``View answer''}
+                    \end{figure}
                       
                 \item \textbf{/TF45/ Feedback (Motivation) senden}
                     \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
@@ -582,9 +596,11 @@
             \newpage
             \subsection{Anwendungsfalldiagramm}
                 \vspace{0.4cm}
-                \begin{center}
+                \begin{figure}
+                    \centering
                     \includegraphics[scale = 0.4]{UseCaseDiagram1.jpg}
-                \end{center}
+                    \caption{Anwendungsfalldiagramm}
+                \end{figure}
 
         \newpage
 
