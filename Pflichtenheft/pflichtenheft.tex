@@ -287,13 +287,13 @@
 	            \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
 	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter versucht, wieder anzumelden.
+	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter kann die \"Ubersicht von Antworten des aktuellen Fragebogens sehen.
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
-	            	\item Drucken von Button ``View answers''
+	            	\item Klicken von Button ``View answers''
 	            	\item Zeigen des neuen Antwortsstatus beim erfolgreichen Anmelden
 	            	\item Erfassen von Antwortsstatus nach Bedarf
-	            	\item Laden des neuen Antwortsstatus beim Drucken von Button ``Refresh''
+	            	\item Laden des neuen Antwortsstatus beim Klicken von Button ``Refresh''
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
@@ -312,16 +312,12 @@
 	            \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
 	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }
-	            \begin{itemize}
-	            	\item Der Versuchsleiter versucht, wieder anzumelden und Feedbacks erneut zu senden.
-	            	\item Der Proband pr\"uft, ob die Internetverbindung verf\"ugbar und er schon angemeldet ist.
-	            \end{itemize}
+	            \par \textbf{Auslösendes Ereignis: }Alle Probanden erhalten die von Versuchsleiter geschriebene Motivation.
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
-	            	\item Drucken von Button ``Send Feedback / Motivation''
+	            	\item Klicken von Button ``Send Feedback / Motivation''
 	            	\item Schreiben von Feedback (Motivation)
-	            	\item Drucken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
+	            	\item Klicken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
@@ -522,26 +518,60 @@
 
     \chapter{Benutzungsoberfläche}
     %     Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
-
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[scale = 0.4]{web.jpg}
-            \caption{GUI Entwurf - Web interface}
-        \end{figure}
+        \vspace*{1.5cm}
+        \subsection{Web}
+            \vspace*{1.5cm}
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale = 0.4]{web.jpg}
+                \caption{GUI Entwurf - Web interface}
+            \end{figure}
 	
-	\begin{figure}[ht]
-            \centering
-            \includegraphics[scale = 0.3]{android1.jpg}
-            \caption{GUI Entwurf - Android App [1]}
-        \end{figure}
+        \newpage
+        \subsection{Android-Anwendung}
+            \vspace*{1cm}
+	        \begin{figure}[ht]
+                \centering
+                \includegraphics[scale = 0.3]{android1.jpg}
+                \caption{GUI Entwurf - Android App [1]}
+            \end{figure}
 	
-	\begin{figure}[ht]
-            \centering
-            \includegraphics[scale = 0.3]{android2.jpg}
-            \caption{GUI Entwurf - Android App [2]}
-        \end{figure}
+            \vspace*{2cm}
+	        \begin{figure}[ht]
+                \centering
+                \includegraphics[scale = 0.3]{android2.jpg}
+                \caption{GUI Entwurf - Android App [2]}
+            \end{figure}
 
     \chapter{Globale Testfälle}
+
+        Folgende Funktionssequenzen sind zu \"uberpr\"ufen:
+
+        \subsection{Web}
+
+            \begin{itemize}
+                \item
+                \item
+                \item
+                \item \textbf{/TF40/ Antwortsstatus besichtigen}
+                    \begin{itemize}
+                        \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens.
+                        \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
+                    \end{itemize}
+                      
+                \item \textbf{/TF45/ Feedback (Motivation) senden}
+                    \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
+                    \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
+                    \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+            \end{itemize}
+
+
+        \vspace*{2cm}
+        \subsection{Android-Anwendung}
+
+            \begin{itemize}
+                \item 
+            \end{itemize}
 
     \chapter{Systemmodelle}
 
