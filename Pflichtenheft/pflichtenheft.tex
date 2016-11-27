@@ -291,8 +291,8 @@
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Klicken von Button ``View answers''
-	            	\item Zeigen des neuen Antwortsstatus beim erfolgreichen Anmelden
-	            	\item Erfassen von Antwortsstatus nach Bedarf
+	            	\item Zeigen der \"Ubersicht von allen Antwort beim erfolgreichen Anmelden
+	            	\item Erfassen von Antwortsstatus nach Bedarf und eingegebener Kriterien
 	            	\item Laden des neuen Antwortsstatus beim Klicken von Button ``Refresh''
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
@@ -561,22 +561,51 @@
                 \item
                 \item
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
-                    \begin{itemize}
-                        \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
-                        (Abbildung \ref*{web_ViewAnswer})
-                        \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
-                    \end{itemize}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``View Answers''
+                              \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
 
-                    \begin{figure}
-                        \centering
-                        \includegraphics[scale=0.25]{web_ViewAnswer.png}
-                        \caption{GUI Entwurf - Seite ``View answer''}
-                    \end{figure}
+                        \item \par \textbf{Stand: } Der Versuchsleiter ist angemeldet.
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``View Answers''
+                              \par \textbf{Reaktion: } Der Versuchsleiter kann die \"ubersicht von allen Antwort sehen.
+
+                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``Refresh''
+                              \par \textbf{Reaktion: } Die neue \"ubersicht von allen Antwort wird gezeigt.
+
+                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der Versuchsleiter gibt einige Bedingungen ein und klickt er den Button ``Confirm''
+                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht  
+                    \end{enumerate}
+                    % \begin{itemize}
+                    %     \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
+                    %     (Abbildung \ref*{web_ViewAnswer})
+                    %     \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
+                    %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten Probanden gezeigt. 
+                    % \end{itemize}
 
                 \item \textbf{/TF45/ Feedback (Motivation) senden}
-                    \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
-                    \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
-                    \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``Send Motivation / Feedback''
+                              \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
+                        \item \par \textbf{Stand: } Der Versuchsleiter ist angemeldet.
+                              \par \textbf{Aktion: }  Der Versuchsleiter klickt den Button ``Send Motivation / Feedback''
+                              \par \textbf{Reaktion: } Der Versuchsleiter wird zur Seite hergeleitet, wo er Motivation / Feedback schreiben und senden kann.
+                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``Send Motivation / Feedback''
+                              \par \textbf{Aktion: } Der Versuchsleiter hat die Motivation fertig geschrieben und klickt er den Button ``send''.
+                              \par \textbf{Reaktion: } Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                        % \item \par \textbf{Stand: } 
+                        %       \par \textbf{Aktion: } 
+                        %       \par \textbf{Reaktion: } 
+                        % \item \par \textbf{Stand: } 
+                        %       \par \textbf{Aktion: } 
+                        %       \par \textbf{Reaktion: } 
+                    \end{enumerate}
+                    % \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
+                    % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
+                    % \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
             \end{itemize}
 
 
