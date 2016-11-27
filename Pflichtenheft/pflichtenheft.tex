@@ -6,11 +6,16 @@
 \usepackage{ae}
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
+\usepackage[toc]{glossaries}
 % \usepackage{float}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
+\makeglossaries
 
 \begin{document}
+    \newglossaryentry{Versuchsleiter}{name=Versuchsleiter, description={jemand, unter dessen Leitung ein Versuch durchgeführt wird}}
+    \newglossaryentry{Proband}{name=Proband, description={Versuchs-, Testperson}}
+    \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
 
     \begin{flushright}
         \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
@@ -54,7 +59,7 @@
     % notwendige Funktionen.
         Die Firma soll durch das Produkt in die Lage versetzt werden, psychologische Studien nach Experience-Sampling-Method (ESM) durchzuf\"uhren und Feedbacks der Studien zu erhalten.\\
 
-        \noindent Das Produkt besteht aus zwei Teilsysteme: ein Web-Interface f\"ur den Versuchsleiter und eine Android-Anwendung f\"ur die Probanden.
+        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} f\"ur den \gls{Versuchsleiter} und eine Android-Anwendung f\"ur die \gls{Proband}en.
 
 
         \section{Musskriterien}
@@ -64,23 +69,23 @@
             % gedachten Zweck nicht einsetzbar.
             \vspace*{0.3cm}
 
-            \subsection{Web-Interface f\"ur Versuchsleiter}
+            \subsection{\gls{Web-Interface} f\"ur \gls{Versuchsleiter}}
                 \vspace*{0.2cm}
 
                 \subsubsection{Verwalten von Teilnehmer der Untersuchung}
                     \begin{itemize}
-                        \item Probandsstatus erfassen (z.B. Proband-ID, Alter, Geschlecht, Beruf)
+                        \item \gls{Proband}sstatus erfassen (z.B. \gls{Proband}-ID, Alter, Geschlecht, Beruf)
                         \item Anmelden f\"ur Durchf\"uhrung der Untersuchung
                     \end{itemize}
 
                 \subsubsection{Verwalten der Frageb\"ogen}
                     \begin{itemize}
                         \item Ausw\"ahlen von Prob\"ande nach verschiedenen Kriterien vor Erstellung der Frageb\"ogen
-                        \item Erstellen, \"Andern von Untersuchungsfragen f\"ur unterschiedliche Probandsgruppe
+                        \item Erstellen, \"Andern von Untersuchungsfragen f\"ur unterschiedliche \gls{Proband}sgruppe
                         \item Erstellen, \"Andern von Scale und Optionen der Antworten
                         \item Setzen, \"Andern von G\"ultigkeitszeitbereich der Untersuchungsfragen
                         \item Setzen, \"Andern von H\"aufigkeit der Notifikationen zur Antworten
-                        % \item Senden von Feedback und Motivation zu Probanden
+                        % \item Senden von Feedback und Motivation zu \gls{Proband}en
                     \end{itemize}
 
                 \subsubsection{Erfassen von Ergebnisse der Untersuchung}
@@ -90,7 +95,7 @@
                     \end{itemize}
             \vspace*{2cm}
 
-            \subsection{Android-Anwendung f\"ur Probanden}
+            \subsection{Android-Anwendung f\"ur \gls{Proband}en}
                 \vspace*{0.2cm}
 
                 \subsubsection{Anmelden f\"ur Beteiligung der Studie}
@@ -122,7 +127,7 @@
             % unbedingt notwendig. Sie sollten nur angestrebt werden, falls noch ausreichend
             % Kapazitäten vorhanden sind.
 
-            \subsection{Web-Interface f\"ur Versuchsleiter}
+            \subsection{\gls{Web-Interface} f\"ur \gls{Versuchsleiter}}
                 \begin{itemize}
                      % \item Emailbest\"atigugn beim (erfolgreichen) Anmelden
                     \item Erm\"oglichen von ``angemeldet bleiben"
@@ -131,7 +136,7 @@
 
                 \end{itemize}
 
-            \subsection{Android-Anwendung f\"ur Probanden}
+            \subsection{Android-Anwendung f\"ur \gls{Proband}en}
                 \begin{itemize}
                     \item Erm\"oglichen von ``angemeldet bleiben"
                     \item Unterst\"utzen von unterschiedlichen Sprachen
@@ -148,7 +153,7 @@
             \end{itemize}
 
     \chapter{Produkteinsatz}
-        Das Produkt dient zur Sammlung der Versuchsdaten aus ESM-Versuchen. Damit bietet sie für Versuchsleiter eine Lösung, ESM-Versuchen durchzuführen. Diese Tätigkeit soll zusätzlich im Internet und auf dem Smartphone möglich sein.
+        Das Produkt dient zur Sammlung der Versuchsdaten aus ESM-Versuchen. Damit bietet sie für \gls{Versuchsleiter} eine Lösung, ESM-Versuchen durchzuführen. Diese Tätigkeit soll zusätzlich im Internet und auf dem Smartphone möglich sein.
 
         \section{Anwendungsbereiche}
             \begin{itemize}
@@ -159,19 +164,19 @@
 
         \section{Zielgruppen}
             \begin{itemize}
-                \item Versuchsleiter eines ESM-Versuchs
+                \item \gls{Versuchsleiter} eines ESM-Versuchs
                 \item Teilnehmer des Versuchs
             \end{itemize}
 
         \section{Betriebsbedingungen}
             \begin{itemize}
-                \item Versuchsleiter: Büroumgebung
+                \item \gls{Versuchsleiter}: Büroumgebung
                 \item Versuchsteilnehmer: im alltäglichen Leben aufs Smartphone
                 \item Betriebszeit rund um die Uhr, läuft unbeaufsichtigt
             \end{itemize}
 
     \chapter{Produktumgebung}
-        Eine Client-Server Architektur mit 2 Client-Typen: ein Web-Interface für Versuchsleiter und eine Android-App für Probanden
+        Eine Client-Server Architektur mit 2 Client-Typen: ein \gls{Web-Interface} für \gls{Versuchsleiter} und eine Android-App für \gls{Proband}en
 
         \section{Software}
             \begin{itemize}
@@ -185,7 +190,7 @@
                     \end{itemize}
                 \item Clientseite
                     \begin{itemize}
-                        \item Web-Interface\\
+                        \item \gls{Web-Interface}\\
                              Web-Browser, Referenzstandard Google Chrome 54
                         \item  Android-App\\
                              Android, Referenzstandard Android 5.1.1 Lollipop
@@ -196,7 +201,7 @@
             \begin{itemize}
                 \item Serverseite\\
                     Leistungsstarke Standardrechner
-                \item  Web-Interface\\
+                \item  \gls{Web-Interface}\\
                     Standardrechner (für Web-Browser)
                 \item Android-App\\
                     Standardsmartphone
@@ -204,17 +209,17 @@
 
     \chapter{Funktionale Anforderungen}
 
-		\section{Web}
+		\section{\gls{Web-Interface}}
 	        \begin{itemize}
 	            \item \textbf{/F10/Registrieren oder Anmelden der Leiter}
 		
-	            	\par \textbf{Ziel: }Registrieren oder Anmelden der Versuchsleiter in der Web-Verwaltungssystem
+	            	\par \textbf{Ziel: }Registrieren oder Anmelden der \gls{Versuchsleiter} in der Web-Verwaltungssystem
 	            	\par \textbf{Vorbedingung (Registrieren): }-keine-
 	            	\par \textbf{Vorbedingung (Anmelden): }Ein Konto des Leiters soll vorhanden sein.
 	            	\par \textbf{Nachbedingung (erfolgreiches Registrieren): }Der Leiter bekommt eine Bestätigungsmail und kann sich mit dem neu erzeugten Konto anmelden.
 	            	\par \textbf{Nachbedingung (erfolgreiches Anmelden): }Der Leiter ist in der Verwaltungssystem angemeldet und kann seine Versuche verwalten.
 	            	\par \textbf{Nachbedingung (Fehlschlag): }Der Leiter bleibt unangemeldet.
-	            	\par \textbf{Akteure: }Versuchsleiter
+	            	\par \textbf{Akteure: }\gls{Versuchsleiter}
 	            	\par \textbf{Auslösendes Ereignis: }Der Leiter vesucht erneut sich zu registrieren oder anzumelden.
 	            	\par \textbf{Beschreibung: }
 		            	\begin{enumerate}
@@ -230,14 +235,14 @@
 	            \par \textbf{Vorbedingung: }-keine-
 	            \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
 	            \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern ``Konto existiert nicht'' kommt in dem Browser auf.
-	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Akteure: }\gls{Versuchsleiter}
 	            \par \textbf{Auslösendes Ereignis: }Der Leiter soll prüfen, ob er falsches Email-Adresse eingegeben hat.
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Klicken auf ``Passwort Vergesse''
 	            	\item Email-Adresse eingeben
-	            	\item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
-	            	\item Durch den Link ist der Versuchsleiter in die “Passwort neu setzen” Seite weitergeleitet
+	            	\item Der \gls{Versuchsleiter} empfängt ein Bestätigungsemail mit einem Link
+	            	\item Durch den Link ist der \gls{Versuchsleiter} in die “Passwort neu setzen” Seite weitergeleitet
 	            	\item Neues Passwort eingeben
 	            	\item Sein neues Passwort wird in dem Datenbank gespeichert
             	\end{enumerate}
@@ -252,42 +257,42 @@
 	            \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
 	            \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage wird nicht erstellt
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``neu'' Button auf der Webseite zu klicken
+	            \par \textbf{Akteure: }\gls{Versuchsleiter}
+	            \par \textbf{Auslösendes Ereignis: }Der \gls{Versuchsleiter} vesucht, den ``neu'' Button auf der Webseite zu klicken
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Verwaltung des Versuchs
-	            	\par Der Versuchsleiter wählt zuerst einen Versuch aus oder erstellt er einen neuen Versuch. Zudem gehört die neue Frage.
+	            	\par Der \gls{Versuchsleiter} wählt zuerst einen Versuch aus oder erstellt er einen neuen Versuch. Zudem gehört die neue Frage.
 	            	\item Erstellung der Fragen
-	            	\par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
+	            	\par Der \gls{Versuchsleiter} entscheidet sich die Fragenart und Antwortart. Dann soll der \gls{Versuchsleiter} auch konkrete Frage eingeben.
 	            	\item Zeiteinstellung
-	            	\par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
+	            	\par Der \gls{Versuchsleiter} stellt die Antwortfrist und die Push-Zeit der Frage ein.
 	            	\item Hardwareunterstützung(bzw. Sensoren)
-	            	\par Der Versuchsleiter fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem Proband benutzt werden.
+	            	\par Der \gls{Versuchsleiter} fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem \gls{Proband} benutzt werden.
                     \item Verwaltung der Beziehungen zwischen Fragen
-                    \par Der Versuchsleiter entscheidet sich, welche Frage und welche Option das auslösende Ereignis dieser Frage ist.
+                    \par Der \gls{Versuchsleiter} entscheidet sich, welche Frage und welche Option das auslösende Ereignis dieser Frage ist.
 	            	\item Abschicken und Stornieren
-	            	\par Der Versuchsleiter entscheidet sich, ob er die Frage eines Versuchs hinfügt oder storniert.
+	            	\par Der \gls{Versuchsleiter} entscheidet sich, ob er die Frage eines Versuchs hinfügt oder storniert.
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \begin{enumerate}
 	            	\item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
-	            	\item a. Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der Versuchsleiter  einen exakten Zeitraum auswählen.
-	            	\par b. Der Versuchsleiter soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des Probandes entsprechend ist.
-	            	\item Der Versuchsleiter kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der Versuchsleiter einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
+	            	\item a. Der \gls{Versuchsleiter} kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der \gls{Versuchsleiter}  einen exakten Zeitraum auswählen.
+	            	\par b. Der \gls{Versuchsleiter} soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des \gls{Proband}es entsprechend ist.
+	            	\item Der \gls{Versuchsleiter} kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der \gls{Versuchsleiter} einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
 	            	\item Zwei Buttons ``submit'' und ``cancel'' sind auf der Webseite vorhanden.
-                    \item Es ist nicht notwendig, die Probanden den Fragebogen sequenziell zu antworten. Der Versuchsleiter kann sich entscheiden, welche Fragen die Probanden antworten müssen und welche Fragen ein auslösende Ereignis haben.
+                    \item Es ist nicht notwendig, die \gls{Proband}en den Fragebogen sequenziell zu antworten. Der \gls{Versuchsleiter} kann sich entscheiden, welche Fragen die \gls{Proband}en antworten müssen und welche Fragen ein auslösende Ereignis haben.
 	            \end{enumerate}
 	            \par \textbf{Alternativen: }
 	
 	
 	            \item /F40/ \textbf{Antwortsstatus besichtigen}
 	            \par \textbf{Ziel: }Besichtigung der Antwortsstatus
-	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-	            \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
+	            \par \textbf{Vorbedingung: }Der \gls{Versuchsleiter} ist angemeldet.
+	            \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten \gls{Proband}en) ist besichtgbar.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter kann die \"Ubersicht von Antworten des aktuellen Fragebogens sehen.
+	            \par \textbf{Akteure: }\gls{Versuchsleiter}
+	            \par \textbf{Auslösendes Ereignis: }Der \gls{Versuchsleiter} kann die \"Ubersicht von Antworten des aktuellen Fragebogens sehen.
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Klicken von Button ``View answers''
@@ -306,17 +311,17 @@
 	
 	
 	            \item /F45/ \textbf{Feedback (Motivation) senden}
-	            \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
-	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-	            \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Alle Probanden erhalten die von Versuchsleiter geschriebene Motivation.
+	            \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um \gls{Proband} zu motivieren, die Studie weiter zu beteiligen.
+	            \par \textbf{Vorbedingung: }Der \gls{Versuchsleiter} ist angemeldet.
+	            \par \textbf{Nachbedingung : }Jeder \gls{Proband} erhalten Motivation vom \gls{Versuchsleiter}.
+	            \par \textbf{Nachbedingung (Fehlschlag): }Die \gls{Proband} erhalten keine Feedbacks.
+	            \par \textbf{Akteure: }\gls{Versuchsleiter}
+	            \par \textbf{Auslösendes Ereignis: }Alle \gls{Proband}en erhalten die von \gls{Versuchsleiter} geschriebene Motivation.
 	            \par \textbf{Beschreibung: }
 	            \begin{enumerate}
 	            	\item Klicken von Button ``Send Feedback / Motivation''
 	            	\item Schreiben von Feedback (Motivation)
-	            	\item Klicken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
+	            	\item Klicken von Button ``Send'', um die Feedbacks an allen \gls{Proband}en zu senden.
 	            \end{enumerate}
 	            \par \textbf{Erweiterung: }
 	            \par \textbf{Alternativen: }
@@ -327,7 +332,7 @@
 	            \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem
 	            \par \textbf{Nachbedingung (Erfolg): }Die den Versuchen zugehörigen Daten werden in CSV-Format exportiert.
 	            \par \textbf{Nachbedingung (Fehlschlag): }Die den Versuchen zugehörigen Daten werden nicht exportiert.
-	            \par \textbf{Akteure: }Versuchsleiter
+	            \par \textbf{Akteure: }\gls{Versuchsleiter}
 	            \par \textbf{Auslösendes Ereignis: }Der Leiter nimmt Kontakt mit den Entwicklern auf.
 	            \par \textbf{Beschreibung: }
 	            \begin{itemize}
@@ -339,27 +344,27 @@
 
 
     \newpage
-    \section{App}
+    \section{Android-App}
 
         \begin{itemize}
-            \item \textbf{/F60/Anmelden der Probanden}
+            \item \textbf{/F60/Anmelden der \gls{Proband}en}
 
-				\par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
+				\par \textbf{Ziel: }Anmelden der \gls{Proband}en in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
 				\par \textbf{Vorbedingung: }-keine-
-				\par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
-				\par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
-				\par \textbf{Akteure: }Proband
-				\par \textbf{Auslösendes Ereignis: }Proband öffnet die App
+				\par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und \gls{Proband} ist angemeldet
+				\par \textbf{Nachbedingung (kein erstes Anmelden): }\gls{Proband} ist angemeldet
+				\par \textbf{Akteure: }\gls{Proband}
+				\par \textbf{Auslösendes Ereignis: }\gls{Proband} öffnet die App
 				\par \textbf{Beschreibung: }
-				\par 1. Wenn der Proband zum ersten Mal die App öffnet: Der Proband meldet sich mit der ID des Versuchs an und gibt die
-				 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
-				\par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+				\par 1. Wenn der \gls{Proband} zum ersten Mal die App öffnet: Der \gls{Proband} meldet sich mit der ID des Versuchs an und gibt die
+				 von \gls{Versuchsleiter} angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene \gls{Proband}-ID wird generiert und dem \gls{Proband} zugeteilt. Die \gls{Proband}-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+				\par 2. Wenn der \gls{Proband} sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
 				\par \textbf{Alternativen: }
 				\begin{figure}[ht]
 					% \raggedleft
 					\centering
 					\includegraphics[scale=1]{AppAnmelden.jpeg}
-					\caption{Anmelden der Probanden}
+					\caption{Anmelden der \gls{Proband}en}
 				\end{figure}
 								
 
@@ -368,11 +373,11 @@
             	\par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
             	\par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
             	\par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
-            	\par \textbf{Akteure: }Proband
-            	\par \textbf{Auslösendes Ereignis: }Proband erhaltet Notifikation
+            	\par \textbf{Akteure: }\gls{Proband}
+            	\par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
             	\par \textbf{Beschreibung: }
-            	\par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
-            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf ``Send'' und die Antworten werden lokal gespeichert.
+            	\par 1. Wenn der \gls{Versuchsleiter} einen Fragebogen sendet, schickt die App eine Notifikation.
+            	\par 2. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
             	\par \textbf{Alternativen: }
             	\begin{figure}[ht]
             		% \raggedleft
@@ -401,50 +406,50 @@
             \end{figure}
 
 
-            \item \textbf{(Wunsch) /F1--/ Sehen des eigenen Antwortquotienten\footnote{Antwortquotient: der Quotient aus beantworteten Fragen und allen Fragen. (Die Antwortquotienten sind also für jeden Proband unterschiedlich.)}}
+            \item \textbf{(Wunsch) /F1--/ Sehen des eigenen Antwortquotienten\footnote{Antwortquotient: der Quotient aus beantworteten Fragen und allen Fragen. (Die Antwortquotienten sind also für jeden \gls{Proband} unterschiedlich.)}}
 
-            \par \textbf{Ziel: }Proband kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
-            \par \textbf{Vorbedingung: }Proband hat in der App angemeldet
-            \par \textbf{Nachbedingung (Erfolg): }die App zeigt den eigenen Antwortquotienten des Probanden
+            \par \textbf{Ziel: }\gls{Proband} kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
+            \par \textbf{Vorbedingung: }\gls{Proband} hat in der App angemeldet
+            \par \textbf{Nachbedingung (Erfolg): }die App zeigt den eigenen Antwortquotienten des \gls{Proband}en
             \par \textbf{Nachbedingung (Fehlschlag): }keinen Antwortquotient wird gezeigt
-            \par \textbf{Akteure: }Proband selbst
-            \par \textbf{Auslösendes Ereignis: }Proband klickt auf “Mein Antwortquotient” in der App
+            \par \textbf{Akteure: }\gls{Proband} selbst
+            \par \textbf{Auslösendes Ereignis: }\gls{Proband} klickt auf “Mein Antwortquotient” in der App
             \par \textbf{Beschreibung: }
                 \begin{enumerate}
-                    \item Bei Erstellen eines Fragebogens kann der Versuchsleiter eine “Bestehensgrenze” des Antwortquotienten bestimmen. Ein Proband braucht also mindestens eine bestimmte Menge von Fragen beantworten, um die Vergütung am Ende zu bekommen. Die Standardbestehensgrenze liegt bei 60\%.
+                    \item Bei Erstellen eines Fragebogens kann der \gls{Versuchsleiter} eine “Bestehensgrenze” des Antwortquotienten bestimmen. Ein \gls{Proband} braucht also mindestens eine bestimmte Menge von Fragen beantworten, um die Vergütung am Ende zu bekommen. Die Standardbestehensgrenze liegt bei 60\%.
                     \item Die Bestehensgrenze und den eigenen aktuellen Antwortquotient wird nicht in der App gezeigt. Gezeigt wird nur, ob man momentan “besteht” oder “nicht besteht”. Man sieht also keine exakte Zahl.
-                    \item Im Laufen des Versuchs wird diesen Status stets aktualisiert. Der Proband kann den eigenen Status immer nachsehen.
-                    \item Am Ende eines Versuchs kann der Proband das Smartphone zum Versuchsleiter zeigen. Der Versuchsleiter sieht auf dem Smartphone keinen Proband-ID oder genauen Antwortquotient, sondern nur “bestanden” oder “nicht bestanden”. So kann der Versuchsleiter die Vergütung entsprechend zahlen.
+                    \item Im Laufen des Versuchs wird diesen Status stets aktualisiert. Der \gls{Proband} kann den eigenen Status immer nachsehen.
+                    \item Am Ende eines Versuchs kann der \gls{Proband} das Smartphone zum \gls{Versuchsleiter} zeigen. Der \gls{Versuchsleiter} sieht auf dem Smartphone keinen \gls{Proband}-ID oder genauen Antwortquotient, sondern nur “bestanden” oder “nicht bestanden”. So kann der \gls{Versuchsleiter} die Vergütung entsprechend zahlen.
                 \end{enumerate}
 
         \end{itemize}
 
     \chapter{Produktdaten}
-        \section{Versuchsleiterdaten}
+        \section{\gls{Versuchsleiter}daten}
             \begin{itemize}
-                \item /D10/ Über einen Versuchsleiter sind folgende Daten zu speichern:
+                \item /D10/ Über einen \gls{Versuchsleiter} sind folgende Daten zu speichern:
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
 
-                \item /D20/ Macht ein Versuchsleiter Versuche, dann sind folgende Daten zu speichern:
-                    \par Versuchsummern der zum Versuchsleiter gehörten Versuchen
+                \item /D20/ Macht ein \gls{Versuchsleiter} Versuche, dann sind folgende Daten zu speichern:
+                    \par Versuchsummern der zum \gls{Versuchsleiter} gehörten Versuchen
             \end{itemize}
 
-        \section{Probanddaten}
+        \section{\gls{Proband}daten}
             \begin{itemize}
-                \item /D30/ Über einen Proband sind folgende Daten zu speichern:
-                    \par Proband-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
+                \item /D30/ Über einen \gls{Proband} sind folgende Daten zu speichern:
+                    \par \gls{Proband}-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
 
-                \item /D40/ Hat ein Proband im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
+                \item /D40/ Hat ein \gls{Proband} im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
                     \par Antwortquotienten
             \end{itemize}
 
         \section{Versuchsdaten}
             \begin{itemize}
                 \item /D50/ Über einen Versuch sind folgende Daten zu speichern:
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” des Antwortquotienten für die Probanden\footnote{Siehe funktionale Anforderungen F1--}, Mailadresse der Versuchsleiter
+                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” des Antwortquotienten für die \gls{Proband}en\footnote{Siehe funktionale Anforderungen F1--}, Mailadresse der \gls{Versuchsleiter}
 
-                \item /D60/ Hat ein Versuch Probanden, dann sind folgende Daten zu speichern:
-                    \par Proband-IDs
+                \item /D60/ Hat ein Versuch \gls{Proband}en, dann sind folgende Daten zu speichern:
+                    \par \gls{Proband}-IDs
 
                 \item /D70/ Hat ein Versuch Fragen, dann sind folgende Daten zu speichern:
                     \par Fragenummer der Fragen
@@ -458,8 +463,8 @@
                 \item /D90/ Wird eine Frage im Versuch erscheinen, dann sind folgende Daten zu speichern:
                     \par Erscheinungsereignisse, Abgabetermin
 
-                \item /D100/ Wird eine Frage von Probanden beantwortet, dann sind folgende Daten zu speichern:
-                    \par Proband-IDs der Antwortgeber, Abgabezeit der Antworten, Inhalt der Antworten
+                \item /D100/ Wird eine Frage von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
+                    \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Inhalt der Antworten
             \end{itemize}
 
    \chapter{Nichtfunktionale Anforderungen}
@@ -494,7 +499,7 @@
         \begin{itemize}
             \item /NF50/Daten speichern
 
-            	\par Die Antworten jedes Fragebogens von den Probanden muss ins Handy gespeichert werden.
+            	\par Die Antworten jedes Fragebogens von den \gls{Proband}en muss ins Handy gespeichert werden.
 
 
         \end{itemize}
@@ -518,12 +523,12 @@
     \chapter{Benutzungsoberfläche}
     %     Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
         % \vspace*{1.5cm}
-        \subsection{Web}
+        \subsection{\gls{Web-Interface}}
             % \vspace*{1.5cm}
             \begin{figure}[ht]
                 \centering
                 \includegraphics[scale = 0.4]{web.jpg}
-                \caption{GUI Entwurf - Web interface}
+                \caption{GUI Entwurf - \gls{Web-Interface}}
             \end{figure}
 
             \begin{figure}[ht]
@@ -553,7 +558,7 @@
 
         Folgende Funktionssequenzen sind zu \"uberpr\"ufen:
 
-        \subsection{Web}
+        \subsection{\gls{Web-Interface}}
 
             \begin{itemize}
                 \item \textbf{/TF10/ Registrieren oder Anmelden der Leiter}
@@ -582,63 +587,63 @@
                 \item \textbf{/TF30/ Verwaltung der Fragen}
 
 	                	\begin{enumerate}
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist  angemeldet
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``neu'' Button
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} ist  angemeldet
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``neu'' Button
                               \par \textbf{Reaktion: }  Der Browser wechselt zur Webseite für die Verwaltung der Fragen
 
                         \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``hinzufügen'' im Combobox ``Versuch'' aus
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} wählt ``hinzufügen'' im Combobox ``Versuch'' aus
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Versuch 1 erfolgreich hinzugefügt.'' erscheint
 
                         \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``submit'' Button
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Kein Versuch vorhanden.'' erscheint
 
 
                         \item \par \textbf{Stand: } Versuch 1 ist vorhanden
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``Versuch 1'' im Combobox ``Versuch'' aus
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann die konkrete Frage eingeben
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} wählt ``Versuch 1'' im Combobox ``Versuch'' aus
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann die konkrete Frage eingeben
 
                         \item \par \textbf{Stand: } Versuch 1 ist vorhanden
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``submit'' Button
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Frage vorhanden.'' erscheint
 
                         \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt eine Art im Combobox ``Fragenart'' aus
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann die passende Antwortart auswählen
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} wählt eine Art im Combobox ``Fragenart'' aus
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann die passende Antwortart auswählen
 
                         \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``submit'' Button
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Fragenart auswählen.'' erscheint
 
                         \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Push-Zeit''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeitpunkt eingeben (00:00:00-23:59:59)
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf Checkbox ``Push-Zeit''
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann einen Zeitpunkt eingeben (00:00:00-23:59:59)
 
                         \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``submit'' Button
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Push-Zeit eingeben.'' Erscheint
 
                         \item \par \textbf{Stand: } Push-Zeit ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Antwortfrist''.
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeit eingeben.(eine Zahl eingeben und die Einheit auswählen)
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf Checkbox ``Antwortfrist''.
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann einen Zeit eingeben.(eine Zahl eingeben und die Einheit auswählen)
 
 
                         \item \par \textbf{Stand: } Antwortfrist ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Sensor''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Sensor oder mehrere Sensoren hinzufügen.
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf Checkbox ``Sensor''
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann einen Sensor oder mehrere Sensoren hinzufügen.
 
                         \item \par \textbf{Stand: } Sensor ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Vorgesetzte Frage''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann eine vorhandene Frage als die Voraussetzung dieser Frage auswählen
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf Checkbox ``Vorgesetzte Frage''
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann eine vorhandene Frage als die Voraussetzung dieser Frage auswählen
 
  
                         \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit''
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``submit''
                               \par \textbf{Reaktion: } Ein Dialogfeld ``Diese Frage ist erfolgreich hinzugefügt.'' erscheint
 
                         \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``cancel''
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt auf ``cancel''
                               \par \textbf{Reaktion: } Alle Aufstellung abtragen
 
                               
@@ -647,41 +652,41 @@
 
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
                     \begin{enumerate}
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``View Answers''
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} ist noch nicht angemeldet.
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt den Button ``View Answers''
                               \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
 
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist angemeldet.
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``View Answers''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann die \"ubersicht von allen Antwort sehen.
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} ist angemeldet.
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt den Button ``View Answers''
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} kann die \"ubersicht von allen Antwort sehen.
 
-                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``View Answers''
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``Refresh''
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt den Button ``Refresh''
                               \par \textbf{Reaktion: } Die neue \"ubersicht von allen Antwort wird gezeigt.
 
-                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``View Answers''
-                              \par \textbf{Aktion: } Der Versuchsleiter gibt einige Bedingungen ein und klickt er den Button ``Confirm''
-                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} gibt einige Bedingungen ein und klickt er den Button ``Confirm''
+                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der \gls{Proband}en, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht
                     \end{enumerate}
                     % \begin{itemize}
-                    %     \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der Versuchsleiter die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
+                    %     \item Durch Klicken von Button ``View answers'' in der linke Men\"u siehe der \gls{Versuchsleiter} die \"Ubersicht von allen Antwort des aktuellen Fragebogens. \\
                     %     (Abbildung \ref*{web_ViewAnswer})
                     %     \item Durch Klicken von Button ``Refresh'' wird die neuese \"Ubersicht geladen.
-                    %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten Probanden gezeigt.
+                    %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten \gls{Proband}en gezeigt.
                     % \end{itemize}
 
                 \item \textbf{/TF45/ Feedback (Motivation) senden}
 
                     \begin{enumerate}
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``Send Motivation / Feedback''
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} ist noch nicht angemeldet.
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} klickt den Button ``Send Motivation / Feedback''
                               \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist angemeldet.
-                              \par \textbf{Aktion: }  Der Versuchsleiter klickt den Button ``Send Motivation / Feedback''
-                              \par \textbf{Reaktion: } Der Versuchsleiter wird zur Seite hergeleitet, wo er Motivation / Feedback schreiben und senden kann.
-                        \item \par \textbf{Stand: } Der Versuchsleiter bleibt in der Seite ``Send Motivation / Feedback''
-                              \par \textbf{Aktion: } Der Versuchsleiter hat die Motivation fertig geschrieben und klickt er den Button ``send''.
-                              \par \textbf{Reaktion: } Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} ist angemeldet.
+                              \par \textbf{Aktion: }  Der \gls{Versuchsleiter} klickt den Button ``Send Motivation / Feedback''
+                              \par \textbf{Reaktion: } Der \gls{Versuchsleiter} wird zur Seite hergeleitet, wo er Motivation / Feedback schreiben und senden kann.
+                        \item \par \textbf{Stand: } Der \gls{Versuchsleiter} bleibt in der Seite ``Send Motivation / Feedback''
+                              \par \textbf{Aktion: } Der \gls{Versuchsleiter} hat die Motivation fertig geschrieben und klickt er den Button ``send''.
+                              \par \textbf{Reaktion: } Die Smartphone von \gls{Proband} erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der \gls{Proband} die Motivation sehen.
                         % \item \par \textbf{Stand: }
                         %       \par \textbf{Aktion: }
                         %       \par \textbf{Reaktion: }
@@ -689,13 +694,13 @@
                         %       \par \textbf{Aktion: }
                         %       \par \textbf{Reaktion: }
                     \end{enumerate}
-                    % \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
-                    % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
-                    % \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                    % \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der \gls{Versuchsleiter} die Seite, wo er Motivation und Feedback schreiben und senden kann.
+                    % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen \gls{Proband}en gesandt.
+                    % \par Die Smartphone von \gls{Proband} erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der \gls{Proband} die Motivation sehen.
 
-                    \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der Versuchsleiter die Seite, wo er Motivation und Feedback schreiben und senden kann.
-                    \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
-                    \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
+                    \par Durch Klicken von Button ``Send Motivation / Feedback'' sieht der \gls{Versuchsleiter} die Seite, wo er Motivation und Feedback schreiben und senden kann.
+                    \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen \gls{Proband}en gesandt.
+                    \par Die Smartphone von \gls{Proband} erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der \gls{Proband} die Motivation sehen.
 
                 \item \textbf{/TF50/ Exportieren von Daten}
                 \begin{itemize}
@@ -711,7 +716,7 @@
 
 			\begin{itemize}
 
-            \item \textbf{/TF60/ Anmelden der Probanden}
+            \item \textbf{/TF60/ Anmelden der \gls{Proband}en}
             \begin{enumerate}
             	\item \par \textbf{Stand: } 
             	\par \textbf{Aktion: }
@@ -738,7 +743,8 @@
 %        Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
 %        Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
 
-    \chapter{Glossar}
+    \glsaddall
+    \printglossaries
 
     % Abbildungsverzeichnis
     \listoffigures
