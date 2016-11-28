@@ -349,7 +349,7 @@
         \begin{itemize}
             \item \textbf{/F60/Anmelden der Probanden}
 
-                \par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
+                \par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten bei dem ersten Anmelden
                 \par \textbf{Vorbedingung: }-keine-
                 \par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
                 \par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
@@ -376,7 +376,7 @@
                 \par \textbf{Akteure: }Proband
                 \par \textbf{Auslösendes Ereignis: }Proband erhaltet Notifikation
                 \par \textbf{Beschreibung: }
-                \par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
+                \par 1. Wenn ein zu beantwortender Fragebogen vorliegt, schickt die App eine Notifikation.
                 \par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf ``Send'' und die Antworten werden lokal gespeichert.
                 \par \textbf{Alternativen: }
                 \begin{figure}[ht]
@@ -725,12 +725,38 @@
 
             \begin{itemize}
 
-            \item \textbf{/TF60/ Anmelden der Probanden}
+            \item \textbf{/TF-/ Erstes Anmelden der Probanden}
             \begin{enumerate}
-                \item \par \textbf{Stand: } 
-                \par \textbf{Aktion: }
-                \par \textbf{Reaktion: }
+                \item \par \textbf{Stand: }Der Proband hat sich noch nicht in der App angemeldet
+                \par \textbf{Aktion: }Der Proband öffnet die App
+                \par \textbf{Reaktion: }Die App wechselt auf die ``User Login'' Seite
+                \item \par \textbf{Stand: }Die ``User Login'' Seite liegt vor
+                \par \textbf{Aktion: }Der Proband gibt Versuch-ID und die angeforderte Information ein, und klickt den Button ``Submit''
+                \par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet            
             \end{enumerate}
+        
+	        \item \textbf{/TF-/ Automatisches Anmelden der Probanden}
+	        \begin{enumerate}
+	        	\item \par \textbf{Stand: }Der Proband hat sich schon einmal in der App angemeldet
+	        	\par \textbf{Aktion: }Der Proband öffnet die App
+	        	\par \textbf{Reaktion: }Der Proband wird automatisch auf die Hauptseite weitergeleitet  
+	        \end{enumerate}
+        
+	        \item \textbf{/TF-/ Antworten eines Fragebogens}
+	        \begin{enumerate}
+	        	\item \par \textbf{Stand: }Die Hauptseite der App liegt vor
+	        	\par \textbf{Aktion: }Der Proband wählt einen Fragebogen aus ``My Questionnaires''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die erste Frage des gewählten Fragebogens weitergeleitet  
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	\par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Next Question''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die nächste Frage des Fragebogens weitergeleitet
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	\par \textbf{Aktion: }Der Proband klickt den Button ``Homepage''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet und die schon eingegebenen Antworten des Fragebogens werden nicht gespeichert
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite letzter Frage des Fragebogens
+	        	\par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Submit''
+	        	\par \textbf{Reaktion: }Die App zeigt ``You have successfully submitted your answers!'' und wechselt auf die Hauptseite
+	        \end{enumerate}
             
             \item \textbf{/TF--/ Zeigen einer bestandenen Antwortquote}
             \begin{enumerate}
