@@ -288,14 +288,12 @@ Webseite zu klicken
                 \begin{enumerate}
                     \item Verwaltung des Fragebogen
                     \par Der Versuchsleiter wählt zuerst einen Fragebogen aus oder erstellt er einen neuen Fragebogen. Zudem gehört die neue Frage.
-                    \item Erstellung der Fragen
-                    \par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
+                    \item Erstellung und Löschen der Fragen
+                    \par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.Er kann auch eine ausgewählte Frage von der Fragenliste löschen
                     \item Verwaltung der Beziehungen zwischen Fragen
                     \par Der Versuchsleiter entscheidet sich, welche Option in diesen Frage ein auslösendes Ereignis vorliegender Fragen ist.Dann gibt er Fragennummer ein.
                     \item Voransicht
                     \par Der Versuchsleiter klickt auf den Button ``Refresh'', damit die hinzugefügte Frage in den Fragebogen gezeigt werden können
-                    \item Speichern und Abschicken
-                    \par Der Versuchsleiter klicket auf den Button ``save'' , um die Frage zu speichern. Er klickt auf den Button ``submit'' , um die Frage in einen Fragebogen hinzuzufügen
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \begin{enumerate}
@@ -655,72 +653,40 @@ Webseite zu klicken
                               \par \textbf{Reaktion: }Ein Dialogfeld ``Fragebogen wird hochgeladen'' erscheint
                     \end{enumerate}
 
-                \item \textbf{/TF30/ Verwaltung der Fragen}
+                \item \textbf{/TF50/ Verwaltung der Fragen}
                         \begin{enumerate}
-                        \item \par \textbf{Stand: } Der Versuchsleiter ist  angemeldet
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``neu'' Button
-                              \par \textbf{Reaktion: }  Der Browser wechselt zur Webseite für die Verwaltung der Fragen
-
                         \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``hinzufügen'' im Combobox ``Versuch'' aus
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Versuch 1 erfolgreich hinzugefügt.'' erscheint
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``+'' Button, der links neben den Fragenliste liegt
+                              \par \textbf{Reaktion: } Eine neue Frage wird in die Fragenliste hinzugefügt
+                              
+                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen und eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: }  Der Versuchsleiter klickt auf ``-'' Button, der links neben den Fragenliste liegt 
+                              \par \textbf{Reaktion: } die ausgewählte Frage wird in die Fragenliste gelöscht
 
-                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Kein Versuch vorhanden.'' erscheint
+                        \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``Question type'' Combobox
+                              \par \textbf{Reaktion: } Er kann eine Fragenart auswählen
 
+                        \item \par \textbf{Stand: }  Eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt
+                              \par \textbf{Reaktion: } Eine neue Option für die Antwort erstellt
 
-                        \item \par \textbf{Stand: } Versuch 1 ist vorhanden
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt ``Versuch 1'' im Combobox ``Versuch'' aus
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann die konkrete Frage eingeben
+                        \item \par \textbf{Stand: } Eine Frage hat Optionen
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf der Fragenliste, die unten eine Option der Frage liegt
+                              \par \textbf{Reaktion: }Der Versuchsleiter kann eine vorhandene Frage auswählen
 
-                        \item \par \textbf{Stand: } Versuch 1 ist vorhanden
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Frage vorhanden.'' erscheint
+                        \item \par \textbf{Stand: }  Verwaltung der Fragen fertig
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``Refresh'' Button
+                              \par \textbf{Reaktion: } Die Voransicht des Fragebogens erneuet
 
-                        \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter wählt eine Art im Combobox ``Fragenart'' aus
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann die passende Antwortart auswählen
-
-                        \item \par \textbf{Stand: } Eine konkrete Frage ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Fragenart auswählen.'' erscheint
-
-                        \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Push-Zeit''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeitpunkt eingeben (00:00:00-23:59:59)
-
-                        \item \par \textbf{Stand: } Fragenart und Antwortart ist ausgewählt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Keine Push-Zeit eingeben.'' Erscheint
-
-                        \item \par \textbf{Stand: } Push-Zeit ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Antwortfrist''.
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Zeit eingeben.(eine Zahl eingeben und die Einheit auswählen)
-
-
-                        \item \par \textbf{Stand: } Antwortfrist ist eingegeben
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Sensor''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann einen Sensor oder mehrere Sensoren hinzufügen.
-
-                        \item \par \textbf{Stand: } Sensor ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf Checkbox ``Vorgesetzte Frage''
-                              \par \textbf{Reaktion: } Der Versuchsleiter kann eine vorhandene Frage als die Voraussetzung dieser Frage auswählen
-
-
-                        \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``submit''
-                              \par \textbf{Reaktion: } Ein Dialogfeld ``Diese Frage ist erfolgreich hinzugefügt.'' erscheint
-
-                        \item \par \textbf{Stand: } Beziehungen zwischen Fragen ist aufgestellt
-                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``cancel''
-                              \par \textbf{Reaktion: } Alle Aufstellung abtragen
-
+                        \item \par \textbf{Stand: } Verwaltung der Fragen fertig
+                              \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``Go to questionnaire settings'' Button
+                              \par \textbf{Reaktion: } Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens        
 
                     \end{enumerate}
 
 
-                \item \textbf{/TF40/ Antwortsstatus besichtigen}
+                \item \textbf{/TF60/ Antwortsstatus besichtigen}
                     \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
                               \par \textbf{Aktion: } Der Versuchsleiter klickt den Button ``View Answers''
@@ -745,7 +711,7 @@ Webseite zu klicken
                     %     \item Nach Eingeben von verschiedenene Kriterien wird die \"Ubersicht von Antwort der bestimmten Probanden gezeigt.
                     % \end{itemize}
 
-                \item \textbf{/TF45/ Feedback (Motivation) senden}
+                \item \textbf{/TF65/ Feedback (Motivation) senden}
 
                     \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist noch nicht angemeldet.
@@ -770,7 +736,7 @@ Webseite zu klicken
                     % \par Durch Klicken von Button ``send'' wird die geschriebene Motivation zu allen Probanden gesandt.
                     % \par Die Smartphone von Proband erh\"alt eine Notifikation. Durch Klicken von dieser Notifikation kann der Proband die Motivation sehen.
 
-                \item \textbf{/TF50/ Exportieren von Daten}
+                \item \textbf{/TF70/ Exportieren von Daten}
                 \begin{itemize}
                     \item \par \textbf{Stand: }Sein angemeldet
                           \par \textbf{Aktion: }Klicken auf ``Export data''
