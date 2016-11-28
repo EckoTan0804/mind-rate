@@ -251,8 +251,30 @@
                     \item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
                 \end{itemize}
                 \par \textbf{Alternativen: }
+                
+                \item \textbf{/F30/Verwaltung des Fragebogens}
 
-                \item \textbf{/F30/Verwaltung der Fragen }
+                \par \textbf{Ziel: }Erstellung des Fragebogens in einem Versuch
+                \par \textbf{Vorbedingung: }Mindestens Ein Versuch ist vorhanden
+                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt.
+                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt.
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``Create questionnaire‘‘ Button auf der
+Webseite zu klicken
+
+                \par \textbf{Beschreibung: }
+                \begin{enumerate}
+                    \item Der Versuchsleiter gibt konkrete Name des Fragebogens ein
+                    \item Der Versuchsleiter stellt die Anfangsbedingungen des Fragebogens auf. Z.B. die Anfangszeit und die Endeszeit
+                    \item Danach liegt eine Voransicht des Fragebogens rechts auf der Webseite vor
+                    \item Der Versuchsleiter klickt auf den Button ``save'', damit der Fragebogen in einen Versuch gespeichert werden können
+                    \item Der Versuchsleiter klickt auf den Button ``submit'', damit der Fragebogen auf den Server hochgeladen werden können
+                \end{enumerate}
+                \par \textbf{Erweiterung: }
+                \par \textbf{Alternativen: }
+                
+
+                \item \textbf{/F40/Verwaltung der Fragen }
                 \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
                 \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
                 \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
@@ -286,7 +308,7 @@
                 \par \textbf{Alternativen: }
 
 
-                \item /F40/ \textbf{Antwortsstatus besichtigen}
+                \item /F50/ \textbf{Antwortsstatus besichtigen}
                 \par \textbf{Ziel: }Besichtigung der Antwortsstatus
                 \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
                 \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
@@ -310,7 +332,7 @@
                 \end{figure}
 
 
-                \item /F45/ \textbf{Feedback (Motivation) senden}
+                \item /F55/ \textbf{Feedback (Motivation) senden}
                 \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
                 \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
                 \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
@@ -527,7 +549,7 @@
                 \includegraphics[scale = 0.25]{web_set1.png}
                 \caption{GUI Entwurf - Questionnaire Settings}
             \end{figure}
-        
+
 	        \begin{figure}[ht]
 	        	\centering
 	        	\includegraphics[scale = 0.25]{web_set2.png}
@@ -543,13 +565,13 @@
         \newpage
         \subsection{App}
             \vspace*{2cm}
-            
+
             \begin{figure}[ht]
             	\centering
             	\includegraphics[scale = 0.3]{android_home.jpg}
             	\caption{GUI Entwurf - Homepage}
             \end{figure}
-            
+
             \vspace*{1cm}
             \begin{figure}[ht]
                 \centering
@@ -562,7 +584,7 @@
                 \centering
                 \includegraphics[scale = 0.3]{android_answer.jpg}
                 \caption{GUI Entwurf - Answer Question}
-            \end{figure}	        
+            \end{figure}	
 
     \chapter{Globale Testfälle}
 
