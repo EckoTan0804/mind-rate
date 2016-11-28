@@ -255,9 +255,9 @@
                 \item \textbf{/F30/Verwaltung des Fragebogens}
 
                 \par \textbf{Ziel: }Verwaltung des Fragebogens in einem Versuch
-                \par \textbf{Vorbedingung: }Mindestens Ein Versuch ist vorhanden
+                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und Mindestens Ein Versuch ist vorhanden 
                 \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt, oder ein vorliegender Frageboden wird wieder eingestellt.
-                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden wird nicht wieder eingestellt.
+                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden hat keine Änderung.
                 \par \textbf{Akteure: }Versuchsleiter
                 \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``Set questionnaire‘‘ Button auf der
 Webseite zu klicken
@@ -269,7 +269,7 @@ Webseite zu klicken
                     \item Der Versuchsleiter gibt konkrete Name des Fragebogens ein
                     \item Der Versuchsleiter stellt die Anfangsbedingungen des Fragebogens ein. Z.B. die Anfangszeit und die Endeszeit
                     \item Danach liegt eine Voransicht des Fragebogens rechts auf der Webseite vor
-                    \item  Der Versuchsleiter klickt auf den Button ``Refresh'', damit die Änderung des Fragebogens in der Voransicht gezeigt werden können
+                    \item  Der Versuchsleiter klickt auf den Button ``Refresh'', damit dir Inhalt des Fragebogens in den Voransicht gezeigt werden können
                     \item Der Versuchsleiter klickt auf den Button ``save'', damit der Fragebogen in einen Versuch gespeichert werden können
                     \item Der Versuchsleiter klickt auf den Button ``submit'', damit der Fragebogen auf den Server hochgeladen werden können
                 \end{enumerate}
@@ -279,33 +279,28 @@ Webseite zu klicken
 
                 \item \textbf{/F40/Verwaltung der Fragen }
                 \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
-                \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
+                \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem und Mindestens Ein Fragebogen ist vorhanden
                 \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage wird nicht erstellt
                 \par \textbf{Akteure: }Versuchsleiter
-                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``neu'' Button auf der Webseite zu klicken
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``go to question settings'' Button auf der Webseite zu klicken
                 \par \textbf{Beschreibung: }
                 \begin{enumerate}
                     \item Verwaltung des Fragebogen
                     \par Der Versuchsleiter wählt zuerst einen Fragebogen aus oder erstellt er einen neuen Fragebogen. Zudem gehört die neue Frage.
                     \item Erstellung der Fragen
                     \par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
-                    \item Zeiteinstellung
-                    \par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
-                    \item Hardwareunterstützung(bzw. Sensoren)
-                    \par Der Versuchsleiter fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem Proband benutzt werden.
                     \item Verwaltung der Beziehungen zwischen Fragen
-                    \par Der Versuchsleiter entscheidet sich, welche Frage und welche Option das auslösende Ereignis dieser Frage ist.
-                    \item Abschicken und Stornieren
-                    \par Der Versuchsleiter entscheidet sich, ob er die Frage eines Fragebogens hinzufügt oder storniert.
+                    \par Der Versuchsleiter entscheidet sich, welche Option in diesen Frage ein auslösendes Ereignis vorliegender Fragen ist.Dann gibt er Fragennummer ein.
+                    \item Voransicht
+                    \par Der Versuchsleiter klickt auf den Button ``Refresh'', damit die hinzugefügte Frage in den Fragebogen gezeigt werden können
+                    \item Speichern und Abschicken
+                    \par Der Versuchsleiter klicket auf den Button ``save'' , um die Frage zu speichern. Er klickt auf den Button ``submit'' , um die Frage in einen Fragebogen hinzuzufügen
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \begin{enumerate}
+                    \item -
                     \item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
-                    \item a. Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der Versuchsleiter  einen exakten Zeitraum auswählen.
-                    \par b. Der Versuchsleiter soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des Probandes entsprechend ist.
-                    \item Der Versuchsleiter kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der Versuchsleiter einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
-                    \item Zwei Buttons ``submit'' und ``cancel'' sind auf der Webseite vorhanden.
                     \item Es ist nicht notwendig, die Probanden den Fragebogen sequenziell zu antworten. Der Versuchsleiter kann sich entscheiden, welche Fragen die Probanden antworten müssen und welche Fragen ein auslösende Ereignis haben.
                 \end{enumerate}
                 \par \textbf{Alternativen: }
