@@ -255,7 +255,7 @@
                 \item \textbf{/F30/Verwaltung des Fragebogens}
 
                 \par \textbf{Ziel: }Verwaltung des Fragebogens in einem Versuch
-                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und Mindestens Ein Versuch ist vorhanden 
+                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und Mindestens Ein Versuch ist vorhanden
                 \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt, oder ein vorliegender Frageboden wird wieder eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden hat keine Änderung.
                 \par \textbf{Akteure: }Versuchsleiter
@@ -622,6 +622,37 @@ Webseite zu klicken
                         \item \par \textbf{Stand: }Sein in der Passwort-Setzen-Seite
                               \par \textbf{Aktion: }Passowort eingeben und ``Reset Passwort'' klicken
                               \par \textbf{Reaktion: }Passwort wird erfolgreich neugesetzt
+                    \end{enumerate}
+                    
+                \item \textbf{/TF40/ Verwaltung des Fragebogens}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``Go to question settings'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                        \item \par \textbf{Stand: } Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``save'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``new'' Button
+                              \par \textbf{Reaktion: }Der Versuchsleiter kann der Name eines Fragebogens eingeben und dieser Fragebogen wird erstellt
+                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``Go to question settings'' Button
+                              \par \textbf{Reaktion: }Der Browser wechselt zur Webseite für die Verwaltung der Fragen
+                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt und eingestellt
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``save'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Fragebogen wird gespeichert'' erscheint
+                        \item \par \textbf{Stand: }Ein Fragebogen gespeichert
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``Refresh'' Button
+                              \par \textbf{Reaktion: }Die Voransicht des Fragebogens erscheint
+                        \item \par \textbf{Stand: }Alle Einstellung fertig aber keine Frage haben
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Bitte mind. eine Frage erstellen'' erscheint
+                        \item \par \textbf{Stand: }Alle Einstellung fertig und Frage vorhanden
+                              \par \textbf{Aktion: }Der Versuchsleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Fragebogen wird hochgeladen'' erscheint
                     \end{enumerate}
 
                 \item \textbf{/TF30/ Verwaltung der Fragen}
