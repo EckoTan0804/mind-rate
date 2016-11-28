@@ -30,9 +30,9 @@
         \vspace * {1.5cm}
 
         \textbf{\huge Mind Rate}
-		
+        
         \vspace*{1cm}
-		
+        
         {\Large Ein interaktives Werkzeug f\"ur Studie nach Experience-Sampling-Method (ESM)}
 
         \vspace*{1cm}
@@ -209,138 +209,138 @@
 
     \chapter{Funktionale Anforderungen}
 
-		\section{Web-Interface}
-	        \begin{itemize}
-	            \item \textbf{/F10/Registrieren oder Anmelden der Leiter}
-		
-	            	\par \textbf{Ziel: }Registrieren oder Anmelden der Versuchsleiter in der Web-Verwaltungssystem
-	            	\par \textbf{Vorbedingung (Registrieren): }-keine-
-	            	\par \textbf{Vorbedingung (Anmelden): }Ein Konto des Leiters soll vorhanden sein.
-	            	\par \textbf{Nachbedingung (erfolgreiches Registrieren): }Der Leiter bekommt eine Bestätigungsmail und kann sich mit dem neu erzeugten Konto anmelden.
-	            	\par \textbf{Nachbedingung (erfolgreiches Anmelden): }Der Leiter ist in der Verwaltungssystem angemeldet und kann seine Versuche verwalten.
-	            	\par \textbf{Nachbedingung (Fehlschlag): }Der Leiter bleibt unangemeldet.
-	            	\par \textbf{Akteure: }Versuchsleiter
-	            	\par \textbf{Auslösendes Ereignis: }Der Leiter busucht die Webseite dieses Online-Verwaltungssystems.
-	            	\par \textbf{Beschreibung: }
-		            	\begin{enumerate}
-		            		\item Beim Registrieren soll der Leiter eine gültige Email-Adresse als Konto-Name und ein gültiges Passwort eintragen. Diese Daten werden von dem Datenbank gespeichert und der Server erzeugt ein neues Konto. Danach empfängt der Leiter eine Bestätigungsmail und kann sich mit dem neuen Konto anmelden.
-			            	\item Beim Anmelden soll der Leiter die registrierte Email-Adresse und sein Passwort eingeben. Wenn die Email-Adresse und das Passwort stimmen überein, dann wird der Leiter in die Verwaltungsseite weitergeleitet.
-		            	\end{enumerate}
-	            	\par \textbf{Erweiterung: }
-	            	\par \textbf{Alternativen: }
-	            	
-	            \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
-	
-	            \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
-	            \par \textbf{Vorbedingung: }-keine-
-	            \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
-	            \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern ``Konto existiert nicht'' kommt in dem Browser auf.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Leiter vergisst sein Passwort.
-	            \par \textbf{Beschreibung: }
-	            \begin{enumerate}
-	            	\item Klicken auf ``Passwort Vergesse''
-	            	\item Email-Adresse eingeben
-	            	\item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
-	            	\item Durch den Link ist der Versuchsleiter in die “Passwort neu setzen” Seite weitergeleitet
-	            	\item Neues Passwort eingeben
-	            	\item Sein neues Passwort wird in dem Datenbank gespeichert
-            	\end{enumerate}
-	            \par \textbf{Erweiterung: }
-	            \begin{itemize}
-		            \item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
-	            \end{itemize}
-	            \par \textbf{Alternativen: }
-	
-	            \item \textbf{/F30/Verwaltung der Fragen }
-	            \par \textbf{Ziel: }Erstellung der Fragen in einem Versuch
-	            \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
-	            \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage wird nicht erstellt
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``neu'' Button auf der Webseite zu klicken
-	            \par \textbf{Beschreibung: }
-	            \begin{enumerate}
-	            	\item Verwaltung des Versuchs
-	            	\par Der Versuchsleiter wählt zuerst einen Versuch aus oder erstellt er einen neuen Versuch. Zudem gehört die neue Frage.
-	            	\item Erstellung der Fragen
-	            	\par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
-	            	\item Zeiteinstellung
-	            	\par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
-	            	\item Hardwareunterstützung(bzw. Sensoren)
-	            	\par Der Versuchsleiter fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem Proband benutzt werden.
+        \section{Web-Interface}
+            \begin{itemize}
+                \item \textbf{/F10/Registrieren oder Anmelden der Leiter}
+        
+                    \par \textbf{Ziel: }Registrieren oder Anmelden der Versuchsleiter in der Web-Verwaltungssystem
+                    \par \textbf{Vorbedingung (Registrieren): }-keine-
+                    \par \textbf{Vorbedingung (Anmelden): }Ein Konto des Leiters soll vorhanden sein.
+                    \par \textbf{Nachbedingung (erfolgreiches Registrieren): }Der Leiter bekommt eine Bestätigungsmail und kann sich mit dem neu erzeugten Konto anmelden.
+                    \par \textbf{Nachbedingung (erfolgreiches Anmelden): }Der Leiter ist in der Verwaltungssystem angemeldet und kann seine Versuche verwalten.
+                    \par \textbf{Nachbedingung (Fehlschlag): }Der Leiter bleibt unangemeldet.
+                    \par \textbf{Akteure: }Versuchsleiter
+                    \par \textbf{Auslösendes Ereignis: }Der Leiter busucht die Webseite dieses Online-Verwaltungssystems.
+                    \par \textbf{Beschreibung: }
+                        \begin{enumerate}
+                            \item Beim Registrieren soll der Leiter eine gültige Email-Adresse als Konto-Name und ein gültiges Passwort eintragen. Diese Daten werden von dem Datenbank gespeichert und der Server erzeugt ein neues Konto. Danach empfängt der Leiter eine Bestätigungsmail und kann sich mit dem neuen Konto anmelden.
+                            \item Beim Anmelden soll der Leiter die registrierte Email-Adresse und sein Passwort eingeben. Wenn die Email-Adresse und das Passwort stimmen überein, dann wird der Leiter in die Verwaltungsseite weitergeleitet.
+                        \end{enumerate}
+                    \par \textbf{Erweiterung: }
+                    \par \textbf{Alternativen: }
+                    
+                \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
+    
+                \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
+                \par \textbf{Vorbedingung: }-keine-
+                \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
+                \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern ``Konto existiert nicht'' kommt in dem Browser auf.
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Der Leiter vergisst sein Passwort.
+                \par \textbf{Beschreibung: }
+                \begin{enumerate}
+                    \item Klicken auf ``Passwort Vergesse''
+                    \item Email-Adresse eingeben
+                    \item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
+                    \item Durch den Link ist der Versuchsleiter in die “Passwort neu setzen” Seite weitergeleitet
+                    \item Neues Passwort eingeben
+                    \item Sein neues Passwort wird in dem Datenbank gespeichert
+                \end{enumerate}
+                \par \textbf{Erweiterung: }
+                \begin{itemize}
+                    \item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
+                \end{itemize}
+                \par \textbf{Alternativen: }
+    
+                \item \textbf{/F30/Verwaltung der Fragen }
+                \par \textbf{Ziel: }Erstellung der Fragen in einem Versuch
+                \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem
+                \par \textbf{Nachbedingung (Erfolg): }Eine neue Frage wird erstellt.
+                \par \textbf{Nachbedingung (Fehlschlag): }Eine neue Frage wird nicht erstellt
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``neu'' Button auf der Webseite zu klicken
+                \par \textbf{Beschreibung: }
+                \begin{enumerate}
+                    \item Verwaltung des Versuchs
+                    \par Der Versuchsleiter wählt zuerst einen Versuch aus oder erstellt er einen neuen Versuch. Zudem gehört die neue Frage.
+                    \item Erstellung der Fragen
+                    \par Der Versuchsleiter entscheidet sich die Fragenart und Antwortart. Dann soll der Versuchsleiter auch konkrete Frage eingeben.
+                    \item Zeiteinstellung
+                    \par Der Versuchsleiter stellt die Antwortfrist und die Push-Zeit der Frage ein.
+                    \item Hardwareunterstützung(bzw. Sensoren)
+                    \par Der Versuchsleiter fügt die Sensoren hinzu. Die Sensoren sollen während der Antwort von dem Proband benutzt werden.
                     \item Verwaltung der Beziehungen zwischen Fragen
                     \par Der Versuchsleiter entscheidet sich, welche Frage und welche Option das auslösende Ereignis dieser Frage ist.
-	            	\item Abschicken und Stornieren
-	            	\par Der Versuchsleiter entscheidet sich, ob er die Frage eines Versuchs hinfügt oder storniert.
-	            \end{enumerate}
-	            \par \textbf{Erweiterung: }
-	            \begin{enumerate}
-	            	\item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
-	            	\item a. Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der Versuchsleiter  einen exakten Zeitraum auswählen.
-	            	\par b. Der Versuchsleiter soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des Probandes entsprechend ist.
-	            	\item Der Versuchsleiter kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der Versuchsleiter einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
-	            	\item Zwei Buttons ``submit'' und ``cancel'' sind auf der Webseite vorhanden.
+                    \item Abschicken und Stornieren
+                    \par Der Versuchsleiter entscheidet sich, ob er die Frage eines Versuchs hinfügt oder storniert.
+                \end{enumerate}
+                \par \textbf{Erweiterung: }
+                \begin{enumerate}
+                    \item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
+                    \item a. Der Versuchsleiter kann sich entscheiden,ob diese Frage eine Frist hat. Falls ja, soll der Versuchsleiter  einen exakten Zeitraum auswählen.
+                    \par b. Der Versuchsleiter soll eine Push-Zeit für diese Frage hinfügen. Er kann sich noch entscheiden, ob die Push-Zeit dem Zeitraum des Probandes entsprechend ist.
+                    \item Der Versuchsleiter kann sich entscheiden, wie viele und welche Sensoren benutzt werden sollen. Wenn ein Sensor hingefügt ist, soll der Versuchsleiter einen Zahlenwert (z. B. Temperatur) für den Sensor eingeben.
+                    \item Zwei Buttons ``submit'' und ``cancel'' sind auf der Webseite vorhanden.
                     \item Es ist nicht notwendig, die Probanden den Fragebogen sequenziell zu antworten. Der Versuchsleiter kann sich entscheiden, welche Fragen die Probanden antworten müssen und welche Fragen ein auslösende Ereignis haben.
-	            \end{enumerate}
-	            \par \textbf{Alternativen: }
-	
-	
-	            \item /F40/ \textbf{Antwortsstatus besichtigen}
-	            \par \textbf{Ziel: }Besichtigung der Antwortsstatus
-	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-	            \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter kann die \"Ubersicht von Antworten des aktuellen Fragebogens sehen.
-	            \par \textbf{Beschreibung: }
-	            \begin{enumerate}
-	            	\item Klicken von Button ``View answers''
-	            	\item Zeigen der \"Ubersicht von allen Antwort beim erfolgreichen Anmelden
-	            	\item Erfassen von Antwortsstatus nach Bedarf und eingegebener Kriterien
-	            	\item Laden des neuen Antwortsstatus beim Klicken von Button ``Refresh''
-	            \end{enumerate}
-	            \par \textbf{Erweiterung: }
-	            \par \textbf{Alternativen: }
-	            \begin{figure}[ht]
-	            	% \raggedleft
-	            	\centering
-	            	\includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
-	            	\caption{Antwortsstatus besichtigen}
-	            \end{figure}
-	
-	
-	            \item /F45/ \textbf{Feedback (Motivation) senden}
-	            \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
-	            \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
-	            \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Alle Probanden erhalten die von Versuchsleiter geschriebene Motivation.
-	            \par \textbf{Beschreibung: }
-	            \begin{enumerate}
-	            	\item Klicken von Button ``Send Feedback / Motivation''
-	            	\item Schreiben von Feedback (Motivation)
-	            	\item Klicken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
-	            \end{enumerate}
-	            \par \textbf{Erweiterung: }
-	            \par \textbf{Alternativen: }
-	            	
-	            \item \textbf{/F50/Exportieren von Daten}
-	
-	            \par \textbf{Ziel: }Exportieren von Antworten und statistischen Daten
-	            \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem
-	            \par \textbf{Nachbedingung (Erfolg): }Die den Versuchen zugehörigen Daten werden in CSV-Format exportiert.
-	            \par \textbf{Nachbedingung (Fehlschlag): }Die den Versuchen zugehörigen Daten werden nicht exportiert.
-	            \par \textbf{Akteure: }Versuchsleiter
-	            \par \textbf{Auslösendes Ereignis: }Der Leiter will die Daten exportieren.
-	            \par \textbf{Beschreibung: }
-	            \begin{itemize}
-	            	\item Der Leiter klickt auf "Daten Exportieren". Dann werden die zugehörigen Daten in CSV-Format exportiert.
-	            \end{itemize}
-	            \par \textbf{Erweiterung: }
-	            \par \textbf{Alternativen: }
-			\end{itemize}
+                \end{enumerate}
+                \par \textbf{Alternativen: }
+    
+    
+                \item /F40/ \textbf{Antwortsstatus besichtigen}
+                \par \textbf{Ziel: }Besichtigung der Antwortsstatus
+                \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+                \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
+                \par \textbf{Nachbedingung (Fehlschlag): }Der neue Antwortsstauts wird nicht gezeigt.
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter kann die \"Ubersicht von Antworten des aktuellen Fragebogens sehen.
+                \par \textbf{Beschreibung: }
+                \begin{enumerate}
+                    \item Klicken von Button ``View answers''
+                    \item Zeigen der \"Ubersicht von allen Antwort beim erfolgreichen Anmelden
+                    \item Erfassen von Antwortsstatus nach Bedarf und eingegebener Kriterien
+                    \item Laden des neuen Antwortsstatus beim Klicken von Button ``Refresh''
+                \end{enumerate}
+                \par \textbf{Erweiterung: }
+                \par \textbf{Alternativen: }
+                \begin{figure}[ht]
+                    % \raggedleft
+                    \centering
+                    \includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
+                    \caption{Antwortsstatus besichtigen}
+                \end{figure}
+    
+    
+                \item /F45/ \textbf{Feedback (Motivation) senden}
+                \par \textbf{Ziel: }Senden von Feedbacks (Motivation), um Proband zu motivieren, die Studie weiter zu beteiligen.
+                \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
+                \par \textbf{Nachbedingung : }Jeder Proband erhalten Motivation vom Versuchsleiter.
+                \par \textbf{Nachbedingung (Fehlschlag): }Die Proband erhalten keine Feedbacks.
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Alle Probanden erhalten die von Versuchsleiter geschriebene Motivation.
+                \par \textbf{Beschreibung: }
+                \begin{enumerate}
+                    \item Klicken von Button ``Send Feedback / Motivation''
+                    \item Schreiben von Feedback (Motivation)
+                    \item Klicken von Button ``Send'', um die Feedbacks an allen Probanden zu senden.
+                \end{enumerate}
+                \par \textbf{Erweiterung: }
+                \par \textbf{Alternativen: }
+                    
+                \item \textbf{/F50/Exportieren von Daten}
+    
+                \par \textbf{Ziel: }Exportieren von Antworten und statistischen Daten
+                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem
+                \par \textbf{Nachbedingung (Erfolg): }Die den Versuchen zugehörigen Daten werden in CSV-Format exportiert.
+                \par \textbf{Nachbedingung (Fehlschlag): }Die den Versuchen zugehörigen Daten werden nicht exportiert.
+                \par \textbf{Akteure: }Versuchsleiter
+                \par \textbf{Auslösendes Ereignis: }Der Leiter will die Daten exportieren.
+                \par \textbf{Beschreibung: }
+                \begin{itemize}
+                    \item Der Leiter klickt auf "Daten Exportieren". Dann werden die zugehörigen Daten in CSV-Format exportiert.
+                \end{itemize}
+                \par \textbf{Erweiterung: }
+                \par \textbf{Alternativen: }
+            \end{itemize}
 
 
     \newpage
@@ -349,43 +349,43 @@
         \begin{itemize}
             \item \textbf{/F60/Anmelden der Probanden}
 
-				\par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
-				\par \textbf{Vorbedingung: }-keine-
-				\par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
-				\par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
-				\par \textbf{Akteure: }Proband
-				\par \textbf{Auslösendes Ereignis: }Proband öffnet die App
-				\par \textbf{Beschreibung: }
-				\par 1. Wenn der Proband zum ersten Mal die App öffnet: Der Proband meldet sich mit der ID des Versuchs an und gibt die
-				 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
-				\par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
-				\par \textbf{Alternativen: }
-				\begin{figure}[ht]
-					% \raggedleft
-					\centering
-					\includegraphics[scale=1]{AppAnmelden.jpeg}
-					\caption{Anmelden der Probanden}
-				\end{figure}
-								
+                \par \textbf{Ziel: }Anmelden der Probanden in der App und Sammeln der Versuchsteilnehmerdaten während erstem Anmelden
+                \par \textbf{Vorbedingung: }-keine-
+                \par \textbf{Nachbedingung (erstes Anmelden): }Versuchsteilnehmerdaten liegen vor und Proband ist angemeldet
+                \par \textbf{Nachbedingung (kein erstes Anmelden): }Proband ist angemeldet
+                \par \textbf{Akteure: }Proband
+                \par \textbf{Auslösendes Ereignis: }Proband öffnet die App
+                \par \textbf{Beschreibung: }
+                \par 1. Wenn der Proband zum ersten Mal die App öffnet: Der Proband meldet sich mit der ID des Versuchs an und gibt die
+                 von Versuchsleiter angeforderten Versuchsteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene Proband-ID wird generiert und dem Proband zugeteilt. Die Proband-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+                \par 2. Wenn der Proband sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+                \par \textbf{Alternativen: }
+                \begin{figure}[ht]
+                    % \raggedleft
+                    \centering
+                    \includegraphics[scale=1]{AppAnmelden.jpeg}
+                    \caption{Anmelden der Probanden}
+                \end{figure}
+                                
 
             \item \textbf{/F70/Antworten eines Fragebogens}
 
-            	\par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
-            	\par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
-            	\par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
-            	\par \textbf{Akteure: }Proband
-            	\par \textbf{Auslösendes Ereignis: }Proband erhaltet Notifikation
-            	\par \textbf{Beschreibung: }
-            	\par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
-            	\par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf ``Send'' und die Antworten werden lokal gespeichert.
-            	\par \textbf{Alternativen: }
-            	\begin{figure}[ht]
-            		% \raggedleft
-            		\centering
-            		\includegraphics[scale=0.5]{AppAntworten.jpeg}
-            		\caption{Antworten eines Fragebogens}
-            	\end{figure}
-            	
+                \par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
+                \par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
+                \par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
+                \par \textbf{Akteure: }Proband
+                \par \textbf{Auslösendes Ereignis: }Proband erhaltet Notifikation
+                \par \textbf{Beschreibung: }
+                \par 1. Wenn der Versuchsleiter einen Fragebogen sendet, schickt die App eine Notifikation.
+                \par 2. Nachdem der Proband sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der Proband wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der Proband auf ``Send'' und die Antworten werden lokal gespeichert.
+                \par \textbf{Alternativen: }
+                \begin{figure}[ht]
+                    % \raggedleft
+                    \centering
+                    \includegraphics[scale=0.5]{AppAntworten.jpeg}
+                    \caption{Antworten eines Fragebogens}
+                \end{figure}
+                
 
             \item \textbf{/F80/Versenden der Antworten eines Fragebogens}
 
@@ -399,10 +399,10 @@
             \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert.
             \par \textbf{Alternativen: }
             \begin{figure}[ht]
-            	% \raggedleft
-            	\centering
-            	\includegraphics[scale=1.2]{AppVersenden.jpeg}
-            	\caption{Versenden der Antworten eines Fragebogens}
+                % \raggedleft
+                \centering
+                \includegraphics[scale=1.2]{AppVersenden.jpeg}
+                \caption{Versenden der Antworten eines Fragebogens}
             \end{figure}
 
 
@@ -471,7 +471,7 @@
         \begin{itemize}
             \item /NF10/Reaktionszeit
 
-            	\par Die App darf nicht mehr als \_ Sekunden Reaktionszeit haben und die Ladezeit muss unter \_ Sekunden liegen.
+                \par Die App darf nicht mehr als \_ Sekunden Reaktionszeit haben und die Ladezeit muss unter \_ Sekunden liegen.
 
 
         \end{itemize}
@@ -479,34 +479,34 @@
         \begin{itemize}
             \item /NF20/Registrierung
 
-            	\par Die Registrierung erfolgt unter Angabe einer E-Mail Adresse und einem Passwort.
+                \par Die Registrierung erfolgt unter Angabe einer E-Mail Adresse und einem Passwort.
 
         \end{itemize}
         \begin{itemize}
             \item /NF30/Passwort
 
-            	\par Passwörter müssen mindestens 6-stellig sein. Die App kann angemeldet bleiben.
+                \par Passwörter müssen mindestens 6-stellig sein. Die App kann angemeldet bleiben.
 
 
         \end{itemize}
         \begin{itemize}
             \item /NF40/Globalisierung
 
-            	\par Die App ist auf Deutsch und Englisch verfügbar.
+                \par Die App ist auf Deutsch und Englisch verfügbar.
 
 
         \end{itemize}
         \begin{itemize}
             \item /NF50/Daten speichern
 
-            	\par Die Antworten jedes Fragebogens von den Probanden muss ins Handy gespeichert werden.
+                \par Die Antworten jedes Fragebogens von den Probanden muss ins Handy gespeichert werden.
 
 
         \end{itemize}
         \begin{itemize}
             \item /NF60/Größe der App
 
-            	\par Die App darf nicht mehr als \_ Mb auf dem Handy benötigen.
+                \par Die App darf nicht mehr als \_ Mb auf dem Handy benötigen.
 
 
 
@@ -514,7 +514,7 @@
         \begin{itemize}
             \item /NF70/Integration ins Google Play Store
 
-            	\par Die App soll ins Google Play Store integriert werden.
+                \par Die App soll ins Google Play Store integriert werden.
 
 
 
@@ -537,18 +537,18 @@
                 \caption{GUI Entwurf - Seite ``View answer''}
                 \label{web_ViewAnswer}
             \end{figure}
-	
+    
         \newpage
         \subsection{App}
-	        \vspace*{2cm}
-	        \begin{figure}[ht]
+            \vspace*{2cm}
+            \begin{figure}[ht]
                 \centering
                 \includegraphics[scale = 0.3]{android_login.jpg}
                 \caption{GUI Entwurf - App Login}
             \end{figure}
-	
+    
             \vspace*{1cm}
-	        \begin{figure}[ht]
+            \begin{figure}[ht]
                 \centering
                 \includegraphics[scale = 0.3]{android_answer.jpg}
                 \caption{GUI Entwurf - App Answer Question}
@@ -579,27 +579,27 @@
                         \end{enumerate}
 
                 \item \textbf{/TF20/ Vergessenes Passwort neu zu setzen}
-	                \begin{enumerate}
-	                	\item \par \textbf{Stand: }-keine-
-				              \par \textbf{Aktion: }Klicken auf ``Forgot Passwort'' 
-				              \par \textbf{Reaktion: }Werden geleitet zu der Email-Adresse-Eingeben-Seite
-	                	\item \par \textbf{Stand: }Sein in der Email-Adresse-Eingeben-Seite
-				              \par \textbf{Aktion: }Email-Adresse eingeben
-				              \par \textbf{Reaktion: }-keine-
-	                	\item \par \textbf{Stand: }Email-Adresse eingegeben
-				              \par \textbf{Aktion: }Klicken auf ``Send Email''
-				              \par \textbf{Reaktion: }Eine Bestätigungsmail mit einem Link in dieser Email-Adresse empfangen
-	                	\item \par \textbf{Stand: }Eine Bestätigungsmail mit einem Link in dieser Email-Adresse empfangen haben
-					          \par \textbf{Aktion: }Auf den Link klicken
-					          \par \textbf{Reaktion: }Werden zu der Passwort-Setzen-Seite geleitet
-	                	\item \par \textbf{Stand: }Sein in der Passwort-Setzen-Seite
-				              \par \textbf{Aktion: }Passowort eingeben und ``Reset Passwort'' klicken
-					          \par \textbf{Reaktion: }Passwort neu gesetzt
-	                \end{enumerate}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }-keine-
+                              \par \textbf{Aktion: }Klicken auf ``Forgot Passwort'' 
+                              \par \textbf{Reaktion: }Werden geleitet zu der Email-Adresse-Eingeben-Seite
+                        \item \par \textbf{Stand: }Sein in der Email-Adresse-Eingeben-Seite
+                              \par \textbf{Aktion: }Email-Adresse eingeben
+                              \par \textbf{Reaktion: }-keine-
+                        \item \par \textbf{Stand: }Email-Adresse eingegeben
+                              \par \textbf{Aktion: }Klicken auf ``Send Email''
+                              \par \textbf{Reaktion: }Eine Bestätigungsmail mit einem Link in dieser Email-Adresse empfangen
+                        \item \par \textbf{Stand: }Eine Bestätigungsmail mit einem Link in dieser Email-Adresse empfangen haben
+                              \par \textbf{Aktion: }Auf den Link klicken
+                              \par \textbf{Reaktion: }Werden zu der Passwort-Setzen-Seite geleitet
+                        \item \par \textbf{Stand: }Sein in der Passwort-Setzen-Seite
+                              \par \textbf{Aktion: }Passowort eingeben und ``Reset Passwort'' klicken
+                              \par \textbf{Reaktion: }Passwort neu gesetzt
+                    \end{enumerate}
 
                 \item \textbf{/TF30/ Verwaltung der Fragen}
 
-	                	\begin{enumerate}
+                        \begin{enumerate}
                         \item \par \textbf{Stand: } Der Versuchsleiter ist  angemeldet
                               \par \textbf{Aktion: } Der Versuchsleiter klickt auf ``neu'' Button
                               \par \textbf{Reaktion: }  Der Browser wechselt zur Webseite für die Verwaltung der Fragen
@@ -661,7 +661,7 @@
 
                               
                     \end{enumerate}
-	                
+                    
 
                 \item \textbf{/TF40/ Antwortsstatus besichtigen}
                     \begin{enumerate}
@@ -715,9 +715,9 @@
 
                 \item \textbf{/TF50/ Exportieren von Daten}
                 \begin{itemize}
-                	\item \par \textbf{Stand: }Sein angemeldet
-			              \par \textbf{Aktion: }Klicken auf ``Export data''
-			              \par \textbf{Reaktion: }Daten sind exportiert
+                    \item \par \textbf{Stand: }Sein angemeldet
+                          \par \textbf{Aktion: }Klicken auf ``Export data''
+                          \par \textbf{Reaktion: }Daten sind exportiert
                 \end{itemize}
 
 
@@ -727,13 +727,13 @@
         \vspace*{2cm}
         \section{Android-Anwendung}
 
-			\begin{itemize}
+            \begin{itemize}
 
             \item \textbf{/TF60/ Anmelden der Probanden}
             \begin{enumerate}
-            	\item \par \textbf{Stand: } 
-            	\par \textbf{Aktion: }
-            	\par \textbf{Reaktion: }
+                \item \par \textbf{Stand: } 
+                \par \textbf{Aktion: }
+                \par \textbf{Reaktion: }
             \end{enumerate}
             
             \item \textbf{/TF--/ Zeigen einer bestandenen Antwortquote}
@@ -750,7 +750,7 @@
                 \par \textbf{Reaktion: }Die App zeigt “Momentan sind Sie nicht bestanden. Kein Problem! Bitte einfach verbessern!”
             \end{enumerate}
         
-		    \end{itemize}
+            \end{itemize}
 
     \chapter{Systemmodelle}
 
