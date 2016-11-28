@@ -7,15 +7,16 @@
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
 \usepackage[toc]{glossaries}
-% \usepackage{float}
+\usepackage{float}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 \makeglossaries
 
 \begin{document}
-    \newglossaryentry{Versuchsleiter}{name=Versuchsleiter, description={jemand, unter dessen Leitung ein Versuch durchgeführt wird}}
-    \newglossaryentry{Proband}{name=Proband, description={Versuchs-, Testperson}}
+    \newglossaryentry{Versuchsleiter}{name=Versuchsleiter, description={Person, unter dessen Leitung ein Versuch durchgeführt wird}}
+    \newglossaryentry{Proband}{name=Proband, description={Leute, der sich an dem Versuch beteiligt}}
     \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
+    \newglossaryentry{Antwortsstatus}{name=Antwortsstatus, description={Die statistischen Daten der Antworten von Probanden innerhald von G\"ultigkeitszeitbereich des Fragebogens}}
 
     \begin{flushright}
         \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
@@ -51,6 +52,7 @@
         Technology f\"ur Pervasive Computing\\[0.5cm]
         Karlsruher Institut für Technologie
     \end{center}
+    \thispagestyle{empty}
 
     \tableofcontents
 
@@ -69,7 +71,7 @@
             % gedachten Zweck nicht einsetzbar.
             \vspace*{0.3cm}
 
-            \subsection{Web-Interface f\"ur Versuchsleiter}
+            \subsection{Web-Interface f\"ur \gls{Versuchsleiter}}
                 \vspace*{0.2cm}
 
                 \subsubsection{Verwalten von Teilnehmer der Untersuchung}
@@ -90,7 +92,7 @@
 
                 \subsubsection{Erfassen von Ergebnisse der Untersuchung}
                     \begin{itemize}
-                        \item Besichtigen von Antwortsstatus
+                        \item Besichtigen von \gls{Antwortsstatus}
                         \item Exportieren von Daten
                     \end{itemize}
             \vspace*{2cm}
@@ -259,8 +261,7 @@
                 \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt, oder ein vorliegender Frageboden wird wieder eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden hat keine Änderung.
                 \par \textbf{Akteure: }Versuchsleiter
-                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``Set questionnaire‘‘ Button auf der
-Webseite zu klicken
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter vesucht, den ``Set questionnaire'' Button auf der Webseite zu klicken
 
                 \par \textbf{Beschreibung: }
                 \begin{enumerate}
@@ -304,7 +305,7 @@ Webseite zu klicken
                 \par \textbf{Alternativen: }
 
 
-                \item /F50/ \textbf{Antwortsstatus besichtigen}
+                \item /F50/ \textbf{\gls{Antwortsstatus} besichtigen}
                 \par \textbf{Ziel: }Besichtigung der Antwortsstatus
                 \par \textbf{Vorbedingung: }Der Versuchsleiter ist angemeldet.
                 \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten Probanden) ist besichtgbar.
@@ -320,7 +321,7 @@ Webseite zu klicken
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \par \textbf{Alternativen: }
-                \begin{figure}[ht]
+                \begin{figure}[H]
                     % \raggedleft
                     \centering
                     \includegraphics[scale=0.8]{Antwortsstatus_besichtigen.jpeg}
@@ -802,18 +803,19 @@ Webseite zu klicken
             \end{itemize}
 
     \chapter{Produktübersicht}
-        \begin{figure}
-            \centering
-            \includegraphics[scale = 0.4]{UseCaseDiagram1.jpg}
-            \caption{Anwendungsfalldiagramm}
-        \end{figure}
+        % \section{Anwendungsfalldiagramm}
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale = 0.4]{UseCaseDiagram1.jpg}
+                \caption{Anwendungsfalldiagramm}
+            \end{figure}
 
 %    \chapter{Qualitätsziele}
 %        Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
 %        Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
 
     \glsaddall
-    \printglossaries
+    \printglossary
 
     % Abbildungsverzeichnis
     \listoffigures
