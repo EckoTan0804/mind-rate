@@ -231,28 +231,22 @@
                     \par \textbf{Erweiterung: }
                     \par \textbf{Alternativen: }
 
-                \item \textbf{/F20/Vergessenes Passwort neu zu setzen}
+                \item \textbf{/F20/Vergessendes Passwort neu setzen}
 
-                \par \textbf{Ziel: }Vergessenes Passwort neu zu setzen
-                \par \textbf{Vorbedingung: }-keine-
-                \par \textbf{Nachbedingung (Konto vorhanden): }Der Leiter bekommt eine Bestätigungsmail mit einem Link. Wenn der Leiter auf den Link klickt, wird er in die Passwort-Setzen-Seite geleitet und kann da sein neues Passwort eingeben.
-                \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehleranzeige mit Wörtern ``Konto existiert nicht'' kommt in dem Browser auf.
+                \par \textbf{Ziel: }Versuchsleiter können vergessendes Passwort neu setzen
+                \par \textbf{Vorbedingung: }Versuchsleiter hat ein Konto
+                \par \textbf{Nachbedingung (Konto vorhanden): }Der Versuchsleiter bekommt ein neues zufällig generiertes Passwort.
+                \par \textbf{Nachbedingung (Konto nicht vorhanden): }Eine Fehlermeldung mit den Wörtern ``Account does not exist'' erscheint.
                 \par \textbf{Akteure: }Versuchsleiter
-                \par \textbf{Auslösendes Ereignis: }Der Leiter vergisst sein Passwort.
+                \par \textbf{Auslösendes Ereignis: }Der Versuchsleiter klickt auf ``Reset Password''
                 \par \textbf{Beschreibung: }
                 \begin{enumerate}
-                    \item Klicken auf ``Passwort Vergesse''
+                    \item Auf ``Reset Password'' klicken
                     \item Email-Adresse eingeben
-                    \item Der Versuchsleiter empfängt ein Bestätigungsemail mit einem Link
-                    \item Durch den Link ist der Versuchsleiter in die “Passwort neu setzen” Seite weitergeleitet
-                    \item Neues Passwort eingeben
-                    \item Sein neues Passwort wird in dem Datenbank gespeichert
+                    \item Der Versuchsleiter bekommt ein Mail mit einem neuen zufällig generierten Passwort 
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
-                \begin{itemize}
-                    \item Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort in dieser Seite auf. Sonst sendet der Server eine Bestätigungsmail mit einem Link zu der Email-Adresse. Durch diesen Link wird der Leiter in die Passwort-Setzen-Seite geleitet und kann er da sein neues Passwort eingeben.
-                \end{itemize}
-                \par \textbf{Alternativen: }
+                    \par Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort auf diese Seite auf. Sonst sendet der Server das Mail mit dem neuen Passwort zur Mailadresse des Kontos.
 
                 \item \textbf{/F30/Verwaltung des Fragebogens}
 
