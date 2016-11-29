@@ -71,7 +71,7 @@
             % gedachten Zweck nicht einsetzbar.
             \vspace*{0.3cm}
 
-            \subsection{Web-Interface f\"ur \gls{Versuchsleiter}}
+            \subsection{Web-Interface für Versuchsleiter}
                 \vspace*{0.2cm}
 
                 \subsubsection{Verwalten von Teilnehmer der Untersuchung}
@@ -446,44 +446,53 @@
     \chapter{Produktdaten}
         \section{Versuchsleiterdaten}
             \begin{itemize}
-                \item /D10/ Über einen Versuchsleiter sind folgende Daten zu speichern:
+                \item \textbf{/D10/} Über einen Versuchsleiter sind folgende Daten zu speichern:
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
 
-                \item /D20/ Macht ein Versuchsleiter Versuche, dann sind folgende Daten zu speichern:
+                \item \textbf{/D20/} Macht ein Versuchsleiter Versuche, dann sind folgende Daten zu speichern:
                     \par Versuchsummern der zum Versuchsleiter gehörten Versuchen
             \end{itemize}
 
         \section{Probanddaten}
             \begin{itemize}
-                \item /D30/ Über einen Proband sind folgende Daten zu speichern:
+                \item \textbf{/D30/} Über einen Proband sind folgende Daten zu speichern:
                     \par Proband-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
 
-                \item /D40/ Hat ein Proband im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
-                    \par Antwortquotienten
+                \item \textbf{/D40/} Hat ein Proband im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
+                    \par Antwortquote des Probanden
             \end{itemize}
 
         \section{Versuchsdaten}
             \begin{itemize}
-                \item /D50/ Über einen Versuch sind folgende Daten zu speichern:
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” des Antwortquotienten für die Probanden\footnote{Siehe funktionale Anforderungen F1--}, Mailadresse der Versuchsleiter
+                \item \textbf{/D50/} Über einen Versuch sind folgende Daten zu speichern:
+                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” der Antwortquote für die Probanden\footnote{Siehe funktionale Anforderungen F1--}, Mailadresse der Versuchsleiter
 
-                \item /D60/ Hat ein Versuch Probanden, dann sind folgende Daten zu speichern:
+                \item \textbf{/D60/} Hat ein Versuch Probanden, dann sind folgende Daten zu speichern:
                     \par Proband-IDs
 
-                \item /D70/ Hat ein Versuch Fragen, dann sind folgende Daten zu speichern:
-                    \par Fragenummer der Fragen
+                \item \textbf{/D70/} Hat ein Versuch Fragebogen, dann sind folgende Daten zu speichern:
+                    \par Fragebogennummer des Fragebogens
             \end{itemize}
 
+        \section{Fragebogendaten}
+            \begin{itemize}
+                \item \textbf{/D80/} Über einen Fragebogen sind folgende Daten zu speichern:
+                \par Fragebogennummer, Name, Versuchsnummer des zugehörigen Versuchs
+                
+                \item \textbf{/D90/} Wird ein Fragebogen im Versuch erscheinen, dann sind folgende Daten zu speichern:
+                \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
+                
+                \item \textbf{/D100/} Wird einen Fragebogen von Probanden beantwortet, dann sind folgende Daten zu speichern:
+                \par Proband-IDs der Antwortgeber, Abgabezeit der Antworten, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
+            \end{itemize}
+            
         \section{Fragendaten}
             \begin{itemize}
-                \item /D80/ Über eine Versuchsfrage sind folgende Daten zu speichern:
-                    \par Fragenummer, Fragetyp, Inhalt der Frage, Versuchsnummer des zugehörigen Versuchs
+                \item \textbf{/D110/} Über eine Versuchsfrage sind folgende Daten zu speichern:
+                    \par Fragenummer, Fragetyp, Inhalt der Frage, Fragebogennummer des zugehörigen Fragebogens
 
-                \item /D90/ Wird eine Frage im Versuch erscheinen, dann sind folgende Daten zu speichern:
-                    \par Erscheinungsereignisse, Abgabetermin
-
-                \item /D100/ Wird eine Frage von Probanden beantwortet, dann sind folgende Daten zu speichern:
-                    \par Proband-IDs der Antwortgeber, Abgabezeit der Antworten, Inhalt der Antworten
+                \item \textbf{/D120/} Hat eine Frage Folgefragen, dann sind folgende Daten zu speichern:
+                    \par Fragenummern der Folgefragen, Bedingung der Folgefragen (Falls man die bestimmte Optionen der Frage wählt, wird die Folgefragen erscheinen.)
             \end{itemize}
 
    \chapter{Nichtfunktionale Anforderungen}
