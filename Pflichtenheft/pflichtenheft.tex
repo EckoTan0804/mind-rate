@@ -59,35 +59,27 @@
     \chapter{Zielbestimmung}
     % Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
     % notwendige Funktionen.
-        Die Firma soll durch das Produkt in die Lage versetzt werden, psychologische Studien nach Experience-Sampling-Method (ESM) durchzuf\"uhren und Feedbacks der Studien zu erhalten.\\
+        Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks des Versuchs zu erhalten.\\
 
-        \noindent Das Produkt besteht aus zwei Teilsysteme: ein Web-Interface f\"ur den Versuchsleiter und eine Android-Anwendung f\"ur die Probanden.
+        \noindent Das Produkt besteht aus zwei Teilsysteme: ein Web-Interface für den Versuchsleiter und eine Android-Anwendung für die Probanden.
 
 
         \section{Musskriterien}
-            % Musskriterien: Für das Produkt unabdingbare Leistungen, die in jedem Fall
-            % erfüllt werden müssen \footnote{gezwungen sein, etwas zu tun (Dies ist eine
-            % beispielhafte Fußnote).}. Das System ist ohne diese Funktionen für seinen
-            % gedachten Zweck nicht einsetzbar.
-            \vspace*{0.3cm}
-
             \subsection{Web-Interface für Versuchsleiter}
-                \vspace*{0.2cm}
-
-                \subsubsection{Verwalten von Teilnehmer der Untersuchung}
+            
+                \subsubsection{Verwalten der Versuchen}
                     \begin{itemize}
-                        \item Probandsstatus erfassen (z.B. Proband-ID, Alter, Geschlecht, Beruf)
-                        \item Anmelden f\"ur Durchf\"uhrung der Untersuchung
+                        \item Erstellen, \"Andern von Versuchen
+                        \item Setzen, \"Andern von Versuchsnamen, Anfangs- und Endedaten
+                        \item Generieren von Versuchsnummern
+                        \item Senden von Nachrichten zu allen Probanden eines Versuchs
                     \end{itemize}
-
+                
                 \subsubsection{Verwalten der Frageb\"ogen}
                     \begin{itemize}
-                        % \item Ausw\"ahlen von Prob\"ande nach verschiedenen Kriterien vor Erstellung der Frageb\"ogen
-                        \item Erstellen, \"Andern von Untersuchungsfragen f\"ur unterschiedliche Probandsgruppe
-                        \item Erstellen, \"Andern von Scale und Optionen der Antworten
-                        \item Setzen, \"Andern von G\"ultigkeitszeitbereich der Untersuchungsfragen
-                        \item Setzen, \"Andern von H\"aufigkeit der Notifikationen zur Antworten
-                        % \item Senden von Feedback und Motivation zu Probanden
+                        \item Erstellen, Ändern von Fragebögen
+                        \item Erstellen, \"Andern von Fragen
+                        \item Setzen, \"Andern von Erscheinungsereignissen und Abgabeterminen der Fragebögen
                     \end{itemize}
 
                 \subsubsection{Erfassen von Ergebnisse der Untersuchung}
@@ -95,30 +87,30 @@
                         \item Besichtigen von \gls{Antwortsstatus}
                         \item Exportieren von Daten
                     \end{itemize}
-            \vspace*{2cm}
+            \vspace*{0.5cm}
 
-            \subsection{Android-Anwendung f\"ur Probanden}
-                \vspace*{0.2cm}
+            \subsection{Android-App f\"ur Probanden}
 
-                \subsubsection{Anmelden f\"ur Beteiligung der Studie}
+                \subsubsection{Anmelden der Probanden durch gegebene Versuchsnummer}
 
-                \subsubsection{Antwort auf Untersuchungsfragen}
+                \subsubsection{Antwort auf Frageb\"ogen}
                     \begin{itemize}
-                        \item regelm\"assige Notifikation zur Antworten
-                        \item Untersuchungsfragen beantworten
+                        \item Notifikationen auf dem Smartphone über die Frageb\"ogen
+                        \item Beantworten von Frageb\"ogen 
                     \end{itemize}
 
-                \subsubsection{Verwalten von Antworten}
+                \subsubsection{Automatische Verwaltung von Antworten}
                     \begin{itemize}
                         \item lokales Speichern von Antworten
-                        \item Protokollieren von Zeitpunkt der Antwort
+                        \item Protokollieren von Abgabezeit der Antworten
                         \item Hochladen von Antworten auf den Server
                     \end{itemize}
 
                 \subsubsection{Zurgreifen einiger Sensoren von Handy}
                     \begin{itemize}
-                        \item Zugreifen von Temperatursensor
+                        \item Zugreifen von Wetter
                         \item Zugreifen von GPS
+                        \item Zugreifen von Aktivitätssensor
                     \end{itemize}
                 \vspace*{0.5cm}
 
