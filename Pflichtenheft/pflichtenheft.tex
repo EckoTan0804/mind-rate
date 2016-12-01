@@ -62,9 +62,9 @@
     \chapter{Zielbestimmung}
     % Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
     % notwendige Funktionen.
-        Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks des Versuchs zu erhalten.\\
+        % Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks des Versuchs zu erhalten.\\
 
-        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studiensleiter} und eine Android-Anwendung für die \gls{Proband}en.
+        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studiensleiter} und eine Android-Anwendung für die \gls{Proband}en. Der \gls{Studiensleiter} soll durch das Produkt in die Lage versetzt werden , Studien nach ESM-Methode durchzuf\"uhren und die Probanden k\"onnen sich an der Studien beteiligen, indem sie die Android-Anwendung nutzen.
 
 
         \section{Musskriterien}
@@ -81,7 +81,7 @@
                     \begin{itemize}
                         \item Erstellen, Ändern von Fragebögen
                         \item Erstellen, \"Andern von Fragen verschiedener Arten
-                        \item Setzen, \"Andern von auslösenden Ereiginisse und Abgabeterminen der Fragebögen
+                        \item Setzen, \"Andern von auslösenden Ereiginisse und Abgabeterminen der Frageb\"ogen
                     \end{itemize}
 
                 \subsubsection{Erfassen von Ergebnisse der Untersuchung}
@@ -93,8 +93,9 @@
 
             \subsection{\gls{Android-App} f\"ur \gls{Proband}en}
 
-                \subsubsection{Anmelden der \gls{Proband}en durch gegebene Versuchsnummer}
+                \subsubsection{Anmelden mit Studien-ID}
                     \begin{itemize}
+                        \item Eingeben von Studien-ID
                         \item Eingeben von Alter, Geschlecht, Beruf des Probands
                     \end{itemize}
 
@@ -106,10 +107,13 @@
 
                 \subsubsection{Zurgreifen einiger Sensoren von Handy}
                     \begin{itemize}
-                        \item Zugreifen von Wetter
-                        \item Zugreifen von GPS und Protokollieren vom Ort
-                        \item Zugreifen von Aktivitätssensor
-                        \item Protokollieren von Sensordaten w\"ahrend Beantworten von Fragen 
+                        % \item Zugreifen von Temperatur
+                        % \item Zugreifen von GPS und Protokollieren vom Ort
+                        % \item Zugreifen von Aktivitätssensor
+                        \item Zugreifen von Motion-Sensor (z.B. Beschleunigung, Gravity)
+                        \item Zugreifen von Environmental-Sensor (z.B. Temperatur, Licht, Luftdruck)
+                        \item Zugreifen von Posiiton-Sensor (z.B. Richtung, magnetische Kraft)
+                        \item Protokollieren von Sensordaten w\"ahrend Beantworten von Sensordaten auslösenden Frageb\"ogen
                     \end{itemize}
 
                 \subsubsection{Automatische Verwaltung von Antworten}
@@ -457,7 +461,7 @@
 % <<<<<<< HEAD
 %                     \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” der \gls{Antwortquote} für die \gls{Proband}en\footnote{Siehe funktionale Anforderungen F100}, Mailadresse der \gls{Studiensleiter}
 % =======
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, Mailadresse der \gls{Versuchsleiter}
+                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, Mailadresse der \gls{Studiensleiter}
 
                 \item \textbf{/D60/} Hat ein Versuch \gls{Proband}en, dann sind folgende Daten zu speichern:
                     \par \gls{Proband}-IDs
