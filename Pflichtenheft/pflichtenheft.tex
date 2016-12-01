@@ -17,7 +17,6 @@
     \newglossaryentry{Proband}{name=Proband, description={Leute, der sich an dem Versuch beteiligt}}
     \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
     \newglossaryentry{Antwortsstatus}{name=Antwortsstatus, description={Die statistischen Daten der Antworten von Probanden innerhald von G\"ultigkeitszeitbereich des Fragebogens}}
-    \newglossaryentry{Antwortquote}{name=Antwortquote, description={der Quotient aus beantworteten Fragen und allen Fragen (Die Antwortquoten sind also für jeden Proband unterschiedlich.)}}
     \newglossaryentry{Android-App}{name=Android-App, description={Anwendungssoftware für Mobilgeräte mit Android als Betriebssystem}}
     %\newglossaryentry{Aussch\"opfungsquote}{name=Aussch\"opfungsquote, description={der Quotient aus die Anzahl der Probanden, die eine Frage tatsächlich beantworteten und die Anzahl aller Probanden (Die Ausschöpfungsquoten sind also global und für alle Probanden gleich.)}}
 
@@ -407,23 +406,6 @@
                 \caption{Versenden der Antworten eines Fragebogens}
             \end{figure}
 
-
-            \item \textbf{(Wunsch) /F100/ Sehen der eigenen \gls{Antwortquote}}
-
-            \par \textbf{Ziel: }\gls{Proband} kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
-            \par \textbf{Vorbedingung: }\gls{Proband} hat in der App angemeldet
-            \par \textbf{Nachbedingung (Erfolg): }die App zeigt die eigene \gls{Antwortquote} des \gls{Proband}en
-            \par \textbf{Nachbedingung (Fehlschlag): }keine \gls{Antwortquote} wird gezeigt
-            \par \textbf{Akteure: }\gls{Proband} selbst
-            \par \textbf{Auslösendes Ereignis: }\gls{Proband} klickt auf “My Answer Rate” in der App
-            \par \textbf{Beschreibung: }
-                \begin{enumerate}
-                    \item Bei Erstellen eines Fragebogens kann der \gls{Versuchsleiter} eine “Bestehensgrenze” der \gls{Antwortquote} bestimmen. Ein \gls{Proband} braucht also mindestens eine bestimmte Menge von Fragen beantworten, um die Vergütung am Ende zu bekommen. Die Standardbestehensgrenze liegt bei 60\%.
-                    \item Die Bestehensgrenze und die eigene aktuelle \gls{Antwortquote} wird nicht in der App gezeigt. Gezeigt wird nur, ob man momentan “besteht” oder “nicht besteht”. Man sieht also keine exakte Zahl.
-                    \item Im Laufen des Versuchs wird diesen Status stets aktualisiert. Der \gls{Proband} kann den eigenen Status immer nachsehen.
-                    \item Am Ende eines Versuchs kann der \gls{Proband} das Smartphone zum \gls{Versuchsleiter} zeigen. Der \gls{Versuchsleiter} sieht auf dem Smartphone keinen \gls{Proband}-ID oder genaue \gls{Antwortquote}, sondern nur “bestanden” oder “nicht bestanden”. So kann der \gls{Versuchsleiter} die Vergütung entsprechend zahlen.
-                \end{enumerate}
-
         \end{itemize}
 
     \chapter{Produktdaten}
@@ -440,15 +422,12 @@
             \begin{itemize}
                 \item \textbf{/D30/} Über einen \gls{Proband} sind folgende Daten zu speichern:
                     \par \gls{Proband}-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
-
-                \item \textbf{/D40/} Hat ein \gls{Proband} im Versuch Fragen beantwortet, dann sind folgende Daten zu speichern:
-                    \par \gls{Antwortquote} des \gls{Proband}en
             \end{itemize}
 
         \section{Versuchsdaten}
             \begin{itemize}
                 \item \textbf{/D50/} Über einen Versuch sind folgende Daten zu speichern:
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” der \gls{Antwortquote} für die \gls{Proband}en\footnote{Siehe funktionale Anforderungen F100}, Mailadresse der \gls{Versuchsleiter}
+                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, Mailadresse der \gls{Versuchsleiter}
 
                 \item \textbf{/D60/} Hat ein Versuch \gls{Proband}en, dann sind folgende Daten zu speichern:
                     \par \gls{Proband}-IDs
@@ -771,20 +750,6 @@
 	        	\par \textbf{Aktion: }Der \gls{Proband} beantwortet die Frage und klickt den Button ``Submit''
 	        	\par \textbf{Reaktion: }Die App zeigt ``You have successfully submitted your answers!'' und wechselt auf die Hauptseite
 	        \end{enumerate}
-
-            \item \textbf{/TF--/ Zeigen einer bestandenen \gls{Antwortquote}}
-            \begin{enumerate}
-                \item \par \textbf{Stand: }Die Bestehensgrenze der \gls{Antwortquote} liegt bei 60\%. Der \gls{Proband} bekommt 10 Fragen.
-                \par \textbf{Aktion: }Der \gls{Proband} beantwortet 6 Fragen, dann klickt auf “My Response Rate”.
-                \par \textbf{Reaktion: }Die App zeigt “You are currently above the pass mark. Very good! Please go on!”
-            \end{enumerate}
-
-            \item \textbf{/TF--/ Zeigen einer nicht bestandenen \gls{Antwortquote}}
-            \begin{enumerate}
-                \item \par \textbf{Stand: }Die Bestehensgrenze der \gls{Antwortquote} liegt bei 60\%. Der \gls{Proband} bekommt 10 Fragen.
-                \par \textbf{Aktion: }Der \gls{Proband} beantwortet 5 Fragen, dann klickt auf “My Response Rate”.
-                \par \textbf{Reaktion: }Die App zeigt ““You are currently below the pass mark. No problem, you can just improve that!”
-            \end{enumerate}
 
             \end{itemize}
 
