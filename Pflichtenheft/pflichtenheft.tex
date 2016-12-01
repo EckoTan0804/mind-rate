@@ -69,14 +69,14 @@
 
         \section{Musskriterien}
             \subsection{\gls{Web-Interface} für \gls{Studiensleiter}}
-            
+
                 \subsubsection{Verwalten der Versuchen}
                     \begin{itemize}
                         \item Erfassen von Pers\"onlichen Daten der Probanden (Alter, Geschlecht, Beruf)
                         % \item Erstellen, \"Andern von Studien
                         \item Setzen von Namen, ID und Dauer der Studie
                     \end{itemize}
-                
+
                 \subsubsection{Verwalten der Frageb\"ogen}
                     \begin{itemize}
                         \item Erstellen, Ändern von Fragebögen
@@ -102,7 +102,7 @@
                 \subsubsection{Antwort auf Frageb\"ogen}
                     \begin{itemize}
                         \item Notifikationen zur Antwort der Frageb\"ogen
-                        \item Beantworten von Frageb\"ogen 
+                        \item Beantworten von Frageb\"ogen
                     \end{itemize}
 
                 \subsubsection{Zurgreifen einiger Sensoren von Handy}
@@ -244,7 +244,7 @@
                 \begin{enumerate}
                     \item Auf ``Reset Password'' klicken
                     \item Email-Adresse eingeben
-                    \item Der \gls{Studiensleiter} bekommt ein Mail mit einem neuen zufällig generierten Passwort 
+                    \item Der \gls{Studiensleiter} bekommt ein Mail mit einem neuen zufällig generierten Passwort
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                     \par Falls das Konto nicht vorhanden ist, kommt eine Fehleranzeige sofort auf diese Seite auf. Sonst sendet der Server das Mail mit dem neuen Passwort zur Mailadresse des Kontos.
@@ -272,6 +272,12 @@
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \par \textbf{Alternativen: }
+                \begin{figure}[H]
+                    % \raggedleft
+                    \centering
+                    \includegraphics[scale=0.75]{FragebogenVerwaltung.jpeg}
+                    \caption{Verwaltung des Fragebogen}
+                \end{figure}
 
 
                 \item \textbf{/F40/ Verwaltung der Fragen }
@@ -473,14 +479,14 @@
             \begin{itemize}
                 \item \textbf{/D80/} Über einen Fragebogen sind folgende Daten zu speichern:
                 \par Fragebogennummer, Name, Versuchsnummer des zugehörigen Versuchs
-                
+
                 \item \textbf{/D90/} Wird ein Fragebogen im Versuch erscheinen, dann sind folgende Daten zu speichern:
                 \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
-                
+
                 \item \textbf{/D100/} Wird einen Fragebogen von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
                 \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
             \end{itemize}
-            
+
         \section{Fragendaten}
             \begin{itemize}
                 \item \textbf{/D110/} Über eine Versuchsfrage sind folgende Daten zu speichern:
@@ -620,7 +626,7 @@
                               \par \textbf{Aktion: }Email-Adresse eingeben, und auf ``Send email'' klicken
                               \par \textbf{Reaktion: }Ein Mail mit einem neuen zufällig generierten Passwort wird zu dieser Email-Adresse geschenkt
                     \end{enumerate}
-                    
+
                 \item \textbf{/TF40/ Verwaltung des Fragebogens}
                     \begin{enumerate}
                         \item \par \textbf{Stand: }Kein Fragebogen vorhanden
@@ -657,9 +663,9 @@
                         \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
                               \par \textbf{Aktion: } Der \gls{Studiensleiter} klickt auf ``+'' Button, der links neben den Fragenliste liegt
                               \par \textbf{Reaktion: } Eine neue Frage wird in die Fragenliste hinzugefügt
-                              
+
                         \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen und eine Frage von der Frageliste ausgewählt
-                              \par \textbf{Aktion: }  Der \gls{Studiensleiter} klickt auf ``-'' Button, der links neben den Fragenliste liegt 
+                              \par \textbf{Aktion: }  Der \gls{Studiensleiter} klickt auf ``-'' Button, der links neben den Fragenliste liegt
                               \par \textbf{Reaktion: } die ausgewählte Frage wird in die Fragenliste gelöscht
 
                         \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
@@ -680,7 +686,7 @@
 
                         \item \par \textbf{Stand: } Verwaltung der Fragen fertig
                               \par \textbf{Aktion: } Der \gls{Studiensleiter} klickt auf ``Go to questionnaire settings'' Button
-                              \par \textbf{Reaktion: } Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens        
+                              \par \textbf{Reaktion: } Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens
 
                     \end{enumerate}
 
@@ -857,7 +863,7 @@
                     \centering
                     \includegraphics[scale = 0.3]{android_answer.jpg}
                     \caption{GUI Entwurf - Answer Question}
-                \end{figure}    
+                \end{figure}
 
 
 
