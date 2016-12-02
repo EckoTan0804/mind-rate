@@ -18,6 +18,7 @@
     \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
     \newglossaryentry{Antwortsstatus}{name=Antwortsstatus, description={Die statistischen Daten der Antworten von Probanden innerhalb von G\"ultigkeitszeitbereich des Fragebogens}}
     \newglossaryentry{Android-App}{name=Android-App, description={Anwendungssoftware für Mobilgeräte mit Android als Betriebssystem}}
+    \newglossaryentry{Erscheinungsereignis}{name={Erscheinungsereignis},description={ein Ereignis, das allein oder mit anderen Ereignissen zussamen einen Fragebogen auslösen kann}}
     %\newglossaryentry{Aussch\"opfungsquote}{name=Aussch\"opfungsquote, description={der Quotient aus die Anzahl der Probanden, die eine Frage tatsächlich beantworteten und die Anzahl aller Probanden (Die Ausschöpfungsquoten sind also global und für alle Probanden gleich.)}}
 
     \begin{flushright}
@@ -289,16 +290,16 @@
 
                 \item \textbf{/F35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
 
-                \par \textbf{Ziel: }Studienleiter können verschiedene Erscheinungsereignisse für Fragebögen einstellen.
+                \par \textbf{Ziel: }Studienleiter können verschiedene \gls{Erscheinungsereignis}se für Fragebögen einstellen.
                 \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
-                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit Erscheinungsereignissen wird erstellt, oder die Erscheinungsereignisse eines vorliegenden Fragebogens wird eingestellt.
+                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit \gls{Erscheinungsereignis}sen wird erstellt, oder die \gls{Erscheinungsereignis}se eines vorliegenden Fragebogens wird eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Fragebogen wird nicht erstellt, oder ein vorliegender Fragebogen hat keine Änderung.
                 \par \textbf{Akteure: }\gls{Studienleiter}
                 \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} klickt auf den ``Set trigger event'' Button
 
                 \par \textbf{Beschreibung: }
                     \begin{enumerate}
-                        \item Die mögliche Erscheinungsereignisse bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
+                        \item Die mögliche \gls{Erscheinungsereignis}se bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
                         \item Wenn ein Fragebogen beantwortet wird, werden die Ereignisdaten gespeichert und mit den Antworten zusammen hochgeladen.
                         \item Der \gls{Studienleiter} kann wählen, ob ein Ereignis bei ``genau", ``größer" oder ``kleiner" von bestimmten Sensordaten ausgelöst werden soll.
                         \item Der \gls{Studienleiter} kann eine maximale Anzahl von Auslösen eines Fragebogens pro Tag bestimmen.
@@ -468,12 +469,12 @@
 		        \item \textbf{/F100/Notifikation der Erscheinung eines Fragebogens}
 
 			    \par \textbf{Ziel: }Erinnerung des \gls{Proband}s an die neue Erscheinung eines Fragebogens
-		        \par \textbf{Vorbedingung: }ein Fragebogen hat bestimmtes Erscheinungsereignis und wird noch nicht ausgelöst
+		        \par \textbf{Vorbedingung: }ein Fragebogen hat bestimmtes \gls{Erscheinungsereignis} und wird noch nicht ausgelöst
 		        \par \textbf{Nachbedingung: }eine Notifikation wird geschickt und der Fragebogen wird auf ``Homepage'' Seite gezeigt
 		        \par \textbf{Akteure: }App
-		        \par \textbf{Auslösendes Ereignis: }die App entdeckt ein Erscheinungsereignis eines Fragebogens
+		        \par \textbf{Auslösendes Ereignis: }die App entdeckt ein \gls{Erscheinungsereignis} eines Fragebogens
 		        \par \textbf{Beschreibung: }
-		        \par Wenn ein Erscheinungsereignis eines Fragebogen der Studie entdeckt wird, schickt die App eine Notifikation auf dem Handy und der Fragebogen wird auf ``Homepage'' Seite gezeigt.
+		        \par Wenn ein \gls{Erscheinungsereignis} eines Fragebogen der Studie entdeckt wird, schickt die App eine Notifikation auf dem Handy und der Fragebogen wird auf ``Homepage'' Seite gezeigt.
 		        \par \textbf{Alternativen: }
 
         \end{itemize}
@@ -514,10 +515,10 @@
                 \par Fragebogennummer, Name, Studie-ID der zugehörigen Studie
 
                 \item \textbf{/D90/} Wird ein Fragebogen in der Studie erscheinen, dann sind folgende Daten zu speichern:
-                \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
+                \par \gls{Erscheinungsereignis}se, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
 
                 \item \textbf{/D100/} Wird einen Fragebogen von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
-                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Erscheinungsereignisse, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
+                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, \gls{Erscheinungsereignis}se, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
             \end{itemize}
 
         \section{Fragendaten}
@@ -641,19 +642,19 @@
 		                	\par \textbf{Reaktion: }-keine-
 		                	\item \par \textbf{Stand: }Werte der Sensoren festgelegt
 		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignis erfolgreich gesetzt
+		                	\par \textbf{Reaktion: }\gls{Erscheinungsereignis} erfolgreich gesetzt
 		                \end{enumerate}
-	                \item \textbf{Andere Erscheinungsereignisse (Systemzeit, Kalender und Notifikationen von anderen Apps)}
+	                \item \textbf{Andere \gls{Erscheinungsereignis}se (Systemzeit, Kalender und Notifikationen von anderen Apps)}
 		                \begin{enumerate}
 		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
-		                	\par \textbf{Aktion: }Ein oder mehrere Erscheinungsereignisse aus einem List auswählen
-		                	\par \textbf{Reaktion: }Der zugehörige Erscheinungsereignisse-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
-		                	\item \par \textbf{Stand: }Erscheinungsereignisse ausgewählt
-		                	\par \textbf{Aktion: }Einen Wert in den Erscheinungsereignisse-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
+		                	\par \textbf{Aktion: }Ein oder mehrere \gls{Erscheinungsereignis}se aus einem List auswählen
+		                	\par \textbf{Reaktion: }Der zugehörige \gls{Erscheinungsereignis}se-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
+		                	\item \par \textbf{Stand: }\gls{Erscheinungsereignis}se ausgewählt
+		                	\par \textbf{Aktion: }Einen Wert in den \gls{Erscheinungsereignis}se-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
 		                	\par \textbf{Reaktion: }-keine-
-		                	\item \par \textbf{Stand: }Werte der Erscheinungsereignisse festgelegt
+		                	\item \par \textbf{Stand: }Werte der \gls{Erscheinungsereignis}se festgelegt
 		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignisse erfolgreich gesetzt
+		                	\par \textbf{Reaktion: }\gls{Erscheinungsereignis}se erfolgreich gesetzt
 		                \end{enumerate}
                 \end{itemize}
 
