@@ -321,7 +321,7 @@
                     \item Verwaltung des Fragebogen
                     \par Der \gls{Studienleiter} wählt zuerst einen Fragebogen aus oder erstellt er einen neuen Fragebogen. Zudem gehört die neue Frage.
                     \item Erstellung und Löschen der Fragen
-                    \par Der \gls{Studienleiter} entscheidet sich die Fragenart und Antwortart. Dann soll der \gls{Studienleiter} auch konkrete Frage eingeben.Er kann auch eine ausgewählte Frage von der Fragenliste löschen
+                    \par Der \gls{Studienleiter} entscheidet sich die Fragetyp und Antworttyp. Dann soll der \gls{Studienleiter} auch konkrete Frage eingeben.Er kann auch eine ausgewählte Frage von der Fragenliste löschen
                     \item Verwaltung der Beziehungen zwischen Fragen
                     \par Der \gls{Studienleiter} entscheidet sich, welche Option in diesen Frage ein auslösendes Ereignis vorliegender Fragen ist.Dann gibt er Fragennummer ein.
                     \item Voransicht
@@ -329,7 +329,7 @@
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \begin{enumerate}
-                    \item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
+                    \item Es gibt fünf Fragetypen. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
                     \item Es ist nicht notwendig, die \gls{Proband}en den Fragebogen sequenziell zu antworten. Der \gls{Studienleiter} kann sich entscheiden, welche Fragen die \gls{Proband}en antworten müssen und welche Fragen ein auslösende Ereignis haben.
                 \end{enumerate}
                 \par \textbf{Alternativen: }
@@ -701,7 +701,7 @@
 
                         \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
                               \par \textbf{Aktion: } Der \gls{Studienleiter} klickt auf ``Question type'' Combobox
-                              \par \textbf{Reaktion: } Er kann eine Fragenart auswählen
+                              \par \textbf{Reaktion: } Er kann einen Fragetyp auswählen
 
                         \item \par \textbf{Stand: }  Eine Frage von der Frageliste ausgewählt
                               \par \textbf{Aktion: } Der \gls{Studienleiter} klickt auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt
@@ -839,15 +839,20 @@
                 Schließlich hat Prof. Dr. Mata diesen Fragebogen fertig erstellt. Er klickt dann auf den Button ``save'' und ``submit''. Danach macht er eine Pause. Nach der Pause macht er weiter seine Arbeit...\\
 
             \subsection{Szenario 2}
-	            Informatikstudentin Elsa nimmt an einer ESM Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und es wird noch kein Fragebogen gezeigt.\\
-	            In der Nacht regnet es draussen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es ein Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie w\"ahlt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt. Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
+	            \par Informatikstudentin Elsa nimmt an einer ESM-Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und noch keinen Fragebogen wird gezeigt.
+                
+	            \par In der Nacht regnet es draussen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es einen Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie w\"ahlt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt. Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
 
             \subsection{Szenario 3}
-                Jetzt hat Prof. Dr. Mata schon mehreren Fragebogen. Und er möchte noch einen neuen Fragebogen erstellen, aber zahlreiche Fragen waren schon vorhanden. Deshalb möchte er einen vorliegenden Fragebogen verändern, dann wird dieser geänderte Fragebogen als ein neuer Fragebogen gespeichert.\\
-                Zuerst klickt Prof. Dr. Mata auf ``Set questionnaire'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Er stellt auch die Anfangsbedingungen des Fragebogens ein, weil die Anfangsbedingungen des Fragebogens geändert ist. Anschließend wählt er einen Fragebogen von der Fragenbogensliste aus, dann klickt er auf dem Button ``Go to question settings'' , um Fragen dem Fragebogen hinzuzufügen.\\
-                Prof. Dr. Mata klickt auf ``+'' Button, um eine neue Frage zu erstellen. Danach stellt er diese neue Frage ein. Zuerst wählt er diese Frage aus, und gibt er eine konkrete Frage ein. Nachdem er eine konkrete Frage eingegeben hat, wählt er auch die Fragenart dieser Frage aus. Schließlich klickt er auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt, um eine neue Option ( oder Textfeld für offene Frage,oder Skale für Skale-Frage ) für die Antwort zu erstellen. Er stellet auch die Beziehungen zwischen Fragen ein.\\
-                Jetzt liegt diese neue Frage in dem Fragebogen bereits vor. Durch obige Schritte hat Prof. Dr. Mata alle neue Frage dem Fragebogen hinzugefügt. Wenn alle Fragen dem Fragebogen hinzugefügt sind, klickt er auf ``Refresh'' Button, um die Vorasicht zu sehen.\\
-                Schließlich klickt Prof. Dr. Mata auf ``Go to questionnaire settings'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Auf der Webseite für die Verwaltung des Fragebogens klickt er auf ``save'' Button, und er wählt die Auswahl ``save as a new Questionnaire'' aus. Dann ist dieser neue Fragebogen den neuen Studie hinzugefügt.\\
+                \par Jetzt hat Prof. Dr. Mata schon mehreren Fragebogen. Und er möchte noch einen neuen Fragebogen erstellen, aber zahlreiche Fragen sind schon vorhanden. Deshalb möchte er einen vorliegenden Fragebogen verändern, dann wird dieser geänderte Fragebogen als einen neuen Fragebogen gespeichert.
+                
+                \par Zuerst klickt Prof. Dr. Mata auf ``Set questionnaire'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Er stellt auch die \gls{Erscheinungsereignis}se des Fragebogens ein, weil die \gls{Erscheinungsereignis}se des Fragebogens anders sind. Anschließend wählt er einen Fragebogen aus der Fragenbogensliste aus, klickt auf ``Go to question settings'', um Fragen zu dem Fragebogen hinzuzufügen.
+                
+                \par Prof. Dr. Mata klickt auf ``+'' Button, um eine neue Frage zu erstellen. Danach stellt er diese neue Frage ein. Zuerst wählt er diese Frage aus, und gibt er eine konkrete Frage ein. Nachdem er eine konkrete Frage eingegeben hat, wählt er auch den Fragetyp dieser Frage aus. Schließlich klickt er auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt, um eine neue Option (oder Textfeld für offene Frage, Skala für Skala-Frage) für die Frage zu erstellen. Er stellet auch die Beziehungen zwischen Fragen ein.
+                
+                \par Jetzt liegt diese neue Frage in dem Fragebogen vor. Durch obige Schritte hat Prof. Dr. Mata alle neue Frage zu dem Fragebogen hinzugefügt. Wenn alle Fragen vorhanden sind, klickt er auf ``Refresh'' Button, um die Vorschau zu sehen.
+                
+                \par Schließlich klickt Prof. Dr. Mata auf ``Go to questionnaire settings''. Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens. Auf der Webseite klickt er auf ``save'' Button und wählt die Auswahl ``save as a new Questionnaire'' aus. Dann ist dieser neuer Fragebogen zu der neuen Studie hinzugefügt.
 
         \newpage
         \section{Anwendungsfalldiagramm}
