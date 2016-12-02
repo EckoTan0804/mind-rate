@@ -251,8 +251,8 @@
 
                 \par \textbf{Ziel: }Verwaltung des Fragebogens in einer Studie
                 \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
-                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt, oder ein vorliegender Frageboden wird wieder eingestellt.
-                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden hat keine Änderung.
+                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Fragebogen wird erstellt, oder ein vorliegender Fragebogen wird wieder eingestellt.
+                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Fragebogen wird nicht erstellt, oder ein vorliegender Fragebogen hat keine Änderung.
                 \par \textbf{Akteure: }\gls{Studienleiter}
                 \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} vesucht, den ``Set questionnaire'' Button auf der Webseite zu klicken
 
@@ -276,7 +276,30 @@
                     \caption{Verwaltung des Fragebogen}
                 \end{figure}
 
+
                 \newpage
+
+                \item \textbf{/F35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
+                
+                \par \textbf{Ziel: }Studienleiter können verschiedene Erscheinungsereignisse für Fragebögen einstellen.
+                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
+                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit Erscheinungsereignissen wird erstellt, oder die Erscheinungsereignisse eines vorliegenden Fragebogens wird eingestellt.
+                \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Fragebogen wird nicht erstellt, oder ein vorliegender Fragebogen hat keine Änderung.
+                \par \textbf{Akteure: }\gls{Studienleiter}
+                \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} klickt auf den ``Set trigger event'' Button
+                
+                \par \textbf{Beschreibung: }
+                    \begin{enumerate}
+                        \item Die mögliche Erscheinungsereignisse bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
+                        \item Wenn ein Fragebogen beantwortet wird, werden die Ereignisdaten gespeichert und mit den Antworten zusammen hochgeladen.
+                        \item Der \gls{Studienleiter} kann wählen, ob ein Ereignis bei ``genau", ``größer" oder ``kleiner" von bestimmten Sensordaten ausgelöst werden soll.
+                        \item Der \gls{Studienleiter} kann eine maximale Anzahl von Auslösen eines Fragebogens pro Tag bestimmen.
+                        \item Der \gls{Studienleiter} kann einen minimalen Zeitabstand zwischen zwei Ereignissen bestimmen.
+                        \item  Der \gls{Studienleiter} kann wählen, ob ein Ereignis am Anfang oder Ende eines Kalender-Termins ausgelöst werden soll.
+                        \item  Der \gls{Studienleiter} kann wählen, ob ein Ereignis direkt nach einer Natifikation von Anderen Apps ausgelöst werden soll.
+                    \end{enumerate}
+                
+                
                 \item \textbf{/F40/ Verwaltung der Fragen }
                 \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
                 \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem und mindestens ein Fragebogen vorhanden
