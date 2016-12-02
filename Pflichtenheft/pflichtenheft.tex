@@ -13,8 +13,8 @@
 \makeglossaries
 
 \begin{document}
-    \newglossaryentry{Studienleiter}{name=Studienleiter, description={Person, unter dessen Leitung ein Versuch durchgeführt wird}}
-    \newglossaryentry{Proband}{name=Proband, description={Leute, der sich an dem Versuch beteiligt}}
+    \newglossaryentry{Studienleiter}{name=Studienleiter, description={Person, unter dessen Leitung eine Studie durchgeführt wird}}
+    \newglossaryentry{Proband}{name=Proband, description={Leute, der sich an einer Studie beteiligt}}
     \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
     \newglossaryentry{Antwortsstatus}{name=Antwortsstatus, description={Die statistischen Daten der Antworten von Probanden innerhald von G\"ultigkeitszeitbereich des Fragebogens}}
     \newglossaryentry{Android-App}{name=Android-App, description={Anwendungssoftware für Mobilgeräte mit Android als Betriebssystem}}
@@ -60,9 +60,6 @@
     \tableofcontents
 
     \chapter{Zielbestimmung}
-    % Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
-    % notwendige Funktionen.
-        % Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks der Studie zu erhalten.\\
 
         \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine Android-Anwendung für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden , Studien nach ESM-Methode durchzuf\"uhren und die Probanden k\"onnen sich an der Studien beteiligen, indem sie die Android-Anwendung nutzen.
 
@@ -219,7 +216,7 @@
                     \par \textbf{Vorbedingung (Registrieren): }-keine-
                     \par \textbf{Vorbedingung (Anmelden): }Ein Konto des Leiters soll vorhanden sein.
                     \par \textbf{Nachbedingung (erfolgreiches Registrieren): }Der Leiter bekommt eine Bestätigungsmail und kann sich mit dem neu erzeugten Konto anmelden.
-                    \par \textbf{Nachbedingung (erfolgreiches Anmelden): }Der Leiter ist in der Verwaltungssystem angemeldet und kann seine Versuche verwalten.
+                    \par \textbf{Nachbedingung (erfolgreiches Anmelden): }Der Leiter ist in der Verwaltungssystem angemeldet und kann seine Studien verwalten.
                     \par \textbf{Nachbedingung (Fehlschlag): }Der Leiter bleibt unangemeldet.
                     \par \textbf{Akteure: }\gls{Studienleiter}
                     \par \textbf{Auslösendes Ereignis: }Der Leiter busucht die Webseite dieses Online-Verwaltungssystems.
@@ -252,8 +249,8 @@
 
                 \item \textbf{/F30/ Verwaltung des Fragebogens}
 
-                \par \textbf{Ziel: }Verwaltung des Fragebogens in einem Versuch
-                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und Mindestens Ein Versuch ist vorhanden
+                \par \textbf{Ziel: }Verwaltung des Fragebogens in einer Studie
+                \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
                 \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden wird erstellt, oder ein vorliegender Frageboden wird wieder eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Frageboden wird nicht erstellt, oder ein vorliegender Frageboden hat keine Änderung.
                 \par \textbf{Akteure: }\gls{Studienleiter}
@@ -267,7 +264,7 @@
                     \item Der \gls{Studienleiter} stellt die Anfangsbedingungen des Fragebogens ein. Z.B. die Anfangszeit und die Endeszeit. Er kann auch die benötigte Sensoren hinzufügen.
                     \item Danach liegt eine Voransicht des Fragebogens rechts auf der Webseite vor
                     \item  Der \gls{Studienleiter} klickt auf den Button ``Refresh'', damit dir Inhalt des Fragebogens in den Voransicht gezeigt werden können
-                    \item Der \gls{Studienleiter} klickt auf den Button ``save'', damit der Fragebogen in einen Versuch gespeichert werden können
+                    \item Der \gls{Studienleiter} klickt auf den Button ``save'', damit der Fragebogen in eine Studie gespeichert werden können
                     \item Der \gls{Studienleiter} klickt auf den Button ``submit'', damit der Fragebogen auf den Server hochgeladen werden können
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
@@ -456,7 +453,7 @@
                 \item \textbf{/D10/} Über einen \gls{Studienleiter} sind folgende Daten zu speichern:
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
 
-                \item \textbf{/D20/} Macht ein \gls{Studienleiter} Versuche, dann sind folgende Daten zu speichern:
+                \item \textbf{/D20/} Macht ein \gls{Studienleiter} Studie, dann sind folgende Daten zu speichern:
                     \par Studie-ID der zum \gls{Studienleiter} gehörten Studie
             \end{itemize}
 
@@ -468,13 +465,13 @@
 
         \section{Studiendaten}
             \begin{itemize}
-                \item \textbf{/D50/} Über einen Versuch sind folgende Daten zu speichern:
+                \item \textbf{/D50/} Über eine Studie sind folgende Daten zu speichern:
                     \par Studie-ID, Studiename, Anfangs- und Endedatum, Mailadresse der \gls{Studienleiter}
 
-                \item \textbf{/D60/} Hat ein Versuch \gls{Proband}en, dann sind folgende Daten zu speichern:
+                \item \textbf{/D60/} Hat eine Studie \gls{Proband}en, dann sind folgende Daten zu speichern:
                     \par \gls{Proband}-IDs
 
-                \item \textbf{/D70/} Hat ein Versuch Fragebogen, dann sind folgende Daten zu speichern:
+                \item \textbf{/D70/} Hat eine Studie Fragebogen, dann sind folgende Daten zu speichern:
                     \par Fragebogennummer des Fragebogens
             \end{itemize}
 
@@ -483,7 +480,7 @@
                 \item \textbf{/D80/} Über einen Fragebogen sind folgende Daten zu speichern:
                 \par Fragebogennummer, Name, Studie-ID der zugehörigen Studie
 
-                \item \textbf{/D90/} Wird ein Fragebogen im Versuch erscheinen, dann sind folgende Daten zu speichern:
+                \item \textbf{/D90/} Wird ein Fragebogen in der Studie erscheinen, dann sind folgende Daten zu speichern:
                 \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
 
                 \item \textbf{/D100/} Wird einen Fragebogen von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
@@ -766,7 +763,7 @@
                 \par \textbf{Aktion: }Der \gls{Proband} öffnet die App
                 \par \textbf{Reaktion: }Die App wechselt auf die ``User Login'' Seite
                 \item \par \textbf{Stand: }Die ``User Login'' Seite liegt vor
-                \par \textbf{Aktion: }Der \gls{Proband} gibt Versuch-ID und die angeforderte Information ein, und klickt den Button ``Submit''
+                \par \textbf{Aktion: }Der \gls{Proband} gibt Studie-ID und die angeforderte Information ein, und klickt den Button ``Submit''
                 \par \textbf{Reaktion: }Der \gls{Proband} wird auf die Hauptseite weitergeleitet
             \end{enumerate}
 
