@@ -214,7 +214,7 @@
 
     \chapter{Funktionale Anforderungen}
 
-        \section{\gls{Web-Interface}}
+        % \section{\gls{Web-Interface}}
         \section{Web-Interface}
             \begin{itemize}
                 % \item \textbf{/F10/ Registrieren und Anmelden der \gls{Studienleiter}}
@@ -288,14 +288,14 @@
                 \newpage
 
                 \item \textbf{/F35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
-                
+
                 \par \textbf{Ziel: }Studienleiter können verschiedene Erscheinungsereignisse für Fragebögen einstellen.
                 \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
                 \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit Erscheinungsereignissen wird erstellt, oder die Erscheinungsereignisse eines vorliegenden Fragebogens wird eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Fragebogen wird nicht erstellt, oder ein vorliegender Fragebogen hat keine Änderung.
                 \par \textbf{Akteure: }\gls{Studienleiter}
                 \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} klickt auf den ``Set trigger event'' Button
-                
+
                 \par \textbf{Beschreibung: }
                     \begin{enumerate}
                         \item Die mögliche Erscheinungsereignisse bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
@@ -306,8 +306,8 @@
                         \item  Der \gls{Studienleiter} kann wählen, ob ein Ereignis am Anfang oder Ende eines Kalender-Termins ausgelöst werden soll.
                         \item  Der \gls{Studienleiter} kann wählen, ob ein Ereignis direkt nach einer Natifikation von Anderen Apps ausgelöst werden soll.
                     \end{enumerate}
-                
-                
+
+
                 \item \textbf{/F40/ Verwaltung der Fragen }
                 \par \textbf{Ziel: }Erstellung der Fragen in einem Fragebogen
                 \par \textbf{Vorbedingung: } Angemeldet in dem Verwaltungssystem und mindestens ein Fragebogen vorhanden
@@ -338,8 +338,8 @@
                     \includegraphics[scale=0.75]{FrageVerwaltung.jpeg}
                     \caption{Verwaltung der Fragen}
                 \end{figure}
-                
-                
+
+
                 \item \textbf{(Wunsch) /F45/ Senden von Bildern in Fragen}
                  \par \textbf{Beschreibung: }
                      \par Bildern können auch ein Teil von den Fragen sein.
@@ -402,48 +402,73 @@
             \end{itemize}
 
 
-    \newpage
-    % \section{\gls{Android-App}}
-    \section{Android-App}
+        \newpage
+        % \section{\gls{Android-App}}
+        \section{Android-App}
 
-        \begin{itemize}
-            \item \textbf{/F70/Anmelden der \gls{Proband}en}
+            \begin{itemize}
+                \item \textbf{/F70/Anmelden der \gls{Proband}en}
 
-                \par \textbf{Ziel: }Anmelden der \gls{Proband}en in der App und Sammeln der Studienteilnehmerdaten bei dem ersten Anmelden
-                \par \textbf{Vorbedingung: }-keine-
-                \par \textbf{Nachbedingung (erstes Anmelden): }Studienteilnehmerdaten liegen vor und \gls{Proband} ist angemeldet
-                \par \textbf{Nachbedingung (kein erstes Anmelden): }\gls{Proband} ist angemeldet
-                \par \textbf{Akteure: }\gls{Proband}
-                \par \textbf{Auslösendes Ereignis: }\gls{Proband} öffnet die App
+                    \par \textbf{Ziel: }Anmelden der \gls{Proband}en in der App und Sammeln der Studienteilnehmerdaten bei dem ersten Anmelden
+                    \par \textbf{Vorbedingung: }-keine-
+                    \par \textbf{Nachbedingung (erstes Anmelden): }Studienteilnehmerdaten liegen vor und \gls{Proband} ist angemeldet
+                    \par \textbf{Nachbedingung (kein erstes Anmelden): }\gls{Proband} ist angemeldet
+                    \par \textbf{Akteure: }\gls{Proband}
+                    \par \textbf{Auslösendes Ereignis: }\gls{Proband} öffnet die App
+                    \par \textbf{Beschreibung: }
+                    \par 1. Wenn der \gls{Proband} zum ersten Mal die App öffnet: Der \gls{Proband} meldet sich mit der ID der Studie an und gibt die von \gls{Studienleiter} angeforderten Studienteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene \gls{Proband}-ID wird generiert und dem \gls{Proband} zugeteilt. Die \gls{Proband}-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+                    \par 2. Wenn der \gls{Proband} sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+                    \par \textbf{Alternativen: }
+                    \begin{figure}[ht]
+                        % \raggedleft
+                        \centering
+                        \includegraphics[scale=1]{AppAnmelden.jpeg}
+                        \caption{Anmelden der \gls{Proband}en}
+                    \end{figure}
+
+
+                \item \textbf{/F80/Beantworten eines Fragebogens}
+
+                    \par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
+                    \par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
+                    \par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
+                    \par \textbf{Akteure: }\gls{Proband}
+                    \par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
+                    \par \textbf{Beschreibung: }
+                    \par 1. Wenn ein zu beantwortender Fragebogen vorliegt, schickt die App eine Notifikation.
+                    \par 2. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
+                    \par \textbf{Alternativen: }
+                    \begin{figure}[ht]
+                        % \raggedleft
+                        \centering
+                        \includegraphics[scale=0.5]{AppAntworten.jpeg}
+                        \caption{Antworten eines Fragebogens}
+                    \end{figure}
+
+
+                \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
+
+                \par \textbf{Ziel: }Versenden der Antworten an den Server
+                \par \textbf{Vorbedingung: }die Antworten werden lokal gespeichert
+                \par \textbf{Nachbedingung (Erfolg): }die Antworten werden auf dem Server gespeichert
+                \par \textbf{Nachbedingung (Fehlschlag): }die Antworten werden nicht auf dem Server gespeichert
+                \par \textbf{Akteure: }App und Server
+                \par \textbf{Auslösendes Ereignis: }die Netzwerkverbindung ist verfügbar und es gibt lokal gespeicherte Antworten
                 \par \textbf{Beschreibung: }
-                \par 1. Wenn der \gls{Proband} zum ersten Mal die App öffnet: Der \gls{Proband} meldet sich mit der ID der Studie an und gibt die von \gls{Studienleiter} angeforderten Studienteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene \gls{Proband}-ID wird generiert und dem \gls{Proband} zugeteilt. Die \gls{Proband}-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
-                \par 2. Wenn der \gls{Proband} sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
-                \par \textbf{Alternativen: }
-                \begin{figure}[ht]
-                    % \raggedleft
-                    \centering
-                    \includegraphics[scale=1]{AppAnmelden.jpeg}
-                    \caption{Anmelden der \gls{Proband}en}
-                \end{figure}
-
-
-            \item \textbf{/F80/Beantworten eines Fragebogens}
-
-                \par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
-                \par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
-                \par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
-                \par \textbf{Akteure: }\gls{Proband}
-                \par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
-                \par \textbf{Beschreibung: }
+<<<<<<< HEAD
                 \par 1. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
+=======
+                \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert.
+>>>>>>> refs/remotes/origin/master
                 \par \textbf{Alternativen: }
                 \begin{figure}[ht]
                     % \raggedleft
                     \centering
-                    \includegraphics[scale=0.5]{AppAntworten.jpeg}
-                    \caption{Antworten eines Fragebogens}
+                    \includegraphics[scale=1.2]{AppVersenden.jpeg}
+                    \caption{Versenden der Antworten eines Fragebogens}
                 \end{figure}
 
+<<<<<<< HEAD
 
             \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
 
@@ -475,6 +500,9 @@
         \par \textbf{Alternativen: }
 
         \end{itemize}
+=======
+            \end{itemize}
+>>>>>>> refs/remotes/origin/master
 
     \chapter{Produktdaten}
         % \section{\gls{Studienleiter}daten}
@@ -527,7 +555,7 @@
                     \par Fragenummern der Folgefragen, Bedingung der Folgefragen (Falls man die bestimmte Optionen der Frage wählt, wird die Folgefragen erscheinen.)
             \end{itemize}
 
-   \chapter{Nichtfunktionale Anforderungen}
+    \chapter{Nichtfunktionale Anforderungen}
         \begin{itemize}
             \item \textbf{/NF10/} Reaktionszeit
                 \par Die App darf nicht mehr als 2 Sekunden Reaktionszeit haben und die Ladezeit muss unter 5 Sekunden liegen.
@@ -540,10 +568,10 @@
 
             \item \textbf{/NF40/} Verschlüsselung der Daten
                 \par Die Daten-Tausche müssen verschlüsselt sein. Kein Datum ist vom Dritter erreichbar.
-                
+
             \item \textbf{/NF50/} Länge der Passwörter
                 \par Passwörter müssen mindestens 6-stellig sein.
-                
+
             \item \textbf{/NF60/} Probandanzahl
             \par Es müssen maximal 1000 Versuchen mit je maximal 1000 Probanden verwaltet werden können.
         \end{itemize}
@@ -631,13 +659,13 @@
                     \begin{enumerate}
                         \item \par \textbf{Stand: }Kein Fragebogen vorhanden
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``Go to question settings'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
                         \item \par \textbf{Stand: } Kein Fragebogen vorhanden
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``save'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
                         \item \par \textbf{Stand: }Kein Fragebogen vorhanden
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Kein Fragebogen vorhanden.'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
                         \item \par \textbf{Stand: }Kein Fragebogen vorhanden
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``new'' Button
                               \par \textbf{Reaktion: }Der \gls{Studienleiter} kann der Name eines Fragebogens eingeben und dieser Fragebogen wird erstellt
@@ -646,16 +674,16 @@
                               \par \textbf{Reaktion: }Der Browser wechselt zur Webseite für die Verwaltung der Fragen
                         \item \par \textbf{Stand: }Ein Fragebogen ausgewählt und eingestellt
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``save'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Fragebogen wird gespeichert'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be saved'' erscheint
                         \item \par \textbf{Stand: }Ein Fragebogen gespeichert
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``Refresh'' Button
                               \par \textbf{Reaktion: }Die Voransicht des Fragebogens erscheint
                         \item \par \textbf{Stand: }Alle Einstellung fertig aber keine Frage haben
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Bitte mind. eine Frage erstellen'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Please min. 1 question add'' erscheint
                         \item \par \textbf{Stand: }Alle Einstellung fertig und Frage vorhanden
                               \par \textbf{Aktion: }Der \gls{Studienleiter} klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Fragebogen wird hochgeladen'' erscheint
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be uploaded'' erscheint
                     \end{enumerate}
 
                 \item \textbf{/TF50/ Verwaltung der Fragen}
