@@ -435,8 +435,7 @@
                 \par \textbf{Akteure: }\gls{Proband}
                 \par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
                 \par \textbf{Beschreibung: }
-                \par 1. Wenn ein zu beantwortender Fragebogen vorliegt, schickt die App eine Notifikation.
-                \par 2. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
+                \par 1. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
                 \par \textbf{Alternativen: }
                 \begin{figure}[ht]
                     % \raggedleft
@@ -463,6 +462,17 @@
                 \includegraphics[scale=1.2]{AppVersenden.jpeg}
                 \caption{Versenden der Antworten eines Fragebogens}
             \end{figure}
+        
+        \item \textbf{/F100/Notifikation der Erscheinung eines Fragebogens}
+        
+        \par \textbf{Ziel: }Erinnerung des \gls{Proband}s an die neue Erscheinung eines Fragebogens
+        \par \textbf{Vorbedingung: }ein Fragebogen hat bestimmtes Erscheinungsereignis und wird noch nicht ausgelöst
+        \par \textbf{Nachbedingung: }eine Notifikation wird geschickt und der Fragebogen wird auf ``Homepage'' Seite gezeigt
+        \par \textbf{Akteure: }App
+        \par \textbf{Auslösendes Ereignis: }die App entdeckt ein Erscheinungsereignis eines Fragebogens
+        \par \textbf{Beschreibung: }
+        \par Wenn ein Erscheinungsereignis eines Fragebogen der Studie entdeckt wird, schickt die App eine Notifikation auf dem Handy und der Fragebogen wird auf ``Homepage'' Seite gezeigt.
+        \par \textbf{Alternativen: }
 
         \end{itemize}
 
@@ -748,7 +758,7 @@
 
             \begin{itemize}
 
-            \item \textbf{/TF-/ Erstes Anmelden der \gls{Proband}en}
+            \item \textbf{/TF80/ Erstes Anmelden der \gls{Proband}en}
             \begin{enumerate}
                 \item \par \textbf{Stand: }Der \gls{Proband} hat sich noch nicht in der App angemeldet
                 \par \textbf{Aktion: }Der \gls{Proband} öffnet die App
@@ -758,14 +768,14 @@
                 \par \textbf{Reaktion: }Der \gls{Proband} wird auf die Hauptseite weitergeleitet
             \end{enumerate}
 
-	        \item \textbf{/TF-/ Automatisches Anmelden der \gls{Proband}en}
+	        \item \textbf{/TF85/ Automatisches Anmelden der \gls{Proband}en}
 	        \begin{enumerate}
 	        	\item \par \textbf{Stand: }Der \gls{Proband} hat sich schon einmal in der App angemeldet
 	        	\par \textbf{Aktion: }Der \gls{Proband} öffnet die App
 	        	\par \textbf{Reaktion: }Der \gls{Proband} wird automatisch auf die Hauptseite weitergeleitet
 	        \end{enumerate}
 
-	        \item \textbf{/TF-/ Antworten eines Fragebogens}
+	        \item \textbf{/TF90/ Antworten eines Fragebogens}
 	        \begin{enumerate}
 	        	\item \par \textbf{Stand: }Die Hauptseite der App liegt vor
 	        	\par \textbf{Aktion: }Der \gls{Proband} wählt einen Fragebogen aus ``My Questionnaires''
@@ -796,7 +806,11 @@
                 Pl\"otzlich findet Prof. Dr. Mata, dass die Dauer der Studie, 2 Monate,  zu lang ist. Daher klickt er den Button ``Go to questionnaire settings'' und wechselt er zu die Seite ``Questionnaire settings''. Nachdem er die \"Anderung erledigt, druckt er den Button ``Go to question settings'' und wechselt er wieder zu die Seite ``Question setting''. \\
                 Prof. Dr. Mata denkt, dass es sinnlos ist, die zweite Frage zu beantworten, falls die Probanden Optionen ``Home'' und ``Work'' f\"ur die erste Frage gew\"ahlt haben. Weswegen wechselt er zu die Seite f\"ur die erste Frage und w\"ahlt er ``3'' f\"ur'``jump to question''-Setzung unter Optionen ``Home'' und ``Work''. \\
                 Schliesslich hat Prof. Dr. Mata diesen Fragebogen fertig erstellt. Er klickt dann den Button ``save'' und ``submit''. Danach macht er Pause und habt er vor, neuen Fragebogen zu erstellen...\\
+           
             \subsection{Szenario 2}
+	            Informatikstudentin Elsa nimmt an einer ESM Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und öffnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und es wird noch kein Fragebogen gezeigt.\\
+	            In der Nacht regnet es draußen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie öffnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es ein Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie wählt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt.Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
+            
             \subsection{Szenario 3}
 
         \newpage
