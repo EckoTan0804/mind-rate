@@ -478,55 +478,23 @@
 
    \chapter{Nichtfunktionale Anforderungen}
         \begin{itemize}
-            \item /NF10/Reaktionszeit
+            \item \textbf{/NF10/} Reaktionszeit
+                \par Die App darf nicht mehr als 2 Sekunden Reaktionszeit haben und die Ladezeit muss unter 5 Sekunden liegen.
 
-                \par Die App darf nicht mehr als \_ Sekunden Reaktionszeit haben und die Ladezeit muss unter \_ Sekunden liegen.
+            \item \textbf{/NF20/} Leicht lokalisierbar
+                \par Die UI-Sprache wird nicht in dem Programm fix codiert. Neue Sprache-Packe sind leicht zu implementieren.
 
+            \item \textbf{/NF30/} Größe der App
+                \par Die App darf nicht mehr als 30 Mb auf dem Handy benötigen.
 
-        \end{itemize}
-
-        \begin{itemize}
-            \item /NF20/Registrierung
-
-                \par Die Registrierung erfolgt unter Angabe einer E-Mail Adresse und einem Passwort.
-
-        \end{itemize}
-        \begin{itemize}
-            \item /NF30/Passwort
-
-                \par Passwörter müssen mindestens 6-stellig sein. Die App kann angemeldet bleiben.
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /NF40/Globalisierung
-
-                \par Die App ist auf Deutsch und Englisch verfügbar.
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /NF50/Daten speichern
-
-                \par Die Antworten jedes Fragebogens von den \gls{Proband}en muss ins Handy gespeichert werden.
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /NF60/Größe der App
-
-                \par Die App darf nicht mehr als \_ Mb auf dem Handy benötigen.
-
-
-
-        \end{itemize}
-        \begin{itemize}
-            \item /NF70/Integration ins Google Play Store
-
-                \par Die App soll ins Google Play Store integriert werden.
-
-
-
+            \item \textbf{/NF40/} Verschlüsselung der Daten
+                \par Die Daten-Tausche müssen verschlüsselt sein. Kein Datum ist vom Dritter erreichbar.
+                
+            \item \textbf{/NF50/} Länge der Passwörter
+                \par Passwörter müssen mindestens 6-stellig sein.
+                
+            \item \textbf{/NF60/} Probandanzahl
+            \par Es müssen maximal 1000 Versuchen mit je maximal 1000 Probanden verwaltet werden können.
         \end{itemize}
 
     % \chapter{Benutzungsoberfläche}
