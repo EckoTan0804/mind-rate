@@ -62,7 +62,7 @@
     \chapter{Zielbestimmung}
     % Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
     % notwendige Funktionen.
-        % Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks des Versuchs zu erhalten.\\
+        % Die Nutzer sollen durch das Produkt in die Lage versetzt werden, ESM-Versuche durchzuführen und Feedbacks der Studie zu erhalten.\\
 
         \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine Android-Anwendung für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden , Studien nach ESM-Methode durchzuf\"uhren und die Probanden k\"onnen sich an der Studien beteiligen, indem sie die Android-Anwendung nutzen.
 
@@ -155,7 +155,7 @@
             \end{itemize}
 
     \chapter{Produkteinsatz}
-        Das Produkt dient zur Sammlung der Versuchsdaten aus ESM-Studien. Damit bietet sie für \gls{Studienleiter} eine Lösung, ESM-Studien durchzuführen. Diese Tätigkeit soll zusätzlich im Internet und auf dem Smartphone möglich sein.
+        Das Produkt dient zur Sammlung der Studiendaten aus ESM-Studien. Damit bietet sie für \gls{Studienleiter} eine Lösung, ESM-Studien durchzuführen. Diese Tätigkeit soll zusätzlich im Internet und auf dem Smartphone möglich sein.
 
         \section{Anwendungsbereiche}
             \begin{itemize}
@@ -166,14 +166,14 @@
 
         \section{Zielgruppen}
             \begin{itemize}
-                \item \gls{Studienleiter} eines ESM-Versuchs
-                \item Teilnehmer des Versuchs
+                \item \gls{Studienleiter} einer ESM-Studie
+                \item Teilnehmer der Studie
             \end{itemize}
 
         \section{Betriebsbedingungen}
             \begin{itemize}
                 \item \gls{Studienleiter}: Büroumgebung
-                \item Versuchsteilnehmer: im alltäglichen Leben aufs Smartphone
+                \item Studienteilnehmer: im alltäglichen Leben aufs Smartphone
                 \item Betriebszeit rund um die Uhr, läuft unbeaufsichtigt
             \end{itemize}
 
@@ -432,7 +432,7 @@
 
 %             \item \textbf{(Wunsch) /F100/ Sehen der eigenen \gls{Antwortquote}}
 
-%             \par \textbf{Ziel: }\gls{Proband} kann im Laufen des Versuchs sehen, ob er so viele Fragen wie erforderlich beantwortet hat
+%             \par \textbf{Ziel: }\gls{Proband} kann im Laufen der Studie sehen, ob er so viele Fragen wie erforderlich beantwortet hat
 %             \par \textbf{Vorbedingung: }\gls{Proband} hat in der App angemeldet
 %             \par \textbf{Nachbedingung (Erfolg): }die App zeigt die eigene \gls{Antwortquote} des \gls{Proband}en
 %             \par \textbf{Nachbedingung (Fehlschlag): }keine \gls{Antwortquote} wird gezeigt
@@ -442,8 +442,8 @@
 %                 \begin{enumerate}
 %                     \item Bei Erstellen eines Fragebogens kann der \gls{Studienleiter} eine “Bestehensgrenze” der \gls{Antwortquote} bestimmen. Ein \gls{Proband} braucht also mindestens eine bestimmte Menge von Fragen beantworten, um die Vergütung am Ende zu bekommen. Die Standardbestehensgrenze liegt bei 60\%.
 %                     \item Die Bestehensgrenze und die eigene aktuelle \gls{Antwortquote} wird nicht in der App gezeigt. Gezeigt wird nur, ob man momentan “besteht” oder “nicht besteht”. Man sieht also keine exakte Zahl.
-%                     \item Im Laufen des Versuchs wird diesen Status stets aktualisiert. Der \gls{Proband} kann den eigenen Status immer nachsehen.
-%                     \item Am Ende eines Versuchs kann der \gls{Proband} das Smartphone zum \gls{Studienleiter} zeigen. Der \gls{Studienleiter} sieht auf dem Smartphone keinen \gls{Proband}-ID oder genaue \gls{Antwortquote}, sondern nur “bestanden” oder “nicht bestanden”. So kann der \gls{Studienleiter} die Vergütung entsprechend zahlen.
+%                     \item Im Laufen der Studie wird diesen Status stets aktualisiert. Der \gls{Proband} kann den eigenen Status immer nachsehen.
+%                     \item Am Ende einer Studie kann der \gls{Proband} das Smartphone zum \gls{Studienleiter} zeigen. Der \gls{Studienleiter} sieht auf dem Smartphone keinen \gls{Proband}-ID oder genaue \gls{Antwortquote}, sondern nur “bestanden” oder “nicht bestanden”. So kann der \gls{Studienleiter} die Vergütung entsprechend zahlen.
 %                 \end{enumerate}
 
 % =======
@@ -457,22 +457,19 @@
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
 
                 \item \textbf{/D20/} Macht ein \gls{Studienleiter} Versuche, dann sind folgende Daten zu speichern:
-                    \par Versuchsummern der zum \gls{Studienleiter} gehörten Studien
+                    \par Studie-ID der zum \gls{Studienleiter} gehörten Studie
             \end{itemize}
 
         \section{\gls{Proband}daten}
             \begin{itemize}
                 \item \textbf{/D30/} Über einen \gls{Proband} sind folgende Daten zu speichern:
-                    \par \gls{Proband}-ID, Geburtsdatum, Beruf, Geschlecht, Versuchsnummer des daran beteiligten Versuchs
+                    \par \gls{Proband}-ID, Geburtsdatum, Beruf, Geschlecht, Studie-ID der daran beteiligten Studie
             \end{itemize}
 
-        \section{Versuchsdaten}
+        \section{Studiendaten}
             \begin{itemize}
                 \item \textbf{/D50/} Über einen Versuch sind folgende Daten zu speichern:
-% <<<<<<< HEAD
-%                     \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, “Bestehensgrenze” der \gls{Antwortquote} für die \gls{Proband}en\footnote{Siehe funktionale Anforderungen F100}, Mailadresse der \gls{Studienleiter}
-% =======
-                    \par Versuchsnummer, Versuchsname, Anfangs- und Endedatum, Mailadresse der \gls{Studienleiter}
+                    \par Studie-ID, Studiename, Anfangs- und Endedatum, Mailadresse der \gls{Studienleiter}
 
                 \item \textbf{/D60/} Hat ein Versuch \gls{Proband}en, dann sind folgende Daten zu speichern:
                     \par \gls{Proband}-IDs
@@ -484,7 +481,7 @@
         \section{Fragebogendaten}
             \begin{itemize}
                 \item \textbf{/D80/} Über einen Fragebogen sind folgende Daten zu speichern:
-                \par Fragebogennummer, Name, Versuchsnummer des zugehörigen Versuchs
+                \par Fragebogennummer, Name, Studie-ID der zugehörigen Studie
 
                 \item \textbf{/D90/} Wird ein Fragebogen im Versuch erscheinen, dann sind folgende Daten zu speichern:
                 \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
@@ -495,7 +492,7 @@
 
         \section{Fragendaten}
             \begin{itemize}
-                \item \textbf{/D110/} Über eine Versuchsfrage sind folgende Daten zu speichern:
+                \item \textbf{/D110/} Über eine Frage sind folgende Daten zu speichern:
                     \par Fragenummer, Fragetyp, Inhalt der Frage, Fragebogennummer des zugehörigen Fragebogens
 
                 \item \textbf{/D120/} Hat eine Frage Folgefragen, dann sind folgende Daten zu speichern:
