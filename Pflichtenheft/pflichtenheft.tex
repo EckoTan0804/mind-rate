@@ -425,26 +425,6 @@
                 \caption{Versenden der Antworten eines Fragebogens}
             \end{figure}
 
-% <<<<<<< HEAD
-
-%             \item \textbf{(Wunsch) /F100/ Sehen der eigenen \gls{Antwortquote}}
-
-%             \par \textbf{Ziel: }\gls{Proband} kann im Laufen der Studie sehen, ob er so viele Fragen wie erforderlich beantwortet hat
-%             \par \textbf{Vorbedingung: }\gls{Proband} hat in der App angemeldet
-%             \par \textbf{Nachbedingung (Erfolg): }die App zeigt die eigene \gls{Antwortquote} des \gls{Proband}en
-%             \par \textbf{Nachbedingung (Fehlschlag): }keine \gls{Antwortquote} wird gezeigt
-%             \par \textbf{Akteure: }\gls{Proband} selbst
-%             \par \textbf{Auslösendes Ereignis: }\gls{Proband} klickt auf “My Answer Rate” in der App
-%             \par \textbf{Beschreibung: }
-%                 \begin{enumerate}
-%                     \item Bei Erstellen eines Fragebogens kann der \gls{Studienleiter} eine “Bestehensgrenze” der \gls{Antwortquote} bestimmen. Ein \gls{Proband} braucht also mindestens eine bestimmte Menge von Fragen beantworten, um die Vergütung am Ende zu bekommen. Die Standardbestehensgrenze liegt bei 60\%.
-%                     \item Die Bestehensgrenze und die eigene aktuelle \gls{Antwortquote} wird nicht in der App gezeigt. Gezeigt wird nur, ob man momentan “besteht” oder “nicht besteht”. Man sieht also keine exakte Zahl.
-%                     \item Im Laufen der Studie wird diesen Status stets aktualisiert. Der \gls{Proband} kann den eigenen Status immer nachsehen.
-%                     \item Am Ende einer Studie kann der \gls{Proband} das Smartphone zum \gls{Studienleiter} zeigen. Der \gls{Studienleiter} sieht auf dem Smartphone keinen \gls{Proband}-ID oder genaue \gls{Antwortquote}, sondern nur “bestanden” oder “nicht bestanden”. So kann der \gls{Studienleiter} die Vergütung entsprechend zahlen.
-%                 \end{enumerate}
-
-% =======
-
         \end{itemize}
 
     \chapter{Produktdaten}
@@ -453,8 +433,8 @@
                 \item \textbf{/D10/} Über einen \gls{Studienleiter} sind folgende Daten zu speichern:
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
 
-                \item \textbf{/D20/} Macht ein \gls{Studienleiter} Studie, dann sind folgende Daten zu speichern:
-                    \par Studie-ID der zum \gls{Studienleiter} gehörten Studie
+                \item \textbf{/D20/} Macht ein \gls{Studienleiter} Studien, dann sind folgende Daten zu speichern:
+                    \par Studie-IDs der zum \gls{Studienleiter} gehörten Studien
             \end{itemize}
 
         \section{\gls{Proband}daten}
@@ -466,7 +446,7 @@
         \section{Studiendaten}
             \begin{itemize}
                 \item \textbf{/D50/} Über eine Studie sind folgende Daten zu speichern:
-                    \par Studie-ID, Studiename, Anfangs- und Endedatum, Mailadresse der \gls{Studienleiter}
+                    \par Studie-ID, Studiename, Anfangs- und Endedatum, Mailadresse des \gls{Studienleiter}s
 
                 \item \textbf{/D60/} Hat eine Studie \gls{Proband}en, dann sind folgende Daten zu speichern:
                     \par \gls{Proband}-IDs
@@ -484,7 +464,7 @@
                 \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
 
                 \item \textbf{/D100/} Wird einen Fragebogen von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
-                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
+                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Erscheinungsereignisse, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
             \end{itemize}
 
         \section{Fragendaten}
