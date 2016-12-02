@@ -61,11 +61,12 @@
 
     \chapter{Zielbestimmung}
 
-        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine \gls{Android-App} für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden, Studien nach ESM durchzuf\"uhren. Die Probanden k\"onnen sich an den Studien beteiligen, wobei sie die \gls{Android-App} nutzen.
+        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine \gls{Android-App} für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden, Studien nach ESM durchzuf\"uhren. Die Probanden k\"onnen sich an den Studien beteiligen, indem sie die \gls{Android-App} nutzen.
 
 
         \section{Musskriterien}
-            \subsection{\gls{Web-Interface} für \gls{Studienleiter}}
+            % \subsection{\gls{Web-Interface} für \gls{Studienleiter}}
+            \subsection{Web-Interface für Studienleiter}
 
                 \subsubsection{Verwalten der Studien}
                     \begin{itemize}
@@ -88,7 +89,8 @@
                     \end{itemize}
             \vspace*{0.5cm}
 
-            \subsection{\gls{Android-App} f\"ur \gls{Proband}en}
+            % \subsection{\gls{Android-App} f\"ur \gls{Proband}en}
+            \subsection{Android-Anwendung f\"ur Proband}
 
                 \subsubsection{Anmelden mit Studie-ID}
                     \begin{itemize}
@@ -98,19 +100,21 @@
 
                 \subsubsection{Antwort auf Frageb\"ogen}
                     \begin{itemize}
-                        \item Notifikationen über die Fragebögen
+                        % \item Notifikationen über die Fragebögen
+                        \item Notifikationen zur Antwort der Frageb\"ogen
                         \item Beantworten von Frageb\"ogen
                     \end{itemize}
 
-                \subsubsection{Auslösen von Fragebögen durch verschiedene Ereignisse}
+                \subsubsection{Auslösen von Frageb\"ogen durch verschiedene Ereignisse}
                     \begin{itemize}
                         \item Motion-Sensor (Beschleunigung, Gravitation, Rotation)
                         \item Environmental-Sensor (Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit)
                         \item Positon-Sensor (Richtung, Magnetfeld, Nähe)
                         \item Zeit
                         \item Kalender
-                        \item Notifikationen von anderen Apps
-                        \item Ereignisdaten werden gespeichert und mit den Antworten zusammen hochgeladen
+                        \item Notifikationen von anderen Anwendungen
+                        % \item Ereignisdaten werden gespeichert und mit den Antworten zusammen hochgeladen
+                        \item Protokollieren von Ereignisdaten mit der Antwort
                     \end{itemize}
 
                 \subsubsection{Automatische Verwaltung von Antworten}
@@ -126,7 +130,8 @@
 
         \section{Wunschkriterien}
 
-            \subsection{\gls{Web-Interface} f\"ur \gls{Studienleiter}}
+            % \subsection{\gls{Web-Interface} f\"ur \gls{Studienleiter}}
+            \subsection{Web-Interface f\"ur Studienleiter}
                 \begin{itemize}
                     \item Senden von Nachrichten zu allen \gls{Proband}en einer Studie
                     \item Erm\"oglichen von ``angemeldet bleiben"
@@ -136,7 +141,8 @@
 
                 \end{itemize}
 
-            \subsection{Android-Anwendung f\"ur \gls{Proband}en}
+            % \subsection{Android-Anwendung f\"ur \gls{Proband}en}
+            \subsection{Android-Anwendung f\"ur Probanden}
                 \begin{itemize}
                     \item Erm\"oglichen von ``angemeldet bleiben"
                     \item Unterst\"utzen von unterschiedlichen Sprachen
@@ -208,9 +214,11 @@
 
     \chapter{Funktionale Anforderungen}
 
-        \section{\gls{Web-Interface}}
+        % \section{\gls{Web-Interface}}
+        \section{Web-Interface}
             \begin{itemize}
-                \item \textbf{/F10/ Registrieren und Anmelden der \gls{Studienleiter}}
+                % \item \textbf{/F10/ Registrieren und Anmelden der \gls{Studienleiter}}
+                \item \textbf{/F10/ Registrieren und Anmelden der Studienleiter}
 
                     \par \textbf{Ziel: }Registrieren oder Anmelden der \gls{Studienleiter} in der Web-Verwaltungssystem
                     \par \textbf{Vorbedingung (Registrieren): }-keine-
@@ -337,7 +345,8 @@
                      \par Bildern können auch ein Teil von den Fragen sein.
 
 
-                \item \textbf{(Wunsch) /F50/ \gls{Antwortsstatus} besichtigen}
+                \item \textbf{/F50/ \gls{Antwortsstatus} besichtigen}
+                % \item \textbf{/F50/ Antwortsstatus besichtigen}
                 \par \textbf{Ziel: }Besichtigung der Antwortsstatus
                 \par \textbf{Vorbedingung: }Der \gls{Studienleiter} ist angemeldet.
                 \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten \gls{Proband}en) ist sichtbar.
@@ -393,71 +402,73 @@
             \end{itemize}
 
 
-    \newpage
-    \section{\gls{Android-App}}
+        \newpage
+        % \section{\gls{Android-App}}
+        \section{Android-App}
 
-        \begin{itemize}
-            \item \textbf{/F70/Anmelden der \gls{Proband}en}
+            \begin{itemize}
+                \item \textbf{/F70/Anmelden der \gls{Proband}en}
 
-                \par \textbf{Ziel: }Anmelden der \gls{Proband}en in der App und Sammeln der Studienteilnehmerdaten bei dem ersten Anmelden
-                \par \textbf{Vorbedingung: }-keine-
-                \par \textbf{Nachbedingung (erstes Anmelden): }Studienteilnehmerdaten liegen vor und \gls{Proband} ist angemeldet
-                \par \textbf{Nachbedingung (kein erstes Anmelden): }\gls{Proband} ist angemeldet
-                \par \textbf{Akteure: }\gls{Proband}
-                \par \textbf{Auslösendes Ereignis: }\gls{Proband} öffnet die App
+                    \par \textbf{Ziel: }Anmelden der \gls{Proband}en in der App und Sammeln der Studienteilnehmerdaten bei dem ersten Anmelden
+                    \par \textbf{Vorbedingung: }-keine-
+                    \par \textbf{Nachbedingung (erstes Anmelden): }Studienteilnehmerdaten liegen vor und \gls{Proband} ist angemeldet
+                    \par \textbf{Nachbedingung (kein erstes Anmelden): }\gls{Proband} ist angemeldet
+                    \par \textbf{Akteure: }\gls{Proband}
+                    \par \textbf{Auslösendes Ereignis: }\gls{Proband} öffnet die App
+                    \par \textbf{Beschreibung: }
+                    \par 1. Wenn der \gls{Proband} zum ersten Mal die App öffnet: Der \gls{Proband} meldet sich mit der ID der Studie an und gibt die von \gls{Studienleiter} angeforderten Studienteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene \gls{Proband}-ID wird generiert und dem \gls{Proband} zugeteilt. Die \gls{Proband}-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
+                    \par 2. Wenn der \gls{Proband} sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+                    \par \textbf{Alternativen: }
+                    \begin{figure}[ht]
+                        % \raggedleft
+                        \centering
+                        \includegraphics[scale=1]{AppAnmelden.jpeg}
+                        \caption{Anmelden der \gls{Proband}en}
+                    \end{figure}
+
+
+                \item \textbf{/F80/Beantworten eines Fragebogens}
+
+                    \par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
+                    \par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
+                    \par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
+                    \par \textbf{Akteure: }\gls{Proband}
+                    \par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
+                    \par \textbf{Beschreibung: }
+                    \par 1. Wenn ein zu beantwortender Fragebogen vorliegt, schickt die App eine Notifikation.
+                    \par 2. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
+                    \par \textbf{Alternativen: }
+                    \begin{figure}[ht]
+                        % \raggedleft
+                        \centering
+                        \includegraphics[scale=0.5]{AppAntworten.jpeg}
+                        \caption{Antworten eines Fragebogens}
+                    \end{figure}
+
+
+                \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
+
+                \par \textbf{Ziel: }Versenden der Antworten an den Server
+                \par \textbf{Vorbedingung: }die Antworten werden lokal gespeichert
+                \par \textbf{Nachbedingung (Erfolg): }die Antworten werden auf dem Server gespeichert
+                \par \textbf{Nachbedingung (Fehlschlag): }die Antworten werden nicht auf dem Server gespeichert
+                \par \textbf{Akteure: }App und Server
+                \par \textbf{Auslösendes Ereignis: }die Netzwerkverbindung ist verfügbar und es gibt lokal gespeicherte Antworten
                 \par \textbf{Beschreibung: }
-                \par 1. Wenn der \gls{Proband} zum ersten Mal die App öffnet: Der \gls{Proband} meldet sich mit der ID der Studie an und gibt die von \gls{Studienleiter} angeforderten Studienteilnehmerdaten ein. Eine einzigartige, mit dem Handy verbundene \gls{Proband}-ID wird generiert und dem \gls{Proband} zugeteilt. Die \gls{Proband}-ID wird nicht gezeigt aber in der App gespeichert. Die App wechselt dann auf die Hauptseite.
-                \par 2. Wenn der \gls{Proband} sich mindestens einmal angemeldet hat: Die App wechselt automatisch auf die Hauptseite.
+                \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert.
                 \par \textbf{Alternativen: }
                 \begin{figure}[ht]
                     % \raggedleft
                     \centering
-                    \includegraphics[scale=1]{AppAnmelden.jpeg}
-                    \caption{Anmelden der \gls{Proband}en}
+                    \includegraphics[scale=1.2]{AppVersenden.jpeg}
+                    \caption{Versenden der Antworten eines Fragebogens}
                 \end{figure}
 
-
-            \item \textbf{/F80/Beantworten eines Fragebogens}
-
-                \par \textbf{Ziel: }Sammeln der Antworten auf den Fragebogen
-                \par \textbf{Vorbedingung: }Anmeldung und mindestens ein vorliegender Fragebogen in der App
-                \par \textbf{Nachbedingung: }die Antworten werden lokal gespeichert
-                \par \textbf{Akteure: }\gls{Proband}
-                \par \textbf{Auslösendes Ereignis: }\gls{Proband} erhaltet Notifikation
-                \par \textbf{Beschreibung: }
-                \par 1. Wenn ein zu beantwortender Fragebogen vorliegt, schickt die App eine Notifikation.
-                \par 2. Nachdem der \gls{Proband} sich angemeldet hat, liegt die App auf der Hauptseite mit einer Liste der auszufüllenden Fragebögen. Der \gls{Proband} wählt einen Fragebogen aus und beantwortet alle darauf stehenden Fragen. Im Anschluss klickt der \gls{Proband} auf ``Send'' und die Antworten werden lokal gespeichert.
-                \par \textbf{Alternativen: }
-                \begin{figure}[ht]
-                    % \raggedleft
-                    \centering
-                    \includegraphics[scale=0.5]{AppAntworten.jpeg}
-                    \caption{Antworten eines Fragebogens}
-                \end{figure}
-
-
-            \item \textbf{/F90/Versenden der Antworten eines Fragebogens}
-
-            \par \textbf{Ziel: }Versenden der Antworten an den Server
-            \par \textbf{Vorbedingung: }die Antworten werden lokal gespeichert
-            \par \textbf{Nachbedingung (Erfolg): }die Antworten werden auf dem Server gespeichert
-            \par \textbf{Nachbedingung (Fehlschlag): }die Antworten werden nicht auf dem Server gespeichert
-            \par \textbf{Akteure: }App und Server
-            \par \textbf{Auslösendes Ereignis: }die Netzwerkverbindung ist verfügbar und es gibt lokal gespeicherte Antworten
-            \par \textbf{Beschreibung: }
-            \par Wenn die Netzwerkverbindung vorhanden ist, schickt die App die verfügbaren Antworten an den Server und die Antworten werden auf dem Server gespeichert.
-            \par \textbf{Alternativen: }
-            \begin{figure}[ht]
-                % \raggedleft
-                \centering
-                \includegraphics[scale=1.2]{AppVersenden.jpeg}
-                \caption{Versenden der Antworten eines Fragebogens}
-            \end{figure}
-
-        \end{itemize}
+            \end{itemize}
 
     \chapter{Produktdaten}
-        \section{\gls{Studienleiter}daten}
+        % \section{\gls{Studienleiter}daten}
+        \section{Studienleiterdaten}
             \begin{itemize}
                 \item \textbf{/D10/} Über einen \gls{Studienleiter} sind folgende Daten zu speichern:
                     \par Name (Anrede, Titel, Vorname, Nachname), Mailadresse (als Kontonummer im System)
@@ -466,7 +477,8 @@
                     \par Studie-IDs der zum \gls{Studienleiter} gehörten Studien
             \end{itemize}
 
-        \section{\gls{Proband}daten}
+        % \section{\gls{Proband}daten}
+        \section{Probanddaten}
             \begin{itemize}
                 \item \textbf{/D30/} Über einen \gls{Proband} sind folgende Daten zu speichern:
                     \par \gls{Proband}-ID, Geburtsdatum, Beruf, Geschlecht, Studie-ID der daran beteiligten Studie
@@ -505,7 +517,7 @@
                     \par Fragenummern der Folgefragen, Bedingung der Folgefragen (Falls man die bestimmte Optionen der Frage wählt, wird die Folgefragen erscheinen.)
             \end{itemize}
 
-   \chapter{Nichtfunktionale Anforderungen}
+    \chapter{Nichtfunktionale Anforderungen}
         \begin{itemize}
             \item \textbf{/NF10/} Reaktionszeit
                 \par Die App darf nicht mehr als 2 Sekunden Reaktionszeit haben und die Ladezeit muss unter 5 Sekunden liegen.
@@ -574,7 +586,8 @@
 
         Folgende Funktionssequenzen sind zu \"uberpr\"ufen:
 
-        \section{\gls{Web-Interface}}
+        % \section{\gls{Web-Interface}}
+        \section{Web-Interface}
 
             \begin{itemize}
                 \item \textbf{/TF10/ Registrieren des \gls{Studienleiter}s}
@@ -730,7 +743,8 @@
 
 
         \vspace*{2cm}
-        \section{\gls{Android-App}}
+        % \section{\gls{Android-App}}
+        \section{Android-App}
 
             \begin{itemize}
 
@@ -790,7 +804,7 @@
             \vspace*{2cm}
             \begin{figure}[htbp]
                 \centering
-                \includegraphics[scale = 0.4]{UseCaseDiagram1.jpg}
+                \includegraphics[scale = 0.35]{UseCaseDiagram1.jpg}
                 \caption{Anwendungsfalldiagramm}
             \end{figure}
 
