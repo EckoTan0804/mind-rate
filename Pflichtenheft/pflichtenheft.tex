@@ -61,11 +61,12 @@
 
     \chapter{Zielbestimmung}
 
-        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine \gls{Android-App} für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden, Studien nach ESM durchzuf\"uhren. Die Probanden k\"onnen sich an den Studien beteiligen, wobei sie die \gls{Android-App} nutzen.
+        \noindent Das Produkt besteht aus zwei Teilsysteme: ein \gls{Web-Interface} für den \gls{Studienleiter} und eine \gls{Android-App} für die \gls{Proband}en. Der \gls{Studienleiter} soll durch das Produkt in die Lage versetzt werden, Studien nach ESM durchzuf\"uhren. Die Probanden k\"onnen sich an den Studien beteiligen, indem sie die \gls{Android-App} nutzen.
 
 
         \section{Musskriterien}
-            \subsection{\gls{Web-Interface} für \gls{Studienleiter}}
+            % \subsection{\gls{Web-Interface} für \gls{Studienleiter}}
+            \subsection{Web-Interface für Studienleiter}
 
                 \subsubsection{Verwalten der Studien}
                     \begin{itemize}
@@ -88,7 +89,8 @@
                     \end{itemize}
             \vspace*{0.5cm}
 
-            \subsection{\gls{Android-App} f\"ur \gls{Proband}en}
+            % \subsection{\gls{Android-App} f\"ur \gls{Proband}en}
+            \subsection{Android-Anwendung f\"ur Proband}
 
                 \subsubsection{Anmelden mit Studie-ID}
                     \begin{itemize}
@@ -98,19 +100,21 @@
 
                 \subsubsection{Antwort auf Frageb\"ogen}
                     \begin{itemize}
-                        \item Notifikationen über die Fragebögen
+                        % \item Notifikationen über die Fragebögen
+                        \item Notifikationen zur Antwort der Frageb\"ogen
                         \item Beantworten von Frageb\"ogen
                     \end{itemize}
 
-                \subsubsection{Auslösen von Fragebögen durch verschiedene Ereignisse}
+                \subsubsection{Auslösen von Frageb\"ogen durch verschiedene Ereignisse}
                     \begin{itemize}
                         \item Motion-Sensor (Beschleunigung, Gravitation, Rotation)
                         \item Environmental-Sensor (Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit)
                         \item Positon-Sensor (Richtung, Magnetfeld, Nähe)
                         \item Zeit
                         \item Kalender
-                        \item Notifikationen von anderen Apps
-                        \item Ereignisdaten werden gespeichert und mit den Antworten zusammen hochgeladen
+                        \item Notifikationen von anderen Anwendungen
+                        % \item Ereignisdaten werden gespeichert und mit den Antworten zusammen hochgeladen
+                        \item Protokollieren von Ereignisdaten mit der Antwort
                     \end{itemize}
 
                 \subsubsection{Automatische Verwaltung von Antworten}
@@ -126,7 +130,8 @@
 
         \section{Wunschkriterien}
 
-            \subsection{\gls{Web-Interface} f\"ur \gls{Studienleiter}}
+            % \subsection{\gls{Web-Interface} f\"ur \gls{Studienleiter}}
+            \subsection{Web-Interface f\"ur Studienleiter}
                 \begin{itemize}
                     \item Senden von Nachrichten zu allen \gls{Proband}en einer Studie
                     \item Erm\"oglichen von ``angemeldet bleiben"
@@ -136,7 +141,8 @@
 
                 \end{itemize}
 
-            \subsection{Android-Anwendung f\"ur \gls{Proband}en}
+            % \subsection{Android-Anwendung f\"ur \gls{Proband}en}
+            \subsection{Android-Anwendung f\"ur Probanden}
                 \begin{itemize}
                     \item Erm\"oglichen von ``angemeldet bleiben"
                     \item Unterst\"utzen von unterschiedlichen Sprachen
@@ -210,7 +216,8 @@
 
         \section{\gls{Web-Interface}}
             \begin{itemize}
-                \item \textbf{/F10/ Registrieren und Anmelden der \gls{Studienleiter}}
+                % \item \textbf{/F10/ Registrieren und Anmelden der \gls{Studienleiter}}
+                \item \textbf{/F10/ Registrieren und Anmelden der Studienleiter}
 
                     \par \textbf{Ziel: }Registrieren oder Anmelden der \gls{Studienleiter} in der Web-Verwaltungssystem
                     \par \textbf{Vorbedingung (Registrieren): }-keine-
@@ -337,7 +344,8 @@
                      \par Bildern können auch ein Teil von den Fragen sein.
 
 
-                \item \textbf{(Wunsch) /F50/ \gls{Antwortsstatus} besichtigen}
+                \item \textbf{/F50/ \gls{Antwortsstatus} besichtigen}
+                % \item \textbf{/F50/ Antwortsstatus besichtigen}
                 \par \textbf{Ziel: }Besichtigung der Antwortsstatus
                 \par \textbf{Vorbedingung: }Der \gls{Studienleiter} ist angemeldet.
                 \par \textbf{Nachbedingung : }Der neue Antwortsstatus eines Fragebogens (z.B. Verteilung der Antwroten, Anzahl der beantworteten \gls{Proband}en) ist sichtbar.
@@ -790,7 +798,7 @@
             \vspace*{2cm}
             \begin{figure}[htbp]
                 \centering
-                \includegraphics[scale = 0.4]{UseCaseDiagram1.jpg}
+                \includegraphics[scale = 0.35]{UseCaseDiagram1.jpg}
                 \caption{Anwendungsfalldiagramm}
             \end{figure}
 
