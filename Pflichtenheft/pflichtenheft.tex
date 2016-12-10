@@ -18,6 +18,7 @@
     \newglossaryentry{Web-Interface}{name=Web-Interface, description={Benutzeroberfläche, die man in einem Web-Browser nutzen kann}}
     \newglossaryentry{Antwortsstatus}{name=Antwortsstatus, description={Die statistischen Daten der Antworten von Probanden innerhalb von G\"ultigkeitszeitbereich des Fragebogens}}
     \newglossaryentry{Android-App}{name=Android-App, description={Anwendungssoftware für Mobilgeräte mit Android als Betriebssystem}}
+    \newglossaryentry{Erscheinungsereignis}{name={Erscheinungsereignis},description={ein Ereignis, das allein oder mit anderen Ereignissen zussamen einen Fragebogen auslösen kann}}
     %\newglossaryentry{Aussch\"opfungsquote}{name=Aussch\"opfungsquote, description={der Quotient aus die Anzahl der Probanden, die eine Frage tatsächlich beantworteten und die Anzahl aller Probanden (Die Ausschöpfungsquoten sind also global und für alle Probanden gleich.)}}
 
     \begin{flushright}
@@ -289,16 +290,16 @@
 
                 \item \textbf{/F35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
 
-                \par \textbf{Ziel: }Studienleiter können verschiedene Erscheinungsereignisse für Fragebögen einstellen.
+                \par \textbf{Ziel: }Studienleiter können verschiedene \gls{Erscheinungsereignis}se für Fragebögen einstellen.
                 \par \textbf{Vorbedingung: }Angemeldet in dem Verwaltungssystem und mindestens eine Studie vorhanden
-                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit Erscheinungsereignissen wird erstellt, oder die Erscheinungsereignisse eines vorliegenden Fragebogens wird eingestellt.
+                \par \textbf{Nachbedingung (Erfolg): }Ein neuer Frageboden mit \gls{Erscheinungsereignis}sen wird erstellt, oder die \gls{Erscheinungsereignis}se eines vorliegenden Fragebogens wird eingestellt.
                 \par \textbf{Nachbedingung (Fehlschlag): }Ein neuer Fragebogen wird nicht erstellt, oder ein vorliegender Fragebogen hat keine Änderung.
                 \par \textbf{Akteure: }\gls{Studienleiter}
-                \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} klickt auf den ``Set trigger event'' Button
+                \par \textbf{Auslösendes Ereignis: }Der \gls{Studienleiter} klickt auf ``Start condition''
 
                 \par \textbf{Beschreibung: }
                     \begin{enumerate}
-                        \item Die mögliche Erscheinungsereignisse bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
+                        \item Die mögliche \gls{Erscheinungsereignis}se bestehen aus Sensorereignissen (Beschleunigung, Gravitation, Rotation, Temperatur, Licht, Luftdruck, relative Luftfeuchtigkeit, Richtung, Magnetfeld, Nähe), Zeit, Kalender und Notifikationen von anderen Apps.
                         \item Wenn ein Fragebogen beantwortet wird, werden die Ereignisdaten gespeichert und mit den Antworten zusammen hochgeladen.
                         \item Der \gls{Studienleiter} kann wählen, ob ein Ereignis bei ``genau", ``größer" oder ``kleiner" von bestimmten Sensordaten ausgelöst werden soll.
                         \item Der \gls{Studienleiter} kann eine maximale Anzahl von Auslösen eines Fragebogens pro Tag bestimmen.
@@ -320,7 +321,7 @@
                     \item Verwaltung des Fragebogen
                     \par Der \gls{Studienleiter} wählt zuerst einen Fragebogen aus oder erstellt er einen neuen Fragebogen. Zudem gehört die neue Frage.
                     \item Erstellung und Löschen der Fragen
-                    \par Der \gls{Studienleiter} entscheidet sich die Fragenart und Antwortart. Dann soll der \gls{Studienleiter} auch konkrete Frage eingeben.Er kann auch eine ausgewählte Frage von der Fragenliste löschen
+                    \par Der \gls{Studienleiter} entscheidet sich die Fragetyp und Antworttyp. Dann soll der \gls{Studienleiter} auch konkrete Frage eingeben.Er kann auch eine ausgewählte Frage von der Fragenliste löschen
                     \item Verwaltung der Beziehungen zwischen Fragen
                     \par Der \gls{Studienleiter} entscheidet sich, welche Option in diesen Frage ein auslösendes Ereignis vorliegender Fragen ist.Dann gibt er Fragennummer ein.
                     \item Voransicht
@@ -328,7 +329,7 @@
                 \end{enumerate}
                 \par \textbf{Erweiterung: }
                 \begin{enumerate}
-                    \item Es gibt fünf Fragenarten. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
+                    \item Es gibt fünf Fragetypen. Die sind jeweils ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala mit Stufen Frage'', ``Skala ohne Stufe Frage'' und ``Offene Frage''.
                     \item Es ist nicht notwendig, die \gls{Proband}en den Fragebogen sequenziell zu antworten. Der \gls{Studienleiter} kann sich entscheiden, welche Fragen die \gls{Proband}en antworten müssen und welche Fragen ein auslösende Ereignis haben.
                 \end{enumerate}
                 \par \textbf{Alternativen: }
@@ -468,12 +469,12 @@
 		        \item \textbf{/F100/Notifikation der Erscheinung eines Fragebogens}
 
 			    \par \textbf{Ziel: }Erinnerung des \gls{Proband}s an die neue Erscheinung eines Fragebogens
-		        \par \textbf{Vorbedingung: }ein Fragebogen hat bestimmtes Erscheinungsereignis und wird noch nicht ausgelöst
+		        \par \textbf{Vorbedingung: }ein Fragebogen hat bestimmtes \gls{Erscheinungsereignis} und wird noch nicht ausgelöst
 		        \par \textbf{Nachbedingung: }eine Notifikation wird geschickt und der Fragebogen wird auf ``Homepage'' Seite gezeigt
 		        \par \textbf{Akteure: }App
-		        \par \textbf{Auslösendes Ereignis: }die App entdeckt ein Erscheinungsereignis eines Fragebogens
+		        \par \textbf{Auslösendes Ereignis: }die App entdeckt ein \gls{Erscheinungsereignis} eines Fragebogens
 		        \par \textbf{Beschreibung: }
-		        \par Wenn ein Erscheinungsereignis eines Fragebogen der Studie entdeckt wird, schickt die App eine Notifikation auf dem Handy und der Fragebogen wird auf ``Homepage'' Seite gezeigt.
+		        \par Wenn ein \gls{Erscheinungsereignis} eines Fragebogen der Studie entdeckt wird, schickt die App eine Notifikation auf dem Handy und der Fragebogen wird auf ``Homepage'' Seite gezeigt.
 		        \par \textbf{Alternativen: }
 
         \end{itemize}
@@ -514,10 +515,10 @@
                 \par Fragebogennummer, Name, Studie-ID der zugehörigen Studie
 
                 \item \textbf{/D90/} Wird ein Fragebogen in der Studie erscheinen, dann sind folgende Daten zu speichern:
-                \par Erscheinungsereignisse, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
+                \par \gls{Erscheinungsereignis}se, Abgabetermin (immer eine Zeit, z.B. 2 Studen nach der Erscheinung des Fragebogens)
 
                 \item \textbf{/D100/} Wird einen Fragebogen von \gls{Proband}en beantwortet, dann sind folgende Daten zu speichern:
-                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, Erscheinungsereignisse, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
+                \par \gls{Proband}-IDs der Antwortgeber, Abgabezeit der Antworten, \gls{Erscheinungsereignis}se, Anzahl der Antworten, Inhalt der Antworten, Ausschöpfungsquote (response rate)
             \end{itemize}
 
         \section{Fragendaten}
@@ -641,19 +642,19 @@
 		                	\par \textbf{Reaktion: }-keine-
 		                	\item \par \textbf{Stand: }Werte der Sensoren festgelegt
 		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignis erfolgreich gesetzt
+		                	\par \textbf{Reaktion: }\gls{Erscheinungsereignis} erfolgreich gesetzt
 		                \end{enumerate}
-	                \item \textbf{Andere Erscheinungsereignisse (Systemzeit, Kalender und Notifikationen von anderen Apps)}
+	                \item \textbf{Andere \gls{Erscheinungsereignis}se (Systemzeit, Kalender und Notifikationen von anderen Apps)}
 		                \begin{enumerate}
 		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
-		                	\par \textbf{Aktion: }Ein oder mehrere Erscheinungsereignisse aus einem List auswählen
-		                	\par \textbf{Reaktion: }Der zugehörige Erscheinungsereignisse-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
-		                	\item \par \textbf{Stand: }Erscheinungsereignisse ausgewählt
-		                	\par \textbf{Aktion: }Einen Wert in den Erscheinungsereignisse-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
+		                	\par \textbf{Aktion: }Ein oder mehrere \gls{Erscheinungsereignis}se aus einem List auswählen
+		                	\par \textbf{Reaktion: }Der zugehörige \gls{Erscheinungsereignis}se-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
+		                	\item \par \textbf{Stand: }\gls{Erscheinungsereignis}se ausgewählt
+		                	\par \textbf{Aktion: }Einen Wert in den \gls{Erscheinungsereignis}se-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
 		                	\par \textbf{Reaktion: }-keine-
-		                	\item \par \textbf{Stand: }Werte der Erscheinungsereignisse festgelegt
+		                	\item \par \textbf{Stand: }Werte der \gls{Erscheinungsereignis}se festgelegt
 		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignisse erfolgreich gesetzt
+		                	\par \textbf{Reaktion: }\gls{Erscheinungsereignis}se erfolgreich gesetzt
 		                \end{enumerate}
                 \end{itemize}
 
@@ -700,7 +701,7 @@
 
                         \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
                               \par \textbf{Aktion: } Der \gls{Studienleiter} klickt auf ``Question type'' Combobox
-                              \par \textbf{Reaktion: } Er kann eine Fragenart auswählen
+                              \par \textbf{Reaktion: } Er kann einen Fragetyp auswählen
 
                         \item \par \textbf{Stand: }  Eine Frage von der Frageliste ausgewählt
                               \par \textbf{Aktion: } Der \gls{Studienleiter} klickt auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt
@@ -829,24 +830,29 @@
 
         % \"
             \subsection{Szenario 1}
-                Ein super psychologischer Expert Prof. Dr. Mata beschliesst, eine Studie nach ESM Methode durchzuf\"uhren. Er \"offnet den browser und die mind-Rate web-Anwendung. Nach Eingeben g\"ultiger Email-Adresse und Passwort gelingt ihm zu registrieren und erh\"alt er dann eine Bestätigungsmail. \\
-                Nach Anmeldung setzt Prof. Dr. Mata zun\"achst die Name, ID, Dauer (von wann bis wann) seiner Studie. Er entscheidet sich, die Studie ``Hello World'' mit ID ``9527'' zu nennen und die Studie wird 2 Monate dauern. Dann klickt er den Button ``Set Questionnaire'' und er wird zu die Seite hergeleitet, wo er die auslösende Ereiginisse und G\"ultigkeitszeitbereich eines Fragebogens setzen kann. Daf\"ur setzt er ``everyday 10am'' und ``30 minute''. \\
-                Danach klickt Prof. Dr. Mata den Button ``Go to question settings''. Die Seite ``Question setting'' kommt vor. Auf dieser Seite ist Prof. Dr. Mata in der Lage, die Frage einzugeben und Art der Frage auszuw\"ahlen. F\"unf Fragenarten sind verf\"ugbar: ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala-mit-Stufen-Frage'', ``Skala-ohne-Stufe-Frage'' und ``Offene Frage''. \\
-                Prof. Dr. Mata schreibt die erste Frage ``Where are you?'' and setzt sie als ``Single-Choice-Frage''. Für Antwort stellt er 4 Optionen zu Verf\"ugung: ``Home'', ``Work'', ``Travel'', ``On the way''. Die erste Frage tritt dann rechts auf, wo sich die Preview des Fragebogens befindet. Dann klickt er den Button ``+'', f\"ugt er die zweite Frage ``Where are you heading to?'' hinzu und setzt er diese Frage als ``Offene Frage''. Danach schreibt er die dritte Frage ``How do you feel?'' und beschliesst, diese Frage als ``Skala-mit-Stufen-Frage'' zu definieren. Deswegen erstellt er 5 Stufen: ``really bad'', ``bad'', ``Ok'', ``good'', ``very good''. \\
-                Pl\"otzlich findet Prof. Dr. Mata, dass die Dauer der Studie, 2 Monate,  zu lang ist. Daher klickt er den Button ``Go to questionnaire settings'' und wechselt er zu die Seite ``Questionnaire settings''. Nachdem er die \"Anderung erledigt, druckt er den Button ``Go to question settings'' und wechselt er wieder zu die Seite ``Question setting''. \\
-                Prof. Dr. Mata denkt, dass es sinnlos ist, die zweite Frage zu beantworten, falls die Probanden Optionen ``Home'' und ``Work'' f\"ur die erste Frage gew\"ahlt haben. Weswegen wechselt er zu die Seite f\"ur die erste Frage und w\"ahlt er ``3'' f\"ur'``jump to question''-Setzung unter Optionen ``Home'' und ``Work''. \\
-                Schliesslich hat Prof. Dr. Mata diesen Fragebogen fertig erstellt. Er klickt dann den Button ``save'' und ``submit''. Danach macht er Pause und habt er vor, neuen Fragebogen zu erstellen...\\
+                Ein super psychologischer Expert Prof. Dr. Mata beschließt, eine Studie nach ESM Methode durchzuf\"uhren. Er \"offnet den Browser und die Mind-Rate Web-Anwendung. Nach Eingeben g\"ultiger Email-Adresse und Passwort gelingt ihm zu registrieren und erh\"alt er dann eine Bestätigungsmail. \\
+                Nach Anmeldung setzt Prof. Dr. Mata zun\"achst die Name, ID, Zeitraum seiner Studie. Er entscheidet sich, die Studie ``Hello World'' mit ID ``9527'' zu nennen und die Studie wird 2 Monate dauern. Dann klickt er auf den Button ``Set Questionnaire'' und er wird zu die Seite geleitet, wo er die auslösende Ereiginisse und G\"ultigkeitszeitbereich eines Fragebogens setzen kann. Daf\"ur setzt er ``everyday 10am'' und ``30 minute''. \\
+                Danach klickt Prof. Dr. Mata auf den Button ``Go to question settings''. Die Seite ``Question setting'' kommt vor. Auf dieser Seite ist Prof. Dr. Mata in der Lage, die Frage einzugeben und Art der Frage auszuw\"ahlen. F\"unf Fragenarten sind verf\"ugbar: ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala-mit-Stufen-Frage'', ``Skala-ohne-Stufe-Frage'' und ``Offene Frage''. \\
+                Prof. Dr. Mata schreibt die erste Frage ``Where are you?'' und setzt sie als ``Single-Choice-Frage''. Für Antwort stellt er 4 Optionen zur Verf\"ugung: ``Home'', ``Work'', ``Travel'', ``On the way''. Die erste Frage tritt dann rechts auf, wo sich die Preview des Fragebogens befindet. Dann klickt er auf den Button ``+'', f\"ugt er die zweite Frage ``Where are you heading to?'' hinzu und setzt er diese Frage als ``Offene Frage''. Danach schreibt er die dritte Frage ``How do you feel?'' und beschließt, diese Frage als ``Skala-mit-Stufen-Frage'' zu definieren. Deswegen erstellt er 5 Stufen: ``really bad'', ``bad'', ``Ok'', ``good'', ``very good''. \\
+                Danach findet Prof. Dr. Mata, dass die Dauer der Studie, 2 Monate,  zu lang ist. Daher klickt er den Button ``Go to questionnaire settings'' und er ist zu der Seite ``Questionnaire settings'' geleitet. Nachdem er die \"Anderung erledigt, klickt er auf den Button ``Go to question settings'' und er ist wieder zu der Seite ``Question setting'' geleitet. \\
+                Prof. Dr. Mata denkt sich, dass es sinnlos ist, die zweite Frage zu beantworten, falls die Probanden Optionen ``Home'' und ``Work'' f\"ur die erste Frage gew\"ahlt haben. Deswegen ruft er die Seite f\"ur die erste Frage auf und w\"ahlt er ``3'' f\"ur'``jump to question''-Setzung unter Optionen ``Home'' und ``Work''. \\
+                Schließlich hat Prof. Dr. Mata diesen Fragebogen fertig erstellt. Er klickt dann auf den Button ``save'' und ``submit''. Danach macht er eine Pause. Nach der Pause macht er weiter seine Arbeit...\\
 
             \subsection{Szenario 2}
-	            Informatikstudentin Elsa nimmt an einer ESM Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und es wird noch kein Fragebogen gezeigt.\\
-	            In der Nacht regnet es draussen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es ein Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie w\"ahlt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt. Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
+	            \par Informatikstudentin Elsa nimmt an einer ESM-Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und noch keinen Fragebogen wird gezeigt.
+                
+	            \par In der Nacht regnet es draussen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es einen Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie w\"ahlt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt. Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
 
             \subsection{Szenario 3}
-                Jetzt hat Prof. Dr. Mata schon mehreren Fragebogen. Und er möchte noch einen neuen Fragebogen erstellen, aber zahlreiche Fragen waren schon vorhanden. Deshalb möchte er einen vorliegenden Fragebogen verändern, dann wird dieser geänderte Fragebogen als ein neuer Fragebogen gespeichert.\\
-                Zuerst klickt Prof. Dr. Mata auf ``Set questionnaire'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Er stellt auch die Anfangsbedingungen des Fragebogens ein, weil die Anfangsbedingungen des Fragebogens geändert ist. Anschließend wählt er einen Fragebogen von der Fragenbogensliste aus, dann klickt er auf dem Button ``Go to question settings'' , um Fragen dem Fragebogen hinzuzufügen.\\
-                Prof. Dr. Mata klickt auf ``+'' Button, um eine neue Frage zu erstellen. Danach stellt er diese neue Frage ein. Zuerst wählt er diese Frage aus, und gibt er eine konkrete Frage ein. Nachdem er eine konkrete Frage eingegeben hat, wählt er auch die Fragenart dieser Frage aus. Schließlich klickt er auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt, um eine neue Option ( oder Textfeld für offene Frage,oder Skale für Skale-Frage ) für die Antwort zu erstellen. Er stellet auch die Beziehungen zwischen Fragen ein.\\
-                Jetzt liegt diese neue Frage in dem Fragebogen bereits vor. Durch obige Schritte hat Prof. Dr. Mata alle neue Frage dem Fragebogen hinzugefügt. Wenn alle Fragen dem Fragebogen hinzugefügt sind, klickt er auf ``Refresh'' Button, um die Vorasicht zu sehen.\\
-                Schließlich klickt Prof. Dr. Mata auf ``Go to questionnaire settings'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Auf der Webseite für die Verwaltung des Fragebogens klickt er auf ``save'' Button, und er wählt die Auswahl ``save as a new Questionnaire'' aus. Dann ist dieser neue Fragebogen den neuen Studie hinzugefügt.\\
+                \par Jetzt hat Prof. Dr. Mata schon mehreren Fragebogen. Und er möchte noch einen neuen Fragebogen erstellen, aber zahlreiche Fragen sind schon vorhanden. Deshalb möchte er einen vorliegenden Fragebogen verändern, dann wird dieser geänderte Fragebogen als einen neuen Fragebogen gespeichert.
+                
+                \par Zuerst klickt Prof. Dr. Mata auf ``Set questionnaire'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Er stellt auch die \gls{Erscheinungsereignis}se des Fragebogens ein, weil die \gls{Erscheinungsereignis}se des Fragebogens anders sind. Anschließend wählt er einen Fragebogen aus der Fragenbogensliste aus, klickt auf ``Go to question settings'', um Fragen zu dem Fragebogen hinzuzufügen.
+                
+                \par Prof. Dr. Mata klickt auf ``+'' Button, um eine neue Frage zu erstellen. Danach stellt er diese neue Frage ein. Zuerst wählt er diese Frage aus, und gibt er eine konkrete Frage ein. Nachdem er eine konkrete Frage eingegeben hat, wählt er auch den Fragetyp dieser Frage aus. Schließlich klickt er auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt, um eine neue Option (oder Textfeld für offene Frage, Skala für Skala-Frage) für die Frage zu erstellen. Er stellet auch die Beziehungen zwischen Fragen ein.
+                
+                \par Jetzt liegt diese neue Frage in dem Fragebogen vor. Durch obige Schritte hat Prof. Dr. Mata alle neue Frage zu dem Fragebogen hinzugefügt. Wenn alle Fragen vorhanden sind, klickt er auf ``Refresh'' Button, um die Vorschau zu sehen.
+                
+                \par Schließlich klickt Prof. Dr. Mata auf ``Go to questionnaire settings''. Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens. Auf der Webseite klickt er auf ``save'' Button und wählt die Auswahl ``save as a new Questionnaire'' aus. Dann ist dieser neuer Fragebogen zu der neuen Studie hinzugefügt.
 
         \newpage
         \section{Anwendungsfalldiagramm}
