@@ -1,0 +1,69 @@
+\documentclass[a4paper]{scrreprt}
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[bookmarks,bookmarksnumbered]{hyperref}
+\usepackage{graphicx}
+\usepackage[toc]{glossaries}
+\usepackage{float}
+\graphicspath{ {Images/} }
+\setcounter{secnumdepth}{5}
+\makeglossaries
+
+\begin{document}
+
+    \begin{flushright}
+        \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
+        % \includegraphics[scale = 1]{teco.jpg}
+    \end{flushright}
+    % \includegraphics[scale = 0.5]{kit-logo.jpg} \hspace{4cm} \includegraphics[scale = 1]{teco.jpg}
+    \vspace*{2cm}
+
+    \begin{center} \large
+
+        Praxis der Softwareentwicklung
+        \vspace * {1.5cm}
+
+        \textbf{\huge Mind Rate}
+
+        \vspace*{1cm}
+
+
+        {\Large Ein interaktives System mit Android-Client f\"ur Studien nach Experience-Sampling-Method (ESM)}
+
+        \vspace*{1cm}
+
+        \textbf{\Large Entwurf}
+        \vspace*{2cm}
+
+        Shanshan Du, Yi Ge, Renhan Lou, Ruoheng Ma, Haobin Tan
+        \vspace*{1cm}
+
+        02. Dezember 2016
+        \vspace*{2.5cm}
+
+        Betreuung: Anja Exler, Dr. Andrea Schankin\\[0.5cm]
+        Forschungsgruppe TECO: Technology for Pervasive Computing\\[0.5cm]
+
+        Karlsruher Institut für Technologie
+    \end{center}
+    \thispagestyle{empty}
+
+    \tableofcontents
+
+    \chapter{Allgemeine Struktur}
+    
+        Der Entwurf besteht aus zwei Seiten: der Android-App-Seite und der Server-Seite. Sie sind jeweils für die Android-App und das Web-Interface verantwortlich. Zusätzlich soll eine Datenbank auf dem Server laufen, um alle Studien-, Konto- und Probandendaten zu speichern. Diese gehört auch zu der Server-Seite. Die zwei Seiten sollen miteinander durch das HTTP-Protokoll kommunizieren.
+        
+
+
+
+    \glsaddall
+    \printglossary
+
+    % Abbildungsverzeichnis
+    \listoffigures
+
+\end{document}

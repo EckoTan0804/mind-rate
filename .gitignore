@@ -13,17 +13,18 @@ hs_err_pid*
 
 .DS_Store
 
-pflichtenheft.toc
-pflichtenheft.aux
-pflichtenheft.lof
-pflichtenheft.log
-pflichtenheft.out
-pflichtenheft.pdf
-pflichtenheft.synctex.gz
-pflichtenheft.glg
-pflichtenheft.glo
-pflichtenheft.gls
-pflichtenheft.glsdefs
-pflichtenheft.ist
-Pflichtenheft.fdb_latexmk
-Pflichtenheft.fls
+# Latex Docs
+*.toc
+*.aux
+*.lof
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.fdb_latexmk
+*.fls
