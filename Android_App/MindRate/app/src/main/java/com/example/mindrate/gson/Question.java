@@ -10,4 +10,7 @@ package com.example.mindrate.gson;
  */
 
 public class Question {
+    private String question;
+    private QuestionStratagy questionStratagy;
+    private int questionID;
 }
