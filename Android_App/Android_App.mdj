@@ -2867,7 +2867,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "model",
+											"text": "gson",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -7611,13 +7611,19 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
+<<<<<<< HEAD
 									"left": 958,
 									"top": 1015,
 									"width": 49.4990234375,
+=======
+									"left": 975,
+									"top": 1016,
+									"width": 49,
+>>>>>>> 660583974f6ab8e6d409fd64cd72d63215884cf8
 									"height": 13,
 									"autoResize": false,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": 1.570795942179512,
+									"distance": 32,
 									"hostEdge": {
 										"$ref": "AAAAAAFY6sEO99DCsrc="
 									},
@@ -8097,7 +8103,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from model)",
+											"text": "(from gson)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -8388,7 +8394,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from model)",
+											"text": "(from gson)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -8679,7 +8685,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from model)",
+											"text": "(from gson)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -8970,7 +8976,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from model)",
+											"text": "(from gson)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9261,7 +9267,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from model)",
+											"text": "(from gson)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13463,7 +13469,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFY6mI0sfPc31c="
 							},
-							"name": "model",
+							"name": "gson",
 							"ownedElements": [
 								{
 									"_type": "UMLClass",

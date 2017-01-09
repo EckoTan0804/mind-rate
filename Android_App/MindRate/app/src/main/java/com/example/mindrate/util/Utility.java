@@ -1,6 +1,8 @@
 package com.example.mindrate.util;
 
 
+import com.example.mindrate.gson.Questionnaire;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.util
@@ -10,4 +12,8 @@ package com.example.mindrate.util;
  */
 
 public class Utility {
+
+    public Questionnaire handleJsonObject() {
+        return null;
+    }
 }
