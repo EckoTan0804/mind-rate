@@ -10,4 +10,12 @@ package com.example.mindrate.util;
  */
 
 public class HttpUtil {
+
+    public static void uploadAnswerToServer() {
+
+    }
+
+    public void sendRequestWithOkHttp() {
+
+    }
 }

@@ -12,91 +12,116 @@ package com.example.mindrate.gson;
 import java.util.Collection;
 
 /**
- * This class represents a participant,who had participated in a psychological research.
- * <p>This class represents a participant,who have a Study's ID(@param studyID) in advance gotten.<br>
- *     The participant should at first input his information,@param probandID,@param gender,@param age and @param occupation.
- *     (s)he has also a list of @param questionaires,which (s)he must answer.
- *     And each time when (s)he finished the questionaire,(s)he must submit his answers.
+ * This class aims to model the participant of this study.
  */
 public class Proband {
-    /**It represents the participant's ID number.*/
+
+    /**
+     * It represents the participant's ID number.
+     */
     private String probandID;
-    /** It represents the study's ID number,which will be told to participant in advance*/
+    /**
+     * It represents the study's ID number,which will be told to participant in advance
+     */
     private String studyID;
-    /** It represents the gender of the participant*/
+    /**
+     * It represents the gender of the participant
+     */
     private String gender;
-    /** It represents the age of the participant*/
+    /**
+     * It represents the age of the participant
+     */
     private int age;
-    /** It represents the occupation of the participant*/
+    /**
+     * It represents the occupation of the participant
+     */
     private String occupation;
-    /** It represents the list of the questionaires,which the participant must answer */
+    /**
+     * It represents the list of the questionaires,which the participant must answer
+     */
     private Collection<Questionnaire> questionaires;
-    /** It represents the log-in status of the participant,true if the participant has at least once logged in*/
-    private boolean isLogIn;
-    /** */
-    public Proband(String probandID,String studyID,String gender,int age,String occupation){
-
-    }
-
     /**
-     *Exception 如果输入的信息格式有错 则创建账户失败，login依旧为false
+     * It represents the log-in status of the participant,true if the participant has at least
+     * once logged in
      */
-    public void logIn(){
-
-    }
+    private boolean isLogIn = false;
 
     /**
-     * With this method answers will be submitted and saved by participant.(?)
-     *<p> when this method is called, questionaire's answers will be submitted and they will also saved locally. <br>
-     *     firstly a Questionaire's number will be inputted,than the number will be looked up in the list of questionaires
-     *     (?)整个过程是怎么样的 比如输入的参数只是问卷ID？
+     * Constructor
      *
-     * @param QuestionaireID the number of a Questionaire in the Questionaire's list.
-     * @return there is no return's value
-     */
-    public void submitAnswer(int QuestionaireID){
 
+     * @param probandID the unique id for every proband
+     * @param studyID the already received studyID
+     * @param gender male / female
+     * @param age age of the proband
+     * @param occupation occupation of the proband
+     */
+    public Proband(String probandID, String studyID, String gender, int age, String occupation) {
+        this.probandID = probandID;
+        this.studyID = studyID;
+        this.gender = gender;
+        this.age = age;
+        this.occupation = occupation;
+        this.logIn();
     }
 
     /**
-     * This method is used for choices of Questionaires by participant.
-     *<p> when this method is called,a required questionaire will be chosen.<br>
-     *     firstly a Questionaire's number will be inputted,than the number will be looked up in the list of questionaires
-     *     if the questionaire'number exists in the list of questionaires,then the questionaire will be chosen and return true.
-     *     it the questionaire'number doesn't exist,then return false
+     * Exception 如果输入的信息格式有错 则创建账户失败，login依旧为false
+     */
+    public void logIn() {
+        if (!isLogIn) {
+            isLogIn = true;
+        }
+    }
+
+    /**
+     * This method aims to:
+     * <li>firstly save the answer of questionnaire locally</li>
+     * <li>upload the answer to the server if the network is available</li>
      *
-     * @param QuestionaireID the number of a Questionaire in the Questionaire's list.
-     * @return true if the required questionaire exists and will be chosen,false if the required questionaire doesn't exist
+     * @param questionnaireID the id of the just answered questionnaire
      */
-    public boolean chooseQuestionaire(int QuestionaireID){
-
+    public void submitAnswer(int questionnaireID) {
+        // 1. Questionnaire q = chooseQuestionnaire();
+        // 2. q.saveAnswerLocally();
+        // 3. q.uploadAnswers();
     }
 
     /**
-     * With this method a required Questionaire will be answered.
-     *<p> when this method is called,a required questionaire will be chosen and it will also be answered. <br>
-     *     firstly a Questionaire's number will be inputted,than the number will be looked up in the list of questionaires
-     *     if the questionaire'number exists in the list of questionaires,then the questionaire will be chosen and return true.Now participant can answer this questionaire
-     *     it the questionaire'number doesn't exist,then return false
-     * @param QuestionaireID the number of a Questionaire in the Questionaire's list.
-     * @return true if the required questionaire exists and will be chosen and answered,false if the required questionaire doesn't exist
+     * The participants can choose a questionnaire they want to answer using this method.
+     * <p> when this method is called,a specified questionnaire will be chosen and this
+     * questionniare object will be returned.</p>
+     *
+     * @param questionnaireID the id of a questionnaire in the questionnaire's list
+     * @return the Questionnaire object whose id is {@code questionnaireID}
      */
-    public boolean answerQuestionaire(int QuestionaireID){
-
+    public Questionnaire chooseQuestionnaire(int questionnaireID) {
+        // TODO
+        return null;
     }
 
     /**
-     * (methode)
-     *<p> (methode) <br>
-     *     2
-     * @param QuestionaireID
-     * @param QuestionID
-     * @return there is no return's value
+     * The participant can answer the questions of the chosen questionnaire using this method.
+     *
+     * @param questionnaireID the id of a questionnaire in the questionnaire's list
      */
-    public void answerQuestionaire(int QuestionaireID,int QuestionID){
-
+    public void answerQuestionnaire(int questionnaireID) {
+        // TODO: proband answer questions and the answer will be recorded.
+        // questionnaire = chooseQuestionnaire(questionnaireID)
+        // for (Question q : questionnaire.questions) {
+        //     answerQuestion(questionnaireID, q.ID);
+        // }
     }
 
+    /**
+     * With this method the proband can answer the specified question in specified questionnaire.
+     *
+     * @param questionnaireID the id of a questionnaire in the questionnaire's list.
+     * @param questionID the id of the question in the questionniare with {@code questionnaireID}
+     */
+    public void answerQuestion(int questionnaireID, int questionID) {
+
+    }
 
 
 }
