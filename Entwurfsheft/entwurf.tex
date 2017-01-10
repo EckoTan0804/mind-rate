@@ -13,6 +13,7 @@
 \makeglossaries
 
 \begin{document}
+    \def\code#1{\texttt{#1}}
 
     \begin{flushright}
         \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
@@ -57,7 +58,112 @@
     
         Der Entwurf besteht aus zwei Seiten: der Android-App-Seite und der Server-Seite. Sie sind jeweils für die Android-App und das Web-Interface verantwortlich. Zusätzlich soll eine Datenbank auf dem Server laufen, um alle Studien-, Konto- und Probandendaten zu speichern. Diese gehört auch zu der Server-Seite. Die zwei Seiten sollen miteinander durch das HTTP-Protokoll kommunizieren.
         
-
+    \chapter{Server-Seite}
+        Die Server-Seite nutzt eine von Django-Framework veränderte Variante\footnote{\href{https://docs.djangoproject.com/en/1.10/faq/general/\#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names}{https://docs.djangoproject.com/en/1.10/faq/general/\#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names}} der Modell-Präsentation-Steuerung-Architektur (MVC) als den Architekturstil. Die benötigte Klassen werden als Modelle entworfen. Der Entwurf von Server-Seite wird auf Python angefertigt.
+        
+        \section{Modelle}
+            \begin{itemize}
+                \item \code{class StudyDirector}
+                    \begin{itemize}
+                        \item \code{studies = []: Study}
+                        \item \code{surname}
+                        \item \code{firstName}
+                        \item \code{mailAddress}
+                    \end{itemize}
+                    
+                    \item \code{class Study}
+                        \begin{itemize}
+                            \item \code{probands = []: Proband}
+                            \item \code{id}
+                            \item \code{name}
+                            \item \code{beginningDate}
+                            \item \code{endDate}
+                            \item \code{director: StudyDirector}
+                            \item \code{questionnaires = []: Questionnaire}
+                        \end{itemize}
+                        
+                    \item \code{class Proband}
+                        \begin{itemize}
+                            \item \code{study: Study}
+                            \item \code{id}
+                            \item \code{birthday}
+                            \item \code{occupation}
+                            \item \code{gender}
+                        \end{itemize}
+                        
+                    \item \code{class Questionnairer}
+                        \begin{itemize}
+                            \item \code{questions = []: AbstractQuestion}
+                            \item \code{id}
+                            \item \code{name}
+                            \item \code{study: Study}
+                            \item \code{triggerEvent: TriggerEvent}
+                            \item \code{answeringTime}
+                            \item \code{answers = []: QuestionnaireAnswer}
+                        \end{itemize}
+                        
+                    \item \code{class QuestionnaireAnswer}
+                        \begin{itemize}
+                            \item \code{submitter: Proband}
+                            \item \code{submitTime}
+                            \item \code{questionAnswers = []: AbstractQuestionAnswer}
+                        \end{itemize}
+                        
+                    \item \code{class AbstractQuestion(ABC)}
+                        \begin{itemize}
+                            \item \code{id}
+                            \item \code{questionnaire: Questionnaire}
+                        \end{itemize}
+                        
+                    \item \code{class TextQuestion(AbstractQuestion)}
+                        \begin{itemize}
+                            \item \code{content}
+                        \end{itemize}
+                        
+                    \item \code{class ChoiceQuestion(AbstractQuestion)}
+                        \par // Both single choice question and multiple choice question are belonging to this class.
+                        \begin{itemize}
+                            \item \code{options = \{\}}
+                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestionTriggerOptions = []}
+                        \end{itemize}
+                        
+                    \item \code{class SteplessScaleQuestion(AbstractQuestion)}
+                        \par // Scale questions with steps are effectively just single choice questions; therefore they are not a class.
+                        \begin{itemize}
+                            \item \code{scaleMin: int}
+                            \item \code{scaleMax: int}
+                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestionTriggerMin: int}
+                            \item \code{followUpQuestionTriggerMax: int}
+                        \end{itemize}
+                        
+                    \item \code{class AbstractQuestionAnswer(ABC)}
+                        \begin{itemize}
+                            \item \code{content}
+                        \end{itemize}
+                   
+                   \item \code{class TextQuestionAnswer(AbstractQuestionAnswer)}
+                       \begin{itemize}
+                           \item \code{content: string}
+                       \end{itemize}
+                   
+                   \item \code{class MultiChoiceQuestionAnswer(AbstractQuestionAnswer)}
+                       \begin{itemize}
+                           \item \code{content = []: string}
+                       \end{itemize} 
+                    
+                    \item \code{class SingleChoiceQuestionAnswer(AbstractQuestionAnswer)}
+                        \begin{itemize}
+                            \item \code{content: string}
+                        \end{itemize}
+                    
+                    \item \code{class SteplessScaleQuestionAnswer(AbstractQuestionAnswer)}
+                        \begin{itemize}
+                            \item \code{content: int}
+                        \end{itemize}
+                        
+            \end{itemize}
 
 
     \glsaddall
