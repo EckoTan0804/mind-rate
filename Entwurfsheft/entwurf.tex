@@ -174,6 +174,80 @@
             \end{figure}
 
 
+    \newpage
+    \chapter{Android-App}
+
+        \section{Überblick von Paket}
+
+            %TODO: insert ein UML class diagram
+            % mvc beschreiben
+
+
+
+
+        %TODO: Ausführliche Beschreibung für jedes package und klasse davon
+
+        \section{model}
+
+            \subsection{gson}
+
+                \subsubsection{Proband}
+
+                \subsubsection{Questionnaire}
+
+                \subsubsection{Question}
+
+                \subsubsection{QUestionStrategy} %super abstract class
+                    \begin{itemize}
+                        \item SingleChoice
+                        \item MultiChoice
+                        \item StepScale
+                        \item DragScale
+                        \item TextAnswer
+                    \end{itemize}
+
+            \subsection{Sensor}
+
+                \subsubsection{SensorManager}
+                \subsubsection{AccelerometerSensor}
+                \subsubsection{GravitySensor}
+                \subsubsection{MagneticFeldSensor}
+                \subsubsection{TemperatureSensor}
+
+
+        \section{view}
+
+            % provided by android
+
+
+        \section{control}
+
+            \subsection{activity}
+
+                \subsubsection{ActivityManager}
+                \subsubsection{BaseActivity}
+                \subsubsection{LogInActivity}
+                \subsubsection{AnswerQuestionActivity}
+
+            \subsection{fragment}
+
+                \subsubsection{ChooseQuestionnaireFragment}
+                \subsubsection{QuestionFragment}
+
+        \section{Hilf package}
+
+            \subsection{service}
+
+                \subsubsection{AutoDownloadService}
+
+                \subsubsection{AutoUploadService}
+
+            \subsection{util}
+
+                \subsubsection{HttpUtil}
+
+                \subsubsection{Util}
+
     \glsaddall
     \printglossary
 
