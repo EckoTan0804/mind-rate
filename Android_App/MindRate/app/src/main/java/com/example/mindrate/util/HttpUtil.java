@@ -15,7 +15,13 @@ public class HttpUtil {
 
     }
 
-    public void sendRequestWithOkHttp() {
+    /**
+     * use Okhttp to send http-request
+     *
+     * @param address target address
+     * @param callback provided by okhttp3
+     */
+    public static void sendRequestWithOkHttp(String address, okhttp3.Callback callback) {
 
     }
 }
