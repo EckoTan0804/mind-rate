@@ -24,7 +24,10 @@ public class Questionnaire {
     private String questionnaireID;
     private boolean shouldTrigger;
     private boolean[] sensorValues;
-    public boolean shouldTriggeredBySensor;
+    private boolean triggeredBySensor;
+    private SensorManager sensorManager;
+
+
 
     
 //   private Collection<> answers;
@@ -125,11 +128,27 @@ public class Questionnaire {
         this.sensorValues = sensorValues;
     }
 
-    public boolean isShouldTriggeredBySensor() {
-        return shouldTriggeredBySensor;
+    public boolean isTriggeredBySensor() {
+        return triggeredBySensor;
     }
 
-    public void setShouldTriggeredBySensor(boolean shouldTriggeredBySensor) {
-        this.shouldTriggeredBySensor = shouldTriggeredBySensor;
+    public void setTriggeredBySensor(boolean triggeredBySensor) {
+        this.triggeredBySensor = triggeredBySensor;
+    }
+
+    public String getQuestionnaireID() {
+        return questionnaireID;
+    }
+
+    public void setQuestionnaireID(String questionnaireID) {
+        this.questionnaireID = questionnaireID;
+    }
+
+    public SensorManager getSensorManager() {
+        return sensorManager;
+    }
+
+    public void setSensorManager(SensorManager sensorManager) {
+        this.sensorManager = sensorManager;
     }
 }
