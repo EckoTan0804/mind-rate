@@ -27,7 +27,7 @@ hs_err_pid*
 *.glsdefs
 *.ist
 *.fdb_latexmk
-*.fl
+*.fls
 
 
 
