@@ -66,7 +66,7 @@ public class Proband {
     }
 
     /**
-     * Exception 如果输入的信息格式有错 则创建账户失败，login依旧为false
+     *
      */
     public void logIn() {
         if (!isLogIn) {
