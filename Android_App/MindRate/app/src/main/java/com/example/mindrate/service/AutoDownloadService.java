@@ -9,5 +9,5 @@ package com.example.mindrate.service;
  * Created at 2017/1/8:23:48
  */
 
-public class UploadTask {
+public class AutoDownloadService {
 }
