@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage[toc]{glossaries}
 \usepackage{float}
+\usepackage{listings}
+
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 \makeglossaries
@@ -193,9 +195,7 @@
             \vspace*{1cm}
             \begin{figure}[H]
                 \centering
-                % \begin{flushleft}
                 \includegraphics[scale = 0.25]{packageDiagram.jpg}
-                % \end{flushleft}
                 \caption{Überblick über alle Packte und Klasse (ohne Attribute und Methoden)}
             \end{figure}
 
@@ -204,17 +204,37 @@
 
         %TODO: Ausführliche Beschreibung für jedes package und klasse davon
 
-        \section{model}
+        \section{Model}
 
+            Der Teil Model besteht aus zwei Pakete: gson und sensor.
+
+            \begin{figure}[H]
+                \centering
+                % \includegraphics[scale = 0.25]{Model.jpg}
+                \includegraphics[scale=0.28]{Model.jpg}
+                \caption{Model (Modelle)}
+            \end{figure}
+
+
+            \newpage
             \subsection{gson}
 
+
+
                 \subsubsection{Proband}
+
+
+                    % \begin{listing}[language=Java]
+                    %     public class Proband {
+                        
+                    %     }
+                    % \end{listing}
 
                 \subsubsection{Questionnaire}
 
                 \subsubsection{Question}
 
-                \subsubsection{QUestionStrategy} %super abstract class
+                \subsubsection{QuestionStrategy} %super abstract class
                     \begin{itemize}
                         \item SingleChoice
                         \item MultiChoice
@@ -232,12 +252,12 @@
                 \subsubsection{TemperatureSensor}
 
 
-        \section{view}
+        \section{View}
 
             % provided by android
 
 
-        \section{control}
+        \section{Control}
             \begin{figure}[H]
                 \centering
                 \includegraphics[scale = 0.25]{ControlClassDiagram(Android).jpg}
@@ -255,7 +275,7 @@
                 \subsubsection{ChooseQuestionnaireFragment}
                 \subsubsection{QuestionFragment}
 
-        \section{Hilf package}
+        \section{HilfPaket}
 
             \subsection{service}
 
