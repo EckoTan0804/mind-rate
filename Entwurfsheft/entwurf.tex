@@ -288,7 +288,7 @@
 
                 \subsubsection{abstract class \code{QuestionStrategy<T>}} %super abstract class
 
-                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird. 
+                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird.
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
@@ -313,17 +313,29 @@
                     \end{enumerate}
 
 
-            \subsection{Sensor}
+            \subsection{package \code{Sensor}}
             \begin{figure}[H]
                 \centering
                 \includegraphics[scale = 0.5]{ClassDiagramAppSensor.jpg}
                 \caption{Klassendiagramm für Sensoren in der Android Applikation }
             \end{figure}
-                \subsubsection{SensorManager}
-                \subsubsection{AccelerometerSensor}
-                \subsubsection{GravitySensor}
-                \subsubsection{MagneticFeldSensor}
-                \subsubsection{TemperatureSensor}
+                \subsubsection{class \code{SensorManager}}
+                Diese Klasse ist einer Manager aller Sensoren, die in diesem Fragebogen bunutzt werden.
+                \begin{enumerate}
+                  \item Attribute
+                    \begin{itemize}
+                      \item \code{sensors:Collection<Sensor>}
+                    \end{itemize}
+                \end{enumerate}
+                \subsubsection{class \code{AccelerometerSensor}}
+                Diese Klasse handelt es sich um den Sensor über Beschleunigung.
+                \subsubsection{class \code{GravitySensor}}
+                Diese Klasse handelt es sich um den Sensor über Gravitation.
+                \subsubsection{class \code{MagneticFeldSensor}}
+                Diese Klasse handelt es sich um den Sensor über Magnetfeld.
+                \subsubsection{class \code{TemperatureSensor}}
+                Diese Klasse handelt es sich um den Sensor über Temperatur.
+                
 
 
         \section{View}
@@ -332,23 +344,67 @@
 
 
         \section{Control}
+         Der Teil Model besteht aus zwei Pakete: activity und fragment.
             \begin{figure}[H]
                 \centering
-                \includegraphics[scale = 0.25]{ControlClassDiagram(Android).jpg}
+                \includegraphics[scale = 0.3]{ControlClassDiagram(Android).jpg}
                 \caption{Klassendiagramm für Control in der Android Applikation }
             \end{figure}
 
             \subsection{activity}
 
-                \subsubsection{ActivityManager}
-                \subsubsection{BaseActivity}
-                \subsubsection{LogInActivity}
-                \subsubsection{AnswerQuestionActivity}
+                \subsubsection{class \code{ActivityManager}}
+                \begin{enumerate}
+                \item Attribute
+                     \begin{itemize}
+                                \item \code{acvities: Collection<Acvitiy>}
+                     \end{itemize}
+                \item Methoden
+                     \begin{itemize}
+                                \item addAcvitiy()
+                                \item removeAcvitiy()
+                                \item finishAll()
+                     \end{itemize}
+                \end{enumerate}
+                \subsubsection{class \code{BaseActivity}}
+                \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item onCreate()
+                                \item onStart()
+                                \item onResume()
+                                \item onPause()
+                                \item onDestroy()
+                            \end{itemize}
+                \end{enumerate}
+                \subsubsection{class \code{LogInActivity}}
+                \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                \end{enumerate}
+                \subsubsection{class \code{AnswerQuestionActivity}}
+                 \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                \end{enumerate}
 
             \subsection{fragment}
 
-                \subsubsection{ChooseQuestionnaireFragment}
-                \subsubsection{QuestionFragment}
+                \subsubsection{class \code{ChooseQuestionnaireFragment}}
+                \begin{enumerate}
+                \item Attribute
+                \item Methoden
+                     \begin{itemize}
+                                \item queryQuestionnaire()
+                     \end{itemize}
+                \end{enumerate}
+                
+                \subsubsection{class \code{QuestionFragment}}
+                 \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                \end{enumerate}
 
         \section{Hilfpaket}
 
