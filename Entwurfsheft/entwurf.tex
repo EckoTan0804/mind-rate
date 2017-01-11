@@ -337,6 +337,7 @@
                 \includegraphics[scale = 0.25]{ControlClassDiagram(Android).jpg}
                 \caption{Klassendiagramm für Control in der Android Applikation }
             \end{figure}
+
             \subsection{activity}
 
                 \subsubsection{ActivityManager}
@@ -349,19 +350,52 @@
                 \subsubsection{ChooseQuestionnaireFragment}
                 \subsubsection{QuestionFragment}
 
-        \section{HilfPaket}
+        \section{Hilfpaket}
 
-            \subsection{service}
+
+
+
+            \subsection{package \code{service}}
 
                 \subsubsection{AutoDownloadService}
 
                 \subsubsection{AutoUploadService}
 
-            \subsection{util}
+            \newpage
+            \subsection{package \code{util}}
 
-                \subsubsection{HttpUtil}
+                \vspace*{3cm}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 0.5]{util.jpg}
+                    \caption{package \code{util}}
+                \end{figure}
 
-                \subsubsection{Util}
+                \subsubsection{class \code{HttpUtil}}
+
+                    Diese Klasse ist zuständig für die Kommunikation zwischen Android-App und Server, indem wir die http-Framework OkHttp\footnote{http://square.github.io/okhttp/} verwenden.
+
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static sendOkHttpRequest(address:String, callback:okhttp3.Callback)}
+                            \end{itemize}
+                    \end{enumerate}
+
+                \subsubsection{class \code{Util}}
+
+                    Diese Klasse bietet einige zweckmäßige Funktionen an, z.B. Analysierung der  von Server zurückgegebene Daten.
+
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static handleQuestionnaireResponse(response:String):Questionnaire}\\
+                                Diese Method analysiert die von Server zurückgegebene json Daten und gibt \code{Questionnaire} Objekt zurück.
+                            \end{itemize}
+                    \end{enumerate}
+
 
     \glsaddall
     \printglossary
