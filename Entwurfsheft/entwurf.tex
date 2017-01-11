@@ -55,12 +55,12 @@
     \tableofcontents
 
     \chapter{Allgemeine Struktur}
-    
+
         Der Entwurf besteht aus zwei Seiten: der Android-App-Seite und der Server-Seite. Sie sind jeweils für die Android-App und das Web-Interface verantwortlich. Zusätzlich soll eine Datenbank auf dem Server laufen, um alle Studien-, Konto- und Probandendaten zu speichern. Diese gehört auch zu der Server-Seite. Die zwei Seiten sollen miteinander durch das HTTP-Protokoll kommunizieren.
-        
+
     \chapter{Server-Seite}
         Die Server-Seite nutzt eine von Django-Framework veränderte Variante\footnote{\href{https://docs.djangoproject.com/en/1.10/faq/general/\#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names}{https://docs.djangoproject.com/en/1.10/faq/general/\#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names}} der Modell-Präsentation-Steuerung-Architektur (MVC) als den Architekturstil. Die benötigte Klassen werden als Modelle entworfen. Der Entwurf von Server-Seite wird auf Python angefertigt.
-        
+
         \section{Modelle}
             \begin{itemize}
                 \item \code{class StudyDirector}
@@ -70,7 +70,7 @@
                         \item \code{firstName}
                         \item \code{mailAddress}
                     \end{itemize}
-                    
+
                     \item \code{class Study}
                         \begin{itemize}
                             \item \code{probands = []: Proband}
@@ -81,7 +81,7 @@
                             \item \code{director: StudyDirector}
                             \item \code{questionnaires = []: Questionnaire}
                         \end{itemize}
-                        
+
                     \item \code{class Proband}
                         \begin{itemize}
                             \item \code{study: Study}
@@ -90,7 +90,7 @@
                             \item \code{occupation}
                             \item \code{gender}
                         \end{itemize}
-                        
+
                     \item \code{class Questionnairer}
                         \begin{itemize}
                             \item \code{questions = []: AbstractQuestion}
@@ -101,25 +101,25 @@
                             \item \code{answeringTime}
                             \item \code{answers = []: QuestionnaireAnswer}
                         \end{itemize}
-                        
+
                     \item \code{class QuestionnaireAnswer}
                         \begin{itemize}
                             \item \code{submitter: Proband}
                             \item \code{submitTime}
                             \item \code{questionAnswers = []: AbstractQuestionAnswer}
                         \end{itemize}
-                        
+
                     \item \code{class AbstractQuestion(ABC)}
                         \begin{itemize}
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                         \end{itemize}
-                        
+
                     \item \code{class TextQuestion(AbstractQuestion)}
                         \begin{itemize}
                             \item \code{content}
                         \end{itemize}
-                        
+
                     \item \code{class ChoiceQuestion(AbstractQuestion)}
                         \par // Both single choice question and multiple choice question are belonging to this class.
                         \begin{itemize}
@@ -127,7 +127,7 @@
                             \item \code{followUpQuestion: AbstractQuestion}
                             \item \code{followUpQuestionTriggerOptions = []}
                         \end{itemize}
-                        
+
                     \item \code{class SteplessScaleQuestion(AbstractQuestion)}
                         \par // Scale questions with steps are effectively just single choice questions; therefore they are not a class.
                         \begin{itemize}
@@ -137,34 +137,34 @@
                             \item \code{followUpQuestionTriggerMin: int}
                             \item \code{followUpQuestionTriggerMax: int}
                         \end{itemize}
-                        
+
                     \item \code{class AbstractQuestionAnswer(ABC)}
                         \begin{itemize}
                             \item \code{content}
                         \end{itemize}
-                   
+
                    \item \code{class TextQuestionAnswer(AbstractQuestionAnswer)}
                        \begin{itemize}
                            \item \code{content: string}
                        \end{itemize}
-                   
+
                    \item \code{class MultiChoiceQuestionAnswer(AbstractQuestionAnswer)}
                        \begin{itemize}
                            \item \code{content = []: string}
-                       \end{itemize} 
-                    
+                       \end{itemize}
+
                     \item \code{class SingleChoiceQuestionAnswer(AbstractQuestionAnswer)}
                         \begin{itemize}
                             \item \code{content: string}
                         \end{itemize}
-                    
+
                     \item \code{class SteplessScaleQuestionAnswer(AbstractQuestionAnswer)}
                         \begin{itemize}
                             \item \code{content: int}
                         \end{itemize}
-                        
+
             \end{itemize}
-        
+
         \newpage
         \section{Entity-Relationship-Modell der Datenbank}
             \begin{figure}[ht]
@@ -177,13 +177,13 @@
     \newpage
     \chapter{Android-App}
 
-        Das Entwurfsmuster Model View Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen. 
+        Das Entwurfsmuster Model View Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
 
 
         \vspace*{1cm}
         \section{Überblick von Pakete}
 
-            Das folgende Diagramm dient sich als einen Überblick über unsere Android App. Modell, Präsentation udn Steuerung werden mit drei verschiedenen Farbe dargestellt: blau für Modell, grün für Präsentation und gelb für Steuerung. 
+            Das folgende Diagramm dient sich als einen Überblick über unsere Android App. Modell, Präsentation udn Steuerung werden mit drei verschiedenen Farbe dargestellt: blau für Modell, grün für Präsentation und gelb für Steuerung.
 
             \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden. Jede Pakete sowie Klasse mit Attribute und Methoden werden dann ausführlich beschreiben.
 
@@ -238,7 +238,11 @@
 
 
         \section{control}
-
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.25]{ControllerDiagram(Android).jpg}
+                \caption{Klassendiagramm für Controller in der Android Applikation }
+            \end{figure}
             \subsection{activity}
 
                 \subsubsection{ActivityManager}
