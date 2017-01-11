@@ -187,7 +187,7 @@
 
             Das folgende Diagramm dient sich als einen Überblick über unsere Android App. Modell, Präsentation udn Steuerung werden mit drei verschiedenen Farbe dargestellt: blau für Modell, grün für Präsentation und gelb für Steuerung.
 
-            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden. Jede Pakete sowie Klasse mit Attribute und Methoden werden dann ausführlich beschreiben.
+            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden. Jede Pakete sowie Klasse mit Attribute und (offene) Methoden werden dann ausführlich beschreiben.
 
 
 
@@ -206,7 +206,30 @@
 
         \section{Model}
 
-            Der Teil Model besteht aus zwei Pakete: gson und sensor.
+            Der Teil Model besteht aus zwei Pakete: 
+
+            \begin{itemize}
+                \item package \code{gson}
+                    \begin{itemize}
+                        \item \code{abstract class QuestionStrategy}
+                        \item \code{class SingleChoice}
+                        \item \code{class MutipleChoice}
+                        \item \code{class StepScale}
+                        \item \code{class DragScale}
+                        \item \code{class TextAnswer}
+                        \item \code{class Proband}
+                        \item \code{class Questionnaire}
+                        \item \code{class Question}
+                    \end{itemize}
+                \item package \code{sensor}
+                    \begin{itemize}
+                        \item \code{SensorManager}
+                        \item \code{AccelerometerSensor}
+                        \item \code{MagneticFeldSensor}
+                        \item \code{GravitySensor}
+                        \item \code{TemperatureSensor}
+                    \end{itemize}
+            \end{itemize}
 
             \begin{figure}[H]
                 \centering
@@ -218,8 +241,6 @@
 
             \newpage
             \subsection{package \code{gson}}
-
-
 
                 \subsubsection{class \code{Proband}}
 
@@ -319,6 +340,7 @@
                 \includegraphics[scale = 0.5]{ClassDiagramAppSensor.jpg}
                 \caption{Klassendiagramm für Sensoren in der Android Applikation }
             \end{figure}
+<<<<<<< HEAD
                 \subsubsection{class \code{SensorManager}}
                 Diese Klasse ist einer Manager aller Sensoren, die in diesem Fragebogen bunutzt werden.
                 \begin{enumerate}
@@ -336,11 +358,35 @@
                 \subsubsection{class \code{TemperatureSensor}}
                 Diese Klasse handelt es sich um den Sensor über Temperatur.
                 
+=======
 
 
+                \subsubsection{SensorManager}
+                \subsubsection{AccelerometerSensor}
+                \subsubsection{GravitySensor}
+                \subsubsection{MagneticFeldSensor}
+                \subsubsection{TemperatureSensor}
+>>>>>>> 31090a351ad7e5bb998ffdf96575da58eca20689
+
+        \newpage
         \section{View}
 
-            % provided by android
+            \vspace*{1cm}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.7]{view.jpg}
+                \caption{view (Präsentation)}
+            \end{figure}
+
+            \begin{itemize}
+                \item layout \\
+                        
+                \item mipmap
+                \item values
+                \item drawable
+            \end{itemize}
+
+
 
 
         \section{Control}
@@ -406,16 +452,40 @@
                         \item Methoden
                 \end{enumerate}
 
+
+        \newpage
         \section{Hilfpaket}
-
-
 
 
             \subsection{package \code{service}}
 
+                Die Klassen in diesem Paket handeln sich um die Hintergrunddienste für unsere Android-App. Die Aufgaben, wie z.B., Hochladen von Antworten, sollen im Hintergrund erledigen, falls die Internetverbindung verfügbar ist, während der Nutzer gerade andere Applikation nutzt oder sein Gerät garnicht in der Hand hat.
+
+                \vspace*{0.5cm}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 0.5]{service.jpg}
+                    \caption{package \code{service}}
+                \end{figure}
+
                 \subsubsection{AutoDownloadService}
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static downloadQuestionnaires(serverAddress:String): List<Questionnaire>
+                                }
+                            \end{itemize}
+                    \end{enumerate}
 
                 \subsubsection{AutoUploadService}
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static uploadAnswer(serverAddress:String)}
+                            \end{itemize}
+                    \end{enumerate}
 
             \newpage
             \subsection{package \code{util}}
