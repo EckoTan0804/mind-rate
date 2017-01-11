@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage[toc]{glossaries}
 \usepackage{float}
+\usepackage{listings}
+
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 \makeglossaries
@@ -177,7 +179,7 @@
     \newpage
     \chapter{Android-App}
 
-        Das Entwurfsmuster Model View Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
+        Das Entwurfsmuster Model-View-Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
 
 
         \vspace*{1cm}
@@ -193,9 +195,7 @@
             \vspace*{1cm}
             \begin{figure}[H]
                 \centering
-                % \begin{flushleft}
                 \includegraphics[scale = 0.25]{packageDiagram.jpg}
-                % \end{flushleft}
                 \caption{Überblick über alle Packte und Klasse (ohne Attribute und Methoden)}
             \end{figure}
 
@@ -204,24 +204,114 @@
 
         %TODO: Ausführliche Beschreibung für jedes package und klasse davon
 
-        \section{model}
+        \section{Model}
 
-            \subsection{gson}
+            Der Teil Model besteht aus zwei Pakete: gson und sensor.
 
-                \subsubsection{Proband}
+            \begin{figure}[H]
+                \centering
+                % \includegraphics[scale = 0.25]{Model.jpg}
+                \includegraphics[scale=0.28]{Model.jpg}
+                \caption{Model (Modelle)}
+            \end{figure}
 
-                \subsubsection{Questionnaire}
 
-                \subsubsection{Question}
+            \newpage
+            \subsection{package \code{gson}}
 
-                \subsubsection{QUestionStrategy} %super abstract class
-                    \begin{itemize}
-                        \item SingleChoice
-                        \item MultiChoice
-                        \item StepScale
-                        \item DragScale
-                        \item TextAnswer
-                    \end{itemize}
+
+
+                \subsubsection{class \code{Proband}}
+
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{probandID:String}
+                                \item \code{studyID:String}
+                                \item \code{gender:Gender}
+                                \item \code{age:int}
+                                \item \code{occupation:String}
+                                \item \code{questionnaires:Collection<Questionnaire>}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{login()}
+                                \item \code{submitAnswer(QuestionID:String)}
+                                \item \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}
+                                \item \code{answerQuestionniare(QuestionnaireID:String)}
+                                \item \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
+
+
+
+                \subsubsection{class \code{Questionnaire}}
+
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{questions:Collection<Question>}
+                                \item \code{isValid:boolean}
+                                \item \code{beginTime:String}
+                                \item \code{duration:int}
+                                \item \code{QuestionnaireID:String}
+                                \item \code{shouldTrigger:boolean}
+                                \item \code{sensorValues:boolean[]}
+                                \item \code{shouldTriggeredBySensor:booelan}
+                                \item \code{sensorManager:SensorManager}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{saveAnswerLocally()}
+                                \item \code{uploadAnswer(serverAddress:String)}
+                                \item \code{notifyToAnsewr()}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
+
+                \subsubsection{class \code{Question}}
+
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{question:String}
+                                \item \code{questionType: QuestionStrategy}
+                                \item \code{questionID: String}
+                                \item \code{nextQuestionID: String}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
+
+                \subsubsection{abstract class \code{QuestionStrategy<T>}} %super abstract class
+
+                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird. 
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{answer:T}\\
+                                    Generische Programmierung (eng:Generic) wird für attribute \code{answer} angewandet, da der Datentyp von Attribute \code{answer} in vershiedener Unterlasse von \code{QuestionStrategy} unterschiedlich sein sollte.
+                                % \item \code{}
+                                % \item \code{}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                        \item Unterklasse\\
+                            Laut Pflichtenheft gibt es fünf Fragearten. Deswegen gibt es fünf Unterklassen:
+                            \begin{itemize}
+                                \item class \code{SingleChoice}
+                                \item class \code{MultipleChoice}
+                                \item class \code{StepScale}
+                                \item class \code{DragScale}
+                                \item class \code{TextAnswer}
+                            \end{itemize}
+                    \end{enumerate}
+
 
             \subsection{Sensor}
             \begin{figure}[H]
@@ -236,17 +326,18 @@
                 \subsubsection{TemperatureSensor}
 
 
-        \section{view}
+        \section{View}
 
             % provided by android
 
 
-        \section{control}
+        \section{Control}
             \begin{figure}[H]
                 \centering
                 \includegraphics[scale = 0.25]{ControlClassDiagram(Android).jpg}
                 \caption{Klassendiagramm für Control in der Android Applikation }
             \end{figure}
+
             \subsection{activity}
 
                 \subsubsection{ActivityManager}
@@ -259,19 +350,52 @@
                 \subsubsection{ChooseQuestionnaireFragment}
                 \subsubsection{QuestionFragment}
 
-        \section{Hilf package}
+        \section{Hilfpaket}
 
-            \subsection{service}
+
+
+
+            \subsection{package \code{service}}
 
                 \subsubsection{AutoDownloadService}
 
                 \subsubsection{AutoUploadService}
 
-            \subsection{util}
+            \newpage
+            \subsection{package \code{util}}
 
-                \subsubsection{HttpUtil}
+                \vspace*{3cm}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 0.5]{util.jpg}
+                    \caption{package \code{util}}
+                \end{figure}
 
-                \subsubsection{Util}
+                \subsubsection{class \code{HttpUtil}}
+
+                    Diese Klasse ist zuständig für die Kommunikation zwischen Android-App und Server, indem wir die http-Framework OkHttp\footnote{http://square.github.io/okhttp/} verwenden.
+
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static sendOkHttpRequest(address:String, callback:okhttp3.Callback)}
+                            \end{itemize}
+                    \end{enumerate}
+
+                \subsubsection{class \code{Util}}
+
+                    Diese Klasse bietet einige zweckmäßige Funktionen an, z.B. Analysierung der  von Server zurückgegebene Daten.
+
+                    \begin{enumerate}
+                        \item Attribute
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{static handleQuestionnaireResponse(response:String):Questionnaire}\\
+                                Diese Method analysiert die von Server zurückgegebene json Daten und gibt \code{Questionnaire} Objekt zurück.
+                            \end{itemize}
+                    \end{enumerate}
+
 
     \glsaddall
     \printglossary
