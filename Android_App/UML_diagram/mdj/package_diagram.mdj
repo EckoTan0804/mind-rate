@@ -276,7 +276,7 @@
 											"height": 42,
 											"autoResize": false,
 											"underline": false,
-											"text": "Controller",
+											"text": "Control",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -657,7 +657,7 @@
 											"height": 32,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Controller)",
+											"text": "(from Control)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -15676,7 +15676,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFY6mA9xvNJOLg="
 					},
-					"name": "Controller",
+					"name": "Control",
 					"ownedElements": [
 						{
 							"_type": "UMLPackage",
