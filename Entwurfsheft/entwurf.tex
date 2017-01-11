@@ -179,7 +179,7 @@
     \newpage
     \chapter{Android-App}
 
-        Das Entwurfsmuster Model View Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
+        Das Entwurfsmuster Model-View-Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
 
 
         \vspace*{1cm}
@@ -217,31 +217,101 @@
 
 
             \newpage
-            \subsection{gson}
+            \subsection{package \code{gson}}
 
 
 
-                \subsubsection{Proband}
+                \subsubsection{class \code{Proband}}
+
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{probandID:String}
+                                \item \code{studyID:String}
+                                \item \code{gender:Gender}
+                                \item \code{age:int}
+                                \item \code{occupation:String}
+                                \item \code{questionnaires:Collection<Questionnaire>}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{login()}
+                                \item \code{submitAnswer(QuestionID:String)}
+                                \item \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}
+                                \item \code{answerQuestionniare(QuestionnaireID:String)}
+                                \item \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
 
 
-                    % \begin{listing}[language=Java]
-                    %     public class Proband {
-                        
-                    %     }
-                    % \end{listing}
 
-                \subsubsection{Questionnaire}
+                \subsubsection{class \code{Questionnaire}}
 
-                \subsubsection{Question}
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{questions:Collection<Question>}
+                                \item \code{isValid:boolean}
+                                \item \code{beginTime:String}
+                                \item \code{duration:int}
+                                \item \code{QuestionnaireID:String}
+                                \item \code{shouldTrigger:boolean}
+                                \item \code{sensorValues:boolean[]}
+                                \item \code{shouldTriggeredBySensor:booelan}
+                                \item \code{sensorManager:SensorManager}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item \code{saveAnswerLocally()}
+                                \item \code{uploadAnswer(serverAddress:String)}
+                                \item \code{notifyToAnsewr()}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
 
-                \subsubsection{QuestionStrategy} %super abstract class
-                    \begin{itemize}
-                        \item SingleChoice
-                        \item MultiChoice
-                        \item StepScale
-                        \item DragScale
-                        \item TextAnswer
-                    \end{itemize}
+                \subsubsection{class \code{Question}}
+
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{question:String}
+                                \item \code{questionType: QuestionStrategy}
+                                \item \code{questionID: String}
+                                \item \code{nextQuestionID: String}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                    \end{enumerate}
+
+                \subsubsection{abstract class \code{QuestionStrategy<T>}} %super abstract class
+
+                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird. 
+                    \begin{enumerate}
+                        \item Attribute
+                            \begin{itemize}
+                                \item \code{answer:T}\\
+                                    Generische Programmierung (eng:Generic) wird für attribute \code{answer} angewandet, da der Datentyp von Attribute \code{answer} in vershiedener Unterlasse von \code{QuestionStrategy} unterschiedlich sein sollte.
+                                % \item \code{}
+                                % \item \code{}
+                            \end{itemize}
+                        \item Methoden
+                            \begin{itemize}
+                                \item setters und getters für alle Attribute
+                            \end{itemize}
+                        \item Unterklasse\\
+                            Laut Pflichtenheft gibt es fünf Fragearten. Deswegen gibt es fünf Unterklassen:
+                            \begin{itemize}
+                                \item class \code{SingleChoice}
+                                \item class \code{MultipleChoice}
+                                \item class \code{StepScale}
+                                \item class \code{DragScale}
+                                \item class \code{TextAnswer}
+                            \end{itemize}
+                    \end{enumerate}
+
 
             \subsection{Sensor}
             \begin{figure}[H]
