@@ -179,7 +179,7 @@
     \newpage
     \chapter{Android-App}
 
-        Das Entwurfsmuster Model-View-Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier eingesetzt, um einen fleixbler Programmentwurf zu ermöglichen.
+        Das Entwurfsmuster Model-View-Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier angewandet, um einen fleixbler Programmentwurf zu ermöglichen.
 
 
         \vspace*{1cm}
@@ -187,7 +187,7 @@
 
             Das folgende Diagramm dient sich als einen Überblick über unsere Android App. Modell, Präsentation udn Steuerung werden mit drei verschiedenen Farbe dargestellt: blau für Modell, grün für Präsentation und gelb für Steuerung.
 
-            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden. Jede Pakete sowie Klasse mit Attribute und (offene) Methoden werden dann ausführlich beschreiben.
+            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden. Jede Pakete sowie Klasse mit Attribute und (offene) Methoden werden dann ausführlich beschrieben.
 
 
 
@@ -257,7 +257,7 @@
                         \item Methoden
                             \begin{itemize}
                                 \item \code{login()}
-                                \item \code{submitAnswer(QuestionID:String)}
+                                \item \code{submitAnswer(QuestionnaireID:String)}
                                 \item \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}
                                 \item \code{answerQuestionniare(QuestionnaireID:String)}
                                 \item \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}
@@ -309,7 +309,7 @@
 
                 \subsubsection{abstract class \code{QuestionStrategy<T>}} %super abstract class
 
-                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird.
+                    Hier wird Entwurfsmuster Stagtegie (eng: Strategy) eingesetzt, indem \code{QuestionStrategy} als Teil der Aggregation von \code{Question} und gleichzeitig als Oberklasse (eng: super class) von \code{SingleChoice}, \code{MutipleChoice}, \code{StepScale}, \code{DragScale} und \code{TextAnswer} gesetzt wird.
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
@@ -349,13 +349,13 @@
                     \end{itemize}
                 \end{enumerate}
                 \subsubsection{class \code{AccelerometerSensor}}
-                Diese Klasse handelt es sich um den Sensor über Beschleunigung.
+                Diese Klasse handelt sich um den Sensor über Beschleunigung.
                 \subsubsection{class \code{GravitySensor}}
-                Diese Klasse handelt es sich um den Sensor über Gravitation.
+                Diese Klasse handelt sich um den Sensor über Gravitation.
                 \subsubsection{class \code{MagneticFeldSensor}}
-                Diese Klasse handelt es sich um den Sensor über Magnetfeld.
+                Diese Klasse handelt sich um den Sensor über Magnetfeld.
                 \subsubsection{class \code{TemperatureSensor}}
-                Diese Klasse handelt es sich um den Sensor über Temperatur
+                Diese Klasse handelt sich um den Sensor über Temperatur
 
         \newpage
         \section{View}
@@ -392,12 +392,12 @@
                 \begin{enumerate}
                 \item Attribute
                      \begin{itemize}
-                                \item \code{acvities: Collection<Acvitiy>}
+                            \item \code{activities: Collection<Activity>}
                      \end{itemize}
                 \item Methoden
                      \begin{itemize}
-                                \item addAcvitiy()
-                                \item removeAcvitiy()
+                                \item addActivity()
+                                \item removeActivity()
                                 \item finishAll()
                      \end{itemize}
                 \end{enumerate}
@@ -412,17 +412,23 @@
                                 \item onPause()
                                 \item onDestroy()
                             \end{itemize}
+                        \item Unterklassen
+                            \begin{itemize}
+                                \item class \code{LogInActivity}
+                                \item class \code{AnswerQuestionActivity}
+                            \end{itemize}
+                                
                 \end{enumerate}
-                \subsubsection{class \code{LogInActivity}}
-                \begin{enumerate}
-                        \item Attribute
-                        \item Methoden
-                \end{enumerate}
-                \subsubsection{class \code{AnswerQuestionActivity}}
-                 \begin{enumerate}
-                        \item Attribute
-                        \item Methoden
-                \end{enumerate}
+                % \subsubsection{class \code{LogInActivity}}
+                % \begin{enumerate}
+                %         \item Attribute
+                %         \item Methoden
+                % \end{enumerate}
+                % \subsubsection{class \code{AnswerQuestionActivity}}
+                %  \begin{enumerate}
+                %         \item Attribute
+                %         \item Methoden
+                % \end{enumerate}
 
             \subsection{fragment}
 
