@@ -187,6 +187,57 @@
                 \includegraphics[scale = 0.13]{PSE_Datenbank_ERM.jpeg}
                 \caption{Entity-Relationship-Modell der Datenbank}
             \end{figure}
+            
+        \newpage
+        \section{JSON Datei}
+        	\begin{lstlisting}
+        	{"study": {
+        	  "id":5,
+        	  "name":"study name",
+        	  "beginningDate":{
+        	    "year":2017,
+        	    "month":1,
+        	    "day":1
+        	  },
+        	  "endDate":{
+        	    "year":2017,
+        	    "month":7,
+        	    "day":1
+        	  },
+        	  "questionnaires":[
+        	    {
+        	      "id":1,
+        	      "name":"question name",
+        	      "triggerEvent":{},
+        	      "answeringTime":{"hours":5},
+        	      "questions":[
+        	        {"question1":{
+        	          "type":"choiceQuestion",
+        	          "options":["option1","option2"],
+        	          "followUpQuestion":2,
+        	          "followUpQuestionTriggerOptions":[]
+        	          }}
+        	      ],
+        	      "answers":[
+        	        {"answer1":{
+        	          "type":"multiChoiceQuestionAnswer",
+        	          "content":[1,2]
+        	          }}
+        	      ]
+        	    },
+        	    {
+        	      "id":1,
+        	      "name":"question name",
+        	      "triggerEvent":{},
+        	      "answeringTime":{"hours":5},
+        	      "questions":[],
+        	      "answers":[]
+        	    }
+        	  ]
+        	  }}
+        	}
+        	\end{lstlisting}
+                    
 
 
     \newpage
