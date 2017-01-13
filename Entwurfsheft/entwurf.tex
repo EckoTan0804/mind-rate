@@ -545,9 +545,18 @@
         Die App- und Server-Seiten kommunizieren miteinander per Internet durch das HTTP-Protokoll. Zum Transfer von Daten wird JSON (JavaScript Object Notation) als das Datenformat genutzt.
         
         \section{Vom Server nach der App}
+            \subsection{Anfrage um Proband-Daten}
+                Nur die Daten, die vom Studienleiter bestimmt werden, werden an die Probanden gefragt. Eine JSON-Datei als Beispiel:
+                \begin{lstlisting}
+{
+    "birthdayRequested": "true",
+    "occupationRequested": "false",
+    "genderRequested": "true"
+}
+                \end{lstlisting}
             
             \subsection{Übertragung der Fragebogen vom Server nach der App}
-                Ein Beispiel:
+                Eine JSON-Datei als Beispiel:
                 \begin{lstlisting}
 {
     "study": {
