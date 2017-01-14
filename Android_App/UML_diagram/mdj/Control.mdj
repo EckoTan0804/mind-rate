@@ -3227,7 +3227,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "AcvitiyManager",
+											"text": "ActivitiyManager",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": true
@@ -3345,7 +3345,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "-acvities: Collection<Acvitiy>",
+											"text": "-activities: Collection<Activitiy>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3400,7 +3400,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addAcvitiy()",
+											"text": "+addActivitiy()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3429,7 +3429,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "+removeAcvitiy()",
+											"text": "+removeActivitiy()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5698,7 +5698,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY6mUCPfP7Oqw="
 									},
-									"name": "AcvitiyManager",
+									"name": "ActivitiyManager",
 									"ownedElements": [
 										{
 											"_type": "UMLAssociation",
@@ -5844,11 +5844,11 @@
 											"_parent": {
 												"$ref": "AAAAAAFY6q5BictaQ3o="
 											},
-											"name": "acvities",
+											"name": "activities",
 											"visibility": "private",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "Collection<Acvitiy>",
+											"type": "Collection<Activitiy>",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -5864,7 +5864,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFY6q5BictaQ3o="
 											},
-											"name": "addAcvitiy",
+											"name": "addActivitiy",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
@@ -5878,7 +5878,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFY6q5BictaQ3o="
 											},
-											"name": "removeAcvitiy",
+											"name": "removeActivitiy",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
