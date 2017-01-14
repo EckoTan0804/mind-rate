@@ -262,7 +262,7 @@
                 \vspace*{1cm}
                 \subsubsection{class \code{Proband}}
 
-                
+
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
@@ -279,7 +279,7 @@
                                 \item {\large \code{questionnaires:Collection<Questionnaire>}}\\
                                     alle zu antwortene Fragebögen
                             \end{itemize}
-                        
+
                         \item Methoden
                             \begin{itemize}
                                 \item {\large \code{login()}}\\
@@ -293,7 +293,7 @@
                                 \item {\large \code{submitAnswer(QuestionnaireID:String)}}\\
                                     Nach Klicken von Button ``Submit'' wird diese Methode aufgerufen. Die Antwort von Fragebogen mit \code{QuestionnaireID} wird zuerst lokal gespeichert. Dann versucht unsere Android-App, die Antwort auf den Server hochzuladen.
                                 \item {\large \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}}\\
-                                    Mit \code{QuestionnaireID} kann der Proband dem bestimmten Fragebogen auswählen. 
+                                    Mit \code{QuestionnaireID} kann der Proband dem bestimmten Fragebogen auswählen.
                                 \item {\large \code{answerQuestionniare(QuestionnaireID:String)}}\\
                                     Mit \code{QuestionnaireID} kann der Proband dem bestimmten Fragebogen beantworten.
                                 \item {\large \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}}\\
@@ -301,7 +301,7 @@
                                 \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                     \end{enumerate}
-                
+
 
 
 
@@ -326,7 +326,7 @@
                                     \begin{itemize}
                                         \item Länge = Anzahl die von Handy angebotenen Sensoren
                                         \item Jeder Sensor entpricht einem Element in dieser Array.
-                                        \item Falls der Wert eines Sensors die von Studiensleiter gesetzte Kriterien erfüllt, wird der Wert des entsprechenden Element ``true'' gesetzt. Sonst ``false''. 
+                                        \item Falls der Wert eines Sensors die von Studiensleiter gesetzte Kriterien erfüllt, wird der Wert des entsprechenden Element ``true'' gesetzt. Sonst ``false''.
                                         \item z.B. Die Handy bietet 4 Sensoren an: Accelerometer-Sensor, MagneticFeld-Sensor, Temperature-Sensor und Gravity-Sensor. Die Länge dieser Array ist 4. Das erste Array-Element entspricht Accelerometer-Sensor, die zweite entspricht MagneticFeld-Sensor,usw. Jetzt erfüllen die Werte von Accelerometer-Sensor und MagneticFeld-Sensor die gesetzte Kriterien. Daher sieht \code{sensorValues} so aus: \\
                                         \code{sensorValues = {true, true, false, false}}
 
@@ -407,7 +407,8 @@
                 \begin{enumerate}
                   \item Attribute
                     \begin{itemize}
-                      \item \code{sensors:Collection<Sensor>}
+                      \item {\large\code{sensors:Collection<Sensor>}}\\
+                      enthält alle Sensoren, die in diesem Fragebogen bunutzt werden.
                     \end{itemize}
                 \end{enumerate}
                 \subsubsection{class \code{AccelerometerSensor}}
@@ -462,13 +463,17 @@
                 \begin{enumerate}
                 \item Attribute
                      \begin{itemize}
-                            \item \code{activities: Collection<Activity>}
+                            \item {\large\code{activities: Collection<Activity>}}\\
+                            enthält alle Aktivitäten auf System.
                      \end{itemize}
                 \item Methoden
                      \begin{itemize}
-                                \item addActivity()
-                                \item removeActivity()
-                                \item finishAll()
+                                \item {\large addActivity()}\\
+                                füget eine Aktivität den Liste hinzu.
+                                \item {\large removeActivity()}\\
+                                entfernt eine Aktivität aus den Liste.
+                                \item {\large finishAll()}\\
+                                alle Aktivitäten in den Liste abschließen.
                      \end{itemize}
                 \end{enumerate}
                 \subsubsection{class \code{BaseActivity}}
@@ -476,16 +481,23 @@
                         \item Attribute
                         \item Methoden
                             \begin{itemize}
-                                \item onCreate()
-                                \item onStart()
-                                \item onResume()
-                                \item onPause()
-                                \item onDestroy()
+                                \item {\large onCreate()}\\
+                                Wenn eine Aktivität erste erstellt wird, wird diese Methode angerufen.
+                                \item {\large onStart()}\\
+                                Wenn eine Aktivität zur Kunde sichtbar wird, wird diese Methode angerufen.
+                                \item {\large onResume()}\\
+                                Wenn eine Aktivität mit den Kunde  interagiert, wird diese Methode angerufen.
+                                \item {\large onPause()}\\
+                                Wenn das System eine vorherige Aktivität erstellt, wird diese Methode angerufen.
+                                \item {\large onDestroy()}\\
+                                Vor die Zerstörung einer Aktivität wird diese Methode angerufen.
                             \end{itemize}
                         \item Unterklassen
                             \begin{itemize}
-                                \item class \code{LogInActivity}
-                                \item class \code{AnswerQuestionActivity}
+                                \item {\large class \code{LogInActivity}}\\
+                                Anmelden-Aktivität.
+                                \item {\large class \code{AnswerQuestionActivity}}\\
+                                Fragebogensbeantworten-Aktivität.
                             \end{itemize}
 
                 \end{enumerate}
@@ -507,7 +519,7 @@
                 \item Attribute
                 \item Methoden
                      \begin{itemize}
-                                \item queryQuestionnaire()
+                                \item {\large queryQuestionnaire()}
                      \end{itemize}
                 \end{enumerate}
 
@@ -539,7 +551,7 @@
                         \item Methoden
                             \begin{itemize}
                                 \item {\large \code{static downloadQuestionnaires(serverAddress:String): List<Questionnaire>}}\\
-                                
+
                             \end{itemize}
                     \end{enumerate}
 
@@ -586,11 +598,11 @@
                                 Diese Method analysiert die von Server zurückgegebene json Daten und gibt \code{Questionnaire} Objekt zurück.
                             \end{itemize}
                     \end{enumerate}
-    }        
-           
+    }
+
     \chapter{Interface zwishcen Server und App}
         Die App- und Server-Seiten kommunizieren miteinander per Internet durch das HTTP-Protokoll. Zum Transfer von Daten wird JSON (JavaScript Object Notation) als das Datenformat genutzt.
-        
+
         \section{Vom Server nach der App}
             \subsection{Anfrage um Proband-Daten}
                 Nur die Daten, die vom Studienleiter bestimmt werden, werden an die Probanden gefragt. Eine JSON-Datei als Beispiel:
@@ -601,7 +613,7 @@
     "genderRequested": "true"
 }
                 \end{lstlisting}
-            
+
             \subsection{Übertragung der Fragebogen vom Server nach der App}
                 Eine JSON-Datei als Beispiel:
                 \begin{lstlisting}
