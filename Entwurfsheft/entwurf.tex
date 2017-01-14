@@ -220,6 +220,7 @@
 
         %TODO: Ausführliche Beschreibung für jedes package und klasse davon
 
+        \setlength{\baselineskip}{1.5\baselineskip}{
         \section{Model}
 
             Der Teil Model besteht aus zwei Pakete:
@@ -261,7 +262,7 @@
                 \vspace*{1cm}
                 \subsubsection{class \code{Proband}}
 
-                \setlength{\baselineskip}{1.5\baselineskip}{
+                
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
@@ -300,7 +301,7 @@
                                 \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                     \end{enumerate}
-                }
+                
 
 
 
@@ -309,22 +310,43 @@
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
-                                \item \code{questions:Collection<Question>}
-                                \item \code{isValid:boolean}
-                                \item \code{beginTime:String}
-                                \item \code{duration:int}
-                                \item \code{QuestionnaireID:String}
-                                \item \code{shouldTrigger:boolean}
-                                \item \code{sensorValues:boolean[]}
-                                \item \code{shouldTriggeredBySensor:booelan}
-                                \item \code{sensorManager:SensorManager}
+                                \item {\large \code{questions:Collection<Question>}}\\
+                                    enthält alle Fragen dieses Fragebogens
+                                \item {\large \code{isValid:boolean}}\\
+                                    Falls der Proband innerhalb des gültigen Zeitbereich den Fragebogen nicht beantworten, wird den Wert dieser Attribute als ``false'' gesetzt.
+                                \item {\large \code{beginTime:String}}
+                                    Anfangszeitpunkt des Fragebogens
+                                \item {\large \code{duration:int}}
+                                    Dauer des gültigen Zeitbereich
+                                \item {\large \code{QuestionnaireID:String}}
+                                    die einzige ID des Fragebogens
+                                \item {\large \code{shouldTrigger:boolean}}
+                                    ob der Fragebogen ausgelöst werden soll
+                                \item {\large \code{sensorValues:boolean[]}}
+                                    \begin{itemize}
+                                        \item Länge = Anzahl die von Handy angebotenen Sensoren
+                                        \item Jeder Sensor entpricht einem Element in dieser Array.
+                                        \item Falls der Wert eines Sensors die von Studiensleiter gesetzte Kriterien erfüllt, wird der Wert des entsprechenden Element ``true'' gesetzt. Sonst ``false''. 
+                                        \item z.B. Die Handy bietet 4 Sensoren an: Accelerometer-Sensor, MagneticFeld-Sensor, Temperature-Sensor und Gravity-Sensor. Die Länge dieser Array ist 4. Das erste Array-Element entspricht Accelerometer-Sensor, die zweite entspricht MagneticFeld-Sensor,usw. Jetzt erfüllen die Werte von Accelerometer-Sensor und MagneticFeld-Sensor die gesetzte Kriterien. Daher sieht \code{sensorValues} so aus: \\
+                                        \code{sensorValues = {true, true, false, false}}
+
+
+                                    \end{itemize}
+                                \item {\large \code{shouldTriggeredBySensor:booelan}} \\
+                                    Ergebnis der ``and'' Operation mit allen Elemente in \code{sensorValues}\\
+                                    z.B. sensorValues = {true, true, false, true}, dann \\
+                                    \code{shouldTriggeredBySensor = true \&\& true \&\& false \&\& true = false}
+                                \item {\large \code{sensorManager:SensorManager}}\\
+                                    Verwaltung von allen Snesoren
                             \end{itemize}
                         \item Methoden
                             \begin{itemize}
-                                \item \code{saveAnswerLocally()}
-                                \item \code{uploadAnswer(serverAddress:String)}
-                                \item \code{notifyToAnsewr()}
-                                \item setters und getters für alle Attribute
+                                \item {\large \code{saveAnswerLocally()}}
+                                \item {\large \code{uploadAnswer(serverAddress:String)}}\\
+                                    Hochladen von Antwort auf den Server mit Adresse \code{serverAddress}
+                                \item {\large \code{notifyToAnsewr()}}\\
+                                    sendet Handy-Notifikation, um den Proband zu erinnern, die ausgelöste Fragebögen zu beantworten.
+                                \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                     \end{enumerate}
 
@@ -561,8 +583,8 @@
                                 Diese Method analysiert die von Server zurückgegebene json Daten und gibt \code{Questionnaire} Objekt zurück.
                             \end{itemize}
                     \end{enumerate}
-            
-            
+    }        
+           
     \chapter{Interface zwishcen Server und App}
         Die App- und Server-Seiten kommunizieren miteinander per Internet durch das HTTP-Protokoll. Zum Transfer von Daten wird JSON (JavaScript Object Notation) als das Datenformat genutzt.
         
