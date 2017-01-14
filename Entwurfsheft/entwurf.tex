@@ -460,7 +460,7 @@
             \subsection{activity}
 
                 \subsubsection{class \code{ActivityManager}}
-                Diese Klasse ist ein Manager aller Aktivitäten. Durch diese Klasse kann ein Benutzer dieser Applikation die auf System laufende Aktivitäten verwalten. Z.B. die Informationen einer Aktivität erhalten.
+                Diese Klasse dient sich als Verwalter aller Aktivitäten. Durch diese Klasse kann ein Benutzer dieser Applikation die auf System laufende Aktivitäten verwalten, z.B. Starten und Beenden einer Aktivität.
                 \begin{enumerate}
                 \item Attribute
                      \begin{itemize}
@@ -470,11 +470,11 @@
                 \item Methoden
                      \begin{itemize}
                                 \item {\large addActivity()}\\
-                                füget eine Aktivität den Liste hinzu.
+                                füget eine Aktivität in den Liste hinzu.
                                 \item {\large removeActivity()}\\
                                 entfernt eine Aktivität aus den Liste.
                                 \item {\large finishAll()}\\
-                                alle Aktivitäten in den Liste abschließen.
+                                schließt alle Aktivitäten in den Liste ab.
                      \end{itemize}
                 \end{enumerate}
                 \subsubsection{class \code{BaseActivity}}
@@ -520,7 +520,8 @@
                 \item Attribute
                 \item Methoden
                      \begin{itemize}
-                                \item {\large queryQuestionnaire()}
+                        \item {\large \code{queryQuestionnaire()}}\\
+                            zeigt alle zu beantwortene Fragebögen an
                      \end{itemize}
                 \end{enumerate}
 
