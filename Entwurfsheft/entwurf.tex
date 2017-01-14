@@ -355,14 +355,17 @@
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
-                                \item \code{question:String}
-                                \item \code{questionType: QuestionStrategy}
-                                \item \code{questionID: String}
-                                \item \code{nextQuestionID: String}
+                                \item {\large \code{question:String}}\\
+                                    Inhalt der Frage
+                                \item {\large \code{questionType: QuestionStrategy}}\\
+                                    Art dieser Frage
+                                \item {\large \code{questionID: String}}\\
+                                    die einzige ID dieser Frage
+                                \item {\large \code{nextQuestionID: String}}
                             \end{itemize}
                         \item Methoden
                             \begin{itemize}
-                                \item setters und getters für alle Attribute
+                                \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                     \end{enumerate}
 
@@ -372,23 +375,23 @@
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
-                                \item \code{answer:T}\\
+                                \item {\large \code{answer:T}}\\
                                     Generische Programmierung (eng:Generic) wird für attribute \code{answer} angewandet, da der Datentyp von Attribute \code{answer} in vershiedener Unterlasse von \code{QuestionStrategy} unterschiedlich sein sollte.
                                 % \item \code{}
                                 % \item \code{}
                             \end{itemize}
                         \item Methoden
                             \begin{itemize}
-                                \item setters und getters für alle Attribute
+                                \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                         \item Unterklasse\\
                             Laut Pflichtenheft gibt es fünf Fragearten. Deswegen gibt es fünf Unterklassen:
                             \begin{itemize}
-                                \item class \code{SingleChoice}
-                                \item class \code{MultipleChoice}
-                                \item class \code{StepScale}
-                                \item class \code{DragScale}
-                                \item class \code{TextAnswer}
+                                \item {\large class \code{SingleChoice}}
+                                \item {\large class \code{MultipleChoice}}
+                                \item {\large class \code{StepScale}}
+                                \item {\large class \code{DragScale}}
+                                \item {\large class \code{TextAnswer}}
                             \end{itemize}
                     \end{enumerate}
 
@@ -429,13 +432,13 @@
             \end{figure}
 
             \begin{itemize}
-                \item layout \\
+                \item {\large layout} \\
                     enthält layout-Datei von \code{Activity} und \code{Fragment}
-                \item mipmap \\
+                \item {\large mipmap} \\
                     enthält die in unsere Android-App verwendete Bilder.
-                \item values\\
+                \item {\large values}\\
                     enthält lokale Ressource für Präsentation (eng: view resource) unserer Android-App.
-                \item drawable\\
+                \item {\large drawable}\\
                     enthält die in unsere Android-App verwendete Bilder.
             \end{itemize}
 
@@ -535,8 +538,8 @@
                         \item Attribute
                         \item Methoden
                             \begin{itemize}
-                                \item \code{static downloadQuestionnaires(serverAddress:String): List<Questionnaire>
-                                }
+                                \item {\large \code{static downloadQuestionnaires(serverAddress:String): List<Questionnaire>}}\\
+                                
                             \end{itemize}
                     \end{enumerate}
 
@@ -545,7 +548,7 @@
                         \item Attribute
                         \item Methoden
                             \begin{itemize}
-                                \item \code{static uploadAnswer(serverAddress:String)}
+                                \item {\large \code{static uploadAnswer(serverAddress:String)}}
                             \end{itemize}
                     \end{enumerate}
 
