@@ -15,6 +15,7 @@
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 \makeglossaries
+% \linespread{1.5}
 
 \begin{document}
     \def\code#1{\texttt{#1}}
@@ -198,7 +199,7 @@
 
 
         \vspace*{1cm}
-        \section{Überblick von Pakete}
+        \section{Überblick über Pakete}
 
             Das folgende Diagramm dient sich als einen Überblick über unsere Android App. Modell, Präsentation und Steuerung werden mit drei verschiedenen Farbe dargestellt: blau für Modell, grün für Präsentation und gelb für Steuerung.
 
@@ -257,28 +258,49 @@
             \newpage
             \subsection{package \code{gson}}
 
+                \vspace*{1cm}
                 \subsubsection{class \code{Proband}}
 
+                \setlength{\baselineskip}{1.5\baselineskip}{
                     \begin{enumerate}
                         \item Attribute
                             \begin{itemize}
-                                \item \code{probandID:String}
-                                \item \code{studyID:String}
-                                \item \code{gender:Gender}
-                                \item \code{age:int}
-                                \item \code{occupation:String}
-                                \item \code{questionnaires:Collection<Questionnaire>}
+                                \item {\large \code{probandID:String}}\\
+                                    die einzige ausgeteilte ID für jeden Proband
+                                \item {\large \code{studyID:String}}\\
+                                    die ID der Studie
+                                \item {\large \code{gender:String}}\\
+                                    Geschlecht des Probands
+                                \item {\large \code{age:int}}\\
+                                    Alter des Probands
+                                \item {\large \code{occupation:String}}\\
+                                    Beruf des Probands
+                                \item {\large \code{questionnaires:Collection<Questionnaire>}}\\
+                                    alle zu antwortene Fragebögen
                             \end{itemize}
+                        
                         \item Methoden
                             \begin{itemize}
-                                \item \code{login()}
-                                \item \code{submitAnswer(QuestionnaireID:String)}
-                                \item \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}
-                                \item \code{answerQuestionniare(QuestionnaireID:String)}
-                                \item \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}
-                                \item setters und getters für alle Attribute
+                                \item {\large \code{login()}}\\
+                                    Nach Aufruf von Methode \code{logIn()} werden folgende Schritte durchgeführt:
+                                    \begin{figure}[H]
+                                        \centering
+                                        \includegraphics[scale = 0.5]{logIn.jpg}
+                                        \caption{\code{logIn()}}
+                                    \end{figure}
+
+                                \item {\large \code{submitAnswer(QuestionnaireID:String)}}\\
+                                    Nach Klicken von Button ``Submit'' wird diese Methode aufgerufen. Die Antwort von Fragebogen mit \code{QuestionnaireID} wird zuerst lokal gespeichert. Dann versucht unsere Android-App, die Antwort auf den Server hochzuladen.
+                                \item {\large \code{chooseQuestionnaire(QuestionnaireID:String):Questionnaire}}\\
+                                    Mit \code{QuestionnaireID} kann der Proband dem bestimmten Fragebogen auswählen. 
+                                \item {\large \code{answerQuestionniare(QuestionnaireID:String)}}\\
+                                    Mit \code{QuestionnaireID} kann der Proband dem bestimmten Fragebogen beantworten.
+                                \item {\large \code{answerQuestion(QuestionnaireID:String, QuestionID:String)}}\\
+                                    Durch Aufruf dieser Methode kann der Proband die bestimmte Frage, deren ID \code{QuestionID} ist, von Questionnaire \code{QuestionnaireID} beantworten.
+                                \item {\large setters und getters für alle Attribute}
                             \end{itemize}
                     \end{enumerate}
+                }
 
 
 
