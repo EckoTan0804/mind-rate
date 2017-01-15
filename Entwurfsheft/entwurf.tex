@@ -165,11 +165,11 @@
                                 \par // the unique ID of a proband
                             \item \code{birthday: datetime.date}
                                 \par // using Python datetime module: \code{from datetime import date}
-                            \item \code{birthdayRequired: boolean}
+                            \item \code{birthdayRequired: bool}
                             \item \code{occupation}
-                            \item \code{occupationRequired: boolean}
+                            \item \code{occupationRequired: bool}
                             \item \code{gender}
-                            \item \code{genderRequired: boolean}
+                            \item \code{genderRequired: bool}
                                 \par // Only required information will be asked. Otherwise the variables will stay empty.
                         \end{itemize}
 
@@ -188,12 +188,51 @@
                                 \par // the time length the probands have to answer the questionnairer after it shows up; using Python datetime module
                             \item \code{answers = []: QuestionnaireAnswer}
                                 \par // a list of the questionnairer answers of each proband
+                            \item \code{maxShowUpTimesPerDay: int}
+                                \par // the maximal times this questionnairer can show up per day
+                        \end{itemize}
+                        
+                    \item \code{class TriggerEvent}
+                        \par // The trigger event will only happen when all conditions below are fulfilled at the same time.
+                        \begin{itemize}
+                            \item \code{minTimeSpace: datetime.timedelta}
+                                \par // the minimal time space between two trigger events
+                            \item \code{datetime: bool or datetime.datetime}
+                                \par // a specific combination of a date and a time; False if this condition is not needed
+                            \item \code{time: bool or datetime.time}
+                                \par // a time, independent of any particular day; False if this condition is not needed
+                            \item \code{triggeredWhenCalendarEventBegins: bool}
+                                \par // True if each time a calendar event begins, this condition is fulfilled; False if this condition is not needed
+                            \item \code{triggeredWhenCalendarEventEnds: bool}
+                                \par // True if each time a calendar event ends, this condition is fulfilled; False if this condition is not needed
+                            \item \code{triggeredWhenFacebookNotificationComes: bool}
+                                \par // True if each time a Facebook notification comes, this condition is fulfilled; False if this condition is not needed
+                            \item \code{triggeredWhenWhatsAppNotificationComes: bool}
+                                \par // True if each time a WhatsApp notification comes, this condition is fulfilled; False if this condition is not needed
+                            \item \code{linearAcceleration: bool or str}
+                                \par // A “>”, “=” or “<” symbol followed by a space and a value; False if this condition is not needed.
+                                \par // All the following variables use the same format.
+                            \item \code{gravity: bool or str}
+                            \item \code{rotation: bool or str}
+                                \par // the angle between the device and the ground
+                            \item \code{airTemperature: bool or str}
+                            \item \code{airPressure: bool or str}
+                            \item \code{light: bool or str}
+                                \par // ambient light level in SI lux units
+                            \item \code{relativeHumidity: bool or str}
+                            \item \code{orientation: bool or str}
+                                \par // Angle between the magnetic north direction and the y-axis of the device, around the z-axis (0 to 359). 0 = North, 90 = East, 180 = South, 270 = West
+                            \item \code{magneticField: bool or str}
+                            \item \code{proximity: bool or str}
+                                \par // proximity sensor distance measured in centimeters
                         \end{itemize}
 
                     \item \code{class QuestionnaireAnswer}
                         \begin{itemize}
                             \item \code{submitter: Proband}
                             \item \code{submitTime: datetime.datetime}
+                            \item \code{fulfilledTriggerConditions: dict}
+                                \par // The fulfilled condition values when the trigger event happens; keys of the dictionary are the condition names, values are the condition values when triggered.
                             \item \code{questionAnswers = []: AbstractQuestionAnswer}
                                 \par // all question answers in a questionnairer
                         \end{itemize}
@@ -241,9 +280,9 @@
                         
                         \item \code{class ScaleQuestionWithSteps(AbstractQuestion)}
                             \begin{itemize}
-                                \item \code{hasThreeSteps: boolean}
-                                \item \code{hasFiveSteps: boolean}
-                                \item \code{hasSevenSteps: boolean}
+                                \item \code{hasThreeSteps: bool}
+                                \item \code{hasFiveSteps: bool}
+                                \item \code{hasSevenSteps: bool}
                                     \par // Only one of the above boolean values can be true; the question has either 3, 5 or 7 steps.
                                 \item \code{stepNames = []}
                                     \par // Each step can have a name; \code{len(steps)} must be 3, 5 or 7 according to the step amount.
