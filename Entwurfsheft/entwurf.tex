@@ -10,7 +10,57 @@
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{listings}
+\usepackage{xcolor}
 \lstset{upquote=true}
+
+%===================setting for displaying JSON ==============================
+\newcommand\JSONnumbervaluestyle{\color{blue}}
+\newcommand\JSONstringvaluestyle{\color{blue}}
+% \newcommand\JSONvaluestyle{\color{blue}}
+
+% switch used as state variable
+\newif\ifcolonfoundonthisline
+
+\makeatletter
+
+\lstdefinestyle{json}
+{
+  showstringspaces    = false,
+  keywords            = {false,true},
+  alsoletter          = 0123456789.,
+  morestring          = [s]{"}{"},
+  stringstyle         = \ifcolonfoundonthisline\JSONstringvaluestyle\fi,
+  MoreSelectCharTable =%
+    \lst@DefSaveDef{`:}\colon@json{\processColon@json},
+  basicstyle          = \ttfamily,
+  keywordstyle        = \ttfamily\bfseries,
+}
+
+% flip the switch if a colon is found in Pmode
+\newcommand\processColon@json{%
+  \colon@json%
+  \ifnum\lst@mode=\lst@Pmode%
+    \global\colonfoundonthislinetrue%
+  \fi
+}
+
+\lst@AddToHook{Output}{%
+  \ifcolonfoundonthisline%
+    \ifnum\lst@mode=\lst@Pmode%
+      \def\lst@thestyle{\JSONnumbervaluestyle}%
+    \fi
+  \fi
+  %override by keyword style if a keyword is detected!
+  \lsthk@DetectKeywords% 
+}
+
+% reset the switch at the end of line
+\lst@AddToHook{EOL}%
+  {\global\colonfoundonthislinefalse}
+
+\makeatother
+%============================================================================
+
 
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
@@ -674,9 +724,18 @@
             \end{lstlisting}
 
 
+        \newpage
         \section{Von Android-App nach dem Server}
 
             \subsection{Übertragung der Information des Probands}
+
+\begin{lstlisting}[style=json]
+    example 
+    {
+     "name" : "alan",
+     "alias" : "nala",
+    }
+\end{lstlisting}
 
 
             \subsection{Übertragung der Antwort von Android-App nach dem Server}    
