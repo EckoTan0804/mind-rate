@@ -365,13 +365,13 @@
                                     enthält alle Fragen dieses Fragebogens
                                 \item {\large \code{isValid:boolean}}\\
                                     Falls der Proband innerhalb des gültigen Zeitbereich den Fragebogen nicht beantworten, wird den Wert dieser Attribute als ``false'' gesetzt.
-                                \item {\large \code{beginTime:String}}
+                                \item {\large \code{beginTime:String}}\\
                                     Anfangszeitpunkt des Fragebogens
-                                \item {\large \code{duration:int}}
+                                \item {\large \code{duration:int}}\\
                                     Dauer des gültigen Zeitbereich
-                                \item {\large \code{QuestionnaireID:String}}
+                                \item {\large \code{QuestionnaireID:String}}\\
                                     die einzige ID des Fragebogens
-                                \item {\large \code{shouldTrigger:boolean}}
+                                \item {\large \code{shouldTrigger:boolean}}\\
                                     ob der Fragebogen ausgelöst werden soll
                                 \item {\large \code{sensorValues:boolean[]}}
                                     \begin{itemize}
@@ -732,12 +732,16 @@
                 Eine JSON-Datei als Beispiel:
 
 \begin{lstlisting}[style=json]
-    Proband
+
     {
      "probandID" : 123456789,
      "studyID" : 987654321,
      "gender" : "male",
-     "birthday": 2017,
+     "birthday": {
+        "year" : 1994,
+        "month" : 1,
+        "day" : 1
+     }
      "occupation" : "student"
     }
 \end{lstlisting}
@@ -759,7 +763,7 @@
         "minute" : 0,
         "second" : 0
      },
-     "submitDate" : {
+     "answerSubmitDate" : {
         "year" : "2017",
         "month" : "1",
         "day" : "1",
@@ -767,7 +771,7 @@
         "minute" : "30",
         "second" : "00"
      },
-     "triggedEvend" : [
+     "triggedEvent" : [
         {"sensorName" : "AccelerometerSensor", "event" : "> 1"},
         {"sensorName" : "TemperatureSensor", "event" : "> 15"}
      ],
