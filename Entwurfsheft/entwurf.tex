@@ -243,7 +243,7 @@
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
-                                \par // False if the question is hidden by default, and will only be showed as a follow up question; the proband will only see it if he chooses the trigger option of the previous question.
+                                \par // False if the question is hidden by default, and will only be showed if it is triggered as a follow up question; the proband will only see it if he chooses the trigger option of the previous question.
                             \item \code{content: str}
                             \item \code{@abstractmethod} \\
                                        \code{def getContent(self): dict}
@@ -269,7 +269,8 @@
                             \item \code{showByDefault: bool = True}
                             \item \code{content: str}
                             \item \code{options = []}
-                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestion: bool or AbstractQuestion}
+                                \par // False if there is no follow up question.
                             \item \code{followUpQuestionTriggerOptions = []}
                                 \par // The follow up question will only show up, if one or more of the specific options of this question is chosen.
                             \item \code{def getContent(self): dict}
@@ -284,7 +285,8 @@
                             \item \code{content: str}
                             \item \code{scaleMin: int}
                             \item \code{scaleMax: int}
-                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestion: bool or AbstractQuestion}
+                                \par // False if there is no follow up question.
                             \item \code{followUpQuestionTriggerMin: int}
                             \item \code{followUpQuestionTriggerMax: int}
                                 \par // The follow up question will only show up, if the answer falls within the trigger interval.
@@ -304,7 +306,8 @@
                                 \par // Only one of the above boolean values can be true; the question has either 3, 5 or 7 steps.
                             \item \code{stepNames = []}
                                 \par // Each step can have a name; \code{len(steps)} must be 3, 5 or 7 according to the step amount.
-                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestion: bool or AbstractQuestion}
+                                \par // False if there is no follow up question.
                             \item \code{followUpQuestionTriggerStep: []}
                                 \par // The follow up question will only show up, if one of the specific steps is chosen.
                             \item \code{def getContent(self): dict}
