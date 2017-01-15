@@ -16,7 +16,7 @@
 %===================setting for displaying JSON ==============================
 \newcommand\JSONnumbervaluestyle{\color{blue}}
 \newcommand\JSONstringvaluestyle{\color{blue}}
-% \newcommand\JSONvaluestyle{\color{blue}}
+\newcommand\JSONvaluestyle{\color{blue}}
 
 % switch used as state variable
 \newif\ifcolonfoundonthisline
@@ -729,16 +729,78 @@
 
             \subsection{Übertragung der Information des Probands}
 
+                Eine JSON-Datei als Beispiel:
+
 \begin{lstlisting}[style=json]
-    example 
+    Proband
     {
-     "name" : "alan",
-     "alias" : "nala",
+     "probandID" : 123456789,
+     "studyID" : 987654321,
+     "gender" : "male",
+     "age" : 25,
+     "occupation" : "student"
     }
 \end{lstlisting}
 
 
-            \subsection{Übertragung der Antwort von Android-App nach dem Server}    
+            \subsection{Übertragung der Antwort von Android-App nach dem Server} 
+
+                Eine JSON-Datei als Beispiel:
+
+ \begin{lstlisting}[style=json]
+    
+    {
+     "questionnaireID" : 9527,
+     "duration" : {
+        "year" : 0,
+        "month" : 0,
+        "day" : 20,
+        "hour" : 12,
+        "minute" : 0,
+        "second" : 0
+     },
+     "submitDate" : {
+        "year" : "2017",
+        "month" : "1",
+        "day" : "1",
+        "hour" : "12",
+        "minute" : "30",
+        "second" : "00"
+     },
+     "triggedEvend" : [
+        {"sensorName" : "AccelerometerSensor", "event" : "> 1"},
+        {"sensorName" : "TemperatureSensor", "event" : "> 15"}
+     ],
+     "isTriggedBySensor" : true,
+     "sensors" : [
+        {
+         "sensorName" : "AccelerometerSensor", 
+         "value" : 2
+        },
+        {
+         "sensorName" : "TemperatureSensor", 
+         "value" : 20
+        }
+     ],
+     "answers" : [
+        {
+         "questionID" : 1,
+         "type" : "SingleChoice",
+         "content" : 1
+        },
+        {
+         "questionID" : 2,
+         "type" : "MutipleChoice",
+         "content" : [1, 3]
+        },
+        {
+         "questionID" : 3,
+         "type" : "TextAnswer",
+         "content" : "Hello world!"
+        }
+     ]
+    }
+\end{lstlisting}              
 
 
 
