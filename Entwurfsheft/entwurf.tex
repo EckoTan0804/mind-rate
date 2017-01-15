@@ -51,7 +51,7 @@
     \fi
   \fi
   %override by keyword style if a keyword is detected!
-  \lsthk@DetectKeywords% 
+  \lsthk@DetectKeywords%
 }
 
 % reset the switch at the end of line
@@ -380,8 +380,8 @@
                                     die ID der Studie
                                 \item {\large \code{gender:String}}\\
                                     Geschlecht des Probands
-                                \item {\large \code{age:int}}\\
-                                    Alter des Probands
+                                \item {\large \code{birthday:String}}\\
+                                    Geburtstag des Probands
                                 \item {\large \code{occupation:String}}\\
                                     Beruf des Probands
                                 \item {\large \code{questionnaires:Collection<Questionnaire>}}\\
@@ -794,18 +794,18 @@
      "probandID" : 123456789,
      "studyID" : 987654321,
      "gender" : "male",
-     "age" : 25,
+     "birthday": 2017,
      "occupation" : "student"
     }
 \end{lstlisting}
 
 
-            \subsection{Übertragung der Antwort von Android-App nach dem Server} 
+            \subsection{Übertragung der Antwort von Android-App nach dem Server}
 
                 Eine JSON-Datei als Beispiel:
 
  \begin{lstlisting}[style=json]
-    
+
     {
      "questionnaireID" : 9527,
      "duration" : {
@@ -831,11 +831,11 @@
      "isTriggedBySensor" : true,
      "sensors" : [
         {
-         "sensorName" : "AccelerometerSensor", 
+         "sensorName" : "AccelerometerSensor",
          "value" : 2
         },
         {
-         "sensorName" : "TemperatureSensor", 
+         "sensorName" : "TemperatureSensor",
          "value" : 20
         }
      ],
@@ -857,7 +857,7 @@
         }
      ]
     }
-\end{lstlisting}              
+\end{lstlisting}
 
 
 
