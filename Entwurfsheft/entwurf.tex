@@ -777,68 +777,13 @@
         \section{Vom Server nach der App}
             \subsection{Anfrage um Proband-Daten}
                 Nur die Daten, die vom Studienleiter bestimmt werden, werden an die Probanden gefragt. Eine JSON-Datei als Beispiel:
-                \begin{lstlisting}
-{
-    "birthdayRequested": "true",
-    "occupationRequested": "false",
-    "genderRequested": "true"
-}
-                \end{lstlisting}
+                
+                \lstinputlisting[style=json]{JSON_Examples/require_proband_data_server_to_app.json}
 
             \subsection{Übertragung der Fragebogen vom Server nach der App}
                 Eine JSON-Datei als Beispiel:
-                \begin{lstlisting}
-{
-    "study": {
-        "id": 5,
-        "name": "study name",
-        "beginningDate": {
-        "year": 2017,
-        "month": 1,
-        "day": 1
-    },
-        "endDate": {
-        "year": 2017,
-        "month": 7,
-        "day": 1
-    },
-        "questionnaires": [
-            {
-                "id": 1,
-                "name": "question name",
-                "triggerEvent": {},
-                "answeringTime": {"hours": 5},
-                "questions": [
-                    {
-                        "question1": {
-                              "type": "choiceQuestion",
-                              "options": ["option1","option2"],
-                              "followUpQuestion": 2,
-                              "followUpQuestionTriggerOptions": []
-                        }
-                    }
-                ],
-                "answers": [
-                    {
-                        "answer1": {
-                              "type": "multiChoiceQuestionAnswer",
-                              "content": [1,2]
-                        }
-                    }
-                ]
-            },
-            {
-                "id": 1,
-                "name": "question name",
-                "triggerEvent": {},
-                "answeringTime": {"hours": 5},
-                "questions": [],
-                "answers": []
-            }
-        ]
-    }
-}
-            \end{lstlisting}
+                
+                \lstinputlisting[style=json]{JSON_Examples/questionnaires_server_to_app.json}
 
 
         \newpage

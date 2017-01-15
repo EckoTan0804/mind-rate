@@ -1,0 +1,82 @@
+{
+    "study": {
+        "id": 101_5,
+        "name": "Study Name",
+        "beginningDate": {
+            "year": 2017,
+            "month": 1,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "second": 0
+        },
+        "endDate": {
+            "year": 2017,
+            "month": 7,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "second": 0
+        },
+        "questionnaires": [
+            {
+                "id": "101_5_10",
+                "name": "Questionnaire Name",
+                "maxShowUpTimesPerDay": 40,
+                "triggerEvent": {
+                    "minTimeSpace": {"seconds": 180},
+                    "datetime": False,
+                    "time": {
+                        "hour": 16,
+                        "minute": 0,
+                        "second": 0,
+                    }
+                    "triggeredWhenCalendarEventBegins": False,
+                    "triggeredWhenCalendarEventEnds": False,
+                    "triggeredWhenFacebookNotificationComes": False,
+                    "triggeredWhenWhatsAppNotificationComes": False,
+                    "linearAcceleration": "< 10",
+                    "gravity": False,
+                    "rotation": False,
+                    "airTemperature": False,
+                    "airPressure": False,
+                    "light": "> 30",
+                    "relativeHumidity": False,
+                    "orientation": False,
+                    "magneticField": False,
+                    "proximity": False
+                },
+                "answeringTime": {"hours": 5},
+                "questions": [
+                    {
+                        "id": "101_5_10_1",
+                        "showByDefault": True,
+                        "type": "ChoiceQuestion",
+                        "content": "Where are you now?",
+                        "options": ["At work","At home"],
+                        "followUpQuestion": 101_5_10_2,
+                        "followUpQuestionTriggerOptions": [0]
+                    },
+                    {
+                        "id": 101_5_10_2,
+                        "showByDefault": False,
+                        "type": "ScaleQuestionWithSteps",
+                        "content": "How tired do you feel at work?",
+                        "hasThreeSteps": False,
+                        "hasFiveSteps": True,
+                        "hasSevenSteps": False,
+                        "stepNames": [
+                            "Not at all",
+                            "A little bit",
+                            "Medium",
+                            "Very",
+                            "Dead"
+                        ],
+                        "followUpQuestion": False,
+                        "followUpQuestionTriggerOptions": []
+                    }
+                ],
+            }
+        ]
+    }
+}
