@@ -1,6 +1,6 @@
 {
     "study": {
-        "id": 101_5,
+        "id": "101_5",
         "name": "Study Name",
         "beginningDate": {
             "year": 2017,
@@ -25,32 +25,32 @@
                 "maxShowUpTimesPerDay": 40,
                 "triggerEvent": {
                     "minTimeSpace": {"seconds": 180},
-                    "datetime": False,
+                    "datetime": false,
                     "time": {
                         "hour": 16,
                         "minute": 0,
                         "second": 0,
                     }
-                    "triggeredWhenCalendarEventBegins": False,
-                    "triggeredWhenCalendarEventEnds": False,
-                    "triggeredWhenFacebookNotificationComes": False,
-                    "triggeredWhenWhatsAppNotificationComes": False,
+                    "triggeredWhenCalendarEventBegins": false,
+                    "triggeredWhenCalendarEventEnds": false,
+                    "triggeredWhenFacebookNotificationComes": false,
+                    "triggeredWhenWhatsAppNotificationComes": false,
                     "linearAcceleration": "< 10",
-                    "gravity": False,
-                    "rotation": False,
-                    "airTemperature": False,
-                    "airPressure": False,
+                    "gravity": false,
+                    "rotation": false,
+                    "airTemperature": false,
+                    "airPressure": false,
                     "light": "> 30",
-                    "relativeHumidity": False,
-                    "orientation": False,
-                    "magneticField": False,
-                    "proximity": False
+                    "relativeHumidity": false,
+                    "orientation": false,
+                    "magneticField": false,
+                    "proximity": false
                 },
                 "answeringTime": {"hours": 5},
                 "questions": [
                     {
                         "id": "101_5_10_1",
-                        "showByDefault": True,
+                        "showByDefault": true,
                         "type": "ChoiceQuestion",
                         "content": "Where are you now?",
                         "options": ["At work","At home"],
@@ -58,13 +58,13 @@
                         "followUpQuestionTriggerOptions": [0]
                     },
                     {
-                        "id": 101_5_10_2,
-                        "showByDefault": False,
+                        "id": "101_5_10_2",
+                        "showByDefault": false,
                         "type": "ScaleQuestionWithSteps",
                         "content": "How tired do you feel at work?",
-                        "hasThreeSteps": False,
-                        "hasFiveSteps": True,
-                        "hasSevenSteps": False,
+                        "hasThreeSteps": false,
+                        "hasFiveSteps": true,
+                        "hasSevenSteps": false,
                         "stepNames": [
                             "Not at all",
                             "A little bit",
@@ -72,7 +72,7 @@
                             "Very",
                             "Dead"
                         ],
-                        "followUpQuestion": False,
+                        "followUpQuestion": false,
                         "followUpQuestionTriggerOptions": []
                     }
                 ],

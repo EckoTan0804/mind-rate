@@ -1,5 +1,5 @@
 {
-    "birthdayRequested": True,
-    "occupationRequested": False,
-    "genderRequested": True
+    "birthdayRequested": true,
+    "occupationRequested": false,
+    "genderRequested": true
 }
