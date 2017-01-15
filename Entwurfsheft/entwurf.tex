@@ -244,10 +244,11 @@
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
                                 \par // False if the question is hidden by default, and will only be showed as a follow up question; the proband will only see it if he chooses the trigger option of the previous question.
+                            \item \code{content: str}
                             \item \code{@abstractmethod} \\
                                        \code{def getContent(self): dict}
                                 \par // a unique method of getting the content of a question
-                                \par // the answer will be a dictionary, in which the value of the “type” key will be the string name of the question type like \verb|"TextQuestion"| or \verb|"ChoiceQuestion"|, and the other elements will be the question content
+                                \par // The answer will be a dictionary, in which the value of the “type” key will be the string name of the question type like \verb|"TextQuestion"| or \verb|"ChoiceQuestion"|, and the other elements will be different for each question types.
                         \end{itemize}
 
                     \item \code{class TextQuestion(AbstractQuestion)}
@@ -255,9 +256,9 @@
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
-                            \item \code{content}
+                            \item \code{content: str}
                             \item \code{def getContent(self): dict}
-                                \par // The value of the “content” key is the \code{content} variable.
+                                \par // The value of the “content” key is the \code{content} attribute.
                         \end{itemize}
 
                     \item \code{class ChoiceQuestion(AbstractQuestion)}
@@ -266,12 +267,13 @@
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
+                            \item \code{content: str}
                             \item \code{options = []}
                             \item \code{followUpQuestion: AbstractQuestion}
                             \item \code{followUpQuestionTriggerOptions = []}
                                 \par // The follow up question will only show up, if one or more of the specific options of this question is chosen.
                             \item \code{def getContent(self): dict}
-                                \par // The value of the “content” key is the \code{options} list.
+                                \par // The value of the “content” key is the \code{content} attribute; the value of the “options” key is the \code{options} list.
                         \end{itemize}
 
                     \item \code{class SteplessScaleQuestion(AbstractQuestion)}
@@ -279,6 +281,7 @@
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
+                            \item \code{content: str}
                             \item \code{scaleMin: int}
                             \item \code{scaleMax: int}
                             \item \code{followUpQuestion: AbstractQuestion}
@@ -286,7 +289,7 @@
                             \item \code{followUpQuestionTriggerMax: int}
                                 \par // The follow up question will only show up, if the answer falls within the trigger interval.
                             \item \code{def getContent(self): dict}
-                               \par // The dictionary has both “scaleMin” and “scaleMax” keys.
+                               \par // The dictionary has both “scaleMin” and “scaleMax” keys. The value of the “content” key is the \code{content} attribute.
                         \end{itemize}
                         
                     \item \code{class ScaleQuestionWithSteps(AbstractQuestion)}
@@ -294,6 +297,7 @@
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
                             \item \code{showByDefault: bool = True}
+                            \item \code{content: str}
                             \item \code{hasThreeSteps: bool}
                             \item \code{hasFiveSteps: bool}
                             \item \code{hasSevenSteps: bool}
@@ -304,7 +308,7 @@
                             \item \code{followUpQuestionTriggerStep: []}
                                 \par // The follow up question will only show up, if one of the specific steps is chosen.
                             \item \code{def getContent(self): dict}
-                               \par // The value of the “stepNumber” key is either 3, 5 or 7. The value of the “stepNames” key is the \code{stepNames} list.
+                               \par // The value of the “stepNumber” key is either 3, 5 or 7. The value of the “stepNames” key is the \code{stepNames} list. The value of the “content” key is the \code{content} attribute.
                         \end{itemize}
 
                     \item \code{class AbstractQuestionAnswer(ABC)}
