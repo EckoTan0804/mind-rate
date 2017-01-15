@@ -1,5 +1,5 @@
 {
-    "questionnaireID" : 9527,
+    "questionnaireID" : "9527",
     "duration" : {
         "year" : 0,
         "month" : 0,
@@ -39,17 +39,17 @@
     ],
     "answers" : [
         {
-         "questionID" : 1,
+         "questionID" : "1",
          "type" : "SingleChoice",
          "content" : 1
         },
         {
-         "questionID" : 2,
+         "questionID" : "2",
          "type" : "MutipleChoice",
          "content" : [1, 3]
         },
         {
-         "questionID" : 3,
+         "questionID" : "3",
          "type" : "TextAnswer",
          "content" : "Hello world!"
         }

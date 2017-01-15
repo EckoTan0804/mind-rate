@@ -16,7 +16,7 @@
 %===================setting for displaying JSON ==============================
 \newcommand\JSONnumbervaluestyle{\color{blue}}
 \newcommand\JSONstringvaluestyle{\color{blue}}
-\newcommand\JSONvaluestyle{\color{blue}}
+% \newcommand\JSONBooleanvaluestyle{\color{blue}}
 
 % switch used as state variable
 \newif\ifcolonfoundonthisline
@@ -107,7 +107,9 @@
     \end{center}
     \thispagestyle{empty}
 
+    \setlength{\baselineskip}{1.5\baselineskip}{
     \tableofcontents
+
 
     \chapter{Allgemeine Struktur}
 
@@ -369,7 +371,7 @@
 
 
     \newpage
-    \setlength{\baselineskip}{1.5\baselineskip}{
+    % \setlength{\baselineskip}{1.5\baselineskip}{
     \chapter{Android-App}
 
         Das Entwurfsmuster Model-View-Controller (MVC, englisch für Modell-Präsentation-Steuerung) wird hier angewandet, um einen fleixbler Programmentwurf zu ermöglichen.
