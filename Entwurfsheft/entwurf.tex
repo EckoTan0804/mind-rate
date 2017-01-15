@@ -134,77 +134,125 @@
                 \item \code{class StudyDirector}
                     \begin{itemize}
                         \item \code{studies = []: Study}
+                            \par // a list of all studies that is belonging to this study director
                         \item \code{surname}
                         \item \code{firstName}
                         \item \code{mailAddress}
+                            \par // Mail address will also be used as the unique ID of study director.
                     \end{itemize}
 
                     \item \code{class Study}
                         \begin{itemize}
                             \item \code{probands = []: Proband}
+                                \par // a list of all probands that is belonging to this study
                             \item \code{id}
+                                \par // unique ID of a study
                             \item \code{name}
-                            \item \code{beginningDate}
-                            \item \code{endDate}
+                            \item \code{beginningDate: datetime.datetime}
+                                \par // using Python datetime module: \code{from datetime import datetime}
+                            \item \code{endDate: datetime.datetime}
                             \item \code{director: StudyDirector}
+                                \par // the study director of this study
                             \item \code{questionnaires = []: Questionnaire}
+                                \par // a list of all questionnaires that is belonging to this study
                         \end{itemize}
 
                     \item \code{class Proband}
                         \begin{itemize}
                             \item \code{study: Study}
+                                \par // the study that this proband attends
                             \item \code{id}
-                            \item \code{birthday}
+                                \par // the unique ID of a proband
+                            \item \code{birthday: datetime.date}
+                                \par // using Python datetime module: \code{from datetime import date}
+                            \item \code{birthdayRequired: boolean}
                             \item \code{occupation}
+                            \item \code{occupationRequired: boolean}
                             \item \code{gender}
+                            \item \code{genderRequired: boolean}
+                                \par // Only required information will be asked. Otherwise the variables will stay empty.
                         \end{itemize}
 
                     \item \code{class Questionnairer}
                         \begin{itemize}
                             \item \code{questions = []: AbstractQuestion}
+                                \par // a list of all questions
                             \item \code{id}
+                                \par // the unique ID of this questionnairer
                             \item \code{name}
                             \item \code{study: Study}
+                                \par // the study that this questionnairer is belonging to
                             \item \code{triggerEvent: TriggerEvent}
-                            \item \code{answeringTime}
+                                \par // the event that makes the questionnairer to show up
+                            \item \code{answeringTime: datetime.timedelta}
+                                \par // the time length the probands have to answer the questionnairer after it shows up; using Python datetime module
                             \item \code{answers = []: QuestionnaireAnswer}
+                                \par // a list of the questionnairer answers of each proband
                         \end{itemize}
 
                     \item \code{class QuestionnaireAnswer}
                         \begin{itemize}
                             \item \code{submitter: Proband}
-                            \item \code{submitTime}
+                            \item \code{submitTime: datetime.datetime}
                             \item \code{questionAnswers = []: AbstractQuestionAnswer}
+                                \par // all question answers in a questionnairer
                         \end{itemize}
 
                     \item \code{class AbstractQuestion(ABC)}
+                        \par // an abstract question class that extends the Python Abstract Base Classes (ABC): \code{from abc import ABC, abstractmethod}
                         \begin{itemize}
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
+                            \item \code{@abstractmethod} \\
+                                       \code{def getContent(self): dict}
+                                \par // a unique method of getting the content of a question
+                                \par // the answer will be a dictionary, in which the value of the “type” key will be the string name of the question type like \verb|"TextQuestion"| or \verb|"ChoiceQuestion"|, and the other elements will be the question content
                         \end{itemize}
 
                     \item \code{class TextQuestion(AbstractQuestion)}
                         \begin{itemize}
                             \item \code{content}
+                            \item \code{def getContent(self): dict}
+                                \par // The value of the “content” key is the \code{content} variable.
                         \end{itemize}
 
                     \item \code{class ChoiceQuestion(AbstractQuestion)}
                         \par // Both single choice question and multiple choice question are belonging to this class.
                         \begin{itemize}
-                            \item \code{options = \{\}}
+                            \item \code{options = []}
                             \item \code{followUpQuestion: AbstractQuestion}
                             \item \code{followUpQuestionTriggerOptions = []}
+                                \par // The follow up question will only show up, if one or more of the specific options of this question is chosen.
+                            \item \code{def getContent(self): dict}
+                                \par // The value of the “content” key is the \code{options} list.
                         \end{itemize}
 
                     \item \code{class SteplessScaleQuestion(AbstractQuestion)}
-                        \par // Scale questions with steps are effectively just single choice questions; therefore they are not a class.
                         \begin{itemize}
                             \item \code{scaleMin: int}
                             \item \code{scaleMax: int}
                             \item \code{followUpQuestion: AbstractQuestion}
                             \item \code{followUpQuestionTriggerMin: int}
                             \item \code{followUpQuestionTriggerMax: int}
+                                \par // The follow up question will only show up, if the answer falls within the trigger interval.
+                            \item \code{def getContent(self): dict}
+                               \par // The dictionary has both “scaleMin” and “scaleMax” keys.
                         \end{itemize}
+                        
+                        \item \code{class ScaleQuestionWithSteps(AbstractQuestion)}
+                            \begin{itemize}
+                                \item \code{hasThreeSteps: boolean}
+                                \item \code{hasFiveSteps: boolean}
+                                \item \code{hasSevenSteps: boolean}
+                                    \par // Only one of the above boolean values can be true; the question has either 3, 5 or 7 steps.
+                                \item \code{stepNames = []}
+                                    \par // Each step can have a name; \code{len(steps)} must be 3, 5 or 7 according to the step amount.
+                                \item \code{followUpQuestion: AbstractQuestion}
+                                \item \code{followUpQuestionTriggerStep: []}
+                                    \par // The follow up question will only show up, if one of the specific steps is chosen.
+                                \item \code{def getContent(self): dict}
+                                   \par // The value of the “stepNumber” key is either 3, 5 or 7. The value of the “stepNames” key is the \code{stepNames} list.
+                            \end{itemize}
 
                     \item \code{class AbstractQuestionAnswer(ABC)}
                         \begin{itemize}
@@ -216,19 +264,28 @@
                            \item \code{content: string}
                        \end{itemize}
 
-                   \item \code{class MultiChoiceQuestionAnswer(AbstractQuestionAnswer)}
-                       \begin{itemize}
-                           \item \code{content = []: string}
-                       \end{itemize}
-
                     \item \code{class SingleChoiceQuestionAnswer(AbstractQuestionAnswer)}
                         \begin{itemize}
-                            \item \code{content: string}
+                            \item \code{content: int}
+                                \par // the index of the chosen option beginning from 0
                         \end{itemize}
-
+                        
+                   \item \code{class MultiChoiceQuestionAnswer(AbstractQuestionAnswer)}
+                       \begin{itemize}
+                           \item \code{content = []: int}
+                               \par // a list of the indices of the chosen options beginning from 0
+                       \end{itemize}
+                       
                     \item \code{class SteplessScaleQuestionAnswer(AbstractQuestionAnswer)}
                         \begin{itemize}
+                            \item \code{content: double}
+                                \par // the chosen value that is greater than the “scaleMin” and smaller than the “scaleMax” values of the question
+                        \end{itemize}
+                        
+                    \item \code{class ScaleQuestionWithStepsAnswer(AbstractQuestionAnswer)}
+                        \begin{itemize}
                             \item \code{content: int}
+                                \par // the index of the chosen step beginning from 0
                         \end{itemize}
 
             \end{itemize}
