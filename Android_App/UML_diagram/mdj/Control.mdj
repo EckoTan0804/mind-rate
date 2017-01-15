@@ -3227,7 +3227,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "ActivitiyManager",
+											"text": "ActivityManager",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": true
@@ -3345,7 +3345,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "-activities: Collection<Activitiy>",
+											"text": "-activities: Collection<Activity>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3400,7 +3400,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addActivitiy()",
+											"text": "+addActivity()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3429,7 +3429,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "+removeActivitiy()",
+											"text": "+removeActivity()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5698,7 +5698,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY6mUCPfP7Oqw="
 									},
-									"name": "ActivitiyManager",
+									"name": "ActivityManager",
 									"ownedElements": [
 										{
 											"_type": "UMLAssociation",
@@ -5848,7 +5848,7 @@
 											"visibility": "private",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "Collection<Activitiy>",
+											"type": "Collection<Activity>",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -5864,7 +5864,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFY6q5BictaQ3o="
 											},
-											"name": "addActivitiy",
+											"name": "addActivity",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
@@ -5878,7 +5878,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFY6q5BictaQ3o="
 											},
-											"name": "removeActivitiy",
+											"name": "removeActivity",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
@@ -6601,9 +6601,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 439,
+											"left": 438,
 											"top": 5,
-											"width": 64,
+											"width": 62,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -6629,7 +6629,7 @@
 											"containerExtending": false,
 											"left": 373,
 											"top": 5,
-											"width": 61,
+											"width": 60,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -10246,9 +10246,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 568,
+											"left": 565,
 											"top": 437,
-											"width": 36,
+											"width": 37,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -10274,7 +10274,7 @@
 											"containerExtending": false,
 											"left": 541,
 											"top": 437,
-											"width": 22,
+											"width": 19,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
