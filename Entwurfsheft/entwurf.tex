@@ -793,80 +793,90 @@
 
                 Eine JSON-Datei als Beispiel:
 
-\begin{lstlisting}[style=json]
+                \lstinputlisting[style=json]{JSON_Examples/Proband_info.json}
 
-    {
-     "probandID" : 123456789,
-     "studyID" : 987654321,
-     "gender" : "male",
-     "birthday": {
-        "year" : 1994,
-        "month" : 1,
-        "day" : 1
-     }
-     "occupation" : "student"
-    }
-\end{lstlisting}
+% \begin{lstlisting}[style=json]
+
+%     {
+%      "probandID" : 123456789,
+%      "studyID" : 987654321,
+%      "gender" : "male",
+%      "birthday": {
+%         "year" : 1994,
+%         "month" : 1,
+%         "day" : 1
+%      }
+%      "occupation" : "student"
+%     }
+% \end{lstlisting}
 
 
             \subsection{Übertragung der Antwort von Android-App nach dem Server}
 
                 Eine JSON-Datei als Beispiel:
 
- \begin{lstlisting}[style=json]
+                \lstinputlisting[style=json]{JSON_Examples/Answer.json}
 
-    {
-     "questionnaireID" : 9527,
-     "duration" : {
-        "year" : 0,
-        "month" : 0,
-        "day" : 20,
-        "hour" : 12,
-        "minute" : 0,
-        "second" : 0
-     },
-     "answerSubmitDate" : {
-        "year" : "2017",
-        "month" : "1",
-        "day" : "1",
-        "hour" : "12",
-        "minute" : "30",
-        "second" : "00"
-     },
-     "triggedEvent" : [
-        {"sensorName" : "AccelerometerSensor", "event" : "> 1"},
-        {"sensorName" : "TemperatureSensor", "event" : "> 15"}
-     ],
-     "isTriggedBySensor" : true,
-     "sensors" : [
-        {
-         "sensorName" : "AccelerometerSensor",
-         "value" : 2
-        },
-        {
-         "sensorName" : "TemperatureSensor",
-         "value" : 20
-        }
-     ],
-     "answers" : [
-        {
-         "questionID" : 1,
-         "type" : "SingleChoice",
-         "content" : 1
-        },
-        {
-         "questionID" : 2,
-         "type" : "MutipleChoice",
-         "content" : [1, 3]
-        },
-        {
-         "questionID" : 3,
-         "type" : "TextAnswer",
-         "content" : "Hello world!"
-        }
-     ]
-    }
-\end{lstlisting}
+ % \begin{lstlisting}[style=json]
+
+ %    {
+ %     "questionnaireID" : 9527,
+ %     "duration" : {
+ %        "year" : 0,
+ %        "month" : 0,
+ %        "day" : 20,
+ %        "hour" : 12,
+ %        "minute" : 0,
+ %        "second" : 0
+ %     },
+ %     "answerSubmitDate" : {
+ %        "year" : "2017",
+ %        "month" : "1",
+ %        "day" : "1",
+ %        "hour" : "12",
+ %        "minute" : "30",
+ %        "second" : "00"
+ %     },
+ %     "triggerEvent" : [
+ %        {
+ %            "sensorName" : "AccelerometerSensor", 
+ %            "event" : "> 1"
+ %        },
+ %        {
+ %            "sensorName" : "TemperatureSensor", 
+ %            "event" : "> 15"
+ %        }
+ %     ],
+ %     "isTriggedBySensor" : true,
+ %     "sensors" : [
+ %        {
+ %         "sensorName" : "AccelerometerSensor",
+ %         "value" : 2
+ %        },
+ %        {
+ %         "sensorName" : "TemperatureSensor",
+ %         "value" : 20
+ %        }
+ %     ],
+ %     "answers" : [
+ %        {
+ %         "questionID" : 1,
+ %         "type" : "SingleChoice",
+ %         "content" : 1
+ %        },
+ %        {
+ %         "questionID" : 2,
+ %         "type" : "MutipleChoice",
+ %         "content" : [1, 3]
+ %        },
+ %        {
+ %         "questionID" : 3,
+ %         "type" : "TextAnswer",
+ %         "content" : "Hello world!"
+ %        }
+ %     ]
+ %    }
+% \end{lstlisting}
 
 
 
