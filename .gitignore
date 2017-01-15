@@ -28,7 +28,7 @@ hs_err_pid*
 *.ist
 *.fdb_latexmk
 *.fls
-
+*.pyg
 
 
 # Android Studio:
