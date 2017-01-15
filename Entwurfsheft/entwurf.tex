@@ -242,6 +242,8 @@
                         \begin{itemize}
                             \item \code{id}
                             \item \code{questionnaire: Questionnaire}
+                            \item \code{showByDefault: bool = True}
+                                \par // False if the question is hidden by default, and will only be showed as a follow up question; the proband will only see it if he chooses the trigger option of the previous question.
                             \item \code{@abstractmethod} \\
                                        \code{def getContent(self): dict}
                                 \par // a unique method of getting the content of a question
@@ -250,6 +252,9 @@
 
                     \item \code{class TextQuestion(AbstractQuestion)}
                         \begin{itemize}
+                            \item \code{id}
+                            \item \code{questionnaire: Questionnaire}
+                            \item \code{showByDefault: bool = True}
                             \item \code{content}
                             \item \code{def getContent(self): dict}
                                 \par // The value of the “content” key is the \code{content} variable.
@@ -258,6 +263,9 @@
                     \item \code{class ChoiceQuestion(AbstractQuestion)}
                         \par // Both single choice question and multiple choice question are belonging to this class.
                         \begin{itemize}
+                            \item \code{id}
+                            \item \code{questionnaire: Questionnaire}
+                            \item \code{showByDefault: bool = True}
                             \item \code{options = []}
                             \item \code{followUpQuestion: AbstractQuestion}
                             \item \code{followUpQuestionTriggerOptions = []}
@@ -268,6 +276,9 @@
 
                     \item \code{class SteplessScaleQuestion(AbstractQuestion)}
                         \begin{itemize}
+                            \item \code{id}
+                            \item \code{questionnaire: Questionnaire}
+                            \item \code{showByDefault: bool = True}
                             \item \code{scaleMin: int}
                             \item \code{scaleMax: int}
                             \item \code{followUpQuestion: AbstractQuestion}
@@ -278,20 +289,23 @@
                                \par // The dictionary has both “scaleMin” and “scaleMax” keys.
                         \end{itemize}
                         
-                        \item \code{class ScaleQuestionWithSteps(AbstractQuestion)}
-                            \begin{itemize}
-                                \item \code{hasThreeSteps: bool}
-                                \item \code{hasFiveSteps: bool}
-                                \item \code{hasSevenSteps: bool}
-                                    \par // Only one of the above boolean values can be true; the question has either 3, 5 or 7 steps.
-                                \item \code{stepNames = []}
-                                    \par // Each step can have a name; \code{len(steps)} must be 3, 5 or 7 according to the step amount.
-                                \item \code{followUpQuestion: AbstractQuestion}
-                                \item \code{followUpQuestionTriggerStep: []}
-                                    \par // The follow up question will only show up, if one of the specific steps is chosen.
-                                \item \code{def getContent(self): dict}
-                                   \par // The value of the “stepNumber” key is either 3, 5 or 7. The value of the “stepNames” key is the \code{stepNames} list.
-                            \end{itemize}
+                    \item \code{class ScaleQuestionWithSteps(AbstractQuestion)}
+                        \begin{itemize}
+                            \item \code{id}
+                            \item \code{questionnaire: Questionnaire}
+                            \item \code{showByDefault: bool = True}
+                            \item \code{hasThreeSteps: bool}
+                            \item \code{hasFiveSteps: bool}
+                            \item \code{hasSevenSteps: bool}
+                                \par // Only one of the above boolean values can be true; the question has either 3, 5 or 7 steps.
+                            \item \code{stepNames = []}
+                                \par // Each step can have a name; \code{len(steps)} must be 3, 5 or 7 according to the step amount.
+                            \item \code{followUpQuestion: AbstractQuestion}
+                            \item \code{followUpQuestionTriggerStep: []}
+                                \par // The follow up question will only show up, if one of the specific steps is chosen.
+                            \item \code{def getContent(self): dict}
+                               \par // The value of the “stepNumber” key is either 3, 5 or 7. The value of the “stepNames” key is the \code{stepNames} list.
+                        \end{itemize}
 
                     \item \code{class AbstractQuestionAnswer(ABC)}
                         \begin{itemize}
@@ -333,7 +347,7 @@
         \section{Entity-Relationship-Modell der Datenbank}
             \begin{figure}[ht]
                 \centering
-                \includegraphics[scale = 0.13]{PSE_Datenbank_ERM.jpeg}
+                %\includegraphics[scale = 0.13]{PSE_Datenbank_ERM.jpeg}
                 \caption{Entity-Relationship-Modell der Datenbank}
             \end{figure}
 
