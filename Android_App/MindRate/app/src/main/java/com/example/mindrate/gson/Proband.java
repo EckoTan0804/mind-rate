@@ -9,6 +9,8 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:32
  */
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Collection;
 
 /**
@@ -16,55 +18,34 @@ import java.util.Collection;
  */
 public class Proband {
 
-    /**
-     * It represents the participant's ID number.
-     */
-
+    @SerializedName("probandID")
     private String probandID;
-    /**
-     * It represents the study's ID number,which will be told to participant in advance
-     */
+
+    @SerializedName("studyID")
     private String studyID;
-    /**
-     * It represents the gender of the participant
-     */
+
+    @SerializedName("gender")
     private String gender;
-    /**
-     * It represents the age of the participant
-     */
-    private int age;
-    /**
-     * It represents the occupation of the participant
-     */
+
+
+    private Birthday birthday;
+
+    public class Birthday {
+        @SerializedName("year")
+        public String year;
+        @SerializedName("month")
+        public String month;
+        @SerializedName("day")
+        public String day;
+    }
+
+    @SerializedName("occupation")
     private String occupation;
-    /**
-     * It represents the list of the questionaires,which the participant must answer
-     */
+
     private Collection<Questionnaire> questionaires;
-    /**
-     * It represents the log-in status of the participant,true if the participant has at least
-     * once logged in
-     */
+
     private boolean isLogIn = false;
 
-    /**
-     * Constructor
-     *
-
-     * @param probandID the unique id for every proband
-     * @param studyID the already received studyID
-     * @param gender male / female
-     * @param age age of the proband
-     * @param occupation occupation of the proband
-     */
-    public Proband(String probandID, String studyID, String gender, int age, String occupation) {
-        this.probandID = probandID;
-        this.studyID = studyID;
-        this.gender = gender;
-        this.age = age;
-        this.occupation = occupation;
-        this.logIn();
-    }
 
     /**
      *
