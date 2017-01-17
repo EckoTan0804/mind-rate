@@ -11,4 +11,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mindrate.activity.LogInActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/log_in_study_id"/>
+        <include layout="@layout/log_in_proband_id"/>
+
+    </LinearLayout>
+
 </RelativeLayout>
