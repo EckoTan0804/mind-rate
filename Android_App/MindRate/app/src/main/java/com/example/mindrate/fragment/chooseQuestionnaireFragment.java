@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,8 +19,6 @@ import com.example.mindrate.gson.Questionnaire;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
 
 /**
  * This class is for the fragment, in which the proband can choose the questionnaires which are
@@ -43,10 +42,12 @@ public class chooseQuestionnaireFragment extends Fragment {
     private ArrayAdapter<String> adapter;
     // ==========================================================
 
-    // ===================== model ==============================
     private List<String> dataList = new ArrayList<>();
     private List<Questionnaire> questionnaireList;
     private List<Question> questionList;
+    private Questionnaire selectedQuestionnaire;
+    private Question selectedQuestion;
+    private int currentLevel;
 
 
     @Nullable
@@ -58,5 +59,23 @@ public class chooseQuestionnaireFragment extends Fragment {
         titleText = (TextView) view.findViewById(R.id.title_text);
         backButton = (Button) view.findViewById(R.id.back_button);
         listView= (ListView) view.findViewById(R.id.list_view);
+        adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, dataList);
+        listView.setAdapter(adapter);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                if (currentLevel == LEVLE_QUESTIONNAIRE) {
+                    selectedQuestionnaire =  questionnaireList.get(position);
+                } else if (currentLevel == LEVEL_QUESTION) {
+                    selectedQuestion = questionList.get(position);
+                }
+            }
+        });
     }
 }
