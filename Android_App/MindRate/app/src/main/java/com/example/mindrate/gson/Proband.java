@@ -18,6 +18,8 @@ import java.util.Collection;
  */
 public class Proband {
 
+
+
     @SerializedName("probandID")
     private String probandID;
 
@@ -27,33 +29,30 @@ public class Proband {
     @SerializedName("gender")
     private String gender;
 
-
     private Birthday birthday;
 
-    public class Birthday {
-        @SerializedName("year")
-        public String year;
-        @SerializedName("month")
-        public String month;
-        @SerializedName("day")
-        public String day;
-    }
+//    public class Birthday {
+//        @SerializedName("year")
+//        public String year;
+//        @SerializedName("month")
+//        public String month;
+//        @SerializedName("day")
+//        public String day;
+//    }
 
     @SerializedName("occupation")
     private String occupation;
 
     private Collection<Questionnaire> questionaires;
 
-    private boolean isLogIn = false;
 
-
-    /**
-     *
-     */
-    public void logIn() {
-        if (!isLogIn) {
-            isLogIn = true;
-        }
+    public Proband(String occupation, String probandID, String studyID, String gender, Birthday
+            birthday) {
+        this.occupation = occupation;
+        this.probandID = probandID;
+        this.studyID = studyID;
+        this.gender = gender;
+        this.birthday = birthday;
     }
 
     /**
