@@ -12,48 +12,54 @@
         android:text="Birthday: ">
     </TextView>
 
-    <!--<DatePicker-->
-        <!--android:id="@+id/choose_birthday"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:datePickerMode="spinner"-->
-        <!--android:calendarViewShown="false">-->
-    <!--</DatePicker>-->
 
-    <LinearLayout
+    <!--=========================== option 1 ================================================-->
+    <DatePicker
+        android:id="@+id/choose_birthday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false">
+    </DatePicker>
 
-        <EditText
-            android:id="@+id/year"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="date"
-            android:layout_gravity="center"
-            android:hint="yyyy">
-        </EditText>
 
-        <EditText
-            android:id="@+id/month"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:hint="mm">
-        </EditText>
+    <!--=============================== option 2 =================================================-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:orientation="horizontal">-->
 
-        <EditText
-            android:id="@+id/day"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:hint="dd">
-        </EditText>
-    </LinearLayout>
+        <!--<EditText-->
+            <!--android:id="@+id/year"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:inputType="date"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:hint="yyyy">-->
+        <!--</EditText>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/month"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:hint="mm">-->
+        <!--</EditText>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/day"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:hint="dd">-->
+        <!--</EditText>-->
+    <!--</LinearLayout>-->
+
+
 
 </LinearLayout>
