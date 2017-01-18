@@ -21,9 +21,9 @@
 
         <include layout="@layout/log_in_proband_id"/>
 
-        <include layout="@layout/choose_birthday"/>
+        <include layout="@layout/log_in_choose_birthday"/>
 
-        <include layout="@layout/choose_gender"/>
+        <include layout="@layout/log_in_choose_gender"/>
 
     </LinearLayout>
 
