@@ -104,5 +104,51 @@ public class Proband {
 
     }
 
+    public String getProbandID() {
+        return probandID;
+    }
 
+    public void setProbandID(String probandID) {
+        this.probandID = probandID;
+    }
+
+    public String getStudyID() {
+        return studyID;
+    }
+
+    public void setStudyID(String studyID) {
+        this.studyID = studyID;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Birthday birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public Collection<Questionnaire> getQuestionaires() {
+        return questionaires;
+    }
+
+    public void setQuestionaires(Collection<Questionnaire> questionaires) {
+        this.questionaires = questionaires;
+    }
 }
