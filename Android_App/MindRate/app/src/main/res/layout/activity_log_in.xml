@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
 
         <include layout="@layout/log_in_study_id"/>
@@ -28,5 +28,14 @@
         <include layout="@layout/log_in_occupation"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/proband_log_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/log_in_button_log_in">
+    </Button>
 
 </RelativeLayout>
