@@ -8,15 +8,16 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.example.mindrate.R;
+import com.example.mindrate.gson.Birthday;
+import com.example.mindrate.gson.Proband;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class LogInActivity extends AppCompatActivity implements View.OnClickListener,
-        CompoundButton.OnCheckedChangeListener{
+public class LogInActivity extends AppCompatActivity implements
+        CompoundButton.OnCheckedChangeListener {
 
 
     // =================== proband ==========================
@@ -45,7 +46,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void  initView() {
+    private void initView() {
         edtTxt_studyID = (EditText) findViewById(R.id.study_id);
         edtTxt_probandID = (EditText) findViewById(R.id.proband_id);
         dtPk_birthday = (DatePicker) findViewById(R.id.choose_birthday);
@@ -73,20 +74,27 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         rdoBtn_gender_male.setOnCheckedChangeListener(this);
         rdoBtn_gender_famale.setOnCheckedChangeListener(this);
-        btn_probandLogIn.setOnClickListener(this);
-
+        btn_probandLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                studyID = edtTxt_studyID.getText().toString();
+                probandID = edtTxt_probandID.getText().toString();
+                occupation = edtTxt_occuptaion.getText().toString();
+                Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
+                        gender, occupation
+                );
+                // TODO: create JSON
+                // TODO: download QUestionnaire
+            }
+        });
 
 
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        switch(compoundButton.getId()){
+        switch (compoundButton.getId()) {
             case R.id.male:
                 if (isChecked) {
                     gender = "male";
@@ -100,7 +108,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             default:
-                
+
                 break;
         }
     }
