@@ -18,8 +18,12 @@
         android:orientation="vertical">
 
         <include layout="@layout/log_in_study_id"/>
+
         <include layout="@layout/log_in_proband_id"/>
+
         <include layout="@layout/choose_birthday"/>
+
+        <include layout="@layout/choose_gender"/>
 
     </LinearLayout>
 
