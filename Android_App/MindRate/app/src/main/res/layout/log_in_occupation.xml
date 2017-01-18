@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:textSize="15sp"
-        android:text="Occupation:">
+        android:text="@string/log_in_occupation">
     </TextView>
 
     <EditText
@@ -19,7 +19,7 @@
         android:layout_weight="1"
         android:textSize="15sp"
         android:textColorHighlight="#cccccc"
-        android:hint="Please enter your occupation">
+        android:hint="@string/log_in_occupation_hint">
     </EditText>
 
 </LinearLayout>

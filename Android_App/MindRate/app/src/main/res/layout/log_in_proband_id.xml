@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:textSize="15sp"
-        android:text="Proband ID:">
+        android:text="@string/log_in_proband_id">
     </TextView>
 
     <EditText

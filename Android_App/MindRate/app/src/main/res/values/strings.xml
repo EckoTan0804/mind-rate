@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">MindRate</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--=========================== activity_log_in===============================================-->
+    <string name="log_in_study_id">Study ID:</string>
+    <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_birthday">Birthday:</string>
+    <string name="log_in_occupation">Occupation:</string>
+    <string name="log_in_occupation_hint">Please enter your occupation</string>
+
 </resources>
