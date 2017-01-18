@@ -9,6 +9,7 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:32
  */
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Collection;
@@ -43,6 +44,7 @@ public class Proband {
     @SerializedName("occupation")
     private String occupation;
 
+    @Expose
     private Collection<Questionnaire> questionaires;
 
 
