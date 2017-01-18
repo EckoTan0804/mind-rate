@@ -32,6 +32,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:inputType="date"
+            android:layout_gravity="center"
             android:hint="yyyy">
         </EditText>
 
@@ -40,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center"
             android:hint="mm">
         </EditText>
 
@@ -48,6 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center"
             android:hint="dd">
         </EditText>
     </LinearLayout>
