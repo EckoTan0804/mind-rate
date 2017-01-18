@@ -25,6 +25,8 @@
 
         <include layout="@layout/log_in_choose_gender"/>
 
+        <include layout="@layout/log_in_occupation"/>
+
     </LinearLayout>
 
 </RelativeLayout>
