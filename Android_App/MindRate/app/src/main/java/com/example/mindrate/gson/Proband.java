@@ -46,8 +46,8 @@ public class Proband {
     private Collection<Questionnaire> questionaires;
 
 
-    public Proband(String occupation, String probandID, String studyID, String gender, Birthday
-            birthday) {
+    public Proband(String studyID, String probandID,  Birthday
+            birthday,String gender, String occupation) {
         this.occupation = occupation;
         this.probandID = probandID;
         this.studyID = studyID;
