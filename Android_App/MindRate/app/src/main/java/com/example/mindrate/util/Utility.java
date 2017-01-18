@@ -2,6 +2,7 @@ package com.example.mindrate.util;
 
 
 import com.example.mindrate.gson.Questionnaire;
+import com.google.gson.Gson;
 
 /**
  * Project: MindRate
@@ -13,7 +14,12 @@ import com.example.mindrate.gson.Questionnaire;
 
 public class Utility {
 
-    public Questionnaire handleJsonObject() {
+    public static Questionnaire handleJsonObject() {
         return null;
+    }
+
+    public static String createJSON(Object obj) {
+        Gson gson = new Gson();
+        return gson.toJson(obj);
     }
 }
