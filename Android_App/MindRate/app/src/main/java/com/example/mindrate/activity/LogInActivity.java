@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
@@ -34,8 +32,8 @@ public class LogInActivity extends AppCompatActivity {
     private EditText edtTxt_probandID;
     private DatePicker dtPk_birthday;
     private RadioGroup rdog_chooseGender;
-    private RadioButton rdoBtn_gender_male;
-    private RadioButton rdoBtn_gender_famale;
+//    private RadioButton rdoBtn_gender_male;
+//    private RadioButton rdoBtn_gender_famale;
     private EditText edtTxt_occuptaion;
     private Button btn_probandLogIn;
 
@@ -48,14 +46,17 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
+
+        // ==================== study ID ===============================
         edtTxt_studyID = (EditText) findViewById(R.id.study_id);
+        // =============================================================
+
+        // ==================== proband ID =============================
         edtTxt_probandID = (EditText) findViewById(R.id.proband_id);
+        // =============================================================
 
-
-        edtTxt_occuptaion = (EditText) findViewById(R.id.occupation);
-        btn_probandLogIn = (Button) findViewById(R.id.proband_log_in);
-
-        // ================= DatePicker ============================
+        // ================= DatePicker ================================
         
         dtPk_birthday = (DatePicker) findViewById(R.id.choose_birthday);
         Calendar calender = Calendar.getInstance(TimeZone.getDefault());
@@ -78,8 +79,8 @@ public class LogInActivity extends AppCompatActivity {
 
         // =============== gender =====================================
         rdog_chooseGender = (RadioGroup) findViewById(R.id.choose_gender);
-        rdoBtn_gender_male = (RadioButton) findViewById(R.id.male);
-        rdoBtn_gender_famale = (RadioButton) findViewById(R.id.female);
+//        rdoBtn_gender_male = (RadioButton) findViewById(R.id.male);
+//        rdoBtn_gender_famale = (RadioButton) findViewById(R.id.female);
 
         rdog_chooseGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -87,11 +88,11 @@ public class LogInActivity extends AppCompatActivity {
                 switch(checkedId){
                     case R.id.male:
                         gender = "male";
-                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.female:
                         gender = "female";
-                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
                         break;
                     default:
 
@@ -102,6 +103,18 @@ public class LogInActivity extends AppCompatActivity {
 
 //        rdoBtn_gender_male.setOnCheckedChangeListener(this);
 //        rdoBtn_gender_famale.setOnCheckedChangeListener(this);
+
+
+        // ==============================================================================
+
+        // ========================= occupation =========================================
+        edtTxt_occuptaion = (EditText) findViewById(R.id.occupation);
+        // ==============================================================================
+
+        // ========================= log in =============================================
+
+        btn_probandLogIn = (Button) findViewById(R.id.proband_log_in);
+
         btn_probandLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,30 +132,8 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+        // ==============================================================================
 
     }
-
-
-//    @Override
-//    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-//        switch (compoundButton.getId()) {
-//            case R.id.male:
-//                if (isChecked) {
-//                    gender = "male";
-//                    Toast.makeText(LogInActivity.this, this.gender, Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//            case R.id.female:
-//                if (isChecked) {
-//                    gender = "female";
-//                    Toast.makeText(LogInActivity.this, this.gender, Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//            default:
-//
-//                break;
-//        }
-//    }
-
 
 }
