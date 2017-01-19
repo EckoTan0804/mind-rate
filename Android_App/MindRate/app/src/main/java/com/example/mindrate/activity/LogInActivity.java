@@ -125,9 +125,12 @@ public class LogInActivity extends AppCompatActivity {
                 occupation = edtTxt_occuptaion.getText().toString();
                 Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
                         gender, occupation);
+
                 // 2. TODO: create JSON
                 String probandJSON = Utility.createJSON(proband);
+
                 // 3. TODO: download Questionnaire
+
 
             }
         });
