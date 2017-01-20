@@ -11,12 +11,17 @@ import android.widget.RadioGroup;
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
+import com.example.mindrate.util.HttpUtil;
 import com.example.mindrate.util.Utility;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
 
 public class LogInActivity extends AppCompatActivity {
+
+
+    public static final String SERVER_ADDRESS = "129.13.170.45";
 
     // =================== proband ==========================
     private String studyID;
@@ -32,7 +37,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText edtTxt_probandID;
     private DatePicker dtPk_birthday;
     private RadioGroup rdog_chooseGender;
-//    private RadioButton rdoBtn_gender_male;
+    //    private RadioButton rdoBtn_gender_male;
 //    private RadioButton rdoBtn_gender_famale;
     private EditText edtTxt_occuptaion;
     private Button btn_probandLogIn;
@@ -57,7 +62,7 @@ public class LogInActivity extends AppCompatActivity {
         // =============================================================
 
         // ================= DatePicker ================================
-        
+
         dtPk_birthday = (DatePicker) findViewById(R.id.choose_birthday);
         Calendar calender = Calendar.getInstance(TimeZone.getDefault());
         year = calender.get(Calendar.YEAR);
@@ -82,10 +87,11 @@ public class LogInActivity extends AppCompatActivity {
 //        rdoBtn_gender_male = (RadioButton) findViewById(R.id.male);
 //        rdoBtn_gender_famale = (RadioButton) findViewById(R.id.female);
 
+        // TODO: default checked
         rdog_chooseGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch(checkedId){
+                switch (checkedId) {
                     case R.id.male:
                         gender = "male";
 //                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
@@ -126,11 +132,20 @@ public class LogInActivity extends AppCompatActivity {
                 Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
                         gender, occupation);
 
-                // 2. TODO: create JSON
+                // 2. TODO: create probandJSON
                 String probandJSON = Utility.createJSON(proband);
 
-                // 3. TODO: download Questionnaire
+                // 3. TODO: upload probandJSON to server and download Questionnaires
 
+                try {
+                    String questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+
+                }
+
+                // 4. TODO: transfer proband & questionnaireJSON to AnswerQuestionActivity
 
             }
         });
