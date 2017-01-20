@@ -19,6 +19,7 @@
         android:layout_weight="1"
         android:textSize="15sp"
         android:textColorHighlight="#cccccc"
+        android:maxLines="1"
         android:hint="@string/log_in_occupation_hint">
     </EditText>
 
