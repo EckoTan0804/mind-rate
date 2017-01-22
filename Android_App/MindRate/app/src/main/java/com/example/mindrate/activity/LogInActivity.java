@@ -68,7 +68,7 @@ public class LogInActivity extends AppCompatActivity {
         year = calender.get(Calendar.YEAR);
         month = calender.get(Calendar.MONTH);
         day = calender.get(Calendar.DATE);
-        dtPk_birthday.init(year, month, day, new DatePicker.OnDateChangedListener() {
+        dtPk_birthday.init(year, month++, day, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int changedYear, int monthOfYear, int
                     dayOfMonth) {
