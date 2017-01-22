@@ -9,6 +9,9 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:32
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -17,8 +20,7 @@ import java.util.Collection;
 /**
  * This class aims to model the participant of this study.
  */
-public class Proband {
-
+public class Proband implements Parcelable {
 
 
     @SerializedName("probandID")
@@ -31,15 +33,6 @@ public class Proband {
     private String gender;
 
     private Birthday birthday;
-
-//    public class Birthday {
-//        @SerializedName("year")
-//        public String year;
-//        @SerializedName("month")
-//        public String month;
-//        @SerializedName("day")
-//        public String day;
-//    }
 
     @SerializedName("occupation")
     private String occupation;
@@ -153,4 +146,40 @@ public class Proband {
     public void setQuestionaires(Collection<Questionnaire> questionaires) {
         this.questionaires = questionaires;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.probandID);
+        dest.writeString(this.studyID);
+        dest.writeString(this.gender);
+        dest.writeParcelable(this.birthday, flags);
+        dest.writeString(this.occupation);
+//        dest.writeParcelable(this.questionaires, flags);
+    }
+
+    protected Proband(Parcel in) {
+        this.probandID = in.readString();
+        this.studyID = in.readString();
+        this.gender = in.readString();
+        this.birthday = in.readParcelable(Birthday.class.getClassLoader());
+        this.occupation = in.readString();
+//        this.questionaires = in.readParcelable(Collection<Questionnaire>.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Proband> CREATOR = new Parcelable.Creator<Proband>() {
+        @Override
+        public Proband createFromParcel(Parcel source) {
+            return new Proband(source);
+        }
+
+        @Override
+        public Proband[] newArray(int size) {
+            return new Proband[size];
+        }
+    };
 }
