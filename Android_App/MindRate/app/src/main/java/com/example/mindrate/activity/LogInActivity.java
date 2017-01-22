@@ -3,21 +3,17 @@ package com.example.mindrate.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.util.HttpUtil;
 import com.example.mindrate.util.Utility;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -140,23 +136,27 @@ public class LogInActivity extends AppCompatActivity {
                 String probandJSON = Utility.createJSON(proband);
 
                 // 3. TODO: upload probandJSON to server and download Questionnaires
-                String questionnaireJSON = null;
-                try {
-                    questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
+//                String questionnaireJSON = null;
+//                try {
+//                    questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } finally {
+//
+//                }
 
-                }
-
-                // 4. TODO: transfer proband & questionnaireJSON to AnswerQuestionActivity
+                // 4. TODO: put proband & questionnaireJSON into inteng
                 Intent intent = new Intent(LogInActivity.this, AnswerQuestionActivity.class);
-                if (!TextUtils.isEmpty(questionnaireJSON)) {
-                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
-                } else {
-                    Toast.makeText(LogInActivity.this, "Load questionnaires failed. Please try " +
-                            "again", Toast.LENGTH_LONG).show();
-                }
+//                if (!TextUtils.isEmpty(questionnaireJSON)) {
+//                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
+//                } else {
+//                    Toast.makeText(LogInActivity.this, "Load questionnaires failed. Please try " +
+//                            "again", Toast.LENGTH_LONG).show();
+//                }
+                intent.putExtra("proband", proband);
+
+                // 5. TODO: use this intent to start AnswerQuestionActivity
+                startActivity(intent);
 
 
 
