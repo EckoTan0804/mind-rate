@@ -1,6 +1,9 @@
 package com.example.mindrate.gson;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -9,7 +12,7 @@ package com.example.mindrate.gson;
  * Created at 2017/1/18:23:18
  */
 
-public class Birthday {
+public class Birthday implements Parcelable {
 
     private int year;
     private int month;
@@ -44,4 +47,39 @@ public class Birthday {
     public void setDay(int day) {
         this.day = day;
     }
+
+
+    // =================== Parcelable =================================
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.year);
+        dest.writeInt(this.month);
+        dest.writeInt(this.day);
+    }
+
+    protected Birthday(Parcel in) {
+        this.year = in.readInt();
+        this.month = in.readInt();
+        this.day = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Birthday> CREATOR = new Parcelable.Creator<Birthday>() {
+        @Override
+        public Birthday createFromParcel(Parcel source) {
+            return new Birthday(source);
+        }
+
+        @Override
+        public Birthday[] newArray(int size) {
+            return new Birthday[size];
+        }
+    };
+
+    // ================================================================
 }
