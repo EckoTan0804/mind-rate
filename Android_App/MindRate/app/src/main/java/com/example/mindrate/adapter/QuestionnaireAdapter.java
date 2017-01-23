@@ -35,18 +35,36 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Questionnaire questionnaire = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceID, parent, false);
+        View view = null;
+        ViewHolder viewHolder;
 
-        TextView tv_questionnaireName = (TextView) view.findViewById(R.id.questionnaire_name);
-        tv_questionnaireName.setText(questionnaire.getQuestionaireID());
+        // improve the efficiency of ListView
+        if (convertView == null) {
+            view = LayoutInflater.from(getContext()).inflate(resourceID, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.tv_questionnaireName = (TextView) view.findViewById(R.id.questionnaire_name);
+            viewHolder.tv_beginTime = (TextView) view.findViewById(R.id.questionnaire_begin_time);
+            viewHolder.tv_endTime = (TextView) view.findViewById(R.id.questionnaire_end_time);
+            view.setTag(viewHolder); // store ViewHolder in View
+        } else {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
+        }
+
+        viewHolder.tv_questionnaireName.setText(questionnaire.getQuestionaireID());
 
         // TODO: set beginTime
-        TextView tv_beginTime = (TextView) view.findViewById(R.id.questionnaire_begin_time);
-        tv_beginTime.setText(questionnaire.getBeginTime());
+        viewHolder.tv_beginTime.setText(questionnaire.getBeginTime());
 
         // TODO: set endTime
-        TextView tv_EndTime = (TextView) view.findViewById(R.id.questionnaire_end_time);
-        tv_beginTime.setText(questionnaire.getEndTime());
+        viewHolder.tv_beginTime.setText(questionnaire.getEndTime());
         return view;
+    }
+
+    class ViewHolder {
+
+        TextView tv_questionnaireName;
+        TextView tv_beginTime;
+        TextView tv_endTime;
     }
 }
