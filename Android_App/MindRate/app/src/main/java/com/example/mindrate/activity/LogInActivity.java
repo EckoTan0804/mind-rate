@@ -64,11 +64,17 @@ public class LogInActivity extends AppCompatActivity {
         // ================= DatePicker ================================
 
         dtPk_birthday = (DatePicker) findViewById(R.id.choose_birthday);
-        Calendar calender = Calendar.getInstance(TimeZone.getDefault());
-        year = calender.get(Calendar.YEAR);
-        month = calender.get(Calendar.MONTH);
-        day = calender.get(Calendar.DATE);
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DATE);
         dtPk_birthday.init(year, month++, day, new DatePicker.OnDateChangedListener() {
+            /*
+             * Explanation for month++ : calendar.get(Calendar.MONTH) = actual month - 1
+             * e.g: now is January, but calendar.get(Calendar.MONTH) = 0
+             * In order to maintain the consistence, month have to plus 1 after initializing the
+             * datePicker
+             */
             @Override
             public void onDateChanged(DatePicker datePicker, int changedYear, int monthOfYear, int
                     dayOfMonth) {
@@ -84,10 +90,7 @@ public class LogInActivity extends AppCompatActivity {
 
         // =============== gender =====================================
         rdog_chooseGender = (RadioGroup) findViewById(R.id.choose_gender);
-//        rdoBtn_gender_male = (RadioButton) findViewById(R.id.male);
-//        rdoBtn_gender_famale = (RadioButton) findViewById(R.id.female);
 
-        // TODO: default checked
         rdog_chooseGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
@@ -106,10 +109,6 @@ public class LogInActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        rdoBtn_gender_male.setOnCheckedChangeListener(this);
-//        rdoBtn_gender_famale.setOnCheckedChangeListener(this);
-
 
         // ==============================================================================
 
@@ -145,7 +144,7 @@ public class LogInActivity extends AppCompatActivity {
 //
 //                }
 
-                // 4. TODO: put proband & questionnaireJSON into inteng
+                // 4. TODO: put proband & questionnaireJSON into intent
                 Intent intent = new Intent(LogInActivity.this, AnswerQuestionActivity.class);
 //                if (!TextUtils.isEmpty(questionnaireJSON)) {
 //                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
