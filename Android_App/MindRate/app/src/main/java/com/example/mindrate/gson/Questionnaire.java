@@ -29,9 +29,9 @@ public class Questionnaire {
     private SensorManager sensorManager;
 
     public Questionnaire(String questionnaireID,String beginTime, String endTime) {
+        this.questionnaireID = questionnaireID;
         this.beginTime = beginTime;
         this.endTime = endTime;
-        this.questionnaireID = questionnaireID;
     }
 
     //   private Collection<> answers;

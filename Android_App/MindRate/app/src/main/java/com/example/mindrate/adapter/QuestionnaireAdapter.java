@@ -57,7 +57,7 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
         viewHolder.tv_beginTime.setText(questionnaire.getBeginTime());
 
         // TODO: set endTime
-        viewHolder.tv_beginTime.setText(questionnaire.getEndTime());
+        viewHolder.tv_endTime.setText(questionnaire.getEndTime());
         return view;
     }
 
