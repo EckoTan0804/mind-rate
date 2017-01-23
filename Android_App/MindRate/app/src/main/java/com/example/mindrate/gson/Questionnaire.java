@@ -105,14 +105,6 @@ public class Questionnaire {
         this.duration = duration;
     }
 
-    public String getQuestionaireID() {
-        return questionnaireID;
-    }
-
-    public void setQuestionaireID(String questionnaireID) {
-        this.questionnaireID = questionnaireID;
-    }
-
     public boolean isShouldTrigger() {
         return shouldTrigger;
     }

@@ -51,7 +51,7 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        viewHolder.tv_questionnaireName.setText(questionnaire.getQuestionaireID());
+        viewHolder.tv_questionnaireName.setText(questionnaire.getQuestionnaireID());
 
         // TODO: set beginTime
         viewHolder.tv_beginTime.setText(questionnaire.getBeginTime());
