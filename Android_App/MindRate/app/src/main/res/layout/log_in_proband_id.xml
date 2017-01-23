@@ -19,6 +19,7 @@
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
         android:textSize="15sp"
+        android:maxLines="1"
         android:hint="Please input your proband ID">
     </EditText>
 
