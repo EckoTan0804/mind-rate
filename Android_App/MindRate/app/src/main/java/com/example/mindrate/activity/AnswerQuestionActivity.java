@@ -2,17 +2,24 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
 
 public class AnswerQuestionActivity extends AppCompatActivity {
 
-    private TextView tv_questionText;
-
     private Proband proband;
+
+    // ==================== View components ==================================
+    private DrawerLayout mDrawerLayout;
+    private Button btn_nav;
+
+    // =======================================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,17 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     }
 
     private void initView() {
-//        tv_questionText = (TextView) findViewById(R.id.question_text);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // =================== Button nav ===================================
+        btn_nav = (Button) findViewById(R.id.nav);
+        btn_nav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        // ==================================================================
     }
 }
