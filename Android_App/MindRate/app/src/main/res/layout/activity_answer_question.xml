@@ -5,31 +5,47 @@
     android:id="@+id/activity_answer_question"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.mindrate.activity.AnswerQuestionActivity">
-
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/test"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="HelloWorld!">
-        </TextView>
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/question_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:fitsSystemWindows="true">
+
+                    <include layout="@layout/title"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <fragment
             android:id="@+id/choose_questionnaire_fragment"
             android:name="com.example.mindrate.fragment.chooseQuestionnaireFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="start">
+            android:layout_gravity="start">
         </fragment>
 
     </android.support.v4.widget.DrawerLayout>
-
 
 </FrameLayout>

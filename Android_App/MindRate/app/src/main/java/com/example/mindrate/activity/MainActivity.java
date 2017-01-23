@@ -9,7 +9,7 @@ import com.example.mindrate.gson.Proband;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static boolean isLogIn = false;
+    private static boolean isLogIn = true;
     private Proband proband;
 
     @Override
