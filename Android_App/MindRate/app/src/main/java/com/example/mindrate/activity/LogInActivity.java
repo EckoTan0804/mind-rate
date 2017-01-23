@@ -154,7 +154,10 @@ public class LogInActivity extends AppCompatActivity {
 //                }
                 intent.putExtra("proband", proband);
 
-                // 5. TODO: use this intent to start AnswerQuestionActivity
+                // 5. TODO: set isLogIn of MainActivity = true
+                MainActivity.setIsLogIn(true);
+
+                // 6. TODO: use this intent to start AnswerQuestionActivity
                 startActivity(intent);
 
 
