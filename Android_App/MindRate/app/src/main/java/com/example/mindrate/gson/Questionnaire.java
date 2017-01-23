@@ -26,7 +26,7 @@ public class Questionnaire {
     private boolean shouldTrigger;
     private boolean[] sensorValues;
     private boolean triggeredBySensor;
-    private SensorManager sensorManager;
+    private TriggerEvent sensorManager;
 
     public Questionnaire(String questionnaireID,String beginTime, String endTime) {
         this.questionnaireID = questionnaireID;
@@ -140,11 +140,11 @@ public class Questionnaire {
         this.questionnaireID = questionnaireID;
     }
 
-    public SensorManager getSensorManager() {
+    public TriggerEvent getSensorManager() {
         return sensorManager;
     }
 
-    public void setSensorManager(SensorManager sensorManager) {
+    public void setSensorManager(TriggerEvent sensorManager) {
         this.sensorManager = sensorManager;
     }
 
