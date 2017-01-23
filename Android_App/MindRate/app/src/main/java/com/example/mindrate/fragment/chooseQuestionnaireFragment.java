@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mindrate.R;
-import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 
 import java.util.ArrayList;
@@ -35,23 +33,17 @@ import java.util.List;
  */
 public class chooseQuestionnaireFragment extends Fragment {
 
-    public static final int LEVLE_QUESTIONNAIRE = 0;
-    public static final int LEVEL_QUESTION = 1;
 
     //====================== UI - Components ====================
     private ProgressDialog progressDialog;
     private TextView titleText;
-    private Button backButton;
     private ListView listView;
     private ArrayAdapter<String> adapter;
     // ==========================================================
 
     private List<String> dataList = new ArrayList<>();
     private List<Questionnaire> questionnaireList;
-    private List<Question> questionList;
     private Questionnaire selectedQuestionnaire;
-    private Question selectedQuestion;
-    private int currentLevel;
 
 
     @Nullable
@@ -61,8 +53,7 @@ public class chooseQuestionnaireFragment extends Fragment {
         View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
         titleText = (TextView) view.findViewById(R.id.title_text);
-        backButton = (Button) view.findViewById(R.id.back_button);
-        listView= (ListView) view.findViewById(R.id.list_view);
+        listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<>(getContext(), R.layout.questionnaire_item, dataList);
         listView.setAdapter(adapter);
         return view;
@@ -74,13 +65,9 @@ public class chooseQuestionnaireFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                if (currentLevel == LEVLE_QUESTIONNAIRE) {
-                    selectedQuestionnaire =  questionnaireList.get(position);
-                    // TODO: queryQuestionnaire()
-                } else if (currentLevel == LEVEL_QUESTION) {
-                    selectedQuestion = questionList.get(position);
-                    // TODO: queryQuestion()
-                }
+                // TODO:
+                selectedQuestionnaire = questionnaireList.get(position);
+                titleText.setText(selectedQuestionnaire.getQuestionnaireID());
             }
         });
     }
