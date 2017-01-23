@@ -8,9 +8,9 @@
         android:id="@+id/questionnaire_name"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
         android:layout_weight="2"
         android:textSize="15sp"
-        android:text="Questionnaire 1"
         >
     </TextView>
 
@@ -18,9 +18,9 @@
         android:id="@+id/questionnaire_begin_time"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
         android:layout_weight="1"
         android:textSize="10sp"
-        android:text="1.1.2017 16:00"
         >
     </TextView>
 
@@ -28,9 +28,10 @@
         android:id="@+id/questionnaire_end_time"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
         android:layout_weight="1"
         android:textSize="10sp"
-        android:text="1.1.2017 18:00">
+        >
     </TextView>
 
 
