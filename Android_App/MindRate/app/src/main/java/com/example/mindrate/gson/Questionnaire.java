@@ -19,6 +19,7 @@ public class Questionnaire {
     private Collection<Question> questions;
     private boolean isValid;
     private String beginTime;
+    private String endTime;
     private String submitTime;
     private int duration;
     private String questionnaireID;
@@ -150,5 +151,13 @@ public class Questionnaire {
 
     public void setSensorManager(SensorManager sensorManager) {
         this.sensorManager = sensorManager;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }
