@@ -33,7 +33,7 @@ import java.util.List;
  * <br>E-mail: eckotan@icloud.com</br>
  * </p>
  */
-public class chooseFragment extends Fragment {
+public class chooseQuestionnaireFragment extends Fragment {
 
     public static final int LEVLE_QUESTIONNAIRE = 0;
     public static final int LEVEL_QUESTION = 1;
