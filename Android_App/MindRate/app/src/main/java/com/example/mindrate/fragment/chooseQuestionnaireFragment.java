@@ -72,8 +72,10 @@ public class chooseQuestionnaireFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if (currentLevel == LEVLE_QUESTIONNAIRE) {
                     selectedQuestionnaire =  questionnaireList.get(position);
+                    // TODO: queryQuestionnaire()
                 } else if (currentLevel == LEVEL_QUESTION) {
                     selectedQuestion = questionList.get(position);
+                    // TODO: queryQuestion()
                 }
             }
         });
