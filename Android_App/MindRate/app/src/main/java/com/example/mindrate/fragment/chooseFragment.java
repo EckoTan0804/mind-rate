@@ -21,15 +21,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is for the fragment, in which the proband can choose the questionnaires which are
- * already triggered but not answered yet
+ * This class is for the fragment, in which:
  *
+ * <li>the proband can choose the questionnaires which are
+ * already triggered but not answered yet</li>
+ *
+ * <p>
  * Project: MindRate
- * Package: com.example.mindrate.fragment
- * Author: Ecko Tan
- * E-mail: eckotan@icloud.com
+ * <br>Package: com.example.mindrate.fragment</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * </p>
  */
-public class chooseQuestionnaireFragment extends Fragment {
+public class chooseFragment extends Fragment {
 
     public static final int LEVLE_QUESTIONNAIRE = 0;
     public static final int LEVEL_QUESTION = 1;
