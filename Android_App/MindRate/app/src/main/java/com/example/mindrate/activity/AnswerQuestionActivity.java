@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.util.Utility;
 
 public class AnswerQuestionActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         initFromIntent();
         initView();
 
-        tv_questionText.setText(Utility.createJSON(this.proband));
+//        tv_questionText.setText(Utility.createJSON(this.proband));
     }
 
     private void initFromIntent() {
@@ -33,6 +32,6 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tv_questionText = (TextView) findViewById(R.id.question_text);
+//        tv_questionText = (TextView) findViewById(R.id.question_text);
     }
 }

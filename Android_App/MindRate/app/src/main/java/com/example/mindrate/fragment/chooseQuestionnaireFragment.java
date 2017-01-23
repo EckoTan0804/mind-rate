@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mindrate.R;
+import com.example.mindrate.adapter.QuestionnaireAdapter;
 import com.example.mindrate.gson.Questionnaire;
 
 import java.util.ArrayList;
@@ -38,10 +38,9 @@ public class chooseQuestionnaireFragment extends Fragment {
     private ProgressDialog progressDialog;
     private TextView titleText;
     private ListView listView;
-    private ArrayAdapter<String> adapter;
+    private QuestionnaireAdapter adapter;
     // ==========================================================
 
-    private List<String> dataList = new ArrayList<>();
     private List<Questionnaire> questionnaireList;
     private Questionnaire selectedQuestionnaire;
 
@@ -52,9 +51,12 @@ public class chooseQuestionnaireFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
+        initDataList();
+
         titleText = (TextView) view.findViewById(R.id.title_text);
         listView = (ListView) view.findViewById(R.id.list_view);
-        adapter = new ArrayAdapter<>(getContext(), R.layout.questionnaire_item, dataList);
+        adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
+                questionnaireList);
         listView.setAdapter(adapter);
         return view;
     }
@@ -70,5 +72,14 @@ public class chooseQuestionnaireFragment extends Fragment {
                 titleText.setText(selectedQuestionnaire.getQuestionnaireID());
             }
         });
+    }
+
+
+    // test
+    private void initDataList() {
+        questionnaireList = new ArrayList<>();
+        questionnaireList.add(new Questionnaire("A", "2017.1.1", "2017.2.2"));
+        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
     }
 }

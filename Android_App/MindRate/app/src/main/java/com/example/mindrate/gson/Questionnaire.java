@@ -28,10 +28,13 @@ public class Questionnaire {
     private boolean triggeredBySensor;
     private SensorManager sensorManager;
 
+    public Questionnaire(String questionnaireID,String beginTime, String endTime) {
+        this.beginTime = beginTime;
+        this.endTime = endTime;
+        this.questionnaireID = questionnaireID;
+    }
 
-
-    
-//   private Collection<> answers;
+    //   private Collection<> answers;
 //   public SensorManager SensorManager;
 
 
