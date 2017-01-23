@@ -12,11 +12,11 @@
     android:orientation="vertical"
     tools:context="com.example.mindrate.activity.AnswerQuestionActivity">
 
-    <TextView
-        android:id="@+id/question_text"
+    <fragment
+        android:id="@+id/choose_fragment"
+        android:name="com.example.mindrate.fragment.chooseQuestionnaireFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    </TextView>
+        android:layout_height="match_parent">
+    </fragment>
 
 </LinearLayout>
