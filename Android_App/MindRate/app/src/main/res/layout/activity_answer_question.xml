@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_answer_question"
     android:layout_width="match_parent"
@@ -38,13 +39,23 @@
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <fragment
-            android:id="@+id/choose_questionnaire_fragment"
-            android:name="com.example.mindrate.fragment.chooseQuestionnaireFragment"
+        <!--<fragment-->
+            <!--android:id="@+id/choose_questionnaire_fragment"-->
+            <!--android:name="com.example.mindrate.fragment.chooseQuestionnaireFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="start">-->
+        <!--</fragment>-->
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start">
-        </fragment>
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu"
+            app:headerLayout="@layout/nav_header"
+            >
+        </android.support.design.widget.NavigationView>
 
     </android.support.v4.widget.DrawerLayout>
 
