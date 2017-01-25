@@ -1,0 +1,3 @@
+[submodule "Server_Side"]
+	path = Server_Side
+	url = https://apm1467@github.com/apm1467/mind-rate-server-docker.git
