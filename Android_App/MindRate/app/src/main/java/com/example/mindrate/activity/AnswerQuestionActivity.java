@@ -106,4 +106,12 @@ public class AnswerQuestionActivity extends BaseActivity {
         transition.replace(R.id.switch_fragment, fragment);
         transition.commit();
     }
+
+    public Proband getProband() {
+        return proband;
+    }
+
+    public void setProband(Proband proband) {
+        this.proband = proband;
+    }
 }
