@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.mindrate.R;
+import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.gson.Proband;
 
@@ -28,6 +29,8 @@ public class AnswerQuestionActivity extends BaseActivity {
     private NavigationView navView;
 
     // =======================================================================
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +81,12 @@ public class AnswerQuestionActivity extends BaseActivity {
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_questionnaire_list:
-                        // TODO
+                        replaceFragment(new ChooseQuestionnaireFragment());
+                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_info:
-                        // TODO
+
+                        mDrawerLayout.closeDrawers();
                         break;
                     default:
 
