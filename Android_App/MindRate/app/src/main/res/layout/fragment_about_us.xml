@@ -16,6 +16,8 @@
         android:orientation="vertical"
         >
 
+        <include layout="@layout/mindrate_logo"/>
+        
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
@@ -25,7 +27,7 @@
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
-                android:src="@mipmap/Logo_KIT">
+                android:src="@mipmap/kit_logo">
             </ImageView>
         </RelativeLayout>
 
@@ -55,7 +57,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textSize="15sp"
-            android:text="Shanshan Du, Yi Ge, Renhan Lou, Ruoheng Ma, Haobin Tan">
+            android:text="Shanshan Du, Yi Ge, Renhan Lou, Ruoheng Ma, \nHaobin Tan">
         </TextView>
 
 

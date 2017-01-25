@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.mindrate.R;
+import com.example.mindrate.fragment.AboutUsFragment;
 import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.gson.Proband;
@@ -68,7 +69,7 @@ public class AnswerQuestionActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
         }
         navView.setCheckedItem(R.id.nav_profile);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -85,7 +86,7 @@ public class AnswerQuestionActivity extends BaseActivity {
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_us:
-
+                        replaceFragment(new AboutUsFragment());
                         mDrawerLayout.closeDrawers();
                         break;
                     default:
