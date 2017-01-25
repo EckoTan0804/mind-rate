@@ -31,7 +31,7 @@ import java.util.List;
  * <br>E-mail: eckotan@icloud.com</br>
  * </p>
  */
-public class chooseQuestionnaireFragment extends Fragment {
+public class ChooseQuestionnaireFragment extends Fragment {
 
 
     //====================== UI - Components ====================

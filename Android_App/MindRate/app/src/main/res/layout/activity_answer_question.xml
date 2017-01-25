@@ -57,7 +57,7 @@
 
         <!--<fragment-->
             <!--android:id="@+id/choose_questionnaire_fragment"-->
-            <!--android:name="com.example.mindrate.fragment.chooseQuestionnaireFragment"-->
+            <!--android:name="com.example.mindrate.fragment.ChooseQuestionnaireFragment"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
             <!--android:layout_gravity="start">-->
