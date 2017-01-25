@@ -13,31 +13,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
+        <LinearLayout
+            android:id="@+id/main_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ScrollView
-                android:id="@+id/question_layout"
+            <include layout="@layout/title"/>
+
+            <FrameLayout
+                android:id="@+id/switch_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none"
-                android:overScrollMode="never">
+                android:layout_height="match_parent">
+            </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:fitsSystemWindows="true">
+        </LinearLayout>
 
-                    <include layout="@layout/title"/>
+        <!--<android.support.v4.widget.SwipeRefreshLayout-->
+            <!--android:id="@+id/swipe_refresh"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-                </LinearLayout>
+            <!--<ScrollView-->
+                <!--android:id="@+id/question_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:scrollbars="none"-->
+                <!--android:overScrollMode="never">-->
 
-            </ScrollView>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:fitsSystemWindows="true">-->
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+                    <!--<include layout="@layout/title"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</ScrollView>-->
+
+        <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
         <!--<fragment-->
             <!--android:id="@+id/choose_questionnaire_fragment"-->
