@@ -13,7 +13,7 @@ import java.util.List;
  * Created at 2017/1/10:18:37
  */
 
-public class SensorManager {
+public class TriggerEvent {
 
     private List<Sensor> sensorList;
 
