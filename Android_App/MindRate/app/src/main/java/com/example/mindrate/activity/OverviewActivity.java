@@ -39,7 +39,7 @@ public class OverviewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_answer_question);
+        setContentView(R.layout.activity_overview);
 
         initFromIntent();
         initView();
