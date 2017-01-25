@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
 
     <TextView
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
         android:layout_gravity="center_vertical"
-        android:text="@string/log_in_birthday">
+        android:text="@string/log_in_birthday"
+        android:textColor="#000"
+        android:textSize="15dp">
     </TextView>
 
 
@@ -19,47 +20,46 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false">
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner">
     </DatePicker>
 
 
     <!--=============================== option 2 =================================================-->
     <!--<LinearLayout-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:orientation="horizontal">-->
 
-        <!--<EditText-->
-            <!--android:id="@+id/year"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:inputType="date"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:hint="yyyy">-->
-        <!--</EditText>-->
+    <!--<EditText-->
+    <!--android:id="@+id/year"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:inputType="date"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:hint="yyyy">-->
+    <!--</EditText>-->
 
-        <!--<EditText-->
-            <!--android:id="@+id/month"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:hint="mm">-->
-        <!--</EditText>-->
+    <!--<EditText-->
+    <!--android:id="@+id/month"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:hint="mm">-->
+    <!--</EditText>-->
 
-        <!--<EditText-->
-            <!--android:id="@+id/day"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:hint="dd">-->
-        <!--</EditText>-->
+    <!--<EditText-->
+    <!--android:id="@+id/day"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:hint="dd">-->
+    <!--</EditText>-->
     <!--</LinearLayout>-->
-
 
 
 </LinearLayout>
