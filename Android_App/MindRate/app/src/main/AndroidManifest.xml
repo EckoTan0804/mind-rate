@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".activity.LogInActivity">
         </activity>
-        <activity android:name=".activity.AnswerQuestionActivity">
+        <activity android:name=".activity.OverviewActivity">
         </activity>
     </application>
 

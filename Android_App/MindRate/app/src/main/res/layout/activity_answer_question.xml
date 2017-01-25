@@ -6,7 +6,7 @@
     android:id="@+id/activity_answer_question"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mindrate.activity.AnswerQuestionActivity">
+    tools:context="com.example.mindrate.activity.OverviewActivity">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"

@@ -20,7 +20,7 @@ import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.gson.Proband;
 
-public class AnswerQuestionActivity extends BaseActivity {
+public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
 
