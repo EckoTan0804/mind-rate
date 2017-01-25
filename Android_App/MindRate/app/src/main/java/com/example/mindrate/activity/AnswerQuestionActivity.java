@@ -2,25 +2,30 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.mindrate.R;
+import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.gson.Proband;
 
-public class AnswerQuestionActivity extends AppCompatActivity {
+public class AnswerQuestionActivity extends BaseActivity {
 
     private Proband proband;
 
     // ==================== View components ==================================
     private DrawerLayout mDrawerLayout;
     private Button btn_nav;
+    private NavigationView navView;
 
     // =======================================================================
 
@@ -53,6 +58,40 @@ public class AnswerQuestionActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
+        // ==================================================================
+
+        // =================== Navigation Menu ==============================
+        navView = (NavigationView) findViewById(R.id.nav_view);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
+        navView.setCheckedItem(R.id.nav_profile);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_profile:
+                        replaceFragment(new ProbandProfileFragment());
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.nav_questionnaire_list:
+                        // TODO
+                        break;
+                    case R.id.nav_info:
+                        // TODO
+                        break;
+                    default:
+
+                        break;
+                }
+                return true;
+            }
+        });
+
+
         // ==================================================================
     }
 
