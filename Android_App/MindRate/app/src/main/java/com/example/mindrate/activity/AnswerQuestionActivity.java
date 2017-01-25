@@ -84,7 +84,7 @@ public class AnswerQuestionActivity extends BaseActivity {
                         replaceFragment(new ChooseQuestionnaireFragment());
                         mDrawerLayout.closeDrawers();
                         break;
-                    case R.id.nav_info:
+                    case R.id.nav_about_us:
 
                         mDrawerLayout.closeDrawers();
                         break;
