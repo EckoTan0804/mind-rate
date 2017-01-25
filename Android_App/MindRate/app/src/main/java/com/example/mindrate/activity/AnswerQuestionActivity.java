@@ -31,6 +31,9 @@ public class AnswerQuestionActivity extends BaseActivity {
 
     // =======================================================================
 
+    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
+    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+    AboutUsFragment aboutUsFragment = new AboutUsFragment();
 
 
     @Override
@@ -78,15 +81,15 @@ public class AnswerQuestionActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.nav_profile:
-                        replaceFragment(new ProbandProfileFragment());
+                        replaceFragment(probandProfileFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_questionnaire_list:
-                        replaceFragment(new ChooseQuestionnaireFragment());
+                        replaceFragment(chooseQuestionnaireFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_us:
-                        replaceFragment(new AboutUsFragment());
+                        replaceFragment(aboutUsFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     default:
