@@ -18,6 +18,7 @@ import com.example.mindrate.R;
 import com.example.mindrate.fragment.AboutUsFragment;
 import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
+import com.example.mindrate.fragment.WelcomeFragment;
 import com.example.mindrate.gson.Proband;
 
 public class OverviewActivity extends BaseActivity {
@@ -54,6 +55,8 @@ public class OverviewActivity extends BaseActivity {
     }
 
     private void initView() {
+
+        replaceFragment(new WelcomeFragment());
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
