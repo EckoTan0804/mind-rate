@@ -2,12 +2,11 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static boolean isLogIn = false;
     private Proband proband;
