@@ -1,9 +1,10 @@
 package com.example.mindrate.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class AnswerQuestionnaireActivity extends AppCompatActivity {
+import com.example.mindrate.R;
+
+public class AnswerQuestionnaireActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
