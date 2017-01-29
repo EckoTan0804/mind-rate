@@ -1,4 +1,4 @@
-package com.example.mindrate.gson;
+package com.example.mindrate.sensor;
 
 
 import android.hardware.Sensor;
