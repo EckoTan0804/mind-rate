@@ -95,6 +95,9 @@ public class OverviewActivity extends BaseActivity {
                         replaceFragment(aboutUsFragment);
                         mDrawerLayout.closeDrawers();
                         break;
+                    case R.id.nav_settings:
+                        // TODO: click event for settings
+                        break;
                     default:
 
                         break;
