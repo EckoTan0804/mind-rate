@@ -127,6 +127,7 @@ public class OverviewActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transition = fragmentManager.beginTransaction();
         transition.replace(R.id.switch_fragment, fragment);
+        transition.addToBackStack(null);
         transition.commit();
     }
 
