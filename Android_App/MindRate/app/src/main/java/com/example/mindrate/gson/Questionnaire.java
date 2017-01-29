@@ -1,7 +1,13 @@
 package com.example.mindrate.gson;
 
 
-import java.util.Collection;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.example.mindrate.sensor.TriggerEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project: MindRate
@@ -11,32 +17,32 @@ import java.util.Collection;
  * Created at 2017/1/8:23:32
  */
 
-public class Questionnaire {
+public class Questionnaire implements Parcelable {
 
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
-    private Collection<Question> questions;
+
     private boolean isValid;
+
+    private String studyID;
+    private String questionnaireID;
+
     private String beginTime;
     private String endTime;
     private String submitTime;
     private int duration;
-    private String questionnaireID;
-    private boolean shouldTrigger;
-    private boolean[] sensorValues;
-    private boolean triggeredBySensor;
-    private TriggerEvent sensorManager;
 
-    public Questionnaire(String questionnaireID,String beginTime, String endTime) {
+    private List<Question> questions;
+
+    private TriggerEvent triggerEvent;
+
+
+    public Questionnaire(String questionnaireID, String beginTime, String endTime) {
         this.questionnaireID = questionnaireID;
         this.beginTime = beginTime;
         this.endTime = endTime;
     }
-
-    //   private Collection<> answers;
-//   public SensorManager SensorManager;
-
 
     /**
      * The answers of the questionnaire will be temporarily saved in smartphone.
@@ -68,11 +74,11 @@ public class Questionnaire {
 
     // ================ setters and getters ==================================
 
-    public Collection<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Collection<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 
@@ -108,30 +114,6 @@ public class Questionnaire {
         this.duration = duration;
     }
 
-    public boolean isShouldTrigger() {
-        return shouldTrigger;
-    }
-
-    public void setShouldTrigger(boolean shouldTrigger) {
-        this.shouldTrigger = shouldTrigger;
-    }
-
-    public boolean[] getSensorValues() {
-        return sensorValues;
-    }
-
-    public void setSensorValues(boolean[] sensorValues) {
-        this.sensorValues = sensorValues;
-    }
-
-    public boolean isTriggeredBySensor() {
-        return triggeredBySensor;
-    }
-
-    public void setTriggeredBySensor(boolean triggeredBySensor) {
-        this.triggeredBySensor = triggeredBySensor;
-    }
-
     public String getQuestionnaireID() {
         return questionnaireID;
     }
@@ -140,12 +122,12 @@ public class Questionnaire {
         this.questionnaireID = questionnaireID;
     }
 
-    public TriggerEvent getSensorManager() {
-        return sensorManager;
+    public TriggerEvent getTriggerEvent() {
+        return triggerEvent;
     }
 
-    public void setSensorManager(TriggerEvent sensorManager) {
-        this.sensorManager = sensorManager;
+    public void setTriggerEvent(TriggerEvent triggerEvent) {
+        this.triggerEvent = triggerEvent;
     }
 
     public String getEndTime() {
@@ -155,4 +137,55 @@ public class Questionnaire {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
+
+    public String getStudyID() {
+        return studyID;
+    }
+
+    public void setStudyID(String studyID) {
+        this.studyID = studyID;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
+        dest.writeString(this.studyID);
+        dest.writeString(this.questionnaireID);
+        dest.writeString(this.beginTime);
+        dest.writeString(this.endTime);
+        dest.writeString(this.submitTime);
+        dest.writeInt(this.duration);
+        dest.writeList(this.questions);
+        dest.writeParcelable(this.triggerEvent, flags);
+    }
+
+    protected Questionnaire(Parcel in) {
+        this.isValid = in.readByte() != 0;
+        this.studyID = in.readString();
+        this.questionnaireID = in.readString();
+        this.beginTime = in.readString();
+        this.endTime = in.readString();
+        this.submitTime = in.readString();
+        this.duration = in.readInt();
+        this.questions = new ArrayList<Question>();
+        in.readList(this.questions, Question.class.getClassLoader());
+        this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Questionnaire> CREATOR = new Parcelable.Creator<Questionnaire>() {
+        @Override
+        public Questionnaire createFromParcel(Parcel source) {
+            return new Questionnaire(source);
+        }
+
+        @Override
+        public Questionnaire[] newArray(int size) {
+            return new Questionnaire[size];
+        }
+    };
 }
