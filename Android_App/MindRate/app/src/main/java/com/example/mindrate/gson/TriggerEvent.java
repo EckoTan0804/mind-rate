@@ -1,8 +1,6 @@
 package com.example.mindrate.gson;
 
 
-import android.hardware.Sensor;
-
 import java.util.List;
 
 /**
@@ -14,14 +12,10 @@ import java.util.List;
  */
 
 public class TriggerEvent {
-
-    private List<Sensor> sensorList;
-
-    public List<Sensor> getSensorList() {
-        return sensorList;
+    private Questionnaire questionnaire;
+    public TriggerEvent(Questionnaire qn){
+        this.questionnaire = qn;
     }
 
-    public void setSensorList(List<Sensor> sensorList) {
-        this.sensorList = sensorList;
-    }
+
 }
