@@ -145,7 +145,7 @@ public class LogInActivity extends AppCompatActivity {
 //                }
 
                 // 4. TODO: put proband & questionnaireJSON into intent
-                Intent intent = new Intent(LogInActivity.this, AnswerQuestionActivity.class);
+                Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
 //                if (!TextUtils.isEmpty(questionnaireJSON)) {
 //                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
 //                } else {

@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
 
     <TextView
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="15sp"
-        android:text="@string/log_in_proband_id">
+        android:text="@string/log_in_proband_id"
+        android:textColor="#000"
+        android:textSize="15sp">
     </TextView>
 
     <EditText
         android:id="@+id/proband_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_gravity="center_vertical"
-        android:textSize="15sp"
+        android:layout_weight="1"
+        android:hint="Please input your proband ID"
         android:maxLines="1"
-        android:hint="Please input your proband ID">
+        android:textSize="15sp">
     </EditText>
 
 </LinearLayout>

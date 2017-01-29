@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
@@ -31,12 +30,12 @@ import java.util.List;
  * <br>E-mail: eckotan@icloud.com</br>
  * </p>
  */
-public class chooseQuestionnaireFragment extends Fragment {
+public class ChooseQuestionnaireFragment extends Fragment {
 
 
     //====================== UI - Components ====================
     private ProgressDialog progressDialog;
-    private TextView titleText;
+//    private TextView titleText;
     private ListView listView;
     private QuestionnaireAdapter adapter;
     // ==========================================================
@@ -53,7 +52,7 @@ public class chooseQuestionnaireFragment extends Fragment {
 
         initDataList();
 
-        titleText = (TextView) view.findViewById(R.id.title_text);
+//        titleText = (TextView) view.findViewById(R.id.title_text);
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
                 questionnaireList);
@@ -69,7 +68,7 @@ public class chooseQuestionnaireFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 // TODO:
                 selectedQuestionnaire = questionnaireList.get(position);
-                titleText.setText(selectedQuestionnaire.getQuestionnaireID());
+//                titleText.setText(selectedQuestionnaire.getQuestionnaireID());
             }
         });
     }

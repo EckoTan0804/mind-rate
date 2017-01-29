@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if (!isLogIn) {
             intent = new Intent(this, LogInActivity.class);
         } else {
-            intent = new Intent(this, AnswerQuestionActivity.class);
+            intent = new Intent(this, OverviewActivity.class);
         }
 
         startActivity(intent);
