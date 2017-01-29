@@ -3,9 +3,6 @@ package com.example.mindrate.gson;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.example.mindrate.sensor.TriggerEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 
