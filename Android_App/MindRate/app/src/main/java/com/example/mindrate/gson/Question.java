@@ -16,6 +16,12 @@ public class Question {
     private String questionID;
     private boolean isAnswered;
 
+    public Question(String question, String questionID) {
+        this.question = question;
+        this.questionID = questionID;
+        this.isAnswered = false;
+    }
+
     // ================ setters and getters ==================================
 
     public String getQuestion() {
