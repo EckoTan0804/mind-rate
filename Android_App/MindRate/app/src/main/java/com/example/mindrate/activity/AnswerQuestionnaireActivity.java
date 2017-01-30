@@ -2,6 +2,8 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mindrate.R;
@@ -32,7 +34,21 @@ public class AnswerQuestionnaireActivity extends BaseActivity {
 
     private void initView() {
 
-        tv_questionnaireID = (TextView) findViewById(R.id.titl_questionnaireID);
+        tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
+
+        Button btn_back = (Button) findViewById(R.id.title_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        setResult(Activity.RESULT_OK);
+//        finish();
+//    }
 }

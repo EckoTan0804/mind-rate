@@ -78,9 +78,11 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
                 // 3. use this intent to start AnswerQuestionnaireActivity
                 getActivity().startActivity(intent);
+//                getActivity().startActivityForResult(intent, 1);
             }
         });
     }
+
 
 
     // test
@@ -90,4 +92,6 @@ public class ChooseQuestionnaireFragment extends Fragment {
         questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
     }
+
+
 }
