@@ -11,4 +11,27 @@ package com.example.mindrate.gson;
  */
 
 public class QuestionAnswer {
+
+    private Question question;
+    private String answerContent;
+
+    public QuestionAnswer(Question question) {
+        this.question = question;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public String getAnswerContent() {
+        return answerContent;
+    }
+
+    public void setAnswerContent(String answerContent) {
+        this.answerContent = answerContent;
+    }
 }
