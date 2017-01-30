@@ -12,7 +12,7 @@ package com.example.mindrate.gson;
 public class Question<T> {
 
     private String question;
-    private QuestionStrategy questionStrategy;
+    private QuestionType questionType;
     private int questionID;
     private boolean isAnswered;
 
@@ -30,12 +30,12 @@ public class Question<T> {
         this.question = question;
     }
 
-    public QuestionStrategy getQuestionStrategy() {
-        return questionStrategy;
+    public QuestionType getQuestionType() {
+        return questionType;
     }
 
-    public void setQuestionStrategy(QuestionStrategy questionStrategy) {
-        this.questionStrategy = questionStrategy;
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 
     public int getQuestionID() {

@@ -9,7 +9,7 @@ package com.example.mindrate.gson;
  * Created at 2017/1/10:04:17
  */
 
-public class MultipleChoice extends QuestionStrategy<int[]> {
+public class MultipleChoice extends QuestionType<int[]> {
 
 //    private int[] answer;
 }

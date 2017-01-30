@@ -9,7 +9,7 @@ package com.example.mindrate.gson;
  * Created at 2017/1/10:04:20
  */
 
-public class DragScale extends QuestionStrategy<Integer> {
+public class DragScale extends QuestionType<Integer> {
 
 //    private Integer answer;
 //
