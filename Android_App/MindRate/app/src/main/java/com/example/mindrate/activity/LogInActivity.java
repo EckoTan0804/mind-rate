@@ -2,7 +2,6 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +16,7 @@ import com.example.mindrate.util.Utility;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends BaseActivity {
 
 
     public static final String SERVER_ADDRESS = "129.13.170.45";

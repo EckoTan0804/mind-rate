@@ -5,12 +5,13 @@
     android:background="?attr/colorPrimary">
 
     <TextView
-        android:id="@+id/title_questionnaireID"
+        android:id="@+id/title_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#fff"
         android:textSize="20sp"
+        android:typeface="monospace"
         >
     </TextView>
 

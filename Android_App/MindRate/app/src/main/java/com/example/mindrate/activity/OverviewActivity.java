@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.fragment.AboutUsFragment;
@@ -29,6 +30,8 @@ public class OverviewActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private Button btn_nav;
     private NavigationView navView;
+    private TextView tv_title;
+
 
     // =======================================================================
 
@@ -56,6 +59,11 @@ public class OverviewActivity extends BaseActivity {
 
     private void initView() {
 
+        // =================== TextView title ===============================
+        tv_title = (TextView) findViewById(R.id.title_title);
+        // ==================================================================
+
+        tv_title.setText("Mind Rate");
         replaceFragment(new WelcomeFragment());
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -84,15 +92,23 @@ public class OverviewActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.nav_profile:
+                        tv_title.setText("Profile");
                         replaceFragment(probandProfileFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_questionnaire_list:
+                        tv_title.setText("Questionnaires");
                         replaceFragment(chooseQuestionnaireFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_us:
+                        tv_title.setText("About Us");
                         replaceFragment(aboutUsFragment);
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.nav_settings:
+                        tv_title.setText("Settings");
+                        // TODO: replace Settings-Fragment
                         mDrawerLayout.closeDrawers();
                         break;
                     default:

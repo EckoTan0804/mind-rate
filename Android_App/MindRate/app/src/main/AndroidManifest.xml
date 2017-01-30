@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.mindrate">
 
-    <!--===================== permission =================================-->
+    <!-- ===================== permission ================================= -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
-
-    <!--==================================================================-->
-
-
+    <!-- ================================================================== -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,6 +22,8 @@
         <activity android:name=".activity.LogInActivity">
         </activity>
         <activity android:name=".activity.OverviewActivity">
+        </activity>
+        <activity android:name=".activity.AnswerQuestionnaireActivity">
         </activity>
     </application>
 

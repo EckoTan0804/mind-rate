@@ -1,8 +1,10 @@
 package com.example.mindrate.gson;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
-import java.util.List;
 
 /**
  * Project: MindRate
@@ -12,7 +14,7 @@ import java.util.List;
  * Created at 2017/1/10:18:37
  */
 
-public class TriggerEvent {
+public class TriggerEvent implements Parcelable {
 
     private Questionnaire questionnaire;
     private Date minTimeSpace;
@@ -180,4 +182,67 @@ public class TriggerEvent {
     public void setProximity(boolean proximity) {
         this.proximity = proximity;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.questionnaire, flags);
+        dest.writeLong(this.minTimeSpace != null ? this.minTimeSpace.getTime() : -1);
+        dest.writeLong(this.time != null ? this.time.getTime() : -1);
+        dest.writeLong(this.dateTime != null ? this.dateTime.getTime() : -1);
+        dest.writeByte(this.triggeredWhenCalendarEventBegins ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.triggeredWhenCalendarEventEnds ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.triggeredWhenFacebookNotificationComes ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.triggeredWhenWhatsAppNotificationComes ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.linearAcceleration ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.gravity ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.rotation ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.airTemperature ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.airPressure ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.light ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.relativeHumidity ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.orientation ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.magneticField ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.proximity ? (byte) 1 : (byte) 0);
+    }
+
+    protected TriggerEvent(Parcel in) {
+        this.questionnaire = in.readParcelable(Questionnaire.class.getClassLoader());
+        long tmpMinTimeSpace = in.readLong();
+        this.minTimeSpace = tmpMinTimeSpace == -1 ? null : new Date(tmpMinTimeSpace);
+        long tmpTime = in.readLong();
+        this.time = tmpTime == -1 ? null : new Date(tmpTime);
+        long tmpDateTime = in.readLong();
+        this.dateTime = tmpDateTime == -1 ? null : new Date(tmpDateTime);
+        this.triggeredWhenCalendarEventBegins = in.readByte() != 0;
+        this.triggeredWhenCalendarEventEnds = in.readByte() != 0;
+        this.triggeredWhenFacebookNotificationComes = in.readByte() != 0;
+        this.triggeredWhenWhatsAppNotificationComes = in.readByte() != 0;
+        this.linearAcceleration = in.readByte() != 0;
+        this.gravity = in.readByte() != 0;
+        this.rotation = in.readByte() != 0;
+        this.airTemperature = in.readByte() != 0;
+        this.airPressure = in.readByte() != 0;
+        this.light = in.readByte() != 0;
+        this.relativeHumidity = in.readByte() != 0;
+        this.orientation = in.readByte() != 0;
+        this.magneticField = in.readByte() != 0;
+        this.proximity = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<TriggerEvent> CREATOR = new Parcelable.Creator<TriggerEvent>() {
+        @Override
+        public TriggerEvent createFromParcel(Parcel source) {
+            return new TriggerEvent(source);
+        }
+
+        @Override
+        public TriggerEvent[] newArray(int size) {
+            return new TriggerEvent[size];
+        }
+    };
 }
