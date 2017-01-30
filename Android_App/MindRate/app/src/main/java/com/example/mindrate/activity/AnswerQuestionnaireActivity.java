@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mindrate.R;
@@ -21,6 +22,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     // ==================== view components =====================
     private TextView tv_questionnaireID;
     private Button btn_nextOrSubmit;
+    private LinearLayout ll_displayAnswerOption;
 
     // ==========================================================
 
@@ -53,6 +55,10 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         btn_nextOrSubmit = (Button) findViewById(R.id.next_or_submit);
         setButtonAsNext();
         btn_nextOrSubmit.setOnClickListener(this);
+        // ======================================================================
+        
+        // ================ LinearLayout displayAnswerOption ====================
+        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.display_answer_option);
         // ======================================================================
 
     }
