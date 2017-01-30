@@ -9,7 +9,7 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:33
  */
 
-public class Question {
+public class Question  {
 
     private String question;
     private QuestionType questionType;
