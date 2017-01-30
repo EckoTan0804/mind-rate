@@ -39,7 +39,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/jump_or_submit"
+            android:id="@+id/next_or_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

@@ -9,12 +9,18 @@ import android.widget.TextView;
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Questionnaire;
 
-public class AnswerQuestionnaireActivity extends BaseActivity {
+public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
+
+    private final static int NEXT = 1;
+    private final static int SUBMIT = 2;
+
+    private int nextOrSubmit;
 
     private Questionnaire questionnaire;
 
     // ==================== view components =====================
     private TextView tv_questionnaireID;
+    private Button btn_nextOrSubmit;
 
     // ==========================================================
 
@@ -37,18 +43,46 @@ public class AnswerQuestionnaireActivity extends BaseActivity {
         tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
 
+        // ================= Button back ========================================
         Button btn_back = (Button) findViewById(R.id.title_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        btn_back.setOnClickListener(this);
+
+        // ======================================================================
+
+        // ================ Button nextOrSubmit =================================
+        btn_nextOrSubmit = (Button) findViewById(R.id.next_or_submit);
+        setButtonAsNext();
+        btn_nextOrSubmit.setOnClickListener(this);
+        // ======================================================================
+
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        setResult(Activity.RESULT_OK);
-//        finish();
-//    }
+    private void setButtonAsNext() {
+        this.nextOrSubmit = NEXT;
+        this.btn_nextOrSubmit.setText("Next");
+    }
+
+    private void setButtonSubmit() {
+        this.nextOrSubmit = SUBMIT;
+        this.btn_nextOrSubmit.setText("Submit");
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.title_back:
+                onBackPressed();
+                break;
+            case R.id.next_or_submit:
+                if (this.nextOrSubmit == NEXT) {
+                    // TODO: jump to next question
+                } else if (this.nextOrSubmit == SUBMIT) {
+                    // TODO: submit answer
+                }
+                break;
+            default:
+
+                break;
+        }
+    }
 }
