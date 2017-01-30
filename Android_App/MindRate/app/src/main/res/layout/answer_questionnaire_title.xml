@@ -5,7 +5,7 @@
                 android:background="?attr/colorPrimary">
 
     <TextView
-        android:id="@+id/titl_questionnaireID"
+        android:id="@+id/title_questionnaireID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -16,7 +16,7 @@
     </TextView>
 
     <Button
-        android:id="@+id/nav"
+        android:id="@+id/title_back"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
