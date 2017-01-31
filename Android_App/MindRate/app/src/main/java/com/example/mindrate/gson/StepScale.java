@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Project: MindRate
@@ -20,12 +20,10 @@ import java.util.List;
 
 public class StepScale extends QuestionType implements Parcelable {
 
-
-
-    private List<Option> optionlist;
+    private ArrayList<Option> optionlist;
     private String nextQuestionID;
 
-    public StepScale(List<Option> optionlist) {
+    public StepScale(ArrayList<Option> optionlist) {
         this.optionlist = optionlist;
     }
 

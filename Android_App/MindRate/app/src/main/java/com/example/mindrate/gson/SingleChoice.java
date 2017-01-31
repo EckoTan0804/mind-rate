@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Project: MindRate
@@ -20,10 +20,10 @@ import java.util.List;
 
 public class SingleChoice extends QuestionType implements Parcelable {
 
-    private List<Option> optionlist;
+    private ArrayList<Option> optionlist;
     private String nextQuestionID;
 
-    public SingleChoice(List<Option> optionlist) {
+    public SingleChoice(ArrayList<Option> optionlist) {
         this.optionlist = optionlist;
     }
 

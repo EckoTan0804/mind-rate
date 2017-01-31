@@ -31,7 +31,7 @@ public class Questionnaire implements Parcelable {
     private String submitTime;
     private int duration;
 
-    private List<Question> questionList;
+    private ArrayList<Question> questionList;
 
     private TriggerEvent triggerEvent;
 
@@ -81,7 +81,7 @@ public class Questionnaire implements Parcelable {
         return questionList;
     }
 
-    public void setQuestionList(List<Question> questionList) {
+    public void setQuestionList(ArrayList<Question> questionList) {
         this.questionList = questionList;
     }
 

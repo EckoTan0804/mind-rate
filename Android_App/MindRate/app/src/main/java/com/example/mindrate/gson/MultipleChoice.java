@@ -22,10 +22,10 @@ import java.util.List;
 public class MultipleChoice extends QuestionType implements CompoundButton
         .OnCheckedChangeListener, Parcelable {
 
-    private List<Option> optionList;
-    private List<String> answerList;
+    private ArrayList<Option> optionList;
+    private ArrayList<String> answerList;
 
-    public MultipleChoice(List<Option> optionList) {
+    public MultipleChoice(ArrayList<Option> optionList) {
         this.optionList = optionList;
         this.answerList = new ArrayList<>();
     }
@@ -47,7 +47,7 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         return optionList;
     }
 
-    public void setOptionList(List<Option> optionList) {
+    public void setOptionList(ArrayList<Option> optionList) {
         this.optionList = optionList;
     }
 
