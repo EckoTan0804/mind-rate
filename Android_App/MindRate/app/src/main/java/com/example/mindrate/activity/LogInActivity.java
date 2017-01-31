@@ -123,6 +123,8 @@ public class LogInActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
+                // TODO: determine whether a EditText is null
+
                 // 1. TODO: create Proband instance
                 studyID = edtTxt_studyID.getText().toString();
                 probandID = edtTxt_probandID.getText().toString();
