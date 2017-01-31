@@ -74,6 +74,16 @@ public class Questionnaire implements Parcelable {
         this.questionList.add(question);
     }
 
+    public Question getQuestion(String questionID) {
+        Question targetQuestion = null;
+        for (Question q : questionList) {
+            if (q.getQuestionID().equals(questionID)) {
+                targetQuestion = q;
+            }
+        }
+        return targetQuestion;
+    }
+
 
     // ================ setters and getters ==================================
 
