@@ -84,6 +84,13 @@ public class Questionnaire implements Parcelable {
         return targetQuestion;
     }
 
+    public boolean isLastQuestion(String questionID) {
+        if (questionID.equals(this.questionList.get(this.questionList.size() - 1).getQuestionID())) {
+            return true;
+        }
+        return false;
+    }
+
 
     // ================ setters and getters ==================================
 
