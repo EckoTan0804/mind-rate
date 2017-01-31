@@ -16,11 +16,11 @@ import android.os.Parcelable;
 public class Option implements Parcelable {
 
     private String content;
-    private String nextQuestion;
+    private String nextQuestionID;
 
-    public Option(String content, String nextQuestion) {
+    public Option(String content, String nextQuestionID) {
         this.content = content;
-        this.nextQuestion = nextQuestion;
+        this.nextQuestionID = nextQuestionID;
     }
 
     public String getContent() {
@@ -31,12 +31,12 @@ public class Option implements Parcelable {
         this.content = content;
     }
 
-    public String getNextQuestion() {
-        return nextQuestion;
+    public String getNextQuestionID() {
+        return nextQuestionID;
     }
 
-    public void setNextQuestion(String nextQuestion) {
-        this.nextQuestion = nextQuestion;
+    public void setNextQuestionID(String nextQuestionID) {
+        this.nextQuestionID = nextQuestionID;
     }
 
     @Override
@@ -47,12 +47,12 @@ public class Option implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.content);
-        dest.writeString(this.nextQuestion);
+        dest.writeString(this.nextQuestionID);
     }
 
     protected Option(Parcel in) {
         this.content = in.readString();
-        this.nextQuestion = in.readString();
+        this.nextQuestionID = in.readString();
     }
 
     public static final Parcelable.Creator<Option> CREATOR = new Parcelable.Creator<Option>() {
