@@ -3,6 +3,7 @@ package com.example.mindrate.gson;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Questionnaire implements Parcelable {
     private String submitTime;
     private int duration;
 
-    private List<Question> questions;
+    private List<Question> questionList;
 
     private TriggerEvent triggerEvent;
 
@@ -39,6 +40,7 @@ public class Questionnaire implements Parcelable {
         this.questionnaireID = questionnaireID;
         this.beginTime = beginTime;
         this.endTime = endTime;
+        questionList = new ArrayList<>();
     }
 
     /**
@@ -56,7 +58,7 @@ public class Questionnaire implements Parcelable {
      */
     public void uploadAnswers(String serverAddr) {
         if (isValid) {
-            // collect all questions' answers of this questionnaire
+            // collect all questionList' answers of this questionnaire
             // upload answers
         }
     }
@@ -68,15 +70,19 @@ public class Questionnaire implements Parcelable {
         // send notification
     }
 
+    public void addQuestion(Question question) {
+        this.questionList.add(question);
+    }
+
 
     // ================ setters and getters ==================================
 
-    public List<Question> getQuestions() {
-        return questions;
+    public List<Question> getQuestionList() {
+        return questionList;
     }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 
     public boolean isValid() {
@@ -157,7 +163,7 @@ public class Questionnaire implements Parcelable {
         dest.writeString(this.endTime);
         dest.writeString(this.submitTime);
         dest.writeInt(this.duration);
-        dest.writeList(this.questions);
+        dest.writeList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
     }
 
@@ -169,8 +175,8 @@ public class Questionnaire implements Parcelable {
         this.endTime = in.readString();
         this.submitTime = in.readString();
         this.duration = in.readInt();
-        this.questions = new ArrayList<Question>();
-        in.readList(this.questions, Question.class.getClassLoader());
+        this.questionList = new ArrayList<Question>();
+        in.readList(this.questionList, Question.class.getClassLoader());
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
     }
 
