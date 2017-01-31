@@ -14,7 +14,12 @@ import android.widget.ListView;
 import com.example.mindrate.R;
 import com.example.mindrate.activity.AnswerQuestionnaireActivity;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
+import com.example.mindrate.gson.DragScale;
+import com.example.mindrate.gson.Option;
+import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
+import com.example.mindrate.gson.SingleChoice;
+import com.example.mindrate.gson.TextAnswer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +93,26 @@ public class ChooseQuestionnaireFragment extends Fragment {
     // test
     private void initDataList() {
         questionnaireList = new ArrayList<>();
-        questionnaireList.add(new Questionnaire("A", "2017.1.1", "2017.2.2"));
+
+        Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
+        // q1
+        ArrayList<Option> optionList = new ArrayList<>();
+        optionList.add(new Option("At home", "Q3"));
+        optionList.add(new Option("At work", "Q3"));
+        optionList.add(new Option("on the way", "Q2"));
+        Question q1 = new Question("How are you?", new SingleChoice(optionList), "Q1");
+        questionnaire.addQuestion(q1);
+
+        // q2
+        Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
+        questionnaire.addQuestion(q2);
+
+        // q3
+        Question q3 = new Question("How are you feeling?", new DragScale(5), "Q3");
+        questionnaire.addQuestion(q3);
+
+
+        questionnaireList.add(questionnaire);
         questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
     }
