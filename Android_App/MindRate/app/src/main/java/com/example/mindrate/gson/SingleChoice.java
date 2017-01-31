@@ -47,6 +47,8 @@ public class SingleChoice extends QuestionType {
                 nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
             }
         });
+
+        layout.addView(radioGroup);
     }
 
     public String getNextQuestionID() {
