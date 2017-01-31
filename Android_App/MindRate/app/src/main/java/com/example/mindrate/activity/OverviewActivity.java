@@ -129,16 +129,33 @@ public class OverviewActivity extends BaseActivity {
             }
         });
 
-
         // ==================================================================
+
     }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transition = fragmentManager.beginTransaction();
         transition.replace(R.id.switch_fragment, fragment);
+        transition.addToBackStack(null);
         transition.commit();
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch(requestCode){
+//            case 1:
+//                if (resultCode == RESULT_OK) {
+////                    replaceFragment(chooseQuestionnaireFragment);
+//                }
+//                break;
+//            default:
+//
+//                break;
+//        }
+//    }
+
+    // ======================= setters and getters =============================
 
     public Proband getProband() {
         return proband;

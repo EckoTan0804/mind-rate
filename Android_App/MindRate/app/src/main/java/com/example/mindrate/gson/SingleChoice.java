@@ -9,7 +9,6 @@ package com.example.mindrate.gson;
  * Created at 2017/1/10:04:15
  */
 
-public class SingleChoice extends QuestionStrategy<Integer> {
+public class SingleChoice extends QuestionType {
 
-//    private Integer answer;
 }

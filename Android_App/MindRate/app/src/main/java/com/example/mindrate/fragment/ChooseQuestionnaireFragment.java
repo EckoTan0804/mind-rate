@@ -1,6 +1,7 @@
 package com.example.mindrate.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.mindrate.R;
+import com.example.mindrate.activity.AnswerQuestionnaireActivity;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
 import com.example.mindrate.gson.Questionnaire;
 
@@ -66,12 +68,21 @@ public class ChooseQuestionnaireFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                // TODO:
+
+                // 1. get the selected questionnaire instance
                 selectedQuestionnaire = questionnaireList.get(position);
-//                titleText.setText(selectedQuestionnaire.getQuestionnaireID());
+
+                // 2. put this questionnaire instance into intent
+                Intent intent = new Intent(getActivity(), AnswerQuestionnaireActivity.class);
+                intent.putExtra("questionnaire", selectedQuestionnaire);
+
+                // 3. use this intent to start AnswerQuestionnaireActivity
+                getActivity().startActivity(intent);
+//                getActivity().startActivityForResult(intent, 1);
             }
         });
     }
+
 
 
     // test
@@ -81,4 +92,6 @@ public class ChooseQuestionnaireFragment extends Fragment {
         questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
     }
+
+
 }

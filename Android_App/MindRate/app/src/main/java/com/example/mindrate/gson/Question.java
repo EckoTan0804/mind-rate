@@ -9,15 +9,17 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:33
  */
 
-public class Question<T> {
+public class Question  {
 
     private String question;
-    private QuestionStrategy questionStrategy;
-    private int questionID;
+    private QuestionType questionType;
+    private String questionID;
     private boolean isAnswered;
 
-    public void setNextQuestion() {
-
+    public Question(String question, String questionID) {
+        this.question = question;
+        this.questionID = questionID;
+        this.isAnswered = false;
     }
 
     // ================ setters and getters ==================================
@@ -30,19 +32,19 @@ public class Question<T> {
         this.question = question;
     }
 
-    public QuestionStrategy getQuestionStrategy() {
-        return questionStrategy;
+    public QuestionType getQuestionType() {
+        return questionType;
     }
 
-    public void setQuestionStrategy(QuestionStrategy questionStrategy) {
-        this.questionStrategy = questionStrategy;
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 
-    public int getQuestionID() {
+    public String getQuestionID() {
         return questionID;
     }
 
-    public void setQuestionID(int questionID) {
+    public void setQuestionID(String questionID) {
         this.questionID = questionID;
     }
 

@@ -9,7 +9,6 @@ package com.example.mindrate.gson;
  * Created at 2017/1/10:04:21
  */
 
-public class OpenAnswer extends QuestionStrategy<String> {
+public class TextAnswer extends QuestionType {
 
-//    private String answer;
 }

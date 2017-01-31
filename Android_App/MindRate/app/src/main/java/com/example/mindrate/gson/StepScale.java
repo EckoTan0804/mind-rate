@@ -9,7 +9,6 @@ package com.example.mindrate.gson;
  * Created at 2017/1/10:04:19
  */
 
-public class StepScale extends QuestionStrategy<Integer> {
+public class StepScale extends QuestionType {
 
-//    private Integer answer;
 }
