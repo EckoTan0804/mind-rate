@@ -1,5 +1,6 @@
 package com.example.mindrate.gson;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 /**
@@ -8,8 +9,9 @@ import android.view.ViewGroup;
 
 public abstract class QuestionType {
 
-    public abstract void inflateAnswerView(ViewGroup layout, ViewGroup.LayoutParams layoutParams);
-
+    public abstract void inflateAnswerView(Context context, ViewGroup layout, ViewGroup
+            .LayoutParams
+            layoutParams);
 
 
 }
