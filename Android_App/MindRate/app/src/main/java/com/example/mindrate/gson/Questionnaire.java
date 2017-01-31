@@ -3,8 +3,11 @@ package com.example.mindrate.gson;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
+import java.util.Observable;
 
 /**
  * Project: MindRate
@@ -14,7 +17,7 @@ import java.util.List;
  * Created at 2017/1/8:23:32
  */
 
-public class Questionnaire implements Parcelable {
+public class Questionnaire implements Parcelable,Observer {
 
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
@@ -185,4 +188,8 @@ public class Questionnaire implements Parcelable {
             return new Questionnaire[size];
         }
     };
+    public void update(Observable o, Object arg){
+        TriggerEventManager tEM=(TriggerEventManager) o;
+        // send to Proband a Notification.
+    }
 }
