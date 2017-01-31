@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -13,7 +15,7 @@ import android.widget.TextView;
  * Created at 2017/1/8:23:33
  */
 
-public class Question  {
+public class Question implements Parcelable {
 
     private String question;
     private QuestionType questionType;
@@ -101,4 +103,42 @@ public class Question  {
     public void setBeginToAnswer(boolean beginToAnswer) {
         isBeginToAnswer = beginToAnswer;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.question);
+        dest.writeParcelable(this.questionType, flags);
+        dest.writeString(this.questionID);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
+        dest.writeString(this.nextQuestionID);
+        dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isBeginToAnswer ? (byte) 1 : (byte) 0);
+    }
+
+    protected Question(Parcel in) {
+        this.question = in.readString();
+        this.questionType = in.readParcelable(QuestionType.class.getClassLoader());
+        this.questionID = in.readString();
+        this.isAnswered = in.readByte() != 0;
+        this.nextQuestionID = in.readString();
+        this.isValid = in.readByte() != 0;
+        this.isBeginToAnswer = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel source) {
+            return new Question(source);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 }
