@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,7 +18,7 @@ import java.util.List;
  * Created at 2017/1/10:04:15
  */
 
-public class SingleChoice extends QuestionType {
+public class SingleChoice extends QuestionType implements Parcelable {
 
     private List<Option> optionlist;
     private String nextQuestionID;
@@ -58,4 +60,33 @@ public class SingleChoice extends QuestionType {
     public void setNextQuestionID(String nextQuestionID) {
         this.nextQuestionID = nextQuestionID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(this.optionlist);
+        dest.writeString(this.nextQuestionID);
+    }
+
+    protected SingleChoice(Parcel in) {
+        this.optionlist = in.createTypedArrayList(Option.CREATOR);
+        this.nextQuestionID = in.readString();
+    }
+
+    public static final Parcelable.Creator<SingleChoice> CREATOR = new Parcelable
+            .Creator<SingleChoice>() {
+        @Override
+        public SingleChoice createFromParcel(Parcel source) {
+            return new SingleChoice(source);
+        }
+
+        @Override
+        public SingleChoice[] newArray(int size) {
+            return new SingleChoice[size];
+        }
+    };
 }

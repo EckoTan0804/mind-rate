@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -15,7 +17,7 @@ import android.widget.TextView;
  * Created at 2017/1/10:04:20
  */
 
-public class DragScale extends QuestionType {
+public class DragScale extends QuestionType implements Parcelable {
 
     private int maxValue;
 
@@ -66,4 +68,31 @@ public class DragScale extends QuestionType {
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.maxValue);
+    }
+
+    protected DragScale(Parcel in) {
+        this.maxValue = in.readInt();
+    }
+
+    public static final Parcelable.Creator<DragScale> CREATOR = new Parcelable.Creator<DragScale>
+            () {
+        @Override
+        public DragScale createFromParcel(Parcel source) {
+            return new DragScale(source);
+        }
+
+        @Override
+        public DragScale[] newArray(int size) {
+            return new DragScale[size];
+        }
+    };
 }

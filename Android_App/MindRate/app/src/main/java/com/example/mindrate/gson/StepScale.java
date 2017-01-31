@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,7 +18,7 @@ import java.util.List;
  * Created at 2017/1/10:04:19
  */
 
-public class StepScale extends QuestionType {
+public class StepScale extends QuestionType implements Parcelable {
 
 
 
@@ -60,4 +62,33 @@ public class StepScale extends QuestionType {
     public void setNextQuestionID(String nextQuestionID) {
         this.nextQuestionID = nextQuestionID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(this.optionlist);
+        dest.writeString(this.nextQuestionID);
+    }
+
+    protected StepScale(Parcel in) {
+        this.optionlist = in.createTypedArrayList(Option.CREATOR);
+        this.nextQuestionID = in.readString();
+    }
+
+    public static final Parcelable.Creator<StepScale> CREATOR = new Parcelable.Creator<StepScale>
+            () {
+        @Override
+        public StepScale createFromParcel(Parcel source) {
+            return new StepScale(source);
+        }
+
+        @Override
+        public StepScale[] newArray(int size) {
+            return new StepScale[size];
+        }
+    };
 }
