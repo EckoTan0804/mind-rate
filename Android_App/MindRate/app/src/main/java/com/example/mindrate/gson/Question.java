@@ -1,6 +1,10 @@
 package com.example.mindrate.gson;
 
 
+import android.content.Context;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -15,11 +19,29 @@ public class Question  {
     private QuestionType questionType;
     private String questionID;
     private boolean isAnswered;
+    private String nextQuestionID;
+    private boolean isValid;
+    private boolean isBeginToAnswer;
 
     public Question(String question, String questionID) {
         this.question = question;
         this.questionID = questionID;
         this.isAnswered = false;
+        isBeginToAnswer = false;
+    }
+
+    public Question(String question, QuestionType questionType, String questionID) {
+        this.question = question;
+        this.questionType = questionType;
+        this.questionID = questionID;
+        this.isAnswered = false;
+        isBeginToAnswer = false;
+    }
+
+    public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
+            layoutParams) {
+        tv_question.setText(question);
+        this.questionType.inflateAnswerView(context, layout, layoutParams);
     }
 
     // ================ setters and getters ==================================
@@ -56,4 +78,27 @@ public class Question  {
         isAnswered = answered;
     }
 
+    public String getNextQuestionID() {
+        return nextQuestionID;
+    }
+
+    public void setNextQuestionID(String nextQuestionID) {
+        this.nextQuestionID = nextQuestionID;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public boolean isBeginToAnswer() {
+        return isBeginToAnswer;
+    }
+
+    public void setBeginToAnswer(boolean beginToAnswer) {
+        isBeginToAnswer = beginToAnswer;
+    }
 }
