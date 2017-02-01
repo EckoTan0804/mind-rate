@@ -28,10 +28,10 @@ import java.util.List;
 
 /**
  * This class is for the fragment, in which:
- *
+ * <p>
  * <li>the proband can choose the questionnaires which are
  * already triggered but not answered yet</li>
- *
+ * <p>
  * <p>
  * Project: MindRate
  * <br>Package: com.example.mindrate.fragment</br>
@@ -44,7 +44,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     //====================== UI - Components ====================
     private ProgressDialog progressDialog;
-//    private TextView titleText;
+    //    private TextView titleText;
     private ListView listView;
     private QuestionnaireAdapter adapter;
     // ==========================================================
@@ -55,16 +55,17 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
         initDataList();
 
-//        titleText = (TextView) view.findViewById(R.id.title_text);
+        //        titleText = (TextView) view.findViewById(R.id.title_text);
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
-                questionnaireList);
+                                           questionnaireList);
         listView.setAdapter(adapter);
         return view;
     }
@@ -78,6 +79,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
                 // 1. get the selected questionnaire instance
                 selectedQuestionnaire = questionnaireList.get(position);
+//                selectedQuestionnaire.sendNotification(getActivity());
 
                 // 2. put this questionnaire instance into intent
                 Intent intent = new Intent(getActivity(), AnswerQuestionnaireActivity.class);
@@ -85,11 +87,9 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
                 // 3. use this intent to start AnswerQuestionnaireActivity
                 getActivity().startActivity(intent);
-//                getActivity().startActivityForResult(intent, 1);
             }
         });
     }
-
 
 
     // test
@@ -110,7 +110,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
         questionnaire.addQuestion(q2);
 
         // q3
-        Question q3 = new Question("How are you feeling?", new DragScale(5), "Q3");
+        Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
         questionnaire.addQuestion(q3);
 
         // q4
