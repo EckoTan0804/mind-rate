@@ -10,32 +10,41 @@
 
     <include layout="@layout/answer_questionnaire_title"/>
 
+
+
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:textSize="25sp"
-        android:typeface="monospace">
+        android:textSize="20sp"
+        android:typeface="monospace"
+        android:background="?attr/colorPrimary"
+        android:textColor="#fff"
+        >
     </TextView>
 
     <LinearLayout
         android:id="@+id/display_answer_option"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal">
 
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="5dp">
 
         <Button
             android:id="@+id/next_or_submit"
