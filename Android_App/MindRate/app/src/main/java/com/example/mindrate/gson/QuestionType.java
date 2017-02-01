@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 public class QuestionType implements Parcelable {
 
     protected String nextQuestionID;
+    protected QuestionAnswer questionAnswer;
 
-    public  void inflateAnswerView(Context context, ViewGroup layout, ViewGroup
+    public  void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
 
