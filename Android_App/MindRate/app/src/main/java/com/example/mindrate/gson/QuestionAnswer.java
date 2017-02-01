@@ -12,19 +12,19 @@ package com.example.mindrate.gson;
 
 public class QuestionAnswer {
 
-    private Question question;
+    private String questionID;
     private String answerContent;
 
-    public QuestionAnswer(Question question) {
-        this.question = question;
+    public QuestionAnswer(String questionID) {
+        this.questionID = questionID;
     }
 
-    public Question getQuestion() {
-        return question;
+    public String getQuestionID() {
+        return questionID;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestionID(String questionID) {
+        this.questionID = questionID;
     }
 
     public String getAnswerContent() {
