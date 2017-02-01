@@ -1,6 +1,9 @@
 package com.example.mindrate.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -22,6 +25,8 @@ import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.fragment.WelcomeFragment;
 import com.example.mindrate.gson.Proband;
 
+import java.util.List;
+
 public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
@@ -31,7 +36,9 @@ public class OverviewActivity extends BaseActivity {
     private Button btn_nav;
     private NavigationView navView;
     private TextView tv_title;
-
+    private SensorManager sM;
+    private List<Sensor> allSensors;
+//    private TriggerEventManager tEM;
 
     // =======================================================================
 
@@ -47,6 +54,9 @@ public class OverviewActivity extends BaseActivity {
 
         initFromIntent();
         initView();
+        sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        allSensors = sM.getSensorList(Sensor.TYPE_ALL);
+//        tEM =  new TriggerEventManager();
 
 //        tv_questionText.setText(Utility.createJSON(this.proband));
     }
