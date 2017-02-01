@@ -124,11 +124,11 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
         // q5
         ArrayList<Option> options = new ArrayList<>();
-        options.add(new Option("--", null));
-        options.add(new Option("-", null));
-        options.add(new Option("0", null));
-        options.add(new Option("+", null));
-        options.add(new Option("++", null));
+        options.add(new Option("very bad", null));
+        options.add(new Option("bad", null));
+        options.add(new Option("so so", null));
+        options.add(new Option("good", null));
+        options.add(new Option("very good!", null));
         Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
         questionnaire.addQuestion(q5);
 
