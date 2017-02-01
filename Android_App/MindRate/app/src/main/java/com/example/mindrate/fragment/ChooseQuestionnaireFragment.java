@@ -102,7 +102,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
         optionList.add(new Option("At home", "Q3"));
         optionList.add(new Option("At work", "Q3"));
         optionList.add(new Option("on the way", "Q2"));
-        Question q1 = new Question("How are you?", new SingleChoice(optionList), "Q1");
+        Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
         questionnaire.addQuestion(q1);
 
         // q2
