@@ -36,6 +36,9 @@ public class QuestionType implements Parcelable {
         this.questionAnswer = questionAnswer;
     }
 
+    public QuestionType() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -44,17 +47,15 @@ public class QuestionType implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.nextQuestionID);
-    }
-
-    public QuestionType() {
+        dest.writeParcelable(this.questionAnswer, flags);
     }
 
     protected QuestionType(Parcel in) {
         this.nextQuestionID = in.readString();
+        this.questionAnswer = in.readParcelable(QuestionAnswer.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<QuestionType> CREATOR = new Parcelable
-            .Creator<QuestionType>() {
+    public static final Creator<QuestionType> CREATOR = new Creator<QuestionType>() {
         @Override
         public QuestionType createFromParcel(Parcel source) {
             return new QuestionType(source);

@@ -13,7 +13,7 @@ import java.util.List;
  * </p>
  */
 
-public class QuestionnaireAnswer {
+public class QuestionnaireAnswer  {
 
     private String questionnaireID;
     private ArrayList<QuestionAnswer> questionAnswerList;
