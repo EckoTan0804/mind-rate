@@ -1,13 +1,23 @@
 package com.example.mindrate.gson;
 
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v7.app.NotificationCompat;
+
+import com.example.mindrate.R;
+import com.example.mindrate.activity.AnswerQuestionnaireActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Project: MindRate
@@ -17,7 +27,7 @@ import java.util.Observable;
  * Created at 2017/1/8:23:32
  */
 
-public class Questionnaire implements Parcelable,Observer {
+public class Questionnaire implements Parcelable, Observer {
 
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
@@ -68,8 +78,20 @@ public class Questionnaire implements Parcelable,Observer {
     /**
      * Send notification when questionnaire is triggered
      */
-    public void notifyToAnswer() {
-        // send notification
+    public void sendNotification(Context context) {
+        Intent intent = new Intent(context, AnswerQuestionnaireActivity.class);
+        intent.putExtra("questionnaire", this);
+        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+        NotificationManager manager = (NotificationManager) context.getSystemService(Context
+                .NOTIFICATION_SERVICE);
+        Notification notification = new NotificationCompat.Builder(context).setContentTitle("You " +
+                "hava a new questionnaire").setContentText("Questionnaire " + this
+                .questionnaireID + " is waiting for your answer").setWhen(System
+                .currentTimeMillis()).setSmallIcon(R.mipmap.ic_thumb_up).setLargeIcon
+                (BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_thumb_up))
+                .setContentIntent(pi).build();
+        manager.notify(1, notification);
+
     }
 
     public void addQuestion(Question question) {
@@ -87,7 +109,8 @@ public class Questionnaire implements Parcelable,Observer {
     }
 
     public boolean isLastQuestion(String questionID) {
-        if (questionID.equals(this.questionList.get(this.questionList.size() - 1).getQuestionID())) {
+        if (questionID.equals(this.questionList.get(this.questionList.size() - 1).getQuestionID()
+        )) {
             return true;
         }
         return false;
@@ -96,7 +119,7 @@ public class Questionnaire implements Parcelable,Observer {
     public String defaultNextQuestionID(Question currentQuestion) {
         String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
-        if (!isLastQuestion(currentQuestion)){
+        if (!isLastQuestion(currentQuestion)) {
             nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionID();
         }
         return nextQuestionID;
@@ -214,7 +237,8 @@ public class Questionnaire implements Parcelable,Observer {
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Questionnaire> CREATOR = new Parcelable.Creator<Questionnaire>() {
+    public static final Parcelable.Creator<Questionnaire> CREATOR = new Parcelable
+            .Creator<Questionnaire>() {
         @Override
         public Questionnaire createFromParcel(Parcel source) {
             return new Questionnaire(source);
@@ -225,8 +249,9 @@ public class Questionnaire implements Parcelable,Observer {
             return new Questionnaire[size];
         }
     };
-    public void update(Observable o, Object arg){
-        TriggerEventManager tEM=(TriggerEventManager) o;
+
+    public void update(Observable o, Object arg) {
+        TriggerEventManager tEM = (TriggerEventManager) o;
         // send to Proband a Notification.
     }
 }
