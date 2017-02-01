@@ -91,6 +91,11 @@ public class Questionnaire implements Parcelable {
         return false;
     }
 
+    public String defaultNextQuestionID(Question currentQuestion) {
+        int currentQuestionIndex = this.questionList.indexOf(currentQuestion);
+        return this.questionList.get(currentQuestionIndex + 1).getNextQuestionID();
+    }
+
 
     // ================ setters and getters ==================================
 
