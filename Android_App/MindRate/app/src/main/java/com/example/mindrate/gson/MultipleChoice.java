@@ -31,8 +31,12 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     }
 
     @Override
-    public void inflateAnswerView(Context context, ViewGroup layout, ViewGroup.LayoutParams
+    public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
+            .LayoutParams
             layoutParams) {
+
+        super.questionAnswer = new QuestionAnswer(questionID);
+
         for (int i = 0; i <optionList.size(); i++) {
             Option option = optionList.get(i);
             CheckBox checkBox = new CheckBox(context);
@@ -49,6 +53,13 @@ public class MultipleChoice extends QuestionType implements CompoundButton
 
     public void setOptionList(ArrayList<Option> optionList) {
         this.optionList = optionList;
+    }
+
+
+    @Override
+    public QuestionAnswer getQuestionAnswer() {
+        questionAnswer.setAnswerContent(this.answerList.toString());
+        return questionAnswer;
     }
 
     @Override

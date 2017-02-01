@@ -56,6 +56,11 @@ public class SingleChoice extends QuestionType implements Parcelable {
         layout.addView(radioGroup);
     }
 
+    @Override
+    public QuestionAnswer getQuestionAnswer() {
+        return questionAnswer;
+    }
+
     public String getNextQuestionID() {
         return nextQuestionID;
     }
