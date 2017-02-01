@@ -11,12 +11,21 @@ import android.view.ViewGroup;
 
 public class QuestionType implements Parcelable {
 
+    protected String nextQuestionID;
+
     public  void inflateAnswerView(Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
 
     }
 
+    public String getNextQuestionID() {
+        return nextQuestionID;
+    }
+
+    public void setNextQuestionID(String nextQuestionID) {
+        this.nextQuestionID = nextQuestionID;
+    }
 
     @Override
     public int describeContents() {
@@ -25,12 +34,14 @@ public class QuestionType implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.nextQuestionID);
     }
 
     public QuestionType() {
     }
 
     protected QuestionType(Parcel in) {
+        this.nextQuestionID = in.readString();
     }
 
     public static final Parcelable.Creator<QuestionType> CREATOR = new Parcelable

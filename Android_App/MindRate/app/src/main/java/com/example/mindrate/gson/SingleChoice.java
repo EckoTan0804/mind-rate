@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class SingleChoice extends QuestionType implements Parcelable {
 
     private ArrayList<Option> optionlist;
-    private String nextQuestionID;
 
     public SingleChoice(ArrayList<Option> optionlist) {
         this.optionlist = optionlist;

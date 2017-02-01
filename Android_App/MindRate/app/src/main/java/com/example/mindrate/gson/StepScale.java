@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class StepScale extends QuestionType implements Parcelable {
 
     private ArrayList<Option> optionlist;
-    private String nextQuestionID;
 
     public StepScale(ArrayList<Option> optionlist) {
         this.optionlist = optionlist;
