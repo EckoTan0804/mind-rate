@@ -15,10 +15,12 @@ import com.example.mindrate.R;
 import com.example.mindrate.activity.AnswerQuestionnaireActivity;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
 import com.example.mindrate.gson.DragScale;
+import com.example.mindrate.gson.MultipleChoice;
 import com.example.mindrate.gson.Option;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.SingleChoice;
+import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 
 import java.util.ArrayList;
@@ -110,6 +112,25 @@ public class ChooseQuestionnaireFragment extends Fragment {
         // q3
         Question q3 = new Question("How are you feeling?", new DragScale(5), "Q3");
         questionnaire.addQuestion(q3);
+
+        // q4
+        ArrayList<Option> optionArrayList = new ArrayList<>();
+        optionArrayList.add(new Option("Swimming", null));
+        optionArrayList.add(new Option("Reading", null));
+        optionArrayList.add(new Option("Coding", null));
+        optionArrayList.add(new Option("Studying", null));
+        Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList), "Q4");
+        questionnaire.addQuestion(q4);
+
+        // q5
+        ArrayList<Option> options = new ArrayList<>();
+        options.add(new Option("--", null));
+        options.add(new Option("-", null));
+        options.add(new Option("0", null));
+        options.add(new Option("+", null));
+        options.add(new Option("++", null));
+        Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
+        questionnaire.addQuestion(q5);
 
 
         questionnaireList.add(questionnaire);
