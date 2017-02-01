@@ -84,7 +84,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         this.btn_nextOrSubmit.setText("Next");
     }
 
-    private void setButtonSubmit() {
+    private void setButtonAsSubmit() {
         this.nextOrSubmit = SUBMIT;
         this.btn_nextOrSubmit.setText("Submit");
     }
@@ -117,10 +117,10 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
                     // 5. determine whether next question is the last question
                     if (this.questionnaire.isLastQuestion(nextQuestion)) {
-                        setButtonSubmit();
+                        setButtonAsSubmit();
                     }
 //                    if (this.questionnaire.isLastQuestion(nextQuestionID)) {
-//                        setButtonSubmit();
+//                        setButtonAsSubmit();
 //                    }
 
                     // 6. Iteration: set nextQuestion as currentQuestion
