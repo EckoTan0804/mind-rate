@@ -21,7 +21,6 @@ public class Question implements Parcelable {
     private QuestionType questionType;
     private String questionID;
     private boolean isAnswered;
-    private String nextQuestionID;
     private boolean isValid;
     private boolean isBeginToAnswer;
 
@@ -73,13 +72,6 @@ public class Question implements Parcelable {
         isAnswered = answered;
     }
 
-    public String getNextQuestionID() {
-        return nextQuestionID;
-    }
-
-    public void setNextQuestionID(String nextQuestionID) {
-        this.nextQuestionID = nextQuestionID;
-    }
 
     public boolean isValid() {
         return isValid;
@@ -108,7 +100,6 @@ public class Question implements Parcelable {
         dest.writeParcelable(this.questionType, flags);
         dest.writeString(this.questionID);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
-        dest.writeString(this.nextQuestionID);
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isBeginToAnswer ? (byte) 1 : (byte) 0);
     }
@@ -118,7 +109,6 @@ public class Question implements Parcelable {
         this.questionType = in.readParcelable(QuestionType.class.getClassLoader());
         this.questionID = in.readString();
         this.isAnswered = in.readByte() != 0;
-        this.nextQuestionID = in.readString();
         this.isValid = in.readByte() != 0;
         this.isBeginToAnswer = in.readByte() != 0;
     }
