@@ -92,11 +92,20 @@ public class Questionnaire implements Parcelable {
     }
 
     public String defaultNextQuestionID(Question currentQuestion) {
-        int currentQuestionIndex = this.questionList.indexOf(currentQuestion);
-        return this.questionList.get(currentQuestionIndex + 1).getQuestionType()
-                .getNextQuestionID();
+        String nextQuestionID = null;
+        int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
+        if (!isLastQuestion(currentQuestion)){
+            nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionType().getNextQuestionID();
+        }
+        return nextQuestionID;
     }
 
+    public boolean isLastQuestion(Question question) {
+        if (this.questionList.lastIndexOf(question) == (this.questionList.size() - 1)) {
+            return true;
+        }
+        return false;
+    }
 
     // ================ setters and getters ==================================
 
