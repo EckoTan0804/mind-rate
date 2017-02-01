@@ -35,7 +35,7 @@ public class Question implements Parcelable {
     public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
             layoutParams) {
         tv_question.setText(question);
-        this.questionType.inflateAnswerView(context, layout, layoutParams);
+        this.questionType.inflateAnswerView(this.questionID, context, layout, layoutParams);
     }
 
     // ================ setters and getters ==================================

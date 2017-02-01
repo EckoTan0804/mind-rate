@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
+import com.example.mindrate.gson.QuestionnaireAnswer;
 
 public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
 
@@ -20,6 +21,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     private int nextOrSubmit;
     private String nextQuestionID;
     private Question currentQuestion;
+    private QuestionnaireAnswer questionnaireAnswer;
 
     private Questionnaire questionnaire;
 
@@ -44,6 +46,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     private void initFromIntent() {
         Intent intent = getIntent();
         this.questionnaire = intent.getParcelableExtra("questionnaire");
+        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID());
     }
 
     private void initView() {
@@ -98,6 +101,10 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
             case R.id.next_or_submit:
 
                 if (this.nextOrSubmit == NEXT) {
+
+                    // 0. add this question's answer to questionnaireAnswer
+                    this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion
+                            .getQuestionType().getQuestionAnswer());
 
                     // 1. remove last questions's view
                     ll_displayAnswerOption.removeAllViews();
