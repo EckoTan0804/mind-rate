@@ -95,7 +95,7 @@ public class Questionnaire implements Parcelable {
         String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
         if (!isLastQuestion(currentQuestion)){
-            nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionType().getNextQuestionID();
+            nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionID();
         }
         return nextQuestionID;
     }
