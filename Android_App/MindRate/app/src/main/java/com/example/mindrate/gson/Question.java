@@ -25,13 +25,6 @@ public class Question implements Parcelable {
     private boolean isValid;
     private boolean isBeginToAnswer;
 
-    public Question(String question, String questionID) {
-        this.question = question;
-        this.questionID = questionID;
-        this.isAnswered = false;
-        isBeginToAnswer = false;
-    }
-
     public Question(String question, QuestionType questionType, String questionID) {
         this.question = question;
         this.questionType = questionType;
