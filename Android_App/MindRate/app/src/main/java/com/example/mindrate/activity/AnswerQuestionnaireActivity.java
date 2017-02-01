@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
@@ -103,8 +102,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 if (this.nextOrSubmit == NEXT) {
 
                     // 0. add this question's answer to questionnaireAnswer
-                    this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion
-                            .getQuestionType().getQuestionAnswer());
+                    recordAnswer();
 
                     // 1. remove last questions's view
                     ll_displayAnswerOption.removeAllViews();
@@ -134,14 +132,34 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     currentQuestion = nextQuestion;
 
                 } else if (this.nextOrSubmit == SUBMIT) {
-                    Toast.makeText(this, "Submit...", Toast.LENGTH_SHORT).show();
+
+                    // record last question's answer
+                    recordAnswer();
+
+//                    StringBuilder builder = new StringBuilder();
+//                    for (QuestionAnswer answer : this.questionnaireAnswer.getQuestionAnswerList()) {
+//                        builder.append(answer.getQuestionID() + ":" + answer.getAnswerContent() +
+//                                "\n");
+//                    }
+//                    String result = builder.toString();
+//                    AlertDialog.Builder dialog = new AlertDialog.Builder
+//                            (AnswerQuestionnaireActivity.this);
+//                    dialog.setMessage(result);
+//                    dialog.show();
+
                     // TODO: submit answer
+
                 }
                 break;
             default:
 
                 break;
         }
+    }
+
+    private void recordAnswer() {
+        this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion
+                .getQuestionType().getQuestionAnswer());
     }
 
 
