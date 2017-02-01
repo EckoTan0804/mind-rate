@@ -7,6 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -31,12 +32,14 @@ public class TextAnswer extends QuestionType implements Parcelable {
         super.questionAnswer = new QuestionAnswer(questionID);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
-                .MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         EditText mEditText = new EditText(context);
         mEditText.setTextSize(15);
         mEditText.setTextColor(Color.BLACK);
         mEditText.setHint("Please input your answer");
+        mEditText.setGravity(Gravity.TOP);
+
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
