@@ -26,8 +26,11 @@ public class DragScale extends QuestionType implements Parcelable {
     }
 
     @Override
-    public void inflateAnswerView(Context context, ViewGroup layout, ViewGroup.LayoutParams
+    public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
+            .LayoutParams
             layoutParams) {
+
+        super.questionAnswer = new QuestionAnswer(questionID);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -46,6 +49,7 @@ public class DragScale extends QuestionType implements Parcelable {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 tv_seekBarProgress.setText(progress + " / " + maxValue);
+                questionAnswer.setAnswerContent(Integer.toString(progress));
             }
 
             @Override
