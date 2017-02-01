@@ -4,6 +4,7 @@ package com.example.mindrate.gson;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -42,6 +43,7 @@ public class DragScale extends QuestionType implements Parcelable {
 
         // =============== TextView ===============================================
         final TextView tv_seekBarProgress = new TextView(context);
+        tv_seekBarProgress.setGravity(Gravity.CENTER_HORIZONTAL);
         layout.addView(tv_seekBarProgress, params);
 
         // =============== set listener for seekBar ===============================
