@@ -28,6 +28,14 @@ public class QuestionType implements Parcelable {
         this.nextQuestionID = nextQuestionID;
     }
 
+    public QuestionAnswer getQuestionAnswer() {
+        return questionAnswer;
+    }
+
+    public void setQuestionAnswer(QuestionAnswer questionAnswer) {
+        this.questionAnswer = questionAnswer;
+    }
+
     @Override
     public int describeContents() {
         return 0;
