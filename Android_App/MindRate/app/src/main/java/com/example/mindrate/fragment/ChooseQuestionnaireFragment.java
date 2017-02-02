@@ -89,7 +89,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
                 intent.putExtra("questionnaire", selectedQuestionnaire);
 
                 // 3. use this intent to start AnswerQuestionnaireActivity
-                getActivity().startActivity(intent);
+                getActivity().startActivityForResult(intent, 1);
             }
         });
     }
@@ -102,6 +102,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
     // test
     private void initTestData() {
         questionnaireList = new ArrayList<>();
+        ((OverviewActivity)getActivity()).setQuestionnaireList(questionnaireList);
 
         Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
         // q1
