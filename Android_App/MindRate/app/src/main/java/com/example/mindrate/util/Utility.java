@@ -22,4 +22,9 @@ public class Utility {
         Gson gson = new Gson();
         return gson.toJson(obj);
     }
+
+    public static Questionnaire fromJsonToQuestionnaire(String json) {
+
+        return null;
+    }
 }
