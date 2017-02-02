@@ -184,8 +184,7 @@ public class OverviewActivity extends BaseActivity {
                                                                                    "questionnaire " +
                                                                                  "ID");
                     removeQuestionnaire(answeredQuestionnaireID);
-
-
+                    chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
                 }
                 break;
             default:

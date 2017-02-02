@@ -86,6 +86,14 @@ public class ChooseQuestionnaireFragment extends Fragment {
             });
         }
 
+    public QuestionnaireAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(QuestionnaireAdapter adapter) {
+        this.adapter = adapter;
+    }
+
     private void initQuestionnaireList() {
 //        this.questionnaireList = ((OverviewActivity)getActivity()).getQuestionnaireList();
         OverviewActivity overviewActivity = (OverviewActivity)getActivity();
