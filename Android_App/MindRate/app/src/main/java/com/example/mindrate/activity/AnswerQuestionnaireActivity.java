@@ -1,8 +1,10 @@
 package com.example.mindrate.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -125,9 +127,6 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     if (this.questionnaire.isLastQuestion(nextQuestion)) {
                         setButtonAsSubmit();
                     }
-                    //                    if (this.questionnaire.isLastQuestion(nextQuestionID)) {
-                    //                        setButtonAsSubmit();
-                    //                    }
 
                     // 6. Iteration: set nextQuestion as currentQuestion
                     currentQuestion = nextQuestion;
@@ -150,7 +149,40 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     //                    dialog.setMessage(result);
                     //                    dialog.show();
 
-                    // TODO: submit answer
+                    // alertDialog
+                    AlertDialog.Builder dialog = new AlertDialog.Builder
+                            (AnswerQuestionnaireActivity.this);
+                    dialog.setTitle("Submit");
+                    dialog.setMessage("Do you want to submit your answer?");
+                    dialog.setCancelable(false);
+                    dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            // 0. submit answer
+
+                            // 1. save answer locally
+
+                            // 2. upload answer to server
+
+                            // 3. set this questionnaire as isAnswered
+                            questionnaire.setAnswered(true);
+
+                            // 4. back to OverviewActivity
+                            Intent intent = new Intent(AnswerQuestionnaireActivity.this,
+                                                       OverviewActivity.class);
+                            intent.putExtra("answered questionnaire ID", questionnaire
+                                    .getQuestionnaireID());
+                            startActivity(intent);
+                        }
+                    });
+                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
 
                 }
                 break;
