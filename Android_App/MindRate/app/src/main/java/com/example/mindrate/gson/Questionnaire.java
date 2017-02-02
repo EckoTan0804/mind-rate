@@ -47,6 +47,8 @@ public class Questionnaire implements Parcelable, Observer {
 
     private TriggerEvent triggerEvent;
 
+    private boolean isAnswered;
+
 
     public Questionnaire(String questionnaireID, String beginTime, String endTime) {
         this.questionnaireID = questionnaireID;
@@ -206,6 +208,21 @@ public class Questionnaire implements Parcelable, Observer {
         this.studyID = studyID;
     }
 
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
+
+    // ===================== Parcelable ==========================================================
+
+    public void update(Observable o, Object arg) {
+        TriggerEventManager tEM = (TriggerEventManager) o;
+        // send to Proband a Notification.
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -220,8 +237,9 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeString(this.endTime);
         dest.writeString(this.submitTime);
         dest.writeInt(this.duration);
-        dest.writeList(this.questionList);
+        dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected Questionnaire(Parcel in) {
@@ -232,13 +250,12 @@ public class Questionnaire implements Parcelable, Observer {
         this.endTime = in.readString();
         this.submitTime = in.readString();
         this.duration = in.readInt();
-        this.questionList = new ArrayList<Question>();
-        in.readList(this.questionList, Question.class.getClassLoader());
+        this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
+        this.isAnswered = in.readByte() != 0;
     }
 
-    public static final Parcelable.Creator<Questionnaire> CREATOR = new Parcelable
-            .Creator<Questionnaire>() {
+    public static final Creator<Questionnaire> CREATOR = new Creator<Questionnaire>() {
         @Override
         public Questionnaire createFromParcel(Parcel source) {
             return new Questionnaire(source);
@@ -249,9 +266,4 @@ public class Questionnaire implements Parcelable, Observer {
             return new Questionnaire[size];
         }
     };
-
-    public void update(Observable o, Object arg) {
-        TriggerEventManager tEM = (TriggerEventManager) o;
-        // send to Proband a Notification.
-    }
 }
