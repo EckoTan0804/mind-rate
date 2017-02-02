@@ -39,17 +39,25 @@
 
     </LinearLayout>
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/next_or_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:background="?attr/colorAccent"
-        android:textColor="#fff"
-        >
-    </Button>
+        android:layout_margin="16dp">
+    </android.support.design.widget.FloatingActionButton>
+
+    <!--<Button-->
+        <!--android:id="@+id/next_or_submit"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="?attr/colorAccent"-->
+        <!--android:textColor="#fff"-->
+        <!--&gt;-->
+    <!--</Button>-->
 
     <!--<RelativeLayout-->
     <!--android:layout_width="match_parent"-->
