@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.activity.AnswerQuestionnaireActivity;
+import com.example.mindrate.activity.OverviewActivity;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
 import com.example.mindrate.gson.DragScale;
 import com.example.mindrate.gson.MultipleChoice;
@@ -60,7 +61,9 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
-        initDataList();
+        initTestData();
+
+//TODO:        initQuestionnaireList();
 
         //        titleText = (TextView) view.findViewById(R.id.title_text);
         listView = (ListView) view.findViewById(R.id.list_view);
@@ -91,9 +94,13 @@ public class ChooseQuestionnaireFragment extends Fragment {
         });
     }
 
+    private void initQuestionnaireList() {
+        this.questionnaireList = ((OverviewActivity)getActivity()).getQuestionnaireList();
+    }
+
 
     // test
-    private void initDataList() {
+    private void initTestData() {
         questionnaireList = new ArrayList<>();
 
         Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
