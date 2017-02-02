@@ -2,6 +2,7 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     // ==================== view components =====================
     private TextView tv_questionnaireID;
-    private Button btn_nextOrSubmit;
+    private FloatingActionButton btn_nextOrSubmit;
     private LinearLayout ll_displayAnswerOption;
     private TextView tv_question;
     private LinearLayout ll_activityAnswerQuestionnaire;
@@ -62,7 +63,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         // ======================================================================
 
         // ================ Button nextOrSubmit =================================
-        btn_nextOrSubmit = (Button) findViewById(R.id.next_or_submit);
+        btn_nextOrSubmit = (FloatingActionButton) findViewById(R.id.next_or_submit);
         setButtonAsNext();
         btn_nextOrSubmit.setOnClickListener(this);
         // ======================================================================
@@ -76,19 +77,19 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         // ======================================================================
         this.currentQuestion = this.questionnaire.getQuestionList().get(0);
         this.currentQuestion.inflateView(tv_question, this,
-                ll_displayAnswerOption, null);
+                                         ll_displayAnswerOption, null);
 
 
     }
 
     private void setButtonAsNext() {
         this.nextOrSubmit = NEXT;
-        this.btn_nextOrSubmit.setText("Next");
+        this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_arrow_forward);
     }
 
     private void setButtonAsSubmit() {
         this.nextOrSubmit = SUBMIT;
-        this.btn_nextOrSubmit.setText("Submit");
+        this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_done);
     }
 
     @Override
@@ -124,9 +125,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     if (this.questionnaire.isLastQuestion(nextQuestion)) {
                         setButtonAsSubmit();
                     }
-//                    if (this.questionnaire.isLastQuestion(nextQuestionID)) {
-//                        setButtonAsSubmit();
-//                    }
+                    //                    if (this.questionnaire.isLastQuestion(nextQuestionID)) {
+                    //                        setButtonAsSubmit();
+                    //                    }
 
                     // 6. Iteration: set nextQuestion as currentQuestion
                     currentQuestion = nextQuestion;
@@ -136,16 +137,18 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     // record last question's answer
                     recordAnswer();
 
-//                    StringBuilder builder = new StringBuilder();
-//                    for (QuestionAnswer answer : this.questionnaireAnswer.getQuestionAnswerList()) {
-//                        builder.append(answer.getQuestionID() + ":" + answer.getAnswerContent() +
-//                                "\n");
-//                    }
-//                    String result = builder.toString();
-//                    AlertDialog.Builder dialog = new AlertDialog.Builder
-//                            (AnswerQuestionnaireActivity.this);
-//                    dialog.setMessage(result);
-//                    dialog.show();
+                    //                    StringBuilder builder = new StringBuilder();
+                    //                    for (QuestionAnswer answer : this.questionnaireAnswer
+                    // .getQuestionAnswerList()) {
+                    //                        builder.append(answer.getQuestionID() + ":" +
+                    // answer.getAnswerContent() +
+                    //                                "\n");
+                    //                    }
+                    //                    String result = builder.toString();
+                    //                    AlertDialog.Builder dialog = new AlertDialog.Builder
+                    //                            (AnswerQuestionnaireActivity.this);
+                    //                    dialog.setMessage(result);
+                    //                    dialog.show();
 
                     // TODO: submit answer
 
@@ -159,7 +162,8 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     private void recordAnswer() {
         this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion
-                .getQuestionType().getQuestionAnswer());
+                                                                     .getQuestionType()
+                                                                     .getQuestionAnswer());
     }
 
 
