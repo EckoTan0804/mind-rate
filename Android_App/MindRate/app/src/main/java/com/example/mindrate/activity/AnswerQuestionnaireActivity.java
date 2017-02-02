@@ -173,7 +173,8 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                                                        OverviewActivity.class);
                             intent.putExtra("answered questionnaire ID", questionnaire
                                     .getQuestionnaireID());
-                            startActivity(intent);
+                            setResult(RESULT_OK, intent);
+                            finish();
                         }
                     });
                     dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {

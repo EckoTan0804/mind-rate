@@ -8,7 +8,7 @@ import com.example.mindrate.gson.Proband;
 
 public class MainActivity extends BaseActivity {
 
-    private static boolean isLogIn = false;
+    private static boolean isLogIn = true;
     private Proband proband;
 
     @Override
