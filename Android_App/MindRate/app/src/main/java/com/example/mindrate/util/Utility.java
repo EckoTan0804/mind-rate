@@ -4,6 +4,8 @@ package com.example.mindrate.util;
 import com.example.mindrate.gson.Questionnaire;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.util
@@ -23,8 +25,8 @@ public class Utility {
         return gson.toJson(obj);
     }
 
-    public static Questionnaire fromJsonToQuestionnaire(String json) {
-
+    public static List<Questionnaire> fromJsonToQuestionnaire(String json) {
+        // TODO: parse json
         return null;
     }
 }
