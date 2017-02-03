@@ -18,41 +18,44 @@
 
         <include layout="@layout/mindrate_logo"/>
         
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="250dp">-->
 
-            <ImageView
-                android:id="@+id/kit_logo"
-                android:layout_width="250dp"
-                android:layout_height="200dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/kit_logo">
-            </ImageView>
-        </RelativeLayout>
+            <!--<ImageView-->
+                <!--android:id="@+id/kit_logo"-->
+                <!--android:layout_width="250dp"-->
+                <!--android:layout_height="200dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:src="@mipmap/kit_logo">-->
+            <!--</ImageView>-->
+        <!--</RelativeLayout>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="250dp">-->
 
-            <ImageView
-                android:id="@+id/teco_logo"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/teco">
-            </ImageView>
-        </RelativeLayout>
+            <!--<ImageView-->
+                <!--android:id="@+id/teco_logo"-->
+                <!--android:layout_width="200dp"-->
+                <!--android:layout_height="200dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:src="@mipmap/teco">-->
+            <!--</ImageView>-->
+        <!--</RelativeLayout>-->
 
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="23sp"
+            android:layout_height="30dp"
+            android:textSize="20sp"
             android:textColor="#000"
-            android:drawableLeft="@mipmap/ic_group_work"
+            android:drawableLeft="@mipmap/ic_group_black"
             android:drawablePadding="10dp"
-            android:text="Contributors:">
+            android:text="Contributors:"
+            android:gravity="center_vertical"
+            android:layout_marginTop="60dp"
+            android:id="@+id/textView2">
         </TextView>
 
         <TextView
@@ -66,7 +69,8 @@
             android:textSize="15sp"
             android:lineSpacingMultiplier="1.2"
             android:textColor="#000"
-            android:text=" Shanshan Du \n Yi Ge \n Renhan Lou \n Ruoheng Ma \n Haobin Tan">
+            android:text=" Shanshan Du \n Yi Ge \n Renhan Lou \n Ruoheng Ma \n Haobin Tan"
+            android:id="@+id/textView">
         </TextView>
 
 
