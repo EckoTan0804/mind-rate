@@ -10,7 +10,9 @@
         android:layout_gravity="center_vertical"
         android:text="@string/log_in_occupation"
         android:textColor="#000"
-        android:textSize="15sp">
+        android:textSize="15sp"
+        android:gravity="right"
+        android:paddingRight="5dp">
     </TextView>
 
     <EditText
@@ -21,7 +23,8 @@
         android:hint="@string/log_in_occupation_hint"
         android:maxLines="1"
         android:textColorHighlight="#cccccc"
-        android:textSize="15sp">
+        android:textSize="15sp"
+        android:paddingLeft="5dp">
     </EditText>
 
 </LinearLayout>

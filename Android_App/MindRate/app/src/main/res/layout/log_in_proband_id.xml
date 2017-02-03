@@ -10,7 +10,9 @@
         android:layout_gravity="center_vertical"
         android:text="@string/log_in_proband_id"
         android:textColor="#000"
-        android:textSize="15sp">
+        android:textSize="15sp"
+        android:gravity="right"
+        android:paddingRight="5dp">
     </TextView>
 
     <EditText
@@ -21,7 +23,8 @@
         android:layout_weight="1"
         android:hint="Please input your proband ID"
         android:maxLines="1"
-        android:textSize="15sp">
+        android:textSize="15sp"
+        android:paddingLeft="5dp">
     </EditText>
 
 </LinearLayout>
