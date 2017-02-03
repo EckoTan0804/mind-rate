@@ -4,7 +4,6 @@
             android:layout_height="match_parent"
             android:overScrollMode="never"
             android:scrollbars="vertical"
-            android:padding="10dp"
             tools:context="com.example.mindrate.fragment.AboutUsFragment">
 
 
@@ -16,7 +15,7 @@
         android:orientation="vertical"
         >
 
-        <include layout="@layout/mindrate_logo"/>
+        <include layout="@layout/mindrate_logo_white"/>
         
         <!--<RelativeLayout-->
             <!--android:layout_width="match_parent"-->
@@ -51,11 +50,12 @@
             android:textSize="20sp"
             android:textColor="#000"
             android:drawableLeft="@mipmap/ic_group_black"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             android:text="Contributors:"
             android:gravity="center_vertical"
-            android:layout_marginTop="60dp"
-            android:id="@+id/textView2">
+            android:layout_marginTop="30dp"
+            android:id="@+id/textView2"
+            >
         </TextView>
 
         <TextView
