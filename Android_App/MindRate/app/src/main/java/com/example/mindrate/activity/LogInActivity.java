@@ -1,7 +1,9 @@
 package com.example.mindrate.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -132,8 +134,12 @@ public class LogInActivity extends BaseActivity {
                 Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
                         gender, occupation);
 
-                // 2. TODO: create probandJSON
+                // 2. TODO: create probandJSON and save probandJSON locally
                 String probandJSON = Utility.createJSON(proband);
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences
+                        (LogInActivity.this).edit();
+                editor.putString("probandJson", probandJSON);
+                editor.apply();
 
                 // 3. TODO: upload probandJSON to server and download Questionnaires
 //                String questionnaireJSON = null;
