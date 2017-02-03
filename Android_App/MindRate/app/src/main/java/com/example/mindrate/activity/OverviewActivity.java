@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -80,7 +81,12 @@ public class OverviewActivity extends BaseActivity {
         Intent intent = getIntent();
 
         // questionnaires
+
         String questionnaireJSON = intent.getStringExtra("questionnaire_JSON");
+        if (TextUtils.isEmpty(questionnaireJSON)) {
+            SharedPreferences pref = getSharedPreferences("questionnaire", MODE_PRIVATE);
+            questionnaireJSON = pref.getString("questionnaireJSON", "");
+        }
         this.questionnaireList = Utility.fromJsonToQuestionnaire(questionnaireJSON);
 
         // proband

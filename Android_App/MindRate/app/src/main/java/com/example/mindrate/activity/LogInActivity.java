@@ -81,8 +81,6 @@ public class LogInActivity extends BaseActivity {
                 year = changedYear;
                 month = monthOfYear + 1;
                 day = dayOfMonth;
-//                Toast.makeText(LogInActivity.this, year+ "." + month + "." + day, Toast
-//                        .LENGTH_SHORT).show();
             }
         });
 
@@ -135,13 +133,14 @@ public class LogInActivity extends BaseActivity {
 
                 // 2. TODO: create probandJSON and save it locally
                 String probandJSON = Utility.createJSON(proband);
-                SharedPreferences.Editor editor =getSharedPreferences("proband", MODE_PRIVATE)
+                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
                         .edit();
                 editor.putString("probandJSON", probandJSON);
                 editor.apply();
 
-                // 3. TODO: upload probandJSON to server and download Questionnaires
-//                String questionnaireJSON = null;
+                // 3. TODO: upload probandJSON to server, download Questionnaires and save it
+                // locally
+                String questionnaireJSON = null;
 //                try {
 //                    questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
 //                } catch (IOException e) {
@@ -149,6 +148,11 @@ public class LogInActivity extends BaseActivity {
 //                } finally {
 //
 //                }
+                SharedPreferences.Editor qEditor = getSharedPreferences("questionnaire",
+                                                                        MODE_PRIVATE)
+                        .edit();
+                qEditor.putString("questionnaireJSON", questionnaireJSON);
+                qEditor.apply();
 
                 // 4. TODO: put proband & questionnaireJSON into intent
                 Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
