@@ -2,6 +2,7 @@ package com.example.mindrate.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -83,7 +84,16 @@ public class OverviewActivity extends BaseActivity {
         this.questionnaireList = Utility.fromJsonToQuestionnaire(questionnaireJSON);
 
         // proband
-        this.proband = (Proband) intent.getParcelableExtra("proband");
+        Proband probandFromLogIn = null;
+//        Proband probandFromLogIn = intent.getParcelableExtra("proband");
+        if (probandFromLogIn != null) {
+            this.proband = probandFromLogIn;
+        } else {
+            SharedPreferences pref = getSharedPreferences("proband", MODE_PRIVATE);
+            String probandJSON = pref.getString("probandJSON", "");
+            this.proband = Utility.fromJsonToProband(probandJSON);
+        }
+
     }
 
     private void initView() {
