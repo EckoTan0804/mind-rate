@@ -84,8 +84,7 @@ public class OverviewActivity extends BaseActivity {
         this.questionnaireList = Utility.fromJsonToQuestionnaire(questionnaireJSON);
 
         // proband
-        Proband probandFromLogIn = null;
-//        Proband probandFromLogIn = intent.getParcelableExtra("proband");
+        Proband probandFromLogIn = intent.getParcelableExtra("proband");
         if (probandFromLogIn != null) {
             this.proband = probandFromLogIn;
         } else {
