@@ -36,7 +36,7 @@ public class OverviewActivity extends BaseActivity {
     private Button btn_nav;
     private NavigationView navView;
     private TextView tv_title;
-    private SensorManager sM;
+    private SensorManager sensorManager;
     private List<Sensor> allSensors;
 //    private TriggerEventManager tEM;
 
@@ -54,8 +54,8 @@ public class OverviewActivity extends BaseActivity {
 
         initFromIntent();
         initView();
-        sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        allSensors = sM.getSensorList(Sensor.TYPE_ALL);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
 //        tEM =  new TriggerEventManager();
 
 //        tv_questionText.setText(Utility.createJSON(this.proband));
