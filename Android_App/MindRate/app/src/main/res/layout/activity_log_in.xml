@@ -6,36 +6,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="8dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="10dp"
     tools:context="com.example.mindrate.activity.LogInActivity">
 
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@mipmap/ic_thumb_up"
-        android:layout_centerHorizontal="true">
-    </ImageView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_mr_white"
+            android:layout_centerHorizontal="true"
+            >
+        </ImageView>
+    </RelativeLayout>
+
 
 
     <Button
         android:id="@+id/proband_log_in"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:textSize="15sp"
-        android:text="@string/log_in_button_log_in">
+        android:text="@string/log_in_button_log_in"
+        android:background="?attr/colorAccent"
+        android:textColor="#fff"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        >
     </Button>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="50dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
         <include layout="@layout/log_in_study_id"/>
 

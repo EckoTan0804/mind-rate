@@ -2,7 +2,6 @@ package com.example.mindrate.gson;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Project: MindRate
@@ -13,29 +12,29 @@ import java.util.List;
  * </p>
  */
 
-public class QuestionnaireAnswer {
+public class QuestionnaireAnswer  {
 
-    private Questionnaire questionnaire;
-    private List<QuestionAnswer> questionAnswerList;
+    private String questionnaireID;
+    private ArrayList<QuestionAnswer> questionAnswerList;
 
-    public QuestionnaireAnswer(Questionnaire questionnaire) {
-        this.questionnaire = questionnaire;
+    public QuestionnaireAnswer(String questionnaireID) {
+        this.questionnaireID = questionnaireID;
         this.questionAnswerList = new ArrayList<>();
     }
 
-    public Questionnaire getQuestionnaire() {
-        return questionnaire;
+    public String getQuestionnaireID() {
+        return questionnaireID;
     }
 
-    public void setQuestionnaire(Questionnaire questionnaire) {
-        this.questionnaire = questionnaire;
+    public void setQuestionnaireID(String questionnaireID) {
+        this.questionnaireID = questionnaireID;
     }
 
-    public List getQuestionAnswerList() {
+    public ArrayList<QuestionAnswer> getQuestionAnswerList() {
         return questionAnswerList;
     }
 
-    public void setQuestionAnswerList(List questionAnswerList) {
+    public void setQuestionAnswerList(ArrayList questionAnswerList) {
         this.questionAnswerList = questionAnswerList;
     }
 

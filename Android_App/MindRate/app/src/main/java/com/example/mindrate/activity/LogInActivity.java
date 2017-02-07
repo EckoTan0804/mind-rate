@@ -1,6 +1,7 @@
 package com.example.mindrate.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -80,8 +81,6 @@ public class LogInActivity extends BaseActivity {
                 year = changedYear;
                 month = monthOfYear + 1;
                 day = dayOfMonth;
-//                Toast.makeText(LogInActivity.this, year+ "." + month + "." + day, Toast
-//                        .LENGTH_SHORT).show();
             }
         });
 
@@ -123,6 +122,8 @@ public class LogInActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
+                // TODO: determine whether a EditText is null
+
                 // 1. TODO: create Proband instance
                 studyID = edtTxt_studyID.getText().toString();
                 probandID = edtTxt_probandID.getText().toString();
@@ -130,11 +131,16 @@ public class LogInActivity extends BaseActivity {
                 Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
                         gender, occupation);
 
-                // 2. TODO: create probandJSON
+                // 2. TODO: create probandJSON and save it locally
                 String probandJSON = Utility.createJSON(proband);
+                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
+                        .edit();
+                editor.putString("probandJSON", probandJSON);
+                editor.apply();
 
-                // 3. TODO: upload probandJSON to server and download Questionnaires
-//                String questionnaireJSON = null;
+                // 3. TODO: upload probandJSON to server, download Questionnaires and save it
+                // locally
+                String questionnaireJSON = null;
 //                try {
 //                    questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
 //                } catch (IOException e) {
@@ -142,6 +148,11 @@ public class LogInActivity extends BaseActivity {
 //                } finally {
 //
 //                }
+                SharedPreferences.Editor qEditor = getSharedPreferences("questionnaire",
+                                                                        MODE_PRIVATE)
+                        .edit();
+                qEditor.putString("questionnaireJSON", questionnaireJSON);
+                qEditor.apply();
 
                 // 4. TODO: put proband & questionnaireJSON into intent
                 Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);

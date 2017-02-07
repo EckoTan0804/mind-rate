@@ -10,7 +10,10 @@
         android:layout_gravity="center_vertical"
         android:text="@string/log_in_birthday"
         android:textColor="#000"
-        android:textSize="15dp">
+        android:textSize="15dp"
+        android:gravity="right"
+        android:paddingRight="5dp"
+        >
     </TextView>
 
 
@@ -21,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:calendarViewShown="false"
-        android:datePickerMode="spinner">
+        android:datePickerMode="spinner"
+        android:paddingLeft="5dp">
     </DatePicker>
 
 

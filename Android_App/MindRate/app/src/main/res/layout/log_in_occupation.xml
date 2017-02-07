@@ -8,6 +8,8 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:gravity="right"
+        android:paddingRight="5dp"
         android:text="@string/log_in_occupation"
         android:textColor="#000"
         android:textSize="15sp">
@@ -20,6 +22,8 @@
         android:layout_weight="1"
         android:hint="@string/log_in_occupation_hint"
         android:maxLines="1"
+        android:paddingLeft="5dp"
+        android:selectAllOnFocus="true"
         android:textColorHighlight="#cccccc"
         android:textSize="15sp">
     </EditText>

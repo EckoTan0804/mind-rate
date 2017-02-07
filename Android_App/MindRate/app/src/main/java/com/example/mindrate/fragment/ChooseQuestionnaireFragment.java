@@ -13,18 +13,18 @@ import android.widget.ListView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.activity.AnswerQuestionnaireActivity;
+import com.example.mindrate.activity.OverviewActivity;
 import com.example.mindrate.adapter.QuestionnaireAdapter;
 import com.example.mindrate.gson.Questionnaire;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This class is for the fragment, in which:
- *
+ * <p>
  * <li>the proband can choose the questionnaires which are
  * already triggered but not answered yet</li>
- *
+ * <p>
  * <p>
  * Project: MindRate
  * <br>Package: com.example.mindrate.fragment</br>
@@ -37,7 +37,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     //====================== UI - Components ====================
     private ProgressDialog progressDialog;
-//    private TextView titleText;
+    //    private TextView titleText;
     private ListView listView;
     private QuestionnaireAdapter adapter;
     // ==========================================================
@@ -48,49 +48,62 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+                Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
+            View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
-        initDataList();
+            initTestData();
 
-//        titleText = (TextView) view.findViewById(R.id.title_text);
-        listView = (ListView) view.findViewById(R.id.list_view);
-        adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
-                questionnaireList);
-        listView.setAdapter(adapter);
-        return view;
+            //TODO:        initQuestionnaireList();
+
+            //        titleText = (TextView) view.findViewById(R.id.title_text);
+            listView = (ListView) view.findViewById(R.id.list_view);
+            adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
+                                               questionnaireList);
+            listView.setAdapter(adapter);
+            return view;
+        }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                    // 1. get the selected questionnaire instance
+                    selectedQuestionnaire = questionnaireList.get(position);
+                    //                selectedQuestionnaire.sendNotification(getActivity());
+
+                    // 2. put this questionnaire instance into intent
+                    Intent intent = new Intent(getActivity(), AnswerQuestionnaireActivity.class);
+                    intent.putExtra("questionnaire", selectedQuestionnaire);
+
+                    // 3. use this intent to start AnswerQuestionnaireActivity
+                    getActivity().startActivityForResult(intent, 1);
+                }
+            });
+        }
+
+    public QuestionnaireAdapter getAdapter() {
+        return adapter;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-                // 1. get the selected questionnaire instance
-                selectedQuestionnaire = questionnaireList.get(position);
-
-                // 2. put this questionnaire instance into intent
-                Intent intent = new Intent(getActivity(), AnswerQuestionnaireActivity.class);
-                intent.putExtra("questionnaire", selectedQuestionnaire);
-
-                // 3. use this intent to start AnswerQuestionnaireActivity
-                getActivity().startActivity(intent);
-//                getActivity().startActivityForResult(intent, 1);
-            }
-        });
+    public void setAdapter(QuestionnaireAdapter adapter) {
+        this.adapter = adapter;
     }
 
+    private void initQuestionnaireList() {
+//        this.questionnaireList = ((OverviewActivity)getActivity()).getQuestionnaireList();
+        OverviewActivity overviewActivity = (OverviewActivity)getActivity();
+        this.questionnaireList = overviewActivity.getQuestionnaireList();
+    }
 
 
     // test
-    private void initDataList() {
-        questionnaireList = new ArrayList<>();
-        questionnaireList.add(new Questionnaire("A", "2017.1.1", "2017.2.2"));
-        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+    private void initTestData() {
+        initQuestionnaireList();
     }
 
 

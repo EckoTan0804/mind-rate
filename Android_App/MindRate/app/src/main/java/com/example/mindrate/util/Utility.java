@@ -1,8 +1,11 @@
 package com.example.mindrate.util;
 
 
+import com.example.mindrate.gson.Proband;
 import com.example.mindrate.gson.Questionnaire;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 /**
  * Project: MindRate
@@ -21,5 +24,16 @@ public class Utility {
     public static String createJSON(Object obj) {
         Gson gson = new Gson();
         return gson.toJson(obj);
+    }
+
+    public static List<Questionnaire> fromJsonToQuestionnaire(String json) {
+        // TODO: parse json
+        return null;
+    }
+
+    public static Proband fromJsonToProband(String probandJSON) {
+        Gson gson = new Gson();
+        Proband proband = gson.fromJson(probandJSON, Proband.class);
+        return proband;
     }
 }
