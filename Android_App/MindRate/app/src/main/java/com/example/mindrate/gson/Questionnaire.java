@@ -219,7 +219,7 @@ public class Questionnaire implements Parcelable, Observer {
     // ===================== Parcelable ==========================================================
 
     public void update(Observable o, Object arg) {
-        TriggerEventManager tEM = (TriggerEventManager) o;
+        TriggerEventManager triggerEventManager= (TriggerEventManager) o;
         // send to Proband a Notification.
     }
 
@@ -266,4 +266,6 @@ public class Questionnaire implements Parcelable, Observer {
             return new Questionnaire[size];
         }
     };
+
+
 }
