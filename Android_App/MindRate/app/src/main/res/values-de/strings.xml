@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="log_in_study_id">Studie ID:</string>
+    <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_birthday">Geburtstag:</string>
+    <string name="log_in_occupation">Beruf:</string>
+    <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
+    <string name="log_in_button_log_in">einloggen</string>
 </resources>
