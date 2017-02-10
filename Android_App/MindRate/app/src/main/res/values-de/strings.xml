@@ -16,5 +16,8 @@
     <string name="nav_about_us">Über uns</string>
     <string name="app_name">MindRate</string>
 
+    <!--questionnaire_item-->
+    <string name="questionnaire_begins_at">beginnt um: </string>
+    <string name="questionnaire_will_end_at">wird enden um: </string>
 
 </resources>

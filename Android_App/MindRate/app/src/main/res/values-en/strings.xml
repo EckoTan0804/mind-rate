@@ -16,5 +16,9 @@
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About us</string>
 
+    <!--questionnaire_item-->
+    <string name="begins_at">begins at: </string>
+    <string name="will_end_at">will end at: </string>
+
 
 </resources>
