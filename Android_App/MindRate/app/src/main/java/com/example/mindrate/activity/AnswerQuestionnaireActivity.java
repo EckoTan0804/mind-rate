@@ -37,7 +37,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     // ==========================================================
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_questionnaire);
 

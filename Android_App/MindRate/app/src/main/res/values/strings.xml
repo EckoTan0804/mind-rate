@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">MindRate</string>
 
-    <!--=========================== activity_log_in===============================================-->
-    <string name="log_in_study_id">Study ID:</string>
-    <string name="log_in_proband_id">Proband ID:</string>
-    <string name="log_in_birthday">Birthday:</string>
-    <string name="log_in_occupation">Occupation:</string>
-    <string name="log_in_occupation_hint">Please enter your occupation</string>
-    <string name="log_in_button_log_in">log in</string>
 
 </resources>
