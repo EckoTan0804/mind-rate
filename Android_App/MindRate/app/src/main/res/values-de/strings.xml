@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--LogInActivity-->
     <string name="log_in_study_id">Studie ID:</string>
     <string name="log_in_proband_id">Proband ID:</string>
     <string name="log_in_birthday">Geburtstag:</string>
     <string name="log_in_occupation">Beruf:</string>
     <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
     <string name="log_in_button_log_in">einloggen</string>
+
+    <!--OverviewActivity-->
+    <string name="nav_profile">Profil</string>
+    <string name="nav_questionnaire">Fragebögen</string>
+    <string name="nav_settings">Einstellung</string>
+    <string name="nav_about_us">Über uns</string>
+    <string name="app_name">MindRate</string>
+
+
 </resources>
