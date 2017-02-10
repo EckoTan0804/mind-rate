@@ -24,6 +24,7 @@ import com.example.mindrate.R;
 import com.example.mindrate.fragment.AboutUsFragment;
 import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
+import com.example.mindrate.fragment.SettingFragment;
 import com.example.mindrate.fragment.WelcomeFragment;
 import com.example.mindrate.gson.DragScale;
 import com.example.mindrate.gson.MultipleChoice;
@@ -72,11 +73,12 @@ public class OverviewActivity extends BaseActivity {
     ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
     ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
     AboutUsFragment aboutUsFragment = new AboutUsFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
    // =======================================================================
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
@@ -95,6 +97,7 @@ public class OverviewActivity extends BaseActivity {
 
 
         //        tv_questionText.setText(Utility.createJSON(this.proband));
+
     }
 
     @Override
@@ -184,7 +187,7 @@ public class OverviewActivity extends BaseActivity {
                         break;
                     case R.id.nav_settings:
                         tv_title.setText("Settings");
-                        // TODO: replace Settings-Fragment
+                        replaceFragment(settingFragment);
                         mDrawerLayout.closeDrawers();
                         break;
                     default:
@@ -206,6 +209,7 @@ public class OverviewActivity extends BaseActivity {
         transition.addToBackStack(null);
         transition.commit();
     }
+
 
     private Questionnaire removeQuestionnaire(String questionnaireID) {
         Questionnaire removeQuestionnaire = null;
@@ -237,6 +241,15 @@ public class OverviewActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    public void switchLanguageImmediately(String language) {
+        super.switchLanguage(language);
+        finish();
+        Intent intent = new Intent(OverviewActivity.this, OverviewActivity.class);
+        startActivity(intent);
+
+
     }
 
     // ======================= setters and getters =============================

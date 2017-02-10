@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="10sp"
-            android:text="begins at: ">
+            android:text="@string/questionnaire_begins_at">
         </TextView>
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_marginLeft="15dp"
             android:layout_gravity="center_vertical"
             android:textSize="10sp"
-            android:text="will end at: ">
+            android:text="@string/questionnaire_will_end_at">
         </TextView>
 
         <TextView

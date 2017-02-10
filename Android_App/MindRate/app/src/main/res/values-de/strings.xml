@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--LogInActivity-->
+    <string name="log_in_study_id">Studie ID:</string>
+    <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_birthday">Geburtstag:</string>
+    <string name="log_in_occupation">Beruf:</string>
+    <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
+    <string name="log_in_button_log_in">einloggen</string>
+
+    <!--OverviewActivity-->
+    <string name="nav_profile">Profil</string>
+    <string name="nav_questionnaire">Fragebögen</string>
+    <string name="nav_settings">Einstellungen</string>
+    <string name="nav_about_us">Über uns</string>
+    <string name="app_name">MindRate</string>
+
+    <!--questionnaire_item-->
+    <string name="questionnaire_begins_at">beginnt um: </string>
+    <string name="questionnaire_will_end_at">wird enden um: </string>
+
+    <!--settings-->
+    <string name="language">Sprache</string>
+    <string name="language_summary">Klicken Sie, um die Sprache zu wählen.</string>
+    <string name="choose_language_dialog_title">Bitte wahlen Sie Sprache aus.</string>
+
+
+</resources>

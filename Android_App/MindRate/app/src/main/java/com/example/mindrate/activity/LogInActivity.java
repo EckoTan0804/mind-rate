@@ -42,10 +42,10 @@ public class LogInActivity extends BaseActivity {
     private Button btn_probandLogIn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        ActivityManager.addActivity(this);
+//        ActivityManager.addActivity(this);
         initView();
 
     }

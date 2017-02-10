@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MindRate</string>
+
 
     <!--LogInActivity-->
     <string name="log_in_study_id">Study ID:</string>
@@ -21,19 +22,8 @@
 
     <!--settings-->
     <string name="language">Language</string>
-
-        <!--languages-->
-    <string-array name="languages_show">
-        <item>English</item>
-        <item>Deutsch</item>
-        <!--<item></item>-->
-    </string-array>
-
-    <string-array name="languages_value">
-        <item>en</item>
-        <item>de</item>
-        <!--<item></item>-->
-    </string-array>
-
+    <string name="language_summary">Click to choose language.</string>
     <string name="choose_language_dialog_title">Please choose language.</string>
+
+
 </resources>
