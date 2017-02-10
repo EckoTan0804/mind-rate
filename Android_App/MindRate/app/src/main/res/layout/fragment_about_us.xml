@@ -16,61 +16,59 @@
         >
 
         <include layout="@layout/mindrate_logo_white"/>
-        
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="250dp">-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/kit_logo"-->
-                <!--android:layout_width="250dp"-->
-                <!--android:layout_height="200dp"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:src="@mipmap/kit_logo">-->
-            <!--</ImageView>-->
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="250dp">-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/kit_logo"-->
+        <!--android:layout_width="250dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:src="@mipmap/kit_logo">-->
+        <!--</ImageView>-->
         <!--</RelativeLayout>-->
 
         <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="250dp">-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="250dp">-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/teco_logo"-->
-                <!--android:layout_width="200dp"-->
-                <!--android:layout_height="200dp"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:src="@mipmap/teco">-->
-            <!--</ImageView>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/teco_logo"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:src="@mipmap/teco">-->
+        <!--</ImageView>-->
         <!--</RelativeLayout>-->
 
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:drawableLeft="@mipmap/ic_group_black"
-            android:drawablePadding="5dp"
-            android:text="Contributors:"
-            android:gravity="center_vertical"
             android:layout_marginTop="30dp"
-            android:id="@+id/textView2"
+            android:drawableLeft="@mipmap/ic_group_gray"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:text="Contributors"
+            android:textSize="20sp"
             >
         </TextView>
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:paddingLeft="40dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="20dp"
-            android:textSize="15sp"
             android:lineSpacingMultiplier="1.2"
-            android:textColor="#000"
+            android:paddingBottom="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
             android:text=" Shanshan Du \n Yi Ge \n Renhan Lou \n Ruoheng Ma \n Haobin Tan"
-            android:id="@+id/textView">
+            android:textSize="15sp">
         </TextView>
 
 
