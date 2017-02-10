@@ -15,6 +15,10 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         .OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_PREF_Language = "languagePref";
+    private static final String PREF_ENGLISH = "en";
+    private static final String ENGLISH = "English";
+    private static final String PREF_DEUTSCH = "de";
+    public static final String DEUTSCH = "Deutsch";
 
     SharedPreferences sharedPreferences;
     private ListPreference language_pref;
@@ -22,7 +26,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        addPreferencesFromResource(R.xml.settings_preference);
+        //        addPreferencesFromResource(R.xml.settings_preference);
     }
 
     @Override
@@ -36,16 +40,19 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         language_pref = (ListPreference) findPreference(KEY_PREF_Language);
-        language_pref.setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
+        setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        switch(key){
+        switch (key) {
             case KEY_PREF_Language:
-                String language = sharedPreferences.getString(key, "");
-                language_pref.setSummary(language);
-                OverviewActivity overviwActivity = (OverviewActivity)getActivity();
+
+                // get language which is already set and stored in sharedPreference
+                String language = sharedPreferences.getString(key, "en");
+
+                // change language
+                OverviewActivity overviwActivity = (OverviewActivity) getActivity();
                 overviwActivity.switchLanguageImmediately(language);
                 break;
 
@@ -56,6 +63,20 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
 
     }
 
+    private void setSummary(String prefLanguage) {
+        switch(prefLanguage){
+            case PREF_ENGLISH:
+                language_pref.setSummary(ENGLISH);
+                break;
+            case PREF_DEUTSCH:
+                language_pref.setSummary(DEUTSCH);
+                break;
+            default:
+
+                break;
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;
@@ -64,13 +85,15 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     @Override
     public void onResume() {
         super.onResume();
-        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener
+                (this);
 
     }
 
     @Override
     public void onPause() {
-        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener
+                (this);
         super.onPause();
     }
 }

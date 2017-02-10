@@ -16,8 +16,8 @@
     <string name="nav_about_us">About us</string>
 
     <!--questionnaire_item-->
-    <string name="begins_at">begins at: </string>
-    <string name="will_end_at">will end at: </string>
+    <string name="questionnaire_begins_at">begins at: </string>
+    <string name="questionnaire_will_end_at">will end at: </string>
 
     <!--settings-->
     <string name="language">Language</string>
