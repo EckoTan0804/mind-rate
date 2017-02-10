@@ -4,7 +4,6 @@ package com.example.mindrate.activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
@@ -27,7 +26,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityManager.addActivity(this);
         PreferenceUtil.init(this);
-        switchLanguage(PreferenceUtil.getString("language", "de"));
+        switchLanguage(PreferenceUtil.getString("language", "en"));
     }
 
     @Override
@@ -51,7 +50,7 @@ public class BaseActivity extends AppCompatActivity {
         ActivityManager.removeActivity(this);
     }
 
-    protected void switchLanguage(String language) {
+    public void switchLanguage(String language) {
         Resources resources = getResources();
         Configuration config = resources.getConfiguration();
         DisplayMetrics displayMetrics = resources.getDisplayMetrics();
@@ -66,5 +65,6 @@ public class BaseActivity extends AppCompatActivity {
 
         PreferenceUtil.commitString("language", language);
     }
+
 
 }

@@ -243,6 +243,15 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    public void switchLanguageImmediately(String language) {
+        super.switchLanguage(language);
+        finish();
+        Intent intent = new Intent(OverviewActivity.this, OverviewActivity.class);
+        startActivity(intent);
+
+
+    }
+
     // ======================= setters and getters =============================
 
     public Proband getProband() {

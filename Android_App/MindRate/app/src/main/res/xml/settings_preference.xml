@@ -10,9 +10,8 @@
             android:entries="@array/languages_show"
             android:entryValues="@array/languages_value"
             android:key="languagePref"
-            android:summary="@string/language_summary"
             android:title="@string/language"
-            android:icon=""
+            android:icon="@mipmap/ic_language_gray"
             />
     </PreferenceCategory>
 
