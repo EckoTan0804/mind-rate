@@ -20,5 +20,10 @@
     <string name="begins_at">begins at: </string>
     <string name="will_end_at">will end at: </string>
 
+    <!--settings-->
+    <string name="language">Language</string>
+    <string name="language_summary">Click to choose language.</string>
+    <string name="choose_language_dialog_title">Please choose language.</string>
+
 
 </resources>
