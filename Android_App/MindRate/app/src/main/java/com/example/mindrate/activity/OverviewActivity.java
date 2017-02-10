@@ -40,6 +40,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static android.hardware.Sensor.TYPE_ACCELEROMETER;
+import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
+import static android.hardware.Sensor.TYPE_GRAVITY;
+import static android.hardware.Sensor.TYPE_GYROSCOPE;
+import static android.hardware.Sensor.TYPE_LIGHT;
+import static android.hardware.Sensor.TYPE_LINEAR_ACCELERATION;
+import static android.hardware.Sensor.TYPE_MAGNETIC_FIELD;
+import static android.hardware.Sensor.TYPE_ORIENTATION;
+import static android.hardware.Sensor.TYPE_PRESSURE;
+import static android.hardware.Sensor.TYPE_PROXIMITY;
+import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
+import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
+
 public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
@@ -50,7 +63,7 @@ public class OverviewActivity extends BaseActivity {
     private Button btn_nav;
     private NavigationView navView;
     private TextView tv_title;
-    private SensorManager sM;
+    private SensorManager sensorManager;
     private List<Sensor> allSensors;
     //    private TriggerEventManager tEM;
 
@@ -60,6 +73,7 @@ public class OverviewActivity extends BaseActivity {
     ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
     AboutUsFragment aboutUsFragment = new AboutUsFragment();
 
+   // =======================================================================
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,14 +83,31 @@ public class OverviewActivity extends BaseActivity {
 
         initFromIntent();
         initView();
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+//        tEM =  new TriggerEventManager();
+
         initTestData();
-        sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        allSensors = sM.getSensorList(Sensor.TYPE_ALL);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
+
 
         //        tv_questionText.setText(Utility.createJSON(this.proband));
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        for(Sensor sensor :allSensors ) {
+           // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+            //(listener, sensor,SensorManager.SENSOR_DELAY_GAME);  
+            //this.addSensorListener(sensor);
+        }
+
+
+    }
     private void initFromIntent() {
         Intent intent = getIntent();
 
@@ -271,4 +302,54 @@ public class OverviewActivity extends BaseActivity {
         questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
     }
+
+    public void addSensorListener(Sensor sensor){
+        switch (sensor.getType()){
+            case TYPE_ACCELEROMETER:
+                //
+
+                break;
+            case TYPE_AMBIENT_TEMPERATURE:
+                //
+                break;
+            case TYPE_GRAVITY:
+                //
+                break;
+            case TYPE_GYROSCOPE:
+                //
+                break;
+            case TYPE_LIGHT:
+                //
+                break;
+            case TYPE_LINEAR_ACCELERATION:
+                //
+                break;
+            case TYPE_MAGNETIC_FIELD:
+                //
+                break;
+            case TYPE_ORIENTATION:
+                //
+                break;
+            case TYPE_PRESSURE:
+                //
+                break;
+            case TYPE_PROXIMITY:
+                //
+                break;
+            case TYPE_RELATIVE_HUMIDITY:
+                //
+                break;
+            case TYPE_ROTATION_VECTOR:
+                //
+                break;
+            default:
+                //TYPE_TEMPERATURE
+                break;
+
+
+        }
+
+
+    }
+
 }
