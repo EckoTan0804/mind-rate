@@ -35,7 +35,8 @@ import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.SingleChoice;
 import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
-import com.example.mindrate.util.Utility;
+import com.example.mindrate.util.PreferenceUtil;
+import com.example.mindrate.util.JsonUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -118,10 +119,11 @@ public class OverviewActivity extends BaseActivity {
 
         String questionnaireJSON = intent.getStringExtra("questionnaire_JSON");
         if (TextUtils.isEmpty(questionnaireJSON)) {
-            SharedPreferences pref = getSharedPreferences("questionnaire", MODE_PRIVATE);
-            questionnaireJSON = pref.getString("questionnaireJSON", "");
+            PreferenceUtil.getString("questionnaireJSON", "");
+//            SharedPreferences pref = getSharedPreferences("questionnaire", MODE_PRIVATE);
+//            questionnaireJSON = pref.getString("questionnaireJSON", "");
         }
-        this.questionnaireList = Utility.fromJsonToQuestionnaire(questionnaireJSON);
+        this.questionnaireList = JsonUtil.fromJsonToQuestionnaire(questionnaireJSON);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
@@ -130,7 +132,7 @@ public class OverviewActivity extends BaseActivity {
         } else {
             SharedPreferences pref = getSharedPreferences("proband", MODE_PRIVATE);
             String probandJSON = pref.getString("probandJSON", "");
-            this.proband = Utility.fromJsonToProband(probandJSON);
+            this.proband = JsonUtil.fromJsonToProband(probandJSON);
         }
 
     }

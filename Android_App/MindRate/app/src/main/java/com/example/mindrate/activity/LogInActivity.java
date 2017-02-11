@@ -12,7 +12,7 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
 import com.example.mindrate.util.PreferenceUtil;
-import com.example.mindrate.util.Utility;
+import com.example.mindrate.util.JsonUtil;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -132,7 +132,7 @@ public class LogInActivity extends BaseActivity {
                         gender, occupation);
 
                 // 2. TODO: create probandJSON and save it locally
-                String probandJSON = Utility.createJSON(proband);
+                String probandJSON = JsonUtil.createJSON(proband);
                 PreferenceUtil.commitString("probandJSON", probandJSON);
 //                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
 //                        .edit();

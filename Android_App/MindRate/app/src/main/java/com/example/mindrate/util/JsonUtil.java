@@ -15,7 +15,7 @@ import java.util.List;
  * Created at 2017/1/8:23:41
  */
 
-public class Utility {
+public class JsonUtil {
 
     public static Questionnaire handleJsonObject() {
         return null;

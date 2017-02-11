@@ -152,10 +152,10 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     // alertDialog
                     AlertDialog.Builder dialog = new AlertDialog.Builder
                             (AnswerQuestionnaireActivity.this);
-                    dialog.setTitle("Submit");
-                    dialog.setMessage("Do you want to submit your answer?");
+                    dialog.setTitle(R.string.submit);
+                    dialog.setMessage(R.string.submit_or_not);
                     dialog.setCancelable(false);
-                    dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    dialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -177,7 +177,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                             finish();
                         }
                     });
-                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 

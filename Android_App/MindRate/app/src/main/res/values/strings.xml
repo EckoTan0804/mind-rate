@@ -36,4 +36,10 @@
     </string-array>
 
     <string name="choose_language_dialog_title">Please choose language.</string>
+
+        <!--submit answer-->
+    <string name="submit">Submit</string>
+    <string name="submit_or_not">Do you want to submit your answer?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
