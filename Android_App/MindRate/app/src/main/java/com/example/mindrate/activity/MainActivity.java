@@ -48,8 +48,10 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
             }
         });
 
-        clockWise();
+//        clockWise();
+        myAnim();
     }
+
 
     public static boolean isLogIn() {
         return isLogIn;
@@ -84,12 +86,9 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     private void myAnim() {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim
-                .move);
+                .my_anim);
         appIcon.startAnimation(animation);
-        Animation secondAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim
-                .clockwise);
-        appIcon.startAnimation(secondAnimation);
-        secondAnimation.setAnimationListener(this);
+        animation.setAnimationListener(this);
     }
 
 
