@@ -64,7 +64,7 @@ public class TriggerEventManager extends Observable{
         return questionnaireList;
     }
 
-    public void setQuestionnaireList(ArrayList<Questionnaire> questionnaireList) {
+    public void setQuestionnaireList(List<Questionnaire> questionnaireList) {
         this.questionnaireList = questionnaireList;
     }
 
@@ -77,9 +77,14 @@ public class TriggerEventManager extends Observable{
         //setChanged();
         //notifyObservers();
         float[] lightTest1 = this.dataOfAllSensor[4];
+        float[] temtest1 = this.dataOfAllSensor[1];
+        float remp = temtest1[0];
         float lightTest = lightTest1[0];
         String a = String.valueOf(lightTest);
+        String b = String.valueOf(remp);
         Log.d(TAG,a);
+        Log.d(TAG,b);
+
     }
 
     public void addShouldAnswerQuestionnaire(Questionnaire questionnaire){

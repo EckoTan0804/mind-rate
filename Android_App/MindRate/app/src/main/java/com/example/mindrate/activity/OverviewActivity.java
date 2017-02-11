@@ -34,6 +34,7 @@ import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.SingleChoice;
 import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
+import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
 import com.example.mindrate.util.Utility;
@@ -340,11 +341,17 @@ public class OverviewActivity extends BaseActivity {
         options.add(new Option("very good!", null));
         Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
         questionnaire.addQuestion(q5);
+        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire);
+        triggerEvent1.setLight(true);
+        triggerEvent1.setAirTemperature(true);
+        questionnaire.setTriggerEvent(triggerEvent1);
 
 
         questionnaireList.add(questionnaire);
-        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        //questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+        //questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        triggerEventManager.setQuestionnaireList(questionnaireList);
     }
 
     public void addSensorListener(Sensor sensor){

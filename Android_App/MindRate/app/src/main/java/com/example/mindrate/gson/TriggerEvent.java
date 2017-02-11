@@ -37,6 +37,11 @@ public class TriggerEvent implements Parcelable {
 
 
 
+    private boolean accelerometer;
+    private boolean gyroscope;
+
+
+
     private static final int TYPE_ACCELEROMETER = 0;
     private static final int  TYPE_AMBIENT_TEMPERATURE = 1;
     private static final int  TYPE_GRAVITY = 2;
@@ -49,14 +54,27 @@ public class TriggerEvent implements Parcelable {
     private static final int  TYPE_PROXIMITY = 9;
     private static final int  TYPE_RELATIVE_HUMIDITY = 10;
     private static final int  TYPE_ROTATION_VECTOR = 11;
-
-
-
     private boolean[] sensorList;
 
     public TriggerEvent(Questionnaire qn){
         this.questionnaire = qn;
         this.sensorList = new boolean[12];
+        for(int i=0;i<sensorList.length;i++){
+            this.sensorList[i]=false;
+        }
+        this.linearAcceleration =false;
+        this.gravity = false;
+        this.rotation= false;
+        this.airTemperature= false;
+        this.airPressure= false;
+        this.light= false;
+        this.relativeHumidity= false;
+        this.orientation= false;
+        this.magneticField= false;
+        this.proximity= false;
+        this.accelerometer=false;
+        this.gyroscope =false;
+
     }
 
     public Questionnaire getQuestionnaire() {
@@ -178,7 +196,21 @@ public class TriggerEvent implements Parcelable {
     public void setRelativeHumidity(boolean relativeHumidity) {
         this.relativeHumidity = relativeHumidity;
     }
+    public boolean isAccelerometer() {
+        return accelerometer;
+    }
 
+    public void setAccelerometer(boolean accelerometer) {
+        this.accelerometer = accelerometer;
+    }
+
+    public boolean isGyroscope() {
+        return gyroscope;
+    }
+
+    public void setGyroscope(boolean gyroscope) {
+        this.gyroscope = gyroscope;
+    }
     public boolean isOrientation() {
         return orientation;
     }
@@ -209,8 +241,10 @@ public class TriggerEvent implements Parcelable {
         return sensorList;
     }
     public void setSensor(){
+        this.sensorList[TYPE_ACCELEROMETER]=isAccelerometer();
         this.sensorList[TYPE_AMBIENT_TEMPERATURE]= isAirTemperature();
         this.sensorList[TYPE_GRAVITY]= isGravity();
+        this.sensorList[TYPE_GYROSCOPE]=isGyroscope();
         this.sensorList[TYPE_LIGHT]= isLight();
         this.sensorList[TYPE_LINEAR_ACCELERATION ]=isLinearAcceleration();
         this.sensorList[TYPE_MAGNETIC_FIELD] = isMagneticField();
