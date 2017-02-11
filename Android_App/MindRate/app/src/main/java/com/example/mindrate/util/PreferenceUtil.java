@@ -46,4 +46,34 @@ public class PreferenceUtil {
     public static String getString(String key, String faillValue){
         return mSharedPreferences.getString(key, faillValue);
     }
+
+    public static void commitInt(String key, int value){
+        mEditor = mSharedPreferences.edit();
+        mEditor.putInt(key, value);
+        mEditor.commit();
+    }
+
+    public static int getInt(String key, int failValue){
+        return mSharedPreferences.getInt(key, failValue);
+    }
+
+    public static void commitLong(String key, long value){
+        mEditor = mSharedPreferences.edit();
+        mEditor.putLong(key, value);
+        mEditor.commit();
+    }
+
+    public static long getLong(String key, long failValue) {
+        return mSharedPreferences.getLong(key, failValue);
+    }
+
+    public static void commitBoolean(String key, boolean value){
+        mEditor = mSharedPreferences.edit();
+        mEditor.putBoolean(key, value);
+        mEditor.commit();
+    }
+
+    public static Boolean getBoolean(String key, boolean failValue){
+        return mSharedPreferences.getBoolean(key, failValue);
+    }
 }
