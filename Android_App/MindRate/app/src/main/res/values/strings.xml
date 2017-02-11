@@ -6,7 +6,9 @@
 
     <!--LogInActivity-->
     <string name="log_in_study_id">Study ID:</string>
+    <string name="log_in_study_id_hint">Please input your study ID</string>
     <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_proband_id_hint">Please input your proband ID</string>
     <string name="log_in_birthday">Birthday:</string>
     <string name="log_in_gender">Gender:</string>
     <string name="log_in_gender_male">male</string>

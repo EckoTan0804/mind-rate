@@ -5,8 +5,10 @@
     <string name="choose_language">Sprache auswählen</string>
 
     <!--LogInActivity-->
-    <string name="log_in_study_id">Studie ID:</string>
+    <string name="log_in_study_id">Study ID:</string>
+    <string name="log_in_study_id_hint">Bitte geben Sie dein Studie-ID ein.</string>
     <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_proband_id_hint">Bitte geben Sie dein Proband-ID ein.</string>
     <string name="log_in_birthday">Geburtstag:</string>
     <string name="log_in_gender">Geschlecht:</string>
     <string name="log_in_gender_male">männlich</string>
