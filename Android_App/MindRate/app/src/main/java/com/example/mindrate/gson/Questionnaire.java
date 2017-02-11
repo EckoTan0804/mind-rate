@@ -223,6 +223,7 @@ public class Questionnaire implements Parcelable, Observer {
         // send to Proband a Notification.
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -266,6 +267,4 @@ public class Questionnaire implements Parcelable, Observer {
             return new Questionnaire[size];
         }
     };
-
-
 }

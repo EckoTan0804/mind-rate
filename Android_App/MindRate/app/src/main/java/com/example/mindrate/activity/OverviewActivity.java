@@ -35,6 +35,7 @@ import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
+import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
 
@@ -106,8 +107,8 @@ public class OverviewActivity extends BaseActivity {
         initFromIntent();
         initView();
 
-//        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-//        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+        //        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -134,11 +135,11 @@ public class OverviewActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        for (Sensor sensor : allSensors) {
-            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
-            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService
-                    .class);
-            startService(startServiceIntent);
+//        for (Sensor sensor : allSensors) {
+//            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+//            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService
+//                    .class);
+//            startService(startServiceIntent);
         /*for(Sensor sensor :allSensors ) {
            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
 >>>>>>> 1d08a2433890d356671ee32d525bccad62e01e91
@@ -147,7 +148,7 @@ public class OverviewActivity extends BaseActivity {
         }*/
 
 
-        }
+//        }
     }
 
     private void initFromIntent() {
@@ -318,56 +319,106 @@ public class OverviewActivity extends BaseActivity {
     // test data
     private void initTestData() {
 
-        String list = PreferenceUtil.getString("questionnaireJSON", "");
-        if (!TextUtils.isEmpty(list)) {
-            questionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
-        } else {
-            questionnaireList = new ArrayList<>();
+//        String list = PreferenceUtil.getString("questionnaireJSON", "");
+//        if (!TextUtils.isEmpty(list)) {
+//            questionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
+//        } else {
+//
+//            questionnaireList = new ArrayList<>();
+//
+//            Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 " +
+//                    "14:00");
+//
+//            // q1
+//            ArrayList<Option> optionList = new ArrayList<>();
+//            optionList.add(new Option("At home", "Q3"));
+//            optionList.add(new Option("At work", "Q3"));
+//            optionList.add(new Option("on the way", "Q2"));
+//            Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
+//            questionnaire.addQuestion(q1);
+//
+//            // q2
+//            Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
+//            questionnaire.addQuestion(q2);
+//
+//            // q3
+//            Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
+//            questionnaire.addQuestion(q3);
+//
+//            // q4
+//            ArrayList<Option> optionArrayList = new ArrayList<>();
+//            optionArrayList.add(new Option("Swimming", null));
+//            optionArrayList.add(new Option("Reading", null));
+//            optionArrayList.add(new Option("Coding", null));
+//            optionArrayList.add(new Option("Studying", null));
+//            Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList),
+//                                       "Q4");
+//            questionnaire.addQuestion(q4);
+//
+//            // q5
+//            ArrayList<Option> options = new ArrayList<>();
+//            options.add(new Option("very bad", null));
+//            options.add(new Option("bad", null));
+//            options.add(new Option("so so", null));
+//            options.add(new Option("good", null));
+//            options.add(new Option("very good!", null));
+//            Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
+//            questionnaire.addQuestion(q5);
+//
+//
+//            questionnaireList.add(questionnaire);
+//            questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+//            questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+//        }
 
-            Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 " +
-                    "14:00");
+        questionnaireList = new ArrayList<>();
 
-            // q1
-            ArrayList<Option> optionList = new ArrayList<>();
-            optionList.add(new Option("At home", "Q3"));
-            optionList.add(new Option("At work", "Q3"));
-            optionList.add(new Option("on the way", "Q2"));
-            Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
-            questionnaire.addQuestion(q1);
+        Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
+        // q1
+        ArrayList<Option> optionList = new ArrayList<>();
+        optionList.add(new Option("At home", "Q3"));
+        optionList.add(new Option("At work", "Q3"));
+        optionList.add(new Option("on the way", "Q2"));
+        Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
+        questionnaire.addQuestion(q1);
 
-            // q2
-            Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
-            questionnaire.addQuestion(q2);
+        // q2
+        Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
+        questionnaire.addQuestion(q2);
 
-            // q3
-            Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
-            questionnaire.addQuestion(q3);
+        // q3
+        Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
+        questionnaire.addQuestion(q3);
 
-            // q4
-            ArrayList<Option> optionArrayList = new ArrayList<>();
-            optionArrayList.add(new Option("Swimming", null));
-            optionArrayList.add(new Option("Reading", null));
-            optionArrayList.add(new Option("Coding", null));
-            optionArrayList.add(new Option("Studying", null));
-            Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList),
-                                       "Q4");
-            questionnaire.addQuestion(q4);
+        // q4
+        ArrayList<Option> optionArrayList = new ArrayList<>();
+        optionArrayList.add(new Option("Swimming", null));
+        optionArrayList.add(new Option("Reading", null));
+        optionArrayList.add(new Option("Coding", null));
+        optionArrayList.add(new Option("Studying", null));
+        Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList), "Q4");
+        questionnaire.addQuestion(q4);
 
-            // q5
-            ArrayList<Option> options = new ArrayList<>();
-            options.add(new Option("very bad", null));
-            options.add(new Option("bad", null));
-            options.add(new Option("so so", null));
-            options.add(new Option("good", null));
-            options.add(new Option("very good!", null));
-            Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
-            questionnaire.addQuestion(q5);
+        // q5
+        ArrayList<Option> options = new ArrayList<>();
+        options.add(new Option("very bad", null));
+        options.add(new Option("bad", null));
+        options.add(new Option("so so", null));
+        options.add(new Option("good", null));
+        options.add(new Option("very good!", null));
+        Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
+        questionnaire.addQuestion(q5);
+        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire);
+        triggerEvent1.setLight(true);
+        triggerEvent1.setAirTemperature(true);
+        questionnaire.setTriggerEvent(triggerEvent1);
 
 
-            questionnaireList.add(questionnaire);
-            questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-            questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
-        }
+        questionnaireList.add(questionnaire);
+//        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+//        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+//        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
+//        triggerEventManager.setQuestionnaireList(questionnaireList);
     }
 
     public void addSensorListener(Sensor sensor) {

@@ -26,6 +26,7 @@ import static android.hardware.Sensor.TYPE_ORIENTATION;
 import static android.hardware.Sensor.TYPE_PRESSURE;
 import static android.hardware.Sensor.TYPE_PROXIMITY;
 import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
+import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 
 public class DeviceSensorService extends Service {
     private static final String TAG = "DeviceSensorService";
@@ -34,6 +35,7 @@ public class DeviceSensorService extends Service {
     private List<AllSensorEventListener> allSensorEventListeners;
     private TriggerEventManager triggerEventManager;
     private List<Sensor> usedSensorList;
+    private boolean[] usedSensor;
     //private MyBinder mBinder = new MyBinder();
 
 
@@ -48,6 +50,7 @@ public class DeviceSensorService extends Service {
     @Override
     public void onCreate(){
         super.onCreate();
+        this.usedSensor =new  boolean[12];
         this.allSensors = new ArrayList<>() ;
         this.allSensorEventListeners = new ArrayList<>();
         this.usedSensorList = new ArrayList<>();
@@ -57,7 +60,9 @@ public class DeviceSensorService extends Service {
         }
         allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);//maybe speciall sensor
         this.triggerEventManager = TriggerEventManager.getTriggerEventManager();
-        for(Sensor sensor:allSensors){
+        this.setUsedSensor();
+        this.setUsedSensorList();
+        for(Sensor sensor:usedSensorList){
             this.addSensorEventListener(sensor);
         }
 
@@ -186,7 +191,6 @@ public class DeviceSensorService extends Service {
     }
 
     public void setUsedSensor(){
-        List<Integer>  indexOfUsedSensor = new ArrayList<>();
         List<Questionnaire> questionnaireList = this.triggerEventManager
                 .getQuestionnaireList();
         for(Questionnaire questionnaire:questionnaireList){
@@ -194,10 +198,72 @@ public class DeviceSensorService extends Service {
                 questionnaire.getTriggerEvent().setSensor();
                 boolean[]sensorList = questionnaire.getTriggerEvent().getSensorList();
                 for(int i=0;i<sensorList.length;i++){
-                    //if()
+                    if(sensorList[i]){
+                        this.usedSensor[i]=true;
+                    }
                 }
             }
         }
+    }
+
+    public void setUsedSensorList(){
+        for(int i=0;i<this.usedSensor.length;i++){
+            if(this.usedSensor[i]){
+                switch(i){
+                    case 0:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_ACCELEROMETER));
+                        break;
+                    case 1:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_AMBIENT_TEMPERATURE));
+                        break;
+                    case 2:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_GRAVITY));
+                        break;
+                    case 3:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_GYROSCOPE));
+                        break;
+                    case 4:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_LIGHT));
+                        break;
+                    case 5:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_LINEAR_ACCELERATION));
+                        break;
+                    case 6:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_MAGNETIC_FIELD));
+                        break;
+                    case 7:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_ORIENTATION));
+                        break;
+                    case 8:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_PRESSURE));
+                        break;
+                    case 9:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_PROXIMITY));
+                        break;
+                    case 10:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_RELATIVE_HUMIDITY));
+                        break;
+                    case 11:
+                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                (TYPE_ROTATION_VECTOR));
+                        break;
+
+                }
+            }
+        }
+
+
     }
 }
 
