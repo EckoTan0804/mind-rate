@@ -2,7 +2,6 @@ package com.example.mindrate.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -35,8 +34,8 @@ import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.SingleChoice;
 import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
-import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.JsonUtil;
+import com.example.mindrate.util.PreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -76,7 +75,7 @@ public class OverviewActivity extends BaseActivity {
     AboutUsFragment aboutUsFragment = new AboutUsFragment();
     SettingFragment settingFragment = new SettingFragment();
 
-   // =======================================================================
+    // =======================================================================
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,7 +88,7 @@ public class OverviewActivity extends BaseActivity {
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
-//        tEM =  new TriggerEventManager();
+        //        tEM =  new TriggerEventManager();
 
         initTestData();
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -102,16 +101,17 @@ public class OverviewActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
-        for(Sensor sensor :allSensors ) {
-           // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+        for (Sensor sensor : allSensors) {
+            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
             //(listener, sensor,SensorManager.SENSOR_DELAY_GAME);  
             //this.addSensorListener(sensor);
         }
 
 
     }
+
     private void initFromIntent() {
         Intent intent = getIntent();
 
@@ -119,19 +119,19 @@ public class OverviewActivity extends BaseActivity {
 
         String questionnaireJSON = intent.getStringExtra("questionnaire_JSON");
         if (TextUtils.isEmpty(questionnaireJSON)) {
-            PreferenceUtil.getString("questionnaireJSON", "");
-//            SharedPreferences pref = getSharedPreferences("questionnaire", MODE_PRIVATE);
-//            questionnaireJSON = pref.getString("questionnaireJSON", "");
+            questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
+            //            SharedPreferences pref = getSharedPreferences("questionnaire",
+            // MODE_PRIVATE);
+            //            questionnaireJSON = pref.getString("questionnaireJSON", "");
         }
-        this.questionnaireList = JsonUtil.fromJsonToQuestionnaire(questionnaireJSON);
+        this.questionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
         if (probandFromLogIn != null) {
             this.proband = probandFromLogIn;
         } else {
-            SharedPreferences pref = getSharedPreferences("proband", MODE_PRIVATE);
-            String probandJSON = pref.getString("probandJSON", "");
+            String probandJSON = PreferenceUtil.getString("probandJSON", "");
             this.proband = JsonUtil.fromJsonToProband(probandJSON);
         }
 
@@ -233,9 +233,14 @@ public class OverviewActivity extends BaseActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     final String answeredQuestionnaireID = data.getStringExtra("answered " +
-                                                                                   "questionnaire " +
-                                                                                 "ID");
+                                                                                       "questionnaire " +
+                                                                                       "ID");
+                    // remove the answered questionnaire from questionnaireList
                     removeQuestionnaire(answeredQuestionnaireID);
+                    // save the new questionnaireList locally
+                    PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
+                            this.questionnaireList));
+                    // notify questionnaireList's adapter that the list has been changed
                     chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
                 }
                 break;
@@ -274,52 +279,61 @@ public class OverviewActivity extends BaseActivity {
 
     // test data
     private void initTestData() {
-        questionnaireList = new ArrayList<>();
 
-        Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
-        // q1
-        ArrayList<Option> optionList = new ArrayList<>();
-        optionList.add(new Option("At home", "Q3"));
-        optionList.add(new Option("At work", "Q3"));
-        optionList.add(new Option("on the way", "Q2"));
-        Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
-        questionnaire.addQuestion(q1);
+        String list = PreferenceUtil.getString("questionnaireJSON", "");
+        if (!TextUtils.isEmpty(list)) {
+            questionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
+        } else {
+            questionnaireList = new ArrayList<>();
 
-        // q2
-        Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
-        questionnaire.addQuestion(q2);
+            Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 " +
+                    "14:00");
 
-        // q3
-        Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
-        questionnaire.addQuestion(q3);
+            // q1
+            ArrayList<Option> optionList = new ArrayList<>();
+            optionList.add(new Option("At home", "Q3"));
+            optionList.add(new Option("At work", "Q3"));
+            optionList.add(new Option("on the way", "Q2"));
+            Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
+            questionnaire.addQuestion(q1);
 
-        // q4
-        ArrayList<Option> optionArrayList = new ArrayList<>();
-        optionArrayList.add(new Option("Swimming", null));
-        optionArrayList.add(new Option("Reading", null));
-        optionArrayList.add(new Option("Coding", null));
-        optionArrayList.add(new Option("Studying", null));
-        Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList), "Q4");
-        questionnaire.addQuestion(q4);
+            // q2
+            Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
+            questionnaire.addQuestion(q2);
 
-        // q5
-        ArrayList<Option> options = new ArrayList<>();
-        options.add(new Option("very bad", null));
-        options.add(new Option("bad", null));
-        options.add(new Option("so so", null));
-        options.add(new Option("good", null));
-        options.add(new Option("very good!", null));
-        Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
-        questionnaire.addQuestion(q5);
+            // q3
+            Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
+            questionnaire.addQuestion(q3);
+
+            // q4
+            ArrayList<Option> optionArrayList = new ArrayList<>();
+            optionArrayList.add(new Option("Swimming", null));
+            optionArrayList.add(new Option("Reading", null));
+            optionArrayList.add(new Option("Coding", null));
+            optionArrayList.add(new Option("Studying", null));
+            Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList),
+                                       "Q4");
+            questionnaire.addQuestion(q4);
+
+            // q5
+            ArrayList<Option> options = new ArrayList<>();
+            options.add(new Option("very bad", null));
+            options.add(new Option("bad", null));
+            options.add(new Option("so so", null));
+            options.add(new Option("good", null));
+            options.add(new Option("very good!", null));
+            Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
+            questionnaire.addQuestion(q5);
 
 
-        questionnaireList.add(questionnaire);
-        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+            questionnaireList.add(questionnaire);
+            questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+            questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        }
     }
 
-    public void addSensorListener(Sensor sensor){
-        switch (sensor.getType()){
+    public void addSensorListener(Sensor sensor) {
+        switch (sensor.getType()) {
             case TYPE_ACCELEROMETER:
                 //
 

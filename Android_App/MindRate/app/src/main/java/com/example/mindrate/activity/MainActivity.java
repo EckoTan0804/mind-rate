@@ -7,7 +7,6 @@ import android.view.animation.AnimationUtils;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.util.PreferenceUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,7 +43,8 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
     }
 
     private void redirectTo() {
-        isLogIn = PreferenceUtil.getBoolean("isLogIn", false);
+        // TODO: remove comment symbol for next line
+//        isLogIn = PreferenceUtil.getBoolean("isLogIn", false);
         Intent intent;
         if (!isLogIn) {
             intent = new Intent(this, LogInActivity.class);
