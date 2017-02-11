@@ -15,4 +15,16 @@
         android:src="@mipmap/ic_mr">
     </de.hdodenhof.circleimageview.CircleImageView>
 
+    <Button
+        android:id="@+id/choose_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:background="@drawable/button_style_2"
+        android:text="@string/choose_language"
+        android:textAllCaps="false"
+        android:padding="10dp">
+    </Button>
+
 </RelativeLayout>

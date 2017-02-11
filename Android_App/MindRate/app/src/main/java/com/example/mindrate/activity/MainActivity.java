@@ -1,9 +1,13 @@
 package com.example.mindrate.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
@@ -15,6 +19,7 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
     private static boolean isLogIn = false;
     private Proband proband;
     private CircleImageView appIcon;
+    private Button btn_chooseLanguage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,26 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
         setContentView(R.layout.activity_main);
 
         appIcon = (CircleImageView) findViewById(R.id.app_icon_image);
+        btn_chooseLanguage = (Button) findViewById(R.id.choose_language);
+
+        btn_chooseLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(R.string.choose_language);
+                final String[] languages = {"English", "Deutsch"};
+                final String[] languageArray = {"en", "de"};
+                builder.setItems(languages, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String language = languageArray[i];
+                        switchLanguage(language);
+                        redirectTo();
+                    }
+                });
+                builder.show();
+            }
+        });
 
         clockWise();
     }
@@ -118,6 +143,8 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        redirectTo();
+        appIcon.setVisibility(View.GONE);
+        btn_chooseLanguage.setVisibility(View.VISIBLE);
+//        redirectTo();
     }
 }

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--MainActivity-->
+    <string name="choose_language">Choose Language</string>
 
     <!--LogInActivity-->
     <string name="log_in_study_id">Study ID:</string>
     <string name="log_in_proband_id">Proband ID:</string>
     <string name="log_in_birthday">Birthday:</string>
+    <string name="log_in_gender">Gender:</string>
+    <string name="log_in_gender_male">male</string>
+    <string name="log_in_gender_female">female</string>
     <string name="log_in_occupation">Occupation:</string>
     <string name="log_in_occupation_hint">Please enter your occupation</string>
     <string name="log_in_button_log_in">log in</string>

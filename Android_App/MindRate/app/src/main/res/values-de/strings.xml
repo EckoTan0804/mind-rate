@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--MainActivity-->
+    <string name="choose_language">Sprache auswählen</string>
+
     <!--LogInActivity-->
     <string name="log_in_study_id">Studie ID:</string>
     <string name="log_in_proband_id">Proband ID:</string>
     <string name="log_in_birthday">Geburtstag:</string>
+    <string name="log_in_gender">Geschlecht:</string>
+    <string name="log_in_gender_male">männlich</string>
+    <string name="log_in_gender_female">weiblich</string>
     <string name="log_in_occupation">Beruf:</string>
     <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
     <string name="log_in_button_log_in">einloggen</string>
