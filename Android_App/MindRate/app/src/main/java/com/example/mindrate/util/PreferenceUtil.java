@@ -43,8 +43,8 @@ public class PreferenceUtil {
         mEditor.commit();
     }
 
-    public static String getString(String key, String faillValue){
-        return mSharedPreferences.getString(key, faillValue);
+    public static String getString(String key, String failValue){
+        return mSharedPreferences.getString(key, failValue);
     }
 
     public static void commitInt(String key, int value){

@@ -1,7 +1,6 @@
 package com.example.mindrate.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +11,7 @@ import android.widget.RadioGroup;
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
+import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.Utility;
 
 import java.util.Calendar;
@@ -133,10 +133,12 @@ public class LogInActivity extends BaseActivity {
 
                 // 2. TODO: create probandJSON and save it locally
                 String probandJSON = Utility.createJSON(proband);
-                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
-                        .edit();
-                editor.putString("probandJSON", probandJSON);
-                editor.apply();
+                PreferenceUtil.commitString("probandJSON", probandJSON);
+//                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
+//                        .edit();
+//                editor.putString("probandJSON", probandJSON);
+//                editor.apply();
+
 
                 // 3. TODO: upload probandJSON to server, download Questionnaires and save it
                 // locally
@@ -148,11 +150,12 @@ public class LogInActivity extends BaseActivity {
 //                } finally {
 //
 //                }
-                SharedPreferences.Editor qEditor = getSharedPreferences("questionnaire",
-                                                                        MODE_PRIVATE)
-                        .edit();
-                qEditor.putString("questionnaireJSON", questionnaireJSON);
-                qEditor.apply();
+                PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
+//                SharedPreferences.Editor qEditor = getSharedPreferences("questionnaire",
+//                                                                        MODE_PRIVATE)
+//                        .edit();
+//                qEditor.putString("questionnaireJSON", questionnaireJSON);
+//                qEditor.apply();
 
                 // 4. TODO: put proband & questionnaireJSON into intent
                 Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
@@ -166,6 +169,7 @@ public class LogInActivity extends BaseActivity {
 
                 // 5. TODO: set isLogIn of MainActivity = true
                 MainActivity.setIsLogIn(true);
+                PreferenceUtil.commitBoolean("isLogIn", true);
 
                 // 6. TODO: use this intent to start AnswerQuestionActivity
                 startActivity(intent);
