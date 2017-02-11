@@ -4,6 +4,7 @@ package com.example.mindrate.util;
 import com.example.mindrate.gson.Proband;
 import com.example.mindrate.gson.Questionnaire;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
@@ -17,18 +18,17 @@ import java.util.List;
 
 public class JsonUtil {
 
-    public static Questionnaire handleJsonObject() {
-        return null;
-    }
 
     public static String createJSON(Object obj) {
         Gson gson = new Gson();
         return gson.toJson(obj);
     }
 
-    public static List<Questionnaire> fromJsonToQuestionnaire(String json) {
-        // TODO: parse json
-        return null;
+    public static List<Questionnaire> fromJsonToQuestionnaireList(String json) {
+        Gson gson = new Gson();
+        List<Questionnaire> questionnaireList = gson.fromJson(json, new
+                TypeToken<List<Questionnaire>>(){}.getType());
+        return questionnaireList;
     }
 
     public static Proband fromJsonToProband(String probandJSON) {
