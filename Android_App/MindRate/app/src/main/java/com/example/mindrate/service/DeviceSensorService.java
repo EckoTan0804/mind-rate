@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.example.mindrate.gson.AllSensorEventListener;
 import com.example.mindrate.gson.Questionnaire;
-import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
 
 import java.util.ArrayList;
@@ -28,29 +28,35 @@ import static android.hardware.Sensor.TYPE_PROXIMITY;
 import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
 
 public class DeviceSensorService extends Service {
+    private static final String TAG = "DeviceSensorService";
     private SensorManager sensorManager;
     private List<Sensor> allSensors;
     private List<AllSensorEventListener> allSensorEventListeners;
     private TriggerEventManager triggerEventManager;
     private List<Sensor> usedSensorList;
+    //private MyBinder mBinder = new MyBinder();
 
 
-    public DeviceSensorService(SensorManager sensorManager,TriggerEventManager triggerEventManager) {
-        this.sensorManager = sensorManager;
-        this.triggerEventManager = triggerEventManager;
-        this.allSensors = new ArrayList<>() ;
-        this.allSensorEventListeners = new ArrayList<>();
-        this.usedSensorList = new ArrayList<>();
+
+
+
+
+    public DeviceSensorService() {
 
     }
 
     @Override
     public void onCreate(){
         super.onCreate();
+        this.allSensors = new ArrayList<>() ;
+        this.allSensorEventListeners = new ArrayList<>();
+        this.usedSensorList = new ArrayList<>();
+        //this.triggerEventManager =null;
         if(sensorManager == null){
             sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         }
         allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);//maybe speciall sensor
+        this.triggerEventManager = TriggerEventManager.getTriggerEventManager();
         for(Sensor sensor:allSensors){
             this.addSensorEventListener(sensor);
         }
@@ -59,10 +65,14 @@ public class DeviceSensorService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+
+        //改成问卷需要的sensor。
         for(AllSensorEventListener listener : allSensorEventListeners){
             this.sensorManager.registerListener(listener,listener.getSensor(),SensorManager
-                    .SENSOR_DELAY_NORMAL);
+                    .SENSOR_DELAY_UI);
         }
+        Log.i(TAG,"Service onStart_____");
+
 
         // other things?
         return START_NOT_STICKY;
@@ -79,9 +89,27 @@ public class DeviceSensorService extends Service {
     }
 
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        Log.d(TAG,"return Binder");
+        //return mBinder;
+        return null;
     }
+
+
+   /* public class MyBinder extends Binder{
+        private TriggerEventManager savedTriggerEventManager;
+        public void setTriggerEventManager(TriggerEventManager triggerEventManager){
+            Log.d(TAG,"setTEM");
+            this.savedTriggerEventManager = triggerEventManager;
+        }
+        public TriggerEventManager getSavedTriggerEventManager(){
+            return this.savedTriggerEventManager;
+        }
+        public void transferTriggerEventManager(){
+            Log.d(TAG,"tranTEM");
+            triggerEventManager = this.getSavedTriggerEventManager();
+        }
+
+    }*/
 
     public void  addSensorEventListener(Sensor sensor){
 
@@ -158,11 +186,18 @@ public class DeviceSensorService extends Service {
     }
 
     public void setUsedSensor(){
-        for(Questionnaire questionnaire:this.triggerEventManager.getQuestionnaireList()){
-            TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
-            //get every used sensor
-
+        List<Integer>  indexOfUsedSensor = new ArrayList<>();
+        List<Questionnaire> questionnaireList = this.triggerEventManager
+                .getQuestionnaireList();
+        for(Questionnaire questionnaire:questionnaireList){
+            if(!questionnaire.isAnswered()){
+                questionnaire.getTriggerEvent().setSensor();
+                boolean[]sensorList = questionnaire.getTriggerEvent().getSensorList();
+                for(int i=0;i<sensorList.length;i++){
+                    //if()
+                }
             }
+        }
     }
 }
 

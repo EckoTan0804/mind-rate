@@ -25,7 +25,7 @@ public class AllSensorEventListener implements SensorEventListener{
 
     private Sensor sensor;
     private TriggerEventManager triggerEventManager;
-
+    private static final String TAG = "AllSensorEventListener";
 
 
 
@@ -40,6 +40,19 @@ public class AllSensorEventListener implements SensorEventListener{
         }
 
     }
+
+    /*private void setDataOfSensor(int index,float x,float y,float z){
+        this.dataOfSensor[0] = x;
+        this.dataOfSensor[1] = y;
+        this.dataOfSensor[2] = z;
+        this.triggerEventManager.setDataOfSensor(index,this.dataOfSensor);
+
+    }
+    private void setDataOfSersor(int index,float x){
+
+        this.dataOfSensor[0]=x;
+        this.triggerEventManager.setDataOfSensor(index,this.dataOfSensor);
+    }*/
     public void onSensorChanged(SensorEvent event){
         switch (event.sensor.getType()){
             case TYPE_ACCELEROMETER:
@@ -47,6 +60,7 @@ public class AllSensorEventListener implements SensorEventListener{
                 float yValueAcceleration = event.values[1];
                 float zValueAcceleration = event.values[2];
                 //
+                //this.setDataOfSensor(0,xValueAcceleration,yValueAcceleration,zValueAcceleration);
                 this.dataOfSensor[0]= xValueAcceleration;
                 this.dataOfSensor[1]= yValueAcceleration;
                 this.dataOfSensor[2]= zValueAcceleration;
@@ -78,7 +92,11 @@ public class AllSensorEventListener implements SensorEventListener{
                 float light = event.values[0];
                 this.dataOfSensor[0]= light;
                 this.triggerEventManager.setDataOfSensor(4,this.dataOfSensor);
-                //
+                /*
+                Float test = this.dataOfSensor[4];
+                String b = test.toString();
+                Log.d(TAG,"b");
+               */
                 break;
             case TYPE_LINEAR_ACCELERATION:
                 float xValueLinearAcceleration = event.values[0];
