@@ -2,9 +2,14 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseActivity {
 
@@ -14,16 +19,31 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        final View view = View.inflate(this, R.layout.activity_main, null);
+        setContentView(view);
 
-        Intent intent;
-        if (!isLogIn) {
-            intent = new Intent(this, LogInActivity.class);
-        } else {
-            intent = new Intent(this, OverviewActivity.class);
-        }
+        final CircleImageView appIcon = (CircleImageView) view.findViewById(R.id.app_icon_image);
 
-        startActivity(intent);
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0.3f, 1.0f);
+        alphaAnimation.setDuration(5000);
+        view.startAnimation(alphaAnimation);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                redirectTo();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+
+
 
     }
 
@@ -41,5 +61,15 @@ public class MainActivity extends BaseActivity {
 
     public void setProband(Proband proband) {
         this.proband = proband;
+    }
+
+    private void redirectTo() {
+        Intent intent;
+        if (!isLogIn) {
+            intent = new Intent(this, LogInActivity.class);
+        } else {
+            intent = new Intent(this, OverviewActivity.class);
+        }
+        startActivity(intent);
     }
 }
