@@ -341,7 +341,7 @@ public class OverviewActivity extends BaseActivity {
         options.add(new Option("very good!", null));
         Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
         questionnaire.addQuestion(q5);
-        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire);
+        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire.getQuestionnaireID());
         triggerEvent1.setLight(true);
         triggerEvent1.setAirTemperature(true);
         questionnaire.setTriggerEvent(triggerEvent1);
