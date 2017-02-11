@@ -35,8 +35,28 @@ public class TriggerEvent implements Parcelable {
     private boolean magneticField;
     private boolean proximity;
 
+
+
+    private static final int TYPE_ACCELEROMETER = 0;
+    private static final int  TYPE_AMBIENT_TEMPERATURE = 1;
+    private static final int  TYPE_GRAVITY = 2;
+    private static final int  TYPE_GYROSCOPE = 3;
+    private static final int  TYPE_LIGHT = 4;
+    private static final int  TYPE_LINEAR_ACCELERATION = 5;
+    private static final int  TYPE_MAGNETIC_FIELD = 6;
+    private static final int  TYPE_ORIENTATION = 7;
+    private static final int  TYPE_PRESSURE = 8;
+    private static final int  TYPE_PROXIMITY = 9;
+    private static final int  TYPE_RELATIVE_HUMIDITY = 10;
+    private static final int  TYPE_ROTATION_VECTOR = 11;
+
+
+
+    private boolean[] sensorList;
+
     public TriggerEvent(Questionnaire qn){
         this.questionnaire = qn;
+        this.sensorList = new boolean[12];
     }
 
     public Questionnaire getQuestionnaire() {
@@ -179,10 +199,27 @@ public class TriggerEvent implements Parcelable {
         return proximity;
     }
 
+
+
     public void setProximity(boolean proximity) {
         this.proximity = proximity;
     }
 
+    public boolean[] getSensorList() {
+        return sensorList;
+    }
+    public void setSensor(){
+        this.sensorList[TYPE_AMBIENT_TEMPERATURE]= isAirTemperature();
+        this.sensorList[TYPE_GRAVITY]= isGravity();
+        this.sensorList[TYPE_LIGHT]= isLight();
+        this.sensorList[TYPE_LINEAR_ACCELERATION ]=isLinearAcceleration();
+        this.sensorList[TYPE_MAGNETIC_FIELD] = isMagneticField();
+        this.sensorList[TYPE_ORIENTATION]=isOrientation();
+        this.sensorList[TYPE_PRESSURE]=isAirPressure();
+        this.sensorList[TYPE_PROXIMITY]=isProximity();
+        this.sensorList[TYPE_RELATIVE_HUMIDITY]=isRelativeHumidity();
+        this.sensorList[TYPE_ROTATION_VECTOR]=isRotation();
+    }
     @Override
     public int describeContents() {
         return 0;

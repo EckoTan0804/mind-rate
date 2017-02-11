@@ -1,9 +1,7 @@
 package com.example.mindrate.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +35,8 @@ import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
+import com.example.mindrate.gson.TriggerEventManager;
+import com.example.mindrate.service.DeviceSensorService;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,6 +56,7 @@ import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
 import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 
 public class OverviewActivity extends BaseActivity {
+    private static final String TAG = "OverviewActivity";
 
     private Proband proband;
     private List<Questionnaire> questionnaireList;
@@ -64,9 +66,9 @@ public class OverviewActivity extends BaseActivity {
     private Button btn_nav;
     private NavigationView navView;
     private TextView tv_title;
-    private SensorManager sensorManager;
-    private List<Sensor> allSensors;
-    //    private TriggerEventManager tEM;
+    //private SensorManager sensorManager;
+    //private List<Sensor> allSensors;
+    private TriggerEventManager triggerEventManager;
 
     // =======================================================================
 
@@ -77,6 +79,24 @@ public class OverviewActivity extends BaseActivity {
 
     // =======================================================================
 
+   /* private DeviceSensorService.MyBinder myBinder;
+    private ServiceConnection connection = new ServiceConnection(){
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+        @Override
+        public void onServiceConnected(ComponentName name,  IBinder service) {
+            Log.d(TAG,"bindStart");
+            myBinder = (DeviceSensorService.MyBinder)service;
+            //Log.d(TAG,"setTEM");
+            myBinder.setTriggerEventManager(triggerEventManager);
+            //Log.d(TAG,"tranTEM");
+            myBinder.transferTriggerEventManager();
+        }
+    };*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,14 +106,25 @@ public class OverviewActivity extends BaseActivity {
         initFromIntent();
         initView();
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+//        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+//        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+        //        tEM =  new TriggerEventManager();
+        //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
 
         initTestData();
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+        //triggerEventManager = new TriggerEventManager(this.questionnaireList);
+        Log.i(TAG, "TEM created in Activity");
+        //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
+        //Intent intent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+
+        //Log.i(TAG,"Service onStart_____");
+        //Intent bindServiceIntent = new Intent(OverviewActivity.this,DeviceSensorService.class);
+        //bindService(bindServiceIntent,connection,BIND_AUTO_CREATE);
+        Log.i(TAG, "Service onBind_____");
 
 
         //        tv_questionText.setText(Utility.createJSON(this.proband));
@@ -105,11 +136,18 @@ public class OverviewActivity extends BaseActivity {
         super.onResume();
         for (Sensor sensor : allSensors) {
             // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService
+                    .class);
+            startService(startServiceIntent);
+        /*for(Sensor sensor :allSensors ) {
+           // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+>>>>>>> 1d08a2433890d356671ee32d525bccad62e01e91
             //(listener, sensor,SensorManager.SENSOR_DELAY_GAME);  
             //this.addSensorListener(sensor);
+        }*/
+
+
         }
-
-
     }
 
     private void initFromIntent() {
