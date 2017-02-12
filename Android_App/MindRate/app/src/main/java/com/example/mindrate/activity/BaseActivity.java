@@ -1,6 +1,7 @@
 package com.example.mindrate.activity;
 
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.util.DisplayMetrics;
 import com.example.mindrate.util.PreferenceUtil;
 
 import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Project: MindRate
@@ -48,6 +51,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityManager.removeActivity(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void switchLanguage(String language) {
