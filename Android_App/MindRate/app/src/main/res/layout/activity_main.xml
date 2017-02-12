@@ -1,30 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
     tools:context="com.example.mindrate.activity.MainActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/app_icon_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/ic_mr">
-    </de.hdodenhof.circleimageview.CircleImageView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/choose_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:background="@drawable/button_style_2"
-        android:text="@string/choose_language"
-        android:textAllCaps="false"
-        android:padding="10dp">
-    </Button>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/app_icon_image"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@mipmap/ic_mr"
+            android:layout_centerInParent="true">
+        </de.hdodenhof.circleimageview.CircleImageView>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/choose_language"
+            android:layout_width="wrap_content"
+            android:background="@drawable/button_style_2"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/choose_language"
+            android:textAllCaps="false"
+            android:visibility="invisible"
+            android:layout_marginBottom="80dp"
+            >
+        </Button>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -142,8 +142,7 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        appIcon.setVisibility(View.GONE);
+//        appIcon.setVisibility(View.INVISIBLE);
         btn_chooseLanguage.setVisibility(View.VISIBLE);
-//        redirectTo();
     }
 }
