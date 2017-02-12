@@ -23,7 +23,7 @@
         android:padding="25dp"
         android:textColor="#fff"
         android:textSize="20sp"
-        android:typeface="monospace"
+        android:textAppearance="@style/TextAppearance.FontPath"
         >
     </TextView>
 

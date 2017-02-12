@@ -22,7 +22,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                                              .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                                              .setDefaultFontPath("fonts/RobotoMono-Light.ttf")
                                               .setFontAttrId(R.attr.fontPath)
                                               .build()
         );
