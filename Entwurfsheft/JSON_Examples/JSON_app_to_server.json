@@ -1,0 +1,29 @@
+{
+    "studyID": "A1",
+    "questionnaireAnswerList": [
+        // questionnaireAnswer 1
+        {
+            "questionnaireID": "A1_1",
+            "submitTime": {
+                "year": 2017,
+                "month": 7,
+                "day": 1,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "isValid": true,
+            "questionAnswer": [
+                {"questionID": "A1_1_1", "questionType": "SingleChoice", "answer": "On the way"},
+                {"questionID": "A1_1_2", "questionType": "TextAnswer", "answer": "Hotel"},
+                {"questionID": "A1_1_3", "questionType": "DragScale", "answer": 10},
+                {"questionID": "A1_1_4", "questionType": "MultipleChoice", "answer": ["Coding", "Studying"]},
+                {"questionID": "A1_1_5", "questionType": "StepScale", "answer": "very good"}
+            ]
+        },
+        // questionnaireAnswer 2
+        // questionnaireAnswer 3
+        // ......
+    ]
+
+}

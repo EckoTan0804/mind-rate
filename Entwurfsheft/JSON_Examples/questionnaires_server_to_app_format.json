@@ -27,7 +27,7 @@
                 "maxShowUpTimesPerDay": 40,
                 "triggerEvent": {
                     "minTimeSpace": {"seconds": 180},
-                    "datetime": false, 
+                    "datetime": false, //?
                     "time": {
                         "hour": 16,
                         "minute": 0,
@@ -36,10 +36,10 @@
                     "triggeredWhenCalendarEventBegins": false,
                     "triggeredWhenCalendarEventEnds": false,
                     "triggeredWhenFacebookNotificationComes": false,
-                    "triggeredWhenWhatsAppNotificationComes": false, 
+                    "triggeredWhenWhatsAppNotificationComes": false,
 
-                    // if a sensor is needed, then set it as true; else set false.                   
-                    "accelerometer": true,
+                    // if a sensor is needed, then set it as true; else set false.
+                    “accelerometer”: true,
                     "ambientTemperature": false,
                     "gravity": false,
                     "gyroscope": false,
@@ -53,8 +53,8 @@
                     "rotationVector": false,
 
                     // value range of the needed sensors
-                    "accelerometerMinValue": 5,
-                    "accelerometerMaxValue": 10,
+                    “accelerometerMinValue”: 5,
+                    “accelerometerMaxValue”: 10,
                     "ambientTemperatureMinValue": 0,
                     "ambientTemperatureMaxValue": 0,
                     "gravityMinValue": 0,
@@ -76,7 +76,7 @@
                     "relativeHumidityMinValue": 0,
                     "relativeHumidityMaxValue": 0,
                     "rotationVectorMinValue": 0,
-                    "rotationVectorMaxValue": 0
+                    "rotationVectorMaxValue": 0,
 
                 },
                 "duration": {
@@ -93,7 +93,7 @@
                             {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
                             {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
                             {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
-                        ]
+                        ],
                     },
                     {
                         "questionID": "A1_1_2",
@@ -102,39 +102,38 @@
                     },
                     {
                         "questionID": "A1_1_3",
-                        "questionType": "DragScale", // correspond to steplessScale 
-                        "questionContent": "How are you feeling now?",
+                        "questionType": "DragScale"// correspond to steplessScale 
+                        "questionContent": "How are you feeling now?"
                         "maxValue": 10
                     },
                     {
-                        "questionID": "A1_1_4",
+                        "questionID": "A1_1_4"
                         "questionType": "MultipleChoice",
-                        "questionContent": "What's your hobby?",
+                        "questionContent": "What's your hobby?"
                         "options": [
-                            {"optionContent": "Swimming", "nextQuestionID": "" },
-                            {"optionContent": "Reading", "nextQuestionID": ""},
-                            {"optionContent": "Coding", "nextQuestionID": ""},
+                            {"optionContent": "Swimming", "nextQuestionID": "" }
+                            {"optionContent": "Reading", "nextQuestionID": ""}
+                            {"optionContent": "Coding", "nextQuestionID": ""}
                             {"optionContent": "Studying", "nextQuestionID": ""}
                         ]
                     },
                     {
-                        "questionID": "A1_1_5",
-                        "questionType": "StepScale",
-                        "questionContent": "Do you like this app?",
+                        "questionID": "A1_1_5"
+                        "questionType": "SingleChoice",
+                        "questionContent": "Do you like this app?"
                         "options": [
-                            {"optionContent": "very bad", "nextQuestionID": "" },
-                            {"optionContent": "bad", "nextQuestionID": ""},
-                            {"optionContent": "so so", "nextQuestionID": ""},
-                            {"optionContent": "good", "nextQuestionID": ""},
+                            {"optionContent": "very bad", "nextQuestionID": "" }
+                            {"optionContent": "bad", "nextQuestionID": ""}
+                            {"optionContent": "so so", "nextQuestionID": ""}
+                            {"optionContent": "good", "nextQuestionID": ""}
                             {"optionContent": "very good", "nextQuestionID": ""}
                         ]
                     }
-                ]
+                ],
             },
             // questionnaire 2
             // questionnaire 3
             // ....
-
         ]
     }
 }

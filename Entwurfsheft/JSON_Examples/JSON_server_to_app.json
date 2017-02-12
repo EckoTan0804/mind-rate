@@ -119,7 +119,7 @@
                     },
                     {
                         "questionID": "A1_1_5",
-                        "questionType": "StepScale",
+                        "questionType": "SingleChoice",
                         "questionContent": "Do you like this app?",
                         "options": [
                             {"optionContent": "very bad", "nextQuestionID": "" },
