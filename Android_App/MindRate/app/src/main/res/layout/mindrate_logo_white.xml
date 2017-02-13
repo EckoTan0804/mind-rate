@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-    android:background="@color/colorPrimary">
+    android:background="@color/windowBackgroundColor"
+    android:id="@+id/mind_rate_logo_white">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/app_icon_image"
+        android:id="@+id/app_icon_image_white"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"

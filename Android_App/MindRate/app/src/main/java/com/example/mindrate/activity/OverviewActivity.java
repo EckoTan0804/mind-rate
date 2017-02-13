@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mindrate.R;
@@ -69,9 +70,10 @@ public class OverviewActivity extends BaseActivity {
     //private SensorManager sensorManager;
     //private List<Sensor> allSensors;
     private TriggerEventManager triggerEventManager;
+    private RelativeLayout title;
 
     // =======================================================================
-
+    WelcomeFragment welcomeFragment = new WelcomeFragment();
     ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
     ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
     AboutUsFragment aboutUsFragment = new AboutUsFragment();
@@ -177,12 +179,14 @@ public class OverviewActivity extends BaseActivity {
 
     private void initView() {
 
-        // =================== TextView title ===============================
+        title = (RelativeLayout) findViewById(R.id.title_overview);
+
+        // =================== TextView title_overview ===============================
         tv_title = (TextView) findViewById(R.id.title_title);
         // ==================================================================
 
         tv_title.setText("Mind Rate");
-        replaceFragment(new WelcomeFragment());
+        replaceFragment(welcomeFragment);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -294,7 +298,10 @@ public class OverviewActivity extends BaseActivity {
         Intent intent = new Intent(OverviewActivity.this, OverviewActivity.class);
         startActivity(intent);
 
+    }
 
+    public View ActionBar() {
+        return this.title;
     }
 
     // ======================= setters and getters =============================
