@@ -29,6 +29,10 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // set English as default language
+        switchLanguage("en");
+
         setContentView(R.layout.activity_main);
 
         appIcon = (CircleImageView) findViewById(R.id.app_icon_image);
