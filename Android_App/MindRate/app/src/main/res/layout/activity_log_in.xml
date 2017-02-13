@@ -11,40 +11,7 @@
 
 
     <include layout="@layout/title_log_in"/>
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:layout_alignParentTop="true">-->
 
-        <!--<ImageView-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:background="@mipmap/ic_mr_white"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--&gt;-->
-        <!--</ImageView>-->
-    <!--</RelativeLayout>-->
-
-
-
-    <Button
-        android:id="@+id/proband_log_in"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textSize="15sp"
-        android:text="@string/log_in_button_log_in"
-        android:textColor="@color/textColorPrimary"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="150dp"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:background="@drawable/rounded_btn_transparent"
-        android:visibility="invisible"
-        >
-    </Button>
 
     <LinearLayout
         android:id="@+id/log_in_first_show_up"
@@ -55,19 +22,14 @@
         android:paddingTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:visibility="visible">
+        
+        <include layout="@layout/mindrate_logo_white"/>
 
         <include layout="@layout/log_in_study_id"/>
 
         <include layout="@layout/log_in_proband_id"/>
-
-        <!--<include layout="@layout/log_in_choose_birthday"/>-->
-
-        <!--<include layout="@layout/log_in_choose_gender"/>-->
-
-        <!--<include layout="@layout/log_in_occupation"/>-->
 
     </LinearLayout>
 
@@ -89,6 +51,22 @@
         <include layout="@layout/log_in_choose_gender"/>
 
         <include layout="@layout/log_in_occupation"/>
+
+        <Button
+            android:id="@+id/proband_log_in"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:textSize="15sp"
+            android:text="@string/log_in_button_log_in"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="30dp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:background="@drawable/rounded_btn_transparent"
+            >
+        </Button>
     </LinearLayout>
+
+
 
 </RelativeLayout>
