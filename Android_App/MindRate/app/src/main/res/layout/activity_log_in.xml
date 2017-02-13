@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="8dp"
     tools:context="com.example.mindrate.activity.LogInActivity"
-    android:background="#212121">
+    android:background="@color/windowBackgroundColor">
 
 
     <!--<RelativeLayout-->
@@ -40,7 +40,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:textAppearance="@style/TextAppearance.FontPath"
-        android:background="@drawable/button_style_2"
+        android:background="@drawable/rounded_btn_transparent"
         >
     </Button>
 

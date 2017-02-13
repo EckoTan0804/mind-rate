@@ -33,7 +33,7 @@
         <Button
             android:id="@+id/choose_language"
             android:layout_width="wrap_content"
-            android:background="@drawable/button_style_2"
+            android:background="@drawable/rounded_btn_transparent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -43,7 +43,7 @@
             android:paddingBottom="10dp"
             android:text="@string/choose_language"
             android:textAllCaps="false"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_marginBottom="80dp"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/textColorPrimary"
