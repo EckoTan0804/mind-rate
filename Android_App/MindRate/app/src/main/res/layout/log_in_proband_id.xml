@@ -11,7 +11,7 @@
         android:layout_gravity="center_vertical"
         android:gravity="left"
         android:text="@string/log_in_proband_id"
-        android:textColor="#fff"
+        android:textColor="@color/textColorPrimary"
         android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:layout_marginLeft="15dp"
@@ -30,7 +30,7 @@
         android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:background="@drawable/rounded_edittext"
-        android:textColor="#fff">
+        android:textColor="@color/textColorPrimary">
     </EditText>
 
 </LinearLayout>
