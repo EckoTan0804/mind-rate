@@ -43,7 +43,7 @@
             android:paddingBottom="10dp"
             android:text="@string/choose_language"
             android:textAllCaps="false"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_marginBottom="80dp"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/textColorPrimary"
