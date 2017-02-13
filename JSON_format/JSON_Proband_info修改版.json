@@ -1,0 +1,12 @@
+
+{
+    "probandID" : "123456789",
+    "studyID" : "987654321",
+    "gender" : "male",
+    "birthday": {
+        "year" : 1994,
+        "month" : 1,
+        "day" : 1
+    }
+    "occupation" : "student"
+}
