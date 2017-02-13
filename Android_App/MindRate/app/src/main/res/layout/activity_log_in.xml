@@ -6,23 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="8dp"
-    tools:context="com.example.mindrate.activity.LogInActivity">
+    tools:context="com.example.mindrate.activity.LogInActivity"
+    android:background="#212121">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentTop="true">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:layout_alignParentTop="true">-->
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@mipmap/ic_mr_white"
-            android:layout_centerHorizontal="true"
-            >
-        </ImageView>
-    </RelativeLayout>
+        <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:background="@mipmap/ic_mr_white"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--&gt;-->
+        <!--</ImageView>-->
+    <!--</RelativeLayout>-->
 
 
 
@@ -34,37 +35,58 @@
         android:layout_alignParentRight="true"
         android:textSize="15sp"
         android:text="@string/log_in_button_log_in"
-        android:background="?attr/colorAccent"
-        android:textColor="#fff"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:textColor="@color/textColorPrimary"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.FontPath"
+        android:background="@drawable/button_style_2"
         >
     </Button>
 
     <LinearLayout
+        android:id="@+id/log_in_first_show_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:paddingTop="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible">
 
         <include layout="@layout/log_in_study_id"/>
 
         <include layout="@layout/log_in_proband_id"/>
+
+        <!--<include layout="@layout/log_in_choose_birthday"/>-->
+
+        <!--<include layout="@layout/log_in_choose_gender"/>-->
+
+        <!--<include layout="@layout/log_in_occupation"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/log_in_second_show_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible">
 
         <include layout="@layout/log_in_choose_birthday"/>
 
         <include layout="@layout/log_in_choose_gender"/>
 
         <include layout="@layout/log_in_occupation"/>
-
     </LinearLayout>
 
 </RelativeLayout>

@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
                         redirectTo();
                     }
                 });
+
                 builder.show();
             }
         });
