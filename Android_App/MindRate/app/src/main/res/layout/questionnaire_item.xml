@@ -11,23 +11,26 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="2"
-        android:textColor="#000"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
         >
     </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/questionnaire_begins_at"
-            android:textSize="10sp">
+            android:textSize="10sp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/textColorPrimary">
         </TextView>
 
         <TextView
@@ -37,16 +40,28 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:textSize="10sp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/textColorPrimary"
             >
         </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
             android:text="@string/questionnaire_will_end_at"
-            android:textSize="10sp">
+            android:textSize="10sp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/textColorPrimary">
         </TextView>
 
         <TextView
@@ -57,6 +72,7 @@
             android:layout_marginLeft="5dp"
             android:textColor="#ff4081"
             android:textSize="10sp"
+            android:textAppearance="@style/TextAppearance.FontPath"
             >
         </TextView>
     </LinearLayout>

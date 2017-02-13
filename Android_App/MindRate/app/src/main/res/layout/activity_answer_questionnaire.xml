@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.example.mindrate.activity.AnswerQuestionnaireActivity">
 
-    <include layout="@layout/answer_questionnaire_title"/>
+    <include layout="@layout/title_answer_questionnaire"/>
 
 
     <TextView
