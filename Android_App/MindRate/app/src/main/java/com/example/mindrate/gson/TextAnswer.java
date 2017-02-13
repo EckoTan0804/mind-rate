@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.example.mindrate.util.FontUtil;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -58,6 +60,8 @@ public class TextAnswer extends QuestionType implements Parcelable {
         });
 
         layout.addView(mEditText, params);
+
+        FontUtil.changeFonts(layout, context);
     }
 
     @Override

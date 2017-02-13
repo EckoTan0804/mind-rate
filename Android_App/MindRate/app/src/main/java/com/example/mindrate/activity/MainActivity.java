@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
     private static boolean isLogIn = false;
 
     private Proband proband;
-    private String selectedLanguage;
+    private String selectedLanguage = "en";
     private CircleImageView appIcon;
     private Button btn_chooseLanguage;
 

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.mindrate.util.FontUtil;
+
 import java.util.ArrayList;
 
 /**
@@ -30,6 +32,8 @@ public class SingleChoice extends QuestionType implements Parcelable {
     public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
+
+
 
         super.questionAnswer = new QuestionAnswer(questionID);
 
@@ -54,6 +58,8 @@ public class SingleChoice extends QuestionType implements Parcelable {
         });
 
         layout.addView(radioGroup);
+
+        FontUtil.changeFonts(layout, context);
     }
 
     @Override

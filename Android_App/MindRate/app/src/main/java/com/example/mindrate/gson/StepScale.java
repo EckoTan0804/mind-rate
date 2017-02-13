@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.mindrate.util.FontUtil;
+
 import java.util.ArrayList;
 
 /**
@@ -54,6 +56,8 @@ public class StepScale extends QuestionType implements Parcelable {
         });
 
         layout.addView(radioGroup);
+
+        FontUtil.changeFonts(layout, context);
     }
 
 
