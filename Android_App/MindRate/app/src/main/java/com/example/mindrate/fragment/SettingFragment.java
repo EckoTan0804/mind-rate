@@ -40,7 +40,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         language_pref = (ListPreference) findPreference(KEY_PREF_Language);
-        setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
+//        setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
     }
 
     @Override

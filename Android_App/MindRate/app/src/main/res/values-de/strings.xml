@@ -2,6 +2,8 @@
 <resources>
 
     <string name="hello">Hallo</string>
+    <string name="ok">OK</string>
+    <string name="cancel">ABBRECHEN</string>
 
     <!--MainActivity-->
     <string name="choose_language">Sprache auswählen</string>

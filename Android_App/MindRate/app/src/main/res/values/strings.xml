@@ -2,6 +2,8 @@
     <string name="app_name">MindRate</string>
 
     <string name="hello">Hello</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
 
     <!--MainActivity-->
     <string name="choose_language">Choose Language</string>

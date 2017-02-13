@@ -16,8 +16,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseActivity implements Animation.AnimationListener {
 
+    private static final String[] LANGUAGES = {"English", "Deutsch"};
+    private static final String[] LANGUAGE_ARRAY = {"en", "de"};
+
     private static boolean isLogIn = false;
+
     private Proband proband;
+    private String selectedLanguage;
     private CircleImageView appIcon;
     private Button btn_chooseLanguage;
 
@@ -32,19 +37,28 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
         btn_chooseLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogStyle);
+
                 builder.setTitle(R.string.choose_language);
-                final String[] languages = {"English", "Deutsch"};
-                final String[] languageArray = {"en", "de"};
-                builder.setItems(languages, new DialogInterface.OnClickListener() {
+                builder.setSingleChoiceItems(LANGUAGES, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String language = languageArray[i];
-                        switchLanguage(language);
+                        selectedLanguage = LANGUAGE_ARRAY[i];
+                    }
+                });
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switchLanguage(selectedLanguage);
                         redirectTo();
                     }
                 });
-
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
                 builder.show();
             }
         });
