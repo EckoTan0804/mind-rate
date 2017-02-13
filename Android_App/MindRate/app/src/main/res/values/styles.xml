@@ -17,7 +17,7 @@
     <!--font-->
     <style name="TextAppearance.FontPath" parent="android:TextAppearance">
         <!-- Custom Attr-->
-        <item name="fontPath">fonts/Dosis-Regular.ttf</item>
+        <item name="fontPath">fonts/Nunito-Regular.ttf</item>
     </style>
 
 
