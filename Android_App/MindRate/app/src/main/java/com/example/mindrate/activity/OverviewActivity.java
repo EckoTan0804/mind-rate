@@ -61,6 +61,7 @@ public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
     private List<Questionnaire> questionnaireList;
+    private Questionnaire selectedQuestionnaire;
 
     // ==================== View components ==================================
     private DrawerLayout mDrawerLayout;
@@ -271,6 +272,13 @@ public class OverviewActivity extends BaseActivity {
         return removeQuestionnaire;
     }
 
+    private void removeQuestionnaire(Questionnaire selectedQuestionnaire) {
+        int removeIndex = this.questionnaireList.indexOf(selectedQuestionnaire);
+        if (selectedQuestionnaire.isAnswered()) {
+            this.questionnaireList.remove(removeIndex);
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -280,7 +288,9 @@ public class OverviewActivity extends BaseActivity {
                                                                                        "questionnaire " +
                                                                                        "ID");
                     // remove the answered questionnaire from questionnaireList
-                    removeQuestionnaire(answeredQuestionnaireID);
+                    //                    removeQuestionnaire(answeredQuestionnaireID);
+                    this.selectedQuestionnaire.setAnswered(true);
+                    removeQuestionnaire(this.selectedQuestionnaire);
                     // save the new questionnaireList locally
                     PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
                             this.questionnaireList));
@@ -322,6 +332,14 @@ public class OverviewActivity extends BaseActivity {
 
     public void setQuestionnaireList(List<Questionnaire> questionnaireList) {
         this.questionnaireList = questionnaireList;
+    }
+
+    public Questionnaire getSelectedQuestionnaire() {
+        return selectedQuestionnaire;
+    }
+
+    public void setSelectedQuestionnaire(Questionnaire selectedQuestionnaire) {
+        this.selectedQuestionnaire = selectedQuestionnaire;
     }
 
     // test data
@@ -428,8 +446,8 @@ public class OverviewActivity extends BaseActivity {
 
 
         questionnaireList.add(questionnaire);
-        //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
         //        TriggerEventManager triggerEventManager = TriggerEventManager
         // .getTriggerEventManager();
         //        triggerEventManager.setQuestionnaireList(questionnaireList);

@@ -74,10 +74,12 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
                     // 1. get the selected questionnaire instance
                     selectedQuestionnaire = questionnaireList.get(position);
+                    OverviewActivity overviewActivity = (OverviewActivity) getActivity();
+                    overviewActivity.setSelectedQuestionnaire(selectedQuestionnaire);
                     //                selectedQuestionnaire.sendNotification(getActivity());
 
                     // 2. put this questionnaire instance into intent
-                    Intent intent = new Intent(getActivity(), AnswerQuestionnaireActivity.class);
+                    Intent intent = new Intent(overviewActivity, AnswerQuestionnaireActivity.class);
                     intent.putExtra("questionnaire", selectedQuestionnaire);
 
                     // 3. use this intent to start AnswerQuestionnaireActivity
