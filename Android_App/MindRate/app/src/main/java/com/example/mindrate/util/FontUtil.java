@@ -20,9 +20,11 @@ import android.widget.TextView;
 
 public class FontUtil {
 
+    private static Typeface typeface;
+
     public static void changeFonts(ViewGroup root, Context context) {
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),
+        typeface = Typeface.createFromAsset(context.getAssets(),
                                                      "fonts/Nunito-Regular.ttf");
 
         for (int i = 0; i < root.getChildCount(); i++) {

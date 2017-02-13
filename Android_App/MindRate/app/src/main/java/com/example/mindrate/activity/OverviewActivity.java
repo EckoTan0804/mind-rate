@@ -36,6 +36,7 @@ import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
+import com.example.mindrate.util.FontUtil;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 
@@ -108,6 +109,7 @@ public class OverviewActivity extends BaseActivity {
 
         initFromIntent();
         initView();
+        FontUtil.changeFonts(mDrawerLayout, this);
 
         //        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -208,6 +210,7 @@ public class OverviewActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
         }
+//        navView.setItemTextAppearance(R.style.TextAppearance_FontPath);
         navView.setCheckedItem(R.id.nav_profile);
         navView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {

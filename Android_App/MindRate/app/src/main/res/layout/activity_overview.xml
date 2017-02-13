@@ -74,9 +74,8 @@
             app:menu="@menu/nav_menu"
             app:headerLayout="@layout/nav_header"
             app:itemIconTint="@color/textColorPrimary"
-            app:itemTextAppearance="@style/TextAppearance.FontPath"
+            app:itemTextAppearance="@style/NavigationDrawerStyle"
             app:itemTextColor="@color/textColorPrimary"
-
             >
         </android.support.design.widget.NavigationView>
 
