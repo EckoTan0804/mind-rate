@@ -24,6 +24,7 @@ public class LogInActivity extends BaseActivity {
     public static final String SERVER_ADDRESS = "129.13.170.45";
 
     private static int logInPage = 1;
+    private static int LOG_IN_LAST_PAGE = 2;
 
     // =================== proband ==========================
     private String studyID;
@@ -59,17 +60,15 @@ public class LogInActivity extends BaseActivity {
         final LinearLayout ll_secondShowUp = (LinearLayout) findViewById(R.id.log_in_second_show_up);
 
         // ==================== nextPage_btn ===========================
-        Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
+        final Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
         btn_newPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logInPage++;
-                if (logInPage == 2) {
+                if (logInPage == LOG_IN_LAST_PAGE) {
                     ll_firstShowUp.setVisibility(View.GONE);
                     ll_secondShowUp.setVisibility(View.VISIBLE);
-                } else if (logInPage == 3) {
-                    ll_secondShowUp.setVisibility(View.GONE);
-                    btn_probandLogIn.setVisibility(View.VISIBLE);
+                    btn_newPage.setVisibility(View.GONE);
                 }
             }
         });

@@ -186,7 +186,6 @@ public class OverviewActivity extends BaseActivity {
         tv_title = (TextView) findViewById(R.id.title_title);
         // ==================================================================
 
-        tv_title.setText("Mind Rate");
         replaceFragment(welcomeFragment);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
