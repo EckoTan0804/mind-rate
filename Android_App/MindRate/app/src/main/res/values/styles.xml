@@ -13,7 +13,7 @@
 
     <style name="TextAppearance.FontPath" parent="android:TextAppearance">
         <!-- Custom Attr-->
-        <item name="fontPath">fonts/RobotoMono-Regular.ttf</item>
+        <item name="fontPath">fonts/Dosis-Regular.ttf</item>
     </style>
 
 
