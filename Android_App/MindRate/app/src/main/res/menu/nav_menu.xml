@@ -12,7 +12,7 @@
 
         <item
             android:id="@+id/nav_questionnaire_list"
-            android:icon="@mipmap/ic_answer_questionnaire"
+            android:icon="@mipmap/ic_input"
             android:title="@string/nav_questionnaire"/>
         
         <item
