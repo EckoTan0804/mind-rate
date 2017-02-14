@@ -57,6 +57,10 @@ public class Questionnaire implements Parcelable, Observer {
         questionList = new ArrayList<>();
     }
 
+    public Questionnaire(String questionnaireID) {
+        this.questionnaireID = questionnaireID;
+    }
+
     /**
      * The answers of the questionnaire will be temporarily saved in smartphone.
      */
