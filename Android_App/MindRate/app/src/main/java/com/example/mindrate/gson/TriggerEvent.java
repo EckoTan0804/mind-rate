@@ -28,6 +28,7 @@ public class TriggerEvent implements Parcelable {
     private boolean triggeredWhenCalendarEventEnds;
     private boolean triggeredWhenFacebookNotificationComes;
     private boolean triggeredWhenWhatsAppNotificationComes;
+    //==================Sensor==================================
     private boolean linearAcceleration;
     private boolean gravity;
     private boolean rotation;
@@ -38,12 +39,11 @@ public class TriggerEvent implements Parcelable {
     private boolean orientation;
     private boolean magneticField;
     private boolean proximity;
-
-
     private boolean accelerometer;
     private boolean gyroscope;
+    //===========================================================
 
-
+//=============================Index of Sensor=========================
     private static final int TYPE_ACCELEROMETER = 0;
     private static final int TYPE_AMBIENT_TEMPERATURE = 1;
     private static final int TYPE_GRAVITY = 2;
@@ -56,6 +56,84 @@ public class TriggerEvent implements Parcelable {
     private static final int TYPE_PROXIMITY = 9;
     private static final int TYPE_RELATIVE_HUMIDITY = 10;
     private static final int TYPE_ROTATION_VECTOR = 11;
+
+
+    //========================================================
+    //=========Max and Min-Value of Sensor to trigger Questionnaire=====
+    private float  accelerometerMinXValue;
+    private float  accelerometerMinYValue;
+    private float  accelerometerMinZValue;
+
+    private float  accelerometerMaxXValue;
+    private float  accelerometerMaxYValue;
+    private float  accelerometerMaxZValue;
+    //=================================================
+    private float  ambientTemperatureMinValue;
+    private float  ambientTemperatureMaxValue;
+//===============================================
+    private float  gravityMinXValue;
+    private float  gravityMinYValue;
+    private float  gravityMinZValue;
+
+    private float gravityMaxXValue;
+    private float gravityMaxYValue;
+    private float gravityMaxZValue;
+//============================================
+    private float gyroscopeMinXValue;
+    private float gyroscopeMinYValue;
+    private float gyroscopeMinZValue;
+
+    private float gyroscopeMaxXValue;
+    private float gyroscopeMaxYValue;
+    private float gyroscopeMaxZValue;
+//============================================
+    private float lightMinValue;
+    private float lightMaxValue;
+//================================================
+    private float linearAccelerationMinXValue;
+    private float linearAccelerationMinYValue;
+    private float linearAccelerationMinZValue;
+
+    private float  linearAccelerationMaxXValue;
+    private float  linearAccelerationMaxYValue;
+    private float  linearAccelerationMaxZValue;
+//================================================
+    private float  magneticFieldMinXValue;
+    private float  magneticFieldMinYValue;
+    private float  magneticFieldMinZValue;
+
+    private float magneticFieldMaxXValue;
+    private float magneticFieldMaxYValue;
+    private float magneticFieldMaxZValue;
+//===============================================
+    private float orientationMinXValue;
+    private float orientationMinYValue;
+    private float orientationMinZValue;
+
+// noch nicht fertig!
+    private float orientationMaxXValue;
+    private float orientationMaxYValue;
+    private float orientationMaxZValue;
+//===============================================
+    private float  pressureMinValue;
+    private float  pressureMaxValue;
+//=================================================
+    private float  proximityMinValue;
+    private float  proximityMaxValue;
+//================================================
+    private float  relativeHumidityMinValue;
+    private float  relativeHumidityMaxValue;
+//=====================================================
+    private float  rotationVectorMinXValue;
+    private float  rotationVectorMinYValue;
+    private float  rotationVectorMinZValue;
+
+    private float rotationVectorMaxXValue;
+    private float rotationVectorMaxYValue;
+    private float rotationVectorMaxZValue;
+//======================================================
+
+    //==================================================================
     private boolean[] sensorList;
 
 
@@ -65,21 +143,22 @@ public class TriggerEvent implements Parcelable {
         for (int i = 0; i < sensorList.length; i++) {
             this.sensorList[i] = false;
         }
-        this.linearAcceleration = false;
-        this.gravity = false;
-        this.rotation = false;
-        this.airTemperature = false;
-        this.airPressure = false;
-        this.light = false;
-        this.relativeHumidity = false;
-        this.orientation = false;
-        this.magneticField = false;
-        this.proximity = false;
-        this.accelerometer = false;
-        this.gyroscope = false;
+        //this.linearAcceleration = false;
+        //this.gravity = false;
+        //this.rotation = false;
+        //this.airTemperature = false;
+        //this.airPressure = false;
+        //this.light = false;
+        //this.relativeHumidity = false;
+        //this.orientation = false;
+        //this.magneticField = false;
+        //this.proximity = false;
+        //this.accelerometer = false;
+        //this.gyroscope = false;
 
     }
 
+    /*
     public TriggerEvent(String questionnaireID, Date minTimeSpace, Date time, Date dateTime,
                         boolean triggeredWhenCalendarEventBegins, boolean
                                 triggeredWhenCalendarEventEnds, boolean
@@ -111,7 +190,7 @@ public class TriggerEvent implements Parcelable {
         this.accelerometer = accelerometer;
         this.gyroscope = gyroscope;
         this.sensorList = sensorList;
-    }
+    }*/
 
     public String getQuestionnaireID() {
         return questionnaireID;
@@ -273,6 +352,426 @@ public class TriggerEvent implements Parcelable {
     public void setProximity(boolean proximity) {
         this.proximity = proximity;
     }
+
+    //======================================================================
+    //=============getter and setter for triggerValue of Sensor==========
+    public float getAccelerometerMinXValue() {
+        return accelerometerMinXValue;
+    }
+
+    public void setAccelerometerMinXValue(float accelerometerMinXValue) {
+        this.accelerometerMinXValue = accelerometerMinXValue;
+    }
+
+    public float getAccelerometerMinYValue() {
+        return accelerometerMinYValue;
+    }
+
+    public void setAccelerometerMinYValue(float accelerometerMinYValue) {
+        this.accelerometerMinYValue = accelerometerMinYValue;
+    }
+
+    public float getAccelerometerMinZValue() {
+        return accelerometerMinZValue;
+    }
+
+    public void setAccelerometerMinZValue(float accelerometerMinZValue) {
+        this.accelerometerMinZValue = accelerometerMinZValue;
+    }
+
+    public float getAccelerometerMaxXValue() {
+        return accelerometerMaxXValue;
+    }
+
+    public void setAccelerometerMaxXValue(float accelerometerMaxXValue) {
+        this.accelerometerMaxXValue = accelerometerMaxXValue;
+    }
+
+    public float getAccelerometerMaxYValue() {
+        return accelerometerMaxYValue;
+    }
+
+    public void setAccelerometerMaxYValue(float accelerometerMaxYValue) {
+        this.accelerometerMaxYValue = accelerometerMaxYValue;
+    }
+
+    public float getAccelerometerMaxZValue() {
+        return accelerometerMaxZValue;
+    }
+
+    public void setAccelerometerMaxZValue(float accelerometerMaxZValue) {
+        this.accelerometerMaxZValue = accelerometerMaxZValue;
+    }
+
+    public float getAmbientTemperatureMinValue() {
+        return ambientTemperatureMinValue;
+    }
+
+    public void setAmbientTemperatureMinValue(float ambientTemperatureMinValue) {
+        this.ambientTemperatureMinValue = ambientTemperatureMinValue;
+    }
+
+    public float getAmbientTemperatureMaxValue() {
+        return ambientTemperatureMaxValue;
+    }
+
+    public void setAmbientTemperatureMaxValue(float ambientTemperatureMaxValue) {
+        this.ambientTemperatureMaxValue = ambientTemperatureMaxValue;
+    }
+
+    public float getGravityMinXValue() {
+        return gravityMinXValue;
+    }
+
+    public void setGravityMinXValue(float gravityMinXValue) {
+        this.gravityMinXValue = gravityMinXValue;
+    }
+
+    public float getGravityMinYValue() {
+        return gravityMinYValue;
+    }
+
+    public void setGravityMinYValue(float gravityMinYValue) {
+        this.gravityMinYValue = gravityMinYValue;
+    }
+
+    public float getGravityMinZValue() {
+        return gravityMinZValue;
+    }
+
+    public void setGravityMinZValue(float gravityMinZValue) {
+        this.gravityMinZValue = gravityMinZValue;
+    }
+
+    public float getGravityMaxXValue() {
+        return gravityMaxXValue;
+    }
+
+    public void setGravityMaxXValue(float gravityMaxXValue) {
+        this.gravityMaxXValue = gravityMaxXValue;
+    }
+
+    public float getGravityMaxYValue() {
+        return gravityMaxYValue;
+    }
+
+    public void setGravityMaxYValue(float gravityMaxYValue) {
+        this.gravityMaxYValue = gravityMaxYValue;
+    }
+
+    public float getGravityMaxZValue() {
+        return gravityMaxZValue;
+    }
+
+    public void setGravityMaxZValue(float gravityMaxZValue) {
+        this.gravityMaxZValue = gravityMaxZValue;
+    }
+
+    public float getGyroscopeMinXValue() {
+        return gyroscopeMinXValue;
+    }
+
+    public void setGyroscopeMinXValue(float gyroscopeMinXValue) {
+        this.gyroscopeMinXValue = gyroscopeMinXValue;
+    }
+
+    public float getGyroscopeMinYValue() {
+        return gyroscopeMinYValue;
+    }
+
+    public void setGyroscopeMinYValue(float gyroscopeMinYValue) {
+        this.gyroscopeMinYValue = gyroscopeMinYValue;
+    }
+
+    public float getGyroscopeMinZValue() {
+        return gyroscopeMinZValue;
+    }
+
+    public void setGyroscopeMinZValue(float gyroscopeMinZValue) {
+        this.gyroscopeMinZValue = gyroscopeMinZValue;
+    }
+
+    public float getGyroscopeMaxXValue() {
+        return gyroscopeMaxXValue;
+    }
+
+    public void setGyroscopeMaxXValue(float gyroscopeMaxXValue) {
+        this.gyroscopeMaxXValue = gyroscopeMaxXValue;
+    }
+
+    public float getGyroscopeMaxYValue() {
+        return gyroscopeMaxYValue;
+    }
+
+    public void setGyroscopeMaxYValue(float gyroscopeMaxYValue) {
+        this.gyroscopeMaxYValue = gyroscopeMaxYValue;
+    }
+
+    public float getGyroscopeMaxZValue() {
+        return gyroscopeMaxZValue;
+    }
+
+    public void setGyroscopeMaxZValue(float gyroscopeMaxZValue) {
+        this.gyroscopeMaxZValue = gyroscopeMaxZValue;
+    }
+
+    public float getLightMinValue() {
+        return lightMinValue;
+    }
+
+    public void setLightMinValue(float lightMinValue) {
+        this.lightMinValue = lightMinValue;
+    }
+
+    public float getLightMaxValue() {
+        return lightMaxValue;
+    }
+
+    public void setLightMaxValue(float lightMaxValue) {
+        this.lightMaxValue = lightMaxValue;
+    }
+
+    public float getLinearAccelerationMinXValue() {
+        return linearAccelerationMinXValue;
+    }
+
+    public void setLinearAccelerationMinXValue(float linearAccelerationMinXValue) {
+        this.linearAccelerationMinXValue = linearAccelerationMinXValue;
+    }
+
+    public float getLinearAccelerationMinYValue() {
+        return linearAccelerationMinYValue;
+    }
+
+    public void setLinearAccelerationMinYValue(float linearAccelerationMinYValue) {
+        this.linearAccelerationMinYValue = linearAccelerationMinYValue;
+    }
+
+    public float getLinearAccelerationMinZValue() {
+        return linearAccelerationMinZValue;
+    }
+
+    public void setLinearAccelerationMinZValue(float linearAccelerationMinZValue) {
+        this.linearAccelerationMinZValue = linearAccelerationMinZValue;
+    }
+
+    public float getLinearAccelerationMaxXValue() {
+        return linearAccelerationMaxXValue;
+    }
+
+    public void setLinearAccelerationMaxXValue(float linearAccelerationMaxXValue) {
+        this.linearAccelerationMaxXValue = linearAccelerationMaxXValue;
+    }
+
+    public float getLinearAccelerationMaxYValue() {
+        return linearAccelerationMaxYValue;
+    }
+
+    public void setLinearAccelerationMaxYValue(float linearAccelerationMaxYValue) {
+        this.linearAccelerationMaxYValue = linearAccelerationMaxYValue;
+    }
+
+    public float getLinearAccelerationMaxZValue() {
+        return linearAccelerationMaxZValue;
+    }
+
+    public void setLinearAccelerationMaxZValue(float linearAccelerationMaxZValue) {
+        this.linearAccelerationMaxZValue = linearAccelerationMaxZValue;
+    }
+
+    public float getMagneticFieldMinXValue() {
+        return magneticFieldMinXValue;
+    }
+
+    public void setMagneticFieldMinXValue(float magneticFieldMinXValue) {
+        this.magneticFieldMinXValue = magneticFieldMinXValue;
+    }
+
+    public float getMagneticFieldMinYValue() {
+        return magneticFieldMinYValue;
+    }
+
+    public void setMagneticFieldMinYValue(float magneticFieldMinYValue) {
+        this.magneticFieldMinYValue = magneticFieldMinYValue;
+    }
+
+    public float getMagneticFieldMinZValue() {
+        return magneticFieldMinZValue;
+    }
+
+    public void setMagneticFieldMinZValue(float magneticFieldMinZValue) {
+        this.magneticFieldMinZValue = magneticFieldMinZValue;
+    }
+
+    public float getMagneticFieldMaxXValue() {
+        return magneticFieldMaxXValue;
+    }
+
+    public void setMagneticFieldMaxXValue(float magneticFieldMaxXValue) {
+        this.magneticFieldMaxXValue = magneticFieldMaxXValue;
+    }
+
+    public float getMagneticFieldMaxYValue() {
+        return magneticFieldMaxYValue;
+    }
+
+    public void setMagneticFieldMaxYValue(float magneticFieldMaxYValue) {
+        this.magneticFieldMaxYValue = magneticFieldMaxYValue;
+    }
+
+    public float getMagneticFieldMaxZValue() {
+        return magneticFieldMaxZValue;
+    }
+
+    public void setMagneticFieldMaxZValue(float magneticFieldMaxZValue) {
+        this.magneticFieldMaxZValue = magneticFieldMaxZValue;
+    }
+
+    public float getOrientationMinXValue() {
+        return orientationMinXValue;
+    }
+
+    public void setOrientationMinXValue(float orientationMinXValue) {
+        this.orientationMinXValue = orientationMinXValue;
+    }
+
+    public float getOrientationMinYValue() {
+        return orientationMinYValue;
+    }
+
+    public void setOrientationMinYValue(float orientationMinYValue) {
+        this.orientationMinYValue = orientationMinYValue;
+    }
+
+    public float getOrientationMinZValue() {
+        return orientationMinZValue;
+    }
+
+    public void setOrientationMinZValue(float orientationMinZValue) {
+        this.orientationMinZValue = orientationMinZValue;
+    }
+
+    public float getOrientationMaxXValue() {
+        return orientationMaxXValue;
+    }
+
+    public void setOrientationMaxXValue(float orientationMaxXValue) {
+        this.orientationMaxXValue = orientationMaxXValue;
+    }
+
+    public float getOrientationMaxYValue() {
+        return orientationMaxYValue;
+    }
+
+    public void setOrientationMaxYValue(float orientationMaxYValue) {
+        this.orientationMaxYValue = orientationMaxYValue;
+    }
+
+    public float getOrientationMaxZValue() {
+        return orientationMaxZValue;
+    }
+
+    public void setOrientationMaxZValue(float orientationMaxZValue) {
+        this.orientationMaxZValue = orientationMaxZValue;
+    }
+
+    public float getPressureMinValue() {
+        return pressureMinValue;
+    }
+
+    public void setPressureMinValue(float pressureMinValue) {
+        this.pressureMinValue = pressureMinValue;
+    }
+
+    public float getPressureMaxValue() {
+        return pressureMaxValue;
+    }
+
+    public void setPressureMaxValue(float pressureMaxValue) {
+        this.pressureMaxValue = pressureMaxValue;
+    }
+
+    public float getProximityMinValue() {
+        return proximityMinValue;
+    }
+
+    public void setProximityMinValue(float proximityMinValue) {
+        this.proximityMinValue = proximityMinValue;
+    }
+
+    public float getProximityMaxValue() {
+        return proximityMaxValue;
+    }
+
+    public void setProximityMaxValue(float proximityMaxValue) {
+        this.proximityMaxValue = proximityMaxValue;
+    }
+
+    public float getRelativeHumidityMinValue() {
+        return relativeHumidityMinValue;
+    }
+
+    public void setRelativeHumidityMinValue(float relativeHumidityMinValue) {
+        this.relativeHumidityMinValue = relativeHumidityMinValue;
+    }
+
+    public float getRelativeHumidityMaxValue() {
+        return relativeHumidityMaxValue;
+    }
+
+    public void setRelativeHumidityMaxValue(float relativeHumidityMaxValue) {
+        this.relativeHumidityMaxValue = relativeHumidityMaxValue;
+    }
+
+    public float getRotationVectorMinXValue() {
+        return rotationVectorMinXValue;
+    }
+
+    public void setRotationVectorMinXValue(float rotationVectorMinXValue) {
+        this.rotationVectorMinXValue = rotationVectorMinXValue;
+    }
+
+    public float getRotationVectorMinYValue() {
+        return rotationVectorMinYValue;
+    }
+
+    public void setRotationVectorMinYValue(float rotationVectorMinYValue) {
+        this.rotationVectorMinYValue = rotationVectorMinYValue;
+    }
+
+    public float getRotationVectorMinZValue() {
+        return rotationVectorMinZValue;
+    }
+
+    public void setRotationVectorMinZValue(float rotationVectorMinZValue) {
+        this.rotationVectorMinZValue = rotationVectorMinZValue;
+    }
+
+    public float getRotationVectorMaxXValue() {
+        return rotationVectorMaxXValue;
+    }
+
+    public void setRotationVectorMaxXValue(float rotationVectorMaxXValue) {
+        this.rotationVectorMaxXValue = rotationVectorMaxXValue;
+    }
+
+    public float getRotationVectorMaxYValue() {
+        return rotationVectorMaxYValue;
+    }
+
+    public void setRotationVectorMaxYValue(float rotationVectorMaxYValue) {
+        this.rotationVectorMaxYValue = rotationVectorMaxYValue;
+    }
+
+    public float getRotationVectorMaxZValue() {
+        return rotationVectorMaxZValue;
+    }
+
+    public void setRotationVectorMaxZValue(float rotationVectorMaxZValue) {
+        this.rotationVectorMaxZValue = rotationVectorMaxZValue;
+    }
+
+    //====================================================================
 
     public boolean[] getSensorList() {
         return sensorList;

@@ -35,6 +35,7 @@ import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
+import com.example.mindrate.service.DeviceSensorService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 
@@ -57,10 +58,11 @@ import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 
 public class OverviewActivity extends BaseActivity {
     private static final String TAG = "OverviewActivity";
+    private static OverviewActivity instance = null;
 
     private Proband proband;
     private List<Questionnaire> questionnaireList;
-
+    //public OverviewActivity instance;
     // ==================== View components ==================================
     private DrawerLayout mDrawerLayout;
     private Button btn_nav;
@@ -116,6 +118,8 @@ public class OverviewActivity extends BaseActivity {
         initTestData();
         //triggerEventManager = new TriggerEventManager(this.questionnaireList);
         Log.i(TAG, "TEM created in Activity");
+        instance = this;
+        //instance = this;
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
@@ -124,10 +128,11 @@ public class OverviewActivity extends BaseActivity {
         //Log.i(TAG,"Service onStart_____");
         //Intent bindServiceIntent = new Intent(OverviewActivity.this,DeviceSensorService.class);
         //bindService(bindServiceIntent,connection,BIND_AUTO_CREATE);
-        Log.i(TAG, "Service onBind_____");
+        //Log.i(TAG, "Service onBind_____");
 
 
         //        tv_questionText.setText(Utility.createJSON(this.proband));
+
 
     }
 
@@ -136,9 +141,10 @@ public class OverviewActivity extends BaseActivity {
         super.onResume();
 //        for (Sensor sensor : allSensors) {
 //            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
-//            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService
-//                    .class);
-//            startService(startServiceIntent);
+            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+            startService(startServiceIntent);
+        //triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        //triggerEventManager.setOverviewActivity(instance);
         /*for(Sensor sensor :allSensors ) {
            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
 >>>>>>> 1d08a2433890d356671ee32d525bccad62e01e91
@@ -148,6 +154,7 @@ public class OverviewActivity extends BaseActivity {
 
 
 //        }
+
     }
 
     private void initFromIntent() {
@@ -410,14 +417,47 @@ public class OverviewActivity extends BaseActivity {
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire.getQuestionnaireID());
         triggerEvent1.setLight(true);
         triggerEvent1.setAirTemperature(true);
+        triggerEvent1.setLightMinValue(1000);
+        triggerEvent1.setLightMaxValue(2000);
         questionnaire.setTriggerEvent(triggerEvent1);
+        questionnaire.setValid(true);
 
-
-        questionnaireList.add(questionnaire);
+        List<Questionnaire> testquestionnaireList = new ArrayList<>();
+        testquestionnaireList.add(questionnaire);
 //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
 //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
-//        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
-//        triggerEventManager.setQuestionnaireList(questionnaireList);
+      TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        triggerEventManager.setQuestionnaireList(testquestionnaireList);
+        for(Questionnaire questionnaire1:testquestionnaireList) {
+            triggerEventManager.addObserver(questionnaire1);
+        }
+    }
+
+    public void addShouldAnswerQuestionnaireToList(Questionnaire questionnaire){
+        this.questionnaireList.add(questionnaire);
+        /*boolean existQuestionnaire = false;//是否存在了相同的问卷
+
+
+        //same Questionnaire only add once not more times.
+        if(this.questionnaireList.isEmpty()){
+            this.questionnaireList.add(questionnaire);
+        }else{
+            for(Questionnaire questionnaire1 :this.questionnaireList){
+                if(questionnaire1.getQuestionnaireID().equals(questionnaire.getQuestionnaireID())){
+                    existQuestionnaire = true;
+                }
+            }
+            if(!existQuestionnaire){
+                this.questionnaireList.add(questionnaire);
+            }
+
+        }*/
+
+
+    }
+
+    public static OverviewActivity getInstance(){
+        return instance;
     }
 
     public void addSensorListener(Sensor sensor) {
