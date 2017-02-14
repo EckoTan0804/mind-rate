@@ -42,51 +42,47 @@ public class ChooseQuestionnaireFragment extends Fragment {
     private QuestionnaireAdapter adapter;
     // ==========================================================
 
-    private List<Questionnaire> questionnaireList;
+    private List<Questionnaire> triggeredQuestionnaireList;
     private Questionnaire selectedQuestionnaire;
 
 
     @Nullable
     @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-                Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
 
-            View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
+        View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
-            initTestData();
+        listView = (ListView) view.findViewById(R.id.list_view);
+        adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
+                                           triggeredQuestionnaireList);
+        listView.setAdapter(adapter);
+        initTestData();
+        return view;
+    }
 
-            //TODO:        initQuestionnaireList();
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-            //        titleText = (TextView) view.findViewById(R.id.title_text);
-            listView = (ListView) view.findViewById(R.id.list_view);
-            adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
-                                               questionnaireList);
-            listView.setAdapter(adapter);
-            return view;
-        }
+                // 1. get the selected questionnaire instance
+                selectedQuestionnaire = triggeredQuestionnaireList.get(position);
+                OverviewActivity overviewActivity = (OverviewActivity) getActivity();
+                overviewActivity.setSelectedQuestionnaire(selectedQuestionnaire);
+                //                selectedQuestionnaire.sendNotification(getActivity());
 
-        @Override
-        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // 2. put this questionnaire instance into intent
+                Intent intent = new Intent(overviewActivity, AnswerQuestionnaireActivity.class);
+                intent.putExtra("questionnaire", selectedQuestionnaire);
 
-                    // 1. get the selected questionnaire instance
-                    selectedQuestionnaire = questionnaireList.get(position);
-                    OverviewActivity overviewActivity = (OverviewActivity) getActivity();
-                    overviewActivity.setSelectedQuestionnaire(selectedQuestionnaire);
-                    //                selectedQuestionnaire.sendNotification(getActivity());
-
-                    // 2. put this questionnaire instance into intent
-                    Intent intent = new Intent(overviewActivity, AnswerQuestionnaireActivity.class);
-                    intent.putExtra("questionnaire", selectedQuestionnaire);
-
-                    // 3. use this intent to start AnswerQuestionnaireActivity
-                    getActivity().startActivityForResult(intent, 1);
-                }
-            });
-        }
+                // 3. use this intent to start AnswerQuestionnaireActivity
+                getActivity().startActivityForResult(intent, 1);
+            }
+        });
+    }
 
     public QuestionnaireAdapter getAdapter() {
         return adapter;
@@ -97,9 +93,10 @@ public class ChooseQuestionnaireFragment extends Fragment {
     }
 
     private void initQuestionnaireList() {
-//        this.questionnaireList = ((OverviewActivity)getActivity()).getQuestionnaireList();
-        OverviewActivity overviewActivity = (OverviewActivity)getActivity();
-        this.questionnaireList = overviewActivity.getQuestionnaireList();
+        //        this.triggeredQuestionnaireList = ((OverviewActivity)getActivity())
+        // .getAllQuestionnaireList();
+        OverviewActivity overviewActivity = (OverviewActivity) getActivity();
+        this.triggeredQuestionnaireList = overviewActivity.getTriggeredQuestionnaireList();
     }
 
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Questionnaire;
+import com.example.mindrate.util.TimeUtil;
 
 import java.util.List;
 
@@ -54,10 +55,10 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
         viewHolder.tv_questionnaireName.setText(questionnaire.getQuestionnaireID());
 
         // TODO: set beginTime
-        viewHolder.tv_beginTime.setText(questionnaire.getBeginTime());
+        viewHolder.tv_beginTime.setText(TimeUtil.parseDate(questionnaire.getTriggerTime()));
 
         // TODO: set endTime
-        viewHolder.tv_endTime.setText(questionnaire.getEndTime());
+        viewHolder.tv_endTime.setText(TimeUtil.parseDate(questionnaire.getEndTime()));
         return view;
     }
 

@@ -13,8 +13,10 @@ import android.support.v7.app.NotificationCompat;
 
 import com.example.mindrate.R;
 import com.example.mindrate.activity.AnswerQuestionnaireActivity;
+import com.example.mindrate.util.TimeUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -38,36 +40,27 @@ public class Questionnaire implements Parcelable, Observer {
     private String studyID;
     private String questionnaireID;
 
-    private String beginTime;
-    private String endTime;
-    private String submitTime;
-    private int duration;
+    private Date triggerTime;
+    private Date endTime;
+    private Date submitTime;
+    private int duration; // day
 
-    private ArrayList<Question> questionList;
+    private ArrayList<Question> questionList = new ArrayList<>();
 
     private TriggerEvent triggerEvent;
 
     private boolean isAnswered;
 
 
-    public Questionnaire(String questionnaireID, String beginTime, String endTime) {
-        this.questionnaireID = questionnaireID;
-        this.beginTime = beginTime;
-        this.endTime = endTime;
-        questionList = new ArrayList<>();
-    }
-
     public Questionnaire(String questionnaireID) {
         this.questionnaireID = questionnaireID;
     }
 
-    /**
-     * The answers of the questionnaire will be temporarily saved in smartphone.
-     */
-    public void saveAnswerLocally() {
-        // sharePreference
-    }
+    public Questionnaire(String questionnaireID, int duration) {
+        this.questionnaireID = questionnaireID;
+        this.duration = duration;
 
+    }
 
     /**
      * Upload the answers to the server if the questionnaire is still valid
@@ -138,6 +131,22 @@ public class Questionnaire implements Parcelable, Observer {
         return false;
     }
 
+    public void addToTriggeredQuestionnaireList(List<Questionnaire> triggeredQuestionnaireList) {
+        // 1. mark down triggerTime
+        this.triggerTime = TimeUtil.getCurrentTime();
+        // 2. calculate EndTime
+        this.endTime = TimeUtil.calculateTime(triggerTime, duration);
+        // 3. add to trigger list
+        triggeredQuestionnaireList.add(this);
+    }
+
+    public void trigger(List<Questionnaire> triggeredQuestionnaireList, Context context) {
+        // 1. add to triggerList
+        this.addToTriggeredQuestionnaireList(triggeredQuestionnaireList);
+        // 2. send notification
+        this.sendNotification(context);
+    }
+
     // ================ setters and getters ==================================
 
     public List<Question> getQuestionList() {
@@ -156,19 +165,19 @@ public class Questionnaire implements Parcelable, Observer {
         isValid = valid;
     }
 
-    public String getBeginTime() {
-        return beginTime;
+    public Date getTriggerTime() {
+        return triggerTime;
     }
 
-    public void setBeginTime(String beginTime) {
-        this.beginTime = beginTime;
+    public void setTriggerTime(Date triggerTime) {
+        this.triggerTime = triggerTime;
     }
 
-    public String getSubmitTime() {
+    public Date getSubmitTime() {
         return submitTime;
     }
 
-    public void setSubmitTime(String submitTime) {
+    public void setSubmitTime(Date submitTime) {
         this.submitTime = submitTime;
     }
 
@@ -196,11 +205,11 @@ public class Questionnaire implements Parcelable, Observer {
         this.triggerEvent = triggerEvent;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -238,9 +247,9 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
         dest.writeString(this.questionnaireID);
-        dest.writeString(this.beginTime);
-        dest.writeString(this.endTime);
-        dest.writeString(this.submitTime);
+        dest.writeLong(this.triggerTime != null ? this.triggerTime.getTime() : -1);
+        dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
+        dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
@@ -251,9 +260,12 @@ public class Questionnaire implements Parcelable, Observer {
         this.isValid = in.readByte() != 0;
         this.studyID = in.readString();
         this.questionnaireID = in.readString();
-        this.beginTime = in.readString();
-        this.endTime = in.readString();
-        this.submitTime = in.readString();
+        long tmpBeginTime = in.readLong();
+        this.triggerTime = tmpBeginTime == -1 ? null : new Date(tmpBeginTime);
+        long tmpEndTime = in.readLong();
+        this.endTime = tmpEndTime == -1 ? null : new Date(tmpEndTime);
+        long tmpSubmitTime = in.readLong();
+        this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
         this.duration = in.readInt();
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());

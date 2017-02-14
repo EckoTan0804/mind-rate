@@ -15,11 +15,19 @@ import java.util.Date;
 
 public class TimeUtil {
 
-    public static String getCurrentTime() {
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy.mm.dd, HH:mm:ss ");
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.mm.dd, HH:mm:ss ");
-        Date currentDate = new Date(System.currentTimeMillis());
-        String currentTime = format.format(currentDate);
-        return currentTime;
+    public static Date getCurrentTime() {
+        return new Date(System.currentTimeMillis());
     }
+
+    public static Date calculateTime(Date beginDate, int dayDuration) {
+        return new Date(beginDate.getTime() + (long)dayDuration * 24 * 60 * 60 * 1000);
+
+    }
+
+    public static String parseDate(Date date) {
+        return format.format(date);
+    }
+
 }

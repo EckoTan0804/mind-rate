@@ -36,7 +36,6 @@ import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
-import com.example.mindrate.util.FontUtil;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 
@@ -61,7 +60,8 @@ public class OverviewActivity extends BaseActivity {
     private static final String TAG = "OverviewActivity";
 
     private Proband proband;
-    private List<Questionnaire> questionnaireList;
+    private List<Questionnaire> allQuestionnaireList;
+    private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
 
     // ==================== View components ==================================
@@ -75,11 +75,17 @@ public class OverviewActivity extends BaseActivity {
     private RelativeLayout title;
 
     // =======================================================================
-    WelcomeFragment welcomeFragment = new WelcomeFragment();
-    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
-    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-    AboutUsFragment aboutUsFragment = new AboutUsFragment();
-    SettingFragment settingFragment = new SettingFragment();
+//    WelcomeFragment welcomeFragment = new WelcomeFragment();
+//    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
+//    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+//    AboutUsFragment aboutUsFragment = new AboutUsFragment();
+//    SettingFragment settingFragment = new SettingFragment();
+
+    WelcomeFragment welcomeFragment;
+    ProbandProfileFragment probandProfileFragment;
+    ChooseQuestionnaireFragment chooseQuestionnaireFragment;
+    AboutUsFragment aboutUsFragment;
+    SettingFragment settingFragment;
 
     // =======================================================================
 
@@ -106,10 +112,15 @@ public class OverviewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        welcomeFragment = new WelcomeFragment();
+        probandProfileFragment = new ProbandProfileFragment();
+        chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+        aboutUsFragment = new AboutUsFragment();
+        settingFragment = new SettingFragment();
 
         initFromIntent();
         initView();
-        FontUtil.changeFonts(mDrawerLayout, this);
+        //        FontUtil.changeFonts(mDrawerLayout, this);
 
         //        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //        allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -119,7 +130,7 @@ public class OverviewActivity extends BaseActivity {
         //        tEM =  new TriggerEventManager();
 
         initTestData();
-        //triggerEventManager = new TriggerEventManager(this.questionnaireList);
+        //triggerEventManager = new TriggerEventManager(this.allQuestionnaireList);
         Log.i(TAG, "TEM created in Activity");
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -168,7 +179,7 @@ public class OverviewActivity extends BaseActivity {
             // MODE_PRIVATE);
             //            questionnaireJSON = pref.getString("questionnaireJSON", "");
         }
-        this.questionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
+        this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
@@ -261,7 +272,7 @@ public class OverviewActivity extends BaseActivity {
 
     private Questionnaire removeQuestionnaire(String questionnaireID) {
         Questionnaire removeQuestionnaire = null;
-        Iterator<Questionnaire> iterator = this.questionnaireList.iterator();
+        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
         while (iterator.hasNext()) {
             Questionnaire q = iterator.next();
             if (q.getQuestionnaireID().equals(questionnaireID)) {
@@ -275,11 +286,37 @@ public class OverviewActivity extends BaseActivity {
         return removeQuestionnaire;
     }
 
-    private void removeQuestionnaire(Questionnaire selectedQuestionnaire) {
-        int removeIndex = this.questionnaireList.indexOf(selectedQuestionnaire);
-        if (selectedQuestionnaire.isAnswered()) {
-            this.questionnaireList.remove(removeIndex);
+    private Questionnaire getQuestionnaire(String questionnaireID) {
+        Questionnaire questionnaire = null;
+        for (Questionnaire tempQuestionnaire : this.allQuestionnaireList) {
+            if (tempQuestionnaire.getQuestionnaireID().equals(questionnaireID)) {
+                questionnaire = tempQuestionnaire;
+            }
         }
+        return questionnaire;
+    }
+
+    private void removeQuestionnaire(Questionnaire selectedQuestionnaire) {
+        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
+        if (selectedQuestionnaire.isAnswered()) {
+            this.allQuestionnaireList.remove(removeIndex);
+        }
+    }
+
+
+    public void addQuestionnaireToTriggeredQuestionnaireList(String questionnaireID) {
+        Questionnaire questionnaire = getQuestionnaire(questionnaireID);
+        this.addQuestionnaireToTriggeredQuestionnaireList(questionnaire);
+    }
+
+    private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
+        questionnaire.trigger(this.triggeredQuestionnaireList,
+                              OverviewActivity.this);
+//        chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+    }
+
+    public void addQuestionnaireToTriggeredQuestionnaireList(List<String> questionnaireIdList) {
+
     }
 
     @Override
@@ -290,14 +327,14 @@ public class OverviewActivity extends BaseActivity {
                     final String answeredQuestionnaireID = data.getStringExtra("answered " +
                                                                                        "questionnaire " +
                                                                                        "ID");
-                    // remove the answered questionnaire from questionnaireList
+                    // remove the answered questionnaire from allQuestionnaireList
                     //                    removeQuestionnaire(answeredQuestionnaireID);
                     this.selectedQuestionnaire.setAnswered(true);
                     removeQuestionnaire(this.selectedQuestionnaire);
-                    // save the new questionnaireList locally
+                    // save the new allQuestionnaireList locally
                     PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
-                            this.questionnaireList));
-                    // notify questionnaireList's adapter that the list has been changed
+                            this.allQuestionnaireList));
+                    // notify allQuestionnaireList's adapter that the list has been changed
                     chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
                 }
                 break;
@@ -329,12 +366,12 @@ public class OverviewActivity extends BaseActivity {
         this.proband = proband;
     }
 
-    public List<Questionnaire> getQuestionnaireList() {
-        return questionnaireList;
+    public List<Questionnaire> getAllQuestionnaireList() {
+        return allQuestionnaireList;
     }
 
-    public void setQuestionnaireList(List<Questionnaire> questionnaireList) {
-        this.questionnaireList = questionnaireList;
+    public void setAllQuestionnaireList(List<Questionnaire> allQuestionnaireList) {
+        this.allQuestionnaireList = allQuestionnaireList;
     }
 
     public Questionnaire getSelectedQuestionnaire() {
@@ -345,15 +382,25 @@ public class OverviewActivity extends BaseActivity {
         this.selectedQuestionnaire = selectedQuestionnaire;
     }
 
+    public List<Questionnaire> getTriggeredQuestionnaireList() {
+        return triggeredQuestionnaireList;
+    }
+
+    public void setTriggeredQuestionnaireList(List<Questionnaire> triggeredQuestionnaireList) {
+        this.triggeredQuestionnaireList = triggeredQuestionnaireList;
+    }
+
+    // =========================================================================
+
     // test data
     private void initTestData() {
 
         //        String list = PreferenceUtil.getString("questionnaireJSON", "");
         //        if (!TextUtils.isEmpty(list)) {
-        //            questionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
+        //            allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
         //        } else {
         //
-        //            questionnaireList = new ArrayList<>();
+        //            allQuestionnaireList = new ArrayList<>();
         //
         //            Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00",
         // "2017.2.2 " +
@@ -400,29 +447,29 @@ public class OverviewActivity extends BaseActivity {
         //            questionnaire.addQuestion(q5);
         //
         //
-        //            questionnaireList.add(questionnaire);
-        //            questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        //            questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        //            allQuestionnaireList.add(questionnaire);
+        //            allQuestionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+        //            allQuestionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
         //        }
 
-        questionnaireList = new ArrayList<>();
+        allQuestionnaireList = new ArrayList<>();
 
-        Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00", "2017.2.2 14:00");
+        Questionnaire questionnaireA = new Questionnaire("A", 2);
         // q1
         ArrayList<Option> optionList = new ArrayList<>();
         optionList.add(new Option("At home", "Q3"));
         optionList.add(new Option("At work", "Q3"));
         optionList.add(new Option("on the way", "Q2"));
         Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
-        questionnaire.addQuestion(q1);
+        questionnaireA.addQuestion(q1);
 
         // q2
         Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
-        questionnaire.addQuestion(q2);
+        questionnaireA.addQuestion(q2);
 
         // q3
         Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
-        questionnaire.addQuestion(q3);
+        questionnaireA.addQuestion(q3);
 
         // q4
         ArrayList<Option> optionArrayList = new ArrayList<>();
@@ -431,7 +478,7 @@ public class OverviewActivity extends BaseActivity {
         optionArrayList.add(new Option("Coding", null));
         optionArrayList.add(new Option("Studying", null));
         Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList), "Q4");
-        questionnaire.addQuestion(q4);
+        questionnaireA.addQuestion(q4);
 
         // q5
         ArrayList<Option> options = new ArrayList<>();
@@ -441,19 +488,19 @@ public class OverviewActivity extends BaseActivity {
         options.add(new Option("good", null));
         options.add(new Option("very good!", null));
         Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
-        questionnaire.addQuestion(q5);
-        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaire.getQuestionnaireID());
+        questionnaireA.addQuestion(q5);
+        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
         triggerEvent1.setLight(true);
         triggerEvent1.setAirTemperature(true);
-        questionnaire.setTriggerEvent(triggerEvent1);
+        questionnaireA.setTriggerEvent(triggerEvent1);
 
 
-        questionnaireList.add(questionnaire);
-        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+        allQuestionnaireList.add(questionnaireA);
         //        TriggerEventManager triggerEventManager = TriggerEventManager
         // .getTriggerEventManager();
-        //        triggerEventManager.setQuestionnaireList(questionnaireList);
+        //        triggerEventManager.setAllQuestionnaireList(allQuestionnaireList);
+
+        addQuestionnaireToTriggeredQuestionnaireList(questionnaireA);
     }
 
     public void addSensorListener(Sensor sensor) {
