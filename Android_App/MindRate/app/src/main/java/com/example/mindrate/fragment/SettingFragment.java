@@ -9,6 +9,7 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.example.mindrate.R;
 import com.example.mindrate.activity.OverviewActivity;
+import com.example.mindrate.util.PreferenceUtil;
 
 
 public class SettingFragment extends PreferenceFragmentCompat implements SharedPreferences
@@ -37,15 +38,18 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
 
     private void initPref() {
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        OverviewActivity overviewActivity = (OverviewActivity)getActivity();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(overviewActivity);
 
         language_pref = (ListPreference) findPreference(KEY_PREF_Language);
+        language_pref.setDefaultValue(PreferenceUtil.getString("language", "en"));
 //        setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
+
             case KEY_PREF_Language:
 
                 // get language which is already set and stored in sharedPreference

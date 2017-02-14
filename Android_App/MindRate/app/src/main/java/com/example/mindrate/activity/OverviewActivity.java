@@ -210,7 +210,7 @@ public class OverviewActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
         }
-//        navView.setItemTextAppearance(R.style.TextAppearance_FontPath);
+        navView.setItemTextAppearance(R.style.TextAppearance_FontPath);
         navView.setCheckedItem(R.id.nav_profile);
         navView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
