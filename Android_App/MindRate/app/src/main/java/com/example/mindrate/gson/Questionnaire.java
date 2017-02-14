@@ -131,19 +131,13 @@ public class Questionnaire implements Parcelable, Observer {
         return false;
     }
 
-    public void addToTriggeredQuestionnaireList(List<Questionnaire> triggeredQuestionnaireList) {
+
+    public void trigger(Context context) {
         // 1. mark down triggerTime
         this.triggerTime = TimeUtil.getCurrentTime();
         // 2. calculate EndTime
         this.endTime = TimeUtil.calculateTime(triggerTime, duration);
-        // 3. add to trigger list
-        triggeredQuestionnaireList.add(this);
-    }
-
-    public void trigger(List<Questionnaire> triggeredQuestionnaireList, Context context) {
-        // 1. add to triggerList
-        this.addToTriggeredQuestionnaireList(triggeredQuestionnaireList);
-        // 2. send notification
+        // 3. send notification
         this.sendNotification(context);
     }
 

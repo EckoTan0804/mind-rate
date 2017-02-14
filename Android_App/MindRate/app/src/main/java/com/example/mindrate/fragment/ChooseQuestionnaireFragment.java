@@ -53,11 +53,13 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.choose_questionnaire, container, false);
 
+        initTestData();
+
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
                                            triggeredQuestionnaireList);
         listView.setAdapter(adapter);
-        initTestData();
+
         return view;
     }
 

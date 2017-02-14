@@ -75,11 +75,12 @@ public class OverviewActivity extends BaseActivity {
     private RelativeLayout title;
 
     // =======================================================================
-//    WelcomeFragment welcomeFragment = new WelcomeFragment();
-//    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
-//    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-//    AboutUsFragment aboutUsFragment = new AboutUsFragment();
-//    SettingFragment settingFragment = new SettingFragment();
+    //    WelcomeFragment welcomeFragment = new WelcomeFragment();
+    //    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
+    //    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new
+    // ChooseQuestionnaireFragment();
+    //    AboutUsFragment aboutUsFragment = new AboutUsFragment();
+    //    SettingFragment settingFragment = new SettingFragment();
 
     WelcomeFragment welcomeFragment;
     ProbandProfileFragment probandProfileFragment;
@@ -270,7 +271,7 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
-    private Questionnaire removeQuestionnaire(String questionnaireID) {
+    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String questionnaireID) {
         Questionnaire removeQuestionnaire = null;
         Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
         while (iterator.hasNext()) {
@@ -296,7 +297,7 @@ public class OverviewActivity extends BaseActivity {
         return questionnaire;
     }
 
-    private void removeQuestionnaire(Questionnaire selectedQuestionnaire) {
+    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire selectedQuestionnaire) {
         int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
         if (selectedQuestionnaire.isAnswered()) {
             this.allQuestionnaireList.remove(removeIndex);
@@ -310,9 +311,13 @@ public class OverviewActivity extends BaseActivity {
     }
 
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
-        questionnaire.trigger(this.triggeredQuestionnaireList,
-                              OverviewActivity.this);
-//        chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+        questionnaire.trigger(OverviewActivity.this);
+        if (!this.triggeredQuestionnaireList.isEmpty()) {
+            this.triggeredQuestionnaireList.add(questionnaire);
+            chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+        } else {
+            this.triggeredQuestionnaireList.add(questionnaire);
+        }
     }
 
     public void addQuestionnaireToTriggeredQuestionnaireList(List<String> questionnaireIdList) {
@@ -328,9 +333,9 @@ public class OverviewActivity extends BaseActivity {
                                                                                        "questionnaire " +
                                                                                        "ID");
                     // remove the answered questionnaire from allQuestionnaireList
-                    //                    removeQuestionnaire(answeredQuestionnaireID);
+                    //                    removeQuestionnaireFromTriggeredQuestionnaireList(answeredQuestionnaireID);
                     this.selectedQuestionnaire.setAnswered(true);
-                    removeQuestionnaire(this.selectedQuestionnaire);
+                    removeQuestionnaireFromTriggeredQuestionnaireList(this.selectedQuestionnaire);
                     // save the new allQuestionnaireList locally
                     PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
                             this.allQuestionnaireList));
@@ -499,7 +504,6 @@ public class OverviewActivity extends BaseActivity {
         //        TriggerEventManager triggerEventManager = TriggerEventManager
         // .getTriggerEventManager();
         //        triggerEventManager.setAllQuestionnaireList(allQuestionnaireList);
-
         addQuestionnaireToTriggeredQuestionnaireList(questionnaireA);
     }
 
