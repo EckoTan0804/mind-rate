@@ -194,9 +194,9 @@ public class LogInActivity extends BaseActivity {
 
                 // 6. TODO: use this intent to start AnswerQuestionActivity
                 startActivity(intent);
+//                onDestroy();
 
-
-
+                // TODO: optimization!
 
             }
         });

@@ -46,9 +46,9 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         String chosenLanguage = PreferenceUtil.getString("language", "");
         int index = 0;
         switch(chosenLanguage){
-            case "en":
+            case PREF_ENGLISH:
                 break;
-            case "de":
+            case PREF_DEUTSCH:
                 index = 1;
                 break;
             default:
