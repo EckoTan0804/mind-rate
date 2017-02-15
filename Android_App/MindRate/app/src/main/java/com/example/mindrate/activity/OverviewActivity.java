@@ -63,6 +63,7 @@ public class OverviewActivity extends BaseActivity {
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
+    private boolean isFirstLoad = true;
 
     // ==================== View components ==================================
     private DrawerLayout mDrawerLayout;
@@ -82,11 +83,12 @@ public class OverviewActivity extends BaseActivity {
     //    AboutUsFragment aboutUsFragment = new AboutUsFragment();
     //    SettingFragment settingFragment = new SettingFragment();
 
-    WelcomeFragment welcomeFragment;
-    ProbandProfileFragment probandProfileFragment;
-    ChooseQuestionnaireFragment chooseQuestionnaireFragment;
-    AboutUsFragment aboutUsFragment;
-    SettingFragment settingFragment;
+    WelcomeFragment welcomeFragment = new WelcomeFragment();
+    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
+    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+    AboutUsFragment aboutUsFragment = new AboutUsFragment();
+    SettingFragment settingFragment = new SettingFragment();
+
 
     // =======================================================================
 
@@ -112,12 +114,6 @@ public class OverviewActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
-
-        welcomeFragment = new WelcomeFragment();
-        probandProfileFragment = new ProbandProfileFragment();
-        chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-        aboutUsFragment = new AboutUsFragment();
-        settingFragment = new SettingFragment();
 
         initFromIntent();
         initView();
@@ -153,24 +149,10 @@ public class OverviewActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //        for (Sensor sensor : allSensors) {
-        //            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
-        //            Intent startServiceIntent = new Intent(OverviewActivity.this,
-        // DeviceSensorService
-        //                    .class);
-        //            startService(startServiceIntent);
-        /*for(Sensor sensor :allSensors ) {
-           // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
->>>>>>> 1d08a2433890d356671ee32d525bccad62e01e91
-            //(listener, sensor,SensorManager.SENSOR_DELAY_GAME);  
-            //this.addSensorListener(sensor);
-        }*/
-
-
-        //        }
     }
 
     private void initFromIntent() {
+
         Intent intent = getIntent();
 
         // questionnaires
@@ -195,6 +177,16 @@ public class OverviewActivity extends BaseActivity {
             this.proband = JsonUtil.fromJsonToProband(probandJSON);
         }
 
+        // pendingIntent from Notification
+        String fromIntent = intent.getStringExtra("notityToAnswer");
+        if (!TextUtils.isEmpty(fromIntent)) {
+            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+                isFirstLoad = false;
+                replaceFragment(chooseQuestionnaireFragment);
+            }
+
+        }
+
     }
 
     private void initView() {
@@ -205,7 +197,9 @@ public class OverviewActivity extends BaseActivity {
         tv_title = (TextView) findViewById(R.id.title_title);
         // ==================================================================
 
-        replaceFragment(welcomeFragment);
+        if (isFirstLoad) {
+            replaceFragment(welcomeFragment);
+        }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -235,29 +229,30 @@ public class OverviewActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_profile:
-                        tv_title.setText("Profile");
+                        tv_title.setText(R.string.nav_profile);
                         replaceFragment(probandProfileFragment);
-                        mDrawerLayout.closeDrawers();
+                        //                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_questionnaire_list:
-                        tv_title.setText("Questionnaires");
+                        tv_title.setText(R.string.nav_questionnaire);
                         replaceFragment(chooseQuestionnaireFragment);
-                        mDrawerLayout.closeDrawers();
+                        //                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_us:
-                        tv_title.setText("About Us");
+                        tv_title.setText(R.string.nav_about_us);
                         replaceFragment(aboutUsFragment);
-                        mDrawerLayout.closeDrawers();
+                        //                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_settings:
-                        tv_title.setText("Settings");
+                        tv_title.setText(R.string.nav_settings);
                         replaceFragment(settingFragment);
-                        mDrawerLayout.closeDrawers();
+                        //                        mDrawerLayout.closeDrawers();
                         break;
                     default:
 
                         break;
                 }
+                mDrawerLayout.closeDrawers();
                 return true;
             }
         });
@@ -339,20 +334,23 @@ public class OverviewActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode,
-                                    int resultCode,
-                                    Intent data) {
+            int resultCode,
+            Intent data) {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    final String answeredQuestionnaireID = data.getStringExtra("answered " +
-                                                                                       "questionnaire " +
-                                                                                       "ID");
+                    //                    final String answeredQuestionnaireID = data
+                    // .getStringExtra("answered " +
+                    //
+                    //            "questionnaire " +
+                    //
+                    //            "ID");
                     // remove the answered questionnaire from allQuestionnaireList
                     //                    removeQuestionnaireFromTriggeredQuestionnaireList
                     // (answeredQuestionnaireID);
-                    this.selectedQuestionnaire.setAnswered(true);
+                    //                    this.selectedQuestionnaire.setAnswered(true);
                     removeSelectedQuestionByIndex();
-                    // save the new allQuestionnaireList locally
+                    // save the new triggeredQuestionnaireList locally
                     PreferenceUtil.commitString("questionnaireJSON",
                                                 JsonUtil.createJSON(
                                                         this.triggeredQuestionnaireList));

@@ -12,7 +12,7 @@ import android.os.Parcelable;
 import android.support.v7.app.NotificationCompat;
 
 import com.example.mindrate.R;
-import com.example.mindrate.activity.AnswerQuestionnaireActivity;
+import com.example.mindrate.activity.OverviewActivity;
 import com.example.mindrate.util.TimeUtil;
 
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
 
 /**
@@ -81,13 +82,13 @@ public class Questionnaire implements Parcelable, Observer {
      */
     public void sendNotification(Context context) {
         Intent intent = new Intent(context,
-                                   AnswerQuestionnaireActivity.class);
-        intent.putExtra("questionnaire",
-                        this);
+                                   OverviewActivity.class);
+        intent.putExtra("notityToAnswer", "chooseQuestionnaireFragment");
+        intent.putExtra("questionnaire", this);
         PendingIntent pi = PendingIntent.getActivity(context,
                                                      0,
                                                      intent,
-                                                     0);
+                                                     FLAG_UPDATE_CURRENT);
         NotificationManager manager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new NotificationCompat.Builder(context)
