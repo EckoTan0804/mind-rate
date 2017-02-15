@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -86,9 +88,10 @@ public class Questionnaire implements Parcelable, Observer {
         Notification notification = new NotificationCompat.Builder(context).setContentTitle("You " +
                 "hava a new questionnaire").setContentText("Questionnaire " + this
                 .questionnaireID + " is waiting for your answer").setWhen(System
-                .currentTimeMillis()).setSmallIcon(R.mipmap.ic_thumb_up).setLargeIcon
-                (BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_thumb_up))
-                .setContentIntent(pi).build();
+                .currentTimeMillis()).setSmallIcon(R.mipmap.ic_mr).setLargeIcon
+                (BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_mr))
+                                                                           .setVisibility(VISIBILITY_PRIVATE)
+                                                                           .setContentIntent(pi).build();
         manager.notify(1, notification);
 
     }
