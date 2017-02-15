@@ -40,7 +40,6 @@ import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
@@ -63,6 +62,7 @@ public class OverviewActivity extends BaseActivity {
     private List<Questionnaire> allQuestionnaireList;
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
+    private int selectedQuestionnaireIndex;
 
     // ==================== View components ==================================
     private DrawerLayout mDrawerLayout;
@@ -271,20 +271,31 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
-    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String questionnaireID) {
-        Questionnaire removeQuestionnaire = null;
-        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
-        while (iterator.hasNext()) {
-            Questionnaire q = iterator.next();
-            if (q.getQuestionnaireID().equals(questionnaireID)) {
-                removeQuestionnaire = q;
-                if (q.isAnswered()) {
-                    iterator.remove();
-                }
-                break;
-            }
-        }
-        return removeQuestionnaire;
+//    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String questionnaireID) {
+//        Questionnaire removeQuestionnaire = null;
+//        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
+//        while (iterator.hasNext()) {
+//            Questionnaire q = iterator.next();
+//            if (q.getQuestionnaireID().equals(questionnaireID)) {
+//                removeQuestionnaire = q;
+//                if (q.isAnswered()) {
+//                    iterator.remove();
+//                }
+//                break;
+//            }
+//        }
+//        return removeQuestionnaire;
+//    }
+//
+//    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire selectedQuestionnaire) {
+//        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
+//        if (selectedQuestionnaire.isAnswered()) {
+//            this.allQuestionnaireList.remove(removeIndex);
+//        }
+//    }
+
+    private void removeSelectedQuestionByIndex() {
+        this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
     }
 
     private Questionnaire getQuestionnaire(String questionnaireID) {
@@ -295,13 +306,6 @@ public class OverviewActivity extends BaseActivity {
             }
         }
         return questionnaire;
-    }
-
-    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire selectedQuestionnaire) {
-        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
-        if (selectedQuestionnaire.isAnswered()) {
-            this.allQuestionnaireList.remove(removeIndex);
-        }
     }
 
 
@@ -335,10 +339,10 @@ public class OverviewActivity extends BaseActivity {
                     // remove the answered questionnaire from allQuestionnaireList
                     //                    removeQuestionnaireFromTriggeredQuestionnaireList(answeredQuestionnaireID);
                     this.selectedQuestionnaire.setAnswered(true);
-                    removeQuestionnaireFromTriggeredQuestionnaireList(this.selectedQuestionnaire);
+                    removeSelectedQuestionByIndex();
                     // save the new allQuestionnaireList locally
                     PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
-                            this.allQuestionnaireList));
+                            this.triggeredQuestionnaireList));
                     // notify allQuestionnaireList's adapter that the list has been changed
                     chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
                 }
@@ -393,6 +397,14 @@ public class OverviewActivity extends BaseActivity {
 
     public void setTriggeredQuestionnaireList(List<Questionnaire> triggeredQuestionnaireList) {
         this.triggeredQuestionnaireList = triggeredQuestionnaireList;
+    }
+
+    public int getSelectedQuestionnaireIndex() {
+        return selectedQuestionnaireIndex;
+    }
+
+    public void setSelectedQuestionnaireIndex(int selectedQuestionnaireIndex) {
+        this.selectedQuestionnaireIndex = selectedQuestionnaireIndex;
     }
 
     // =========================================================================

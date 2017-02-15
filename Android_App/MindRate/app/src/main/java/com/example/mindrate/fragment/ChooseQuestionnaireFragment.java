@@ -44,6 +44,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     private List<Questionnaire> triggeredQuestionnaireList;
     private Questionnaire selectedQuestionnaire;
+    private int selectedQuestionnaireIndex;
 
 
     @Nullable
@@ -74,8 +75,13 @@ public class ChooseQuestionnaireFragment extends Fragment {
                 selectedQuestionnaire = triggeredQuestionnaireList.get(position);
                 OverviewActivity overviewActivity = (OverviewActivity) getActivity();
                 overviewActivity.setSelectedQuestionnaire(selectedQuestionnaire);
+                overviewActivity.setSelectedQuestionnaireIndex(position);
                 //                selectedQuestionnaire.sendNotification(getActivity());
+//                LinearLayout ll = (LinearLayout)view;
+//                TextView tv = (TextView) ll.findViewById(R.id.list_item_questionnaire_begin_time);
+//                String s = tv.getText().toString();
 
+                // TODO: get begin Time
                 // 2. put this questionnaire instance into intent
                 Intent intent = new Intent(overviewActivity, AnswerQuestionnaireActivity.class);
                 intent.putExtra("questionnaire", selectedQuestionnaire);
@@ -86,6 +92,8 @@ public class ChooseQuestionnaireFragment extends Fragment {
         });
     }
 
+    // ============================= setters and getter ===========================================
+
     public QuestionnaireAdapter getAdapter() {
         return adapter;
     }
@@ -93,6 +101,16 @@ public class ChooseQuestionnaireFragment extends Fragment {
     public void setAdapter(QuestionnaireAdapter adapter) {
         this.adapter = adapter;
     }
+
+    public int getSelectedQuestionnaireIndex() {
+        return selectedQuestionnaireIndex;
+    }
+
+    public void setSelectedQuestionnaireIndex(int selectedQuestionnaireIndex) {
+        this.selectedQuestionnaireIndex = selectedQuestionnaireIndex;
+    }
+
+    // ============================================================================================
 
     private void initQuestionnaireList() {
         //        this.triggeredQuestionnaireList = ((OverviewActivity)getActivity())
