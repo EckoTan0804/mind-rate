@@ -43,16 +43,16 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceID, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.tv_questionnaireName = (TextView) view.findViewById(R.id.questionnaire_name);
-            viewHolder.tv_beginTime = (TextView) view.findViewById(R.id.questionnaire_begin_time);
-            viewHolder.tv_endTime = (TextView) view.findViewById(R.id.questionnaire_end_time);
+            viewHolder.tv_questionnaireID = (TextView) view.findViewById(R.id.list_item_questionnaire_id);
+            viewHolder.tv_beginTime = (TextView) view.findViewById(R.id.list_item_questionnaire_begin_time);
+            viewHolder.tv_endTime = (TextView) view.findViewById(R.id.list_item_questionnaire_end_time);
             view.setTag(viewHolder); // store ViewHolder in View
         } else {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        viewHolder.tv_questionnaireName.setText(questionnaire.getQuestionnaireID());
+        viewHolder.tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
 
         // TODO: set beginTime
         viewHolder.tv_beginTime.setText(TimeUtil.parseDate(questionnaire.getTriggerTime()));
@@ -60,11 +60,13 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
         // TODO: set endTime
         viewHolder.tv_endTime.setText(TimeUtil.parseDate(questionnaire.getEndTime()));
         return view;
+
+
     }
 
     class ViewHolder {
 
-        TextView tv_questionnaireName;
+        TextView tv_questionnaireID;
         TextView tv_beginTime;
         TextView tv_endTime;
     }
