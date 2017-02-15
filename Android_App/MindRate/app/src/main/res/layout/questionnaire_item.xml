@@ -6,7 +6,7 @@
               android:padding="10dp">
 
     <TextView
-        android:id="@+id/questionnaire_name"
+        android:id="@+id/list_item_questionnaire_id"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -35,7 +35,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/questionnaire_begin_time"
+            android:id="@+id/list_item_questionnaire_begin_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -67,7 +67,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/questionnaire_end_time"
+            android:id="@+id/list_item_questionnaire_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
