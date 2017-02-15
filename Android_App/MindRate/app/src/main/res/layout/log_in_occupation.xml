@@ -25,7 +25,6 @@
         android:layout_height="40dp"
         android:layout_weight="1"
         android:maxLines="1"
-        android:paddingLeft="10dp"
         android:selectAllOnFocus="true"
         android:textColorHighlight="#cccccc"
         android:textSize="15sp"
@@ -33,7 +32,9 @@
         android:background="@drawable/rounded_edittext"
         android:textColor="@color/textColorPrimary"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
     </EditText>
 
 </LinearLayout>

@@ -38,13 +38,15 @@ public class TextAnswer extends QuestionType implements Parcelable {
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         EditText mEditText = new EditText(context);
+        mEditText.setBackgroundResource(R.drawable.rounded_edittext);
         mEditText.setTextSize(15);
         mEditText.setTextColor(Color.BLACK);
-        mEditText.setPadding(5, 0, 15, 0);
-        mEditText.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_write, 0, 0, 0);
-        mEditText.setCompoundDrawablePadding(15);
+        mEditText.setPadding(30, 20, 30, 20);
+        mEditText.setGravity(Gravity.CENTER_VERTICAL);
+//        mEditText.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_write, 0, 0, 0);
+//        mEditText.setCompoundDrawablePadding(15);
 //        mEditText.setHint("Please input your answer");
-        mEditText.setGravity(Gravity.TOP);
+
 
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override

@@ -2,21 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical"
-    android:layout_marginBottom="15dp"
-    android:layout_marginTop="40dp">
+              android:layout_marginBottom="15dp"
+              android:layout_marginTop="40dp"
+              android:orientation="vertical">
 
     <TextView
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
         android:gravity="left"
         android:text="@string/log_in_study_id"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.FontPath"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp">
+        android:textColor="@color/textColorPrimary"
+        android:textSize="15sp">
     </TextView>
 
     <EditText
@@ -25,13 +25,16 @@
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:maxLines="1"
-        android:paddingLeft="10dp"
-        android:selectAllOnFocus="true"
-        android:textSize="15sp"
-        android:textAppearance="@style/TextAppearance.FontPath"
         android:background="@drawable/rounded_edittext"
+        android:maxLines="1"
+        android:paddingBottom="10dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/textColorPrimary"
+        android:textSize="15sp"
         >
     </EditText>
 
