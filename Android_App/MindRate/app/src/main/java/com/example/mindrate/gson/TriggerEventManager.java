@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 import android.util.Log;
 
+import com.example.mindrate.activity.OverviewActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -12,6 +14,12 @@ import java.util.Observable;
 
 public class TriggerEventManager extends Observable{
     private static final String TAG = "TriggerEventManager";
+    //private OverviewActivity overviewActivity;
+
+
+    public float[][] getDataOfAllSensor() {
+        return dataOfAllSensor;
+    }
 
     //private boolean isQuestionnaireValid;
     private float[][] dataOfAllSensor;
@@ -71,27 +79,66 @@ public class TriggerEventManager extends Observable{
 
 
 
-
     public void setDataOfSensor(int index,float[] dataOfSensor){
         this.dataOfAllSensor[index]=dataOfSensor;
-        //setChanged();
-        //notifyObservers();
+        Log.d(TAG,"begin notify");
+        setChanged();
+        notifyObservers();
+        Log.d(TAG,"finish notify");
+        //
+        String sum = String.valueOf(this.shouldAnswerQuestionnaire.size());
+        Log.d(TAG,sum);
         float[] lightTest1 = this.dataOfAllSensor[4];
         float[] temtest1 = this.dataOfAllSensor[1];
         float remp = temtest1[0];
         float lightTest = lightTest1[0];
         String a = String.valueOf(lightTest);
         String b = String.valueOf(remp);
-        Log.d(TAG,a);
-        Log.d(TAG,b);
+        //Log.d(TAG,a);
+        //Log.d(TAG,b);
+        this.addQuestionnaireToOverviewActivity();
+        //问卷通知
 
     }
 
     public void addShouldAnswerQuestionnaire(Questionnaire questionnaire){
-        this.shouldAnswerQuestionnaire.add(questionnaire);
+        boolean existQuestionnaire = false;//是否存在了相同的问卷
+
+            //same Questionnaire only add once not more times.
+            if (this.shouldAnswerQuestionnaire.isEmpty()) {
+
+                    this.shouldAnswerQuestionnaire.add(questionnaire);
+
+            } else {
+                for (Questionnaire questionnaire1 : this.shouldAnswerQuestionnaire) {
+                    if (questionnaire1.getQuestionnaireID().equals(questionnaire.getQuestionnaireID())) {
+
+                        existQuestionnaire = true;
+                    }
+                }
+                if (!existQuestionnaire) {
+
+                        this.shouldAnswerQuestionnaire.add(questionnaire);
+
+                }
+
+            }
+
+
+
+
+        //=========test und debug===============
+        if(existQuestionnaire){
+            Log.i(TAG,"true");
+        }else{
+            Log.i(TAG,"false");
+        }
+        //=================================
+
     }
 
     public void addQuestionnaire(Questionnaire questionnaire){
+
         if(this.questionnaireList !=null){
             this.questionnaireList.add(questionnaire);
         }else{
@@ -100,6 +147,37 @@ public class TriggerEventManager extends Observable{
         }
     }
 
+   /*public void setOverviewActivity(OverviewActivity overviewActivity){
+        this.overviewActivity = overviewActivity;//应当写成一个static方法
+
+    }*/
+
+    public void addQuestionnaireToOverviewActivity(){
+        if(!this.shouldAnswerQuestionnaire.isEmpty()){
+            for(Questionnaire questionnaire:this.shouldAnswerQuestionnaire) {
+                OverviewActivity.getInstance().addShouldAnswerQuestionnaireToList(questionnaire);
+                //this.shouldAnswerQuestionnaire.remove(questionnaire);
+                this.shouldAnswerQuestionnaire.remove(questionnaire);
+                //这里应当不需要判断是否有相同的ID 可以相同的ID 但是触发条件不同
+
+            }
+        }
+    }
+
+    private void removeQuestionnaireFromShouldList(Questionnaire questionnaire){
+        boolean existQuestionnaire =false;
+        String questionnaireID = questionnaire.getQuestionnaireID();
+        for(Questionnaire questionnaire1:this.shouldAnswerQuestionnaire){
+            if(questionnaire1.getQuestionnaireID().equals(questionnaireID)){
+                existQuestionnaire = true;
+            }
+
+        }
+        if(existQuestionnaire){
+            int index = this.shouldAnswerQuestionnaire.indexOf(questionnaire);
+            this.shouldAnswerQuestionnaire.remove(questionnaire);
+        }
+    }
 
 
 
