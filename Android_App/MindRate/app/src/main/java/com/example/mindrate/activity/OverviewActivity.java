@@ -155,10 +155,10 @@ public class OverviewActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-//        for (Sensor sensor : allSensors) {
-//            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
-            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
-            startService(startServiceIntent);
+        //        for (Sensor sensor : allSensors) {
+        //            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+        Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+        startService(startServiceIntent);
         //triggerEventManager = TriggerEventManager.getTriggerEventManager();
         //triggerEventManager.setOverviewActivity(instance);
         /*for(Sensor sensor :allSensors ) {
@@ -169,7 +169,7 @@ public class OverviewActivity extends BaseActivity {
         }*/
 
 
-//        }
+        //        }
 
     }
 
@@ -326,7 +326,7 @@ public class OverviewActivity extends BaseActivity {
         Questionnaire questionnaire = null;
         for (Questionnaire tempQuestionnaire : this.allQuestionnaireList) {
             if (tempQuestionnaire.getQuestionnaireID()
-                                 .equals(questionnaireID)) {
+                    .equals(questionnaireID)) {
                 questionnaire = tempQuestionnaire;
             }
         }
@@ -344,7 +344,7 @@ public class OverviewActivity extends BaseActivity {
         if (!this.triggeredQuestionnaireList.isEmpty()) {
             this.triggeredQuestionnaireList.add(questionnaire);
             chooseQuestionnaireFragment.getAdapter()
-                                       .notifyDataSetChanged();
+                    .notifyDataSetChanged();
         } else {
             this.triggeredQuestionnaireList.add(questionnaire);
         }
@@ -378,7 +378,7 @@ public class OverviewActivity extends BaseActivity {
                                                         this.triggeredQuestionnaireList));
                     // notify allQuestionnaireList's adapter that the list has been changed
                     chooseQuestionnaireFragment.getAdapter()
-                                               .notifyDataSetChanged();
+                            .notifyDataSetChanged();
                 }
                 break;
             default:
@@ -567,10 +567,15 @@ public class OverviewActivity extends BaseActivity {
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
         triggerEvent1.setLight(true);
         triggerEvent1.setAirTemperature(true);
-        questionnaireA.setTriggerEvent(triggerEvent1);
+//        questionnaireA.setTriggerEvent(triggerEvent1);
 
 
         allQuestionnaireList.add(questionnaireA);
+        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        triggerEventManager.setQuestionnaireList(allQuestionnaireList);
+        for (Questionnaire questionnaire1 : allQuestionnaireList) {
+            triggerEventManager.addObserver(questionnaire1);
+        }
         //        TriggerEventManager triggerEventManager = TriggerEventManager
         // .getTriggerEventManager();
         //        triggerEventManager.setAllQuestionnaireList(allQuestionnaireList);
@@ -581,43 +586,40 @@ public class OverviewActivity extends BaseActivity {
         questionnaireA.setValid(true);
 
         List<Questionnaire> testquestionnaireList = new ArrayList<>();
-        testquestionnaireList.add(questionnaireA);
-//        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-//        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
-      TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
-        triggerEventManager.setQuestionnaireList(testquestionnaireList);
-        for(Questionnaire questionnaire1:testquestionnaireList) {
-            triggerEventManager.addObserver(questionnaire1);
-        }
+//        testquestionnaireList.add(questionnaireA);
+        //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
+        //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
+
     }
 
-//    public void addShouldAnswerQuestionnaireToList(Questionnaire questionnaire){
-//        this.questionnaireList.add(questionnaire);
-//        /*boolean existQuestionnaire = false;//是否存在了相同的问卷
-//
-//
-//        //same Questionnaire only add once not more times.
-//        if(this.questionnaireList.isEmpty()){
-//            this.questionnaireList.add(questionnaire);
-//        }else{
-//            for(Questionnaire questionnaire1 :this.questionnaireList){
-//                if(questionnaire1.getQuestionnaireID().equals(questionnaire.getQuestionnaireID())){
-//                    existQuestionnaire = true;
-//                }
-//            }
-//            if(!existQuestionnaire){
-//                this.questionnaireList.add(questionnaire);
-//            }
-//
-//        }*/
-//
-//
-//    }
-//
-//    public static OverviewActivity getInstance(){
-//        return instance;
-//>>>>>>> 185a7e7d812e3067f2f597b8719399cce4fe90ad
-//    }
+    //    public void addShouldAnswerQuestionnaireToList(Questionnaire questionnaire){
+    //        this.questionnaireList.add(questionnaire);
+    //        /*boolean existQuestionnaire = false;//是否存在了相同的问卷
+    //
+    //
+    //        //same Questionnaire only add once not more times.
+    //        if(this.questionnaireList.isEmpty()){
+    //            this.questionnaireList.add(questionnaire);
+    //        }else{
+    //            for(Questionnaire questionnaire1 :this.questionnaireList){
+    //                if(questionnaire1.getQuestionnaireID().equals(questionnaire
+    // .getQuestionnaireID())){
+    //                    existQuestionnaire = true;
+    //                }
+    //            }
+    //            if(!existQuestionnaire){
+    //                this.questionnaireList.add(questionnaire);
+    //            }
+    //
+    //        }*/
+    //
+    //
+    //    }
+    //
+    //    public static OverviewActivity getInstance(){
+    //        return instance;
+    //>>>>>>> 185a7e7d812e3067f2f597b8719399cce4fe90ad
+    //    }
 
     public void addSensorListener(Sensor sensor) {
         switch (sensor.getType()) {
