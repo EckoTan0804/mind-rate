@@ -132,7 +132,8 @@ public class OverviewActivity extends BaseActivity {
 
         initTestData();
         //triggerEventManager = new TriggerEventManager(this.allQuestionnaireList);
-        Log.i(TAG, "TEM created in Activity");
+        Log.i(TAG,
+              "TEM created in Activity");
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
@@ -141,7 +142,8 @@ public class OverviewActivity extends BaseActivity {
         //Log.i(TAG,"Service onStart_____");
         //Intent bindServiceIntent = new Intent(OverviewActivity.this,DeviceSensorService.class);
         //bindService(bindServiceIntent,connection,BIND_AUTO_CREATE);
-        Log.i(TAG, "Service onBind_____");
+        Log.i(TAG,
+              "Service onBind_____");
 
 
         //        tv_questionText.setText(Utility.createJSON(this.proband));
@@ -175,7 +177,8 @@ public class OverviewActivity extends BaseActivity {
 
         String questionnaireJSON = intent.getStringExtra("questionnaire_JSON");
         if (TextUtils.isEmpty(questionnaireJSON)) {
-            questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
+            questionnaireJSON = PreferenceUtil.getString("questionnaireJSON",
+                                                         "");
             //            SharedPreferences pref = getSharedPreferences("questionnaire",
             // MODE_PRIVATE);
             //            questionnaireJSON = pref.getString("questionnaireJSON", "");
@@ -187,7 +190,8 @@ public class OverviewActivity extends BaseActivity {
         if (probandFromLogIn != null) {
             this.proband = probandFromLogIn;
         } else {
-            String probandJSON = PreferenceUtil.getString("probandJSON", "");
+            String probandJSON = PreferenceUtil.getString("probandJSON",
+                                                          "");
             this.proband = JsonUtil.fromJsonToProband(probandJSON);
         }
 
@@ -265,34 +269,37 @@ public class OverviewActivity extends BaseActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transition = fragmentManager.beginTransaction();
-        transition.replace(R.id.switch_fragment, fragment);
+        transition.replace(R.id.switch_fragment,
+                           fragment);
         transition.addToBackStack(null);
         transition.commit();
     }
 
 
-//    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String questionnaireID) {
-//        Questionnaire removeQuestionnaire = null;
-//        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
-//        while (iterator.hasNext()) {
-//            Questionnaire q = iterator.next();
-//            if (q.getQuestionnaireID().equals(questionnaireID)) {
-//                removeQuestionnaire = q;
-//                if (q.isAnswered()) {
-//                    iterator.remove();
-//                }
-//                break;
-//            }
-//        }
-//        return removeQuestionnaire;
-//    }
-//
-//    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire selectedQuestionnaire) {
-//        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
-//        if (selectedQuestionnaire.isAnswered()) {
-//            this.allQuestionnaireList.remove(removeIndex);
-//        }
-//    }
+    //    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String
+    // questionnaireID) {
+    //        Questionnaire removeQuestionnaire = null;
+    //        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
+    //        while (iterator.hasNext()) {
+    //            Questionnaire q = iterator.next();
+    //            if (q.getQuestionnaireID().equals(questionnaireID)) {
+    //                removeQuestionnaire = q;
+    //                if (q.isAnswered()) {
+    //                    iterator.remove();
+    //                }
+    //                break;
+    //            }
+    //        }
+    //        return removeQuestionnaire;
+    //    }
+    //
+    //    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire
+    // selectedQuestionnaire) {
+    //        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
+    //        if (selectedQuestionnaire.isAnswered()) {
+    //            this.allQuestionnaireList.remove(removeIndex);
+    //        }
+    //    }
 
     private void removeSelectedQuestionByIndex() {
         this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
@@ -301,7 +308,8 @@ public class OverviewActivity extends BaseActivity {
     private Questionnaire getQuestionnaire(String questionnaireID) {
         Questionnaire questionnaire = null;
         for (Questionnaire tempQuestionnaire : this.allQuestionnaireList) {
-            if (tempQuestionnaire.getQuestionnaireID().equals(questionnaireID)) {
+            if (tempQuestionnaire.getQuestionnaireID()
+                                 .equals(questionnaireID)) {
                 questionnaire = tempQuestionnaire;
             }
         }
@@ -318,7 +326,8 @@ public class OverviewActivity extends BaseActivity {
         questionnaire.trigger(OverviewActivity.this);
         if (!this.triggeredQuestionnaireList.isEmpty()) {
             this.triggeredQuestionnaireList.add(questionnaire);
-            chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+            chooseQuestionnaireFragment.getAdapter()
+                                       .notifyDataSetChanged();
         } else {
             this.triggeredQuestionnaireList.add(questionnaire);
         }
@@ -329,7 +338,9 @@ public class OverviewActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode,
+                                    int resultCode,
+                                    Intent data) {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
@@ -337,14 +348,17 @@ public class OverviewActivity extends BaseActivity {
                                                                                        "questionnaire " +
                                                                                        "ID");
                     // remove the answered questionnaire from allQuestionnaireList
-                    //                    removeQuestionnaireFromTriggeredQuestionnaireList(answeredQuestionnaireID);
+                    //                    removeQuestionnaireFromTriggeredQuestionnaireList
+                    // (answeredQuestionnaireID);
                     this.selectedQuestionnaire.setAnswered(true);
                     removeSelectedQuestionByIndex();
                     // save the new allQuestionnaireList locally
-                    PreferenceUtil.commitString("questionnaireJSON", JsonUtil.createJSON(
-                            this.triggeredQuestionnaireList));
+                    PreferenceUtil.commitString("questionnaireJSON",
+                                                JsonUtil.createJSON(
+                                                        this.triggeredQuestionnaireList));
                     // notify allQuestionnaireList's adapter that the list has been changed
-                    chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+                    chooseQuestionnaireFragment.getAdapter()
+                                               .notifyDataSetChanged();
                 }
                 break;
             default:
@@ -356,7 +370,8 @@ public class OverviewActivity extends BaseActivity {
     public void switchLanguageImmediately(String language) {
         super.switchLanguage(language);
         finish();
-        Intent intent = new Intent(OverviewActivity.this, OverviewActivity.class);
+        Intent intent = new Intent(OverviewActivity.this,
+                                   OverviewActivity.class);
         startActivity(intent);
 
     }
@@ -471,40 +486,63 @@ public class OverviewActivity extends BaseActivity {
 
         allQuestionnaireList = new ArrayList<>();
 
-        Questionnaire questionnaireA = new Questionnaire("A", 2);
+        Questionnaire questionnaireA = new Questionnaire("A",
+                                                         2);
         // q1
         ArrayList<Option> optionList = new ArrayList<>();
-        optionList.add(new Option("At home", "Q3"));
-        optionList.add(new Option("At work", "Q3"));
-        optionList.add(new Option("on the way", "Q2"));
-        Question q1 = new Question("Where are you?", new SingleChoice(optionList), "Q1");
+        optionList.add(new Option("At home",
+                                  "Q3"));
+        optionList.add(new Option("At work",
+                                  "Q3"));
+        optionList.add(new Option("on the way",
+                                  "Q2"));
+        Question q1 = new Question("Where are you?",
+                                   new SingleChoice(optionList),
+                                   "Q1");
         questionnaireA.addQuestion(q1);
 
         // q2
-        Question q2 = new Question("Where are you heading to?", new TextAnswer(), "Q2");
+        Question q2 = new Question("Where are you heading to?",
+                                   new TextAnswer(),
+                                   "Q2");
         questionnaireA.addQuestion(q2);
 
         // q3
-        Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
+        Question q3 = new Question("How are you feeling?",
+                                   new DragScale(10),
+                                   "Q3");
         questionnaireA.addQuestion(q3);
 
         // q4
         ArrayList<Option> optionArrayList = new ArrayList<>();
-        optionArrayList.add(new Option("Swimming", null));
-        optionArrayList.add(new Option("Reading", null));
-        optionArrayList.add(new Option("Coding", null));
-        optionArrayList.add(new Option("Studying", null));
-        Question q4 = new Question("What's ur hobby?", new MultipleChoice(optionArrayList), "Q4");
+        optionArrayList.add(new Option("Swimming",
+                                       null));
+        optionArrayList.add(new Option("Reading",
+                                       null));
+        optionArrayList.add(new Option("Coding",
+                                       null));
+        optionArrayList.add(new Option("Studying",
+                                       null));
+        Question q4 = new Question("What's ur hobby?",
+                                   new MultipleChoice(optionArrayList),
+                                   "Q4");
         questionnaireA.addQuestion(q4);
 
         // q5
         ArrayList<Option> options = new ArrayList<>();
-        options.add(new Option("very bad", null));
-        options.add(new Option("bad", null));
-        options.add(new Option("so so", null));
-        options.add(new Option("good", null));
-        options.add(new Option("very good!", null));
-        Question q5 = new Question("Do you like this app?", new StepScale(options), "Q5");
+        options.add(new Option("very bad",
+                               null));
+        options.add(new Option("bad",
+                               null));
+        options.add(new Option("so so",
+                               null));
+        options.add(new Option("good",
+                               null));
+        options.add(new Option("very good!",
+                               null));
+        Question q5 = new Question("Do you like this app?",
+                                   new StepScale(options),
+                                   "Q5");
         questionnaireA.addQuestion(q5);
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
         triggerEvent1.setLight(true);

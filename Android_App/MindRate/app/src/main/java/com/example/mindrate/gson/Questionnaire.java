@@ -58,7 +58,8 @@ public class Questionnaire implements Parcelable, Observer {
         this.questionnaireID = questionnaireID;
     }
 
-    public Questionnaire(String questionnaireID, int duration) {
+    public Questionnaire(String questionnaireID,
+                         int duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
 
@@ -80,19 +81,34 @@ public class Questionnaire implements Parcelable, Observer {
      * Send notification when questionnaire is triggered
      */
     public void sendNotification(Context context) {
-        Intent intent = new Intent(context, AnswerQuestionnaireActivity.class);
-        intent.putExtra("questionnaire", this);
-        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+        Intent intent = new Intent(context,
+                                   AnswerQuestionnaireActivity.class);
+        intent.putExtra("questionnaire",
+                        this);
+        PendingIntent pi = PendingIntent.getActivity(context,
+                                                     0,
+                                                     intent,
+                                                     0);
         NotificationManager manager = (NotificationManager) context.getSystemService(Context
-                .NOTIFICATION_SERVICE);
+                                                                                             .NOTIFICATION_SERVICE);
         Notification notification = new NotificationCompat.Builder(context).setContentTitle("You " +
-                "hava a new questionnaire").setContentText("Questionnaire " + this
-                .questionnaireID + " is waiting for your answer").setWhen(System
-                .currentTimeMillis()).setSmallIcon(R.mipmap.ic_mr).setLargeIcon
-                (BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_mr))
-                                                                           .setVisibility(VISIBILITY_PRIVATE)
-                                                                           .setContentIntent(pi).build();
-        manager.notify(1, notification);
+                                                                                                    "hava a new questionnaire")
+                                                                           .setContentText
+                                                                                   ("Questionnaire " + this
+                                                                                   .questionnaireID + " is waiting for your answer")
+                                                                           .setWhen(System
+                                                                                            .currentTimeMillis())
+                                                                           .setSmallIcon(R.mipmap.ic_mr)
+                                                                           .setLargeIcon
+                                                                                   (BitmapFactory
+                                                                                            .decodeResource(context.getResources(),
+                                                                                                                 R.mipmap.ic_mr))
+                                                                           .setVisibility
+                                                                                   (VISIBILITY_PRIVATE)
+                                                                           .setContentIntent(pi)
+                                                                           .build();
+        manager.notify(1,
+                       notification);
 
     }
 
@@ -103,7 +119,8 @@ public class Questionnaire implements Parcelable, Observer {
     public Question getQuestion(String questionID) {
         Question targetQuestion = null;
         for (Question q : questionList) {
-            if (q.getQuestionID().equals(questionID)) {
+            if (q.getQuestionID()
+                 .equals(questionID)) {
                 targetQuestion = q;
             }
         }
@@ -111,7 +128,8 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
     public boolean isLastQuestion(String questionID) {
-        if (questionID.equals(this.questionList.get(this.questionList.size() - 1).getQuestionID()
+        if (questionID.equals(this.questionList.get(this.questionList.size() - 1)
+                                               .getQuestionID()
         )) {
             return true;
         }
@@ -122,7 +140,8 @@ public class Questionnaire implements Parcelable, Observer {
         String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
         if (!isLastQuestion(currentQuestion)) {
-            nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionID();
+            nextQuestionID = this.questionList.get(currentQuestionIndex + 1)
+                                              .getQuestionID();
         }
         return nextQuestionID;
     }
@@ -139,7 +158,8 @@ public class Questionnaire implements Parcelable, Observer {
         // 1. mark down triggerTime
         this.triggerTime = TimeUtil.getCurrentTime();
         // 2. calculate EndTime
-        this.endTime = TimeUtil.calculateTime(triggerTime, duration);
+        this.endTime = TimeUtil.calculateTime(triggerTime,
+                                              duration);
         // 3. send notification
         this.sendNotification(context);
     }
@@ -228,8 +248,9 @@ public class Questionnaire implements Parcelable, Observer {
 
     // ===================== Parcelable ==========================================================
 
-    public void update(Observable o, Object arg) {
-        TriggerEventManager triggerEventManager= (TriggerEventManager) o;
+    public void update(Observable o,
+                       Object arg) {
+        TriggerEventManager triggerEventManager = (TriggerEventManager) o;
         // send to Proband a Notification.
     }
 
@@ -240,7 +261,8 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(Parcel dest,
+                              int flags) {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
         dest.writeString(this.questionnaireID);
@@ -249,7 +271,8 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
         dest.writeTypedList(this.questionList);
-        dest.writeParcelable(this.triggerEvent, flags);
+        dest.writeParcelable(this.triggerEvent,
+                             flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
