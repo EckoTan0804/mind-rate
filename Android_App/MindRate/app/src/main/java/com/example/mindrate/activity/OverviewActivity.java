@@ -1,5 +1,7 @@
 package com.example.mindrate.activity;
 
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.os.Bundle;
@@ -142,7 +144,12 @@ public class OverviewActivity extends BaseActivity {
 //        for (Sensor sensor : allSensors) {
 //            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
             Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
-            startService(startServiceIntent);
+            //===========stop service===============
+
+        startService(startServiceIntent);
+        //=============================
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
         //triggerEventManager = TriggerEventManager.getTriggerEventManager();
         //triggerEventManager.setOverviewActivity(instance);
         /*for(Sensor sensor :allSensors ) {
