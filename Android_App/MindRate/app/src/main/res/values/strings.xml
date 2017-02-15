@@ -27,14 +27,11 @@
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About us</string>
 
-    <!--questionnaire_item-->
-    <string name="questionnaire_begins_at">begins at: </string>
-    <string name="questionnaire_will_end_at">will end at: </string>
 
     <!--settings-->
     <string name="language">Language</string>
 
-        <!--languages-->
+    <!--languages-->
     <string-array name="languages_show">
         <item>English</item>
         <item>Deutsch</item>
@@ -49,7 +46,7 @@
 
     <string name="choose_language_dialog_title">Please choose language.</string>
 
-        <!--submit answer-->
+    <!--submit answer-->
     <string name="submit">Submit</string>
     <string name="submit_or_not">Do you want to submit your answer?</string>
     <string name="yes">Yes</string>
@@ -57,7 +54,13 @@
 
     <!--questionnaire-->
 
-        <!--notification-->
-        <string name="questionnair_is_triggered">A questionnaire is triggered.</string>
-        <string name="click_to_answer">Click here to answer.</string>
+    <string name="empty_list_description">No questionnaires. \n Have a nice day!</string>
+
+    <!--questionnaire_item-->
+    <string name="questionnaire_begins_at">begins at: </string>
+    <string name="questionnaire_will_end_at">will end at: </string>
+
+    <!--notification-->
+    <string name="questionnair_is_triggered">A questionnaire is triggered.</string>
+    <string name="click_to_answer">Click here to answer.</string>
 </resources>

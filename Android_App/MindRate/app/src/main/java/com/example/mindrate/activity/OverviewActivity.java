@@ -61,7 +61,7 @@ public class OverviewActivity extends BaseActivity {
     private static OverviewActivity instance = null;
 
     private Proband proband;
-    private List<Questionnaire> allQuestionnaireList;
+    private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;

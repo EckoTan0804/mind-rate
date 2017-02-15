@@ -45,6 +45,7 @@
 
     <!--questionnaire-->
 
+    <string name="empty_list_description">Keine Fragebögen. </string>
         <!--notification-->
     <string name="questionnair_is_triggered">Ein Fragebogen ist ausgelöst.</string>
     <string name="click_to_answer">Klicken Sie hier, um den Fragebogen zu antworten.</string>
