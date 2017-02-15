@@ -37,7 +37,6 @@ public class ChooseQuestionnaireFragment extends Fragment {
 
     //====================== UI - Components ====================
     private ProgressDialog progressDialog;
-    //    private TextView titleText;
     private ListView listView;
     private QuestionnaireAdapter adapter;
     // ==========================================================
