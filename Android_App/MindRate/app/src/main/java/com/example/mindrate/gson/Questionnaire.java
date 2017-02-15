@@ -36,7 +36,6 @@ public class Questionnaire implements Parcelable, Observer {
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
-
     private boolean isValid;
 
     private String studyID;
@@ -59,7 +58,7 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
     public Questionnaire(String questionnaireID,
-                         int duration) {
+            int duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
 
@@ -89,26 +88,19 @@ public class Questionnaire implements Parcelable, Observer {
                                                      0,
                                                      intent,
                                                      0);
-        NotificationManager manager = (NotificationManager) context.getSystemService(Context
-                                                                                             .NOTIFICATION_SERVICE);
-        Notification notification = new NotificationCompat.Builder(context).setContentTitle("You " +
-                                                                                                    "hava a new questionnaire")
-                                                                           .setContentText
-                                                                                   ("Questionnaire " + this
-                                                                                   .questionnaireID + " is waiting for your answer")
-                                                                           .setWhen(System
-                                                                                            .currentTimeMillis())
-                                                                           .setSmallIcon(R.mipmap.ic_mr)
-                                                                           .setLargeIcon
-                                                                                   (BitmapFactory
-                                                                                            .decodeResource(context.getResources(),
-                                                                                                                 R.mipmap.ic_mr))
-                                                                           .setVisibility
-                                                                                   (VISIBILITY_PRIVATE)
-                                                                           .setContentIntent(pi)
-                                                                           .build();
-        manager.notify(1,
-                       notification);
+        NotificationManager manager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = new NotificationCompat.Builder(context)
+                .setContentTitle(context.getString(R.string.questionnair_is_triggered))
+                .setContentText(context.getString(R.string.click_to_answer))
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.mipmap.ic_mr)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
+                                                           R.mipmap.ic_mr))
+                .setVisibility(VISIBILITY_PRIVATE)
+                .setContentIntent(pi).setAutoCancel(true)
+                .build();
+        manager.notify(0, notification);
 
     }
 
@@ -249,7 +241,7 @@ public class Questionnaire implements Parcelable, Observer {
     // ===================== Parcelable ==========================================================
 
     public void update(Observable o,
-                       Object arg) {
+            Object arg) {
         TriggerEventManager triggerEventManager = (TriggerEventManager) o;
         // send to Proband a Notification.
     }
@@ -262,7 +254,7 @@ public class Questionnaire implements Parcelable, Observer {
 
     @Override
     public void writeToParcel(Parcel dest,
-                              int flags) {
+            int flags) {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
         dest.writeString(this.questionnaireID);

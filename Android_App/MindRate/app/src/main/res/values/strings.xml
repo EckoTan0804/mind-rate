@@ -54,4 +54,10 @@
     <string name="submit_or_not">Do you want to submit your answer?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <!--questionnaire-->
+
+        <!--notification-->
+        <string name="questionnair_is_triggered">A questionnaire is triggered.</string>
+        <string name="click_to_answer">Click here to answer.</string>
 </resources>

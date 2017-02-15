@@ -43,5 +43,11 @@
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
 
+    <!--questionnaire-->
+
+        <!--notification-->
+    <string name="questionnair_is_triggered">Ein Fragebogen ist ausgelöst.</string>
+    <string name="click_to_answer">Klicken Sie hier, um den Fragebogen zu antworten.</string>
+
 
 </resources>
