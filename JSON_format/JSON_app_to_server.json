@@ -1,5 +1,12 @@
 {
+    "probandID": "1", // auto signed proband ID from server
     "studyID": "A1",
+    "probandInfoAnswer": [
+        {"bla": "blabla"},
+        {"bla": "blabla"},
+        {"bla": "blabla"},
+        {"bla": "blabla"},
+    ],
     "questionnaireAnswerList": [
         // questionnaireAnswer 1
         {
@@ -12,7 +19,13 @@
                 "minute": 0,
                 "second": 0
             },
-            "isValid": true,
+            "isValid": true, // meaning?
+            "sensorValues": [
+                {"bla": "blabla"},
+                {"bla": "blabla"},
+                {"bla": "blabla"},
+                {"bla": "blabla"},
+            ],
             "questionAnswer": [
                 {"questionID": "A1_1_1", "questionType": "SingleChoice", "answer": "On the way"},
                 {"questionID": "A1_1_2", "questionType": "TextAnswer", "answer": "Hotel"},
