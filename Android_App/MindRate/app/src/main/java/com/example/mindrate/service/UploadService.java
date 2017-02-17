@@ -2,27 +2,19 @@ package com.example.mindrate.service;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.os.Binder;
-import android.os.IBinder;
+import android.widget.Toast;
 
-import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.R;
+import com.example.mindrate.util.HttpUtil;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class UploadService extends IntentService {
 
-    private static ArrayList<QuestionnaireAnswer> answerUploadList;
-
-    private UploadBinder mBinder = new UploadBinder();
-
+    private static boolean isBound;
+    private final String SERVER = "129.13.170.45";
     public UploadService(String name) {
         super(name);
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
@@ -42,7 +34,17 @@ public class UploadService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        // upload answer
+        // get answer from intent
+        String answer = intent.getStringExtra("questionnaireAnswer");
+        // upload
+        try {
+            HttpUtil.post(SERVER, answer);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, getString(R.string.upload_fail), Toast.LENGTH_SHORT).show();
+        } finally {
+            
+        }
     }
 
     @Override
@@ -53,18 +55,6 @@ public class UploadService extends IntentService {
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-    }
-
-    public static void addToAnswerUploadList(QuestionnaireAnswer questionnaireAnswer) {
-        answerUploadList.add(questionnaireAnswer);
-    }
-
-
-    class UploadBinder extends Binder {
-
-        public void startUpload() {
-
-        }
     }
 
 }

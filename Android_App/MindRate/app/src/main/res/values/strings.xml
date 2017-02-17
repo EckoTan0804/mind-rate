@@ -63,4 +63,7 @@
     <!--notification-->
     <string name="questionnair_is_triggered">A questionnaire is triggered.</string>
     <string name="click_to_answer">Click here to answer.</string>
+
+    <!--upload-->
+    <string name="upload_fail">Sorry. The upload failed. Please make sure your Internet is available.</string>
 </resources>

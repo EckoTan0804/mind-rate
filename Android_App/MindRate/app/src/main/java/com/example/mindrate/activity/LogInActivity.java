@@ -21,7 +21,7 @@ import java.util.TimeZone;
 public class LogInActivity extends BaseActivity {
 
 
-    public static final String SERVER_ADDRESS = "129.13.170.45";
+    public static final String SERVER = "129.13.170.45";
 
     private static int logInPage = 1;
     private static int LOG_IN_LAST_PAGE = 2;
@@ -165,7 +165,7 @@ public class LogInActivity extends BaseActivity {
                 // locally
                 String questionnaireJSON = null;
 //                try {
-//                    questionnaireJSON = HttpUtil.post(SERVER_ADDRESS, probandJSON);
+//                    questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                } finally {
