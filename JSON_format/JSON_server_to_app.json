@@ -1,5 +1,6 @@
 {
     "study": {
+        "probandID": "1", // automatically signed proband ID from server
         "studyId": "A1",
         "studyName": "Study Name",
         "beginningDate": {
@@ -18,6 +19,26 @@
             "minute": 0,
             "second": 0
         },
+        "probandInfoQuestionnaire": {
+            "questions": [
+                    {
+                        "questionID": "1",
+                        "questionType": "SingleChoice",
+                        "questionContent": "Where are you now?",
+                        "showByDefault": True,
+                        "options": [
+                            {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
+                            {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
+                            {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
+                        ]
+                    },
+                    {
+                        "questionID": "A1_1_2",
+                        "questionType": "TextAnswer",
+                        "questionContent": "Where are you heading to?"
+                    },
+            ]
+        },
         "questionnaires": [
 
             // questionnaire 1
@@ -25,70 +46,49 @@
                 "questionnaireID": "A1_1", // format: studyID_QuestionnaireNr
                 "questionnaireName": "Questionnaire Name", // not necessary, can be removed
                 "maxShowUpTimesPerDay": 40,
+                "duration": {
+                    "hour": 5,
+                    "minute": 0,
+                    "second": 0
+                },
                 "triggerEvent": {
                     "minTimeSpace": {"seconds": 180},
                     "datetime": false, 
-                    "time": {
-                        "hour": 16,
-                        "minute": 0,
-                        "second": 0
-                    },
-                    "triggeredWhenCalendarEventBegins": false,
-                    "triggeredWhenCalendarEventEnds": false,
-                    "triggeredWhenFacebookNotificationComes": false,
-                    "triggeredWhenWhatsAppNotificationComes": false, 
-
+                    "time": "16-0-0", // hour-min-sec format
+                    // "triggeredWhenCalendarEventBegins": false,
+                    // "triggeredWhenCalendarEventEnds": false,
+                    // "triggeredWhenFacebookNotificationComes": false,
+                    // "triggeredWhenWhatsAppNotificationComes": false, 
+                    
                     // if a sensor is needed, then set it as true; else set false.                   
-                    "accelerometer": true,
                     "ambientTemperature": false,
-                    "gravity": false,
-                    "gyroscope": false,
                     "light": false,
-                    "linearAcceleration": false,
-                    "magneticField": false,
-                    "orientation": false,
                     "pressure": false,
                     "proximity": false,
-                    "relativeHumidity": false,
-                    "rotationVector": false,
+                    "relativeHumidity": false,  
+                    "userActivity": false, // Android user activity API
 
                     // value range of the needed sensors
-                    "accelerometerMinValue": 5,
-                    "accelerometerMaxValue": 10,
                     "ambientTemperatureMinValue": 0,
                     "ambientTemperatureMaxValue": 0,
-                    "gravityMinValue": 0,
-                    "gravityMaxValue": 0,
-                    "gyroscopeMinValue": 0,
-                    "gyroscopeMaxValue": 0,
                     "lightMinValue": 0,
                     "lightMaxValue": 0,
-                    "linearAccelerationMinValue": 0,
-                    "linearAccelerationMaxValue": 0,
-                    "magneticFieldMinValue": 0,
-                    "magneticFieldMaxValue": 0,
-                    "orientationMinValue": 0,
-                    "orientationMaxValue": 0,
                     "pressureMinValue": 0,
                     "pressureMaxValue": 0,
                     "proximityMinValue": 0,
                     "proximityMaxValue": 0,
                     "relativeHumidityMinValue": 0,
                     "relativeHumidityMaxValue": 0,
-                    "rotationVectorMinValue": 0,
-                    "rotationVectorMaxValue": 0
+                    "userActivity": "WALKING", // value can be IN_VEHICLE, ON_BICYCLE, ON_FOOT
+                                        // RUNNING, STILL, TILTING, WALKING
 
-                },
-                "duration": {
-                    "hour": 5,
-                    "minute": 0,
-                    "second": 0
                 },
                 "questions": [
                     {
-                        "questionID": "A1_1_1", // format: studyID_QuestionnaireNr_questionNr
+                        "questionID": "1",
                         "questionType": "SingleChoice",
                         "questionContent": "Where are you now?",
+                        "showByDefault": True,
                         "options": [
                             {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
                             {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
