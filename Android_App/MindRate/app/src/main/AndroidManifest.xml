@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".activity.LogInActivity">
         </activity>
-        <activity android:name=".activity.OverviewActivity">
+        <activity android:name=".activity.OverviewActivity"
+            android:launchMode="singleTask">
         </activity>
         <activity android:name=".activity.AnswerQuestionnaireActivity">
         </activity>

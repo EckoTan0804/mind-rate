@@ -127,6 +127,7 @@ public class OverviewActivity extends BaseActivity {
         if (this.triggeredQuestionnaireList == null) {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
+
         initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
@@ -139,6 +140,7 @@ public class OverviewActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onResume: ");
         super.onResume();
         triggerEventManager = TriggerEventManager.getTriggerEventManager();
         triggerEventManager.setOverviewActivity(instance);
@@ -150,6 +152,21 @@ public class OverviewActivity extends BaseActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setEveryTriggeredDateQuestionnaireAlarm(alarmManager);
 
+        Intent intent = getIntent();
+        String fromIntent = intent.getStringExtra("notityToAnswer");
+        if (!TextUtils.isEmpty(fromIntent)) {
+            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+                isFirstLoad = false;
+                replaceFragment(chooseQuestionnaireFragment);
+            }
+
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     @Override
@@ -183,14 +200,14 @@ public class OverviewActivity extends BaseActivity {
         }
 
         // pendingIntent from Notification
-        String fromIntent = intent.getStringExtra("notityToAnswer");
-        if (!TextUtils.isEmpty(fromIntent)) {
-            if (fromIntent.equals("chooseQuestionnaireFragment")) {
-                isFirstLoad = false;
-                replaceFragment(chooseQuestionnaireFragment);
-            }
-
-        }
+//        String fromIntent = intent.getStringExtra("notityToAnswer");
+//        if (!TextUtils.isEmpty(fromIntent)) {
+//            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+//                isFirstLoad = false;
+//                replaceFragment(chooseQuestionnaireFragment);
+//            }
+//
+//        }
 
     }
 
@@ -556,7 +573,7 @@ public class OverviewActivity extends BaseActivity {
         Date date = TimeUtil.getCurrentTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(TimeUtil.getCurrentTime());
-        calendar.add(Calendar.MINUTE, 1);
+        calendar.add(Calendar.SECOND, 10);
         triggerEvent1.setDateTime(calendar.getTime());
         //        questionnaireA.setTriggerEvent(triggerEvent1);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
