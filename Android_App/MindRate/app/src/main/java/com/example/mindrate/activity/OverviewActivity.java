@@ -62,7 +62,7 @@ public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
     private List<Questionnaire> allQuestionnaireList ; // all questionnaires
-    private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
+    private List<Questionnaire> triggeredQuestionnaireList;
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;
@@ -130,6 +130,9 @@ public class OverviewActivity extends BaseActivity {
         //        tEM =  new TriggerEventManager();
         if (this.allQuestionnaireList == null) {
             this.allQuestionnaireList = new ArrayList<>();
+        }
+        if (this.triggeredQuestionnaireList == null) {
+            this.triggeredQuestionnaireList = new ArrayList<>();
         }
         initTestData();
         //triggerEventManager = new TriggerEventManager(this.questionnaireList);
