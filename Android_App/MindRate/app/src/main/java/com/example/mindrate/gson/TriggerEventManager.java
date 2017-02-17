@@ -2,6 +2,8 @@ package com.example.mindrate.gson;
 
 import android.util.Log;
 
+import com.example.mindrate.activity.OverviewActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -12,7 +14,7 @@ import java.util.Observable;
 
 public class TriggerEventManager extends Observable{
     private static final String TAG = "TriggerEventManager";
-    //private OverviewActivity overviewActivity;
+    private OverviewActivity overviewActivity;
 
 
     public float[][] getDataOfAllSensor() {
@@ -94,7 +96,7 @@ public class TriggerEventManager extends Observable{
         String b = String.valueOf(remp);
         //Log.d(TAG,a);
         //Log.d(TAG,b);
-//        this.addQuestionnaireToOverviewActivity();
+       this.addQuestionnaireToOverviewActivity();
         //问卷通知
 
     }
@@ -145,22 +147,23 @@ public class TriggerEventManager extends Observable{
         }
     }
 
-   /*public void setOverviewActivity(OverviewActivity overviewActivity){
+    public void setOverviewActivity(OverviewActivity overviewActivity){
         this.overviewActivity = overviewActivity;//应当写成一个static方法
 
-    }*/
+    }
 //
-//    public void addQuestionnaireToOverviewActivity(){
-//        if(!this.shouldAnswerQuestionnaire.isEmpty()){
-//            for(Questionnaire questionnaire:this.shouldAnswerQuestionnaire) {
-//                OverviewActivity.getInstance().addShouldAnswerQuestionnaireToList(questionnaire);
-//                //this.shouldAnswerQuestionnaire.remove(questionnaire);
-//                this.shouldAnswerQuestionnaire.remove(questionnaire);
-//                //这里应当不需要判断是否有相同的ID 可以相同的ID 但是触发条件不同
-//
-//            }
-//        }
-//    }
+    public void addQuestionnaireToOverviewActivity(){
+        if(!this.shouldAnswerQuestionnaire.isEmpty()){
+            for(Questionnaire questionnaire:this.shouldAnswerQuestionnaire) {
+                OverviewActivity.getInstance().addQuestionnaireToTriggeredQuestionnaireList
+                        (questionnaire.getQuestionnaireID());
+                //this.shouldAnswerQuestionnaire.remove(questionnaire);
+                this.shouldAnswerQuestionnaire.remove(questionnaire);
+                //这里应当不需要判断是否有相同的ID 可以相同的ID 但是触发条件不同
+
+            }
+        }
+    }
 
     private void removeQuestionnaireFromShouldList(Questionnaire questionnaire){
         boolean existQuestionnaire =false;

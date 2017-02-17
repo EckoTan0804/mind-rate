@@ -1,7 +1,9 @@
 package com.example.mindrate.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.hardware.Sensor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -39,33 +41,31 @@ import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
+import com.example.mindrate.util.TimeUtil;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
-import static android.hardware.Sensor.TYPE_ACCELEROMETER;
-import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
-import static android.hardware.Sensor.TYPE_GRAVITY;
-import static android.hardware.Sensor.TYPE_GYROSCOPE;
-import static android.hardware.Sensor.TYPE_LIGHT;
-import static android.hardware.Sensor.TYPE_LINEAR_ACCELERATION;
-import static android.hardware.Sensor.TYPE_MAGNETIC_FIELD;
-import static android.hardware.Sensor.TYPE_ORIENTATION;
-import static android.hardware.Sensor.TYPE_PRESSURE;
-import static android.hardware.Sensor.TYPE_PROXIMITY;
-import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
-import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
+import java.util.TimeZone;
 
 public class OverviewActivity extends BaseActivity {
     private static final String TAG = "OverviewActivity";
     private static OverviewActivity instance = null;
+    //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
+
     private List<Questionnaire> allQuestionnaireList ; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList;
+
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;
+    private List<Questionnaire>  triggeredByTimeQuestionnaireList = new ArrayList<>();
+    private List<Questionnaire>  triggeredByDateQuestionnaireList = new ArrayList<>();
 
 
     // ==================== View components ==================================
@@ -135,9 +135,17 @@ public class OverviewActivity extends BaseActivity {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
         initTestData();
+        addTriggeredByTimeQuestionnaire();
+        addTriggeredByDatetimeQuestionnaire();
+
+        //IntentFilter filter = new IntentFilter();
+        //filter.addAction("addQuestionnaireToList");
+        //registerReceiver(receiver, filter);
+        //Log.i(TAG, "receiver register");
         //triggerEventManager = new TriggerEventManager(this.questionnaireList);
         Log.i(TAG, "TEM created in Activity");
         instance = this;
+
         //instance = this;
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
@@ -159,13 +167,28 @@ public class OverviewActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+//        for (Sensor sensor : allSensors) {
+//            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
+        triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        triggerEventManager.setOverviewActivity(instance);
+            Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+            //===========stop service===============
+
+        startService(startServiceIntent);
+        //=============================
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //Calendar calendar = Calendar.getInstance();
+        //setEveryTriggeredTimeQuestionnaireAlarm(alarmManager);
+        setEveryTriggeredDateQuestionnaireAlarm(alarmManager);
+
+
+
 
         //        for (Sensor sensor : allSensors) {
         //            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
-        Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
-        startService(startServiceIntent);
-        //triggerEventManager = TriggerEventManager.getTriggerEventManager();
-        //triggerEventManager.setOverviewActivity(instance);
+        //Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+        //startService(startServiceIntent);
+
         /*for(Sensor sensor :allSensors ) {
            // sensorManager.registerListener(listener, sensor, SENSOR_DELAY_GAME);
 >>>>>>> 1d08a2433890d356671ee32d525bccad62e01e91
@@ -175,6 +198,14 @@ public class OverviewActivity extends BaseActivity {
 
 
         //        }
+
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        //unregisterReceiver(receiver);
+        Log.i(TAG, "has unregist....");
 
     }
 
@@ -344,6 +375,8 @@ public class OverviewActivity extends BaseActivity {
         this.addQuestionnaireToTriggeredQuestionnaireList(questionnaire);
     }
 
+
+
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
         questionnaire.trigger(OverviewActivity.this);
         if (!this.triggeredQuestionnaireList.isEmpty()) {
@@ -509,6 +542,9 @@ public class OverviewActivity extends BaseActivity {
         //            allQuestionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
         //        }
 
+
+       // allQuestionnaireList = new ArrayList<>();
+
         Questionnaire questionnaireA = new Questionnaire("A",
                                                          2);
         // q1
@@ -568,10 +604,19 @@ public class OverviewActivity extends BaseActivity {
                                    "Q5");
         questionnaireA.addQuestion(q5);
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
-        triggerEvent1.setLight(true);
-        triggerEvent1.setAirTemperature(true);
+        //triggerEvent1.setLight(true);
+        //triggerEvent1.setAirTemperature(true);
+        //triggerEvent1.setTime("10-55-10");
+        Date date = TimeUtil.getCurrentTime();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(TimeUtil.getCurrentTime());
+        calendar.add(Calendar.MINUTE,1);
+        triggerEvent1.setDateTime(calendar.getTime());
 //        questionnaireA.setTriggerEvent(triggerEvent1);
-
+        triggerEvent1.setAmbientTemperatureMaxValue(20);
+        triggerEvent1.setAmbientTemperatureMinValue(19);
+        questionnaireA.setTriggerEvent(triggerEvent1);
+        questionnaireA.setValid(true);
 
         allQuestionnaireList.add(questionnaireA);
         TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
@@ -582,11 +627,8 @@ public class OverviewActivity extends BaseActivity {
         //        TriggerEventManager triggerEventManager = TriggerEventManager
         // .getTriggerEventManager();
         //        triggerEventManager.setAllQuestionnaireList(allQuestionnaireList);
-        addQuestionnaireToTriggeredQuestionnaireList(questionnaireA);
-        triggerEvent1.setLightMinValue(1000);
-        triggerEvent1.setLightMaxValue(2000);
-        questionnaireA.setTriggerEvent(triggerEvent1);
-        questionnaireA.setValid(true);
+        //addQuestionnaireToTriggeredQuestionnaireList(questionnaireA);
+
 
 //        List<Questionnaire> testquestionnaireList = new ArrayList<>();
 //        testquestionnaireList.add(questionnaireA);
@@ -619,58 +661,150 @@ public class OverviewActivity extends BaseActivity {
     //
     //    }
     //
-    //    public static OverviewActivity getInstance(){
-    //        return instance;
-    //>>>>>>> 185a7e7d812e3067f2f597b8719399cce4fe90ad
-    //    }
-
-    public void addSensorListener(Sensor sensor) {
-        switch (sensor.getType()) {
-            case TYPE_ACCELEROMETER:
-                //
-
-                break;
-            case TYPE_AMBIENT_TEMPERATURE:
-                //
-                break;
-            case TYPE_GRAVITY:
-                //
-                break;
-            case TYPE_GYROSCOPE:
-                //
-                break;
-            case TYPE_LIGHT:
-                //
-                break;
-            case TYPE_LINEAR_ACCELERATION:
-                //
-                break;
-            case TYPE_MAGNETIC_FIELD:
-                //
-                break;
-            case TYPE_ORIENTATION:
-                //
-                break;
-            case TYPE_PRESSURE:
-                //
-                break;
-            case TYPE_PROXIMITY:
-                //
-                break;
-            case TYPE_RELATIVE_HUMIDITY:
-                //
-                break;
-            case TYPE_ROTATION_VECTOR:
-                //
-                break;
-            default:
-                //TYPE_TEMPERATURE
-                break;
-
+        public static OverviewActivity getInstance(){
+            return instance;
 
         }
 
 
+
+    //想法是 create的时候先把有date的触发条件的问卷加进来。然后用alarmManager，每拿到一个时间点就新建一个intent，然后用alarmManager
+    // 启动一个intentservice；（把questionnaire的ID传进去）service中直接引用TriggerManager的overview的加问卷方法 添加到触发问卷。
+
+
+    private void addTriggeredByTimeQuestionnaire(){
+        for(Questionnaire questionnaire:allQuestionnaireList){
+            if(questionnaire.getTriggerEvent().getTime()!=null){
+                this.triggeredByTimeQuestionnaireList.add(questionnaire);
+            }
+        }
     }
+
+    private void addTriggeredByDatetimeQuestionnaire(){
+        for(Questionnaire questionnaire:allQuestionnaireList){
+            if(questionnaire.getTriggerEvent().getDateTime()!=null){
+                this.triggeredByDateQuestionnaireList.add(questionnaire);
+            }
+        }
+    }
+    private void  setEveryTriggeredTimeQuestionnaireAlarm(AlarmManager alarmManager){
+        AlarmManager alarmManager1 = alarmManager;
+        int index = 0;
+        long oneDay = 1000*60*60*24;
+        for(Questionnaire questionnaire:triggeredByTimeQuestionnaireList){
+            //格式是否正确？
+            long triggeredTime = this.transferTriggeredTimeToTriggerAtMillis(questionnaire
+                    .getTriggerEvent().getTime());
+            Intent intent= new Intent("addQuestionnaireToList");
+            //intent.setAction("addQuestionnaireToList");
+            Log.d(TAG,intent.getAction());
+            intent.putExtra("questionnaireID",questionnaire.getTriggerEvent().getQuestionnaireID());
+            Log.d(TAG,intent.getStringExtra("questionnaireID"));
+            PendingIntent sender = PendingIntent.getBroadcast(OverviewActivity.this,index,intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP,triggeredTime,oneDay,sender);
+            index++;
+            Log.d(TAG,String.valueOf(index));
+        }
+
+    }
+
+    private void  setEveryTriggeredDateQuestionnaireAlarm(AlarmManager alarmManager){
+        AlarmManager alarmManager1 = alarmManager;
+        int index = 0;
+        for(Questionnaire questionnaire:triggeredByDateQuestionnaireList){
+            //格式是否正确？
+            long triggeredtDate =questionnaire.getTriggerEvent().getDateTime().getTime();
+
+            if(triggeredtDate>=TimeUtil.getCurrentTime().getTime()){
+                Log.d(TAG,String.valueOf(triggeredtDate-TimeUtil.getCurrentTime().getTime()));
+                //要不要判断时间点是否已经过去
+                Intent intent= new Intent("addQuestionnaireToList");
+                //intent.setAction("addQuestionnaireToList");
+                Log.d(TAG,intent.getAction());
+                intent.putExtra("questionnaireID",questionnaire.getTriggerEvent().getQuestionnaireID());
+                Log.d(TAG,intent.getStringExtra("questionnaireID"));
+                PendingIntent sender = PendingIntent.getBroadcast(OverviewActivity.this,index,intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                alarmManager1.set(AlarmManager.RTC_WAKEUP,triggeredtDate,sender);
+                index++;
+                Log.d(TAG,String.valueOf(index));
+
+            }else{
+                Log.d(TAG,"Sorry,time is out,the questionnaire will not be added");
+            }
+
+        }
+
+    }
+
+    private long transferTriggeredTimeToTriggerAtMillis(String time){
+        long timetest;
+        boolean todayshouldtriggered =false;
+        String inputTime = time;
+        String[] inputTimeList = inputTime.split("-");
+        Integer[] inputTimeListOfInteger = new Integer[inputTimeList.length];
+        for(int i=0;i<inputTimeList.length;i++){
+            inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i]);
+            //System.out.println(String.valueOf(time2[i]));
+        }
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+1"));
+        Calendar calendar1 = Calendar.getInstance();
+        Log.i(TAG,calendar1.getTimeZone().toString());
+        //calendar1.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+        Date currentDate = calendar1.getTime();
+        DateFormat sdf = new SimpleDateFormat("HH-mm-ss");
+        String currentTime=sdf.format(currentDate);
+        String[] currentTimeList = currentTime.split("-");
+        Integer[] currentTimeListOfInteger = new Integer[currentTimeList.length];
+        for(int i=0;i<currentTimeList.length;i++){
+            currentTimeListOfInteger[i] = Integer.valueOf(currentTimeList[i]);
+            //System.out.println(String.valueOf(time4[i]));
+        }
+        long setTime=inputTimeListOfInteger[0]*60*60+inputTimeListOfInteger[1]*60+inputTimeListOfInteger[2];
+        long nowTime=currentTimeListOfInteger[0]*60*60+currentTimeListOfInteger[1]*60+currentTimeListOfInteger[2];
+        Log.i(TAG,String.valueOf(setTime-nowTime));
+        if(setTime>=nowTime){
+            todayshouldtriggered =true;
+        }
+        //============test==============
+        if(todayshouldtriggered){
+            Log.i(TAG,"will add a questionnaire");
+        }else{
+            Log.i(TAG,"will Tomorrow add a questionnaire");
+        }
+
+        if(todayshouldtriggered){
+            calendar1.set(Calendar.HOUR_OF_DAY, inputTimeListOfInteger[0]);
+            calendar1.set(Calendar.MINUTE,inputTimeListOfInteger[1]);
+            calendar1.set(Calendar.SECOND,inputTimeListOfInteger[2]);
+        }else{
+            calendar1.add(Calendar.DAY_OF_MONTH,1);
+            calendar1.set(Calendar.HOUR_OF_DAY, inputTimeListOfInteger[0]);
+            calendar1.set(Calendar.MINUTE,inputTimeListOfInteger[1]);
+            calendar1.set(Calendar.SECOND,inputTimeListOfInteger[2]);
+        }
+        return  calendar1.getTime().getTime();
+
+        //DateFormat sdf3 = new SimpleDateFormat("yyyy MM dd HH mm ss");
+        //String s=sdf3.format(date);
+
+
+
+    }
+
+
+   /*public static class myBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context,Intent intent){
+            Log.i(TAG,"receive a broadvast");
+            String questionnaireID = intent.getStringExtra("questionnaireID");
+            if(intent.getAction().equals("addQuestionnaireToList")){
+                addQuestionnaireToTriggeredQuestionnaireList(questionnaireID);
+            }
+
+        }
+    }*/
+
 
 }

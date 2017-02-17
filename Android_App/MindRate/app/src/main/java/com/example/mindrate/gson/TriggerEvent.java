@@ -21,8 +21,14 @@ public class TriggerEvent implements Parcelable {
     //    private Date time;
     //    private Date dateTime;
     private String questionnaireID;
-    private Date minTimeSpace;
-    private Date time;
+
+
+
+    //private Date minTimeSpace;
+    private String time;
+
+
+
     private Date dateTime;
     private boolean triggeredWhenCalendarEventBegins;
     private boolean triggeredWhenCalendarEventEnds;
@@ -191,6 +197,22 @@ public class TriggerEvent implements Parcelable {
         this.gyroscope = gyroscope;
         this.sensorList = sensorList;
     }*/
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public String getQuestionnaireID() {
         return questionnaireID;
@@ -799,10 +821,8 @@ public class TriggerEvent implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
         dest.writeString(this.questionnaireID);
-        dest.writeLong(this.minTimeSpace != null ? this.minTimeSpace.getTime() : -1);
-        dest.writeLong(this.time != null ? this.time.getTime() : -1);
+        dest.writeString(this.time);
         dest.writeLong(this.dateTime != null ? this.dateTime.getTime() : -1);
         dest.writeByte(this.triggeredWhenCalendarEventBegins ? (byte) 1 : (byte) 0);
         dest.writeByte(this.triggeredWhenCalendarEventEnds ? (byte) 1 : (byte) 0);
@@ -820,16 +840,64 @@ public class TriggerEvent implements Parcelable {
         dest.writeByte(this.proximity ? (byte) 1 : (byte) 0);
         dest.writeByte(this.accelerometer ? (byte) 1 : (byte) 0);
         dest.writeByte(this.gyroscope ? (byte) 1 : (byte) 0);
+        dest.writeFloat(this.accelerometerMinXValue);
+        dest.writeFloat(this.accelerometerMinYValue);
+        dest.writeFloat(this.accelerometerMinZValue);
+        dest.writeFloat(this.accelerometerMaxXValue);
+        dest.writeFloat(this.accelerometerMaxYValue);
+        dest.writeFloat(this.accelerometerMaxZValue);
+        dest.writeFloat(this.ambientTemperatureMinValue);
+        dest.writeFloat(this.ambientTemperatureMaxValue);
+        dest.writeFloat(this.gravityMinXValue);
+        dest.writeFloat(this.gravityMinYValue);
+        dest.writeFloat(this.gravityMinZValue);
+        dest.writeFloat(this.gravityMaxXValue);
+        dest.writeFloat(this.gravityMaxYValue);
+        dest.writeFloat(this.gravityMaxZValue);
+        dest.writeFloat(this.gyroscopeMinXValue);
+        dest.writeFloat(this.gyroscopeMinYValue);
+        dest.writeFloat(this.gyroscopeMinZValue);
+        dest.writeFloat(this.gyroscopeMaxXValue);
+        dest.writeFloat(this.gyroscopeMaxYValue);
+        dest.writeFloat(this.gyroscopeMaxZValue);
+        dest.writeFloat(this.lightMinValue);
+        dest.writeFloat(this.lightMaxValue);
+        dest.writeFloat(this.linearAccelerationMinXValue);
+        dest.writeFloat(this.linearAccelerationMinYValue);
+        dest.writeFloat(this.linearAccelerationMinZValue);
+        dest.writeFloat(this.linearAccelerationMaxXValue);
+        dest.writeFloat(this.linearAccelerationMaxYValue);
+        dest.writeFloat(this.linearAccelerationMaxZValue);
+        dest.writeFloat(this.magneticFieldMinXValue);
+        dest.writeFloat(this.magneticFieldMinYValue);
+        dest.writeFloat(this.magneticFieldMinZValue);
+        dest.writeFloat(this.magneticFieldMaxXValue);
+        dest.writeFloat(this.magneticFieldMaxYValue);
+        dest.writeFloat(this.magneticFieldMaxZValue);
+        dest.writeFloat(this.orientationMinXValue);
+        dest.writeFloat(this.orientationMinYValue);
+        dest.writeFloat(this.orientationMinZValue);
+        dest.writeFloat(this.orientationMaxXValue);
+        dest.writeFloat(this.orientationMaxYValue);
+        dest.writeFloat(this.orientationMaxZValue);
+        dest.writeFloat(this.pressureMinValue);
+        dest.writeFloat(this.pressureMaxValue);
+        dest.writeFloat(this.proximityMinValue);
+        dest.writeFloat(this.proximityMaxValue);
+        dest.writeFloat(this.relativeHumidityMinValue);
+        dest.writeFloat(this.relativeHumidityMaxValue);
+        dest.writeFloat(this.rotationVectorMinXValue);
+        dest.writeFloat(this.rotationVectorMinYValue);
+        dest.writeFloat(this.rotationVectorMinZValue);
+        dest.writeFloat(this.rotationVectorMaxXValue);
+        dest.writeFloat(this.rotationVectorMaxYValue);
+        dest.writeFloat(this.rotationVectorMaxZValue);
         dest.writeBooleanArray(this.sensorList);
     }
 
     protected TriggerEvent(Parcel in) {
-
         this.questionnaireID = in.readString();
-        long tmpMinTimeSpace = in.readLong();
-        this.minTimeSpace = tmpMinTimeSpace == -1 ? null : new Date(tmpMinTimeSpace);
-        long tmpTime = in.readLong();
-        this.time = tmpTime == -1 ? null : new Date(tmpTime);
+        this.time = in.readString();
         long tmpDateTime = in.readLong();
         this.dateTime = tmpDateTime == -1 ? null : new Date(tmpDateTime);
         this.triggeredWhenCalendarEventBegins = in.readByte() != 0;
@@ -848,6 +916,58 @@ public class TriggerEvent implements Parcelable {
         this.proximity = in.readByte() != 0;
         this.accelerometer = in.readByte() != 0;
         this.gyroscope = in.readByte() != 0;
+        this.accelerometerMinXValue = in.readFloat();
+        this.accelerometerMinYValue = in.readFloat();
+        this.accelerometerMinZValue = in.readFloat();
+        this.accelerometerMaxXValue = in.readFloat();
+        this.accelerometerMaxYValue = in.readFloat();
+        this.accelerometerMaxZValue = in.readFloat();
+        this.ambientTemperatureMinValue = in.readFloat();
+        this.ambientTemperatureMaxValue = in.readFloat();
+        this.gravityMinXValue = in.readFloat();
+        this.gravityMinYValue = in.readFloat();
+        this.gravityMinZValue = in.readFloat();
+        this.gravityMaxXValue = in.readFloat();
+        this.gravityMaxYValue = in.readFloat();
+        this.gravityMaxZValue = in.readFloat();
+        this.gyroscopeMinXValue = in.readFloat();
+        this.gyroscopeMinYValue = in.readFloat();
+        this.gyroscopeMinZValue = in.readFloat();
+        this.gyroscopeMaxXValue = in.readFloat();
+        this.gyroscopeMaxYValue = in.readFloat();
+        this.gyroscopeMaxZValue = in.readFloat();
+        this.lightMinValue = in.readFloat();
+        this.lightMaxValue = in.readFloat();
+        this.linearAccelerationMinXValue = in.readFloat();
+        this.linearAccelerationMinYValue = in.readFloat();
+        this.linearAccelerationMinZValue = in.readFloat();
+        this.linearAccelerationMaxXValue = in.readFloat();
+        this.linearAccelerationMaxYValue = in.readFloat();
+        this.linearAccelerationMaxZValue = in.readFloat();
+        this.magneticFieldMinXValue = in.readFloat();
+        this.magneticFieldMinYValue = in.readFloat();
+        this.magneticFieldMinZValue = in.readFloat();
+        this.magneticFieldMaxXValue = in.readFloat();
+        this.magneticFieldMaxYValue = in.readFloat();
+        this.magneticFieldMaxZValue = in.readFloat();
+        this.orientationMinXValue = in.readFloat();
+        this.orientationMinYValue = in.readFloat();
+        this.orientationMinZValue = in.readFloat();
+        this.orientationMaxXValue = in.readFloat();
+        this.orientationMaxYValue = in.readFloat();
+        this.orientationMaxZValue = in.readFloat();
+        this.pressureMinValue = in.readFloat();
+        this.pressureMaxValue = in.readFloat();
+        this.proximityMinValue = in.readFloat();
+        this.proximityMaxValue = in.readFloat();
+        this.relativeHumidityMinValue = in.readFloat();
+        this.relativeHumidityMaxValue = in.readFloat();
+        this.rotationVectorMinXValue = in.readFloat();
+        this.rotationVectorMinYValue = in.readFloat();
+        this.rotationVectorMinZValue = in.readFloat();
+        this.rotationVectorMaxXValue = in.readFloat();
+        this.rotationVectorMaxYValue = in.readFloat();
+        this.rotationVectorMaxZValue = in.readFloat();
         this.sensorList = in.createBooleanArray();
     }
 

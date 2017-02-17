@@ -65,9 +65,9 @@ public class DeviceSensorService extends Service {
 
         // usedSensorList is not initialized
         // TODO: should initialize it using allQuestionnaireList from OverviewActivity
-//        for(Sensor sensor:usedSensorList){
-//            this.addSensorEventListener(sensor);
-//        }
+        for(Sensor sensor:usedSensorList){
+          this.addSensorEventListener(sensor);
+        }
 
     }
 

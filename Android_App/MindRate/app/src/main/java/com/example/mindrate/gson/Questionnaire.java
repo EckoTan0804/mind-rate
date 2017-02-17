@@ -49,6 +49,10 @@ public class Questionnaire implements Parcelable, Observer {
     private Date submitTime;
     private int duration; // day
 
+
+
+    private boolean  showByDefault;
+
     private ArrayList<Question> questionList = new ArrayList<>();
 
     private TriggerEvent triggerEvent;
@@ -239,6 +243,14 @@ public class Questionnaire implements Parcelable, Observer {
 
     public void setAnswered(boolean answered) {
         isAnswered = answered;
+    }
+
+    public boolean isShowByDefault() {
+        return showByDefault;
+    }
+
+    public void setShowByDefault(boolean showByDefault) {
+        this.showByDefault = showByDefault;
     }
 
     // ===================== Parcelable ==========================================================
@@ -545,8 +557,7 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
     @Override
-    public void writeToParcel(Parcel dest,
-            int flags) {
+    public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
         dest.writeString(this.questionnaireID);
@@ -554,9 +565,9 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
+        dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
         dest.writeTypedList(this.questionList);
-        dest.writeParcelable(this.triggerEvent,
-                             flags);
+        dest.writeParcelable(this.triggerEvent, flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
@@ -564,13 +575,14 @@ public class Questionnaire implements Parcelable, Observer {
         this.isValid = in.readByte() != 0;
         this.studyID = in.readString();
         this.questionnaireID = in.readString();
-        long tmpBeginTime = in.readLong();
-        this.triggerTime = tmpBeginTime == -1 ? null : new Date(tmpBeginTime);
+        long tmpTriggerTime = in.readLong();
+        this.triggerTime = tmpTriggerTime == -1 ? null : new Date(tmpTriggerTime);
         long tmpEndTime = in.readLong();
         this.endTime = tmpEndTime == -1 ? null : new Date(tmpEndTime);
         long tmpSubmitTime = in.readLong();
         this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
         this.duration = in.readInt();
+        this.showByDefault = in.readByte() != 0;
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
         this.isAnswered = in.readByte() != 0;
