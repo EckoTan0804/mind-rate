@@ -57,13 +57,11 @@ public class OverviewActivity extends BaseActivity {
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
-<<<<<<< HEAD
-    private List<Questionnaire> allQuestionnaireList;
-    private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
-=======
+    //private List<Questionnaire> allQuestionnaireList;
+    //private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
+
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
->>>>>>> d9a28ebbe7d9262f3623ac7c372b4221abe679a9
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;
@@ -121,6 +119,7 @@ public class OverviewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+
         initFromIntent();
         initView();
         //        FontUtil.changeFonts(mDrawerLayout, this);
@@ -131,7 +130,9 @@ public class OverviewActivity extends BaseActivity {
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
-
+        if(this.allQuestionnaireList==null){
+            allQuestionnaireList = new ArrayList<>();
+        }
         initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
@@ -607,7 +608,7 @@ public class OverviewActivity extends BaseActivity {
         Date date = TimeUtil.getCurrentTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(TimeUtil.getCurrentTime());
-        calendar.add(Calendar.MINUTE,1);
+        calendar.add(Calendar.SECOND,5);
         triggerEvent1.setDateTime(calendar.getTime());
 //        questionnaireA.setTriggerEvent(triggerEvent1);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
