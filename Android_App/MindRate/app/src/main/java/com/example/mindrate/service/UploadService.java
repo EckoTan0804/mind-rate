@@ -13,8 +13,9 @@ public class UploadService extends IntentService {
 
     private static boolean isBound;
     private final String SERVER = "129.13.170.45";
-    public UploadService(String name) {
-        super(name);
+
+    public UploadService() {
+        super("uploadService");
     }
 
     @Override

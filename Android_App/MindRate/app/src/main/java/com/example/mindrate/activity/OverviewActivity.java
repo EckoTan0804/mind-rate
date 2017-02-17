@@ -61,7 +61,7 @@ public class OverviewActivity extends BaseActivity {
     private static OverviewActivity instance = null;
 
     private Proband proband;
-    private List<Questionnaire> allQuestionnaireList; // all questionnaires
+    private List<Questionnaire> allQuestionnaireList = new ArrayList<>(); // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
@@ -504,8 +504,6 @@ public class OverviewActivity extends BaseActivity {
         //            allQuestionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
         //        }
 
-        allQuestionnaireList = new ArrayList<>();
-
         Questionnaire questionnaireA = new Questionnaire("A",
                                                          2);
         // q1
@@ -585,7 +583,7 @@ public class OverviewActivity extends BaseActivity {
         questionnaireA.setTriggerEvent(triggerEvent1);
         questionnaireA.setValid(true);
 
-        List<Questionnaire> testquestionnaireList = new ArrayList<>();
+//        List<Questionnaire> testquestionnaireList = new ArrayList<>();
 //        testquestionnaireList.add(questionnaireA);
         //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
