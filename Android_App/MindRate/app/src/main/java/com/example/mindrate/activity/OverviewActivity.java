@@ -61,7 +61,7 @@ public class OverviewActivity extends BaseActivity {
     private static OverviewActivity instance = null;
 
     private Proband proband;
-    private List<Questionnaire> allQuestionnaireList = new ArrayList<>(); // all questionnaires
+    private List<Questionnaire> allQuestionnaireList ; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
@@ -128,7 +128,9 @@ public class OverviewActivity extends BaseActivity {
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
-
+        if (this.allQuestionnaireList == null) {
+            this.allQuestionnaireList = new ArrayList<>();
+        }
         initTestData();
         //triggerEventManager = new TriggerEventManager(this.questionnaireList);
         Log.i(TAG, "TEM created in Activity");

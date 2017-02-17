@@ -15,7 +15,8 @@ import java.util.Date;
 
 public class TimeUtil {
 
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy.mm.dd, HH:mm:ss ");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy.MM" +
+                                                                          ".dd, HH:mm:ss ");
 
     public static Date getCurrentTime() {
         return new Date(System.currentTimeMillis());
