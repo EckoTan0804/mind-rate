@@ -58,17 +58,8 @@ public class OverviewActivity extends BaseActivity {
 
     private Proband proband;
 
-
-    //private List<Questionnaire> allQuestionnaireList;
-    //private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
-
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList;
-
-
-    //private List<Questionnaire> allQuestionnaireList ; // all questionnaires
-    //private List<Questionnaire> triggeredQuestionnaireList;
-
 
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
@@ -82,12 +73,18 @@ public class OverviewActivity extends BaseActivity {
     private Button btn_nav;
     private NavigationView navView;
     private TextView tv_title;
-
+    //private SensorManager sensorManager;
+    //private List<Sensor> allSensors;
     private TriggerEventManager triggerEventManager;
     private RelativeLayout title;
 
     // =======================================================================
-
+    //    WelcomeFragment welcomeFragment = new WelcomeFragment();
+    //    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
+    //    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new
+    // ChooseQuestionnaireFragment();
+    //    AboutUsFragment aboutUsFragment = new AboutUsFragment();
+    //    SettingFragment settingFragment = new SettingFragment();
 
     WelcomeFragment welcomeFragment = new WelcomeFragment();
     ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
@@ -98,35 +95,31 @@ public class OverviewActivity extends BaseActivity {
 
     // =======================================================================
 
+   /* private DeviceSensorService.MyBinder myBinder;
+    private ServiceConnection connection = new ServiceConnection(){
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+        @Override
+        public void onServiceConnected(ComponentName name,  IBinder service) {
+            Log.d(TAG,"bindStart");
+            myBinder = (DeviceSensorService.MyBinder)service;
+            //Log.d(TAG,"setTEM");
+            myBinder.setTriggerEventManager(triggerEventManager);
+            //Log.d(TAG,"tranTEM");
+            myBinder.transferTriggerEventManager();
+        }
+    };*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-
         initFromIntent();
         initView();
-
-
-        if (this.allQuestionnaireList == null) {
-            allQuestionnaireList = new ArrayList<>();
-
-            if (this.allQuestionnaireList == null) {
-                this.allQuestionnaireList = new ArrayList<>();
-            }
-            if (this.triggeredQuestionnaireList == null) {
-                Log.i(TAG,"triggerList new create");
-                this.triggeredQuestionnaireList = new ArrayList<>();
-            }
-
-            initTestData();
-            addTriggeredByTimeQuestionnaire();
-            addTriggeredByDatetimeQuestionnaire();
-
-            Log.i(TAG, "TEM created in Activity");
-            instance = this;
-
 
         if (this.allQuestionnaireList == null) {
             this.allQuestionnaireList = new ArrayList<>();
@@ -143,7 +136,6 @@ public class OverviewActivity extends BaseActivity {
         instance = this;
 
 
-        }
     }
 
     @Override
@@ -207,7 +199,15 @@ public class OverviewActivity extends BaseActivity {
             this.proband = JsonUtil.fromJsonToProband(probandJSON);
         }
 
-
+        // pendingIntent from Notification
+//        String fromIntent = intent.getStringExtra("notityToAnswer");
+//        if (!TextUtils.isEmpty(fromIntent)) {
+//            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+//                isFirstLoad = false;
+//                replaceFragment(chooseQuestionnaireFragment);
+//            }
+//
+//        }
 
     }
 
@@ -293,6 +293,30 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
+    //    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String
+    // questionnaireID) {
+    //        Questionnaire removeQuestionnaire = null;
+    //        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
+    //        while (iterator.hasNext()) {
+    //            Questionnaire q = iterator.next();
+    //            if (q.getQuestionnaireID().equals(questionnaireID)) {
+    //                removeQuestionnaire = q;
+    //                if (q.isAnswered()) {
+    //                    iterator.remove();
+    //                }
+    //                break;
+    //            }
+    //        }
+    //        return removeQuestionnaire;
+    //    }
+    //
+    //    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire
+    // selectedQuestionnaire) {
+    //        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
+    //        if (selectedQuestionnaire.isAnswered()) {
+    //            this.allQuestionnaireList.remove(removeIndex);
+    //        }
+    //    }
 
     private void removeSelectedQuestionByIndex() {
         this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
@@ -549,8 +573,7 @@ public class OverviewActivity extends BaseActivity {
         Date date = TimeUtil.getCurrentTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(TimeUtil.getCurrentTime());
-        calendar.add(Calendar.SECOND,10);
-
+        calendar.add(Calendar.SECOND, 10);
         triggerEvent1.setDateTime(calendar.getTime());
         //        questionnaireA.setTriggerEvent(triggerEvent1);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
