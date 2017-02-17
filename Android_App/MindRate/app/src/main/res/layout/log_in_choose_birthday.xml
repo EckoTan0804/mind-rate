@@ -33,6 +33,7 @@
         android:paddingLeft="5dp"
         android:spinnersShown="true"
         android:calendarTextColor="#fff"
+        android:theme="@style/AppTheme.Picker"
         >
     </DatePicker>
 

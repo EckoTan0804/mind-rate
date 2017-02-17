@@ -31,6 +31,7 @@
             android:enabled="true"
             android:exported="true">
         </service>
+<<<<<<< HEAD
 
         <receiver
             android:name=".gson.TriggerBroadcastReceiver"
@@ -41,6 +42,13 @@
             </intent-filter>
 
         </receiver>
+=======
+        <service
+            android:name=".service.UploadService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+>>>>>>> d9a28ebbe7d9262f3623ac7c372b4221abe679a9
     </application>
 
 </manifest>

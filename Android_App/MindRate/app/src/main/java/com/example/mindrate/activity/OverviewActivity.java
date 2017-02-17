@@ -57,8 +57,13 @@ public class OverviewActivity extends BaseActivity {
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
+<<<<<<< HEAD
     private List<Questionnaire> allQuestionnaireList;
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
+=======
+    private List<Questionnaire> allQuestionnaireList; // all questionnaires
+    private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
+>>>>>>> d9a28ebbe7d9262f3623ac7c372b4221abe679a9
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;

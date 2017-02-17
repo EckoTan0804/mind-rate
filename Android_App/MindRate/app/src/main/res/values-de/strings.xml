@@ -45,9 +45,12 @@
 
     <!--questionnaire-->
 
-        <!--notification-->
+    <string name="empty_list_description">Keine Fragebögen. </string>
+    <!--notification-->
     <string name="questionnair_is_triggered">Ein Fragebogen ist ausgelöst.</string>
     <string name="click_to_answer">Klicken Sie hier, um den Fragebogen zu antworten.</string>
 
-
+    <!--upload-->
+    <string name="upload_fail">Es tut uns leid. Der Hochladen ist fehlgeschlagen. Bitte stellen Sie
+        sicher, dass Ihr Internet verfügbar ist.</string>
 </resources>

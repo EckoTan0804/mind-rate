@@ -56,6 +56,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
         initTestData();
 
         listView = (ListView) view.findViewById(R.id.list_view);
+        listView.setEmptyView(view.findViewById(R.id.tv_empty_list_description));
         adapter = new QuestionnaireAdapter(getContext(), R.layout.questionnaire_item,
                                            triggeredQuestionnaireList);
         listView.setAdapter(adapter);

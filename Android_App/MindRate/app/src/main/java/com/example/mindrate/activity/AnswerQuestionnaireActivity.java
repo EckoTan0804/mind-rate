@@ -14,7 +14,9 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
+import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
 
 public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
@@ -28,6 +30,8 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     private QuestionnaireAnswer questionnaireAnswer;
 
     private Questionnaire questionnaire;
+
+//    private UploadService.UploadBinder mUploadBinder;
 
     // ==================== view components =====================
     private TextView tv_questionnaireID;
@@ -170,8 +174,24 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                                     (questionnaireAnswer);
 
                             // save answer locally
+                            PreferenceUtil.commitString("questionnaireAnswer", questionnaireAnswerJSON);
 
-                            // upload answer to server
+//                            // if service is not bind, bind service
+//                            if (!UploadService.isBound()) {
+//                                Intent bindIntent = new Intent(AnswerQuestionnaireActivity.this,
+//                                                               UploadService.class);
+//                                bindService(bindIntent, connection, BIND_AUTO_CREATE);
+//                            }
+//
+//                            // add AnswerJSON to upload list
+//                            UploadService.addToAnswerUploadList(questionnaireAnswerJSON);
+
+                            // start IntentService
+                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
+                                                              UploadService.class);
+                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
+                            startService(uploadService);
+
 
                             // back to OverviewActivity
                             Intent intent = new Intent(AnswerQuestionnaireActivity.this,
@@ -199,10 +219,22 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     }
 
     private void recordAnswer() {
-        this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion
-                                                                     .getQuestionType()
-                                                                     .getQuestionAnswer());
+        this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
+
+//    private ServiceConnection connection = new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+//            UploadService.setBound(true);
+//            mUploadBinder = (UploadService.UploadBinder) iBinder;
+//
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName componentName) {
+//            UploadService.setBound(false);
+//        }
+//    };
 
 
 }
