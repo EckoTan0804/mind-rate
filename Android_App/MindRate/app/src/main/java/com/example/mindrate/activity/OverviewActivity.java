@@ -57,18 +57,18 @@ public class OverviewActivity extends BaseActivity {
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
-<<<<<<< HEAD
+
     //private List<Questionnaire> allQuestionnaireList;
     //private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
 
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
-    private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
-=======
-
-    private List<Questionnaire> allQuestionnaireList ; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList;
 
->>>>>>> 42aa5ef38434110d19cd2c7758b2448c2f04edda
+
+    //private List<Questionnaire> allQuestionnaireList ; // all questionnaires
+    //private List<Questionnaire> triggeredQuestionnaireList;
+
+
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;
@@ -137,45 +137,48 @@ public class OverviewActivity extends BaseActivity {
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
-<<<<<<< HEAD
-        if(this.allQuestionnaireList==null){
-            allQuestionnaireList = new ArrayList<>();
-=======
+
         if (this.allQuestionnaireList == null) {
-            this.allQuestionnaireList = new ArrayList<>();
+            allQuestionnaireList = new ArrayList<>();
+
+            if (this.allQuestionnaireList == null) {
+                this.allQuestionnaireList = new ArrayList<>();
+            }
+            if (this.triggeredQuestionnaireList == null) {
+                Log.i(TAG,"triggerList new create");
+                this.triggeredQuestionnaireList = new ArrayList<>();
+            }
+
+            initTestData();
+            addTriggeredByTimeQuestionnaire();
+            addTriggeredByDatetimeQuestionnaire();
+
+            //IntentFilter filter = new IntentFilter();
+            //filter.addAction("addQuestionnaireToList");
+            //registerReceiver(receiver, filter);
+            //Log.i(TAG, "receiver register");
+            //triggerEventManager = new TriggerEventManager(this.questionnaireList);
+            Log.i(TAG, "TEM created in Activity");
+            instance = this;
+
+            //instance = this;
+            //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+            //        tEM =  new TriggerEventManager();
+            //Intent intent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+
+            //Log.i(TAG,"Service onStart_____");
+            //Intent bindServiceIntent = new Intent(OverviewActivity.this,DeviceSensorService.class);
+
+            //bindService(bindServiceIntent,connection,BIND_AUTO_CREATE);
+
+            //Log.i(TAG, "Service onBind_____");
+
+
+            //        tv_questionText.setText(Utility.createJSON(this.proband));
+
+
         }
-        if (this.triggeredQuestionnaireList == null) {
-            this.triggeredQuestionnaireList = new ArrayList<>();
->>>>>>> 42aa5ef38434110d19cd2c7758b2448c2f04edda
-        }
-        initTestData();
-        addTriggeredByTimeQuestionnaire();
-        addTriggeredByDatetimeQuestionnaire();
-
-        //IntentFilter filter = new IntentFilter();
-        //filter.addAction("addQuestionnaireToList");
-        //registerReceiver(receiver, filter);
-        //Log.i(TAG, "receiver register");
-        //triggerEventManager = new TriggerEventManager(this.questionnaireList);
-        Log.i(TAG, "TEM created in Activity");
-        instance = this;
-
-        //instance = this;
-        //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
-        //        tEM =  new TriggerEventManager();
-        //Intent intent = new Intent(OverviewActivity.this, DeviceSensorService.class);
-
-        //Log.i(TAG,"Service onStart_____");
-        //Intent bindServiceIntent = new Intent(OverviewActivity.this,DeviceSensorService.class);
-        //bindService(bindServiceIntent,connection,BIND_AUTO_CREATE);
-
-        //Log.i(TAG, "Service onBind_____");
-
-
-        //        tv_questionText.setText(Utility.createJSON(this.proband));
-
-
     }
 
     @Override
@@ -624,7 +627,7 @@ public class OverviewActivity extends BaseActivity {
         Date date = TimeUtil.getCurrentTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(TimeUtil.getCurrentTime());
-        calendar.add(Calendar.SECOND,5);
+        calendar.add(Calendar.SECOND,10);
         triggerEvent1.setDateTime(calendar.getTime());
 //        questionnaireA.setTriggerEvent(triggerEvent1);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
