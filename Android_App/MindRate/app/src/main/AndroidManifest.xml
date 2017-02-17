@@ -31,6 +31,16 @@
             android:enabled="true"
             android:exported="true">
         </service>
+
+        <receiver
+            android:name=".gson.TriggerBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="20">
+                <action android:name="addQuestionnaireToList" />
+            </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>

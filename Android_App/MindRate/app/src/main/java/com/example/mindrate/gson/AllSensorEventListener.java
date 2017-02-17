@@ -5,12 +5,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
+import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
 import static android.hardware.Sensor.TYPE_GRAVITY;
 import static android.hardware.Sensor.TYPE_GYROSCOPE;
 import static android.hardware.Sensor.TYPE_LIGHT;
 import static android.hardware.Sensor.TYPE_LINEAR_ACCELERATION;
 import static android.hardware.Sensor.TYPE_MAGNETIC_FIELD;
-import static android.hardware.Sensor.TYPE_ORIENTATION;
 import static android.hardware.Sensor.TYPE_PRESSURE;
 import static android.hardware.Sensor.TYPE_PROXIMITY;
 import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
@@ -118,7 +118,10 @@ public class AllSensorEventListener implements SensorEventListener{
                 this.triggerEventManager.setDataOfSensor(6,this.dataOfSensor);
                 //
                 break;
-            case TYPE_ORIENTATION:
+            case TYPE_AMBIENT_TEMPERATURE:
+                float temperature = event.values[0];
+                this.dataOfSensor[0]=temperature;
+                this.triggerEventManager.setDataOfSensor(1,this.dataOfSensor);
                 //
                 break;
             case TYPE_PRESSURE:
@@ -152,10 +155,9 @@ public class AllSensorEventListener implements SensorEventListener{
                 //
                 break;
             default:
-            //TYPE_AMBIENT_TEMPERATURE
-                float temperature = event.values[0];
-                this.dataOfSensor[0]=temperature;
-                this.triggerEventManager.setDataOfSensor(1,this.dataOfSensor);
+                //TYPE_ORIENTATION:
+
+
                 //
                 break;
 

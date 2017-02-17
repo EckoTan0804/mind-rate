@@ -13,12 +13,17 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.mindrate.R;
-import com.example.mindrate.activity.AnswerQuestionnaireActivity;
+import com.example.mindrate.activity.OverviewActivity;
+import com.example.mindrate.util.TimeUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
 
 /**
  * Project: MindRate
@@ -34,38 +39,37 @@ public class Questionnaire implements Parcelable, Observer {
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
-
     private boolean isValid;
 
     private String studyID;
     private String questionnaireID;
 
-    private String beginTime;
-    private String endTime;
-    private String submitTime;
-    private int duration;
+    private Date triggerTime;
+    private Date endTime;
+    private Date submitTime;
+    private int duration; // day
 
-    private ArrayList<Question> questionList;
+
+
+    private boolean  showByDefault;
+
+    private ArrayList<Question> questionList = new ArrayList<>();
 
     private TriggerEvent triggerEvent;
 
     private boolean isAnswered;
 
 
-    public Questionnaire(String questionnaireID, String beginTime, String endTime) {
+    public Questionnaire(String questionnaireID) {
         this.questionnaireID = questionnaireID;
-        this.beginTime = beginTime;
-        this.endTime = endTime;
-        questionList = new ArrayList<>();
     }
 
-    /**
-     * The answers of the questionnaire will be temporarily saved in smartphone.
-     */
-    public void saveAnswerLocally() {
-        // sharePreference
-    }
+    public Questionnaire(String questionnaireID,
+            int duration) {
+        this.questionnaireID = questionnaireID;
+        this.duration = duration;
 
+    }
 
     /**
      * Upload the answers to the server if the questionnaire is still valid
@@ -83,18 +87,27 @@ public class Questionnaire implements Parcelable, Observer {
      * Send notification when questionnaire is triggered
      */
     public void sendNotification(Context context) {
-        Intent intent = new Intent(context, AnswerQuestionnaireActivity.class);
+        Intent intent = new Intent(context,
+                                   OverviewActivity.class);
+        intent.putExtra("notityToAnswer", "chooseQuestionnaireFragment");
         intent.putExtra("questionnaire", this);
-        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
-        NotificationManager manager = (NotificationManager) context.getSystemService(Context
-                .NOTIFICATION_SERVICE);
-        Notification notification = new NotificationCompat.Builder(context).setContentTitle("You " +
-                "hava a new questionnaire").setContentText("Questionnaire " + this
-                .questionnaireID + " is waiting for your answer").setWhen(System
-                .currentTimeMillis()).setSmallIcon(R.mipmap.ic_thumb_up).setLargeIcon
-                (BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_thumb_up))
-                .setContentIntent(pi).build();
-        manager.notify(1, notification);
+        PendingIntent pi = PendingIntent.getActivity(context,
+                                                     0,
+                                                     intent,
+                                                     FLAG_UPDATE_CURRENT);
+        NotificationManager manager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = new NotificationCompat.Builder(context)
+                .setContentTitle(context.getString(R.string.questionnair_is_triggered))
+                .setContentText(context.getString(R.string.click_to_answer))
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.mipmap.ic_mr)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
+                                                           R.mipmap.ic_mr))
+                .setVisibility(VISIBILITY_PRIVATE)
+                .setContentIntent(pi).setAutoCancel(true)
+                .build();
+        manager.notify(0, notification);
 
     }
 
@@ -105,7 +118,8 @@ public class Questionnaire implements Parcelable, Observer {
     public Question getQuestion(String questionID) {
         Question targetQuestion = null;
         for (Question q : questionList) {
-            if (q.getQuestionID().equals(questionID)) {
+            if (q.getQuestionID()
+                 .equals(questionID)) {
                 targetQuestion = q;
             }
         }
@@ -113,7 +127,8 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
     public boolean isLastQuestion(String questionID) {
-        if (questionID.equals(this.questionList.get(this.questionList.size() - 1).getQuestionID()
+        if (questionID.equals(this.questionList.get(this.questionList.size() - 1)
+                                               .getQuestionID()
         )) {
             return true;
         }
@@ -124,7 +139,8 @@ public class Questionnaire implements Parcelable, Observer {
         String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
         if (!isLastQuestion(currentQuestion)) {
-            nextQuestionID = this.questionList.get(currentQuestionIndex + 1).getQuestionID();
+            nextQuestionID = this.questionList.get(currentQuestionIndex + 1)
+                                              .getQuestionID();
         }
         return nextQuestionID;
     }
@@ -134,6 +150,17 @@ public class Questionnaire implements Parcelable, Observer {
             return true;
         }
         return false;
+    }
+
+
+    public void trigger(Context context) {
+        // 1. mark down triggerTime
+        this.triggerTime = TimeUtil.getCurrentTime();
+        // 2. calculate EndTime
+        this.endTime = TimeUtil.calculateTime(triggerTime,
+                                              duration);
+        // 3. send notification
+        this.sendNotification(context);
     }
 
     // ================ setters and getters ==================================
@@ -154,19 +181,19 @@ public class Questionnaire implements Parcelable, Observer {
         isValid = valid;
     }
 
-    public String getBeginTime() {
-        return beginTime;
+    public Date getTriggerTime() {
+        return triggerTime;
     }
 
-    public void setBeginTime(String beginTime) {
-        this.beginTime = beginTime;
+    public void setTriggerTime(Date triggerTime) {
+        this.triggerTime = triggerTime;
     }
 
-    public String getSubmitTime() {
+    public Date getSubmitTime() {
         return submitTime;
     }
 
-    public void setSubmitTime(String submitTime) {
+    public void setSubmitTime(Date submitTime) {
         this.submitTime = submitTime;
     }
 
@@ -194,11 +221,11 @@ public class Questionnaire implements Parcelable, Observer {
         this.triggerEvent = triggerEvent;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -216,6 +243,14 @@ public class Questionnaire implements Parcelable, Observer {
 
     public void setAnswered(boolean answered) {
         isAnswered = answered;
+    }
+
+    public boolean isShowByDefault() {
+        return showByDefault;
+    }
+
+    public void setShowByDefault(boolean showByDefault) {
+        this.showByDefault = showByDefault;
     }
 
     // ===================== Parcelable ==========================================================
@@ -526,10 +561,11 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
         dest.writeString(this.questionnaireID);
-        dest.writeString(this.beginTime);
-        dest.writeString(this.endTime);
-        dest.writeString(this.submitTime);
+        dest.writeLong(this.triggerTime != null ? this.triggerTime.getTime() : -1);
+        dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
+        dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
+        dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
@@ -539,10 +575,14 @@ public class Questionnaire implements Parcelable, Observer {
         this.isValid = in.readByte() != 0;
         this.studyID = in.readString();
         this.questionnaireID = in.readString();
-        this.beginTime = in.readString();
-        this.endTime = in.readString();
-        this.submitTime = in.readString();
+        long tmpTriggerTime = in.readLong();
+        this.triggerTime = tmpTriggerTime == -1 ? null : new Date(tmpTriggerTime);
+        long tmpEndTime = in.readLong();
+        this.endTime = tmpEndTime == -1 ? null : new Date(tmpEndTime);
+        long tmpSubmitTime = in.readLong();
+        this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
         this.duration = in.readInt();
+        this.showByDefault = in.readByte() != 0;
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
         this.isAnswered = in.readByte() != 0;

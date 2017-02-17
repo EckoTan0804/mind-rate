@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.example.mindrate.R;
+import com.example.mindrate.util.FontUtil;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -37,7 +40,10 @@ public class TextAnswer extends QuestionType implements Parcelable {
         EditText mEditText = new EditText(context);
         mEditText.setTextSize(15);
         mEditText.setTextColor(Color.BLACK);
-        mEditText.setHint("Please input your answer");
+        mEditText.setPadding(5, 0, 15, 0);
+        mEditText.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_write, 0, 0, 0);
+        mEditText.setCompoundDrawablePadding(15);
+//        mEditText.setHint("Please input your answer");
         mEditText.setGravity(Gravity.TOP);
 
         mEditText.addTextChangedListener(new TextWatcher() {
@@ -58,6 +64,8 @@ public class TextAnswer extends QuestionType implements Parcelable {
         });
 
         layout.addView(mEditText, params);
+
+        FontUtil.changeFonts(layout, context);
     }
 
     @Override

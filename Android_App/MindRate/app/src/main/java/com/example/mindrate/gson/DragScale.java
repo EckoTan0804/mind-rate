@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.mindrate.util.FontUtil;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -65,6 +67,8 @@ public class DragScale extends QuestionType implements Parcelable {
 
             }
         });
+
+        FontUtil.changeFonts(layout, context);
 
     }
 

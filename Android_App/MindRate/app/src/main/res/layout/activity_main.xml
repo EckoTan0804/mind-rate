@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/windowBackgroundColor"
     android:orientation="vertical"
     tools:context="com.example.mindrate.activity.MainActivity">
 
@@ -18,7 +18,7 @@
             android:id="@+id/app_icon_image"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:src="@mipmap/ic_mr"
+            android:src="@mipmap/ic_mr_white_large"
             android:layout_centerInParent="true">
         </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -33,7 +33,7 @@
         <Button
             android:id="@+id/choose_language"
             android:layout_width="wrap_content"
-            android:background="@drawable/button_style_2"
+            android:background="@drawable/rounded_btn_transparent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -45,6 +45,8 @@
             android:textAllCaps="false"
             android:visibility="invisible"
             android:layout_marginBottom="80dp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/textColorPrimary"
             >
         </Button>
 

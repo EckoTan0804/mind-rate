@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.example.mindrate.activity.AnswerQuestionnaireActivity">
 
-    <include layout="@layout/answer_questionnaire_title"/>
+    <include layout="@layout/title_answer_questionnaire"/>
 
 
     <TextView
@@ -23,7 +23,7 @@
         android:padding="25dp"
         android:textColor="#fff"
         android:textSize="20sp"
-        android:typeface="monospace"
+        android:textAppearance="@style/TextAppearance.FontPath"
         >
     </TextView>
 

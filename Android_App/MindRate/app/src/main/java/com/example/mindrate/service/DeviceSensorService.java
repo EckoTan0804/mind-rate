@@ -62,8 +62,11 @@ public class DeviceSensorService extends Service {
         this.triggerEventManager = TriggerEventManager.getTriggerEventManager();
         this.setUsedSensor();
         this.setUsedSensorList();
+
+        // usedSensorList is not initialized
+        // TODO: should initialize it using allQuestionnaireList from OverviewActivity
         for(Sensor sensor:usedSensorList){
-            this.addSensorEventListener(sensor);
+          this.addSensorEventListener(sensor);
         }
 
     }

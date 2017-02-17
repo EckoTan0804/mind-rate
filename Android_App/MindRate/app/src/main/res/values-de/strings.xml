@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="hello">Hallo</string>
+    <string name="ok">OK</string>
+    <string name="cancel">ABBRECHEN</string>
+
     <!--MainActivity-->
     <string name="choose_language">Sprache auswählen</string>
 
     <!--LogInActivity-->
-    <string name="log_in_study_id">Study ID:</string>
+    <string name="log_in_study_id">STUDIE ID</string>
     <string name="log_in_study_id_hint">Bitte geben Sie dein Studie-ID ein.</string>
-    <string name="log_in_proband_id">Proband ID:</string>
+    <string name="log_in_proband_id">PROBAND ID</string>
     <string name="log_in_proband_id_hint">Bitte geben Sie dein Proband-ID ein.</string>
-    <string name="log_in_birthday">Geburtstag:</string>
-    <string name="log_in_gender">Geschlecht:</string>
-    <string name="log_in_gender_male">männlich</string>
-    <string name="log_in_gender_female">weiblich</string>
-    <string name="log_in_occupation">Beruf:</string>
+    <string name="log_in_birthday">GEBURTSTAG</string>
+    <string name="log_in_gender">GESCHLECHT</string>
+    <string name="log_in_gender_male">MÄNNLICH</string>
+    <string name="log_in_gender_female">WEIBLICH</string>
+    <string name="log_in_occupation">BERUF</string>
     <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
-    <string name="log_in_button_log_in">einloggen</string>
+    <string name="log_in_button_log_in">EINLOGGEN</string>
 
     <!--OverviewActivity-->
     <string name="nav_profile">Profil</string>
@@ -38,6 +42,12 @@
     <string name="submit_or_not">Möchten Sie Ihre Antwort abgeben?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+
+    <!--questionnaire-->
+
+        <!--notification-->
+    <string name="questionnair_is_triggered">Ein Fragebogen ist ausgelöst.</string>
+    <string name="click_to_answer">Klicken Sie hier, um den Fragebogen zu antworten.</string>
 
 
 </resources>

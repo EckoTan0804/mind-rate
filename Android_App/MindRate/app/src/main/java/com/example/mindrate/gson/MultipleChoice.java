@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import com.example.mindrate.util.FontUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +47,8 @@ public class MultipleChoice extends QuestionType implements CompoundButton
             checkBox.setOnCheckedChangeListener(this);
             layout.addView(checkBox);
         }
+
+        FontUtil.changeFonts(layout, context);
     }
 
     public List<Option> getOptionList() {

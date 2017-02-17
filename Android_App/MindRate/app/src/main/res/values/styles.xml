@@ -1,12 +1,60 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/windowBackgroundColor</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <!--<item name="android:windowBackground">@color/windowBackgroundColor</item>-->
+        <item name="preferenceTheme">@style/PrefsTheme</item>
+        <item name="android:dialogTheme">@style/DialogStyle</item>
+        <item name="android:alertDialogTheme">@style/DialogStyle</item>
+        <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
     </style>
+
+
+    <!--font-->
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/Nunito-Regular.ttf</item>
+    </style>
+
+
+    <!--preference-->
+    <style name="PrefsTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:listViewStyle">@style/listViewPrefs</item>
+        <item name="android:background">@color/windowBackgroundColor</item>
+        <item name="android:divider">@color/colorAccent</item>
+        <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
+        <item name="android:summaryOn"></item>
+    </style>
+
+    <style name="listViewPrefs" parent="@android:style/Widget.ListView">
+        <item name="android:background">@color/windowBackgroundColor</item>
+    </style>
+
+    <!--dialog-->
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--android:colorAccent will affect your text colors of negative or positive buttons.-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--android:textColor will affect your title text color of dialog.-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <!--android:textColor will affect your title text color of dialog.-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!--change the text color of list items-->
+        <item name="textColorAlertDialogListItem">@color/textColorPrimary</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <!--navigationDrawer-->
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
+    </style>
+
 
 </resources>

@@ -9,6 +9,7 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.example.mindrate.R;
 import com.example.mindrate.activity.OverviewActivity;
+import com.example.mindrate.util.PreferenceUtil;
 
 
 public class SettingFragment extends PreferenceFragmentCompat implements SharedPreferences
@@ -21,7 +22,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     public static final String DEUTSCH = "Deutsch";
 
     SharedPreferences sharedPreferences;
-    private ListPreference language_pref;
+    private ListPreference listP_language;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,19 +38,34 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
 
     private void initPref() {
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        OverviewActivity overviewActivity = (OverviewActivity)getActivity();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(overviewActivity);
 
-        language_pref = (ListPreference) findPreference(KEY_PREF_Language);
-        setSummary(sharedPreferences.getString(KEY_PREF_Language, "en"));
+        // init language pref using the already chosen language
+        listP_language = (ListPreference) findPreference(KEY_PREF_Language);
+        String chosenLanguage = PreferenceUtil.getString("language", "");
+        int index = 0;
+        switch(chosenLanguage){
+            case PREF_ENGLISH:
+                break;
+            case PREF_DEUTSCH:
+                index = 1;
+                break;
+            default:
+
+                break;
+        }
+        listP_language.setValueIndex(index);
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
+
             case KEY_PREF_Language:
 
-                // get language which is already set and stored in sharedPreference
-                String language = sharedPreferences.getString(key, "en");
+                // get language which is just chosen and stored in sharedPreference
+                String language = sharedPreferences.getString(key, "");
 
                 // change language
                 OverviewActivity overviwActivity = (OverviewActivity) getActivity();
@@ -66,10 +82,10 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
     private void setSummary(String prefLanguage) {
         switch(prefLanguage){
             case PREF_ENGLISH:
-                language_pref.setSummary(ENGLISH);
+                listP_language.setSummary(ENGLISH);
                 break;
             case PREF_DEUTSCH:
-                language_pref.setSummary(DEUTSCH);
+                listP_language.setSummary(DEUTSCH);
                 break;
             default:
 

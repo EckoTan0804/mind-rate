@@ -35,5 +35,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
 //    compile 'com.android.support:preference-v7:25.1.0'
     compile 'com.android.support:preference-v14:25.1.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    
     testCompile 'junit:junit:4.12'
 }

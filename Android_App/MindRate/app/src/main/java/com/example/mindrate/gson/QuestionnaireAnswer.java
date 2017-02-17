@@ -2,6 +2,7 @@ package com.example.mindrate.gson;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Project: MindRate
@@ -16,6 +17,8 @@ public class QuestionnaireAnswer  {
 
     private String questionnaireID;
     private ArrayList<QuestionAnswer> questionAnswerList;
+    private Date submitTime;
+    private String submitTimeString;
 
     public QuestionnaireAnswer(String questionnaireID) {
         this.questionnaireID = questionnaireID;
@@ -40,5 +43,21 @@ public class QuestionnaireAnswer  {
 
     public void addQuestionAnswer(QuestionAnswer questionAnswer) {
         this.questionAnswerList.add(questionAnswer);
+    }
+
+    public Date getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Date submitTime) {
+        this.submitTime = submitTime;
+    }
+
+    public String getSubmitTimeString() {
+        return submitTimeString;
+    }
+
+    public void setSubmitTimeString(String submitTimeString) {
+        this.submitTimeString = submitTimeString;
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.example.mindrate.R;
@@ -21,6 +22,9 @@ public class LogInActivity extends BaseActivity {
 
 
     public static final String SERVER_ADDRESS = "129.13.170.45";
+
+    private static int logInPage = 1;
+    private static int LOG_IN_LAST_PAGE = 2;
 
     // =================== proband ==========================
     private String studyID;
@@ -51,6 +55,23 @@ public class LogInActivity extends BaseActivity {
     }
 
     private void initView() {
+
+        final LinearLayout ll_firstShowUp = (LinearLayout) findViewById(R.id.log_in_first_show_up);
+        final LinearLayout ll_secondShowUp = (LinearLayout) findViewById(R.id.log_in_second_show_up);
+
+        // ==================== nextPage_btn ===========================
+        final Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
+        btn_newPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logInPage++;
+                if (logInPage == LOG_IN_LAST_PAGE) {
+                    ll_firstShowUp.setVisibility(View.GONE);
+                    ll_secondShowUp.setVisibility(View.VISIBLE);
+                    btn_newPage.setVisibility(View.GONE);
+                }
+            }
+        });
 
 
         // ==================== study ID ===============================
@@ -173,9 +194,9 @@ public class LogInActivity extends BaseActivity {
 
                 // 6. TODO: use this intent to start AnswerQuestionActivity
                 startActivity(intent);
+//                onDestroy();
 
-
-
+                // TODO: optimization!
 
             }
         });

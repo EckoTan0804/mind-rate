@@ -14,6 +14,8 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.util.JsonUtil;
+import com.example.mindrate.util.TimeUtil;
 
 public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
 
@@ -159,20 +161,23 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
-                            // 0. submit answer
+                            // mark down the submit time
+                            questionnaireAnswer.setSubmitTimeString(
+                                    TimeUtil.parseDate(TimeUtil.getCurrentTime()));
 
-                            // 1. save answer locally
+                            // create Json
+                            String questionnaireAnswerJSON = JsonUtil.createJSON
+                                    (questionnaireAnswer);
 
-                            // 2. upload answer to server
+                            // save answer locally
 
-                            // 3. set this questionnaire as isAnswered
-                            questionnaire.setAnswered(true);
+                            // upload answer to server
 
-                            // 4. back to OverviewActivity
+                            // back to OverviewActivity
                             Intent intent = new Intent(AnswerQuestionnaireActivity.this,
                                                        OverviewActivity.class);
-                            intent.putExtra("answered questionnaire ID", questionnaire
-                                    .getQuestionnaireID());
+                            //                            intent.putExtra("answered questionnaire
+                            // ID", questionnaire.getQuestionnaireID());
                             setResult(RESULT_OK, intent);
                             finish();
                         }
