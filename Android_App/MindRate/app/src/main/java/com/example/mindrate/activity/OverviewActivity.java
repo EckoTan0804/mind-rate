@@ -57,11 +57,18 @@ public class OverviewActivity extends BaseActivity {
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
+<<<<<<< HEAD
     //private List<Questionnaire> allQuestionnaireList;
     //private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();//by sensor?
 
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList = new ArrayList<>();
+=======
+
+    private List<Questionnaire> allQuestionnaireList ; // all questionnaires
+    private List<Questionnaire> triggeredQuestionnaireList;
+
+>>>>>>> 42aa5ef38434110d19cd2c7758b2448c2f04edda
     private Questionnaire selectedQuestionnaire;
     private int selectedQuestionnaireIndex;
     private boolean isFirstLoad = true;
@@ -130,8 +137,16 @@ public class OverviewActivity extends BaseActivity {
         //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //allSensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
         //        tEM =  new TriggerEventManager();
+<<<<<<< HEAD
         if(this.allQuestionnaireList==null){
             allQuestionnaireList = new ArrayList<>();
+=======
+        if (this.allQuestionnaireList == null) {
+            this.allQuestionnaireList = new ArrayList<>();
+        }
+        if (this.triggeredQuestionnaireList == null) {
+            this.triggeredQuestionnaireList = new ArrayList<>();
+>>>>>>> 42aa5ef38434110d19cd2c7758b2448c2f04edda
         }
         initTestData();
         addTriggeredByTimeQuestionnaire();
@@ -541,6 +556,7 @@ public class OverviewActivity extends BaseActivity {
         //            allQuestionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
         //        }
 
+
        // allQuestionnaireList = new ArrayList<>();
 
         Questionnaire questionnaireA = new Questionnaire("A",
@@ -628,7 +644,7 @@ public class OverviewActivity extends BaseActivity {
         //addQuestionnaireToTriggeredQuestionnaireList(questionnaireA);
 
 
-        List<Questionnaire> testquestionnaireList = new ArrayList<>();
+//        List<Questionnaire> testquestionnaireList = new ArrayList<>();
 //        testquestionnaireList.add(questionnaireA);
         //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
         //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
