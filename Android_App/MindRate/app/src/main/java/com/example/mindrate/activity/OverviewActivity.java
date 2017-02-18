@@ -86,11 +86,11 @@ public class OverviewActivity extends BaseActivity {
     //    AboutUsFragment aboutUsFragment = new AboutUsFragment();
     //    SettingFragment settingFragment = new SettingFragment();
 
-    WelcomeFragment welcomeFragment = new WelcomeFragment();
-    ProbandProfileFragment probandProfileFragment = new ProbandProfileFragment();
-    ChooseQuestionnaireFragment chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-    AboutUsFragment aboutUsFragment = new AboutUsFragment();
-    SettingFragment settingFragment = new SettingFragment();
+    WelcomeFragment welcomeFragment;
+    ProbandProfileFragment probandProfileFragment;
+    ChooseQuestionnaireFragment chooseQuestionnaireFragment;
+    AboutUsFragment aboutUsFragment;
+    SettingFragment settingFragment;
 
 
     // =======================================================================
@@ -117,7 +117,7 @@ public class OverviewActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
-
+        initFragment();
         initFromIntent();
         initView();
 
@@ -138,16 +138,21 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    private void initFragment() {
+        welcomeFragment = new WelcomeFragment();
+         probandProfileFragment = new ProbandProfileFragment();
+         chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+         aboutUsFragment = new AboutUsFragment();
+         settingFragment = new SettingFragment();
+    }
+
     @Override
     protected void onResume() {
         Log.d(TAG, "onResume: ");
         super.onResume();
         triggerEventManager = TriggerEventManager.getTriggerEventManager();
         triggerEventManager.setOverviewActivity(instance);
-        Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
-        //===========stop service===============
 
-        startService(startServiceIntent);
         //=============================
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setEveryTriggeredDateQuestionnaireAlarm(alarmManager);
@@ -161,6 +166,10 @@ public class OverviewActivity extends BaseActivity {
             }
 
         }
+        Intent startServiceIntent = new Intent(OverviewActivity.this, DeviceSensorService.class);
+        //===========stop service===============
+
+        startService(startServiceIntent);
     }
 
     @Override
@@ -342,10 +351,13 @@ public class OverviewActivity extends BaseActivity {
 
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
         questionnaire.trigger(OverviewActivity.this);
+
         if (!this.triggeredQuestionnaireList.isEmpty()) {
+
             this.triggeredQuestionnaireList.add(questionnaire);
-            chooseQuestionnaireFragment.getAdapter()
-                    .notifyDataSetChanged();
+            if (chooseQuestionnaireFragment.getAdapter() != null) {
+                chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
+            }
         } else {
             this.triggeredQuestionnaireList.add(questionnaire);
         }
@@ -567,14 +579,17 @@ public class OverviewActivity extends BaseActivity {
                                    "Q5");
         questionnaireA.addQuestion(q5);
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
-        //triggerEvent1.setLight(true);
+        triggerEvent1.setLight(true);
+        triggerEvent1.setLightMinValue(1000);
+        triggerEvent1.setLightMaxValue(2000);
+        triggerEvent1.setMinTimeSpace(20);
         //triggerEvent1.setAirTemperature(true);
         //triggerEvent1.setTime("10-55-10");
-        Date date = TimeUtil.getCurrentTime();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(TimeUtil.getCurrentTime());
-        calendar.add(Calendar.SECOND, 10);
-        triggerEvent1.setDateTime(calendar.getTime());
+        //Date date = TimeUtil.getCurrentTime();
+       // Calendar calendar = Calendar.getInstance();
+        //calendar.setTime(TimeUtil.getCurrentTime());
+        //calendar.add(Calendar.SECOND, 10);
+        //triggerEvent1.setDateTime(calendar.getTime());
         //        questionnaireA.setTriggerEvent(triggerEvent1);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
         triggerEvent1.setAmbientTemperatureMinValue(19);

@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class TriggerEvent implements Parcelable {
 
-
+    private static final String TAG = "TriggerEvent";
     //    private Date minTimeSpace;
     //    private Date time;
     //    private Date dateTime;
@@ -24,7 +24,8 @@ public class TriggerEvent implements Parcelable {
 
 
 
-    //private Date minTimeSpace;
+
+    private int minTimeSpace;
     private String time;
 
 
@@ -146,57 +147,13 @@ public class TriggerEvent implements Parcelable {
     public TriggerEvent(String  questionnaireID){
         this.questionnaireID = questionnaireID;
         this.sensorList = new boolean[12];
-        for (int i = 0; i < sensorList.length; i++) {
-            this.sensorList[i] = false;
-        }
-        //this.linearAcceleration = false;
-        //this.gravity = false;
-        //this.rotation = false;
-        //this.airTemperature = false;
-        //this.airPressure = false;
-        //this.light = false;
-        //this.relativeHumidity = false;
-        //this.orientation = false;
-        //this.magneticField = false;
-        //this.proximity = false;
-        //this.accelerometer = false;
-        //this.gyroscope = false;
+
+       // for (int i = 0; i < sensorList.length; i++) {
+           // Log.i(TAG,String.valueOf(this.sensorList[i]));
+        //}
 
     }
 
-    /*
-    public TriggerEvent(String questionnaireID, Date minTimeSpace, Date time, Date dateTime,
-                        boolean triggeredWhenCalendarEventBegins, boolean
-                                triggeredWhenCalendarEventEnds, boolean
-                                triggeredWhenFacebookNotificationComes, boolean
-                                triggeredWhenWhatsAppNotificationComes, boolean
-                                linearAcceleration, boolean gravity, boolean rotation, boolean
-                                airTemperature, boolean airPressure, boolean light, boolean
-                                relativeHumidity, boolean magneticField, boolean orientation,
-                        boolean proximity, boolean accelerometer, boolean gyroscope, boolean[]
-                                sensorList) {
-        this.questionnaireID = questionnaireID;
-        this.minTimeSpace = minTimeSpace;
-        this.time = time;
-        this.dateTime = dateTime;
-        this.triggeredWhenCalendarEventBegins = triggeredWhenCalendarEventBegins;
-        this.triggeredWhenCalendarEventEnds = triggeredWhenCalendarEventEnds;
-        this.triggeredWhenFacebookNotificationComes = triggeredWhenFacebookNotificationComes;
-        this.triggeredWhenWhatsAppNotificationComes = triggeredWhenWhatsAppNotificationComes;
-        this.linearAcceleration = linearAcceleration;
-        this.gravity = gravity;
-        this.rotation = rotation;
-        this.airTemperature = airTemperature;
-        this.airPressure = airPressure;
-        this.light = light;
-        this.relativeHumidity = relativeHumidity;
-        this.magneticField = magneticField;
-        this.orientation = orientation;
-        this.proximity = proximity;
-        this.accelerometer = accelerometer;
-        this.gyroscope = gyroscope;
-        this.sensorList = sensorList;
-    }*/
 
     public String getTime() {
         return time;
@@ -212,6 +169,14 @@ public class TriggerEvent implements Parcelable {
 
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public int getMinTimeSpace() {
+        return minTimeSpace;
+    }
+
+    public void setMinTimeSpace(int minTimeSpace) {
+        this.minTimeSpace = minTimeSpace;
     }
 
     public String getQuestionnaireID() {
@@ -822,6 +787,7 @@ public class TriggerEvent implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.questionnaireID);
+        dest.writeInt(this.minTimeSpace);
         dest.writeString(this.time);
         dest.writeLong(this.dateTime != null ? this.dateTime.getTime() : -1);
         dest.writeByte(this.triggeredWhenCalendarEventBegins ? (byte) 1 : (byte) 0);
@@ -897,6 +863,7 @@ public class TriggerEvent implements Parcelable {
 
     protected TriggerEvent(Parcel in) {
         this.questionnaireID = in.readString();
+        this.minTimeSpace = in.readInt();
         this.time = in.readString();
         long tmpDateTime = in.readLong();
         this.dateTime = tmpDateTime == -1 ? null : new Date(tmpDateTime);

@@ -44,10 +44,16 @@ public class Questionnaire implements Parcelable, Observer {
     private String studyID;
     private String questionnaireID;
 
-    private Date triggerTime;
+    private Date triggerTime; // the newest trigger time
     private Date endTime;
     private Date submitTime;
     private int duration; // day
+
+    /*public long getTriggeredBySensorTime() {
+        return triggeredBySensorTime;
+    }*/
+
+    //private long triggeredBySensorTime;
 
 
 
@@ -153,9 +159,22 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
 
+    public void shouldTrigger() {
+        if(this.triggerTime==null){
+
+        }else{
+
+        }
+        // get 实时数据 的time =
+
+        // if a - this.triggerTime >= leiter设定的时间区间对应的毫秒数
+        // then trigger()
+    }
+
     public void trigger(Context context) {
         // 1. mark down triggerTime
         this.triggerTime = TimeUtil.getCurrentTime();
+
         // 2. calculate EndTime
         this.endTime = TimeUtil.calculateTime(triggerTime,
                                               duration);
@@ -258,10 +277,24 @@ public class Questionnaire implements Parcelable, Observer {
     public void update(Observable o, Object arg) {
         TriggerEventManager triggerEventManager= (TriggerEventManager) o;
         float[][] dataOfAllSensor = triggerEventManager.getDataOfAllSensor();
+
+
         //===================写成一个方法==========================================
         if(this.compareDataOfAllSensor(dataOfAllSensor)) {
-            triggerEventManager.addShouldAnswerQuestionnaire(this);
-            //如何把questionnaire加到OverviewActivity；
+            //TimeUtil?
+            //Calendar cal = Calendar.getInstance();
+            //this.triggeredBySensorTime = cal.getTimeInMillis();
+            if(this.triggerTime==null) {
+                triggerEventManager.addShouldAnswerQuestionnaire(this);
+            }else{
+                Date lastTriggerTime = this.triggerTime;
+                Date currentTime = TimeUtil.getCurrentTime();
+                long nextTriggerTime = lastTriggerTime.getTime()+this.triggerEvent
+                        .getMinTimeSpace()*1000;
+                if(currentTime.getTime()>=nextTriggerTime){
+                    triggerEventManager.addShouldAnswerQuestionnaire(this);
+                }
+            }
 
         }
 
@@ -277,9 +310,26 @@ public class Questionnaire implements Parcelable, Observer {
         //========================================================================
         // send to Proband a Notification.
     }
+
+    //=================compare the time to miniTimeSpace===========================
+   /* public boolean isInMiniTimeSpace(Date currentTime){
+        Date now = currentTime;
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(currentTime);
+        cal1.add(Calendar.SECOND,this.triggerEvent.getMinTimeSpace());
+        long setTime = cal1.getTime().getTime();
+
+        if(now.getTime()<=setTime){
+            return true;
+        }else{
+            return false;
+        }
+    }*/
+
+    //=====================================================================
 //========================compare the date of all sensor to the trigger condition===========
     //===========return true if this questionnaire's triggered condition are reached========
-    public boolean compareDataOfAllSensor(float[][] inputDataOfAllSensor){
+    private  boolean compareDataOfAllSensor(float[][] inputDataOfAllSensor){
         //isSensorTrigger shows
         boolean isSensorTrigger = false;
         // isSensorTrigger = false||(true&&sensor1&&sensor2…) wenn all sensor are triggered,then
