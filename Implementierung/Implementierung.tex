@@ -66,6 +66,29 @@
             
 
         \section{Server}
+            \begin{itemize}
+                \item Ersetzen von \texttt{StudyDirector}-Klasse durch \texttt{django.contrib.auth.models.User}-Klasse
+                
+                \item Die Zugehörigkeit zwischen Studienleiter und Studien werden durch \texttt{owner}-Attribut der \texttt{Study}-Klasse und Objekt-Niveau-Erlaubnis von Django realisiert
+               
+                \item Ersetzen aller Datentypen der Objekt-Attributen durch entsprechende Unterklassen der \texttt{django.db.models.Field}-Klasse, um Daten in die Datenbank zu speichern
+                
+                \item \texttt{ChoiceQuestion}-Klasse wird zu \texttt{SingleChoiceQuestion}- und \texttt{MultiChoiceQuestion}-Klassen geteilt
+                
+                \item Hinzufügen von \texttt{ChoiceOption}-Klasse, um Optionen der Ein- und Mehrfachauswahlen zu modellieren
+                
+                \item Das \texttt{FollowUpQuestion}-Attribut liegt nicht mehr in \texttt{ChoiceQuestion}-Klasse, sondern in \texttt{ChoiceOption}-Klasse, um verschiedene Folgefragen per Option zu ermöglichen
+                
+                \item Hinzufügen von \texttt{ProbandInfoQuestionnaire}-Klasse: der Studienleiter kann selbst entscheiden, welche demographische Informationen aus den Probanden zu sammeln
+                
+                \item Informationen der Probanden werden in mehrere \texttt{ProbandInfoCell}-Objekte gespeichert, und danach durch \texttt{ForeignKey} zu einem \texttt{Proband}-Objekt gelinkt werden
+                
+                \item Ersetzen von \texttt{linearAcceleration}-, \texttt{gravity}-, \texttt{rotation}- und \texttt{orientation}-Attributen der \texttt{TriggerEvent}-Klasse durch das Android-User-Activity-API-basierte \texttt{user\_activity}-Attribut
+                
+                \item Die \texttt{light}-, \texttt{relative\_humidity}-, \texttt{proximity} und \texttt{air\_pressure}-Sensoroptionen nehmen keine exakte Zahl mehr, sondern einen 5-stufigen Wert zwischen “very high” und “very low”
+                
+                
+            \end{itemize}
             
        
         \newpage
