@@ -84,3 +84,5 @@ app/.gradle/
 .idea/inspectionProfiles/profiles_setting.xml
 .idea/encodings.xml
 .idea/.name
+*.bbl
+*.blg
