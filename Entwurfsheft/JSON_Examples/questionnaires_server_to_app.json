@@ -1,7 +1,7 @@
 {
     "study": {
-        "id": "101_5",
-        "name": "Study Name",
+        "studyId": "A1",
+        "studyName": "Study Name",
         "beginningDate": {
             "year": 2017,
             "month": 1,
@@ -19,64 +19,122 @@
             "second": 0
         },
         "questionnaires": [
+
+            // questionnaire 1
             {
-                "id": "101_5_10",
-                "name": "Questionnaire Name",
+                "questionnaireID": "A1_1", // format: studyID_QuestionnaireNr
+                "questionnaireName": "Questionnaire Name", // not necessary, can be removed
                 "maxShowUpTimesPerDay": 40,
                 "triggerEvent": {
                     "minTimeSpace": {"seconds": 180},
-                    "datetime": false,
+                    "datetime": false, 
                     "time": {
                         "hour": 16,
                         "minute": 0,
-                        "second": 0,
-                    }
+                        "second": 0
+                    },
                     "triggeredWhenCalendarEventBegins": false,
                     "triggeredWhenCalendarEventEnds": false,
                     "triggeredWhenFacebookNotificationComes": false,
-                    "triggeredWhenWhatsAppNotificationComes": false,
-                    "linearAcceleration": "< 10",
+                    "triggeredWhenWhatsAppNotificationComes": false, 
+
+                    // if a sensor is needed, then set it as true; else set false.                   
+                    "accelerometer": true,
+                    "ambientTemperature": false,
                     "gravity": false,
-                    "rotation": false,
-                    "airTemperature": false,
-                    "airPressure": false,
-                    "light": "> 30",
-                    "relativeHumidity": false,
-                    "orientation": false,
+                    "gyroscope": false,
+                    "light": false,
+                    "linearAcceleration": false,
                     "magneticField": false,
-                    "proximity": false
+                    "orientation": false,
+                    "pressure": false,
+                    "proximity": false,
+                    "relativeHumidity": false,
+                    "rotationVector": false,
+
+                    // value range of the needed sensors
+                    "accelerometerMinValue": 5,
+                    "accelerometerMaxValue": 10,
+                    "ambientTemperatureMinValue": 0,
+                    "ambientTemperatureMaxValue": 0,
+                    "gravityMinValue": 0,
+                    "gravityMaxValue": 0,
+                    "gyroscopeMinValue": 0,
+                    "gyroscopeMaxValue": 0,
+                    "lightMinValue": 0,
+                    "lightMaxValue": 0,
+                    "linearAccelerationMinValue": 0,
+                    "linearAccelerationMaxValue": 0,
+                    "magneticFieldMinValue": 0,
+                    "magneticFieldMaxValue": 0,
+                    "orientationMinValue": 0,
+                    "orientationMaxValue": 0,
+                    "pressureMinValue": 0,
+                    "pressureMaxValue": 0,
+                    "proximityMinValue": 0,
+                    "proximityMaxValue": 0,
+                    "relativeHumidityMinValue": 0,
+                    "relativeHumidityMaxValue": 0,
+                    "rotationVectorMinValue": 0,
+                    "rotationVectorMaxValue": 0
+
                 },
-                "answeringTime": {"hours": 5},
+                "duration": {
+                    "hour": 5,
+                    "minute": 0,
+                    "second": 0
+                },
                 "questions": [
                     {
-                        "id": "101_5_10_1",
-                        "showByDefault": true,
-                        "type": "ChoiceQuestion",
-                        "content": "Where are you now?",
-                        "options": ["At work","At home"],
-                        "followUpQuestion": 101_5_10_2,
-                        "followUpQuestionTriggerOptions": [0]
+                        "questionID": "A1_1_1", // format: studyID_QuestionnaireNr_questionNr
+                        "questionType": "SingleChoice",
+                        "questionContent": "Where are you now?",
+                        "options": [
+                            {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
+                            {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
+                            {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
+                        ]
                     },
                     {
-                        "id": "101_5_10_2",
-                        "showByDefault": false,
-                        "type": "ScaleQuestionWithSteps",
-                        "content": "How tired do you feel at work?",
-                        "hasThreeSteps": false,
-                        "hasFiveSteps": true,
-                        "hasSevenSteps": false,
-                        "stepNames": [
-                            "Not at all",
-                            "A little bit",
-                            "Medium",
-                            "Very",
-                            "Dead"
-                        ],
-                        "followUpQuestion": false,
-                        "followUpQuestionTriggerOptions": []
+                        "questionID": "A1_1_2",
+                        "questionType": "TextAnswer",
+                        "questionContent": "Where are you heading to?"
+                    },
+                    {
+                        "questionID": "A1_1_3",
+                        "questionType": "DragScale", // correspond to steplessScale 
+                        "questionContent": "How are you feeling now?",
+                        "maxValue": 10
+                    },
+                    {
+                        "questionID": "A1_1_4",
+                        "questionType": "MultipleChoice",
+                        "questionContent": "What's your hobby?",
+                        "options": [
+                            {"optionContent": "Swimming", "nextQuestionID": "" },
+                            {"optionContent": "Reading", "nextQuestionID": ""},
+                            {"optionContent": "Coding", "nextQuestionID": ""},
+                            {"optionContent": "Studying", "nextQuestionID": ""}
+                        ]
+                    },
+                    {
+                        "questionID": "A1_1_5",
+                        "questionType": "StepScale",
+                        "questionContent": "Do you like this app?",
+                        "options": [
+                            {"optionContent": "very bad", "nextQuestionID": "" },
+                            {"optionContent": "bad", "nextQuestionID": ""},
+                            {"optionContent": "so so", "nextQuestionID": ""},
+                            {"optionContent": "good", "nextQuestionID": ""},
+                            {"optionContent": "very good", "nextQuestionID": ""}
+                        ]
                     }
-                ],
-            }
+                ]
+            },
+            // questionnaire 2
+            // questionnaire 3
+            // ....
+
         ]
     }
 }

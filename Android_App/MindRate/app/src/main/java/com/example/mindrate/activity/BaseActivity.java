@@ -1,9 +1,18 @@
 package com.example.mindrate.activity;
 
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+
+import com.example.mindrate.util.PreferenceUtil;
+
+import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Project: MindRate
@@ -16,9 +25,11 @@ import android.support.v7.app.AppCompatActivity;
 public class BaseActivity extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         ActivityManager.addActivity(this);
+        PreferenceUtil.init(this);
+        switchLanguage(PreferenceUtil.getString("language", "en"));
     }
 
     @Override
@@ -41,4 +52,27 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         ActivityManager.removeActivity(this);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    public void switchLanguage(String language) {
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        if (language.equals("en")) {
+            config.locale = Locale.ENGLISH;
+        } else if (language.equals("de")) {
+            // TODO: improve because locale is deprecated
+            config.locale = Locale.GERMANY;
+        }
+        // TODO: improve because updateConfiguration is deprecated
+        resources.updateConfiguration(config, displayMetrics);
+
+        PreferenceUtil.commitString("language", language);
+    }
+
+
 }

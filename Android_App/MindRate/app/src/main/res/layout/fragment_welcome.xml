@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/colorPrimary"
+             tools:context="com.example.mindrate.fragment.WelcomeFragment">
+
+
+    <ImageView
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#9000"
+        android:scaleType="centerCrop"
+        >
+    </ImageView>
+
+    <!--<include-->
+        <!--layout="@layout/mindrate_logo_white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello"
+        android:textColor="@color/textColorPrimary"
+        android:layout_alignParentTop="true"
+        android:id="@+id/textView3"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:textSize="50sp">
+    </TextView>
+
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:text="Welcome to MindRate!"-->
+    <!--android:textColor="#E91E63"-->
+    <!--android:textSize="20sp"-->
+    <!--android:typeface="monospace"-->
+    <!--&gt;-->
+    <!--</TextView>-->
+
+
+</RelativeLayout>

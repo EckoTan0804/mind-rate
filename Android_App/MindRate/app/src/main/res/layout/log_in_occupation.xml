@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginTop="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"
+        android:paddingRight="5dp"
+        android:text="@string/log_in_occupation"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="15sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/occupation"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:textColorHighlight="#cccccc"
+        android:textSize="15sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/textColorPrimary"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+    </EditText>
+
+</LinearLayout>

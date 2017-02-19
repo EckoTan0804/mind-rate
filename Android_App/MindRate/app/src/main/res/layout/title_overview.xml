@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:id="@+id/title_overview">
+
+    <TextView
+        android:id="@+id/title_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        >
+    </TextView>
+
+    <Button
+        android:id="@+id/nav"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@mipmap/ic_menu"
+        >
+    </Button>
+
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hallo</string>
+    <string name="ok">OK</string>
+    <string name="cancel">ABBRECHEN</string>
+
+    <!--MainActivity-->
+    <string name="choose_language">Sprache auswählen</string>
+
+    <!--LogInActivity-->
+    <string name="log_in_study_id">STUDIE ID</string>
+    <string name="log_in_study_id_hint">Bitte geben Sie dein Studie-ID ein.</string>
+    <string name="log_in_proband_id">PROBAND ID</string>
+    <string name="log_in_proband_id_hint">Bitte geben Sie dein Proband-ID ein.</string>
+    <string name="log_in_birthday">GEBURTSTAG</string>
+    <string name="log_in_gender">GESCHLECHT</string>
+    <string name="log_in_gender_male">MÄNNLICH</string>
+    <string name="log_in_gender_female">WEIBLICH</string>
+    <string name="log_in_occupation">BERUF</string>
+    <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
+    <string name="log_in_button_log_in">EINLOGGEN</string>
+
+    <!--OverviewActivity-->
+    <string name="nav_profile">Profil</string>
+    <string name="nav_questionnaire">Fragebögen</string>
+    <string name="nav_settings">Einstellungen</string>
+    <string name="nav_about_us">Über uns</string>
+    <string name="app_name">MindRate</string>
+
+    <!--questionnaire_item-->
+    <string name="questionnaire_begins_at">beginnt um: </string>
+    <string name="questionnaire_will_end_at">wird enden um: </string>
+
+    <!--settings-->
+    <string name="language">Sprache</string>
+    <string name="language_summary">Klicken Sie, um die Sprache zu wählen.</string>
+    <string name="choose_language_dialog_title">Bitte wahlen Sie Sprache aus.</string>
+
+    <!--submit answer-->
+    <string name="submit">Abgeben</string>
+    <string name="submit_or_not">Möchten Sie Ihre Antwort abgeben?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+
+    <!--questionnaire-->
+
+    <string name="empty_list_description">Keine Fragebögen. </string>
+    <!--notification-->
+    <string name="questionnair_is_triggered">Ein Fragebogen ist ausgelöst.</string>
+    <string name="click_to_answer">Klicken Sie hier, um den Fragebogen zu antworten.</string>
+
+    <!--upload-->
+    <string name="upload_fail">Es tut uns leid. Der Hochladen ist fehlgeschlagen. Bitte stellen Sie
+        sicher, dass Ihr Internet verfügbar ist.</string>
+</resources>

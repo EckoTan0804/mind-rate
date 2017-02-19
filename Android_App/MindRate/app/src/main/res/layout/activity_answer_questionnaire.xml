@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_answer_questionnaire"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.mindrate.activity.AnswerQuestionnaireActivity">
+
+    <include layout="@layout/title_answer_questionnaire"/>
+
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="3"
+        android:background="?attr/colorPrimary"
+        android:padding="25dp"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/display_answer_option"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/next_or_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:elevation="8dp"
+        app:fabSize="mini">
+    </android.support.design.widget.FloatingActionButton>
+
+    <!--<Button-->
+        <!--android:id="@+id/next_or_submit"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="?attr/colorAccent"-->
+        <!--android:textColor="#fff"-->
+        <!--&gt;-->
+    <!--</Button>-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:padding="5dp">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/next_or_submit"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:background="?attr/colorAccent"-->
+    <!--android:textColor="?android:attr/textColorPrimary"-->
+    <!--&gt;-->
+    <!--</Button>-->
+    <!--</RelativeLayout>-->
+
+
+</LinearLayout>
