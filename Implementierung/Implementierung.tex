@@ -97,6 +97,15 @@
                     \includegraphics[scale = 0.8]{gson.pdf}
                     \caption{Package gson}
                 \end{figure}
+                \par
+                \begin{itemize}
+                \item Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
+                \item Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
+                \item Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
+                \item Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.
+                \item Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
+                \end{itemize}
+                
             \subsection{package service}
             \subsection{package util}
 
@@ -201,7 +210,7 @@
                         \vspace*{0.5cm}
                 \subsection{Wunschkriterien}
                 \par
-                Folgende Wunschkriterien sind schon implementiert. 
+                Folgende Wunschkriterien sind schon implementiert.
                         \begin{itemize}
                             \item Setzen von Zeitabstand zwischen 2 Frageb\"ogen
                         \end{itemize}
@@ -222,7 +231,7 @@
                  \begin{itemize}
                     \item Model
                     \begin{itemize}
-                        \item Neue Klassen werden dem Paket gson hinzugefügt. Z.B. TriggerEventManagerment und AllSensorEventListener. Viele Funktionen und Methoden werden geändert und erzeugt.
+                        \item Neue Klassen werden dem Paket gson hinzugefügt. Z.B. TriggerEventManagerment und AllSensorEventListener. Viele Funktionen und Methoden werden geändert und hinzugefügt.
                      \end{itemize}
                   \end{itemize}
                   \begin{itemize}
@@ -265,20 +274,20 @@
         	\includegraphics[scale = 0.65]{ServerZeitPlanung.jpg}
         	\caption{Aktueller Zeitaufwand der Server }
         \end{figure}
-        \begin{itemize}   
+        \begin{itemize}
         	\item Verzögerung
         	\begin{itemize}
         		\item Klasse TriggerEvent und Answer
         		\begin{itemize}
-        			\item Bei der Implementierung von Klassen TriggerEvent und Answer geht es sich um das richtige Format der Daten-Transmission, was enge und häufige Zusammenarbeit und Kommunikation zwischen den beiden Entwicklungsseiten anfordert, deswegen kommt die Verzögerung auf. 
+        			\item Bei der Implementierung von Klassen TriggerEvent und Answer geht es sich um das richtige Format der Daten-Transmission, was enge und häufige Zusammenarbeit und Kommunikation zwischen den beiden Entwicklungsseiten anfordert, deswegen kommt die Verzögerung auf.
         		\end{itemize}
-        	\end{itemize}  
+        	\end{itemize}
         	\begin{itemize}
         		\item Control
         		\begin{itemize}
         			\item Die Implementierung von Control bezieht sich auf die Zugangsberechtigung von User, was technisch schwer zu implementiert ist. Deswegen kommt die Verzögerung wieder auf.
         		\end{itemize}
-        	\end{itemize}                                             
+        	\end{itemize}
         	
         \end{itemize}
 
