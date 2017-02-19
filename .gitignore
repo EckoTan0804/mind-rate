@@ -19,7 +19,7 @@ hs_err_pid*
 *.lof
 *.log
 *.out
-*.pdf
+#*.pdf
 *.synctex.gz
 *.glg
 *.glo
@@ -30,6 +30,10 @@ hs_err_pid*
 *.fls
 *.pyg
 
+Implementierung/Implementierung.pdf
+Entwurfsheft/Entwurf.pdf
+Android_App/Idea/
+Android_App/UML_diagram/
 
 # Android Studio:
 
