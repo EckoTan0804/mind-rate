@@ -88,22 +88,24 @@
                         \centering
                         \includegraphics[scale = 0.9]{Model.pdf}
                         \caption{Modell (Model)}
-                    \end{figure}
+                    \end{figure}              
+                   \par Neu hinzugefügte Klassen:
+                   \begin{itemize}
+                       \item Option \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
+                                \begin{itemize}
+                                    \item content: Inhalt dieser Option
+                                    \item nextQuestionID: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
+                                \end{itemize}
+                            \item QuestionnaireAnswer \\ Alle Antworten von diesem Fragebogen
+                            \item QuestionnAnswer \\ Ein Antwort einer Frage eines Fragebogens
+                       \item TriggerBroadcastReceiver \\ Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
+                       \item TriggerEvent\\ Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
+                       \item AllSensorEventListener\\ Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
+                       \item TriggerEventManager \\ 
+                       Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.\\
+                       Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
+                   \end{itemize}
 
-                    Neu hinzugefügte Klassen:
-                    \begin{itemize}
-                        \item Option \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
-                            \begin{itemize}
-                                \item content: Inhalt dieser Option
-                                \item nextQuestionID: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
-                            \end{itemize}
-                        \item QuestionnaireAnswer \\ Alle Antworten von diesem Fragebogen
-                        \item QuestionnAnswer \\ Ein Antwort einer Frage eines Fragebogens
-                        \item TriggerEventManager
-                        \item TriggerEvent
-                        \item AllSensorEventListener
-                        \item TriggerBroadcastReceiver
-                    \end{itemize}
 
             \subsection{Präsentation (View)}                    
                 
@@ -121,12 +123,13 @@
 
             \subsection{Steuerung (Control)}
 
-                \vspace*{1cm}    
+                \vspace*{1cm}
                 \begin{figure}[H]
                     \centering
                     \includegraphics[scale = 1.0]{Control.pdf}
                     \caption{Steuerung}
                 \end{figure}
+
 
                 Neu hinzugefügte Klassen:
                 \begin{itemize}
@@ -164,8 +167,10 @@
                         \includegraphics[scale = 1.0]{Service.pdf}
                         \caption{Paket service}
                     \end{figure}
-
-
+                    \par
+                    \begin{itemize}
+                           \item Neue Klasse \texttt{DeviceSensorService} wird hinzugefügt. Mit dieser Klasse wird ein Service im Hintergrund aufgerufen. Mit dem Service werden die Daten der Sensoren automatisch gesammelt.
+                    \end{itemize}
                 \subsubsection{package util}
 
                     \begin{figure}[H]
@@ -181,8 +186,7 @@
                         \item PreferenceUtil \\ zuständig für lokales Speichern.
                     \end{itemize}
 
-
-
+        \newpage
         \section{Server}
             \begin{itemize}
                 \item Ersetzen von \texttt{StudyDirector}-Klasse durch \texttt{django.contrib.auth.models.User}-Klasse
@@ -250,12 +254,12 @@
                 \vspace*{0.5cm}
         \subsection{Wunschkriterien}
         \par
-        Folgende Wunschkriterien sind schon implementiert. 
+        Folgende Wunschkriterien sind schon implementiert.
                 \begin{itemize}
                     \item Unterst\"utzen von unterschiedlichen Sprachen
                 \end{itemize}
                 \vspace*{0.5cm}
-                
+
 
 
 
@@ -283,7 +287,7 @@
                         \vspace*{0.5cm}
                 \subsection{Wunschkriterien}
                 \par
-                Folgende Wunschkriterien sind schon implementiert. 
+                Folgende Wunschkriterien sind schon implementiert.
                         \begin{itemize}
                             \item Setzen von Zeitabstand zwischen 2 Frageb\"ogen
                         \end{itemize}
@@ -304,13 +308,13 @@
                  \begin{itemize}
                     \item Model
                     \begin{itemize}
-                        \item Neue Klassen werden dem Paket gson hinzugefügt. Z.B. TriggerEventManagerment und AllSensorEventListener. Viele Funktionen und Methoden werden geändert und erzeugt.
+                        \item Neue Klassen werden dem Paket gson hinzugefügt. Z.B. TriggerEventManagerment und AllSensorEventListener. Viele Funktionen und Methoden werden geändert und hinzugefügt.
                      \end{itemize}
                   \end{itemize}
                   \begin{itemize}
                         \item Adapter
                             \begin{itemize}
-                            \item Ein neues Paket Adapter wird erzeugt.
+                            \item Ein neues Paket Adapter wird hinzugefügt.
                             \end{itemize}
                   \end{itemize}
                   \begin{itemize}
@@ -347,20 +351,20 @@
         	\includegraphics[scale = 0.65]{ServerZeitPlanung.jpg}
         	\caption{Aktueller Zeitaufwand der Server }
         \end{figure}
-        \begin{itemize}   
+        \begin{itemize}
         	\item Verzögerung
         	\begin{itemize}
         		\item Klasse TriggerEvent und Answer
         		\begin{itemize}
-        			\item Bei der Implementierung von Klassen TriggerEvent und Answer geht es sich um das richtige Format der Daten-Transmission, was enge und häufige Zusammenarbeit und Kommunikation zwischen den beiden Entwicklungsseiten anfordert, deswegen kommt die Verzögerung auf. 
+        			\item Bei der Implementierung von Klassen TriggerEvent und Answer geht es sich um das richtige Format der Daten-Transmission, was enge und häufige Zusammenarbeit und Kommunikation zwischen den beiden Entwicklungsseiten anfordert, deswegen kommt die Verzögerung auf.
         		\end{itemize}
-        	\end{itemize}  
+        	\end{itemize}
         	\begin{itemize}
         		\item Control
         		\begin{itemize}
         			\item Die Implementierung von Control bezieht sich auf die Zugangsberechtigung von User, was technisch schwer zu implementiert ist. Deswegen kommt die Verzögerung wieder auf.
         		\end{itemize}
-        	\end{itemize}                                             
+        	\end{itemize}
         	
         \end{itemize}
 
