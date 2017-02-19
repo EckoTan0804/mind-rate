@@ -67,14 +67,18 @@
 
         \section{Android Applikation}
 
-            Die neu hinzufügte Pakete und Klassen werden mit \textcolor{green}{grün} markiert.
+            Um das System flexible und robust zu implementieren, haben wir einige neue Klassen sowie Pakete hinzufügt. Die neu hinzugefügte Pakete und Klassen werden mit \textcolor{green}{grün} markiert.
 
             \subsection{Überblick}
+
+            Das folgende Diagramm dient sich als einen Überblick über die Stuktur unserer Android-App (mit neu hinzugefügte Klassen). 
+
+            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden.
 
                 \begin{figure}[H]
                     \centering
                     \includegraphics[scale = 0.9]{Images/PackageDiagram.pdf}
-                    \caption{Überblick}
+                    \caption{Überblick: Paket- sowie KlassenDiagramm ohne Attributen und Methoden}
                 \end{figure}
 
             \subsection{Modell (Model)}
@@ -86,6 +90,21 @@
                         \caption{Modell (Model)}
                     \end{figure}
 
+                    Neu hinzugefügte Klassen:
+                    \begin{itemize}
+                        \item Option \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
+                            \begin{itemize}
+                                \item content: Inhalt dieser Option
+                                \item nextQuestionID: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
+                            \end{itemize}
+                        \item QuestionnaireAnswer \\ Alle Antworten von diesem Fragebogen
+                        \item QuestionnAnswer \\ Ein Antwort einer Frage eines Fragebogens
+                        \item TriggerEventManager
+                        \item TriggerEvent
+                        \item AllSensorEventListener
+                        \item TriggerBroadcastReceiver
+                    \end{itemize}
+
             \subsection{Präsentation (View)}                    
                 
                 \begin{figure}[H]
@@ -93,6 +112,12 @@
                         \includegraphics[scale = 1.0]{View.pdf}
                         \caption{Präsentation}
                 \end{figure}
+
+                Neu hinzugefügte Pakete:
+                \begin{itemize}
+                    \item menu: enthält das Layout für Navigationsmenu
+                    \item xml: enthält das Layout für Einstellung
+                \end{itemize}
 
             \subsection{Steuerung (Control)}
 
@@ -102,6 +127,22 @@
                     \includegraphics[scale = 1.0]{Control.pdf}
                     \caption{Steuerung}
                 \end{figure}
+
+                Neu hinzugefügte Klassen:
+                \begin{itemize}
+                    \item Paket activity
+                        \begin{itemize}
+                            \item MainActivity
+                            \item OverviewActivity
+                        \end{itemize}
+                    \item Paket fragement
+                        \begin{itemize}
+                            \item AboutUsFragment
+                            \item ProbandProfileFragment
+                            \item SettingFragment
+                            \item WelcomeFragment
+                        \end{itemize}
+                \end{itemize}
 
 
             \subsection{Hilfpaket und -Klasse}
@@ -113,6 +154,8 @@
                         \includegraphics[scale = 0.8]{adpater.pdf}
                         \caption{Paket adapter}
                     \end{figure}
+
+                    Es ist erfordlich, dass die UI Komponente ``listView'' einen entsprechenden Adapter haben.
 
                 \subsubsection{package service}
 
@@ -130,6 +173,13 @@
                         \includegraphics[scale = 0.9]{util.pdf}
                         \caption{Paket util}
                     \end{figure}
+
+                    Neu hinzugefügte Klassen:
+                    \begin{itemize}
+                        \item TimeUtil \\ verantwortlich für alle zeitbezogenen Operationen
+                        \item FontUtil \\ ermöglicht das Einsetzen von Benutzerdefinierter Schriftart. 
+                        \item PreferenceUtil \\ zuständig für lokales Speichern.
+                    \end{itemize}
 
 
 
