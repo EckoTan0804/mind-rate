@@ -141,6 +141,7 @@ public class Questionnaire implements Parcelable, Observer {
         return false;
     }
 
+    // TODO: need to improve this method according to showByDefault
     public String defaultNextQuestionID(Question currentQuestion) {
         String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
