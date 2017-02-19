@@ -579,11 +579,11 @@ public class OverviewActivity extends BaseActivity {
                                    "Q5");
         questionnaireA.addQuestion(q5);
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
-        triggerEvent1.setLight(true);
+        //triggerEvent1.setLight(true);
         triggerEvent1.setLightMinValue(1000);
         triggerEvent1.setLightMaxValue(2000);
         triggerEvent1.setMinTimeSpace(20);
-        //triggerEvent1.setAirTemperature(true);
+        triggerEvent1.setAirTemperature(true);
         //triggerEvent1.setTime("10-55-10");
         //Date date = TimeUtil.getCurrentTime();
        // Calendar calendar = Calendar.getInstance();
