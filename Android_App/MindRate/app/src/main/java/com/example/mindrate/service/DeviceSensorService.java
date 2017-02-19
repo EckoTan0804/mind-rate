@@ -121,6 +121,7 @@ public class DeviceSensorService extends Service {
 
     public void  addSensorEventListener(Sensor sensor){
 
+
         switch(sensor.getType()){
             case TYPE_ACCELEROMETER:
                 AllSensorEventListener accelerometerSensor = new AllSensorEventListener(this.triggerEventManager,
@@ -214,52 +215,85 @@ public class DeviceSensorService extends Service {
             if(this.usedSensor[i]){
                 switch(i){
                     case 0:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_ACCELEROMETER));
+                        if(this.sensorManager.getDefaultSensor(TYPE_ACCELEROMETER) != null){this
+                                .usedSensorList.add(this.sensorManager.getDefaultSensor(TYPE_ACCELEROMETER));}
                         break;
                     case 1:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_AMBIENT_TEMPERATURE));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_AMBIENT_TEMPERATURE)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_AMBIENT_TEMPERATURE));
+                        }
                         break;
                     case 2:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_GRAVITY));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_GRAVITY)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_GRAVITY));
+                        }
                         break;
                     case 3:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_GYROSCOPE));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_GYROSCOPE)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_GYROSCOPE));
+                        }
                         break;
                     case 4:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_LIGHT));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_LIGHT)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_LIGHT));
+                        }
                         break;
                     case 5:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_LINEAR_ACCELERATION));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_LINEAR_ACCELERATION)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_LINEAR_ACCELERATION));
+                        }
                         break;
                     case 6:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_MAGNETIC_FIELD));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_MAGNETIC_FIELD)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_MAGNETIC_FIELD));
+                        }
                         break;
                     case 7:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_ORIENTATION));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_ORIENTATION)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_ORIENTATION));
+                        }
                         break;
                     case 8:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_PRESSURE));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_PRESSURE)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_PRESSURE));
+                        }
                         break;
                     case 9:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_PROXIMITY));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_PROXIMITY)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_PROXIMITY));
+                        }
                         break;
                     case 10:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_RELATIVE_HUMIDITY));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_RELATIVE_HUMIDITY)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_RELATIVE_HUMIDITY));
+                        }
                         break;
                     case 11:
-                        this.usedSensorList.add(this.sensorManager.getDefaultSensor
-                                (TYPE_ROTATION_VECTOR));
+                        if(this.sensorManager.getDefaultSensor
+                                (TYPE_ROTATION_VECTOR)!=null) {
+                            this.usedSensorList.add(this.sensorManager.getDefaultSensor
+                                    (TYPE_ROTATION_VECTOR));
+                        }
                         break;
 
                 }
