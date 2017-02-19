@@ -73,45 +73,73 @@
 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[scale = 1.0]{Images/PackageDiagram.pdf}
+                    \includegraphics[scale = 0.9]{Images/PackageDiagram.pdf}
                     \caption{Überblick}
                 \end{figure}
 
+            \subsection{Modell (Model)}
+
+                \subsubsection{package gson}
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.9]{Model.pdf}
+                        \caption{Modell (Model)}
+                    \end{figure}              
+                   \par
+                   \begin{itemize}
+                   \item Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
+                   \item Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
+                   \item Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
+                   \item Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.
+                   \item Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
+                   \end{itemize}
 
 
-            \subsection{package activity}
-
-            \subsection{package adapter}
+            \subsection{Präsentation (View)}
 
                 \begin{figure}[H]
-                    \centering
-                    \includegraphics[scale = 0.8]{adpater.pdf}
-                    \caption{Überblick}
+                        \centering
+                        \includegraphics[scale = 1.0]{View.pdf}
+                        \caption{Präsentation}
                 \end{figure}
 
+            \subsection{Steuerung (Control)}
 
-            \subsection{package fragment}
-            \subsection{package gson}
+                \vspace*{1cm}
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[scale = 0.8]{gson.pdf}
-                    \caption{Package gson}
+                    \includegraphics[scale = 1.0]{Control.pdf}
+                    \caption{Steuerung}
                 \end{figure}
-                \par
-                \begin{itemize}
-                \item Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
-                \item Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
-                \item Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
-                \item Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.
-                \item Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
-                \end{itemize}
-                
-            \subsection{package service}
-            \par
-                \begin{itemize}
-                \item Neue Klasse \texttt{DeviceSensorService} wird hinzugefügt.Mit dieser Klasse wird ein Service im Hintergrund aufgerufen. Mit dem Service werden die Daten der Sensoren automatisch gesammelt.
-                \end{itemize}
-            \subsection{package util}
+
+            \subsection{Hilfpaket und -Klasse}
+
+                \subsubsection{package adapter}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.8]{adpater.pdf}
+                        \caption{Paket adapter}
+                    \end{figure}
+
+                \subsubsection{package service}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 1.0]{Service.pdf}
+                        \caption{Paket service}
+                    \end{figure}
+                    \par
+                    \begin{itemize}
+                           \item Neue Klasse \texttt{DeviceSensorService} wird hinzugefügt. Mit dieser Klasse wird ein Service im Hintergrund aufgerufen. Mit dem Service werden die Daten der Sensoren automatisch gesammelt.
+                    \end{itemize}
+                \subsubsection{package util}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.9]{util.pdf}
+                        \caption{Paket util}
+                    \end{figure}
 
 
         \section{Server}
