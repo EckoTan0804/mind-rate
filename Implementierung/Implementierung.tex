@@ -91,17 +91,17 @@
                     \end{figure}              
                    \par Neu hinzugefügte Klassen:
                    \begin{itemize}
-                       \item Option \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
+                       \item \texttt{Option} \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
                                 \begin{itemize}
-                                    \item content: Inhalt dieser Option
-                                    \item nextQuestionID: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
+                                    \item \texttt{content}: Inhalt dieser Option
+                                    \item \texttt{nextQuestionID}: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
                                 \end{itemize}
-                            \item QuestionnaireAnswer \\ Alle Antworten von diesem Fragebogen
-                            \item QuestionnAnswer \\ Ein Antwort einer Frage eines Fragebogens
-                       \item TriggerBroadcastReceiver \\ Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
-                       \item TriggerEvent\\ Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
-                       \item AllSensorEventListener\\ Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
-                       \item TriggerEventManager \\ 
+                        \item \texttt{QuestionnaireAnswer} \\ Alle Antworten von diesem Fragebogen
+                        \item \texttt{QuestionAnswer} \\ Ein Antwort einer Frage eines Fragebogens
+                       \item \texttt{TriggerBroadcastReceiver} \\ Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
+                       \item \texttt{TriggerEvent} \\ Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
+                       \item \texttt{AllSensorEventListener} \\ Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
+                       \item \texttt{TriggerEventManager} \\ 
                        Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.\\
                        Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
                    \end{itemize}
@@ -117,8 +117,8 @@
 
                 Neu hinzugefügte Pakete:
                 \begin{itemize}
-                    \item menu: enthält das Layout für Navigationsmenu
-                    \item xml: enthält das Layout für Einstellung
+                    \item \texttt{menu}: enthält das Layout für Navigationsmenu
+                    \item \texttt{xml}: enthält das Layout für Einstellung
                 \end{itemize}
 
             \subsection{Steuerung (Control)}
@@ -133,24 +133,24 @@
 
                 Neu hinzugefügte Klassen:
                 \begin{itemize}
-                    \item Paket activity
+                    \item Paket \texttt{activity}
                         \begin{itemize}
-                            \item MainActivity
-                            \item OverviewActivity
+                            \item \texttt{MainActivity} \\ die zuerst erzeugte und startete Aktivität nach dem Start der Applikation
+                            \item \texttt{OverviewActivity} \\ die Aktivität, in dem der Proband seine Informationen, die zu beantwortende Fragebögen besichtigen kann.
                         \end{itemize}
-                    \item Paket fragement
+                    \item Paket \texttt{fragement}
                         \begin{itemize}
-                            \item AboutUsFragment
-                            \item ProbandProfileFragment
-                            \item SettingFragment
-                            \item WelcomeFragment
+                            \item \texttt{AboutUsFragment} \\ Informationen über unseres Team
+                            \item \texttt{ProbandProfileFragment} \\ enthält Informationen des Probands
+                            \item \texttt{SettingFragment} \\ Fragment für Einstellung
+                            \item \texttt{WelcomeFragment} \\ eine ``welcome''-Seite
                         \end{itemize}
                 \end{itemize}
 
 
             \subsection{Hilfpaket und -Klasse}
 
-                \subsubsection{package adapter}
+                \subsubsection{package \texttt{adapter}}
 
                     \begin{figure}[H]
                         \centering
@@ -160,7 +160,7 @@
 
                     Es ist erfordlich, dass die UI Komponente ``listView'' einen entsprechenden Adapter haben.
 
-                \subsubsection{package service}
+                \subsubsection{package \texttt{service}}
 
                     \begin{figure}[H]
                         \centering
@@ -181,9 +181,9 @@
 
                     Neu hinzugefügte Klassen:
                     \begin{itemize}
-                        \item TimeUtil \\ verantwortlich für alle zeitbezogenen Operationen
-                        \item FontUtil \\ ermöglicht das Einsetzen von Benutzerdefinierter Schriftart. 
-                        \item PreferenceUtil \\ zuständig für lokales Speichern.
+                        \item \texttt{TimeUtil} \\ verantwortlich für alle zeitbezogenen Operationen
+                        \item \texttt{FontUtil} \\ ermöglicht das Einsetzen von Benutzerdefinierter Schriftart. 
+                        \item \texttt{PreferenceUtil} \\ zuständig für lokales Speichern.
                     \end{itemize}
 
         \newpage
@@ -373,6 +373,28 @@
     \chapter{Übersicht zu unit tests}
 
         \section{Android Applikation}
+
+            Alle TestKlasse enthält methoden \texttt{setUp()} und \texttt{tearDown()}, die am Anfang und Ende aufgerufen werden.
+
+            \subsection{class QuestionnaireTest}
+                \begin{itemize}
+                    \item \texttt{testAddQuestion()}
+                    \item \texttt{testGetQuestion()}
+                    \item \texttt{testIsLastQuestion()}
+                \end{itemize}
+
+            \subsection{class QuestionAnswer}
+                \begin{itemize}
+                    \item \texttt{testAddQuestionAnswer()}
+                \end{itemize}
+
+            \subsection{class TestOverviewActivity}
+                \begin{itemize}
+                    \item \texttt{testRemoveSelectedQuestionByIndex()}
+                    \item \texttt{testGetQuestionnaire()}
+                    \item \texttt{testaddQuestionnaireToTriggeredQuestionnaireList()}
+                \end{itemize}
+
 
         \section{Server}
 
