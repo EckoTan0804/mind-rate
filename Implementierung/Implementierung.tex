@@ -7,6 +7,8 @@
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{color}
+\usepackage{pdfpages}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 
@@ -53,7 +55,7 @@
 
     \chapter{Einleitung}
 
-Nach der Entwurfsphase haben wir vollständige klassendiagramme der Server-Seite und Android-App erhalten. Wir haben die Struktur der ganzen Software auch festgelegt.In der Implementierungsphase wird die Software auch in zwei Teile eingeteilt. Der erste Teil ist eine Android Applikation, die von der Probanden benutzt werden können. Der zweite Teil ist ein Web-Interface, das von Studienleiter benutzt werden können . Zusätzlich liegt eine Datenbank auf dem Server vor, um die Daten zwischen zwei Seite zu übertragen.
+        Nach der Entwurfsphase haben wir vollständige klassendiagramme der Server-Seite und Android-App erhalten. Wir haben die Struktur der ganzen Software auch festgelegt. In der Implementierungsphase wird die Software auch in zwei Teile eingeteilt. Der erste Teil ist eine Android Applikation, die von der Probanden benutzt werden können. Der zweite Teil ist ein Web-Interface, das von Studienleiter benutzt werden können. Zusätzlich liegt eine Datenbank auf dem Server vor, um die Daten zwischen zwei Seite zu übertragen.
 
 
 
@@ -64,6 +66,24 @@ Nach der Entwurfsphase haben wir vollständige klassendiagramme der Server-Seite
 
 
         \section{Android Applikation}
+
+            Die neu hinzufügte Pakete, Klassen, Attributen und Methoden werden mit \textcolor{green}{grün} markiert.
+
+            \subsection{Überblick}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 1.0]{PackageDiagram.pdf}
+                    \caption{Überblick}
+                \end{figure}
+                % \includepdf[scale=1.5]{PackageDiagram.pdf}
+
+
+            \subsection{package activity}
+            \subsection{package fragment}
+            \subsection{package gson}
+            \subsection{package service}
+            \subsection{package util}
 
 
         \section{Server}
