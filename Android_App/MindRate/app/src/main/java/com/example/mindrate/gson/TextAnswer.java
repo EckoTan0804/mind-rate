@@ -40,8 +40,9 @@ public class TextAnswer extends QuestionType implements Parcelable {
         EditText mEditText = new EditText(context);
         mEditText.setBackgroundResource(R.drawable.rounded_edittext);
         mEditText.setTextSize(15);
+//        mEditText.setTextColor(ContextCompat.getColor(context,R.color.textColorPrimary));
         mEditText.setTextColor(Color.BLACK);
-        mEditText.setPadding(30, 20, 30, 20);
+        mEditText.setPadding(60, 60, 60, 60);
         mEditText.setGravity(Gravity.CENTER_VERTICAL);
 //        mEditText.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_write, 0, 0, 0);
 //        mEditText.setCompoundDrawablePadding(15);
