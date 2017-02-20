@@ -197,6 +197,10 @@ public class OverviewActivity extends BaseActivity {
             questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
         }
         this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
+        for (Questionnaire questionnaire : allQuestionnaireList) {
+            questionnaire.getTriggerEvent().setSensor();
+        }
+        TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
@@ -219,6 +223,7 @@ public class OverviewActivity extends BaseActivity {
 //        }
 
     }
+
 
     private void initView() {
 
@@ -301,31 +306,6 @@ public class OverviewActivity extends BaseActivity {
         transition.commit();
     }
 
-
-    //    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String
-    // questionnaireID) {
-    //        Questionnaire removeQuestionnaire = null;
-    //        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
-    //        while (iterator.hasNext()) {
-    //            Questionnaire q = iterator.next();
-    //            if (q.getQuestionnaireID().equals(questionnaireID)) {
-    //                removeQuestionnaire = q;
-    //                if (q.isAnswered()) {
-    //                    iterator.remove();
-    //                }
-    //                break;
-    //            }
-    //        }
-    //        return removeQuestionnaire;
-    //    }
-    //
-    //    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire
-    // selectedQuestionnaire) {
-    //        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
-    //        if (selectedQuestionnaire.isAnswered()) {
-    //            this.allQuestionnaireList.remove(removeIndex);
-    //        }
-    //    }
 
     private void removeSelectedQuestionByIndex() {
         this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
