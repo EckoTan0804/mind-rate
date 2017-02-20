@@ -66,4 +66,7 @@
 
     <!--upload-->
     <string name="upload_fail">Sorry. The upload failed. Please make sure your Internet is available.</string>
+
+    <!--input empty error-->
+    <string name="input_empty_error">The input can not be empty.</string>
 </resources>

@@ -53,4 +53,8 @@
     <!--upload-->
     <string name="upload_fail">Es tut uns leid. Der Hochladen ist fehlgeschlagen. Bitte stellen Sie
         sicher, dass Ihr Internet verfügbar ist.</string>
+
+
+    <!--input empty error-->
+    <string name="input_empty_error">Die Eingabe darf nicht leer sein.</string>
 </resources>
