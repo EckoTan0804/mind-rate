@@ -127,13 +127,13 @@ public class OverviewActivity extends BaseActivity {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
 
-        initTestData();
+
 
         initFromIntent();
 
         initView();
 
-
+        initTestData();
 //        initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
@@ -510,27 +510,25 @@ public class OverviewActivity extends BaseActivity {
                                                          2);
         // q1
         ArrayList<Option> optionList = new ArrayList<>();
-        optionList.add(new Option("At home",
-                                  "Q3"));
-        optionList.add(new Option("At work",
-                                  "Q3"));
-        optionList.add(new Option("on the way",
+        optionList.add(new Option("happy",
                                   "Q2"));
-        Question q1 = new Question("Where are you?",
+        optionList.add(new Option("unhappy",
+                                  "Q3"));
+        Question q1 = new Question("Are you happy?",
                                    new SingleChoice(optionList),
-                                   "Q1");
+                                   "Q1", true);
         questionnaireA.addQuestion(q1);
 
         // q2
-        Question q2 = new Question("Where are you heading to?",
+        Question q2 = new Question("Why happy?",
                                    new TextAnswer(),
-                                   "Q2");
+                                   "Q2", false);
         questionnaireA.addQuestion(q2);
 
         // q3
-        Question q3 = new Question("How are you feeling?",
-                                   new DragScale(10),
-                                   "Q3");
+        Question q3 = new Question("Why unhappy?",
+                                   new TextAnswer(),
+                                   "Q3", false);
         questionnaireA.addQuestion(q3);
 
         // q4
@@ -545,7 +543,7 @@ public class OverviewActivity extends BaseActivity {
                                        null));
         Question q4 = new Question("What's ur hobby?",
                                    new MultipleChoice(optionArrayList),
-                                   "Q4");
+                                   "Q4", true);
         questionnaireA.addQuestion(q4);
 
         // q5
@@ -562,8 +560,14 @@ public class OverviewActivity extends BaseActivity {
                                null));
         Question q5 = new Question("Do you like this app?",
                                    new StepScale(options),
-                                   "Q5");
+                                   "Q5", true);
         questionnaireA.addQuestion(q5);
+
+        // q6
+        Question q6 = new Question("will you recommand our app to your friend?", new DragScale
+                (10), "Q6", true);
+        questionnaireA.addQuestion(q6);
+
         TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
         triggerEvent1.setLight(true);
         triggerEvent1.setLightMinValue(1000);
@@ -588,6 +592,8 @@ public class OverviewActivity extends BaseActivity {
         for (Questionnaire questionnaire1 : allQuestionnaireList) {
             triggerEventManager.addObserver(questionnaire1);
         }
+
+//        triggeredQuestionnaireList.add(questionnaireA);
 
 
 

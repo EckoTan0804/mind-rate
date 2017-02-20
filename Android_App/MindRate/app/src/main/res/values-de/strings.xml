@@ -42,6 +42,7 @@
     <string name="submit_or_not">Möchten Sie Ihre Antwort abgeben?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="finish">Fertig</string>
 
     <!--questionnaire-->
 

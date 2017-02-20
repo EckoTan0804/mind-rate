@@ -33,6 +33,14 @@ public class Question implements Parcelable {
         isBeginToAnswer = false;
     }
 
+    public Question(String question, QuestionType questionType, String questionID,
+            boolean showByDefault) {
+        this.question = question;
+        this.questionType = questionType;
+        this.questionID = questionID;
+        this.showByDefault = showByDefault;
+    }
+
     public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
             layoutParams) {
         tv_question.setText(question);

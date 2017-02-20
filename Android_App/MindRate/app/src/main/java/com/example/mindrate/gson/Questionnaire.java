@@ -34,8 +34,9 @@ import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
  */
 
 public class Questionnaire implements Parcelable, Observer {
-    private static final String TAG = "Questionnaire";
 
+    private static final String TAG = "Questionnaire";
+    private static int currentQuestionIndex = 0;
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
@@ -112,13 +113,15 @@ public class Questionnaire implements Parcelable, Observer {
 
 
     public String defaultNextQuestionID(Question currentQuestion) {
-        String nextQuestionID = null;
+//        String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
-        if (!isLastQuestion(currentQuestion)) {
-            nextQuestionID = this.questionList.get(currentQuestionIndex + 1)
-                                              .getQuestionID();
+        for (int i = currentQuestionIndex + 1; i < this.questionList.size(); i++) {
+            Question q = questionList.get(i);
+            if (q.isShowByDefault()) {
+                return q.getQuestionID();
+            }
         }
-        return nextQuestionID;
+        return null;
     }
 
     public boolean isLastQuestion(Question question) {
