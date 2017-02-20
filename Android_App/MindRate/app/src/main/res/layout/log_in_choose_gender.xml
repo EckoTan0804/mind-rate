@@ -42,7 +42,8 @@
             android:buttonTint="@color/textColorPrimary"
             android:text="@string/log_in_gender_male"
             android:textAppearance="@style/TextAppearance.FontPath"
-            android:textColor="#fff">
+            android:textColor="#fff"
+            android:checked="true">
         </RadioButton>
 
         <RadioButton
