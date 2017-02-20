@@ -117,9 +117,8 @@ public class OverviewActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+
         initFragment();
-        initFromIntent();
-        initView();
 
         if (this.allQuestionnaireList == null) {
             this.allQuestionnaireList = new ArrayList<>();
@@ -129,6 +128,13 @@ public class OverviewActivity extends BaseActivity {
         }
 
         initTestData();
+
+        initFromIntent();
+
+        initView();
+
+
+//        initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
 
@@ -196,7 +202,7 @@ public class OverviewActivity extends BaseActivity {
         if (TextUtils.isEmpty(questionnaireJSON)) {
             questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
         }
-        this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
+//        this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
         for (Questionnaire questionnaire : allQuestionnaireList) {
             questionnaire.getTriggerEvent().setSensor();
         }
