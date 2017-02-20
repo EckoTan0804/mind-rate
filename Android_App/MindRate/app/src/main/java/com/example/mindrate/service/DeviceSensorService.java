@@ -198,7 +198,6 @@ public class DeviceSensorService extends Service {
         List<Questionnaire> questionnaireList = this.triggerEventManager
                 .getQuestionnaireList();
         for(Questionnaire questionnaire:questionnaireList){
-            if(!questionnaire.isAnswered()){
                 questionnaire.getTriggerEvent().setSensor();
                 boolean[]sensorList = questionnaire.getTriggerEvent().getSensorList();
                 for(int i=0;i<sensorList.length;i++){
@@ -206,7 +205,7 @@ public class DeviceSensorService extends Service {
                         this.usedSensor[i]=true;
                     }
                 }
-            }
+            
         }
     }
 
