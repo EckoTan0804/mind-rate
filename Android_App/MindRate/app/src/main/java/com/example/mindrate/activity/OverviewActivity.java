@@ -336,6 +336,7 @@ public class OverviewActivity extends BaseActivity {
 
 
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
+
         questionnaire.trigger(OverviewActivity.this);
 
         if (!this.triggeredQuestionnaireList.isEmpty()) {
@@ -564,7 +565,7 @@ public class OverviewActivity extends BaseActivity {
         questionnaireA.addQuestion(q5);
 
         // q6
-        Question q6 = new Question("will you recommand our app to your friend?", new DragScale
+        Question q6 = new Question("Will you recommand our app to your friend?", new DragScale
                 (10), "Q6", true);
         questionnaireA.addQuestion(q6);
 
