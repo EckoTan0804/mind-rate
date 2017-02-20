@@ -49,16 +49,6 @@ public class Questionnaire implements Parcelable, Observer {
     private Date submitTime;
     private int duration; // day
 
-    /*public long getTriggeredBySensorTime() {
-        return triggeredBySensorTime;
-    }*/
-
-    //private long triggeredBySensorTime;
-
-
-
-    private boolean  showByDefault;
-
     private ArrayList<Question> questionList = new ArrayList<>();
 
     private TriggerEvent triggerEvent;
@@ -74,20 +64,8 @@ public class Questionnaire implements Parcelable, Observer {
             int duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
-
     }
 
-    /**
-     * Upload the answers to the server if the questionnaire is still valid
-     *
-     * @param serverAddr the address of server
-     */
-    public void uploadAnswers(String serverAddr) {
-        if (isValid) {
-            // collect all questionList' answers of this questionnaire
-            // upload answers
-        }
-    }
 
     /**
      * Send notification when questionnaire is triggered
@@ -132,14 +110,6 @@ public class Questionnaire implements Parcelable, Observer {
         return targetQuestion;
     }
 
-    public boolean isLastQuestion(String questionID) {
-        if (questionID.equals(this.questionList.get(this.questionList.size() - 1)
-                                               .getQuestionID()
-        )) {
-            return true;
-        }
-        return false;
-    }
 
     public String defaultNextQuestionID(Question currentQuestion) {
         String nextQuestionID = null;
@@ -158,18 +128,6 @@ public class Questionnaire implements Parcelable, Observer {
         return false;
     }
 
-
-    public void shouldTrigger() {
-        if(this.triggerTime==null){
-
-        }else{
-
-        }
-        // get 实时数据 的time =
-
-        // if a - this.triggerTime >= leiter设定的时间区间对应的毫秒数
-        // then trigger()
-    }
 
     public void trigger(Context context) {
         // 1. mark down triggerTime
@@ -264,13 +222,6 @@ public class Questionnaire implements Parcelable, Observer {
         isAnswered = answered;
     }
 
-    public boolean isShowByDefault() {
-        return showByDefault;
-    }
-
-    public void setShowByDefault(boolean showByDefault) {
-        this.showByDefault = showByDefault;
-    }
 
     // ===================== Parcelable ==========================================================
 
@@ -615,7 +566,6 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
-        dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
@@ -632,7 +582,6 @@ public class Questionnaire implements Parcelable, Observer {
         long tmpSubmitTime = in.readLong();
         this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
         this.duration = in.readInt();
-        this.showByDefault = in.readByte() != 0;
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
         this.isAnswered = in.readByte() != 0;
