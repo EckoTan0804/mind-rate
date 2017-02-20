@@ -43,7 +43,16 @@ public class Questionnaire implements Parcelable, Observer {
 
     private String studyID;
     private String questionnaireID;
-
+    //private float[][]datenOfTriggeredSensor = new float[12][3];
+    //=========Daten of triggered Sensor ===========
+    // TODO: have no Parcelable!!
+    private float temperature; //1
+    private float light;//4
+    private float relativeHumidity;//10
+    private float airPressure;//8
+    private float proximity;//9
+    private float[] linearAcceleration = new float[3];//5
+    //=======================================
     private Date triggerTime; // the newest trigger time
     private Date endTime;
     private Date submitTime;
@@ -282,11 +291,13 @@ public class Questionnaire implements Parcelable, Observer {
 
         //===================写成一个方法==========================================
         if(this.compareDataOfAllSensor(dataOfAllSensor)) {
+            this.addDatenofSensorToQuestionnaire(dataOfAllSensor);
             //TimeUtil?
             //Calendar cal = Calendar.getInstance();
             //this.triggeredBySensorTime = cal.getTimeInMillis();
             if(this.triggerTime==null) {
                 triggerEventManager.addShouldAnswerQuestionnaire(this);
+                Log.i(TAG,String.valueOf(this.temperature));
             }else{
                 Date lastTriggerTime = this.triggerTime;
                 Date currentTime = TimeUtil.getCurrentTime();
@@ -294,6 +305,7 @@ public class Questionnaire implements Parcelable, Observer {
                         .getMinTimeSpace()*1000;
                 if(currentTime.getTime()>=nextTriggerTime){
                     triggerEventManager.addShouldAnswerQuestionnaire(this);
+                    Log.i(TAG,String.valueOf(this.temperature));
                 }
             }
 
@@ -310,6 +322,35 @@ public class Questionnaire implements Parcelable, Observer {
         Log.d(TAG,b);
         //========================================================================
         // send to Proband a Notification.
+    }
+
+    private void addDatenofSensorToQuestionnaire(float[][] dataOfAllSensor){
+        boolean[] sensorList=this.triggerEvent.getSensorList();
+        for(int i = 0;i<sensorList.length;i++){
+            if(sensorList[i]){
+                switch(i){
+                    case 1:
+                        this.temperature = dataOfAllSensor[1][0];
+                        break;
+                    case 4:
+                        this.light = dataOfAllSensor[4][0];
+                        break;
+                    case 5:
+                        this.linearAcceleration = dataOfAllSensor[5];
+                        break;
+                    case 8:
+                        this.airPressure = dataOfAllSensor[8][0];
+                        break;
+                    case 9:
+                        this.proximity = dataOfAllSensor[9][0];
+                        break;
+                    default:
+                        this.relativeHumidity = dataOfAllSensor[10][0];
+                        break;
+                }
+            }
+        }
+
     }
 
     //=================compare the time to miniTimeSpace===========================
@@ -611,7 +652,7 @@ public class Questionnaire implements Parcelable, Observer {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeString(this.studyID);
-        dest.writeString(this.questionnaireID);
+        dest.writeString(this.questionnaireID);;
         dest.writeLong(this.triggerTime != null ? this.triggerTime.getTime() : -1);
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
