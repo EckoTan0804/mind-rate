@@ -33,7 +33,7 @@ import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
  * Created at 2017/1/8:23:32
  */
 
-public class Questionnaire implements Parcelable, Observer {
+public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     private static final String TAG = "Questionnaire";
     private static int currentQuestionIndex = 0;
@@ -111,6 +111,22 @@ public class Questionnaire implements Parcelable, Observer {
         return targetQuestion;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public Questionnaire cloneItself() {
+        Questionnaire q = null;
+        try {
+            q =(Questionnaire)this.clone();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+        return q;
+    }
 
     public String defaultNextQuestionID(Question currentQuestion) {
 //        String nextQuestionID = null;
@@ -133,6 +149,7 @@ public class Questionnaire implements Parcelable, Observer {
 
 
     public void trigger(Context context) {
+
         // 1. mark down triggerTime
         this.triggerTime = TimeUtil.getCurrentTime();
 
