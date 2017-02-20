@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -140,6 +141,8 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         currentQuestion = nextQuestion;
                     } else {
                         this.tv_question.setText(R.string.finish);
+                        this.tv_question.setGravity(Gravity.CENTER);
+                        this.tv_question.setTextSize(40);
                         setButtonAsSubmit();
                     }
 
