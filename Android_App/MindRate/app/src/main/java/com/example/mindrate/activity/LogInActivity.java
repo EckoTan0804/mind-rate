@@ -2,6 +2,7 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -12,8 +13,8 @@ import android.widget.RadioGroup;
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.JsonUtil;
+import com.example.mindrate.util.PreferenceUtil;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -41,7 +42,7 @@ public class LogInActivity extends BaseActivity {
     private DatePicker dtPk_birthday;
     private RadioGroup rdog_chooseGender;
     //    private RadioButton rdoBtn_gender_male;
-//    private RadioButton rdoBtn_gender_famale;
+    //    private RadioButton rdoBtn_gender_famale;
     private EditText edtTxt_occuptaion;
     private Button btn_probandLogIn;
 
@@ -49,7 +50,7 @@ public class LogInActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-//        ActivityManager.addActivity(this);
+        //        ActivityManager.addActivity(this);
         initView();
 
     }
@@ -57,21 +58,8 @@ public class LogInActivity extends BaseActivity {
     private void initView() {
 
         final LinearLayout ll_firstShowUp = (LinearLayout) findViewById(R.id.log_in_first_show_up);
-        final LinearLayout ll_secondShowUp = (LinearLayout) findViewById(R.id.log_in_second_show_up);
-
-        // ==================== nextPage_btn ===========================
-        final Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
-        btn_newPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logInPage++;
-                if (logInPage == LOG_IN_LAST_PAGE) {
-                    ll_firstShowUp.setVisibility(View.GONE);
-                    ll_secondShowUp.setVisibility(View.VISIBLE);
-                    btn_newPage.setVisibility(View.GONE);
-                }
-            }
-        });
+        final LinearLayout ll_secondShowUp = (LinearLayout) findViewById(
+                R.id.log_in_second_show_up);
 
 
         // ==================== study ID ===============================
@@ -81,6 +69,29 @@ public class LogInActivity extends BaseActivity {
         // ==================== proband ID =============================
         edtTxt_probandID = (EditText) findViewById(R.id.proband_id);
         // =============================================================
+
+        // ==================== nextPage_btn ===========================
+        final Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
+        btn_newPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //                if (isEditTextEmpty(edtTxt_studyID) || isEditTextEmpty
+                // (edtTxt_probandID)) {
+                //                    isEditTextEmpty(edtTxt_studyID);
+                //                    isEditTextEmpty(edtTxt_probandID);
+                boolean studyIDEmpty = isEditTextEmpty(edtTxt_studyID);
+                boolean probandIDEmpty = isEditTextEmpty(edtTxt_probandID);
+                if (!studyIDEmpty && !probandIDEmpty) {
+                    logInPage++;
+                    if (logInPage == LOG_IN_LAST_PAGE) {
+                        ll_firstShowUp.setVisibility(View.GONE);
+                        ll_secondShowUp.setVisibility(View.VISIBLE);
+                        btn_newPage.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+        });
 
         // ================= DatePicker ================================
 
@@ -116,11 +127,13 @@ public class LogInActivity extends BaseActivity {
                 switch (checkedId) {
                     case R.id.male:
                         gender = "male";
-//                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
+                        //                        Toast.makeText(LogInActivity.this, gender,
+                        // Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.female:
                         gender = "female";
-//                        Toast.makeText(LogInActivity.this, gender, Toast.LENGTH_SHORT).show();
+                        //                        Toast.makeText(LogInActivity.this, gender,
+                        // Toast.LENGTH_SHORT).show();
                         break;
                     default:
 
@@ -143,66 +156,69 @@ public class LogInActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                // TODO: determine whether a EditText is null
+                // check whether the input for occupation is empty
+                boolean occupationEmpty = isEditTextEmpty(edtTxt_occuptaion);
 
-                // 1. TODO: create Proband instance
-                studyID = edtTxt_studyID.getText().toString();
-                probandID = edtTxt_probandID.getText().toString();
-                occupation = edtTxt_occuptaion.getText().toString();
-                Proband proband = new Proband(studyID, probandID, new Birthday(year, month, day),
-                        gender, occupation);
+                if (!occupationEmpty) {
 
-                // 2. TODO: create probandJSON and save it locally
-                String probandJSON = JsonUtil.createJSON(proband);
-                PreferenceUtil.commitString("probandJSON", probandJSON);
-//                SharedPreferences.Editor editor = getSharedPreferences("proband", MODE_PRIVATE)
-//                        .edit();
-//                editor.putString("probandJSON", probandJSON);
-//                editor.apply();
+                    // 1. TODO: create Proband instance
+                    studyID = edtTxt_studyID.getText().toString();
+                    probandID = edtTxt_probandID.getText().toString();
+                    occupation = edtTxt_occuptaion.getText().toString();
+                    Proband proband = new Proband(studyID, probandID,
+                                                  new Birthday(year, month, day),
+                                                  gender, occupation);
 
+                    // 2. TODO: create probandJSON and save it locally
+                    String probandJSON = JsonUtil.createJSON(proband);
+                    PreferenceUtil.commitString("probandJSON", probandJSON);
 
-                // 3. TODO: upload probandJSON to server, download Questionnaires and save it
-                // locally
-                String questionnaireJSON = null;
-//                try {
-//                    questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } finally {
-//
-//                }
-                PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
-//                SharedPreferences.Editor qEditor = getSharedPreferences("questionnaire",
-//                                                                        MODE_PRIVATE)
-//                        .edit();
-//                qEditor.putString("questionnaireJSON", questionnaireJSON);
-//                qEditor.apply();
+                    // 3. TODO: upload probandJSON to server, download Questionnaires and save it
+                    // locally
+                    String questionnaireJSON = null;
+                    //                try {
+                    //                    questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
+                    //                } catch (IOException e) {
+                    //                    e.printStackTrace();
+                    //                } finally {
+                    //
+                    //                }
+                    PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
 
-                // 4. TODO: put proband & questionnaireJSON into intent
-                Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
-//                if (!TextUtils.isEmpty(questionnaireJSON)) {
-//                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
-//                } else {
-//                    Toast.makeText(LogInActivity.this, "Load questionnaires failed. Please try " +
-//                            "again", Toast.LENGTH_LONG).show();
-//                }
-                intent.putExtra("proband", proband);
+                    // 4. TODO: put proband & questionnaireJSON into intent
+                    Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
+                    //                if (!TextUtils.isEmpty(questionnaireJSON)) {
+                    //                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
+                    //                } else {
+                    //                    Toast.makeText(LogInActivity.this, "Load questionnaires
+                    // failed. Please try " +
+                    //                            "again", Toast.LENGTH_LONG).show();
+                    //                }
+                    intent.putExtra("proband", proband);
 
-                // 5. TODO: set isLogIn of MainActivity = true
-                MainActivity.setIsLogIn(true);
-                PreferenceUtil.commitBoolean("isLogIn", true);
+                    // 5. TODO: set isLogIn of MainActivity = true
+                    MainActivity.setIsLogIn(true);
+                    PreferenceUtil.commitBoolean("isLogIn", true);
 
-                // 6. TODO: use this intent to start AnswerQuestionActivity
-                startActivity(intent);
-//                onDestroy();
-
-                // TODO: optimization!
-
+                    // 6. TODO: use this intent to start AnswerQuestionActivity
+                    startActivity(intent);
+                }
             }
         });
 
         // ==============================================================================
+    }
 
+    private boolean isEditTextEmpty(EditText editText) {
+        if (TextUtils.isEmpty(editText.getText().toString())) {
+            handleEditTextEmpty(editText);
+            return true;
+        }
+        return false;
+    }
+
+    private void handleEditTextEmpty(EditText editText) {
+        editText.setError(getString(R.string.input_empty_error));
     }
 
 }
