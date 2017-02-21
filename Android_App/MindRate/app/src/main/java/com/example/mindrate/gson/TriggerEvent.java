@@ -39,7 +39,7 @@ public class TriggerEvent implements Parcelable {
     private boolean linearAcceleration;
     private boolean gravity;
     private boolean rotation;
-    private boolean airTemperature;
+    private boolean ambientTemperature;
     private boolean airPressure;
     private boolean light;
     private boolean relativeHumidity;
@@ -267,12 +267,12 @@ public class TriggerEvent implements Parcelable {
         this.rotation = rotation;
     }
 
-    public boolean isAirTemperature() {
-        return airTemperature;
+    public boolean isAmbientTemperature() {
+        return ambientTemperature;
     }
 
     public void setAirTemperature(boolean airTemperature) {
-        this.airTemperature = airTemperature;
+        this.ambientTemperature = airTemperature;
     }
 
     public boolean isAirPressure() {
@@ -766,7 +766,7 @@ public class TriggerEvent implements Parcelable {
 
     public void setSensor() {
         this.sensorList[TYPE_ACCELEROMETER] = isAccelerometer();
-        this.sensorList[TYPE_AMBIENT_TEMPERATURE] = isAirTemperature();
+        this.sensorList[TYPE_AMBIENT_TEMPERATURE] = isAmbientTemperature();
         this.sensorList[TYPE_GRAVITY] = isGravity();
         this.sensorList[TYPE_GYROSCOPE] = isGyroscope();
         this.sensorList[TYPE_LIGHT] = isLight();
@@ -797,7 +797,7 @@ public class TriggerEvent implements Parcelable {
         dest.writeByte(this.linearAcceleration ? (byte) 1 : (byte) 0);
         dest.writeByte(this.gravity ? (byte) 1 : (byte) 0);
         dest.writeByte(this.rotation ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.airTemperature ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.ambientTemperature ? (byte) 1 : (byte) 0);
         dest.writeByte(this.airPressure ? (byte) 1 : (byte) 0);
         dest.writeByte(this.light ? (byte) 1 : (byte) 0);
         dest.writeByte(this.relativeHumidity ? (byte) 1 : (byte) 0);
@@ -874,7 +874,7 @@ public class TriggerEvent implements Parcelable {
         this.linearAcceleration = in.readByte() != 0;
         this.gravity = in.readByte() != 0;
         this.rotation = in.readByte() != 0;
-        this.airTemperature = in.readByte() != 0;
+        this.ambientTemperature = in.readByte() != 0;
         this.airPressure = in.readByte() != 0;
         this.light = in.readByte() != 0;
         this.relativeHumidity = in.readByte() != 0;

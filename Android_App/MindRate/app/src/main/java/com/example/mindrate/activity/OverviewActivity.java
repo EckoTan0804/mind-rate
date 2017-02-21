@@ -576,7 +576,7 @@ public class OverviewActivity extends BaseActivity {
         triggerEvent1.setLightMinValue(1000);
         triggerEvent1.setLightMaxValue(2000);
         triggerEvent1.setMinTimeSpace(5);
-        //triggerEvent1.setAirTemperature(true);
+        triggerEvent1.setAirTemperature(true);
         //triggerEvent1.setTime("10-55-10");
         //Date date = TimeUtil.getCurrentTime();
        // Calendar calendar = Calendar.getInstance();
