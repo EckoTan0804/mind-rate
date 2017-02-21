@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +56,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     private void initFromIntent() {
         Intent intent = getIntent();
         this.questionnaire = intent.getParcelableExtra("questionnaire");
-        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID());
+        String probandID = intent.getStringExtra("probandID");
+        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID
+                (), probandID);
     }
 
     private void initView() {
@@ -118,7 +121,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     ll_displayAnswerOption.removeAllViews();
 
                     // 2. determine whether nextQuestionID is default or specified
-                    if (currentQuestion.getQuestionType().getNextQuestionID() != null) {
+                    if (!TextUtils.isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
                         nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
                     } else {
                         nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
@@ -241,19 +244,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 .add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
 
-    //    private ServiceConnection connection = new ServiceConnection() {
-    //        @Override
-    //        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-    //            UploadService.setBound(true);
-    //            mUploadBinder = (UploadService.UploadBinder) iBinder;
-    //
-    //        }
-    //
-    //        @Override
-    //        public void onServiceDisconnected(ComponentName componentName) {
-    //            UploadService.setBound(false);
-    //        }
-    //    };
+
 
 
 }
