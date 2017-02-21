@@ -339,7 +339,7 @@ public class OverviewActivity extends BaseActivity {
 
         questionnaire.trigger(OverviewActivity.this);
         Questionnaire q = questionnaire.cloneItself();
-        q.setTriggerTime(TimeUtil.getCurrentTime());
+//        q.setTriggerTime(TimeUtil.getCurrentTime());
 
         if (!this.triggeredQuestionnaireList.isEmpty()) {
 
