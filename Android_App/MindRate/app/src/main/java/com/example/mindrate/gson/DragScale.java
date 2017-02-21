@@ -46,6 +46,7 @@ public class DragScale extends QuestionType implements Parcelable {
         // =============== TextView ===============================================
         final TextView tv_seekBarProgress = new TextView(context);
         tv_seekBarProgress.setGravity(Gravity.CENTER_HORIZONTAL);
+        tv_seekBarProgress.setText("  / " + maxValue);
         params.setMargins(0, 20, 0, 0);
         layout.addView(tv_seekBarProgress, params);
 

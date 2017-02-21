@@ -16,7 +16,6 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
-import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
@@ -208,10 +207,10 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                             // (questionnaireAnswerJSON);
 
                             // start IntentService
-                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
-                                                              UploadService.class);
-                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
-                            startService(uploadService);
+//                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
+//                                                              UploadService.class);
+//                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
+//                            startService(uploadService);
 
 
                             // back to OverviewActivity
