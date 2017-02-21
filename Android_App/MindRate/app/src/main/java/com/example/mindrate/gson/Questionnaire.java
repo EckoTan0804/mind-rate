@@ -33,9 +33,10 @@ import static android.support.v4.app.NotificationCompat.VISIBILITY_PRIVATE;
  * Created at 2017/1/8:23:32
  */
 
-public class Questionnaire implements Parcelable, Observer {
-    private static final String TAG = "Questionnaire";
+public class Questionnaire implements Parcelable, Observer, Cloneable {
 
+    private static final String TAG = "Questionnaire";
+    private static int currentQuestionIndex = 0;
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
@@ -48,16 +49,6 @@ public class Questionnaire implements Parcelable, Observer {
     private Date endTime;
     private Date submitTime;
     private int duration; // day
-
-    /*public long getTriggeredBySensorTime() {
-        return triggeredBySensorTime;
-    }*/
-
-    //private long triggeredBySensorTime;
-
-
-
-    private boolean  showByDefault;
 
     private ArrayList<Question> questionList = new ArrayList<>();
 
@@ -74,20 +65,8 @@ public class Questionnaire implements Parcelable, Observer {
             int duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
-
     }
 
-    /**
-     * Upload the answers to the server if the questionnaire is still valid
-     *
-     * @param serverAddr the address of server
-     */
-    public void uploadAnswers(String serverAddr) {
-        if (isValid) {
-            // collect all questionList' answers of this questionnaire
-            // upload answers
-        }
-    }
 
     /**
      * Send notification when questionnaire is triggered
@@ -132,23 +111,33 @@ public class Questionnaire implements Parcelable, Observer {
         return targetQuestion;
     }
 
-    public boolean isLastQuestion(String questionID) {
-        if (questionID.equals(this.questionList.get(this.questionList.size() - 1)
-                                               .getQuestionID()
-        )) {
-            return true;
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public Questionnaire cloneItself() {
+        Questionnaire q = null;
+        try {
+            q =(Questionnaire)this.clone();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
         }
-        return false;
+        return q;
     }
 
     public String defaultNextQuestionID(Question currentQuestion) {
-        String nextQuestionID = null;
+//        String nextQuestionID = null;
         int currentQuestionIndex = this.questionList.lastIndexOf(currentQuestion);
-        if (!isLastQuestion(currentQuestion)) {
-            nextQuestionID = this.questionList.get(currentQuestionIndex + 1)
-                                              .getQuestionID();
+        for (int i = currentQuestionIndex + 1; i < this.questionList.size(); i++) {
+            Question q = questionList.get(i);
+            if (q.isShowByDefault()) {
+                return q.getQuestionID();
+            }
         }
-        return nextQuestionID;
+        return null;
     }
 
     public boolean isLastQuestion(Question question) {
@@ -159,19 +148,8 @@ public class Questionnaire implements Parcelable, Observer {
     }
 
 
-    public void shouldTrigger() {
-        if(this.triggerTime==null){
-
-        }else{
-
-        }
-        // get 实时数据 的time =
-
-        // if a - this.triggerTime >= leiter设定的时间区间对应的毫秒数
-        // then trigger()
-    }
-
     public void trigger(Context context) {
+
         // 1. mark down triggerTime
         this.triggerTime = TimeUtil.getCurrentTime();
 
@@ -264,13 +242,6 @@ public class Questionnaire implements Parcelable, Observer {
         isAnswered = answered;
     }
 
-    public boolean isShowByDefault() {
-        return showByDefault;
-    }
-
-    public void setShowByDefault(boolean showByDefault) {
-        this.showByDefault = showByDefault;
-    }
 
     // ===================== Parcelable ==========================================================
 
@@ -615,7 +586,6 @@ public class Questionnaire implements Parcelable, Observer {
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
         dest.writeInt(this.duration);
-        dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
@@ -632,7 +602,6 @@ public class Questionnaire implements Parcelable, Observer {
         long tmpSubmitTime = in.readLong();
         this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
         this.duration = in.readInt();
-        this.showByDefault = in.readByte() != 0;
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
         this.isAnswered = in.readByte() != 0;

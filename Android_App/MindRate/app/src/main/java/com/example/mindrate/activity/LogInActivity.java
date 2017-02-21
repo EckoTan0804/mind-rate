@@ -23,6 +23,8 @@ public class LogInActivity extends BaseActivity {
 
 
     public static final String SERVER = "129.13.170.45";
+    private final String MALE = "male";
+    private final String FEMALE = "female";
 
     private static int logInPage = 1;
     private static int LOG_IN_LAST_PAGE = 2;
@@ -33,7 +35,7 @@ public class LogInActivity extends BaseActivity {
     private int year;
     private int month;
     private int day;
-    private String gender;
+    private String gender = MALE;
     private String occupation;
 
     // =================== view component ===================
@@ -126,12 +128,12 @@ public class LogInActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 switch (checkedId) {
                     case R.id.male:
-                        gender = "male";
+                        gender = MALE;
                         //                        Toast.makeText(LogInActivity.this, gender,
                         // Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.female:
-                        gender = "female";
+                        gender = FEMALE;
                         //                        Toast.makeText(LogInActivity.this, gender,
                         // Toast.LENGTH_SHORT).show();
                         break;

@@ -23,6 +23,7 @@ public class Question implements Parcelable {
     private boolean isAnswered;
     private boolean isValid;
     private boolean isBeginToAnswer;
+    private boolean showByDefault;
 
     public Question(String question, QuestionType questionType, String questionID) {
         this.question = question;
@@ -30,6 +31,14 @@ public class Question implements Parcelable {
         this.questionID = questionID;
         this.isAnswered = false;
         isBeginToAnswer = false;
+    }
+
+    public Question(String question, QuestionType questionType, String questionID,
+            boolean showByDefault) {
+        this.question = question;
+        this.questionType = questionType;
+        this.questionID = questionID;
+        this.showByDefault = showByDefault;
     }
 
     public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
@@ -89,6 +98,14 @@ public class Question implements Parcelable {
         isBeginToAnswer = beginToAnswer;
     }
 
+    public boolean isShowByDefault() {
+        return showByDefault;
+    }
+
+    public void setShowByDefault(boolean showByDefault) {
+        this.showByDefault = showByDefault;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,6 +119,7 @@ public class Question implements Parcelable {
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isBeginToAnswer ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
     }
 
     protected Question(Parcel in) {
@@ -111,9 +129,10 @@ public class Question implements Parcelable {
         this.isAnswered = in.readByte() != 0;
         this.isValid = in.readByte() != 0;
         this.isBeginToAnswer = in.readByte() != 0;
+        this.showByDefault = in.readByte() != 0;
     }
 
-    public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
         @Override
         public Question createFromParcel(Parcel source) {
             return new Question(source);

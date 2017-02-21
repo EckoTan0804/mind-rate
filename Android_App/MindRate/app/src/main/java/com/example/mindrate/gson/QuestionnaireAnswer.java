@@ -19,9 +19,11 @@ public class QuestionnaireAnswer  {
     private ArrayList<QuestionAnswer> questionAnswerList;
     private Date submitTime;
     private String submitTimeString;
+    private String probandID;
 
-    public QuestionnaireAnswer(String questionnaireID) {
+    public QuestionnaireAnswer(String questionnaireID, String probandID) {
         this.questionnaireID = questionnaireID;
+        this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
     }
 
@@ -59,5 +61,13 @@ public class QuestionnaireAnswer  {
 
     public void setSubmitTimeString(String submitTimeString) {
         this.submitTimeString = submitTimeString;
+    }
+
+    public String getProbandID() {
+        return probandID;
+    }
+
+    public void setProbandID(String probandID) {
+        this.probandID = probandID;
     }
 }

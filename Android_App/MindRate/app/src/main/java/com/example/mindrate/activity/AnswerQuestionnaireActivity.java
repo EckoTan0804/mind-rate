@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,7 +16,6 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
-import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
@@ -31,7 +32,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     private Questionnaire questionnaire;
 
-//    private UploadService.UploadBinder mUploadBinder;
+    //    private UploadService.UploadBinder mUploadBinder;
 
     // ==================== view components =====================
     private TextView tv_questionnaireID;
@@ -54,7 +55,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     private void initFromIntent() {
         Intent intent = getIntent();
         this.questionnaire = intent.getParcelableExtra("questionnaire");
-        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID());
+        String probandID = intent.getStringExtra("probandID");
+        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID
+                (), probandID);
     }
 
     private void initView() {
@@ -117,25 +120,37 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                     ll_displayAnswerOption.removeAllViews();
 
                     // 2. determine whether nextQuestionID is default or specified
-                    if (currentQuestion.getQuestionType().getNextQuestionID() != null) {
+                    if (!TextUtils.isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
                         nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
                     } else {
                         nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
                     }
 
-                    // 3. get next question
-                    Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
+                    if (nextQuestionID != null) {
 
-                    // 4. next question inflates its view
-                    nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
+                        // 3. get next question
+                        Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
 
-                    // 5. determine whether next question is the last question
-                    if (this.questionnaire.isLastQuestion(nextQuestion)) {
+                        // 4. next question inflates its view
+                        nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
+
+                        // 5. determine whether next question is the last question
+//                        if (this.questionnaire.isLastQuestion(nextQuestion)) {
+//                            setButtonAsSubmit();
+//                        }
+
+                        // 6. Iteration: set nextQuestion as currentQuestion
+                        currentQuestion = nextQuestion;
+                    } else {
+                        this.tv_question.setText(R.string.finish);
+                        this.tv_question.setGravity(Gravity.CENTER);
+                        this.tv_question.setTextSize(40);
                         setButtonAsSubmit();
                     }
 
-                    // 6. Iteration: set nextQuestion as currentQuestion
-                    currentQuestion = nextQuestion;
+
+
+
 
                 } else if (this.nextOrSubmit == SUBMIT) {
 
@@ -174,23 +189,28 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                                     (questionnaireAnswer);
 
                             // save answer locally
-                            PreferenceUtil.commitString("questionnaireAnswer", questionnaireAnswerJSON);
+                            PreferenceUtil
+                                    .commitString("questionnaireAnswer", questionnaireAnswerJSON);
 
-//                            // if service is not bind, bind service
-//                            if (!UploadService.isBound()) {
-//                                Intent bindIntent = new Intent(AnswerQuestionnaireActivity.this,
-//                                                               UploadService.class);
-//                                bindService(bindIntent, connection, BIND_AUTO_CREATE);
-//                            }
-//
-//                            // add AnswerJSON to upload list
-//                            UploadService.addToAnswerUploadList(questionnaireAnswerJSON);
+                            //                            // if service is not bind, bind service
+                            //                            if (!UploadService.isBound()) {
+                            //                                Intent bindIntent = new Intent
+                            // (AnswerQuestionnaireActivity.this,
+                            //
+                            // UploadService.class);
+                            //                                bindService(bindIntent, connection,
+                            // BIND_AUTO_CREATE);
+                            //                            }
+                            //
+                            //                            // add AnswerJSON to upload list
+                            //                            UploadService.addToAnswerUploadList
+                            // (questionnaireAnswerJSON);
 
                             // start IntentService
-                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
-                                                              UploadService.class);
-                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
-                            startService(uploadService);
+//                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
+//                                                              UploadService.class);
+//                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
+//                            startService(uploadService);
 
 
                             // back to OverviewActivity
@@ -219,22 +239,11 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     }
 
     private void recordAnswer() {
-        this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion.getQuestionType().getQuestionAnswer());
+        this.questionnaireAnswer.getQuestionAnswerList()
+                .add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
 
-//    private ServiceConnection connection = new ServiceConnection() {
-//        @Override
-//        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-//            UploadService.setBound(true);
-//            mUploadBinder = (UploadService.UploadBinder) iBinder;
-//
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName componentName) {
-//            UploadService.setBound(false);
-//        }
-//    };
+
 
 
 }

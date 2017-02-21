@@ -51,6 +51,7 @@
     <string name="submit_or_not">Do you want to submit your answer?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="finish">Finish</string>
 
     <!--questionnaire-->
 
