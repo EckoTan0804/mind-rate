@@ -583,10 +583,10 @@ public class OverviewActivity extends BaseActivity {
         questionnaireA.setValid(true);
 
         allQuestionnaireList.add(questionnaireA);
-        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
-        triggerEventManager.setQuestionnaireList(allQuestionnaireList);
+        //TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
+        TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire1 : allQuestionnaireList) {
-            triggerEventManager.addObserver(questionnaire1);
+                TriggerEventManager.getTriggerEventManager().addObserver(questionnaire1);
         }
 
 
