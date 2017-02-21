@@ -9,25 +9,34 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
+import com.example.mindrate.util.HttpUtil;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class LogInActivity extends BaseActivity {
 
 
-    public static final String SERVER = "129.13.170.45";
+    public static final String SERVER = "http://ws16-pse-esm1.teco.edu/download/";
     private final String MALE = "male";
     private final String FEMALE = "female";
 
     private static int logInPage = 1;
     private static int LOG_IN_LAST_PAGE = 2;
+
+    private String questionnaireJSON = null;
 
     // =================== proband ==========================
     private String studyID;
@@ -163,7 +172,7 @@ public class LogInActivity extends BaseActivity {
 
                 if (!occupationEmpty) {
 
-                    // 1. TODO: create Proband instance
+                    // create Proband instance
                     studyID = edtTxt_studyID.getText().toString();
                     probandID = edtTxt_probandID.getText().toString();
                     occupation = edtTxt_occuptaion.getText().toString();
@@ -171,38 +180,49 @@ public class LogInActivity extends BaseActivity {
                                                   new Birthday(year, month, day),
                                                   gender, occupation);
 
-                    // 2. TODO: create probandJSON and save it locally
+                    // create probandJSON and save it locally
                     String probandJSON = JsonUtil.createJSON(proband);
                     PreferenceUtil.commitString("probandJSON", probandJSON);
 
-                    // 3. TODO: upload probandJSON to server, download Questionnaires and save it
-                    // locally
-                    String questionnaireJSON = null;
-                    //                try {
-                    //                    questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
-                    //                } catch (IOException e) {
-                    //                    e.printStackTrace();
-                    //                } finally {
-                    //
-                    //                }
+                    // upload probandJSON to server
+//                    try {
+//                        questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//
+//                    }
+
+                    // download Questionnaires and save it
+                    HttpUtil.sendRequestWithOkHttp(SERVER + studyID + "/", new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            questionnaireJSON = response.body().string();
+                        }
+                    });
+
                     PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
 
-                    // 4. TODO: put proband & questionnaireJSON into intent
+                    // put proband & questionnaireJSON into intent
                     Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
-                    //                if (!TextUtils.isEmpty(questionnaireJSON)) {
-                    //                    intent.putExtra("questionnaire_JSON", questionnaireJSON);
-                    //                } else {
-                    //                    Toast.makeText(LogInActivity.this, "Load questionnaires
-                    // failed. Please try " +
-                    //                            "again", Toast.LENGTH_LONG).show();
-                    //                }
+                    if (!TextUtils.isEmpty(questionnaireJSON)) {
+                        intent.putExtra("questionnaire_JSON", questionnaireJSON);
+                    } else {
+                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
+                        "again", Toast.LENGTH_LONG).show();
+                    }
                     intent.putExtra("proband", proband);
 
-                    // 5. TODO: set isLogIn of MainActivity = true
+                    // set isLogIn of MainActivity = true
                     MainActivity.setIsLogIn(true);
                     PreferenceUtil.commitBoolean("isLogIn", true);
 
-                    // 6. TODO: use this intent to start AnswerQuestionActivity
+                    // use this intent to start AnswerQuestionActivity
                     startActivity(intent);
                 }
             }
