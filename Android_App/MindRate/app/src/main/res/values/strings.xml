@@ -20,6 +20,7 @@
     <string name="log_in_occupation">OCCUPATION</string>
     <string name="log_in_occupation_hint">Please enter your occupation</string>
     <string name="log_in_button_log_in">LOG IN</string>
+    <string name="load_fail">Failed to load questionnaire. Please check your network and try again.</string>
 
     <!--OverviewActivity-->
     <string name="nav_profile">Profile</string>

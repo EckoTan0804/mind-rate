@@ -20,6 +20,7 @@
     <string name="log_in_occupation">BERUF</string>
     <string name="log_in_occupation_hint">Bitte geben Sie deinen Beruf ein.</string>
     <string name="log_in_button_log_in">EINLOGGEN</string>
+    <string name="load_fail">Fehler beim Laden des Fragebogens. Überprüfen Sie Ihr Netzwerk und versuchen Sie es erneut.</string>
 
     <!--OverviewActivity-->
     <string name="nav_profile">Profil</string>
