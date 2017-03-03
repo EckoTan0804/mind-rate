@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@mipmap/ic_account"
+            android:title="@string/nav_profile"
+            />
+
+        <item
+            android:id="@+id/nav_questionnaire_list"
+            android:icon="@mipmap/ic_input"
+            android:title="@string/nav_questionnaire"/>
+        
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@mipmap/ic_settings"
+            android:title="@string/nav_settings"/>
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@mipmap/ic_info"
+            android:title="@string/nav_about_us"/>
+
+    </group>
+</menu>

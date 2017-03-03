@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.mindrate">
 
+    <!-- ===================== permission ================================= -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- ================================================================== -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +21,35 @@
         </activity>
         <activity android:name=".activity.LogInActivity">
         </activity>
-        <activity android:name=".activity.AnswerQuestionActivity">
+        <activity android:name=".activity.OverviewActivity"
+            android:launchMode="singleTask">
         </activity>
+        <activity android:name=".activity.AnswerQuestionnaireActivity">
+        </activity>
+
+        <service
+            android:name=".service.DeviceSensorService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+
+        <receiver
+            android:name=".gson.TriggerBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="20">
+                <action android:name="addQuestionnaireToList" />
+            </intent-filter>
+
+        </receiver>
+
+        <service
+            android:name=".service.UploadService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
     </application>
 
 </manifest>

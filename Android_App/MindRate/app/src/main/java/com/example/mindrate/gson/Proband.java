@@ -9,6 +9,10 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:32
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Collection;
@@ -16,7 +20,8 @@ import java.util.Collection;
 /**
  * This class aims to model the participant of this study.
  */
-public class Proband {
+public class Proband implements Parcelable {
+
 
     @SerializedName("probandID")
     private String probandID;
@@ -27,33 +32,22 @@ public class Proband {
     @SerializedName("gender")
     private String gender;
 
-
     private Birthday birthday;
-
-    public class Birthday {
-        @SerializedName("year")
-        public String year;
-        @SerializedName("month")
-        public String month;
-        @SerializedName("day")
-        public String day;
-    }
 
     @SerializedName("occupation")
     private String occupation;
 
+    @Expose
     private Collection<Questionnaire> questionaires;
 
-    private boolean isLogIn = false;
 
-
-    /**
-     *
-     */
-    public void logIn() {
-        if (!isLogIn) {
-            isLogIn = true;
-        }
+    public Proband(String studyID, String probandID,  Birthday
+            birthday,String gender, String occupation) {
+        this.occupation = occupation;
+        this.probandID = probandID;
+        this.studyID = studyID;
+        this.gender = gender;
+        this.birthday = birthday;
     }
 
     /**
@@ -105,5 +99,87 @@ public class Proband {
 
     }
 
+    public String getProbandID() {
+        return probandID;
+    }
 
+    public void setProbandID(String probandID) {
+        this.probandID = probandID;
+    }
+
+    public String getStudyID() {
+        return studyID;
+    }
+
+    public void setStudyID(String studyID) {
+        this.studyID = studyID;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Birthday birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public Collection<Questionnaire> getQuestionaires() {
+        return questionaires;
+    }
+
+    public void setQuestionaires(Collection<Questionnaire> questionaires) {
+        this.questionaires = questionaires;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.probandID);
+        dest.writeString(this.studyID);
+        dest.writeString(this.gender);
+        dest.writeParcelable(this.birthday, flags);
+        dest.writeString(this.occupation);
+//        dest.writeParcelable(this.questionaires, flags);
+    }
+
+    protected Proband(Parcel in) {
+        this.probandID = in.readString();
+        this.studyID = in.readString();
+        this.gender = in.readString();
+        this.birthday = in.readParcelable(Birthday.class.getClassLoader());
+        this.occupation = in.readString();
+//        this.questionaires = in.readParcelable(Collection<Questionnaire>.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Proband> CREATOR = new Parcelable.Creator<Proband>() {
+        @Override
+        public Proband createFromParcel(Parcel source) {
+            return new Proband(source);
+        }
+
+        @Override
+        public Proband[] newArray(int size) {
+            return new Proband[size];
+        }
+    };
 }

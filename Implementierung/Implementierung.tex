@@ -7,6 +7,8 @@
 \usepackage[bookmarks,bookmarksnumbered]{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{color}
+\usepackage{pdfpages}
 \graphicspath{ {Images/} }
 \setcounter{secnumdepth}{5}
 
@@ -53,72 +55,349 @@
 
     \chapter{Einleitung}
 
-    
-    
+        Nach der Entwurfsphase haben wir vollständige klassendiagramme der Server-Seite und Android-App erhalten. Wir haben die Struktur der ganzen Software auch festgelegt. In der Implementierungsphase wird die Software auch in zwei Teile eingeteilt. Der erste Teil ist eine Android Applikation, die von der Probanden benutzt werden können. Der zweite Teil ist ein Web-Interface, das von Studienleiter benutzt werden können. Zusätzlich liegt eine Datenbank auf dem Server vor, um die Daten zwischen zwei Seite zu übertragen.
 
 
-    
+
+
+
     \newpage
     \chapter{Änderungen am Entwurf}
-        
+
 
         \section{Android Applikation}
-            
 
+            Um das System flexible und robust zu implementieren, haben wir einige neue Klassen sowie Pakete hinzufügt. Die neu hinzugefügte Pakete und Klassen werden mit \textcolor{green}{grün} markiert.
+
+            \subsection{Überblick}
+
+            Das folgende Diagramm dient sich als einen Überblick über die Stuktur unserer Android-App (mit neu hinzugefügte Klassen). 
+
+            \noindent Um die Beziehungen zwischen Klassen und das System ganzheitlich aufzufassen, enthält folgendes Diagramm keine Attribute und Methoden.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 0.9]{Images/PackageDiagram.pdf}
+                    \caption{Überblick: Paket- sowie KlassenDiagramm ohne Attributen und Methoden}
+                \end{figure}
+
+            \subsection{Modell (Model)}
+
+                \subsubsection{package gson}
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.9]{Model.pdf}
+                        \caption{Modell (Model)}
+                    \end{figure}              
+                   \par Neu hinzugefügte Klassen:
+                   \begin{itemize}
+                       \item \texttt{Option} \\ Nach Beantworten von Fragen der Art ``SingleChoiceQuestion'' oder ``StepScaleQuestion'' kann die spezifizierte Frage statt der default nächsten Frage auftreten. Deswegen hat Klasse Option zwei Attributen:
+                                \begin{itemize}
+                                    \item \texttt{content}: Inhalt dieser Option
+                                    \item \texttt{nextQuestionID}: ID der Frage, die als nächsten vorkommen soll, nachdem der Proband diese Option ausgewählt hat.
+                                \end{itemize}
+                        \item \texttt{QuestionnaireAnswer} \\ Alle Antworten von diesem Fragebogen
+                        \item \texttt{QuestionAnswer} \\ Ein Antwort einer Frage eines Fragebogens
+                       \item \texttt{TriggerBroadcastReceiver} \\ Neue Klasse \texttt{TriggerBroadcastReceiver} wird hinzugefügt, um ein Fragebogen in einer vorgegebenen Uhrzeit auszulösen.
+                       \item \texttt{TriggerEvent} \\ Neue Klasse \texttt{TriggerEvent} wird hinzugefügt. In dieser Klasse werden alle auslösende Bedingungen eines Fragebogens gespeichert.
+                       \item \texttt{AllSensorEventListener} \\ Neue Klasse \texttt{AllSensorEventListener} wird hinzugefügt. Alle Sensoren werden mit dieser Klasse abgehört.Dann werden die Daten der Sensoren übergeben.
+                       \item \texttt{TriggerEventManager} \\ 
+                       Neue Klasse \texttt{TriggerEventManager} wird hinzugefügt. Entwurfsmuster Singleton wird in dieser Klasse benutzt. In dieser Klasse werden die Daten der Sensoren mit den Bedingungen aller Fragebogen verglichen. Alle wählbare Fragebogen werden ausgelöst.\\
+                       Zwischen Klasse \texttt{TriggerEventManager} und \texttt{Questionnaire} wird Entwurfsmuster Beobachter benutzt(mit Interface Observable und Observer).
+                   \end{itemize}
+
+
+            \subsection{Präsentation (View)}                    
+                
+                \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 1.0]{View.pdf}
+                        \caption{Präsentation}
+                \end{figure}
+
+                Neu hinzugefügte Pakete:
+                \begin{itemize}
+                    \item \texttt{menu}: enthält das Layout für Navigationsmenu
+                    \item \texttt{xml}: enthält das Layout für Einstellung
+                \end{itemize}
+
+            \subsection{Steuerung (Control)}
+
+                \vspace*{1cm}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 1.0]{Control.pdf}
+                    \caption{Steuerung}
+                \end{figure}
+
+
+                Neu hinzugefügte Klassen:
+                \begin{itemize}
+                    \item Paket \texttt{activity}
+                        \begin{itemize}
+                            \item \texttt{MainActivity} \\ die zuerst erzeugte und startete Aktivität nach dem Start der Applikation
+                            \item \texttt{OverviewActivity} \\ die Aktivität, in dem der Proband seine Informationen, die zu beantwortende Fragebögen besichtigen kann.
+                        \end{itemize}
+                    \item Paket \texttt{fragement}
+                        \begin{itemize}
+                            \item \texttt{AboutUsFragment} \\ Informationen über unseres Team
+                            \item \texttt{ProbandProfileFragment} \\ enthält Informationen des Probands
+                            \item \texttt{SettingFragment} \\ Fragment für Einstellung
+                            \item \texttt{WelcomeFragment} \\ eine ``welcome''-Seite
+                        \end{itemize}
+                \end{itemize}
+
+
+            \subsection{Hilfpaket und -Klasse}
+
+                \subsubsection{package \texttt{adapter}}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.8]{adpater.pdf}
+                        \caption{Paket adapter}
+                    \end{figure}
+
+                    Es ist erfordlich, dass die UI Komponente ``listView'' einen entsprechenden Adapter haben.
+
+                \subsubsection{package \texttt{service}}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 1.0]{Service.pdf}
+                        \caption{Paket service}
+                    \end{figure}
+                    \par
+                    \begin{itemize}
+                           \item Neue Klasse \texttt{DeviceSensorService} wird hinzugefügt. Mit dieser Klasse wird ein Service im Hintergrund aufgerufen. Mit dem Service werden die Daten der Sensoren automatisch gesammelt.
+                    \end{itemize}
+                \subsubsection{package util}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[scale = 0.9]{util.pdf}
+                        \caption{Paket util}
+                    \end{figure}
+
+                    Neu hinzugefügte Klassen:
+                    \begin{itemize}
+                        \item \texttt{TimeUtil} \\ verantwortlich für alle zeitbezogenen Operationen
+                        \item \texttt{FontUtil} \\ ermöglicht das Einsetzen von Benutzerdefinierter Schriftart. 
+                        \item \texttt{PreferenceUtil} \\ zuständig für lokales Speichern.
+                    \end{itemize}
+
+        \newpage
         \section{Server}
             \begin{itemize}
                 \item Ersetzen von \texttt{StudyDirector}-Klasse durch \texttt{django.contrib.auth.models.User}-Klasse
-                
+
                 \item Die Zugehörigkeit zwischen Studienleiter und Studien werden durch \texttt{owner}-Attribut der \texttt{Study}-Klasse und Objekt-Niveau-Erlaubnis von Django realisiert
-               
+
                 \item Ersetzen aller Datentypen der Objekt-Attributen durch entsprechende Unterklassen der \texttt{django.db.models.Field}-Klasse, um Daten in die Datenbank zu speichern
-                
+
                 \item \texttt{ChoiceQuestion}-Klasse wird zu \texttt{SingleChoiceQuestion}- und \texttt{MultiChoiceQuestion}-Klassen geteilt
-                
+
                 \item Hinzufügen von \texttt{ChoiceOption}-Klasse, um Optionen der Ein- und Mehrfachauswahlen zu modellieren
-                
+
                 \item Das \texttt{FollowUpQuestion}-Attribut liegt nicht mehr in \texttt{ChoiceQuestion}-Klasse, sondern in \texttt{ChoiceOption}-Klasse, um verschiedene Folgefragen per Option zu ermöglichen
-                
+
                 \item Hinzufügen von \texttt{ProbandInfoQuestionnaire}-Klasse: der Studienleiter kann selbst entscheiden, welche demographische Informationen aus den Probanden zu sammeln
-                
+
                 \item Informationen der Probanden werden in mehrere \texttt{ProbandInfoCell}-Objekte gespeichert, und danach durch \texttt{ForeignKey} zu einem \texttt{Proband}-Objekt gelinkt werden
-                
+
                 \item Ersetzen von \texttt{linearAcceleration}-, \texttt{gravity}-, \texttt{rotation}- und \texttt{orientation}-Attributen der \texttt{TriggerEvent}-Klasse durch das Android-User-Activity-API-basierte \texttt{user\_activity}-Attribut
-                
+
                 \item Die \texttt{light}-, \texttt{relative\_humidity}-, \texttt{proximity} und \texttt{air\_pressure}-Sensoroptionen nehmen keine exakte Zahl mehr, sondern einen 5-stufigen Wert zwischen “very high” und “very low”
-                
-                
+
+
             \end{itemize}
-            
-       
+
+            \subsection{Klassendiagramm}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale = 0.5]{class_diagram_server.jpg}
+                    \caption{Class diagram server side}
+                \end{figure}
+
+
         \newpage
     \chapter{Implementierte Muss- und Wunschkriterien}
-       
+
 
         \section{Android Applikation}
-            
-            
-            
-      
+        \subsection{Musskriterien}
+        \par
+        Folgende Musskriterien sind schon implementiert.
+                \subsubsection{Anmelden mit Studie-ID}
+                    \begin{itemize}
+                        \item Eingeben von Studie-ID
+                        \item Eingeben von Alter, Geschlecht, Beruf des Probanden
+                    \end{itemize}
+                \subsubsection{Antwort auf Frageb\"ogen}
+                    \begin{itemize}
+                        % \item Notifikationen über die Fragebögen
+                        \item Notifikationen zur Antwort der Frageb\"ogen
+                        \item Beantworten von Frageb\"ogen
+                    \end{itemize}
+                \subsubsection{Auslösen von Frageb\"ogen durch verschiedene Ereignisse}
+                    \begin{itemize}
+                        \item Sensoren (alle Sensoren je nach dem Handy)
+                        \item Zeit
+                        \item Protokollieren von Ereignisdaten mit der Antwort
+                    \end{itemize}
+                \subsubsection{Automatische Verwaltung von Antworten}
+                    \begin{itemize}
+                        \item lokales Speichern von Antworten
+                        \item Protokollieren von Abgabezeit der Antworten
+                        \item Hochladen von Antworten (inkl. der protokollierten Ereignisdaten) auf den Server
+                    \end{itemize}
+                \vspace*{0.5cm}
+        \subsection{Wunschkriterien}
+        \par
+        Folgende Wunschkriterien sind schon implementiert.
+                \begin{itemize}
+                    \item Unterst\"utzen von unterschiedlichen Sprachen
+                \end{itemize}
+                \vspace*{0.5cm}
+
+
+
+
 
         \section{Server}
-           
-           
+        \subsection{Musskriterien}
+                \par
+                Folgende Musskriterien sind schon implementiert.
+                        \subsubsection{Verwalten der Studien}
+                            \begin{itemize}
+                                \item Erfassen von Pers\"onlichen Daten der Probanden (Alter, Geschlecht, Beruf)
+                                \item Setzen von Namen, ID und Dauer der Studien
+                            \end{itemize}
+                        \subsubsection{Verwalten der Frageb\"ogen}
+                            \begin{itemize}
+                                \item Erstellen, \"Andern von Frageb\"ogen
+                                \item Erstellen, \"Andern von Fragen verschiedener Typen
+                                \item Setzen, \"Andern von ausl\"osenden Ereiginissen und Abgabeterminen der Frageb\"ogen
+                            \end{itemize}
+                        \subsubsection{Erfassen von Ergebnisse der Untersuchung}
+                            \begin{itemize}
+                                %\item Besichtigen von Antwortsstatus
+                                \item Exportieren von Daten in CSV-Format
+                            \end{itemize}
+                        \vspace*{0.5cm}
+                \subsection{Wunschkriterien}
+                \par
+                Folgende Wunschkriterien sind schon implementiert.
+                        \begin{itemize}
+                            \item Setzen von Zeitabstand zwischen 2 Frageb\"ogen
+                        \end{itemize}
+                        \vspace*{0.5cm}
+
+
            \newpage
     \chapter{GANTT Diagramm}
-        
-        \section{Android Applikation}
-            
-        \section{Server}
 
-       \newpage   
+        \section{Android Applikation}
+        \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.65]{aktuelleAndroidAppZeitplanung.jpg}
+                \caption{Aktueller Zeitaufwand der Android App }
+        \end{figure}
+        \begin{itemize}
+         \item Verzögerung
+                 \begin{itemize}
+                    \item Model
+                    \begin{itemize}
+                        \item Neue Klassen werden dem Paket gson hinzugefügt. Z.B. TriggerEventManagerment und AllSensorEventListener. Viele Funktionen und Methoden werden geändert und hinzugefügt.
+                     \end{itemize}
+                  \end{itemize}
+                  \begin{itemize}
+                        \item Adapter
+                            \begin{itemize}
+                            \item Ein neues Paket Adapter wird hinzugefügt.
+                            \end{itemize}
+                  \end{itemize}
+                  \begin{itemize}
+                        \item View
+                            \begin{itemize}
+                            \item Paket layout und Paket values sind zeitaufwendig.
+                            \end{itemize}
+                  \end{itemize}
+                   \begin{itemize}
+                        \item control
+                            \begin{itemize}
+                            \item Neue Klassen werden dem Paket activity hinzugefügt, und der Teil der Sensoren wird darin implementiert.
+                            \end{itemize}
+                  \end{itemize}
+                  \begin{itemize}
+                        \item service
+                            \begin{itemize}
+                            \item  Diese Aufgabe ist rechtzeitig fertig.
+                            \end{itemize}
+                  \end{itemize}
+                  \begin{itemize}
+                        \item util
+                            \begin{itemize}
+                            \item Neue Klassen werden dem Paket util hinzugefügt.
+                            \end{itemize}
+                  \end{itemize}
+
+        \end{itemize}
+
+
+        \section{Server}
+        \begin{figure}[H]
+        	\centering
+        	\includegraphics[scale = 0.65]{ServerZeitPlanung.jpg}
+        	\caption{Aktueller Zeitaufwand der Server }
+        \end{figure}
+        \begin{itemize}
+        	\item Verzögerung
+        	\begin{itemize}
+        		\item Klasse TriggerEvent und Answer
+        		\begin{itemize}
+        			\item Bei der Implementierung von Klassen TriggerEvent und Answer geht es sich um das richtige Format der Daten-Transmission, was enge und häufige Zusammenarbeit und Kommunikation zwischen den beiden Entwicklungsseiten anfordert, deswegen kommt die Verzögerung auf.
+        		\end{itemize}
+        	\end{itemize}
+        	\begin{itemize}
+        		\item Control
+        		\begin{itemize}
+        			\item Die Implementierung von Control bezieht sich auf die Zugangsberechtigung von User, was technisch schwer zu implementiert ist. Deswegen kommt die Verzögerung wieder auf.
+        		\end{itemize}
+        	\end{itemize}
+        	
+        \end{itemize}
+
+       \newpage
 
     \chapter{Übersicht zu unit tests}
-        
+
         \section{Android Applikation}
-            
+
+            Alle TestKlasse enthält methoden \texttt{setUp()} und \texttt{tearDown()}, die am Anfang und Ende aufgerufen werden.
+
+            \subsection{class QuestionnaireTest}
+                \begin{itemize}
+                    \item \texttt{testAddQuestion()}
+                    \item \texttt{testGetQuestion()}
+                    \item \texttt{testIsLastQuestion()}
+                \end{itemize}
+
+            \subsection{class QuestionAnswer}
+                \begin{itemize}
+                    \item \texttt{testAddQuestionAnswer()}
+                \end{itemize}
+
+            \subsection{class TestOverviewActivity}
+                \begin{itemize}
+                    \item \texttt{testRemoveSelectedQuestionByIndex()}
+                    \item \texttt{testGetQuestionnaire()}
+                    \item \texttt{testaddQuestionnaireToTriggeredQuestionnaireList()}
+                \end{itemize}
+
+
         \section{Server}
-         
-    \newpage 
+
+    \newpage
 
 \end{document}

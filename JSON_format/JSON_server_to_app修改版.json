@@ -1,0 +1,152 @@
+/*
+Removed attributes:
+studyID
+
+Added attributes:
+
+*/
+{
+    "study": [
+        {
+            "studyName": "Study Name",
+            "start_date_time": {
+                "year": 2017,
+                "month": 1,
+                "day": 1,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "end_date_time": {
+                "year": 2017,
+                "month": 7,
+                "day": 1,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "questionnaires": [
+
+                // questionnaire 1
+                {
+                    "questionnaire_id": "A1_1", // format: studyID_QuestionnaireNr
+                    "questionnaire_name": "Questionnaire Name", // not necessary, can be removed
+                    "max_show_up_times_per_day": 40,
+                    "trigger_event": {
+                        "minTimeSpace": {"seconds": 180},
+                        "datetime": false, 
+                        "time": {
+                            "hour": 16,
+                            "minute": 0,
+                            "second": 0
+                        },
+                        "triggeredWhenCalendarEventBegins": false,
+                        "triggeredWhenCalendarEventEnds": false,
+                        "triggeredWhenFacebookNotificationComes": false,
+                        "triggeredWhenWhatsAppNotificationComes": false, 
+
+                        // if a sensor is needed, then set it as true; else set false.                   
+                        "accelerometer": true,
+                        "ambientTemperature": false,
+                        "gravity": false,
+                        "gyroscope": false,
+                        "light": false,
+                        "linearAcceleration": false,
+                        "magneticField": false,
+                        "orientation": false,
+                        "pressure": false,
+                        "proximity": false,
+                        "relativeHumidity": false,
+                        "rotationVector": false,
+
+                        // value range of the needed sensors
+                        "accelerometerMinValue": 5,
+                        "accelerometerMaxValue": 10,
+                        "ambientTemperatureMinValue": 0,
+                        "ambientTemperatureMaxValue": 0,
+                        "gravityMinValue": 0,
+                        "gravityMaxValue": 0,
+                        "gyroscopeMinValue": 0,
+                        "gyroscopeMaxValue": 0,
+                        "lightMinValue": 0,
+                        "lightMaxValue": 0,
+                        "linearAccelerationMinValue": 0,
+                        "linearAccelerationMaxValue": 0,
+                        "magneticFieldMinValue": 0,
+                        "magneticFieldMaxValue": 0,
+                        "orientationMinValue": 0,
+                        "orientationMaxValue": 0,
+                        "pressureMinValue": 0,
+                        "pressureMaxValue": 0,
+                        "proximityMinValue": 0,
+                        "proximityMaxValue": 0,
+                        "relativeHumidityMinValue": 0,
+                        "relativeHumidityMaxValue": 0,
+                        "rotationVectorMinValue": 0,
+                        "rotationVectorMaxValue": 0
+
+                    },
+                    //Set name "duration" to "required_submit_date_time" of the questionnaire
+                    "required_submit_date_time": {
+                        "year": 2017,
+                        "month": 7,
+                        "day": 1,
+                        "hour": 0,
+                        "minute": 0,
+                        "second": 0
+                    },
+                    "questions": [
+                        {
+                            "question_id": "A1_1_1", // format: studyID_QuestionnaireNr_questionNr
+                            "question_type": "SingleChoice",
+                            "question_content": "Where are you now?",
+                            "options": [
+                                {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
+                                {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
+                                {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
+                            ]
+                        },
+                        {
+                            "questionID": "A1_1_2",
+                            "questionType": "TextAnswer",
+                            "questionContent": "Where are you heading to?"
+                        },
+                        {
+                            "questionID": "A1_1_3",
+                            "questionType": "DragScale", // correspond to steplessScale 
+                            "questionContent": "How are you feeling now?",
+                            "maxValue": 10
+                        },
+                        {
+                            "questionID": "A1_1_4",
+                            "questionType": "MultipleChoice",
+                            "questionContent": "What's your hobby?",
+                            "options": [
+                                {"optionContent": "Swimming", "nextQuestionID": "" },
+                                {"optionContent": "Reading", "nextQuestionID": ""},
+                                {"optionContent": "Coding", "nextQuestionID": ""},
+                                {"optionContent": "Studying", "nextQuestionID": ""}
+                            ]
+                        },
+                        {
+                            "questionID": "A1_1_5",
+                            "questionType": "SingleChoice",
+                            "questionContent": "Do you like this app?",
+                            "options": [
+                                {"optionContent": "very bad", "nextQuestionID": "" },
+                                {"optionContent": "bad", "nextQuestionID": ""},
+                                {"optionContent": "so so", "nextQuestionID": ""},
+                                {"optionContent": "good", "nextQuestionID": ""},
+                                {"optionContent": "very good", "nextQuestionID": ""}
+                            ]
+                        }
+                    ]
+                },
+                // questionnaire 2
+                // questionnaire 3
+                // ....
+
+            ]
+        }
+    ]
+}

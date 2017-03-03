@@ -1,6 +1,12 @@
 package com.example.mindrate.gson;
 
 
+import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -9,15 +15,27 @@ package com.example.mindrate.gson;
  * Created at 2017/1/8:23:33
  */
 
-public class Question<T> {
+public class Question implements Parcelable {
 
     private String question;
-    private QuestionStrategy questionStrategy;
-    private int questionID;
+    private QuestionType questionType;
+    private String questionID;
     private boolean isAnswered;
+    private boolean isValid;
+    private boolean isBeginToAnswer;
 
-    public void setNextQuestion() {
+    public Question(String question, QuestionType questionType, String questionID) {
+        this.question = question;
+        this.questionType = questionType;
+        this.questionID = questionID;
+        this.isAnswered = false;
+        isBeginToAnswer = false;
+    }
 
+    public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
+            layoutParams) {
+        tv_question.setText(question);
+        this.questionType.inflateAnswerView(this.questionID, context, layout, layoutParams);
     }
 
     // ================ setters and getters ==================================
@@ -30,19 +48,19 @@ public class Question<T> {
         this.question = question;
     }
 
-    public QuestionStrategy getQuestionStrategy() {
-        return questionStrategy;
+    public QuestionType getQuestionType() {
+        return questionType;
     }
 
-    public void setQuestionStrategy(QuestionStrategy questionStrategy) {
-        this.questionStrategy = questionStrategy;
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 
-    public int getQuestionID() {
+    public String getQuestionID() {
         return questionID;
     }
 
-    public void setQuestionID(int questionID) {
+    public void setQuestionID(String questionID) {
         this.questionID = questionID;
     }
 
@@ -54,4 +72,56 @@ public class Question<T> {
         isAnswered = answered;
     }
 
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public boolean isBeginToAnswer() {
+        return isBeginToAnswer;
+    }
+
+    public void setBeginToAnswer(boolean beginToAnswer) {
+        isBeginToAnswer = beginToAnswer;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.question);
+        dest.writeParcelable(this.questionType, flags);
+        dest.writeString(this.questionID);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isBeginToAnswer ? (byte) 1 : (byte) 0);
+    }
+
+    protected Question(Parcel in) {
+        this.question = in.readString();
+        this.questionType = in.readParcelable(QuestionType.class.getClassLoader());
+        this.questionID = in.readString();
+        this.isAnswered = in.readByte() != 0;
+        this.isValid = in.readByte() != 0;
+        this.isBeginToAnswer = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel source) {
+            return new Question(source);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 }

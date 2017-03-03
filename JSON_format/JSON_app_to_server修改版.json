@@ -1,0 +1,35 @@
+/*
+Added attributes:
+proband_id
+*/
+{
+    "study_director_id": "blahblah@gmail.com",
+    "study_id": "1",
+    "questionnaire_id": "2",
+    "proband_id": "1",
+    "questionnaire_answer_list": [
+        // questionnaireAnswer 1
+        {
+            "submit_date_time": {
+                "year": 2017,
+                "month": 7,
+                "day": 1,
+                "hour": 0,
+                "minute": 0,
+                "second": 0
+            },
+            "isValid": true,
+            "question_answer": [
+                {"question_id": "A1_1_1", "question_type": "SingleChoice", "answer": "On the way"},
+                {"question_id": "A1_1_2", "question_type": "TextAnswer", "answer": "Hotel"},
+                {"question_id": "A1_1_3", "question_type": "DragScale", "answer": 10},
+                {"question_id": "A1_1_4", "question_type": "MultipleChoice", "answer": ["Coding", "Studying"]},
+                {"question_id": "A1_1_5", "question_type": "StepScale", "answer": "very good"}
+            ]
+        },
+        // questionnaireAnswer 2
+        // questionnaireAnswer 3
+        // ......
+    ]
+
+}
