@@ -1,6 +1,8 @@
 package com.example.mindrate.util;
 
 
+import com.example.mindrate.gson.Duration;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -22,8 +24,10 @@ public class TimeUtil {
         return new Date(System.currentTimeMillis());
     }
 
-    public static Date calculateTime(Date beginDate, int dayDuration) {
-        return new Date(beginDate.getTime() + (long)dayDuration * 24 * 60 * 60 * 1000);
+    public static Date calculateTime(Date beginDate, Duration duration) {
+        return new Date(beginDate.getTime() + (long) (duration.getHour() * 60 * 60 + duration
+                .getMinute() * 60 + duration.getSecond()) *
+                1000);
 
     }
 

@@ -15,6 +15,8 @@ import android.util.Log;
 import com.example.mindrate.R;
 import com.example.mindrate.activity.OverviewActivity;
 import com.example.mindrate.util.TimeUtil;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,13 +44,16 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     private boolean isValid;
 
+    @Expose(serialize = false, deserialize = false)
     private String studyID;
+
+    @SerializedName("questionnaireID")
     private String questionnaireID;
 
     private Date triggerTime; // the newest trigger time
     private Date endTime;
     private Date submitTime;
-    private int duration; // day
+    private Duration duration;
 
     private ArrayList<Question> questionList = new ArrayList<>();
 
@@ -62,7 +67,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     }
 
     public Questionnaire(String questionnaireID,
-            int duration) {
+            Duration duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
     }
@@ -194,11 +199,11 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.submitTime = submitTime;
     }
 
-    public int getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -585,7 +590,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         dest.writeLong(this.triggerTime != null ? this.triggerTime.getTime() : -1);
         dest.writeLong(this.endTime != null ? this.endTime.getTime() : -1);
         dest.writeLong(this.submitTime != null ? this.submitTime.getTime() : -1);
-        dest.writeInt(this.duration);
+        dest.writeParcelable(this.duration, flags);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
@@ -601,7 +606,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.endTime = tmpEndTime == -1 ? null : new Date(tmpEndTime);
         long tmpSubmitTime = in.readLong();
         this.submitTime = tmpSubmitTime == -1 ? null : new Date(tmpSubmitTime);
-        this.duration = in.readInt();
+        this.duration = in.readParcelable(Duration.class.getClassLoader());
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
         this.isAnswered = in.readByte() != 0;

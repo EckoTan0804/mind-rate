@@ -1,6 +1,9 @@
 package com.example.mindrate.gson;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Project: MindRate
  * <br>Package: com.example.mindrate.gson</br>
@@ -10,7 +13,7 @@ package com.example.mindrate.gson;
  * </p>
  */
 
-public class Duration {
+public class Duration implements Parcelable {
 
     private int hour;
     private int minute;
@@ -45,4 +48,34 @@ public class Duration {
     public void setSecond(int second) {
         this.second = second;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.hour);
+        dest.writeInt(this.minute);
+        dest.writeInt(this.second);
+    }
+
+    protected Duration(Parcel in) {
+        this.hour = in.readInt();
+        this.minute = in.readInt();
+        this.second = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Duration> CREATOR = new Parcelable.Creator<Duration>() {
+        @Override
+        public Duration createFromParcel(Parcel source) {
+            return new Duration(source);
+        }
+
+        @Override
+        public Duration[] newArray(int size) {
+            return new Duration[size];
+        }
+    };
 }
