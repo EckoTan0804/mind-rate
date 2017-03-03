@@ -52,7 +52,7 @@
                     "second": 0
                 },
                 "triggerEvent": {
-                    "minTimeSpace": {"seconds": 180},
+                    "minTimeSpace": 180, // unit: second
                     "datetime": false, 
                     "time": "16-0-0", // hour-min-sec format
                     // "triggeredWhenCalendarEventBegins": false,
