@@ -4,6 +4,8 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -23,11 +25,9 @@ public class TriggerEvent implements Parcelable {
     private String questionnaireID;
 
 
-
-
     private int minTimeSpace;
+    @SerializedName("time")
     private String time;
-
 
 
     private Date dateTime;
@@ -50,7 +50,7 @@ public class TriggerEvent implements Parcelable {
     private boolean gyroscope;
     //===========================================================
 
-//=============================Index of Sensor=========================
+    //=============================Index of Sensor=========================
     private static final int TYPE_ACCELEROMETER = 0;
     private static final int TYPE_AMBIENT_TEMPERATURE = 1;
     private static final int TYPE_GRAVITY = 2;
@@ -67,25 +67,25 @@ public class TriggerEvent implements Parcelable {
 
     //========================================================
     //=========Max and Min-Value of Sensor to trigger Questionnaire=====
-    private float  accelerometerMinXValue;
-    private float  accelerometerMinYValue;
-    private float  accelerometerMinZValue;
+    private float accelerometerMinXValue;
+    private float accelerometerMinYValue;
+    private float accelerometerMinZValue;
 
-    private float  accelerometerMaxXValue;
-    private float  accelerometerMaxYValue;
-    private float  accelerometerMaxZValue;
+    private float accelerometerMaxXValue;
+    private float accelerometerMaxYValue;
+    private float accelerometerMaxZValue;
     //=================================================
-    private float  ambientTemperatureMinValue;
-    private float  ambientTemperatureMaxValue;
-//===============================================
-    private float  gravityMinXValue;
-    private float  gravityMinYValue;
-    private float  gravityMinZValue;
+    private float ambientTemperatureMinValue;
+    private float ambientTemperatureMaxValue;
+    //===============================================
+    private float gravityMinXValue;
+    private float gravityMinYValue;
+    private float gravityMinZValue;
 
     private float gravityMaxXValue;
     private float gravityMaxYValue;
     private float gravityMaxZValue;
-//============================================
+    //============================================
     private float gyroscopeMinXValue;
     private float gyroscopeMinYValue;
     private float gyroscopeMinZValue;
@@ -93,63 +93,63 @@ public class TriggerEvent implements Parcelable {
     private float gyroscopeMaxXValue;
     private float gyroscopeMaxYValue;
     private float gyroscopeMaxZValue;
-//============================================
+    //============================================
     private float lightMinValue;
     private float lightMaxValue;
-//================================================
+    //================================================
     private float linearAccelerationMinXValue;
     private float linearAccelerationMinYValue;
     private float linearAccelerationMinZValue;
 
-    private float  linearAccelerationMaxXValue;
-    private float  linearAccelerationMaxYValue;
-    private float  linearAccelerationMaxZValue;
-//================================================
-    private float  magneticFieldMinXValue;
-    private float  magneticFieldMinYValue;
-    private float  magneticFieldMinZValue;
+    private float linearAccelerationMaxXValue;
+    private float linearAccelerationMaxYValue;
+    private float linearAccelerationMaxZValue;
+    //================================================
+    private float magneticFieldMinXValue;
+    private float magneticFieldMinYValue;
+    private float magneticFieldMinZValue;
 
     private float magneticFieldMaxXValue;
     private float magneticFieldMaxYValue;
     private float magneticFieldMaxZValue;
-//===============================================
+    //===============================================
     private float orientationMinXValue;
     private float orientationMinYValue;
     private float orientationMinZValue;
 
-// noch nicht fertig!
+    // noch nicht fertig!
     private float orientationMaxXValue;
     private float orientationMaxYValue;
     private float orientationMaxZValue;
-//===============================================
-    private float  pressureMinValue;
-    private float  pressureMaxValue;
-//=================================================
-    private float  proximityMinValue;
-    private float  proximityMaxValue;
-//================================================
-    private float  relativeHumidityMinValue;
-    private float  relativeHumidityMaxValue;
-//=====================================================
-    private float  rotationVectorMinXValue;
-    private float  rotationVectorMinYValue;
-    private float  rotationVectorMinZValue;
+    //===============================================
+    private float pressureMinValue;
+    private float pressureMaxValue;
+    //=================================================
+    private float proximityMinValue;
+    private float proximityMaxValue;
+    //================================================
+    private float relativeHumidityMinValue;
+    private float relativeHumidityMaxValue;
+    //=====================================================
+    private float rotationVectorMinXValue;
+    private float rotationVectorMinYValue;
+    private float rotationVectorMinZValue;
 
     private float rotationVectorMaxXValue;
     private float rotationVectorMaxYValue;
     private float rotationVectorMaxZValue;
-//======================================================
+    //======================================================
 
     //==================================================================
     private boolean[] sensorList;
 
 
-    public TriggerEvent(String  questionnaireID){
+    public TriggerEvent(String questionnaireID) {
         this.questionnaireID = questionnaireID;
         this.sensorList = new boolean[12];
 
-       // for (int i = 0; i < sensorList.length; i++) {
-           // Log.i(TAG,String.valueOf(this.sensorList[i]));
+        // for (int i = 0; i < sensorList.length; i++) {
+        // Log.i(TAG,String.valueOf(this.sensorList[i]));
         //}
 
     }
@@ -231,7 +231,8 @@ public class TriggerEvent implements Parcelable {
         return triggeredWhenWhatsAppNotificationComes;
     }
 
-    public void setTriggeredWhenWhatsAppNotificationComes(boolean triggeredWhenWhatsAppNotificationComes) {
+    public void setTriggeredWhenWhatsAppNotificationComes(
+            boolean triggeredWhenWhatsAppNotificationComes) {
         this.triggeredWhenWhatsAppNotificationComes = triggeredWhenWhatsAppNotificationComes;
     }
 
@@ -239,7 +240,8 @@ public class TriggerEvent implements Parcelable {
         return triggeredWhenFacebookNotificationComes;
     }
 
-    public void setTriggeredWhenFacebookNotificationComes(boolean triggeredWhenFacebookNotificationComes) {
+    public void setTriggeredWhenFacebookNotificationComes(
+            boolean triggeredWhenFacebookNotificationComes) {
         this.triggeredWhenFacebookNotificationComes = triggeredWhenFacebookNotificationComes;
     }
 

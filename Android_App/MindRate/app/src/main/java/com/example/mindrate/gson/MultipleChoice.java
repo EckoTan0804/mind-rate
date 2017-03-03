@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.example.mindrate.util.FontUtil;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
 public class MultipleChoice extends QuestionType implements CompoundButton
         .OnCheckedChangeListener, Parcelable {
 
+    @SerializedName("options")
     private ArrayList<Option> optionList;
     private ArrayList<String> answerList;
 

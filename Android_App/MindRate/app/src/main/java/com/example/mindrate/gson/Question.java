@@ -7,6 +7,8 @@ import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Project: MindRate
  * Package: com.example.mindrate.gson
@@ -17,12 +19,19 @@ import android.widget.TextView;
 
 public class Question implements Parcelable {
 
+    @SerializedName("questionContent")
     private String question;
+
+    @SerializedName("questionType")
     private QuestionType questionType;
+
+    @SerializedName("questionID")
     private String questionID;
     private boolean isAnswered;
     private boolean isValid;
     private boolean isBeginToAnswer;
+
+    @SerializedName("showByDefault")
     private boolean showByDefault;
 
     public Question(String question, QuestionType questionType, String questionID) {

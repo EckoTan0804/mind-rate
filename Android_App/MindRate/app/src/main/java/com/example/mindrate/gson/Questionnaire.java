@@ -53,9 +53,12 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     private Date triggerTime; // the newest trigger time
     private Date endTime;
     private Date submitTime;
+
+    @SerializedName("duration")
     private Duration duration;
 
-    private ArrayList<Question> questionList = new ArrayList<>();
+    @SerializedName("questions")
+    private ArrayList<Question> questionList;
 
     private TriggerEvent triggerEvent;
 
@@ -70,6 +73,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
             Duration duration) {
         this.questionnaireID = questionnaireID;
         this.duration = duration;
+        this.questionList = new ArrayList<>();
     }
 
 

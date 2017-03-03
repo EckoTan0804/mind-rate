@@ -4,6 +4,8 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Project: MindRate
  * <br>Package: com.example.mindrate.gson</br>
@@ -15,7 +17,9 @@ import android.os.Parcelable;
 
 public class Option implements Parcelable {
 
+    @SerializedName("optionContent")
     private String content;
+    @SerializedName("nextQuestionID")
     private String nextQuestionID;
 
     public Option(String content, String nextQuestionID) {

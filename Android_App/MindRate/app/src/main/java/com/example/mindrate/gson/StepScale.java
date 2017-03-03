@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.mindrate.util.FontUtil;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 public class StepScale extends QuestionType implements Parcelable {
 
+    @SerializedName("options")
     private ArrayList<Option> optionlist;
 
     public StepScale(ArrayList<Option> optionlist) {
