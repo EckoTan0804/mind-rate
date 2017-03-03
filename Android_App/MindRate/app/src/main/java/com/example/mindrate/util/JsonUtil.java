@@ -18,21 +18,19 @@ import java.util.List;
 
 public class JsonUtil {
 
+    private static final Gson gson = new Gson();
 
     public static String createJSON(Object obj) {
-        Gson gson = new Gson();
         return gson.toJson(obj);
     }
 
     public static List<Questionnaire> fromJsonToQuestionnaireList(String json) {
-        Gson gson = new Gson();
         List<Questionnaire> questionnaireList = gson.fromJson(json, new
                 TypeToken<List<Questionnaire>>(){}.getType());
         return questionnaireList;
     }
 
     public static Proband fromJsonToProband(String probandJSON) {
-        Gson gson = new Gson();
         Proband proband = gson.fromJson(probandJSON, Proband.class);
         return proband;
     }
