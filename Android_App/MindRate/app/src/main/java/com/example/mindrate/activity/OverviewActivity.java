@@ -133,7 +133,6 @@ public class OverviewActivity extends BaseActivity {
 
         initView();
 
-        initTestData();
 //        initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
@@ -202,7 +201,7 @@ public class OverviewActivity extends BaseActivity {
         if (TextUtils.isEmpty(questionnaireJSON)) {
             questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
         }
-//        this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
+        this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
         for (Questionnaire questionnaire : allQuestionnaireList) {
             questionnaire.getTriggerEvent().setSensor();
         }

@@ -29,14 +29,15 @@ import okhttp3.Response;
 public class LogInActivity extends BaseActivity {
 
 
-    public static final String SERVER = "http://ws16-pse-esm1.teco.edu/download/";
+    public static final String SERVER = "http://ws16-pse-esm1.teco.edu";
     private final String MALE = "male";
     private final String FEMALE = "female";
 
     private static int logInPage = 1;
     private static int LOG_IN_LAST_PAGE = 2;
 
-    private String questionnaireJSON = null;
+    private String questionnaireJSON;
+    private Proband proband;
 
     // =================== proband ==========================
     private String studyID;
@@ -176,7 +177,7 @@ public class LogInActivity extends BaseActivity {
                     studyID = edtTxt_studyID.getText().toString();
                     probandID = edtTxt_probandID.getText().toString();
                     occupation = edtTxt_occuptaion.getText().toString();
-                    Proband proband = new Proband(studyID, probandID,
+                    proband = new Proband(studyID, probandID,
                                                   new Birthday(year, month, day),
                                                   gender, occupation);
 
@@ -194,15 +195,36 @@ public class LogInActivity extends BaseActivity {
 //                    }
 
                     // download Questionnaires and save it
-                    HttpUtil.sendRequestWithOkHttp(SERVER + studyID + "/", new Callback() {
+                    String address = SERVER + "/download/" + studyID + "/";
+                    HttpUtil.sendRequestWithOkHttp(address, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-
+                            Toast.makeText(LogInActivity.this, R.string.load_fail, Toast.LENGTH_SHORT)
+                                    .show();
                         }
 
                         @Override
-                        public void onResponse(Call call, Response response) throws IOException {
+                        public void onResponse(Call call, final Response response) throws IOException {
                             questionnaireJSON = response.body().string();
+//                            PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
+//
+//                            // put proband & questionnaireJSON into intent
+//                            Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
+//                            if (!TextUtils.isEmpty(questionnaireJSON)) {
+//                                intent.putExtra("questionnaire_JSON", questionnaireJSON);
+//                            }
+//                            //                    } else {
+//                            //                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
+//                            //                        "again", Toast.LENGTH_LONG).show();
+//                            //                    }
+//                            intent.putExtra("proband", proband);
+//
+//                            // set isLogIn of MainActivity = true
+//                            MainActivity.setIsLogIn(true);
+//                            PreferenceUtil.commitBoolean("isLogIn", true);
+//
+//                            // use this intent to start AnswerQuestionActivity
+//                            startActivity(intent);
                         }
                     });
 
@@ -212,10 +234,11 @@ public class LogInActivity extends BaseActivity {
                     Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
                     if (!TextUtils.isEmpty(questionnaireJSON)) {
                         intent.putExtra("questionnaire_JSON", questionnaireJSON);
-                    } else {
-                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
-                        "again", Toast.LENGTH_LONG).show();
                     }
+//                    } else {
+//                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
+//                        "again", Toast.LENGTH_LONG).show();
+//                    }
                     intent.putExtra("proband", proband);
 
                     // set isLogIn of MainActivity = true
