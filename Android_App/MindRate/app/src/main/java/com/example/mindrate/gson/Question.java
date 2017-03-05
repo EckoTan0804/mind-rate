@@ -22,16 +22,11 @@ public class Question implements Parcelable {
     @SerializedName("questionContent")
     private String question;
 
-    @SerializedName("questionType")
     private QuestionType questionType;
-
-    @SerializedName("questionID")
     private String questionID;
     private boolean isAnswered;
     private boolean isValid;
     private boolean isBeginToAnswer;
-
-    @SerializedName("showByDefault")
     private boolean showByDefault;
 
     public Question(String question, QuestionType questionType, String questionID) {
