@@ -11,6 +11,10 @@ import android.widget.Button;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
+import com.example.mindrate.gson.Questionnaire;
+import com.example.mindrate.util.JsonUtil;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -28,6 +32,14 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        // test json parsing
+
+        String testJson = JsonUtil.createJSON(JsonUtil.initJsonTestData());
+        List<Questionnaire> list = JsonUtil.fromJsonToQuestionnaireList(testJson);
+
+        // ===================================================
+
         super.onCreate(savedInstanceState);
 
         // set English as default language
