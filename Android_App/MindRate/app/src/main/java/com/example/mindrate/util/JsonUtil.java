@@ -34,8 +34,10 @@ public class JsonUtil {
             .registerSubtype(DragScale.class, "DragScale")
             .registerSubtype(TextAnswer.class, "TextAnswer");
 
-    private static Gson gson = new GsonBuilder().registerTypeAdapterFactory
+    private static Gson gsonPolymorphism = new GsonBuilder().registerTypeAdapterFactory
             (runtimeTypeAdapterFactory).serializeNulls().create();
+
+    private static Gson gson = new Gson();
 
     public static String createJSON(Object obj) {
         return gson.toJson(obj);
