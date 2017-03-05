@@ -27,6 +27,7 @@ public class StepScale extends QuestionType implements Parcelable {
     private ArrayList<Option> optionlist;
 
     public StepScale(ArrayList<Option> optionlist) {
+        super("StepScale");
         this.optionlist = optionlist;
     }
 

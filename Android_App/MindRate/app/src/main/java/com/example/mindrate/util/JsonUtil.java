@@ -28,11 +28,11 @@ public class JsonUtil {
     private static RuntimeTypeAdapterFactory<QuestionType> runtimeTypeAdapterFactory =
             RuntimeTypeAdapterFactory
             .of(QuestionType.class, "type")
-            .registerSubtype(SingleChoice.class, "SingleChoice")
-            .registerSubtype(MultipleChoice.class, "MultipleChoice")
-            .registerSubtype(StepScale.class, "StepScale")
-            .registerSubtype(DragScale.class, "DragScale")
-            .registerSubtype(TextAnswer.class, "TextAnswer");
+            .registerSubtype(SingleChoice.class)
+            .registerSubtype(MultipleChoice.class)
+            .registerSubtype(StepScale.class)
+            .registerSubtype(DragScale.class)
+            .registerSubtype(TextAnswer.class);
 
     private static Gson gsonPolymorphism = new GsonBuilder().registerTypeAdapterFactory
             (runtimeTypeAdapterFactory).serializeNulls().create();

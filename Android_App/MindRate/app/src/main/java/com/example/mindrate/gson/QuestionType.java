@@ -13,8 +13,13 @@ public class QuestionType implements Parcelable {
 
     protected String nextQuestionID;
     protected QuestionAnswer questionAnswer;
+    private String type;
 
-    public  void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
+    public QuestionType(String type) {
+        this.type = type;
+    }
+
+    public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
 
@@ -48,11 +53,13 @@ public class QuestionType implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.nextQuestionID);
         dest.writeParcelable(this.questionAnswer, flags);
+        dest.writeString(this.type);
     }
 
     protected QuestionType(Parcel in) {
         this.nextQuestionID = in.readString();
         this.questionAnswer = in.readParcelable(QuestionAnswer.class.getClassLoader());
+        this.type = in.readString();
     }
 
     public static final Creator<QuestionType> CREATOR = new Creator<QuestionType>() {

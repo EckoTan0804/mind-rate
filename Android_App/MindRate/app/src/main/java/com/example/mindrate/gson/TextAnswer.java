@@ -78,6 +78,7 @@ public class TextAnswer extends QuestionType implements Parcelable {
     }
 
     public TextAnswer() {
+        super("TextAnswer");
     }
 
     @Override

@@ -27,6 +27,7 @@ public class SingleChoice extends QuestionType implements Parcelable {
     private ArrayList<Option> optionlist;
 
     public SingleChoice(ArrayList<Option> optionlist) {
+        super("SingleChoice");
         this.optionlist = optionlist;
     }
 

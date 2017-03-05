@@ -25,6 +25,7 @@ public class DragScale extends QuestionType implements Parcelable {
     private int maxValue;
 
     public DragScale(int maxValue) {
+        super("DragScale");
         this.maxValue = maxValue;
     }
 

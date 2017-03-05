@@ -28,6 +28,7 @@ import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.fragment.SettingFragment;
 import com.example.mindrate.fragment.WelcomeFragment;
 import com.example.mindrate.gson.DragScale;
+import com.example.mindrate.gson.Duration;
 import com.example.mindrate.gson.MultipleChoice;
 import com.example.mindrate.gson.Option;
 import com.example.mindrate.gson.Proband;
@@ -128,12 +129,11 @@ public class OverviewActivity extends BaseActivity {
         }
 
 
-
         initFromIntent();
 
         initView();
 
-//        initTestData();
+        //        initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
 
@@ -145,10 +145,10 @@ public class OverviewActivity extends BaseActivity {
 
     private void initFragment() {
         welcomeFragment = new WelcomeFragment();
-         probandProfileFragment = new ProbandProfileFragment();
-         chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-         aboutUsFragment = new AboutUsFragment();
-         settingFragment = new SettingFragment();
+        probandProfileFragment = new ProbandProfileFragment();
+        chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+        aboutUsFragment = new AboutUsFragment();
+        settingFragment = new SettingFragment();
     }
 
     @Override
@@ -218,14 +218,14 @@ public class OverviewActivity extends BaseActivity {
         }
 
         // pendingIntent from Notification
-//        String fromIntent = intent.getStringExtra("notityToAnswer");
-//        if (!TextUtils.isEmpty(fromIntent)) {
-//            if (fromIntent.equals("chooseQuestionnaireFragment")) {
-//                isFirstLoad = false;
-//                replaceFragment(chooseQuestionnaireFragment);
-//            }
-//
-//        }
+        //        String fromIntent = intent.getStringExtra("notityToAnswer");
+        //        if (!TextUtils.isEmpty(fromIntent)) {
+        //            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+        //                isFirstLoad = false;
+        //                replaceFragment(chooseQuestionnaireFragment);
+        //            }
+        //
+        //        }
 
     }
 
@@ -338,7 +338,7 @@ public class OverviewActivity extends BaseActivity {
 
         questionnaire.trigger(OverviewActivity.this);
         Questionnaire q = questionnaire.cloneItself();
-//        q.setTriggerTime(TimeUtil.getCurrentTime());
+        //        q.setTriggerTime(TimeUtil.getCurrentTime());
 
         if (!this.triggeredQuestionnaireList.isEmpty()) {
 
@@ -508,8 +508,7 @@ public class OverviewActivity extends BaseActivity {
 
         // allQuestionnaireList = new ArrayList<>();
 
-        Questionnaire questionnaireA = new Questionnaire("A",
-                                                         2);
+        Questionnaire questionnaireA = new Questionnaire("A", new Duration(48, 0, 0));
         // q1
         ArrayList<Option> optionList = new ArrayList<>();
         optionList.add(new Option("happy",
@@ -578,7 +577,7 @@ public class OverviewActivity extends BaseActivity {
         triggerEvent1.setAirTemperature(true);
         //triggerEvent1.setTime("10-55-10");
         //Date date = TimeUtil.getCurrentTime();
-       // Calendar calendar = Calendar.getInstance();
+        // Calendar calendar = Calendar.getInstance();
         //calendar.setTime(TimeUtil.getCurrentTime());
         //calendar.add(Calendar.SECOND, 10);
         //triggerEvent1.setDateTime(calendar.getTime());
@@ -592,11 +591,10 @@ public class OverviewActivity extends BaseActivity {
         //TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire1 : allQuestionnaireList) {
-                TriggerEventManager.getTriggerEventManager().addObserver(questionnaire1);
+            TriggerEventManager.getTriggerEventManager().addObserver(questionnaire1);
         }
 
-//        triggeredQuestionnaireList.add(questionnaireA);
-
+        //        triggeredQuestionnaireList.add(questionnaireA);
 
 
         //        List<Questionnaire> testquestionnaireList = new ArrayList<>();

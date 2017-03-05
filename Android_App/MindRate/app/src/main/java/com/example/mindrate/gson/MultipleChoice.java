@@ -30,6 +30,7 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     private ArrayList<String> answerList;
 
     public MultipleChoice(ArrayList<Option> optionList) {
+        super("MultipleChoice");
         this.optionList = optionList;
         this.answerList = new ArrayList<>();
     }
