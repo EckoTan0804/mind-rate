@@ -42,6 +42,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     public static final String SERVER_ADDRESS = "Server Address"; //TODO: give the real address!
 
+    @Expose
     private boolean isValid;
 
     @Expose(serialize = false, deserialize = false)
@@ -62,6 +63,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     private TriggerEvent triggerEvent;
 
+    @Expose
     private boolean isAnswered;
 
 
