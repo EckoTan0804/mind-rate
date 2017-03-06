@@ -76,13 +76,12 @@ public class Question implements Parcelable {
     }
 
     public boolean isAnswered() {
-        return isAnswered;
+        return this.questionType.isAnswered();
     }
 
     public void setAnswered(boolean answered) {
         isAnswered = answered;
     }
-
 
     public boolean isValid() {
         return isValid;
