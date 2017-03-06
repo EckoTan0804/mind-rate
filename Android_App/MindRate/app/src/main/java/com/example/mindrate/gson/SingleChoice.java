@@ -36,8 +36,6 @@ public class SingleChoice extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-
-
         super.questionAnswer = new QuestionAnswer(questionID);
 
         RadioGroup radioGroup = new RadioGroup(context);
@@ -57,12 +55,18 @@ public class SingleChoice extends QuestionType implements Parcelable {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
                 questionAnswer.setAnswerContent(optionlist.get(checkedId).getContent());
+                setAnswered(true);
             }
         });
 
         layout.addView(radioGroup);
 
         FontUtil.changeFonts(layout, context);
+    }
+
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(isAnswered);
     }
 
     @Override

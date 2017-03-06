@@ -27,6 +27,10 @@ public class TextAnswer extends QuestionType implements Parcelable {
 
     private String inputAnswer;
 
+    public TextAnswer() {
+        super("TextAnswer");
+    }
+
     @Override
     public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
@@ -77,9 +81,15 @@ public class TextAnswer extends QuestionType implements Parcelable {
         return questionAnswer;
     }
 
-    public TextAnswer() {
-        super("TextAnswer");
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
     }
+
+//    @Override
+//    public boolean isAnswered() {
+//        return !TextUtils.isEmpty(this.inputAnswer);
+//    }
 
     @Override
     public int describeContents() {

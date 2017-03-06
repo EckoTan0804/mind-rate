@@ -57,6 +57,7 @@ public class DragScale extends QuestionType implements Parcelable {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 tv_seekBarProgress.setText(progress + " / " + maxValue);
                 questionAnswer.setAnswerContent(Integer.toString(progress));
+                setAnswered(true);
             }
 
             @Override
@@ -80,6 +81,11 @@ public class DragScale extends QuestionType implements Parcelable {
 
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
+    }
+
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
     }
 
     @Override

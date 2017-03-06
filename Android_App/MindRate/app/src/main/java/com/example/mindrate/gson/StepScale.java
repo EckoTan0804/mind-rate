@@ -55,6 +55,7 @@ public class StepScale extends QuestionType implements Parcelable {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
                 questionAnswer.setAnswerContent(optionlist.get(checkedId).getContent());
+                setAnswered(true);
             }
         });
 
@@ -63,6 +64,10 @@ public class StepScale extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
+    }
 
     public String getNextQuestionID() {
         return nextQuestionID;

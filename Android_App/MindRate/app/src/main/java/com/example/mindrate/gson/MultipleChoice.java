@@ -71,12 +71,24 @@ public class MultipleChoice extends QuestionType implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        int checkNum = 0;
         if (isChecked) {
             this.answerList.add(compoundButton.getText().toString());
+            checkNum++;
+            setAnswered(true);
         } else {
             this.answerList.remove(compoundButton.getText().toString());
+            if (--checkNum == 0) {
+                setAnswered(false);
+            }
         }
     }
+
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
+    }
+
 
     @Override
     public int describeContents() {
