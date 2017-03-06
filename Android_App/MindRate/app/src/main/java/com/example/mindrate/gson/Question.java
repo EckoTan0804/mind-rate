@@ -26,7 +26,6 @@ public class Question implements Parcelable {
     private String questionID;
     private boolean isAnswered;
     private boolean isValid;
-    private boolean isBeginToAnswer;
     private boolean showByDefault;
 
     public Question(String question, QuestionType questionType, String questionID) {
@@ -34,7 +33,6 @@ public class Question implements Parcelable {
         this.questionType = questionType;
         this.questionID = questionID;
         this.isAnswered = false;
-        isBeginToAnswer = false;
     }
 
     public Question(String question, QuestionType questionType, String questionID,
@@ -94,13 +92,6 @@ public class Question implements Parcelable {
         isValid = valid;
     }
 
-    public boolean isBeginToAnswer() {
-        return isBeginToAnswer;
-    }
-
-    public void setBeginToAnswer(boolean beginToAnswer) {
-        isBeginToAnswer = beginToAnswer;
-    }
 
     public boolean isShowByDefault() {
         return showByDefault;
@@ -122,7 +113,6 @@ public class Question implements Parcelable {
         dest.writeString(this.questionID);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.isBeginToAnswer ? (byte) 1 : (byte) 0);
         dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
     }
 
@@ -132,7 +122,6 @@ public class Question implements Parcelable {
         this.questionID = in.readString();
         this.isAnswered = in.readByte() != 0;
         this.isValid = in.readByte() != 0;
-        this.isBeginToAnswer = in.readByte() != 0;
         this.showByDefault = in.readByte() != 0;
     }
 
