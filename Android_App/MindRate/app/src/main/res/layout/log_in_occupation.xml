@@ -17,7 +17,8 @@
         android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp">
+        android:layout_marginLeft="15dp"
+        android:visibility="invisible">
     </TextView>
 
     <EditText
@@ -35,7 +36,8 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp">
+        android:paddingEnd="15dp"
+        android:visibility="invisible">
     </EditText>
 
 </LinearLayout>

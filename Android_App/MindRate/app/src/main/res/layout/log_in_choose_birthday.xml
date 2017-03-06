@@ -19,6 +19,7 @@
         android:textColor="@color/textColorPrimary"
         android:textSize="15dp"
         android:layout_marginLeft="15dp"
+        android:visibility="invisible"
         >
     </TextView>
 
@@ -35,6 +36,7 @@
         android:spinnersShown="true"
         android:calendarTextColor="#fff"
         android:theme="@style/AppTheme.Picker"
+        android:visibility="invisible"
         >
     </DatePicker>
 
