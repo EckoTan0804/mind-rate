@@ -14,6 +14,7 @@ public class QuestionType implements Parcelable {
     protected String nextQuestionID;
     protected QuestionAnswer questionAnswer;
     private String type;
+    private boolean isAnswered;
 
     public QuestionType(String type) {
         this.type = type;
@@ -41,6 +42,14 @@ public class QuestionType implements Parcelable {
         this.questionAnswer = questionAnswer;
     }
 
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
+
     public QuestionType() {
     }
 
@@ -54,12 +63,14 @@ public class QuestionType implements Parcelable {
         dest.writeString(this.nextQuestionID);
         dest.writeParcelable(this.questionAnswer, flags);
         dest.writeString(this.type);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected QuestionType(Parcel in) {
         this.nextQuestionID = in.readString();
         this.questionAnswer = in.readParcelable(QuestionAnswer.class.getClassLoader());
         this.type = in.readString();
+        this.isAnswered = in.readByte() != 0;
     }
 
     public static final Creator<QuestionType> CREATOR = new Creator<QuestionType>() {
