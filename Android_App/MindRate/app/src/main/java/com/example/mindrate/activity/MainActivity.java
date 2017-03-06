@@ -11,10 +11,6 @@ import android.widget.Button;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.gson.Questionnaire;
-import com.example.mindrate.util.JsonUtil;
-
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,8 +31,8 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
         // test json parsing
 
-        String testJson = JsonUtil.createJSON(JsonUtil.initJsonTestData());
-        List<Questionnaire> list = JsonUtil.fromJsonToQuestionnaireList(testJson);
+//        String testJson = JsonUtil.createJSON(JsonUtil.initJsonTestData());
+//        List<Questionnaire> list = JsonUtil.fromJsonToQuestionnaireList(testJson);
 
         // ===================================================
 
