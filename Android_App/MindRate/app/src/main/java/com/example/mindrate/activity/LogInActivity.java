@@ -309,47 +309,47 @@ public class LogInActivity extends BaseActivity {
                         @Override
                         public void onResponse(Call call, final Response response) throws IOException {
                             questionnaireJSON = response.body().string();
-//                            PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
-//
-//                            // put proband & questionnaireJSON into intent
-//                            Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
-//                            if (!TextUtils.isEmpty(questionnaireJSON)) {
-//                                intent.putExtra("questionnaire_JSON", questionnaireJSON);
-//                            }
-//                            //                    } else {
-//                            //                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
-//                            //                        "again", Toast.LENGTH_LONG).show();
-//                            //                    }
-//                            intent.putExtra("proband", proband);
-//
-//                            // set isLogIn of MainActivity = true
-//                            MainActivity.setIsLogIn(true);
-//                            PreferenceUtil.commitBoolean("isLogIn", true);
-//
-//                            // use this intent to start AnswerQuestionActivity
-//                            startActivity(intent);
+                            PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
+
+                            // put proband & questionnaireJSON into intent
+                            Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
+                            if (!TextUtils.isEmpty(questionnaireJSON)) {
+                                intent.putExtra("questionnaire_JSON", questionnaireJSON);
+                            }
+                            //                    } else {
+                            //                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
+                            //                        "again", Toast.LENGTH_LONG).show();
+                            //                    }
+                            intent.putExtra("proband", proband);
+
+                            // set isLogIn of MainActivity = true
+                            MainActivity.setIsLogIn(true);
+                            PreferenceUtil.commitBoolean("isLogIn", true);
+
+                            // use this intent to start AnswerQuestionActivity
+                            startActivity(intent);
                         }
                     });
 
-                    PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
-
-                    // put proband & questionnaireJSON into intent
-                    Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
-                    if (!TextUtils.isEmpty(questionnaireJSON)) {
-                        intent.putExtra("questionnaire_JSON", questionnaireJSON);
-                    }
-//                    } else {
-//                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
-//                        "again", Toast.LENGTH_LONG).show();
+//                    PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
+//
+//                    // put proband & questionnaireJSON into intent
+//                    Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
+//                    if (!TextUtils.isEmpty(questionnaireJSON)) {
+//                        intent.putExtra("questionnaire_JSON", questionnaireJSON);
 //                    }
-                    intent.putExtra("proband", proband);
-
-                    // set isLogIn of MainActivity = true
-                    MainActivity.setIsLogIn(true);
-                    PreferenceUtil.commitBoolean("isLogIn", true);
-
-                    // use this intent to start AnswerQuestionActivity
-                    startActivity(intent);
+////                    } else {
+////                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
+////                        "again", Toast.LENGTH_LONG).show();
+////                    }
+//                    intent.putExtra("proband", proband);
+//
+//                    // set isLogIn of MainActivity = true
+//                    MainActivity.setIsLogIn(true);
+//                    PreferenceUtil.commitBoolean("isLogIn", true);
+//
+//                    // use this intent to start AnswerQuestionActivity
+//                    startActivity(intent);
                 }
             }
         });
