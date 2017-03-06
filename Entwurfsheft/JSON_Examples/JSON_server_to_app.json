@@ -99,9 +99,10 @@
                     },
                     {
                         "questionID": "A1_1_2",
+                        "questionContent": "Where are you heading to?"
                         "questionType": {
                             "typeName": "TextAnswer",
-                            "questionContent": "Where are you heading to?"
+                            
                         }
                     },
                     {
