@@ -63,9 +63,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     private TriggerEvent triggerEvent;
 
-    @Expose
-    private boolean isAnswered;
-
 
     public Questionnaire(String questionnaireID) {
         this.questionnaireID = questionnaireID;
@@ -245,13 +242,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.studyID = studyID;
     }
 
-    public boolean isAnswered() {
-        return isAnswered;
-    }
-
-    public void setAnswered(boolean answered) {
-        isAnswered = answered;
-    }
 
 
     // ===================== Parcelable ==========================================================
@@ -599,7 +589,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         dest.writeParcelable(this.duration, flags);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
-        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected Questionnaire(Parcel in) {
@@ -615,7 +604,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.duration = in.readParcelable(Duration.class.getClassLoader());
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
-        this.isAnswered = in.readByte() != 0;
     }
 
     public static final Creator<Questionnaire> CREATOR = new Creator<Questionnaire>() {
