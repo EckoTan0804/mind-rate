@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
@@ -113,40 +114,47 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
                 if (this.nextOrSubmit == NEXT) {
 
-                    // 0. add this question's answer to questionnaireAnswer
-                    recordAnswer();
+                    if (this.currentQuestion.isAnswered()) {
+                        // 0. add this question's answer to questionnaireAnswer
+                        recordAnswer();
 
-                    // 1. remove last questions's view
-                    ll_displayAnswerOption.removeAllViews();
+                        // 1. remove last questions's view
+                        ll_displayAnswerOption.removeAllViews();
 
-                    // 2. determine whether nextQuestionID is default or specified
-                    if (!TextUtils.isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
-                        nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
+                        // 2. determine whether nextQuestionID is default or specified
+                        if (!TextUtils.isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
+                            nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
+                        } else {
+                            nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
+                        }
+
+                        if (nextQuestionID != null) {
+
+                            // 3. get next question
+                            Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
+
+                            // 4. next question inflates its view
+                            nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
+
+                            // 5. determine whether next question is the last question
+                            //                        if (this.questionnaire.isLastQuestion(nextQuestion)) {
+                            //                            setButtonAsSubmit();
+                            //                        }
+
+                            // 6. Iteration: set nextQuestion as currentQuestion
+                            currentQuestion = nextQuestion;
+                        } else {
+                            this.tv_question.setText(R.string.finish);
+                            this.tv_question.setGravity(Gravity.CENTER);
+                            this.tv_question.setTextSize(40);
+                            setButtonAsSubmit();
+                        }
                     } else {
-                        nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
+                        Toast.makeText(this, R.string.question_not_answered, Toast.LENGTH_LONG)
+                                .show();
                     }
 
-                    if (nextQuestionID != null) {
 
-                        // 3. get next question
-                        Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
-
-                        // 4. next question inflates its view
-                        nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
-
-                        // 5. determine whether next question is the last question
-//                        if (this.questionnaire.isLastQuestion(nextQuestion)) {
-//                            setButtonAsSubmit();
-//                        }
-
-                        // 6. Iteration: set nextQuestion as currentQuestion
-                        currentQuestion = nextQuestion;
-                    } else {
-                        this.tv_question.setText(R.string.finish);
-                        this.tv_question.setGravity(Gravity.CENTER);
-                        this.tv_question.setTextSize(40);
-                        setButtonAsSubmit();
-                    }
 
 
 

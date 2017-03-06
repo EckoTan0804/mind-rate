@@ -71,4 +71,5 @@
 
     <!--input empty error-->
     <string name="input_empty_error">The input can not be empty.</string>
+    <string name="question_not_answered">This question is not answered.</string>
 </resources>
