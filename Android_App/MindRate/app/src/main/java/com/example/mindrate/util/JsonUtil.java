@@ -46,7 +46,7 @@ public class JsonUtil {
     private static Gson gsonPolymorphism = new GsonBuilder().registerTypeAdapterFactory
             (runtimeTypeAdapterFactory).serializeNulls().create();
 
-    private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
+    private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls()
             .setPrettyPrinting().create();
 
     public static String createJSON(Object obj) {

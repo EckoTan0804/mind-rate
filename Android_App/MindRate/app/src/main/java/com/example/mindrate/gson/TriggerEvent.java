@@ -760,6 +760,10 @@ public class TriggerEvent implements Parcelable {
         this.rotationVectorMaxZValue = rotationVectorMaxZValue;
     }
 
+    public void setSensorList(boolean[] sensorList) {
+        this.sensorList = sensorList;
+    }
+
     //====================================================================
 
     public boolean[] getSensorList() {
