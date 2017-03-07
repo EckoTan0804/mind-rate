@@ -70,7 +70,6 @@ public class DeviceSensorService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        //改成问卷需要的sensor。
         for (AllSensorEventListener listener : allSensorEventListeners) {
             this.sensorManager.registerListener(listener, listener.getSensor(), SensorManager
                     .SENSOR_DELAY_UI);
