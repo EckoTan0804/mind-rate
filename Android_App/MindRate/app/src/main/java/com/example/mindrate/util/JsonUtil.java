@@ -36,7 +36,7 @@ public class JsonUtil {
 
     private static RuntimeTypeAdapterFactory<QuestionType> runtimeTypeAdapterFactory =
             RuntimeTypeAdapterFactory
-                    .of(QuestionType.class, "type")
+                    .of(QuestionType.class, "typeName")
                     .registerSubtype(SingleChoice.class)
                     .registerSubtype(MultipleChoice.class)
                     .registerSubtype(StepScale.class)
@@ -69,7 +69,7 @@ public class JsonUtil {
             JsonObject obj = (JsonObject) element;
             Question q = gson.fromJson(obj, Question.class);
             JsonObject questionType = obj.getAsJsonObject("questionType");
-            String type = questionType.get("type").getAsString();
+            String type = questionType.get("typeName").getAsString();
             switch (type) {
                 case "SingleChoice":
                     q.setQuestionType((SingleChoice) gsonPolymorphism.fromJson(questionType, new
@@ -100,7 +100,7 @@ public class JsonUtil {
                             .getType()));
                     break;
                 case "TextAnswer":
-                    q.setQuestionType((TextAnswer) gsonPolymorphism.fromJson(questionType, new
+                    q.setQuestionType((TextAnswer)gsonPolymorphism.fromJson(questionType, new
                             TypeToken<QuestionType>
                                     () {
                             }
@@ -117,7 +117,9 @@ public class JsonUtil {
 
     public static List<Questionnaire> fromJsonToQuestionnaireList(String json) {
         List<Questionnaire> questionnaireList = new ArrayList<>();
-        JsonArray jsonArray = new JsonParser().parse(json).getAsJsonArray();
+        JsonObject obj = new JsonParser().parse(json).getAsJsonObject();
+        JsonObject study = obj.getAsJsonObject("study");
+        JsonArray jsonArray = study.getAsJsonArray("questionnaires");
         for (JsonElement element : jsonArray) {
             Questionnaire questionnaire = fromJsonToQuestionnaire(element);
             questionnaireList.add(questionnaire);
