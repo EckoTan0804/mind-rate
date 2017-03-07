@@ -202,10 +202,17 @@ public class OverviewActivity extends BaseActivity {
             questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
         }
         this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
-        for (Questionnaire questionnaire : allQuestionnaireList) {
-            questionnaire.getTriggerEvent().setSensor();
-        }
+
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
+        for (Questionnaire questionnaire : allQuestionnaireList) {
+            TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
+            if (triggerEvent.getSensorList() == null) {
+                triggerEvent.setSensorList(new boolean[12]);
+            }
+            triggerEvent.setSensor();
+            TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
+        }
+//        TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
