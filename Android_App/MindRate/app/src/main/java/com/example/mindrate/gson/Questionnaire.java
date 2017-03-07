@@ -273,12 +273,17 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         //================testData==============================================
         float[] lightTest1 = dataOfAllSensor[4];
         float[] temtest1 = dataOfAllSensor[1];
-        float remp = temtest1[0];
+        float temp = temtest1[0];
         float lightTest = lightTest1[0];
-        String a = String.valueOf(lightTest);
-        String b = String.valueOf(remp);
-        Log.d(TAG,a);
-        Log.d(TAG,b);
+        float[] pressure = dataOfAllSensor[8];
+//        String a = String.valueOf(lightTest);
+        String b = String.valueOf(temp);
+//        Log.d(TAG,a);
+        Log.d(TAG, "pressure: " + pressure[0]);
+        Log.d(TAG, "temp: " + temp);
+        Log.d(TAG, "Proximity: " + dataOfAllSensor[9][0]);
+
+
         //========================================================================
         // send to Proband a Notification.
     }

@@ -98,10 +98,9 @@ public class TriggerEventManager extends Observable{
         float lightTest = lightTest1[0];
         String a = String.valueOf(lightTest);
         String b = String.valueOf(remp);
-        //Log.d(TAG,a);
+        Log.d(TAG,a);
         //Log.d(TAG,b);
        this.addQuestionnaireToOverviewActivity();
-        //问卷通知
 
     }
 
