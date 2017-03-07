@@ -18,8 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Adapts values whose runtime type may differ from their declaration type. This
- * is necessary when a field's type is not the same type that GSON should create
+ * Adapts values whose runtime typeName may differ from their declaration typeName. This
+ * is necessary when a field's typeName is not the same typeName that GSON should create
  * when deserializing that field. For example, consider these types:
  * <pre>   {@code
  *   abstract class Shape {
@@ -42,7 +42,7 @@ import java.util.Map;
  *     Shape topShape;
  *   }
  * }</pre>
- * <p>Without additional type information, the serialized JSON is ambiguous. Is
+ * <p>Without additional typeName information, the serialized JSON is ambiguous. Is
  * the bottom shape in this drawing a rectangle or a diamond? <pre>   {@code
  *   {
  *     "bottomShape": {
@@ -57,43 +57,43 @@ import java.util.Map;
  *       "y": 1
  *     }
  *   }}</pre>
- * This class addresses this problem by adding type information to the
- * serialized JSON and honoring that type information when the JSON is
+ * This class addresses this problem by adding typeName information to the
+ * serialized JSON and honoring that typeName information when the JSON is
  * deserialized: <pre>   {@code
  *   {
  *     "bottomShape": {
- *       "type": "Diamond",
+ *       "typeName": "Diamond",
  *       "width": 10,
  *       "height": 5,
  *       "x": 0,
  *       "y": 0
  *     },
  *     "topShape": {
- *       "type": "Circle",
+ *       "typeName": "Circle",
  *       "radius": 2,
  *       "x": 4,
  *       "y": 1
  *     }
  *   }}</pre>
- * Both the type field name ({@code "type"}) and the type labels ({@code
+ * Both the typeName field name ({@code "typeName"}) and the typeName labels ({@code
  * "Rectangle"}) are configurable.
  *
  * <h3>Registering Types</h3>
- * Create a {@code RuntimeTypeAdapterFactory} by passing the base type and type field
- * name to the {@link #of} factory method. If you don't supply an explicit type
- * field name, {@code "type"} will be used. <pre>   {@code
+ * Create a {@code RuntimeTypeAdapterFactory} by passing the base typeName and typeName field
+ * name to the {@link #of} factory method. If you don't supply an explicit typeName
+ * field name, {@code "typeName"} will be used. <pre>   {@code
  *   RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory
- *       = RuntimeTypeAdapterFactory.of(Shape.class, "type");
+ *       = RuntimeTypeAdapterFactory.of(Shape.class, "typeName");
  * }</pre>
  * Next register all of your subtypes. Every subtype must be explicitly
  * registered. This protects your application from injection attacks. If you
- * don't supply an explicit type label, the type's simple name will be used.
+ * don't supply an explicit typeName label, the typeName's simple name will be used.
  * <pre>   {@code
  *   shapeAdapter.registerSubtype(Rectangle.class, "Rectangle");
  *   shapeAdapter.registerSubtype(Circle.class, "Circle");
  *   shapeAdapter.registerSubtype(Diamond.class, "Diamond");
  * }</pre>
- * Finally, register the type adapter factory in your application's GSON builder:
+ * Finally, register the typeName adapter factory in your application's GSON builder:
  * <pre>   {@code
  *   Gson gson = new GsonBuilder()
  *       .registerTypeAdapterFactory(shapeAdapterFactory)
@@ -121,27 +121,27 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     }
 
     /**
-     * Creates a new runtime type adapter using for {@code baseType} using {@code
-     * typeFieldName} as the type field name. Type field names are case sensitive.
+     * Creates a new runtime typeName adapter using for {@code baseType} using {@code
+     * typeFieldName} as the typeName field name. Type field names are case sensitive.
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType, String typeFieldName) {
         return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName);
     }
 
     /**
-     * Creates a new runtime type adapter for {@code baseType} using {@code "type"} as
-     * the type field name.
+     * Creates a new runtime typeName adapter for {@code baseType} using {@code "typeName"} as
+     * the typeName field name.
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType) {
-        return new RuntimeTypeAdapterFactory<T>(baseType, "type");
+        return new RuntimeTypeAdapterFactory<T>(baseType, "typeName");
     }
 
     /**
-     * Registers {@code type} identified by {@code label}. Labels are case
+     * Registers {@code typeName} identified by {@code label}. Labels are case
      * sensitive.
      *
-     * @throws IllegalArgumentException if either {@code type} or {@code label}
-     *     have already been registered on this type adapter.
+     * @throws IllegalArgumentException if either {@code typeName} or {@code label}
+     *     have already been registered on this typeName adapter.
      */
     public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type, String label) {
         if (type == null || label == null) {
@@ -156,11 +156,11 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     }
 
     /**
-     * Registers {@code type} identified by its {@link Class#getSimpleName simple
+     * Registers {@code typeName} identified by its {@link Class#getSimpleName simple
      * name}. Labels are case sensitive.
      *
-     * @throws IllegalArgumentException if either {@code type} or its simple name
-     *     have already been registered on this type adapter.
+     * @throws IllegalArgumentException if either {@code typeName} or its simple name
+     *     have already been registered on this typeName adapter.
      */
     public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type) {
         return registerSubtype(type, type.getSimpleName());

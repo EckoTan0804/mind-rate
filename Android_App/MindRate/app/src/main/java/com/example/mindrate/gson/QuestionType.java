@@ -5,6 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.ViewGroup;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by Renhan on 2017/1/9.
  */
@@ -13,11 +15,14 @@ public class QuestionType implements Parcelable {
 
     protected String nextQuestionID;
     protected QuestionAnswer questionAnswer;
-    private String type;
+
+    @Expose(deserialize = false)
+    protected String typeName;
+
     private boolean isAnswered;
 
-    public QuestionType(String type) {
-        this.type = type;
+    public QuestionType(String typeName) {
+        this.typeName = typeName;
     }
 
     public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
@@ -62,14 +67,14 @@ public class QuestionType implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.nextQuestionID);
         dest.writeParcelable(this.questionAnswer, flags);
-        dest.writeString(this.type);
+        dest.writeString(this.typeName);
         dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected QuestionType(Parcel in) {
         this.nextQuestionID = in.readString();
         this.questionAnswer = in.readParcelable(QuestionAnswer.class.getClassLoader());
-        this.type = in.readString();
+        this.typeName = in.readString();
         this.isAnswered = in.readByte() != 0;
     }
 
