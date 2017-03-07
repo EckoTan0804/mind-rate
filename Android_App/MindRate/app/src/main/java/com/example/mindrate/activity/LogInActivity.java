@@ -132,13 +132,14 @@ public class LogInActivity extends BaseActivity {
                     logInPage++;
                     if (logInPage == LOG_IN_LAST_PAGE) {
                         ll_firstShowUp.setVisibility(View.GONE);
-                        ll_secondShowUp.setVisibility(View.VISIBLE);
+//                        ll_secondShowUp.setVisibility(View.VISIBLE);
                         btn_newPage.setVisibility(View.GONE);
                     }
 
                     HttpUtil.sendRequestWithOkHttp(SERVER + "/proband_info/1/", new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
+                            Toast.makeText(LogInActivity.this, R.string.check_network, Toast.LENGTH_LONG).show();
 
                         }
 
@@ -151,8 +152,10 @@ public class LogInActivity extends BaseActivity {
                                 needGender = obj.getBoolean("gender");
                                 needOccupation = obj.getBoolean("occupation");
                                 runOnUiThread(new Runnable() {
+
                                     @Override
                                     public void run() {
+
                                         if (needBirthday) {
                                             TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
                                             birthday.setVisibility(View.VISIBLE);
@@ -168,6 +171,7 @@ public class LogInActivity extends BaseActivity {
                                             occupation.setVisibility(View.VISIBLE);
                                             edtTxt_occuptaion.setVisibility(View.VISIBLE);
                                         }
+                                        ll_secondShowUp.setVisibility(View.VISIBLE);
                                     }
                                 });
 //                                Message msg = new Message();
