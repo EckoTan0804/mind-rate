@@ -40,7 +40,7 @@ public class TriggerEvent implements Parcelable {
     private boolean gravity;
     private boolean rotation;
     private boolean ambientTemperature;
-    private boolean airPressure;
+    private boolean pressure;
     private boolean light;
     private boolean relativeHumidity;
     private boolean orientation;
@@ -277,12 +277,12 @@ public class TriggerEvent implements Parcelable {
         this.ambientTemperature = airTemperature;
     }
 
-    public boolean isAirPressure() {
-        return airPressure;
+    public boolean isPressure() {
+        return pressure;
     }
 
-    public void setAirPressure(boolean airPressure) {
-        this.airPressure = airPressure;
+    public void setPressure(boolean pressure) {
+        this.pressure = pressure;
     }
 
     public boolean isLight() {
@@ -779,7 +779,7 @@ public class TriggerEvent implements Parcelable {
         this.sensorList[TYPE_LINEAR_ACCELERATION] = isLinearAcceleration();
         this.sensorList[TYPE_MAGNETIC_FIELD] = isMagneticField();
         this.sensorList[TYPE_ORIENTATION] = isOrientation();
-        this.sensorList[TYPE_PRESSURE] = isAirPressure();
+        this.sensorList[TYPE_PRESSURE] = isPressure();
         this.sensorList[TYPE_PROXIMITY] = isProximity();
         this.sensorList[TYPE_RELATIVE_HUMIDITY] = isRelativeHumidity();
         this.sensorList[TYPE_ROTATION_VECTOR] = isRotation();
@@ -804,7 +804,7 @@ public class TriggerEvent implements Parcelable {
         dest.writeByte(this.gravity ? (byte) 1 : (byte) 0);
         dest.writeByte(this.rotation ? (byte) 1 : (byte) 0);
         dest.writeByte(this.ambientTemperature ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.airPressure ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.pressure ? (byte) 1 : (byte) 0);
         dest.writeByte(this.light ? (byte) 1 : (byte) 0);
         dest.writeByte(this.relativeHumidity ? (byte) 1 : (byte) 0);
         dest.writeByte(this.orientation ? (byte) 1 : (byte) 0);
@@ -881,7 +881,7 @@ public class TriggerEvent implements Parcelable {
         this.gravity = in.readByte() != 0;
         this.rotation = in.readByte() != 0;
         this.ambientTemperature = in.readByte() != 0;
-        this.airPressure = in.readByte() != 0;
+        this.pressure = in.readByte() != 0;
         this.light = in.readByte() != 0;
         this.relativeHumidity = in.readByte() != 0;
         this.orientation = in.readByte() != 0;
