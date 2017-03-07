@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +61,9 @@ public class LogInActivity extends BaseActivity {
     //    private RadioButton rdoBtn_gender_famale;
     private EditText edtTxt_occuptaion;
     private Button btn_probandLogIn;
+    private ProgressBar progressBar;
+
+    // ======================================================
 
     private boolean needBirthday;
     private boolean needGender;
@@ -116,6 +120,10 @@ public class LogInActivity extends BaseActivity {
         // ==================== proband ID =============================
         edtTxt_probandID = (EditText) findViewById(R.id.proband_id);
         // =============================================================
+        
+        // ==================== progress bar ===========================
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        // =============================================================
 
         // ==================== nextPage_btn ===========================
         final Button btn_newPage = (Button) findViewById(R.id.log_in_next_page);
@@ -134,9 +142,11 @@ public class LogInActivity extends BaseActivity {
                         ll_firstShowUp.setVisibility(View.GONE);
 //                        ll_secondShowUp.setVisibility(View.VISIBLE);
                         btn_newPage.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.VISIBLE);
                     }
 
                     HttpUtil.sendRequestWithOkHttp(SERVER + "/proband_info/1/", new Callback() {
+
                         @Override
                         public void onFailure(Call call, IOException e) {
                             Toast.makeText(LogInActivity.this, R.string.check_network, Toast.LENGTH_LONG).show();
@@ -155,7 +165,7 @@ public class LogInActivity extends BaseActivity {
 
                                     @Override
                                     public void run() {
-
+                                        progressBar.setVisibility(View.GONE);
                                         if (needBirthday) {
                                             TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
                                             birthday.setVisibility(View.VISIBLE);
