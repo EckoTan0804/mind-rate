@@ -75,6 +75,18 @@ public class Question implements Parcelable {
         this.questionType.inflateAnswerView(this.questionID, context, layout, layoutParams);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Question) {
+            Question q = (Question)obj;
+            return q.questionContent.equals(this.questionContent) && q.questionID.equals(this.questionID)
+                    && q.showByDefault == this.showByDefault && q.questionType.equals(this.questionType);
+        } else {
+            return false;
+        }
+
+    }
+
     // ================ setters and getters ==================================
 
     public String getQuestionContent() {
