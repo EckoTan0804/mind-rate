@@ -152,7 +152,7 @@ public class TriggerEventManager extends Observable{
     public void setOverviewActivity(OverviewActivity overviewActivity){
 
         this.overviewActivity = overviewActivity;//应当写成一个static方法
-        
+
     }
 
 
@@ -172,6 +172,25 @@ public class TriggerEventManager extends Observable{
         }
     }
     */
+
+    /*public void addQuestionnaire(Questionnaire questionnaire){
+
+
+
+        if(this.questionnaireList !=null){
+
+            this.questionnaireList.add(questionnaire);
+
+        }else{
+
+            this.questionnaireList = new ArrayList<>();
+
+            this.questionnaireList.add(questionnaire);
+
+        }
+
+
+    }*/
 
 
 
