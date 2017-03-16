@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -67,6 +68,10 @@ public class TextAnswer extends QuestionType implements Parcelable {
             @Override
             public void afterTextChanged(Editable editable) {
                 inputAnswer = editable.toString();
+                if (!TextUtils.isEmpty(inputAnswer)) {
+                    setAnswered(true);
+                }
+
             }
         });
 
@@ -83,7 +88,7 @@ public class TextAnswer extends QuestionType implements Parcelable {
 
     @Override
     public void setAnswered(boolean isAnswered) {
-        super.setAnswered(true);
+        super.setAnswered(isAnswered);
     }
 
 //    @Override
