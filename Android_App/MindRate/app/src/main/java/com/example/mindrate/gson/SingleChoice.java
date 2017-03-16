@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 /**
  * This class aims to model a singleChoice question
- *
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:15
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:15</br>
  */
 
 public class SingleChoice extends QuestionType implements Parcelable {
