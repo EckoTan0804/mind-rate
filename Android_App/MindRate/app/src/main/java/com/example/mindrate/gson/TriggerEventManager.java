@@ -36,6 +36,7 @@ public class TriggerEventManager extends Observable{
     private float[][] dataOfAllSensor;
     private List<Questionnaire> shouldAnswerQuestionnaire;
     private List<Questionnaire> questionnaireList;
+    private OverviewActivity overviewActivity;
     //==================================================
 
 
@@ -141,6 +142,17 @@ public class TriggerEventManager extends Observable{
                 this.shouldAnswerQuestionnaire.remove(questionnaire);
 
                 }
+    }
+
+    /**
+     * Set overview activity.
+     *
+     * @param overviewActivity the overview activity
+     */
+    public void setOverviewActivity(OverviewActivity overviewActivity){
+
+        this.overviewActivity = overviewActivity;//应当写成一个static方法
+        
     }
 
 
