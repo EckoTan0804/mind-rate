@@ -8,6 +8,17 @@ import android.view.ViewGroup;
 import com.google.gson.annotations.Expose;
 
 /**
+ * This class aims to model type of the question.
+ * The type of a question can be on from below:
+ * <ul>
+ * <li>SingleChoice</li>
+ * <li>MultipleChoice</li>
+ * <li>StepScale</li>
+ * <li>DragScale</li>
+ * <li>TextAnswer</li>
+ * </ul>
+ * These 5 types will be modelled as the subclasses of this class.
+ * <p>
  * Created by Renhan on 2017/1/9.
  */
 
@@ -21,16 +32,31 @@ public class QuestionType implements Parcelable {
 
     private boolean isAnswered;
 
+    /**
+     * Constructor
+     *
+     * @param typeName name of the type
+     */
     public QuestionType(String typeName) {
         this.typeName = typeName;
     }
 
+    /**
+     * This method will be override by different subclasses.
+     *
+     * @param questionID   question's id
+     * @param context      context
+     * @param layout       layout for answer area
+     * @param layoutParams layout's parameter
+     */
     public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
 
     }
 
+
+    // =================== setters and getters =====================================================
     public String getNextQuestionID() {
         return nextQuestionID;
     }
@@ -54,6 +80,10 @@ public class QuestionType implements Parcelable {
     public void setAnswered(boolean answered) {
         isAnswered = answered;
     }
+
+    // =============================================================================================
+
+    // =================== Parcelable ==============================================================
 
     public QuestionType() {
     }
