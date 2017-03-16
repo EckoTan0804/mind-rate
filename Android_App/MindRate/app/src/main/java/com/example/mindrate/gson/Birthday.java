@@ -5,6 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * This class is to model proband's birthday.
+ *
  * Project: MindRate
  * Package: com.example.mindrate.gson
  * Author: Ecko Tan
@@ -18,6 +20,13 @@ public class Birthday implements Parcelable {
     private int month;
     private int day;
 
+    /**
+     * Constructor
+     *
+     * @param year year of birth
+     * @param month month of birth
+     * @param day day of birth
+     */
     public Birthday(int year, int month, int day) {
         this.year = year;
         this.month = month;
