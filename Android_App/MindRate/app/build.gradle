@@ -38,4 +38,5 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     
     testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
