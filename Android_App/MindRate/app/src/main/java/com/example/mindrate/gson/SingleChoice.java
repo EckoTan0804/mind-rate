@@ -14,6 +14,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
+ * This class aims to model a singleChoice question
+ *
  * Project: MindRate
  * Package: com.example.mindrate.gson
  * Author: Ecko Tan
@@ -26,6 +28,11 @@ public class SingleChoice extends QuestionType implements Parcelable {
     @SerializedName("options")
     private ArrayList<Option> optionlist;
 
+    /**
+     * Constructor
+     *
+     * @param optionlist list of the offered options
+     */
     public SingleChoice(ArrayList<Option> optionlist) {
         super("SingleChoice");
         this.optionlist = optionlist;
@@ -64,6 +71,8 @@ public class SingleChoice extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+    // ==================== setters and getters ==================================================
+
     @Override
     public void setAnswered(boolean isAnswered) {
         super.setAnswered(isAnswered);
@@ -82,6 +91,8 @@ public class SingleChoice extends QuestionType implements Parcelable {
         this.nextQuestionID = nextQuestionID;
     }
 
+
+    // =================== Parcelable ============================================================
     @Override
     public int describeContents() {
         return 0;
