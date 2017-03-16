@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Project: MindRate
+ * This class aims to model a questionnaire's answer that consists of questions' answer
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -21,11 +23,19 @@ public class QuestionnaireAnswer  {
     private String submitTimeString;
     private String probandID;
 
+    /**
+     * Constructor
+     *
+     * @param questionnaireID questionnaire's id
+     * @param probandID proband's id
+     */
     public QuestionnaireAnswer(String questionnaireID, String probandID) {
         this.questionnaireID = questionnaireID;
         this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
     }
+
+    // ================= setters and getters ===============================================
 
     public String getQuestionnaireID() {
         return questionnaireID;

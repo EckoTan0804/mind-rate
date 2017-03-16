@@ -5,7 +5,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Project: MindRate
+ * This class aims to model a answer of a question
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -18,6 +20,10 @@ public class QuestionAnswer implements Parcelable {
     private String questionID;
     private String answerContent;
 
+    /**
+     * Constructor
+     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+     */
     public QuestionAnswer(String questionID) {
         this.questionID = questionID;
     }
@@ -37,6 +43,8 @@ public class QuestionAnswer implements Parcelable {
     public void setAnswerContent(String answerContent) {
         this.answerContent = answerContent;
     }
+
+    // ===================== Parcelable =====================================================
 
     @Override
     public int describeContents() {

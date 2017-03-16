@@ -17,17 +17,26 @@ import com.example.mindrate.R;
 import com.example.mindrate.util.FontUtil;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:21
+ * This class aims to model TextAnswer question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:21</br>
  */
 
 public class TextAnswer extends QuestionType implements Parcelable {
 
+    /**
+     * answer input by proband
+     */
     private String inputAnswer;
 
+
+    /**
+     * Constructor
+     */
     public TextAnswer() {
         super("TextAnswer");
     }
@@ -80,6 +89,8 @@ public class TextAnswer extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+
+    // ========================= setters and getters ===========================================
     @Override
     public QuestionAnswer getQuestionAnswer() {
         questionAnswer.setAnswerContent(inputAnswer);
@@ -90,12 +101,14 @@ public class TextAnswer extends QuestionType implements Parcelable {
     public void setAnswered(boolean isAnswered) {
         super.setAnswered(isAnswered);
     }
-
+    // =========================================================================================
 //    @Override
 //    public boolean isAnswered() {
 //        return !TextUtils.isEmpty(this.inputAnswer);
 //    }
 
+
+    // ======================== Parcelable =====================================================
     @Override
     public int describeContents() {
         return 0;

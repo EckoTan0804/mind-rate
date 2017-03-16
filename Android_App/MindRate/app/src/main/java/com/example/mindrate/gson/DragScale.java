@@ -13,17 +13,28 @@ import android.widget.TextView;
 import com.example.mindrate.util.FontUtil;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:20
+ *
+ * This class aims to model DragScale question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:20</br>
  */
 
 public class DragScale extends QuestionType implements Parcelable {
 
+    /**
+     * maximal value for the seekBar
+     */
     private int maxValue;
 
+    /**
+     * Constructor
+     *
+     * @param maxValue maximal value for the seekBar
+     */
     public DragScale(int maxValue) {
         super("DragScale");
         this.maxValue = maxValue;
@@ -75,6 +86,8 @@ public class DragScale extends QuestionType implements Parcelable {
 
     }
 
+
+    // ================== setters and getters ======================================
     public int getMaxValue() {
         return maxValue;
     }
@@ -87,6 +100,10 @@ public class DragScale extends QuestionType implements Parcelable {
     public void setAnswered(boolean isAnswered) {
         super.setAnswered(true);
     }
+
+    // =============================================================================
+
+    // ================= Parcelable ================================================
 
     @Override
     public int describeContents() {

@@ -5,7 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Project: MindRate
+ * This class aims to model a questionnaire's duration,
+ * which means, how long does a questionnaire last.
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -19,6 +22,15 @@ public class Duration implements Parcelable {
     private int minute;
     private int second;
 
+    /**
+     * Constructor
+     * <p>e.g. If a questionnaire lasts 2 h 30 min and 30 sec
+     * then hour = 2, minute = 30, second = 30</p>
+     *
+     * @param hour how many hours lasts the questionnaire
+     * @param minute how many minutes lasts the questionnaire on the basis of the hour
+     * @param second how many seconds lasts the questionnaire on the basis of hour and minute
+     */
     public Duration(int hour, int minute, int second) {
         this.hour = hour;
         this.minute = minute;

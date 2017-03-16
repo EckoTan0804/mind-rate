@@ -14,11 +14,13 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:19
+ * This class aims to model StepScale question.
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:19</br>
  */
 
 public class StepScale extends QuestionType implements Parcelable {
@@ -26,6 +28,11 @@ public class StepScale extends QuestionType implements Parcelable {
     @SerializedName("options")
     private ArrayList<Option> optionlist;
 
+    /**
+     * Constructor
+     *
+     * @param optionlist the offered options (StepScale is kind of <code>SingleChoice</code>)
+     */
     public StepScale(ArrayList<Option> optionlist) {
         super("StepScale");
         this.optionlist = optionlist;
@@ -64,6 +71,7 @@ public class StepScale extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+    // ================== setters and getters ==================================================
     @Override
     public void setAnswered(boolean isAnswered) {
         super.setAnswered(true);
@@ -76,6 +84,10 @@ public class StepScale extends QuestionType implements Parcelable {
     public void setNextQuestionID(String nextQuestionID) {
         this.nextQuestionID = nextQuestionID;
     }
+
+    // =========================================================================================
+
+    // ================== Parcelable ===========================================================
 
     @Override
     public int describeContents() {

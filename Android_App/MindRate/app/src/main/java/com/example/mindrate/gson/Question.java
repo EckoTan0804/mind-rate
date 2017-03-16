@@ -10,53 +10,76 @@ import android.widget.TextView;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/8:23:33
+ * This class aims to model the questionContent of the questionnaire
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/8:23:33</br>
  */
 
 public class Question implements Parcelable {
 
     @SerializedName("questionContent")
-    private String question;
+    private String questionContent;
 
     private QuestionType questionType;
     private String questionID;
-    private boolean isAnswered;
-    private boolean isValid;
     private boolean showByDefault;
+    private boolean isAnswered;
 
-    public Question(String question, QuestionType questionType, String questionID) {
-        this.question = question;
-        this.questionType = questionType;
-        this.questionID = questionID;
-        this.isAnswered = false;
-    }
-
-    public Question(String question, QuestionType questionType, String questionID,
+    /**
+     * Constructor
+     *
+     * @param questionContent content of a quesiton
+     * @param questionType    question's type, one from the 5 type:
+     *                        <br>
+     *                        <li>SingleChoice</li>
+     *                        <li>MultipleChoice</li>
+     *                        <li>StepScale</li>
+     *                        <li>DragScale</li>
+     *                        <li>TextAnswer</li>
+     *                        </br>
+     * @param questionID      question's id
+     * @param showByDefault   <br>
+     *                        <li>false, if the question will only occur when proband has chosen a
+     *                        specified option of last question</li>
+     *                        <li>true, otherwise</li>
+     *                        </br>
+     */
+    public Question(String questionContent, QuestionType questionType, String questionID,
             boolean showByDefault) {
-        this.question = question;
+        this.questionContent = questionContent;
         this.questionType = questionType;
         this.questionID = questionID;
         this.showByDefault = showByDefault;
     }
 
-    public void inflateView(TextView tv_question, Context context, ViewGroup layout, ViewGroup.LayoutParams
-            layoutParams) {
-        tv_question.setText(question);
+
+    /**
+     * Infalte the view for question depending on <code>questionType</code>
+     *
+     * @param tv_question TextView for <code>questionContent</code>
+     * @param context context
+     * @param layout layout for Answer area
+     * @param layoutParams parameters for <code>layout</code>
+     */
+    public void inflateView(TextView tv_question, Context context, ViewGroup layout,
+            ViewGroup.LayoutParams
+                    layoutParams) {
+        tv_question.setText(questionContent);
         this.questionType.inflateAnswerView(this.questionID, context, layout, layoutParams);
     }
 
     // ================ setters and getters ==================================
 
-    public String getQuestion() {
-        return question;
+    public String getQuestionContent() {
+        return questionContent;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestionContent(String questionContent) {
+        this.questionContent = questionContent;
     }
 
     public QuestionType getQuestionType() {
@@ -75,23 +98,6 @@ public class Question implements Parcelable {
         this.questionID = questionID;
     }
 
-    public boolean isAnswered() {
-        return this.questionType.isAnswered();
-    }
-
-    public void setAnswered(boolean answered) {
-        isAnswered = answered;
-    }
-
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
-    }
-
-
     public boolean isShowByDefault() {
         return showByDefault;
     }
@@ -100,6 +106,16 @@ public class Question implements Parcelable {
         this.showByDefault = showByDefault;
     }
 
+    public boolean isAnswered() {
+        return this.questionType.isAnswered();
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
+
+    //================= Parcelable ===========================================
+
     @Override
     public int describeContents() {
         return 0;
@@ -107,21 +123,19 @@ public class Question implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.question);
+        dest.writeString(this.questionContent);
         dest.writeParcelable(this.questionType, flags);
         dest.writeString(this.questionID);
-        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.isValid ? (byte) 1 : (byte) 0);
         dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected Question(Parcel in) {
-        this.question = in.readString();
+        this.questionContent = in.readString();
         this.questionType = in.readParcelable(QuestionType.class.getClassLoader());
         this.questionID = in.readString();
-        this.isAnswered = in.readByte() != 0;
-        this.isValid = in.readByte() != 0;
         this.showByDefault = in.readByte() != 0;
+        this.isAnswered = in.readByte() != 0;
     }
 
     public static final Creator<Question> CREATOR = new Creator<Question>() {

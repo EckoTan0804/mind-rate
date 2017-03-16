@@ -15,11 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:17
+ * This class aims to model MultipleChoice question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:17</br>
  */
 
 public class MultipleChoice extends QuestionType implements CompoundButton
@@ -29,6 +31,11 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     private ArrayList<Option> optionList;
     private ArrayList<String> answerList;
 
+    /**
+     * Constructor
+     *
+     * @param optionList the offered options
+     */
     public MultipleChoice(ArrayList<Option> optionList) {
         super("MultipleChoice");
         this.optionList = optionList;
@@ -54,21 +61,6 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         FontUtil.changeFonts(layout, context);
     }
 
-    public List<Option> getOptionList() {
-        return optionList;
-    }
-
-    public void setOptionList(ArrayList<Option> optionList) {
-        this.optionList = optionList;
-    }
-
-
-    @Override
-    public QuestionAnswer getQuestionAnswer() {
-        questionAnswer.setAnswerContent(this.answerList.toString());
-        return questionAnswer;
-    }
-
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         int checkNum = 0;
@@ -84,12 +76,30 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         }
     }
 
+    // ==================== setters and getters ===========================================
+
+    public List<Option> getOptionList() {
+        return optionList;
+    }
+
+    public void setOptionList(ArrayList<Option> optionList) {
+        this.optionList = optionList;
+    }
+
+    @Override
+    public QuestionAnswer getQuestionAnswer() {
+        questionAnswer.setAnswerContent(this.answerList.toString());
+        return questionAnswer;
+    }
+
     @Override
     public void setAnswered(boolean isAnswered) {
         super.setAnswered(true);
     }
 
+    // ====================================================================================
 
+    // =================== Parcelable =====================================================
     @Override
     public int describeContents() {
         return 0;
