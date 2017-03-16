@@ -3,12 +3,12 @@ package com.example.mindrate.gson;
 
 /**
  * This class aims to model the proband who participate in the study
- *
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/8:23:32
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/8:23:32</br>
  */
 
 import android.os.Parcel;

@@ -6,8 +6,8 @@ import java.util.Date;
 
 /**
  * This class aims to model a questionnaire's answer that consists of questions' answer
- *
- * Project: MindRate
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>

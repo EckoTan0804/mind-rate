@@ -6,8 +6,8 @@ import android.os.Parcelable;
 
 /**
  * This class aims to model a answer of a question
- *
- * Project: MindRate
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
