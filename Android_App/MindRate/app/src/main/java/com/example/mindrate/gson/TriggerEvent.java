@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 /**
+ * This class  represents a Trigger Event of a questionnaire.The event associated with Trigger
+ * Sensor and Trigger Time.
+ * <p>
  * Project: MindRate
  * Package: com.example.mindrate.gson
  * Author: Ecko Tan
@@ -22,6 +25,9 @@ public class TriggerEvent implements Parcelable {
     //    private Date minTimeSpace;
     //    private Date time;
     //    private Date dateTime;
+    /**
+     *
+     */
     private String questionnaireID;
 
 
@@ -770,6 +776,9 @@ public class TriggerEvent implements Parcelable {
         return sensorList;
     }
 
+    /**
+     * Sets sensor.
+     */
     public void setSensor() {
         this.sensorList[TYPE_ACCELEROMETER] = isAccelerometer();
         this.sensorList[TYPE_AMBIENT_TEMPERATURE] = isAmbientTemperature();
