@@ -27,6 +27,7 @@ public class Question implements Parcelable {
     private QuestionType questionType;
     private String questionID;
     private boolean showByDefault;
+    private boolean isAnswered;
 
     /**
      * Constructor
@@ -105,6 +106,14 @@ public class Question implements Parcelable {
         this.showByDefault = showByDefault;
     }
 
+    public boolean isAnswered() {
+        return this.questionType.isAnswered();
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
+
     //================= Parcelable ===========================================
 
     @Override
@@ -118,6 +127,7 @@ public class Question implements Parcelable {
         dest.writeParcelable(this.questionType, flags);
         dest.writeString(this.questionID);
         dest.writeByte(this.showByDefault ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.isAnswered ? (byte) 1 : (byte) 0);
     }
 
     protected Question(Parcel in) {
@@ -125,6 +135,7 @@ public class Question implements Parcelable {
         this.questionType = in.readParcelable(QuestionType.class.getClassLoader());
         this.questionID = in.readString();
         this.showByDefault = in.readByte() != 0;
+        this.isAnswered = in.readByte() != 0;
     }
 
     public static final Creator<Question> CREATOR = new Creator<Question>() {
