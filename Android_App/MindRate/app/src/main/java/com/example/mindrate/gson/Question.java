@@ -29,6 +29,9 @@ public class Question implements Parcelable {
     private boolean showByDefault;
     private boolean isAnswered;
 
+    public Question() {
+    }
+
     /**
      * Constructor
      *
