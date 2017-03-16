@@ -9,28 +9,16 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * Created by Renhan on 2017/1/25.
+ * This class  represents a manager for Trigger Event.
+ * <br>This class use design patterns "Singleton pattern" and Observer pattern.</br>
+ * <br>Created by Renhan on 2017/1/25.</br>
  */
-
 public class TriggerEventManager extends Observable{
+    //================For test and debug================
     private static final String TAG = "TriggerEventManager";
-    private OverviewActivity overviewActivity;
+    //==================================================
 
-
-    public float[][] getDataOfAllSensor() {
-        return dataOfAllSensor;
-    }
-
-    //private boolean isQuestionnaireValid;
-    private float[][] dataOfAllSensor;
-
-
-    public List<Questionnaire> getShouldAnswerQuestionnaire() {
-        return shouldAnswerQuestionnaire;
-    }
-
-    private List<Questionnaire> shouldAnswerQuestionnaire;
-    private List<Questionnaire> questionnaireList;
+    //=============index of sensor===========================
     private static final int TYPE_ACCELEROMETER = 0;
     private static final int  TYPE_AMBIENT_TEMPERATURE = 1;
     private static final int  TYPE_GRAVITY = 2;
@@ -43,8 +31,19 @@ public class TriggerEventManager extends Observable{
     private static final int  TYPE_PROXIMITY = 9;
     private static final int  TYPE_RELATIVE_HUMIDITY = 10;
     private static final int  TYPE_ROTATION_VECTOR = 11;
+    //======================================================
+
+    private float[][] dataOfAllSensor;
+    private List<Questionnaire> shouldAnswerQuestionnaire;
+    private List<Questionnaire> questionnaireList;
+    //==================================================
 
 
+
+    /**
+     * Constructor
+     *
+     */
     private TriggerEventManager(){
         this.questionnaireList = null;
         this.dataOfAllSensor = new float[12][3];
@@ -53,27 +52,43 @@ public class TriggerEventManager extends Observable{
 
     private static final TriggerEventManager TRIGGER_EVENT_MANAGER = new TriggerEventManager();
 
+    /**
+     * Get the Singleton of class TriggerEventManager
+     *
+     * @return TriggerEventManager. The manager for Trigger Event.
+     */
     public static TriggerEventManager getTriggerEventManager(){
         return TRIGGER_EVENT_MANAGER;
     }
 
-
+    // ==============getter and setter==================
+    public float[][] getDataOfAllSensor() {
+        return dataOfAllSensor;
+    }
+    public List<Questionnaire> getShouldAnswerQuestionnaire() {
+        return shouldAnswerQuestionnaire;
+    }
     public List<Questionnaire> getQuestionnaireList() {
         return questionnaireList;
     }
-
     public void setQuestionnaireList(List<Questionnaire> questionnaireList) {
         this.questionnaireList = questionnaireList;
     }
+    //===================================================
 
-
-
-
+    /**
+     * Set data of sensor in the array "dataOfAllSensor".
+     * When the date of sensor changed,the date will be sent to Questionnaire.
+     * @param index        the index of Sensor
+     * @param dataOfSensor the data of sensor
+     */
     public void setDataOfSensor(int index,float[] dataOfSensor){
         this.dataOfAllSensor[index]=dataOfSensor;
+        //======for test===========
         Log.d(TAG,"begin notify");
         setChanged();
         notifyObservers();
+        //======for test===========
         Log.d(TAG,"finish notify");
         String sum = String.valueOf(this.shouldAnswerQuestionnaire.size());
         Log.d(TAG,sum);
@@ -84,10 +99,17 @@ public class TriggerEventManager extends Observable{
         String a = String.valueOf(lightTest);
         String b = String.valueOf(remp);
         Log.d(TAG,a);
+        //============================
        this.addQuestionnaireToOverviewActivity();
 
     }
 
+    /**
+     * When the data of sensor are eligible,then the questionnaire will be triggered.
+     * <br>With this method  a triggered questionnaire will be added to the list of
+     * questionnaire in TriggerEventManager and finally will be answered.</br>
+     * @param questionnaire the triggered questionnaire.
+     */
     public void addShouldAnswerQuestionnaire(Questionnaire questionnaire){
         boolean existQuestionnaire = false;
         for (Questionnaire questionnaire1 : this.shouldAnswerQuestionnaire) {
@@ -107,21 +129,10 @@ public class TriggerEventManager extends Observable{
         //=================================
     }
 
-    public void addQuestionnaire(Questionnaire questionnaire){
-
-        if(this.questionnaireList !=null){
-            this.questionnaireList.add(questionnaire);
-        }else{
-            this.questionnaireList = new ArrayList<>();
-            this.questionnaireList.add(questionnaire);
-        }
-    }
-
-    public void setOverviewActivity(OverviewActivity overviewActivity){
-        this.overviewActivity = overviewActivity;//应当写成一个static方法
-
-    }
-//
+    /**
+     * Helper method.
+     * <br>With this method a triggered questionnaire can be showed and answered.</br>
+     */
     private void addQuestionnaireToOverviewActivity(){
             for(Questionnaire questionnaire:this.shouldAnswerQuestionnaire) {
                 OverviewActivity.getInstance().addQuestionnaireToTriggeredQuestionnaireList
@@ -130,11 +141,10 @@ public class TriggerEventManager extends Observable{
                 this.shouldAnswerQuestionnaire.remove(questionnaire);
 
                 }
-
     }
 
 
-
+ /*
     private void removeQuestionnaireFromShouldList(Questionnaire questionnaire){
         boolean existQuestionnaire =false;
         String questionnaireID = questionnaire.getQuestionnaireID();
@@ -149,6 +159,7 @@ public class TriggerEventManager extends Observable{
             this.shouldAnswerQuestionnaire.remove(questionnaire);
         }
     }
+    */
 
 
 
