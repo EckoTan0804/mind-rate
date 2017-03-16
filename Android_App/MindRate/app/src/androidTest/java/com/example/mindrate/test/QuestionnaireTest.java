@@ -1,11 +1,15 @@
 package com.example.mindrate.test;
 
+import com.example.mindrate.gson.Question;
+import com.example.mindrate.gson.Questionnaire;
+import com.example.mindrate.gson.TextAnswer;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
+import static org.hamcrest.Matchers.contains;
 
 /**
  * <p>
@@ -17,14 +21,17 @@ import static org.junit.Assert.*;
  * </p>
  */
 public class QuestionnaireTest {
+
+    private Questionnaire questionnaire;
+
     @Before
     public void setUp() throws Exception {
-
+        questionnaire = new Questionnaire();
     }
 
     @After
     public void tearDown() throws Exception {
-
+        questionnaire = null;
     }
 
     @Test
@@ -34,6 +41,10 @@ public class QuestionnaireTest {
 
     @Test
     public void addQuestion() throws Exception {
+        Question question = new Question("A", new TextAnswer(), "1", true);
+        questionnaire.addQuestion(question);
+
+        MatcherAssert.assertThat(questionnaire.getQuestionList(), contains(question));
 
     }
 
