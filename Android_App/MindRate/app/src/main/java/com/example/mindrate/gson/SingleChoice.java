@@ -28,6 +28,10 @@ public class SingleChoice extends QuestionType implements Parcelable {
     @SerializedName("options")
     private ArrayList<Option> optionlist;
 
+    public SingleChoice() {
+        super("SingleChoice");
+    }
+
     /**
      * Constructor
      *

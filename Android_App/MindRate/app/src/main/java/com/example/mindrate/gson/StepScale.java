@@ -28,6 +28,10 @@ public class StepScale extends QuestionType implements Parcelable {
     @SerializedName("options")
     private ArrayList<Option> optionlist;
 
+    public StepScale() {
+        super("StepScale");
+    }
+
     /**
      * Constructor
      *
