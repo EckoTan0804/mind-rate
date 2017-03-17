@@ -19,7 +19,17 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-
+/**
+ * This is the fragment that would be display when the proband firstly logs in.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.fragment</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class WelcomeFragment extends Fragment {
 
 
