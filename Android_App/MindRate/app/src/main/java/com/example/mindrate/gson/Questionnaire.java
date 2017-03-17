@@ -72,6 +72,9 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     private TriggerEvent triggerEvent;
 
 
+    /**
+     * Constructor
+     */
     public Questionnaire() {
         this.questionList = new ArrayList<>();
     }
@@ -129,6 +132,11 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     }
 
+    /**
+     * Add <code>question</code> to <code>questionList</code>
+     *
+     * @param question question to be added
+     */
     public void addQuestion(Question question) {
         this.questionList.add(question);
     }
@@ -196,13 +204,13 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         return null;
     }
 
-    public boolean isLastQuestion(Question question) {
-        if (this.questionList.lastIndexOf(question) == (this.questionList.size() - 1)) {
-            return true;
-        }
-        return false;
-    }
-
+//    public boolean isLastQuestion(Question question) {
+//        if (this.questionList.lastIndexOf(question) == (this.questionList.size() - 1)) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
 
     /**
      * The actions when a questionnaire is triggered
@@ -296,7 +304,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     }
 
 
-    // ===================== Parcelable ==========================================================
+
 
     public void update(Observable o, Object arg) {
         TriggerEventManager triggerEventManager = (TriggerEventManager) o;
@@ -649,6 +657,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     //========================================================================================================
 
 
+    // ===================== Parcelable ==========================================================
     @Override
     public int describeContents() {
         return 0;
