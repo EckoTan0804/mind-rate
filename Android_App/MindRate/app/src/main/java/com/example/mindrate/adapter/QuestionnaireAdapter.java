@@ -16,6 +16,8 @@ import java.util.List;
 
 
 /**
+ * Custom adapter for listView
+ *
  * Project: MindRate
  * Package: com.example.mindrate.adapter
  * Author: Ecko Tan
@@ -27,6 +29,13 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
 
     private int resourceID;
 
+    /**
+     * Constructor
+     *
+     * @param context context
+     * @param resource layout resource
+     * @param objects list of data that should be shown
+     */
     public QuestionnaireAdapter(Context context, int resource, List<Questionnaire> objects) {
         super(context, resource, objects);
         resourceID = resource;
@@ -64,6 +73,9 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
 
     }
 
+    /**
+     * ViewHolder for list item, in order to improve the inflation's efficiency
+     */
     class ViewHolder {
 
         TextView tv_questionnaireID;
