@@ -1,12 +1,4 @@
-package com.example.mindrate.test;
-
-import com.example.mindrate.gson.DragScale;
-import com.example.mindrate.gson.MultipleChoice;
-import com.example.mindrate.gson.Question;
-import com.example.mindrate.gson.Questionnaire;
-import com.example.mindrate.gson.SingleChoice;
-import com.example.mindrate.gson.StepScale;
-import com.example.mindrate.gson.TextAnswer;
+package com.example.mindrate.gson;
 
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
