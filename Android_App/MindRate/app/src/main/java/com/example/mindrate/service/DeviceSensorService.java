@@ -28,17 +28,28 @@ import static android.hardware.Sensor.TYPE_PROXIMITY;
 import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
 import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 
+/**
+ * This class  represents a service for calling sensor and transferring the data of sensor.
+ * <p>
+ *     When users open this app,this service can be automatic called.Then listener for sensor can
+ *     be created and added.
+ *
+ */
 public class DeviceSensorService extends Service {
+    //==============for test and debug================
     private static final String TAG = "DeviceSensorService";
+    //================================================
     private SensorManager sensorManager;
     private List<Sensor> allSensors;
     private List<AllSensorEventListener> allSensorEventListeners;
     private TriggerEventManager triggerEventManager;
     private List<Sensor> usedSensorList;
     private boolean[] usedSensor;
-    //private MyBinder mBinder = new MyBinder();
 
 
+    /**
+     * Instantiates a new Device sensor service.
+     */
     public DeviceSensorService() {
 
     }
@@ -50,7 +61,6 @@ public class DeviceSensorService extends Service {
         this.allSensors = new ArrayList<>();
         this.allSensorEventListeners = new ArrayList<>();
         this.usedSensorList = new ArrayList<>();
-        //this.triggerEventManager =null;
         if (sensorManager == null) {
             sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         }
@@ -59,8 +69,6 @@ public class DeviceSensorService extends Service {
         this.setUsedSensor();
         this.setUsedSensorList();
 
-        // usedSensorList is not initialized
-        // TODO: should initialize it using allQuestionnaireList from OverviewActivity
         for (Sensor sensor : usedSensorList) {
             this.addSensorEventListener(sensor);
         }
@@ -74,10 +82,9 @@ public class DeviceSensorService extends Service {
             this.sensorManager.registerListener(listener, listener.getSensor(), SensorManager
                     .SENSOR_DELAY_UI);
         }
+        //=======for test and debug===========
         Log.i(TAG, "Service onStart_____");
 
-
-        // other things?
         return START_NOT_STICKY;
     }
 
@@ -98,22 +105,11 @@ public class DeviceSensorService extends Service {
     }
 
 
-   /* public class MyBinder extends Binder{
-        private TriggerEventManager savedTriggerEventManager;
-        public void setTriggerEventManager(TriggerEventManager triggerEventManager){
-            Log.d(TAG,"setTEM");
-            this.savedTriggerEventManager = triggerEventManager;
-        }
-        public TriggerEventManager getSavedTriggerEventManager(){
-            return this.savedTriggerEventManager;
-        }
-        public void transferTriggerEventManager(){
-            Log.d(TAG,"tranTEM");
-            triggerEventManager = this.getSavedTriggerEventManager();
-        }
-
-    }*/
-
+    /**
+     * Add listener for specific sensor.
+     *
+     * @param sensor the specific sensor
+     */
     public void addSensorEventListener(Sensor sensor) {
 
 
@@ -198,6 +194,12 @@ public class DeviceSensorService extends Service {
 
     }
 
+    /**
+     * Helper Method.Set value of list usedSensor.
+     * <p>
+     * <br>Find all sensors,that will be called.</br>
+     * <br>if a sensor(with index i)will be called,then set usedSensor[i]=true.</br>
+     */
     public void setUsedSensor() {
         List<Questionnaire> questionnaireList = this.triggerEventManager
                 .getQuestionnaireList();
@@ -213,6 +215,13 @@ public class DeviceSensorService extends Service {
         }
     }
 
+    /**
+     * Helper method.Set value of list usedSensorList.
+     * <p>
+     * <br>After setting the value of list usedSensor, a list of sensors will be got,which
+     * includes all called sensor.</br>
+     *
+     */
     public void setUsedSensorList() {
         for (int i = 0; i < this.usedSensor.length; i++) {
             if (this.usedSensor[i]) {

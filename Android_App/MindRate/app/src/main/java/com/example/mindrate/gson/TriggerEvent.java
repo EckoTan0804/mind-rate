@@ -9,33 +9,32 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:18:37
+ * This class  represents a Trigger Event of a questionnaire.The event associated with Trigger
+ * Sensor and Trigger Time.
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:18:37</br>
  */
 
 public class TriggerEvent implements Parcelable {
-
+    //=========For debug and Test=========
     private static final String TAG = "TriggerEvent";
-    //    private Date minTimeSpace;
-    //    private Date time;
-    //    private Date dateTime;
+    //====================================
     private String questionnaireID;
-
-
+    //==========Trigger Time==============
     private int minTimeSpace;
     @SerializedName("time")
     private String time;
-
-
     private Date dateTime;
+    //======Trigger by other event(can be updated)========
     private boolean triggeredWhenCalendarEventBegins;
     private boolean triggeredWhenCalendarEventEnds;
     private boolean triggeredWhenFacebookNotificationComes;
     private boolean triggeredWhenWhatsAppNotificationComes;
-    //==================Sensor==================================
+    //==================Trigger Sensor==================================
     private boolean linearAcceleration;
     private boolean gravity;
     private boolean rotation;
@@ -141,20 +140,27 @@ public class TriggerEvent implements Parcelable {
     //======================================================
 
     //==================================================================
+    /**
+     * the list of sensor.The index of sensor is confirmed.
+     * <br>true if the sensor is called</br>
+     * <br>false if the sensor isn't called</br>
+     */
     private boolean[] sensorList;
 
 
+    /**
+     * Constructor.
+     * <br>Instantiates a new Trigger event.</br>
+     *
+     * @param questionnaireID the questionnaire id
+     */
     public TriggerEvent(String questionnaireID) {
         this.questionnaireID = questionnaireID;
         this.sensorList = new boolean[12];
 
-        // for (int i = 0; i < sensorList.length; i++) {
-        // Log.i(TAG,String.valueOf(this.sensorList[i]));
-        //}
-
     }
 
-
+//=================getter and setter===========================
     public String getTime() {
         return time;
     }
@@ -186,30 +192,6 @@ public class TriggerEvent implements Parcelable {
     public void setQuestionnaireID(String questionnaireID) {
         this.questionnaireID = questionnaireID;
     }
-
-    //    public Date getTime() {
-    //        return time;
-    //    }
-    //
-    //    public void setTime(Date time) {
-    //        this.time = time;
-    //    }
-    //
-    //    public Date getDateTime() {
-    //        return dateTime;
-    //    }
-    //
-    //    public void setDateTime(Date dateTime) {
-    //        this.dateTime = dateTime;
-    //    }
-    //
-    //    public Date getMinTimeSpace() {
-    //        return minTimeSpace;
-    //    }
-    //
-    //    public void setMinTimeSpace(Date minTimeSpace) {
-    //        this.minTimeSpace = minTimeSpace;
-    //    }
 
     public boolean isTriggeredWhenCalendarEventBegins() {
         return triggeredWhenCalendarEventBegins;
@@ -764,12 +746,14 @@ public class TriggerEvent implements Parcelable {
         this.sensorList = sensorList;
     }
 
-    //====================================================================
-
     public boolean[] getSensorList() {
         return sensorList;
     }
-
+    //====================================================================
+    /**
+     * Set the values in the list of sensor.
+     *
+     */
     public void setSensor() {
         this.sensorList[TYPE_ACCELEROMETER] = isAccelerometer();
         this.sensorList[TYPE_AMBIENT_TEMPERATURE] = isAmbientTemperature();

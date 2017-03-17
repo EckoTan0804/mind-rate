@@ -7,8 +7,17 @@ import android.util.Log;
 
 import com.example.mindrate.activity.OverviewActivity;
 
+/**
+ * This class represents broadcast receiver.
+ * It receives and handles broadcast intents sent by sendBroadcast(Intent).
+ */
 public class TriggerBroadcastReceiver extends BroadcastReceiver {
+    //============For test and debug===========================
     private static final String TAG = "TriggerBroadcastReceive";
+
+    /**
+     * Instantiates a new Trigger broadcast receiver.
+     */
     public TriggerBroadcastReceiver() {
     }
 
