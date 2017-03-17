@@ -30,6 +30,17 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * This is the activity for proband's log in.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class LogInActivity extends BaseActivity {
 
 
@@ -106,6 +117,9 @@ public class LogInActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize view of the activity
+     */
     private void initView() {
 
         final LinearLayout ll_firstShowUp = (LinearLayout) findViewById(R.id.log_in_first_show_up);
@@ -371,6 +385,11 @@ public class LogInActivity extends BaseActivity {
         // ==============================================================================
     }
 
+    /**
+     * Check whether the input in <code>editText</code> is empty
+     * @param editText
+     * @return
+     */
     private boolean isEditTextEmpty(EditText editText) {
         if (TextUtils.isEmpty(editText.getText().toString())) {
             handleEditTextEmpty(editText);
@@ -379,6 +398,10 @@ public class LogInActivity extends BaseActivity {
         return false;
     }
 
+    /**
+     * Handle the situation that the input of <code>editText</code> is empty
+     * @param editText
+     */
     private void handleEditTextEmpty(EditText editText) {
         editText.setError(getString(R.string.input_empty_error));
     }

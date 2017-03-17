@@ -21,11 +21,25 @@ import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
 
+/**
+ * This is the activity in which the proband can answer the triggered questionnaire.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
 
     private final static int NEXT = 1;
     private final static int SUBMIT = 2;
 
+    /**
+     * The flag for the button whose id is next_or_submit
+     */
     private int nextOrSubmit;
     private String nextQuestionID;
     private Question currentQuestion;
@@ -53,6 +67,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         initView();
     }
 
+    /**
+     * Initialize data from intent
+     */
     private void initFromIntent() {
         Intent intent = getIntent();
         this.questionnaire = intent.getParcelableExtra("questionnaire");
@@ -61,6 +78,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 (), probandID);
     }
 
+    /**
+     * Initialze view of the activity
+     */
     private void initView() {
 
         ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
@@ -94,11 +114,21 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     }
 
+    /**
+     * Set button whose id is next_or_submit as button for switching to next question:
+     * Firstly set the flag as "NEXT",
+     * then set the corresponding icon
+     */
     private void setButtonAsNext() {
         this.nextOrSubmit = NEXT;
         this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_arrow_forward);
     }
 
+    /**
+     * Set button whose id is next_or_submit as button for submitting the answer:
+     * Firstly set the flag as "SUBMIT",
+     * then set the corresponding icon
+     */
     private void setButtonAsSubmit() {
         this.nextOrSubmit = SUBMIT;
         this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_done);
@@ -246,6 +276,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         }
     }
 
+    /**
+     * Record questionnaire's answer
+     */
     private void recordAnswer() {
         this.questionnaireAnswer.getQuestionAnswerList()
                 .add(this.currentQuestion.getQuestionType().getQuestionAnswer());

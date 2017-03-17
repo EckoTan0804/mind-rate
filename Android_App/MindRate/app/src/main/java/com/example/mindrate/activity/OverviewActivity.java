@@ -52,6 +52,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * This is the fragment where the proband can switch to different fragements:
+ * <p><code>AboutUsFragment</code></p>
+ * <p><code>ChooseQuestionnaireFragment</code></p>
+ * <p><code>ProbandProfileFragment</code></p>
+ * <p><code>SettingFragment</code></p>
+ * <p><code>WelcomeFragment</code></p>
+ * <p>
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class OverviewActivity extends BaseActivity {
     private static final String TAG = "OverviewActivity";
     private static OverviewActivity instance = null;
@@ -143,6 +159,9 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize fragments
+     */
     private void initFragment() {
         welcomeFragment = new WelcomeFragment();
         probandProfileFragment = new ProbandProfileFragment();
@@ -192,6 +211,9 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize data from intent
+     */
     private void initFromIntent() {
 
         Intent intent = getIntent();
@@ -213,7 +235,8 @@ public class OverviewActivity extends BaseActivity {
             triggerEvent.setSensor();
             TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
         }
-//        TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
+        //        TriggerEventManager.getTriggerEventManager().setQuestionnaireList
+        // (allQuestionnaireList);
 
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
@@ -238,6 +261,9 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
+    /**
+     * Initialize the view of activity
+     */
     private void initView() {
 
         title = (RelativeLayout) findViewById(R.id.title_overview);
@@ -310,6 +336,11 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * replace the current fragment with <code>fragment</code>
+     *
+     * @param fragment fragment that the proband wants to switch to
+     */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transition = fragmentManager.beginTransaction();
@@ -320,10 +351,23 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
+    /**
+     * Remove the questionnaire whose index is <code>selectedQuestionnaireIndex</code> from
+     * <code>triggeredQuestionnaireList</code>
+     */
     private void removeSelectedQuestionByIndex() {
         this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
     }
 
+    /**
+     * Get the questionnaire with id <code>questionnaireId</code>
+     *
+     * @param questionnaireID target questionnaire's id
+     * @return
+     * <br>
+     *     <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
+     *     <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
+     */
     private Questionnaire getQuestionnaire(String questionnaireID) {
         Questionnaire questionnaire = null;
         for (Questionnaire tempQuestionnaire : this.allQuestionnaireList) {
@@ -336,12 +380,23 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
+    /**
+     * Add questionnaire with id <code>questionnaireID</code> to
+     * <code>triggeredQuestionnaireList</code>
+     *
+     * @param questionnaireID id of the questionnaire that will be added
+     */
     public void addQuestionnaireToTriggeredQuestionnaireList(String questionnaireID) {
         Questionnaire questionnaire = getQuestionnaire(questionnaireID);
         this.addQuestionnaireToTriggeredQuestionnaireList(questionnaire);
     }
 
 
+    /**
+     * Add <code>questionnaire</code> to <code>triggeredQuestionnaireList</code>
+     *
+     * @param questionnaire questionnaire to be added
+     */
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
 
         questionnaire.trigger(OverviewActivity.this);
@@ -393,6 +448,15 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Change app's language to <code>language</code> immediately
+     *
+     * @param language
+     * <br>
+     *     <li>"en" for English</li>
+     *     <li>"de" for Deutsch</li>
+     *
+     */
     public void switchLanguageImmediately(String language) {
         super.switchLanguage(language);
         finish();
@@ -402,6 +466,10 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Get actionBar
+     * @return <code>title</code>
+     */
     public View ActionBar() {
         return this.title;
     }
@@ -619,11 +687,8 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
-
-
     /**
      * Select questionnaire,which will everyday triggered by Time.
-     *
      */
     private void addTriggeredByTimeQuestionnaire() {
         for (Questionnaire questionnaire : allQuestionnaireList) {
@@ -645,8 +710,9 @@ public class OverviewActivity extends BaseActivity {
     }
 
     /**
-     *Helper method for each Questionnaire, which will everyday triggered by Time.
+     * Helper method for each Questionnaire, which will everyday triggered by Time.
      * <br>For these Questionnaire a alarm will be set.</br>
+     *
      * @param alarmManager This class provides access to the system alarm services.
      */
     private void setEveryTriggeredTimeQuestionnaireAlarm(AlarmManager alarmManager) {
@@ -676,6 +742,7 @@ public class OverviewActivity extends BaseActivity {
     /**
      * Helper method for each Questionnaire, which will triggered by Date.
      * <br>For these Questionnaire a alarm will be set.</br>
+     *
      * @param alarmManager This class provides access to the system alarm services.
      */
 
@@ -714,6 +781,7 @@ public class OverviewActivity extends BaseActivity {
      * Helper Method.For Method setEveryTriggeredTimeQuestionnaireAlarm.
      * <br>Input time is as string,output time is as long value.</br>
      * <p>
+     *
      * @param time Questionnaire's triggered time
      * @return time as a long value.
      */
@@ -766,7 +834,6 @@ public class OverviewActivity extends BaseActivity {
             calendar1.set(Calendar.SECOND, inputTimeListOfInteger[2]);
         }
         return calendar1.getTime().getTime();
-
 
 
     }

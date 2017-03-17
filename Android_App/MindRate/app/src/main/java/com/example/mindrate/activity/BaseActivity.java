@@ -15,6 +15,8 @@ import java.util.Locale;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
+ * Super class for all activities
+ *
  * Project: MindRate
  * Package: com.example.mindrate.activity
  * Author: Ecko Tan
@@ -58,6 +60,11 @@ public class BaseActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+    /**
+     * Change the language according to <code>language</code>
+     *
+     * @param language
+     */
     public void switchLanguage(String language) {
         Resources resources = getResources();
         Configuration config = resources.getConfiguration();
