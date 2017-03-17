@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * This class is for the fragment, in which:
  * <p>
- * <li>the proband can choose the questionnaires which are
+ * the proband can choose the questionnaires which are
  * already triggered but not answered yet</li>
  * <p>
  * <p>

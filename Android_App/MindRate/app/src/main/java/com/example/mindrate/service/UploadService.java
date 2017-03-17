@@ -9,6 +9,17 @@ import com.example.mindrate.util.HttpUtil;
 
 import java.io.IOException;
 
+/**
+ * This class aims to upload questionnaires' answer to server running in background.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.service</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class UploadService extends IntentService {
 
     private static boolean isBound;
