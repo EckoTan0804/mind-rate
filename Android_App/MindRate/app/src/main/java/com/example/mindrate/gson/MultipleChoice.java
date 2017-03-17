@@ -31,6 +31,10 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     private ArrayList<Option> optionList;
     private ArrayList<String> answerList;
 
+    public MultipleChoice() {
+        super("MultipleChoice");
+    }
+
     /**
      * Constructor
      *

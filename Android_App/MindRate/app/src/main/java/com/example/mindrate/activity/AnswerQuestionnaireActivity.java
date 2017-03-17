@@ -81,7 +81,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         // ======================================================================
 
         // ================ TextView question ===================================
-        tv_question = (TextView) findViewById(R.id.question);
+        tv_question = (TextView) findViewById(R.id.questionContent);
         // ======================================================================
 
         // ================ LinearLayout displayAnswerOption ====================

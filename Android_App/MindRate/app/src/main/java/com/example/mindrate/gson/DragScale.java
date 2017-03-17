@@ -30,6 +30,10 @@ public class DragScale extends QuestionType implements Parcelable {
      */
     private int maxValue;
 
+    public DragScale() {
+        super("DragScale");
+    }
+
     /**
      * Constructor
      *

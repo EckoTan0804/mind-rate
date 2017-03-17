@@ -71,6 +71,11 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
     private TriggerEvent triggerEvent;
 
+
+    public Questionnaire() {
+        this.questionList = new ArrayList<>();
+    }
+
     /**
      * Constructor
      *
@@ -78,6 +83,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
      */
     public Questionnaire(String questionnaireID) {
         this.questionnaireID = questionnaireID;
+        this.questionList = new ArrayList<>();
     }
 
     /**

@@ -10,7 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Project: MindRate
+ * This class aims to do management for app's font.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.util</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -22,6 +25,13 @@ public class FontUtil {
 
     private static Typeface typeface;
 
+
+    /**
+     * change UI's font
+     *
+     * @param root the root of the layout
+     * @param context context
+     */
     public static void changeFonts(ViewGroup root, Context context) {
 
         typeface = Typeface.createFromAsset(context.getAssets(),

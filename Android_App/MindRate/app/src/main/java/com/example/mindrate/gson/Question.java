@@ -29,6 +29,13 @@ public class Question implements Parcelable {
     private boolean showByDefault;
     private boolean isAnswered;
 
+    public Question() {
+    }
+
+    public Question(String questionID) {
+        this.questionID = questionID;
+    }
+
     /**
      * Constructor
      *
@@ -70,6 +77,18 @@ public class Question implements Parcelable {
                     layoutParams) {
         tv_question.setText(questionContent);
         this.questionType.inflateAnswerView(this.questionID, context, layout, layoutParams);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Question) {
+            Question q = (Question)obj;
+            return q.questionContent.equals(this.questionContent) && q.questionID.equals(this.questionID)
+                    && q.showByDefault == this.showByDefault && q.questionType.equals(this.questionType);
+        } else {
+            return false;
+        }
+
     }
 
     // ================ setters and getters ==================================

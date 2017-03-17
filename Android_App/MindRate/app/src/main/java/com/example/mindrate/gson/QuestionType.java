@@ -55,6 +55,15 @@ public class QuestionType implements Parcelable {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof QuestionType) {
+            QuestionType questionType = (QuestionType)obj;
+            return this.getTypeName().equals(questionType.typeName);
+        } else {
+            return false;
+        }
+    }
 
     // =================== setters and getters =====================================================
     public String getNextQuestionID() {
@@ -79,6 +88,14 @@ public class QuestionType implements Parcelable {
 
     public void setAnswered(boolean answered) {
         isAnswered = answered;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     // =============================================================================================
