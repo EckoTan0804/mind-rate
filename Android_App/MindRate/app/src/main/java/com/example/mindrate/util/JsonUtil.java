@@ -25,15 +25,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.util
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/8:23:41
+ *
+ * This class aims to handle Json serialization and deserialization using open source library gson.
+ * @link https://github.com/google/gson
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.util</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/8:23:41</br>
  */
 
 public class JsonUtil {
 
+    /**
+     * adapter for runtime polymorphism
+     */
     private static RuntimeTypeAdapterFactory<QuestionType> runtimeTypeAdapterFactory =
             RuntimeTypeAdapterFactory
                     .of(QuestionType.class, "typeName")
@@ -43,26 +51,54 @@ public class JsonUtil {
                     .registerSubtype(DragScale.class)
                     .registerSubtype(TextAnswer.class);
 
+    /**
+     * polymorphic gson instance
+     */
     private static Gson gsonPolymorphism = new GsonBuilder().registerTypeAdapterFactory
             (runtimeTypeAdapterFactory).serializeNulls().create();
 
+    /**
+     * normal gson instance
+     */
     private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls()
             .setPrettyPrinting().create();
 
+    /**
+     * Create Json for <code>obj</code>
+     *
+     * @param obj the obj which need to be serialized to json
+     * @return corresponding json for <code>obj</code>
+     */
     public static String createJSON(Object obj) {
         return gson.toJson(obj);
     }
 
-
+    /**
+     * Deserialize <code>probandJSON</code> to proband instance
+     *
+     * @param probandJSON proband's Json
+     * @return proband instance according to the <code>probandJSON</code>
+     */
     public static Proband fromJsonToProband(String probandJSON) {
         Proband proband = gson.fromJson(probandJSON, Proband.class);
         return proband;
     }
 
+    /**
+     * For gson's acces in other classes
+     *
+     * @return gson instance
+     */
     public static Gson getGson() {
         return gson;
     }
 
+    /**
+     * Deserialize <code>jsonArray</code> to list of questions
+     *
+     * @param jsonArray json data
+     * @return Arraylist, whose element's type is <code>Question</code>
+     */
     public static ArrayList<Question> fromJsonToQuestionList(JsonArray jsonArray) {
         ArrayList<Question> questionArrayList = new ArrayList<>();
         for (JsonElement element : jsonArray) {
@@ -115,6 +151,12 @@ public class JsonUtil {
         return questionArrayList;
     }
 
+    /**
+     * Deserialize <code>json</code> to list of questionnaires
+     *
+     * @param json json data
+     * @return list of <code>Questionnaire</code>
+     */
     public static List<Questionnaire> fromJsonToQuestionnaireList(String json) {
         List<Questionnaire> questionnaireList = new ArrayList<>();
         JsonObject obj = new JsonParser().parse(json).getAsJsonObject();
@@ -127,6 +169,12 @@ public class JsonUtil {
         return questionnaireList;
     }
 
+    /**
+     * Parse <code>element</code> to <code>Questionnaire</code> instance
+     *
+     * @param element json element
+     * @return <code>Questionnaire</code> instance
+     */
     public static Questionnaire fromJsonToQuestionnaire(JsonElement element) {
         JsonObject questionnaireObj = (JsonObject)element;
         Questionnaire questionnaire = gson.fromJson(questionnaireObj, Questionnaire.class);

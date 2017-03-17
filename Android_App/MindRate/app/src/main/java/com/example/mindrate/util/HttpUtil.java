@@ -10,11 +10,15 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.util
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/8:23:41
+ * This class is responsible for network communication using open source framework OkHttp
+ * @link http://square.github.io/okhttp/
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.util</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/8:23:41</br>
  */
 
 public class HttpUtil {
@@ -30,7 +34,7 @@ public class HttpUtil {
      * @param callback provided by okhttp3
      */
     public static void sendRequestWithOkHttp(String address, okhttp3.Callback callback) {
-//        OkHttpClient client = new OkHttpClient();
+        //        OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(address).build();
         client.newCall(request).enqueue(callback);
     }
@@ -39,7 +43,7 @@ public class HttpUtil {
     /**
      * Use OkHttp to post json data to server
      *
-     * @param url server address
+     * @param url  server address
      * @param json json data
      * @return the response as string
      * @throws IOException
