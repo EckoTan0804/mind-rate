@@ -161,6 +161,7 @@ public class OverviewActivity extends BaseActivity {
         //=============================
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setEveryTriggeredDateQuestionnaireAlarm(alarmManager);
+        setEveryTriggeredTimeQuestionnaireAlarm(alarmManager);
 
         Intent intent = getIntent();
         String fromIntent = intent.getStringExtra("notityToAnswer");
@@ -358,9 +359,6 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
-    public void addQuestionnaireToTriggeredQuestionnaireList(List<String> questionnaireIdList) {
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode,
@@ -611,16 +609,22 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Helper method.Gets instance for class overviewActivity.
+     *
+     * @return the instance,overviewActivity itself.
+     */
     public static OverviewActivity getInstance() {
         return instance;
-
     }
 
 
-    //想法是 create的时候先把有date的触发条件的问卷加进来。然后用alarmManager，每拿到一个时间点就新建一个intent，然后用alarmManager
-    // 启动一个intentservice；（把questionnaire的ID传进去）service中直接引用TriggerManager的overview的加问卷方法 添加到触发问卷。
+    
 
-
+    /**
+     * Select questionnaire,which will everyday triggered by Time.
+     *
+     */
     private void addTriggeredByTimeQuestionnaire() {
         for (Questionnaire questionnaire : allQuestionnaireList) {
             if (questionnaire.getTriggerEvent().getTime() != null) {
@@ -629,6 +633,9 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Select questionnaire,which will triggered by Date.
+     */
     private void addTriggeredByDatetimeQuestionnaire() {
         for (Questionnaire questionnaire : allQuestionnaireList) {
             if (questionnaire.getTriggerEvent().getDateTime() != null) {
@@ -637,6 +644,11 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     *Helper method for each Questionnaire, which will everyday triggered by Time.
+     * <br>For these Questionnaire a alarm will be set.</br>
+     * @param alarmManager This class provides access to the system alarm services.
+     */
     private void setEveryTriggeredTimeQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
         int index = 0;
@@ -660,6 +672,12 @@ public class OverviewActivity extends BaseActivity {
         }
 
     }
+
+    /**
+     * Helper method for each Questionnaire, which will triggered by Date.
+     * <br>For these Questionnaire a alarm will be set.</br>
+     * @param alarmManager This class provides access to the system alarm services.
+     */
 
     private void setEveryTriggeredDateQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
@@ -692,6 +710,13 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Helper Method.For Method setEveryTriggeredTimeQuestionnaireAlarm.
+     * <br>Input time is as string,output time is as long value.</br>
+     * <p>
+     * @param time Questionnaire's triggered time
+     * @return time as a long value.
+     */
     private long transferTriggeredTimeToTriggerAtMillis(String time) {
         long timetest;
         boolean todayshouldtriggered = false;
@@ -742,8 +767,6 @@ public class OverviewActivity extends BaseActivity {
         }
         return calendar1.getTime().getTime();
 
-        //DateFormat sdf3 = new SimpleDateFormat("yyyy MM dd HH mm ss");
-        //String s=sdf3.format(date);
 
 
     }
