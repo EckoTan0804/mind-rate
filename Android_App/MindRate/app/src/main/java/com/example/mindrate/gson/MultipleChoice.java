@@ -80,6 +80,25 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof MultipleChoice) {
+            MultipleChoice multipleChoice = (MultipleChoice) obj;
+            if (this.optionList.size() != multipleChoice.optionList.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < this.optionList.size(); i++) {
+                    if (!this.optionList.get(i).equals(multipleChoice.optionList.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
     // ==================== setters and getters ===========================================
 
     public List<Option> getOptionList() {

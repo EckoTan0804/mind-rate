@@ -37,6 +37,17 @@ public class Option implements Parcelable {
         this.nextQuestionID = nextQuestionID;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Option) {
+            Option option = (Option) obj;
+            return this.content.equals(option.content) && this.nextQuestionID.equals(option
+                                                                                             .nextQuestionID);
+        } else {
+            return false;
+        }
+    }
+
     public String getContent() {
         return content;
     }

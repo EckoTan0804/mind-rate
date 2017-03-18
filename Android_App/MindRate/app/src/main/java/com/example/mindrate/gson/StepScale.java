@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class StepScale extends QuestionType implements Parcelable {
 
     @SerializedName("options")
-    private ArrayList<Option> optionlist;
+    private ArrayList<Option> optionList;
 
     public StepScale() {
         super("StepScale");
@@ -35,11 +35,11 @@ public class StepScale extends QuestionType implements Parcelable {
     /**
      * Constructor
      *
-     * @param optionlist the offered options (StepScale is kind of <code>SingleChoice</code>)
+     * @param optionList the offered options (StepScale is kind of <code>SingleChoice</code>)
      */
-    public StepScale(ArrayList<Option> optionlist) {
+    public StepScale(ArrayList<Option> optionList) {
         super("StepScale");
-        this.optionlist = optionlist;
+        this.optionList = optionList;
     }
 
     @Override
@@ -52,8 +52,8 @@ public class StepScale extends QuestionType implements Parcelable {
         RadioGroup radioGroup = new RadioGroup(context);
 
         // add radioButton into radioGroup
-        for (int i = 0; i < optionlist.size(); i++) {
-            Option option = optionlist.get(i);
+        for (int i = 0; i < optionList.size(); i++) {
+            Option option = optionList.get(i);
             RadioButton radioButton = new RadioButton(context);
             radioButton.setId(i);
             radioButton.setText(option.getContent());
@@ -64,8 +64,8 @@ public class StepScale extends QuestionType implements Parcelable {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
-                questionAnswer.setAnswerContent(optionlist.get(checkedId).getContent());
+                nextQuestionID = optionList.get(checkedId).getNextQuestionID();
+                questionAnswer.setAnswerContent(optionList.get(checkedId).getContent());
                 setAnswered(true);
             }
         });
@@ -73,6 +73,25 @@ public class StepScale extends QuestionType implements Parcelable {
         layout.addView(radioGroup);
 
         FontUtil.changeFonts(layout, context);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof StepScale) {
+            StepScale stepScale = (StepScale) obj;
+            if (this.optionList.size() != stepScale.optionList.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < this.optionList.size(); i++) {
+                    if (!this.optionList.get(i).equals(stepScale.optionList.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
     // ================== setters and getters ==================================================
@@ -100,12 +119,12 @@ public class StepScale extends QuestionType implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(this.optionlist);
+        dest.writeTypedList(this.optionList);
         dest.writeString(this.nextQuestionID);
     }
 
     protected StepScale(Parcel in) {
-        this.optionlist = in.createTypedArrayList(Option.CREATOR);
+        this.optionList = in.createTypedArrayList(Option.CREATOR);
         this.nextQuestionID = in.readString();
     }
 

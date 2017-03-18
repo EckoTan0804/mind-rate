@@ -89,6 +89,14 @@ public class TextAnswer extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof TextAnswer) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // ========================= setters and getters ===========================================
     @Override

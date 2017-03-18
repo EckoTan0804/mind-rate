@@ -90,6 +90,15 @@ public class DragScale extends QuestionType implements Parcelable {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof DragScale) {
+            DragScale dragScale = (DragScale) obj;
+            return this.maxValue == dragScale.maxValue;
+        } else {
+            return false;
+        }
+    }
 
     // ================== setters and getters ======================================
     public int getMaxValue() {
