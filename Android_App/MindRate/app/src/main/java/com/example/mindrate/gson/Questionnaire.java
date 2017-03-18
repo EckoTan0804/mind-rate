@@ -89,6 +89,12 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.questionList = new ArrayList<>();
     }
 
+    public Questionnaire(String studyID, String questionnaireID) {
+        this.studyID = studyID;
+        this.questionnaireID = questionnaireID;
+        this.questionList = new ArrayList<>();
+    }
+
     /**
      * Constructor
      *
