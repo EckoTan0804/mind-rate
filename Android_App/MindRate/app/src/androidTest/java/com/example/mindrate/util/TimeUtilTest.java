@@ -1,8 +1,11 @@
 package com.example.mindrate.util;
 
-import org.junit.Test;
+import com.example.mindrate.gson.Duration;
 
-import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.Ignore;
+import org.junit.Test;
 
 
 /**
@@ -15,19 +18,31 @@ import static org.junit.Assert.*;
  * </p>
  */
 public class TimeUtilTest {
-    @Test
+
+    @Ignore
     public void getCurrentTime() throws Exception {
-
+        /*
+            No need to test because it only calls the method from Java's API
+         */
     }
 
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void calculateTime() throws Exception {
+        TimeUtil.calculateTime(null, null);
+        TimeUtil.calculateTime(TimeUtil.getCurrentTime(), new Duration(-1, -1, -1));
+
+        Duration duration = new Duration(48, 24, 12);
+        Assert.assertEquals(duration.getHour() * 60 * 60 + duration.getMinute() * 60 + duration
+                .getSecond(), TimeUtil.calculateTime(TimeUtil.getCurrentTime(), duration).getTime());
+
 
     }
 
-    @Test
+    @Ignore
     public void parseDate() throws Exception {
-
+        /*
+            No need to test because it only calls the method from Java's API
+         */
     }
 
 }
