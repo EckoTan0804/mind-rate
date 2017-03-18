@@ -24,10 +24,16 @@ public class TimeUtil {
         return new Date(System.currentTimeMillis());
     }
 
-    public static Date calculateTime(Date beginDate, Duration duration) {
-        return new Date(beginDate.getTime() + (long) (duration.getHour() * 60 * 60 + duration
-                .getMinute() * 60 + duration.getSecond()) *
-                1000);
+    public static Date calculateTime(Date beginDate, Duration duration) throws IllegalArgumentException {
+        if (beginDate == null || duration == null || duration.getHour() < 0 || duration.getMinute
+                () < 0 || duration.getMinute() < 0) {
+            throw new IllegalArgumentException("The given parameter is illegal");
+        } else {
+            return new Date(beginDate.getTime() + (long) (duration.getHour() * 60 * 60 + duration
+                    .getMinute() * 60 + duration.getSecond()) *
+                    1000);
+
+        }
 
     }
 

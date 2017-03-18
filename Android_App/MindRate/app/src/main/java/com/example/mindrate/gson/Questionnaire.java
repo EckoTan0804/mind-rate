@@ -192,7 +192,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
                         this.studyID.equals(questionnaire.studyID) &&
                         this.duration.equals(questionnaire.duration) &&
                         TimeUtil.parseDate(triggerTime).equals(TimeUtil.parseDate(triggerTime));
-//                        && this.triggerEvent.equals(questionnaire.triggerEvent)e
+                //                        && this.triggerEvent.equals(questionnaire.triggerEvent)e
 
             }
 
@@ -223,8 +223,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
      * Get the id of the next question which is <code>showByDefault</code>
      *
      * @param currentQuestion the current displaying question
-     * @return
-     * <li>the id of next <code>showByDefault</code> question if it exists </li>
+     * @return <li>the id of next <code>showByDefault</code> question if it exists </li>
      * <li>null, otherwise</li>
      */
     public String defaultNextQuestionID(Question currentQuestion) {
@@ -239,13 +238,13 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         return null;
     }
 
-//    public boolean isLastQuestion(Question question) {
-//        if (this.questionList.lastIndexOf(question) == (this.questionList.size() - 1)) {
-//            return true;
-//        }
-//        return false;
-//    }
-//
+    //    public boolean isLastQuestion(Question question) {
+    //        if (this.questionList.lastIndexOf(question) == (this.questionList.size() - 1)) {
+    //            return true;
+    //        }
+    //        return false;
+    //    }
+    //
 
     /**
      * The actions when a questionnaire is triggered
@@ -258,8 +257,15 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.triggerTime = TimeUtil.getCurrentTime();
 
         // 2. calculate EndTime
-        this.endTime = TimeUtil.calculateTime(triggerTime,
-                                              duration);
+        try {
+            this.endTime = TimeUtil.calculateTime(triggerTime,
+                                                  duration);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+
         // 3. send notification
         this.sendNotification(context);
     }
@@ -337,8 +343,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     public void setStudyID(String studyID) {
         this.studyID = studyID;
     }
-
-
 
 
     public void update(Observable o, Object arg) {
