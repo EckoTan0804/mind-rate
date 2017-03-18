@@ -165,6 +165,35 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         return super.clone();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Questionnaire) {
+            Questionnaire questionnaire = (Questionnaire) obj;
+            if (this.questionList.size() != questionnaire.questionList.size()) {
+                // different size of questionList --> questionnaire not equals
+                return false;
+            } else {
+                for (int i = 0; i < this.questionList.size(); i++) {
+                    if (!this.questionList.get(i).equals(questionnaire.questionList.get(i))) {
+                        // if an element not equals --> questionnaire not equals
+                        return false;
+                    }
+                }
+                /* if questionList equals,
+                 * then compare other attributes.
+                 */
+                return this.questionnaireID.equals(questionnaire.questionnaireID) &&
+                        this.studyID.equals(questionnaire.studyID) &&
+                        this.duration.equals(questionnaire.duration) &&
+                        this.triggerTime.equals(questionnaire.triggerTime);
+//                        && this.triggerEvent.equals(questionnaire.triggerEvent)e
+
+            }
+
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Create a copy for questionnaire ifself
