@@ -27,7 +27,7 @@ public class Duration implements Parcelable {
      * <p>e.g. If a questionnaire lasts 2 h 30 min and 30 sec
      * then hour = 2, minute = 30, second = 30</p>
      *
-     * @param hour how many hours lasts the questionnaire
+     * @param hour   how many hours lasts the questionnaire
      * @param minute how many minutes lasts the questionnaire on the basis of the hour
      * @param second how many seconds lasts the questionnaire on the basis of hour and minute
      */
@@ -35,6 +35,17 @@ public class Duration implements Parcelable {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Duration) {
+            Duration duration = (Duration) obj;
+            return this.hour == duration.hour && this.minute == duration.minute && this.second ==
+                    duration.second;
+        } else {
+            return false;
+        }
     }
 
     public int getHour() {
