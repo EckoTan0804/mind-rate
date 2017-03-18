@@ -36,6 +36,10 @@ public class Question implements Parcelable {
         this.questionID = questionID;
     }
 
+    public Question(QuestionType questionType) {
+        this.questionType = questionType;
+    }
+
     /**
      * Constructor
      *
