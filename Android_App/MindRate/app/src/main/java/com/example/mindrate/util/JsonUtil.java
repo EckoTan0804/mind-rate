@@ -25,10 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * This class aims to handle Json serialization and deserialization using open source library gson.
- * @link https://github.com/google/gson
  *
+ * @link https://github.com/google/gson
+ * <p>
  * <p>
  * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.util</br>
@@ -60,7 +60,8 @@ public class JsonUtil {
     /**
      * normal gson instance
      */
-    private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls()
+    private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .serializeNulls()
             .setPrettyPrinting().create();
 
     /**
@@ -136,7 +137,7 @@ public class JsonUtil {
                             .getType()));
                     break;
                 case "TextAnswer":
-                    q.setQuestionType((TextAnswer)gsonPolymorphism.fromJson(questionType, new
+                    q.setQuestionType((TextAnswer) gsonPolymorphism.fromJson(questionType, new
                             TypeToken<QuestionType>
                                     () {
                             }
@@ -176,7 +177,7 @@ public class JsonUtil {
      * @return <code>Questionnaire</code> instance
      */
     public static Questionnaire fromJsonToQuestionnaire(JsonElement element) {
-        JsonObject questionnaireObj = (JsonObject)element;
+        JsonObject questionnaireObj = (JsonObject) element;
         Questionnaire questionnaire = gson.fromJson(questionnaireObj, Questionnaire.class);
         JsonArray questionList = questionnaireObj.getAsJsonArray("questions");
         questionnaire.setQuestionList(fromJsonToQuestionList(questionList));
