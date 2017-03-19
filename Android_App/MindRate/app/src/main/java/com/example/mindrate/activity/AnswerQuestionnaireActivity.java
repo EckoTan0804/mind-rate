@@ -79,11 +79,11 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     }
 
     /**
-     * Initialze view of the activity
+     * Initialize view of the activity
      */
     private void initView() {
 
-        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
+//        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
 
         tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
