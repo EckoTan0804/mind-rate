@@ -52,6 +52,7 @@ public class TextAnswer extends QuestionType implements Parcelable {
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         EditText mEditText = new EditText(context);
+        mEditText.setHint(R.string.edit_text_hint);
         mEditText.setBackgroundResource(R.drawable.rounded_edittext);
         mEditText.setTextSize(15);
 //        mEditText.setTextColor(ContextCompat.getColor(context,R.color.textColorPrimary));
