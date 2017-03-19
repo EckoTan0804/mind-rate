@@ -35,6 +35,32 @@ public class QuestionnaireAnswer  {
         this.questionAnswerList = new ArrayList<>();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof QuestionnaireAnswer) {
+            QuestionnaireAnswer questionnaireAnswer = (QuestionnaireAnswer) obj;
+
+            // different questionAnswerList's size --> not equal
+            if (this.questionAnswerList.size() != questionnaireAnswer.questionAnswerList.size()) {
+                return false;
+            } else {
+                // compare every list item
+                for (int i = 0; i < this.questionAnswerList.size(); i++) {
+                    if (!this.questionAnswerList.get(i).equals(questionnaireAnswer
+                                                                       .questionAnswerList.get(i))) {
+                        // if an list element not equals --> not equals
+                        return false;
+                    }
+                }
+                // questionAnswerList equals, then compare questionnaireID and probandID
+                return this.probandID.equals(questionnaireAnswer.probandID) && this
+                        .questionnaireID.equals(questionnaireAnswer.questionnaireID);
+            }
+        } else {
+            return false;
+        }
+    }
+
     // ================= setters and getters ===============================================
 
     public String getQuestionnaireID() {
