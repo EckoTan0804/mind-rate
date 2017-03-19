@@ -406,6 +406,62 @@ public class LogInActivity extends BaseActivity {
         editText.setError(getString(R.string.input_empty_error));
     }
 
+    // ====================== setters and getters =======================================
 
 
+    public String getStudyID() {
+        return studyID;
+    }
+
+    public void setStudyID(String studyID) {
+        this.studyID = studyID;
+    }
+
+    public String getProbandID() {
+        return probandID;
+    }
+
+    public void setProbandID(String probandID) {
+        this.probandID = probandID;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
 }
