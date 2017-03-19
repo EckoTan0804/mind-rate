@@ -464,4 +464,80 @@ public class LogInActivity extends BaseActivity {
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
+
+    public static String getSERVER() {
+        return SERVER;
+    }
+
+    public EditText getEdtTxt_studyID() {
+        return edtTxt_studyID;
+    }
+
+    public void setEdtTxt_studyID(EditText edtTxt_studyID) {
+        this.edtTxt_studyID = edtTxt_studyID;
+    }
+
+    public EditText getEdtTxt_probandID() {
+        return edtTxt_probandID;
+    }
+
+    public void setEdtTxt_probandID(EditText edtTxt_probandID) {
+        this.edtTxt_probandID = edtTxt_probandID;
+    }
+
+    public DatePicker getDtPk_birthday() {
+        return dtPk_birthday;
+    }
+
+    public void setDtPk_birthday(DatePicker dtPk_birthday) {
+        this.dtPk_birthday = dtPk_birthday;
+    }
+
+    public RadioGroup getRdog_chooseGender() {
+        return rdog_chooseGender;
+    }
+
+    public void setRdog_chooseGender(RadioGroup rdog_chooseGender) {
+        this.rdog_chooseGender = rdog_chooseGender;
+    }
+
+    public EditText getEdtTxt_occuptaion() {
+        return edtTxt_occuptaion;
+    }
+
+    public void setEdtTxt_occuptaion(EditText edtTxt_occuptaion) {
+        this.edtTxt_occuptaion = edtTxt_occuptaion;
+    }
+
+    public Button getBtn_probandLogIn() {
+        return btn_probandLogIn;
+    }
+
+    public void setBtn_probandLogIn(Button btn_probandLogIn) {
+        this.btn_probandLogIn = btn_probandLogIn;
+    }
+
+    public boolean isNeedBirthday() {
+        return needBirthday;
+    }
+
+    public void setNeedBirthday(boolean needBirthday) {
+        this.needBirthday = needBirthday;
+    }
+
+    public boolean isNeedGender() {
+        return needGender;
+    }
+
+    public void setNeedGender(boolean needGender) {
+        this.needGender = needGender;
+    }
+
+    public boolean isNeedOccupation() {
+        return needOccupation;
+    }
+
+    public void setNeedOccupation(boolean needOccupation) {
+        this.needOccupation = needOccupation;
+    }
 }
