@@ -284,7 +284,22 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 .add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
 
+    // =============================== setters and getters ===================================
 
 
+    public Questionnaire getQuestionnaire() {
+        return questionnaire;
+    }
 
+    public void setQuestionnaire(Questionnaire questionnaire) {
+        this.questionnaire = questionnaire;
+    }
+
+    public QuestionnaireAnswer getQuestionnaireAnswer() {
+        return questionnaireAnswer;
+    }
+
+    public void setQuestionnaireAnswer(QuestionnaireAnswer questionnaireAnswer) {
+        this.questionnaireAnswer = questionnaireAnswer;
+    }
 }
