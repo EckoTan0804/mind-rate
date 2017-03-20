@@ -59,4 +59,5 @@
     <string name="input_empty_error">Die Eingabe darf nicht leer sein.</string>
     <string name="question_not_answered">Diese Frage ist noch nicht beantwortet.</string>
     <string name="check_network">Bitte überprüfen Sie Ihr Netzwerk und versuchen Sie es erneut.</string>
+    <string name="edit_text_hint">Bitte geben Sie ein.</string>
 </resources>

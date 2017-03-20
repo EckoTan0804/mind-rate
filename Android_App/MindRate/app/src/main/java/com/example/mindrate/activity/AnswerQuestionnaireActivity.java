@@ -79,11 +79,11 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
     }
 
     /**
-     * Initialze view of the activity
+     * Initialize view of the activity
      */
     private void initView() {
 
-        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
+//        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
 
         tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
@@ -284,7 +284,22 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 .add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
 
+    // =============================== setters and getters ===================================
 
 
+    public Questionnaire getQuestionnaire() {
+        return questionnaire;
+    }
 
+    public void setQuestionnaire(Questionnaire questionnaire) {
+        this.questionnaire = questionnaire;
+    }
+
+    public QuestionnaireAnswer getQuestionnaireAnswer() {
+        return questionnaireAnswer;
+    }
+
+    public void setQuestionnaireAnswer(QuestionnaireAnswer questionnaireAnswer) {
+        this.questionnaireAnswer = questionnaireAnswer;
+    }
 }

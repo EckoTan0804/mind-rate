@@ -28,6 +28,28 @@ public class QuestionAnswer implements Parcelable {
         this.questionID = questionID;
     }
 
+    /**
+     * Constructor
+     *
+     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+     * @param answerContent the input answer for this question
+     */
+    public QuestionAnswer(String questionID, String answerContent) {
+        this.questionID = questionID;
+        this.answerContent = answerContent;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof QuestionAnswer) {
+            QuestionAnswer questionAnswer = (QuestionAnswer) obj;
+            return this.questionID.equals(questionAnswer.questionID) && this.answerContent.equals
+                    (questionAnswer.answerContent);
+        } else {
+            return false;
+        }
+    }
+
     public String getQuestionID() {
         return questionID;
     }

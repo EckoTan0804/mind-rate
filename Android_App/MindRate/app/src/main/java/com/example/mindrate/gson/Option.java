@@ -41,8 +41,13 @@ public class Option implements Parcelable {
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof Option) {
             Option option = (Option) obj;
-            return this.content.equals(option.content) && this.nextQuestionID.equals(option
-                                                                                             .nextQuestionID);
+            if (this.nextQuestionID != null && option.nextQuestionID != null) {
+                return this.content.equals(option.content) && this.nextQuestionID.equals(option.nextQuestionID);
+            } else if (this.nextQuestionID == null && option.nextQuestionID == null){
+                return this.content.equals(option.content);
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
