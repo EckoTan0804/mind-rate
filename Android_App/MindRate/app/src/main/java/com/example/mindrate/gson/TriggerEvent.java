@@ -770,6 +770,35 @@ public class TriggerEvent implements Parcelable {
     }
 
     @Override
+    public boolean equals(Object obj){
+        if(obj != null && obj instanceof  TriggerEvent){
+            TriggerEvent triggerEvent = (TriggerEvent)obj;
+            return this.questionnaireID.equals(triggerEvent.questionnaireID)&&
+                    this.minTimeSpace == triggerEvent.minTimeSpace &&
+                    this.time.equals(triggerEvent.time)&&
+                    this.dateTime.equals(triggerEvent.dateTime)&&
+                    (this.ambientTemperature==triggerEvent.ambientTemperature)&&
+                    (this.light==triggerEvent.light)&&
+                    (this.pressure==triggerEvent.pressure)&&
+                    (this.proximity==triggerEvent.proximity)&&
+                    (this.relativeHumidity==triggerEvent.relativeHumidity)&&
+                    (this.ambientTemperatureMinValue==triggerEvent.ambientTemperatureMinValue)&&
+                    (this.ambientTemperatureMaxValue==triggerEvent.ambientTemperatureMaxValue)&&
+                    (this.lightMinValue==triggerEvent.lightMinValue)&&
+                    (this.lightMaxValue==triggerEvent.lightMaxValue)&&
+                    (this.pressureMinValue==triggerEvent.pressureMinValue)&&
+                    (this.pressureMaxValue==triggerEvent.pressureMaxValue)&&
+                    (this.proximityMinValue==triggerEvent.proximityMinValue)&&
+                    (this.proximityMaxValue==triggerEvent.proximityMaxValue)&&
+                    (this.relativeHumidityMinValue==triggerEvent.relativeHumidityMinValue)&&
+                    (this.relativeHumidityMaxValue==triggerEvent.relativeHumidityMaxValue);
+
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }
