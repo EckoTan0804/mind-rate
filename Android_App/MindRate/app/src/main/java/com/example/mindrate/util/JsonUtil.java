@@ -1,6 +1,8 @@
 package com.example.mindrate.util;
 
 
+import android.text.TextUtils;
+
 import com.example.mindrate.gson.DragScale;
 import com.example.mindrate.gson.Duration;
 import com.example.mindrate.gson.MultipleChoice;
@@ -158,7 +160,11 @@ public class JsonUtil {
      * @param json json data
      * @return list of <code>Questionnaire</code>
      */
-    public static List<Questionnaire> fromJsonToQuestionnaireList(String json) {
+    public static List<Questionnaire> fromJsonToQuestionnaireList(String json) throws IllegalArgumentException {
+
+        if (TextUtils.isEmpty(json)) {
+            throw new IllegalArgumentException("Json should not be empty!");
+        }
         List<Questionnaire> questionnaireList = new ArrayList<>();
         JsonObject obj = new JsonParser().parse(json).getAsJsonObject();
         JsonObject study = obj.getAsJsonObject("study");
