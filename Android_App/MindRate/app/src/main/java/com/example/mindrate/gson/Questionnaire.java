@@ -89,6 +89,12 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.questionList = new ArrayList<>();
     }
 
+    /**
+     * Constructor
+     *
+     * @param studyID         study's id
+     * @param questionnaireID study's id
+     */
     public Questionnaire(String studyID, String questionnaireID) {
         this.studyID = studyID;
         this.questionnaireID = questionnaireID;
@@ -103,6 +109,21 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
      */
     public Questionnaire(String questionnaireID,
             Duration duration) {
+        this.questionnaireID = questionnaireID;
+        this.duration = duration;
+        this.questionList = new ArrayList<>();
+    }
+
+    /**
+     * Constructor
+     *
+     * @param studyID         study's id
+     * @param questionnaireID study's id
+     * @param duration        study's id
+     */
+    public Questionnaire(String studyID, String questionnaireID,
+            Duration duration) {
+        this.studyID = studyID;
         this.questionnaireID = questionnaireID;
         this.duration = duration;
         this.questionList = new ArrayList<>();
