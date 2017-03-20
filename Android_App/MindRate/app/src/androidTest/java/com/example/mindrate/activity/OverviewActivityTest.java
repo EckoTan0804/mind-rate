@@ -1,5 +1,6 @@
 package com.example.mindrate.activity;
 
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -9,19 +10,26 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-
 /**
  * Created by Renhan on 2017/3/19.
  */
+
+
 @RunWith(AndroidJUnit4.class)
-public class OverviewActivityTest {
+@LargeTest
+public class OverviewActivityTest  {
     @Rule
-    public ActivityTestRule<OverviewActivity> overviewActivityRule
-            = new ActivityTestRule<>(OverviewActivity.class);
+    public ActivityTestRule<OverviewActivity> overviewActivityRule = new ActivityTestRule<>(OverviewActivity.class);
 
 
     @Before
     public void setUp() throws Exception {
+
+       // injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+        //mActivity = getActivity();
+        //Intent intent = new Intent(Intent.ACTION_MAIN);
+        //startActivity(intent);
+
 
     }
 
