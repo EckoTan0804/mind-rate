@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -56,10 +57,14 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
 
     // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
-    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2'){
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2'){
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'design'
     }
 
 
