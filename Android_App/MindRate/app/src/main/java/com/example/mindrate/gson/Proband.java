@@ -58,6 +58,16 @@ public class Proband implements Parcelable {
         this.birthday = birthday;
     }
 
+    /**
+     * Constructor
+     *
+     * @param probandID proband's id
+     * @param studyID the id of the study the proband participates in
+     */
+    public Proband(String probandID, String studyID) {
+        this.probandID = probandID;
+        this.studyID = studyID;
+    }
 
     public String getProbandID() {
         return probandID;
