@@ -176,6 +176,17 @@ public class JsonUtil {
         return questionnaireList;
     }
 
+
+    public static Questionnaire fromJsonToProbandInfoQuestionnaire(String json) throws IllegalArgumentException{
+        if (TextUtils.isEmpty(json)) {
+            throw new IllegalArgumentException("Json should not be empty!");
+        }
+        JsonObject obj = new JsonParser().parse(json).getAsJsonObject();
+        JsonObject study = obj.getAsJsonObject("study");
+        JsonObject probandInfoQuestionnaire = study.getAsJsonObject("probandInfoQuestionnaire");
+        return fromJsonToQuestionnaire(probandInfoQuestionnaire);
+    }
+
     /**
      * Parse <code>element</code> to <code>Questionnaire</code> instance
      *
