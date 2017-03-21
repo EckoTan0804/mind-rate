@@ -22,6 +22,8 @@ import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
 
+import java.util.Date;
+
 /**
  * This is the activity in which the proband can answer the triggered questionnaire.
  *
@@ -220,8 +222,16 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         public void onClick(DialogInterface dialogInterface, int i) {
 
                             // mark down the submit time
+                            Date submitTime = TimeUtil.getCurrentTime();
                             questionnaireAnswer.setSubmitTimeString(
-                                    TimeUtil.parseDate(TimeUtil.getCurrentTime()));
+                                    TimeUtil.parseDate(submitTime));
+
+                            // check whether the answer is valid or not
+                            if (submitTime.after(TimeUtil.calculateTime(questionnaire
+                                                                                .getTriggerTime()
+                                    , questionnaire.getDuration()))) {
+                                questionnaireAnswer.setValid(false);
+                            }
 
                             // create Json
                             String questionnaireAnswerJSON = JsonUtil.createJSON
