@@ -367,10 +367,9 @@ public class OverviewActivity extends BaseActivity {
      * Get the questionnaire with id <code>questionnaireId</code>
      *
      * @param questionnaireID target questionnaire's id
-     * @return
-     * <br>
-     *     <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
-     *     <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
+     * @return <br>
+     * <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
+     * <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
      */
     private Questionnaire getQuestionnaire(String questionnaireID) {
         Questionnaire questionnaire = null;
@@ -455,11 +454,9 @@ public class OverviewActivity extends BaseActivity {
     /**
      * Change app's language to <code>language</code> immediately
      *
-     * @param language
-     * <br>
-     *     <li>"en" for English</li>
-     *     <li>"de" for Deutsch</li>
-     *
+     * @param language <br>
+     *                 <li>"en" for English</li>
+     *                 <li>"de" for Deutsch</li>
      */
     public void switchLanguageImmediately(String language) {
         super.switchLanguage(language);
@@ -472,6 +469,7 @@ public class OverviewActivity extends BaseActivity {
 
     /**
      * Get actionBar
+     *
      * @return <code>title</code>
      */
     public View ActionBar() {
