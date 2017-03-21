@@ -21,11 +21,16 @@ import java.util.Date;
 public class QuestionnaireAnswer  {
 
     private String questionnaireID;
+
     @SerializedName("questionAnswer")
     private ArrayList<QuestionAnswer> questionAnswerList;
-    @Expose()
+
+    @Expose(serialize = false, deserialize = false)
     private Date submitTime;
+
+    @SerializedName("submitTime")
     private String submitTimeString;
+
     private String probandID;
     private boolean isValid;
 
