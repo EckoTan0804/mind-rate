@@ -221,17 +221,32 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
+                            /*
+                                If questionnaireID is null, that means this questionnaire is
+                                probandInfoQuestionnaire
+                             */
+                            if (questionnaire.getQuestionnaireID() == null) {
+                                questionnaire.setQuestionnaireID("probandInfoQuestionnaire");
+                            }
+
                             // mark down the submit time
                             Date submitTime = TimeUtil.getCurrentTime();
                             questionnaireAnswer.setSubmitTimeString(
                                     TimeUtil.parseDate(submitTime));
 
-                            // check whether the answer is valid or not
-                            if (submitTime.after(TimeUtil.calculateTime(questionnaire
-                                                                                .getTriggerTime()
-                                    , questionnaire.getDuration()))) {
-                                questionnaireAnswer.setValid(false);
+                            /*
+                                Check whether the answer is valid or not.
+                                probandInfoQuestionnaire is always valid!
+                             */
+                            if (!questionnaire.getQuestionnaireID().equals
+                                    ("probandInfoQuestionnaire")) {
+                                if (submitTime.after(TimeUtil.calculateTime(questionnaire
+                                                                                    .getTriggerTime()
+                                        , questionnaire.getDuration()))) {
+                                    questionnaireAnswer.setValid(false);
+                                }
                             }
+
 
                             // create Json
                             String questionnaireAnswerJSON = JsonUtil.createJSON
