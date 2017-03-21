@@ -319,13 +319,18 @@ public class LogInActivity extends BaseActivity {
                     PreferenceUtil.commitString("probandJSON", probandJSON);
 
                     // upload probandJSON to server
-//                    try {
-//                        questionnaireJSON = HttpUtil.post(SERVER, probandJSON);
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    } finally {
-//
-//                    }
+                    HttpUtil.post(SERVER + "/receive_answer/", probandJSON, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Toast.makeText(LogInActivity.this, R.string.upload_fail, Toast.LENGTH_LONG)
+                                    .show();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String responseMsg = response.body().string();
+                        }
+                    });
 
                     // download Questionnaires and save it
                     String address = SERVER + "/download/" + studyID + "/";
@@ -346,10 +351,6 @@ public class LogInActivity extends BaseActivity {
                             if (!TextUtils.isEmpty(questionnaireJSON)) {
                                 intent.putExtra("questionnaire_JSON", questionnaireJSON);
                             }
-                            //                    } else {
-                            //                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
-                            //                        "again", Toast.LENGTH_LONG).show();
-                            //                    }
                             intent.putExtra("proband", proband);
 
                             // set isLogIn of MainActivity = true
@@ -360,26 +361,6 @@ public class LogInActivity extends BaseActivity {
                             startActivity(intent);
                         }
                     });
-
-//                    PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
-//
-//                    // put proband & questionnaireJSON into intent
-//                    Intent intent = new Intent(LogInActivity.this, OverviewActivity.class);
-//                    if (!TextUtils.isEmpty(questionnaireJSON)) {
-//                        intent.putExtra("questionnaire_JSON", questionnaireJSON);
-//                    }
-////                    } else {
-////                        Toast.makeText(LogInActivity.this, "Load questionnaires failed.Please try " +
-////                        "again", Toast.LENGTH_LONG).show();
-////                    }
-//                    intent.putExtra("proband", proband);
-//
-//                    // set isLogIn of MainActivity = true
-//                    MainActivity.setIsLogIn(true);
-//                    PreferenceUtil.commitBoolean("isLogIn", true);
-//
-//                    // use this intent to start AnswerQuestionActivity
-//                    startActivity(intent);
                 }
             }
         });

@@ -7,12 +7,12 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 /**
  * This class is responsible for network communication using open source framework OkHttp
- * @link http://square.github.io/okhttp/
  *
+ * @link http://square.github.io/okhttp/
+ * <p>
  * <p>
  * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.util</br>
@@ -43,15 +43,16 @@ public class HttpUtil {
     /**
      * Use OkHttp to post json data to server
      *
-     * @param url  server address
-     * @param json json data
-     * @return the response as string
+     * @param url      server address
+     * @param json     json data
+     * @param callback provided by okhttp3
      * @throws IOException
      */
-    public static String post(String url, String json) throws IOException {
+    public static void post(String url, String json, okhttp3.Callback callback) {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder().url(url).post(body).build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        client.newCall(request).enqueue(callback);
+        //        Response response = client.newCall(request).execute();
+        //        return response.body().string();
     }
 }
