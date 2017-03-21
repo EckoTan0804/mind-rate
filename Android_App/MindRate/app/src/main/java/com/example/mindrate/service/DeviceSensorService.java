@@ -15,7 +15,6 @@ import com.example.mindrate.gson.TriggerEventManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
@@ -58,7 +57,6 @@ public class DeviceSensorService extends Service {
 
     private boolean[] usedSensor;
     private  final ServiceBinder serviceBinder =  new ServiceBinder();
-    private final Random serviceGenerator = new Random();
 
     public String getServiceID() {
         return serviceID;
@@ -344,6 +342,9 @@ public class DeviceSensorService extends Service {
 
     }
 
+    /**
+     *
+     */
     public class ServiceBinder extends Binder {
         public DeviceSensorService getService()throws Exception{
             DeviceSensorService service =null;
@@ -353,12 +354,7 @@ public class DeviceSensorService extends Service {
             }
             return service;//DeviceSensorService.this;
         }
-        /*
-        public int getRandomNumber()
-        {
-            return serviceGenerator.nextInt(100);
-        }
-        */
+
 
     }
 }
