@@ -2,6 +2,7 @@ package com.example.mindrate.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,9 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
             viewHolder = (ViewHolder) view.getTag();
         }
 
+        if (TextUtils.isEmpty(questionnaire.getQuestionnaireID())) {
+            questionnaire.setQuestionnaireID("probandInfoQuestionnaire");
+        }
         viewHolder.tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
 
         // TODO: set beginTime
