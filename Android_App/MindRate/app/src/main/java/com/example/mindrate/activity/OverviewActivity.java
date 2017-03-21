@@ -69,8 +69,10 @@ import java.util.TimeZone;
  * </p>
  */
 public class OverviewActivity extends BaseActivity {
+
     private static final String TAG = "OverviewActivity";
     private static OverviewActivity instance = null;
+    private static boolean needIntent = true;
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
@@ -144,8 +146,10 @@ public class OverviewActivity extends BaseActivity {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
 
-
-        initFromIntent();
+        if (needIntent) {
+            initFromIntent();
+            needIntent = false;
+        }
 
         initView();
 
