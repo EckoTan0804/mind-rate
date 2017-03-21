@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -14,6 +15,7 @@ import com.example.mindrate.gson.TriggerEventManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
@@ -43,8 +45,26 @@ public class DeviceSensorService extends Service {
     private List<Sensor> allSensors;
     private List<AllSensorEventListener> allSensorEventListeners;
     private TriggerEventManager triggerEventManager;
+
+    public List<Sensor> getUsedSensorList() {
+        return usedSensorList;
+    }
+
     private List<Sensor> usedSensorList;
+
+    public boolean[] getUsedSensor() {
+        return usedSensor;
+    }
+
     private boolean[] usedSensor;
+    private  final ServiceBinder serviceBinder =  new ServiceBinder();
+    private final Random serviceGenerator = new Random();
+
+    public String getServiceID() {
+        return serviceID;
+    }
+
+    private String serviceID;
 
 
     /**
@@ -77,7 +97,9 @@ public class DeviceSensorService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        if(intent.getStringExtra("ServiceID")!=null) {
+            this.serviceID = intent.getStringExtra("ServiceID");
+        }
         for (AllSensorEventListener listener : allSensorEventListeners) {
             this.sensorManager.registerListener(listener, listener.getSensor(), SensorManager
                     .SENSOR_DELAY_UI);
@@ -101,7 +123,8 @@ public class DeviceSensorService extends Service {
     public IBinder onBind(Intent intent) {
         Log.d(TAG, "return Binder");
         //return mBinder;
-        return null;
+        return serviceBinder;
+
     }
 
 
@@ -201,8 +224,12 @@ public class DeviceSensorService extends Service {
      * <br>if a sensor(with index i)will be called,then set usedSensor[i]=true.</br>
      */
     public void setUsedSensor() {
-        List<Questionnaire> questionnaireList = this.triggerEventManager
-                .getQuestionnaireList();
+        List<Questionnaire> questionnaireList = new ArrayList<>();
+        if(this.triggerEventManager
+                .getQuestionnaireList()!=null) {
+            questionnaireList = this.triggerEventManager
+                    .getQuestionnaireList();
+        }
 
         for (Questionnaire questionnaire : questionnaireList) {
                 questionnaire.getTriggerEvent().setSensor();
@@ -314,6 +341,24 @@ public class DeviceSensorService extends Service {
             }
         }
 
+
+    }
+
+    public class ServiceBinder extends Binder {
+        public DeviceSensorService getService()throws Exception{
+            DeviceSensorService service =null;
+            while(service ==null) {
+                //sleep(10000);
+                service = DeviceSensorService.this;
+            }
+            return service;//DeviceSensorService.this;
+        }
+        /*
+        public int getRandomNumber()
+        {
+            return serviceGenerator.nextInt(100);
+        }
+        */
 
     }
 }
