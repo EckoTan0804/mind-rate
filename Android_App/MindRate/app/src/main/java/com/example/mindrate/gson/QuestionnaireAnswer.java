@@ -1,6 +1,9 @@
 package com.example.mindrate.gson;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,7 +21,9 @@ import java.util.Date;
 public class QuestionnaireAnswer  {
 
     private String questionnaireID;
+    @SerializedName("questionAnswer")
     private ArrayList<QuestionAnswer> questionAnswerList;
+    @Expose()
     private Date submitTime;
     private String submitTimeString;
     private String probandID;
