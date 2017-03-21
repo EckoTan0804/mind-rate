@@ -27,6 +27,7 @@ public class QuestionnaireAnswer  {
     private Date submitTime;
     private String submitTimeString;
     private String probandID;
+    private boolean isValid;
 
     /**
      * Constructor
@@ -110,5 +111,13 @@ public class QuestionnaireAnswer  {
 
     public void setProbandID(String probandID) {
         this.probandID = probandID;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
     }
 }
