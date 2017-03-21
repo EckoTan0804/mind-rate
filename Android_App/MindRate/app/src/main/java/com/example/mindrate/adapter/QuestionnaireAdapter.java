@@ -64,10 +64,15 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
         viewHolder.tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
 
         // TODO: set beginTime
-         viewHolder.tv_beginTime.setText(TimeUtil.parseDate(questionnaire.getTriggerTime()));
+        if (questionnaire.getTriggerTime() != null) {
+            viewHolder.tv_beginTime.setText(TimeUtil.parseDate(questionnaire.getTriggerTime()));
+        }
 
         // TODO: set endTime
-        viewHolder.tv_endTime.setText(TimeUtil.parseDate(questionnaire.getEndTime()));
+        if (questionnaire.getEndTime() != null) {
+            viewHolder.tv_endTime.setText(TimeUtil.parseDate(questionnaire.getEndTime()));
+        }
+
         return view;
 
 
