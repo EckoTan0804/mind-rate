@@ -39,7 +39,10 @@ public class QuestionnaireAnswer  {
         this.questionnaireID = questionnaireID;
         this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
+        this.isValid = true;
     }
+
+
 
     @Override
     public boolean equals(Object obj) {
