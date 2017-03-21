@@ -64,6 +64,7 @@ public class QuestionnaireAdapter extends ArrayAdapter<Questionnaire> {
 
         if (TextUtils.isEmpty(questionnaire.getQuestionnaireID())) {
             questionnaire.setQuestionnaireID("probandInfoQuestionnaire");
+            viewHolder.tv_questionnaireID.setText(R.string.hello_world);
         }
         viewHolder.tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
 
