@@ -233,9 +233,9 @@ public class OverviewActivity extends BaseActivity {
         // proband info questionnaire
         Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
                 (questionnaireJSON);
-//        if (probandInfoQuestionnaire != null) {
-//            addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
-//        }
+        if (probandInfoQuestionnaire != null) {
+            addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
+        }
 
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire : allQuestionnaireList) {
