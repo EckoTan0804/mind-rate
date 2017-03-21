@@ -76,6 +76,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         String probandID = intent.getStringExtra("probandID");
         this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID
                 (), probandID);
+        this.setTriggeredSensorData(this.questionnaireAnswer,this.questionnaire);
     }
 
     /**
@@ -275,7 +276,30 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 break;
         }
     }
+//===============set Data of Triggered Sensor=================
+    private void setTriggeredSensorData(QuestionnaireAnswer questionnaireAnswer,Questionnaire questionnaire){
+        if(questionnaire.getTriggerEvent().isAmbientTemperature()){
+            questionnaireAnswer.getSensorValues().put("ambientTemperature",questionnaire
+                    .getAmbientTemperatureValue());
+        }
+        if(questionnaire.getTriggerEvent().isLight()){
+            questionnaireAnswer.getSensorValues().put("light",questionnaire.getLightValue());
+        }
+        if(questionnaire.getTriggerEvent().isPressure()){
+            questionnaireAnswer.getSensorValues().put("pressure",questionnaire
+                    .getPressureValue());
+        }
+        if(questionnaire.getTriggerEvent().isProximity()){
+            questionnaireAnswer.getSensorValues().put("proximity",questionnaire
+                    .getProximityValue());
+        }
+        if(questionnaire.getTriggerEvent().isRelativeHumidity()){
+            questionnaireAnswer.getSensorValues().put("relativeHumidity",questionnaire
+                    .getRelativeHumidityValue());
+        }
 
+    }
+//=========================
     /**
      * Record questionnaire's answer
      */

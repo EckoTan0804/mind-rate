@@ -3,6 +3,7 @@ package com.example.mindrate.gson;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * This class aims to model a questionnaire's answer that consists of questions' answer
@@ -22,6 +23,15 @@ public class QuestionnaireAnswer  {
     private Date submitTime;
     private String submitTimeString;
     private String probandID;
+    private HashMap<String,Float> sensorValues;
+
+
+
+
+
+    //======================================
+
+
 
     /**
      * Constructor
@@ -33,6 +43,8 @@ public class QuestionnaireAnswer  {
         this.questionnaireID = questionnaireID;
         this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
+        this.sensorValues = new HashMap<>();
+
     }
 
     @Override
@@ -62,6 +74,9 @@ public class QuestionnaireAnswer  {
     }
 
     // ================= setters and getters ===============================================
+    public HashMap<String, Float> getSensorValues() {
+        return sensorValues;
+    }
 
     public String getQuestionnaireID() {
         return questionnaireID;

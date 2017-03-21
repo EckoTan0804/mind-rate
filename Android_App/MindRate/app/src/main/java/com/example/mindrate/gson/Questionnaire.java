@@ -72,6 +72,39 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     private TriggerEvent triggerEvent;
 
 
+
+
+
+
+    //==============triggered Data of Sensor===========
+    private float ambientTemperatureValue = -10000;
+    private float lightValue = -10000;
+    private float pressureValue = -10000;
+    private float proximityValue = -10000;
+    private float relativeHumidityValue = -10000;
+    //===========================================================
+    public float getAmbientTemperatureValue() {
+        return ambientTemperatureValue;
+    }
+
+    public float getLightValue() {
+        return lightValue;
+    }
+
+    public float getPressureValue() {
+        return pressureValue;
+    }
+
+    public float getProximityValue() {
+        return proximityValue;
+    }
+
+    public float getRelativeHumidityValue() {
+        return relativeHumidityValue;
+    }
+
+    //=========================================================
+
     /**
      * Constructor
      */
@@ -373,6 +406,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
 
         //===================写成一个方法==========================================
         if (this.compareDataOfAllSensor(dataOfAllSensor)) {
+            this.setSensorDataWhenTriggered(dataOfAllSensor);
             //TimeUtil?
             //Calendar cal = Calendar.getInstance();
             //this.triggeredBySensorTime = cal.getTimeInMillis();
@@ -498,11 +532,33 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
                 helpVariate = helpVariate && sensorList[i];
             }
         }
+
         return isSensorTrigger || helpVariate;
 
     }
     //=================================================================================================
+    private void setSensorDataWhenTriggered(float[][] dataOfAllSensor){
+        if(this.triggerEvent.isAmbientTemperature()){
+            this.ambientTemperatureValue = dataOfAllSensor[1][0];
+        }
+        if(this.triggerEvent.isLight()){
+            this.lightValue = dataOfAllSensor[4][0];
+        }
+        if(this.triggerEvent.isPressure()){
+            this.pressureValue = dataOfAllSensor[8][0];
+        }
+        if(this.triggerEvent.isProximity()){
+            this.proximityValue = dataOfAllSensor[9][0];
+        }
+        if(this.triggerEvent.isRelativeHumidity()){
+            this.relativeHumidityValue = dataOfAllSensor[10][0];
+        }
 
+
+
+    }
+
+    //=============================================================================
     private boolean compareDatetoAnswer() {
         return true;
 
@@ -717,7 +773,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
     //========================================================================================================
 
 
-    // ===================== Parcelable ==========================================================
+
     @Override
     public int describeContents() {
         return 0;
@@ -734,6 +790,11 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         dest.writeParcelable(this.duration, flags);
         dest.writeTypedList(this.questionList);
         dest.writeParcelable(this.triggerEvent, flags);
+        dest.writeFloat(this.ambientTemperatureValue);
+        dest.writeFloat(this.lightValue);
+        dest.writeFloat(this.pressureValue);
+        dest.writeFloat(this.proximityValue);
+        dest.writeFloat(this.relativeHumidityValue);
     }
 
     protected Questionnaire(Parcel in) {
@@ -749,6 +810,11 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         this.duration = in.readParcelable(Duration.class.getClassLoader());
         this.questionList = in.createTypedArrayList(Question.CREATOR);
         this.triggerEvent = in.readParcelable(TriggerEvent.class.getClassLoader());
+        this.ambientTemperatureValue = in.readFloat();
+        this.lightValue = in.readFloat();
+        this.pressureValue = in.readFloat();
+        this.proximityValue = in.readFloat();
+        this.relativeHumidityValue = in.readFloat();
     }
 
     public static final Creator<Questionnaire> CREATOR = new Creator<Questionnaire>() {
