@@ -1,7 +1,6 @@
 package com.example.mindrate.gson;
 
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -25,11 +24,11 @@ public class QuestionnaireAnswer  {
     @SerializedName("questionAnswer")
     private ArrayList<QuestionAnswer> questionAnswerList;
 
-    @Expose(serialize = false, deserialize = false)
-    private Date submitTime;
+//    @Expose(serialize = false, deserialize = false)
 
-    @SerializedName("submitTime")
-    private String submitTimeString;
+    private transient Date finishTime;
+
+    private Time submitTime;
 
     private String probandID;
     private boolean isValid;
@@ -97,21 +96,14 @@ public class QuestionnaireAnswer  {
         this.questionAnswerList.add(questionAnswer);
     }
 
-    public Date getSubmitTime() {
-        return submitTime;
+    public Date getFinishTime() {
+        return finishTime;
     }
 
-    public void setSubmitTime(Date submitTime) {
-        this.submitTime = submitTime;
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
     }
 
-    public String getSubmitTimeString() {
-        return submitTimeString;
-    }
-
-    public void setSubmitTimeString(String submitTimeString) {
-        this.submitTimeString = submitTimeString;
-    }
 
     public String getProbandID() {
         return probandID;
@@ -127,5 +119,13 @@ public class QuestionnaireAnswer  {
 
     public void setValid(boolean valid) {
         isValid = valid;
+    }
+
+    public Time getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Time submitTime) {
+        this.submitTime = submitTime;
     }
 }
