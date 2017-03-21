@@ -17,6 +17,7 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.gson.Time;
 import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
@@ -231,8 +232,17 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
                             // mark down the submit time
                             Date submitTime = TimeUtil.getCurrentTime();
-                            questionnaireAnswer.setSubmitTimeString(
-                                    TimeUtil.parseDate(submitTime));
+                            questionnaireAnswer.setFinishTime(submitTime);
+                            String timeString = TimeUtil.parseDate(submitTime);
+                            String[] array = timeString.split(",");
+                            String[] yearMonthDay = array[0].split("\\.");
+                            String[] hourMinSec = array[1].split(":");
+                            questionnaireAnswer.setSubmitTime(new Time(yearMonthDay[0],
+                                                                       yearMonthDay[1],
+                                                                       yearMonthDay[2],
+                                                                       hourMinSec[0],
+                                                                       hourMinSec[1],
+                                                                       hourMinSec[2]));
 
                             /*
                                 Check whether the answer is valid or not.
