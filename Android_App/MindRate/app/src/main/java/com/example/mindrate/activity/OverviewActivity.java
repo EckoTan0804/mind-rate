@@ -230,6 +230,13 @@ public class OverviewActivity extends BaseActivity {
         }
         this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
 
+        // proband info questionnaire
+        Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
+                (questionnaireJSON);
+//        if (probandInfoQuestionnaire != null) {
+//            addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
+//        }
+
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire : allQuestionnaireList) {
             TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
