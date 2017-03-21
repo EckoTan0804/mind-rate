@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mindrate.R;
-import com.example.mindrate.gson.Birthday;
 import com.example.mindrate.gson.Proband;
 import com.example.mindrate.util.HttpUtil;
 import com.example.mindrate.util.JsonUtil;
@@ -33,7 +32,7 @@ import okhttp3.Response;
 
 /**
  * This is the activity for proband's log in.
- *
+ * <p>
  * <p>
  * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.activity</br>
@@ -47,7 +46,7 @@ public class LogInActivity extends BaseActivity {
     private static final String TAG = "LogInActivity";
 
 
-//    public static final String SERVER = "http://ws16-pse-esm1.teco.edu";
+    //    public static final String SERVER = "http://ws16-pse-esm1.teco.edu";
 
     public static final String SERVER = "http://46.101.211.35";
     private final String MALE = "male";
@@ -85,33 +84,33 @@ public class LogInActivity extends BaseActivity {
     private boolean needGender;
     private boolean needOccupation;
 
-//    private Handler handler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            Bundle data = msg.getData();
-//            needBirthday = data.getBoolean("birthday");
-//            needGender = data.getBoolean("gender");
-//            needOccupation = data.getBoolean("occupation");
-//            if (!needBirthday) {
-//                TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
-//                birthday.setVisibility(View.GONE);
-//                dtPk_birthday.setVisibility(View.GONE);
-//            }
-//            if (!needGender) {
-//                TextView gender = (TextView) findViewById(R.id.log_in_gender);
-//                gender.setVisibility(View.GONE);
-//                rdog_chooseGender.setVisibility(View.GONE);
-//            }
-//            if (!needOccupation) {
-//                TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
-//                occupation.setVisibility(View.GONE);
-//                edtTxt_occuptaion.setVisibility(View.GONE);
-//            }
-//
-//
-//        }
-//    };
+    //    private Handler handler = new Handler() {
+    //        @Override
+    //        public void handleMessage(Message msg) {
+    //            super.handleMessage(msg);
+    //            Bundle data = msg.getData();
+    //            needBirthday = data.getBoolean("birthday");
+    //            needGender = data.getBoolean("gender");
+    //            needOccupation = data.getBoolean("occupation");
+    //            if (!needBirthday) {
+    //                TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
+    //                birthday.setVisibility(View.GONE);
+    //                dtPk_birthday.setVisibility(View.GONE);
+    //            }
+    //            if (!needGender) {
+    //                TextView gender = (TextView) findViewById(R.id.log_in_gender);
+    //                gender.setVisibility(View.GONE);
+    //                rdog_chooseGender.setVisibility(View.GONE);
+    //            }
+    //            if (!needOccupation) {
+    //                TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
+    //                occupation.setVisibility(View.GONE);
+    //                edtTxt_occuptaion.setVisibility(View.GONE);
+    //            }
+    //
+    //
+    //        }
+    //    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,7 +138,7 @@ public class LogInActivity extends BaseActivity {
         // ==================== proband ID =============================
         edtTxt_probandID = (EditText) findViewById(R.id.proband_id);
         // =============================================================
-        
+
         // ==================== progress bar ===========================
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         // =============================================================
@@ -159,7 +158,7 @@ public class LogInActivity extends BaseActivity {
                     logInPage++;
                     if (logInPage == LOG_IN_LAST_PAGE) {
                         ll_firstShowUp.setVisibility(View.GONE);
-//                        ll_secondShowUp.setVisibility(View.VISIBLE);
+                        //                        ll_secondShowUp.setVisibility(View.VISIBLE);
                         btn_newPage.setVisibility(View.GONE);
                         progressBar.setVisibility(View.VISIBLE);
                     }
@@ -168,7 +167,8 @@ public class LogInActivity extends BaseActivity {
 
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Toast.makeText(LogInActivity.this, R.string.check_network, Toast.LENGTH_LONG).show();
+                            Toast.makeText(LogInActivity.this, R.string.check_network,
+                                           Toast.LENGTH_LONG).show();
 
                         }
 
@@ -186,30 +186,36 @@ public class LogInActivity extends BaseActivity {
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
                                         if (needBirthday) {
-                                            TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
+                                            TextView birthday = (TextView) findViewById(
+                                                    R.id.log_in_birthday);
                                             birthday.setVisibility(View.VISIBLE);
                                             dtPk_birthday.setVisibility(View.VISIBLE);
                                         }
                                         if (needGender) {
-                                            TextView gender = (TextView) findViewById(R.id.log_in_gender);
+                                            TextView gender = (TextView) findViewById(
+                                                    R.id.log_in_gender);
                                             gender.setVisibility(View.VISIBLE);
                                             rdog_chooseGender.setVisibility(View.VISIBLE);
                                         }
                                         if (needOccupation) {
-                                            TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
+                                            TextView occupation = (TextView) findViewById(
+                                                    R.id.log_in_occupation);
                                             occupation.setVisibility(View.VISIBLE);
                                             edtTxt_occuptaion.setVisibility(View.VISIBLE);
                                         }
                                         ll_secondShowUp.setVisibility(View.VISIBLE);
                                     }
                                 });
-//                                Message msg = new Message();
-//                                Bundle data = new Bundle();
-//                                data.putBoolean("birthday", obj.getBoolean("birthday"));
-//                                data.putBoolean("gender", obj.getBoolean("gender"));
-//                                data.putBoolean("occupation", obj.getBoolean("occupation"));
-//                                msg.setData(data);
-//                                handler.sendMessage(msg);
+                                //                                Message msg = new Message();
+                                //                                Bundle data = new Bundle();
+                                //                                data.putBoolean("birthday", obj
+                                // .getBoolean("birthday"));
+                                //                                data.putBoolean("gender", obj
+                                // .getBoolean("gender"));
+                                //                                data.putBoolean("occupation",
+                                // obj.getBoolean("occupation"));
+                                //                                msg.setData(data);
+                                //                                handler.sendMessage(msg);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             } finally {
@@ -247,11 +253,11 @@ public class LogInActivity extends BaseActivity {
                 day = dayOfMonth;
             }
         });
-//        if (!needBirthday) {
-//            TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
-//            birthday.setVisibility(View.GONE);
-//            dtPk_birthday.setVisibility(View.GONE);
-//        }
+        //        if (!needBirthday) {
+        //            TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
+        //            birthday.setVisibility(View.GONE);
+        //            dtPk_birthday.setVisibility(View.GONE);
+        //        }
 
         // ============================================================
 
@@ -278,21 +284,21 @@ public class LogInActivity extends BaseActivity {
                 }
             }
         });
-//        if (!needGender) {
-//            TextView gender = (TextView) findViewById(R.id.log_in_gender);
-//            gender.setVisibility(View.GONE);
-//            rdog_chooseGender.setVisibility(View.GONE);
-//        }
+        //        if (!needGender) {
+        //            TextView gender = (TextView) findViewById(R.id.log_in_gender);
+        //            gender.setVisibility(View.GONE);
+        //            rdog_chooseGender.setVisibility(View.GONE);
+        //        }
 
         // ==============================================================================
 
         // ========================= occupation =========================================
         edtTxt_occuptaion = (EditText) findViewById(R.id.occupation);
-//        if (!needOccupation) {
-//            TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
-//            occupation.setVisibility(View.GONE);
-//            edtTxt_occuptaion.setVisibility(View.GONE);
-//        }
+        //        if (!needOccupation) {
+        //            TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
+        //            occupation.setVisibility(View.GONE);
+        //            edtTxt_occuptaion.setVisibility(View.GONE);
+        //        }
         // ==============================================================================
 
         // ========================= log in =============================================
@@ -313,9 +319,10 @@ public class LogInActivity extends BaseActivity {
                     studyID = edtTxt_studyID.getText().toString();
                     probandID = edtTxt_probandID.getText().toString();
                     occupation = edtTxt_occuptaion.getText().toString();
+                    String birthday = new String(year + "-" + month + "-" + day);
                     proband = new Proband(studyID, probandID,
-                                                  new Birthday(year, month, day),
-                                                  gender, occupation);
+                                          birthday,
+                                          gender, occupation);
 
                     // create probandJSON and save it locally
                     String probandJSON = JsonUtil.createJSON(proband);
@@ -325,14 +332,15 @@ public class LogInActivity extends BaseActivity {
                     HttpUtil.post(SERVER + "/receive_answer/", probandJSON, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Toast.makeText(LogInActivity.this, R.string.upload_fail, Toast.LENGTH_LONG)
+                            Toast.makeText(LogInActivity.this, R.string.upload_fail,
+                                           Toast.LENGTH_LONG)
                                     .show();
                         }
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             String responseMsg = response.body().string();
-                            Log.w(TAG, "onResponse: "+ responseMsg);
+                            Log.w(TAG, "onResponse: " + responseMsg);
                         }
                     });
 
@@ -341,12 +349,14 @@ public class LogInActivity extends BaseActivity {
                     HttpUtil.sendRequestWithOkHttp(address, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Toast.makeText(LogInActivity.this, R.string.load_fail, Toast.LENGTH_SHORT)
+                            Toast.makeText(LogInActivity.this, R.string.load_fail,
+                                           Toast.LENGTH_SHORT)
                                     .show();
                         }
 
                         @Override
-                        public void onResponse(Call call, final Response response) throws IOException {
+                        public void onResponse(Call call,
+                                final Response response) throws IOException {
                             questionnaireJSON = response.body().string();
                             PreferenceUtil.commitString("questionnaireJSON", questionnaireJSON);
 
@@ -374,6 +384,7 @@ public class LogInActivity extends BaseActivity {
 
     /**
      * Check whether the input in <code>editText</code> is empty
+     *
      * @param editText
      * @return
      */
@@ -387,6 +398,7 @@ public class LogInActivity extends BaseActivity {
 
     /**
      * Handle the situation that the input of <code>editText</code> is empty
+     *
      * @param editText
      */
     private void handleEditTextEmpty(EditText editText) {
