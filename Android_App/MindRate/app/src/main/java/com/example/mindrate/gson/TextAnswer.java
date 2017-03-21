@@ -46,7 +46,7 @@ public class TextAnswer extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "TextAnswer");
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

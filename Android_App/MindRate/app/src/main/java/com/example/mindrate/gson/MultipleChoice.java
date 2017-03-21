@@ -51,7 +51,7 @@ public class MultipleChoice extends QuestionType implements CompoundButton
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "MultipleChoice");
 
         for (int i = 0; i <optionList.size(); i++) {
             Option option = optionList.get(i);
