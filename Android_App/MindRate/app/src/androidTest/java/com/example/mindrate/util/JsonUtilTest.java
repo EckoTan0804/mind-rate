@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static com.example.mindrate.util.JsonUtil.fromJsonToQuestionnaireList;
 import static org.junit.Assert.assertTrue;
 
 
@@ -75,7 +76,7 @@ public class JsonUtilTest {
     }
 
     @Test
-    public void fromJsonToQuestionList() throws Exception {
+    public void testFromJsonToQuestionList() throws Exception {
         ArrayList<Question> questions = new ArrayList<>();
         questions.add(new Question(new SingleChoice()));
         questions.add(new Question(new MultipleChoice()));
@@ -94,13 +95,14 @@ public class JsonUtilTest {
         assertTrue(questionArrayList.get(4).getQuestionType() instanceof TextAnswer);
     }
 
-    @Ignore
-    public void fromJsonToQuestionnaireList() throws Exception {
-
+    @Test(expected = IllegalArgumentException.class)
+    public void testFromJsonToQuestionnaireList() {
+        fromJsonToQuestionnaireList(null);
+        fromJsonToQuestionnaireList("");
     }
 
     @Test
-    public void fromJsonToQuestionnaire() throws Exception {
+    public void testFromJsonToQuestionnaire() throws Exception {
         String json = gson.toJson(testQuestionnaire);
         JsonElement jsonElement = jsonParser.parse(json);
         Questionnaire questionnaire = JsonUtil.fromJsonToQuestionnaire(jsonElement);
