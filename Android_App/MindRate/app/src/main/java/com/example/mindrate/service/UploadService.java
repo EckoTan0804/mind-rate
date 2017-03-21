@@ -2,7 +2,9 @@ package com.example.mindrate.service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.util.Log;
 
+import com.example.mindrate.activity.LogInActivity;
 import com.example.mindrate.util.HttpUtil;
 
 import java.io.IOException;
@@ -24,8 +26,9 @@ import okhttp3.Response;
  */
 public class UploadService extends IntentService {
 
+    private static final String TAG = "UploadService";
+
     private static boolean isBound;
-    private final String SERVER = "129.13.170.45";
 
     public UploadService() {
         super("uploadService");
@@ -51,7 +54,7 @@ public class UploadService extends IntentService {
         // get answer from intent
         String answer = intent.getStringExtra("questionnaireAnswer");
         // upload
-        HttpUtil.post(SERVER, answer, new Callback() {
+        HttpUtil.post(LogInActivity.SERVER + "/receive_answer/", answer, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -59,7 +62,7 @@ public class UploadService extends IntentService {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                Log.w(TAG, "onResponse: " + response.body().string());
             }
         });
     }
