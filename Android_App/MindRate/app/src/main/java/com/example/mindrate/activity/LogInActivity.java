@@ -44,7 +44,9 @@ import okhttp3.Response;
 public class LogInActivity extends BaseActivity {
 
 
-    public static final String SERVER = "http://ws16-pse-esm1.teco.edu";
+//    public static final String SERVER = "http://ws16-pse-esm1.teco.edu";
+
+    public static final String SERVER = "http://46.101.211.35";
     private final String MALE = "male";
     private final String FEMALE = "female";
 
