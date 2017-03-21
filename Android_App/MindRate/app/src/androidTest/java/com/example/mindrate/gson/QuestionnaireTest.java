@@ -73,4 +73,14 @@ public class QuestionnaireTest {
 
     }
 
+    @Test
+    public void initTriggeredData() throws Exception{
+        Assert.assertEquals(-10000,questionnaire.getAmbientTemperatureValue(),0);
+        Assert.assertEquals(-10000,questionnaire.getLightValue(),0);
+        Assert.assertEquals(-10000,questionnaire.getPressureValue(),0);
+        Assert.assertEquals(-10000,questionnaire.getProximityValue(),0);
+        Assert.assertEquals(-10000,questionnaire.getRelativeHumidityValue(),0);
+
+    }
+
 }
