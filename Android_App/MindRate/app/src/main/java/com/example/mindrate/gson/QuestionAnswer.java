@@ -4,6 +4,8 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * This class aims to model a answer of a question
  * <p>
@@ -18,26 +20,41 @@ import android.os.Parcelable;
 public class QuestionAnswer implements Parcelable {
 
     private String questionID;
+    @SerializedName("answer")
     private String answerContent;
+
+    private String questionType;
 
     /**
      * Constructor
-     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+     *
+     * @param questionID   id of the question that the <code>questionAnswer</code> belongs to
+     * @param questionType type of the question that the <code>questionAnswer</code> belongs to
      */
-    public QuestionAnswer(String questionID) {
+    public QuestionAnswer(String questionID, String questionType) {
         this.questionID = questionID;
+        this.questionType = questionType;
     }
 
     /**
      * Constructor
      *
      * @param questionID id of the question that the <code>questionAnswer</code> belongs to
-     * @param answerContent the input answer for this question
      */
-    public QuestionAnswer(String questionID, String answerContent) {
+    public QuestionAnswer(String questionID) {
         this.questionID = questionID;
-        this.answerContent = answerContent;
     }
+
+    //    /**
+    //     * Constructor
+    //     *
+    //     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+    //     * @param answerContent the input answer for this question
+    //     */
+    //    public QuestionAnswer(String questionID, String answerContent) {
+    //        this.questionID = questionID;
+    //        this.answerContent = answerContent;
+    //    }
 
     @Override
     public boolean equals(Object obj) {
