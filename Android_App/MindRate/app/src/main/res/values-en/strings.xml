@@ -71,8 +71,9 @@
 
     <!--input empty error-->
     <string name="input_empty_error">The input can not be empty.</string>
-    <string name="question_not_answered">This questionContent is not answered.</string>
+    <string name="question_not_answered">This question is not answered.</string>
     <string name="check_network">Please check your network and try again.</string>
     <string name="edit_text_hint">Please enter</string>
     <string name="developer">Developer</string>
+    <string name="hello_world">Hello World!</string>
 </resources>

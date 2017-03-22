@@ -69,8 +69,10 @@ import java.util.TimeZone;
  * </p>
  */
 public class OverviewActivity extends BaseActivity {
+
     private static final String TAG = "OverviewActivity";
     private static OverviewActivity instance = null;
+    private static boolean needIntent = true;
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
 
     private Proband proband;
@@ -144,8 +146,10 @@ public class OverviewActivity extends BaseActivity {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
 
-
-        initFromIntent();
+        if (needIntent) {
+            initFromIntent();
+            needIntent = false;
+        }
 
         initView();
 
@@ -225,6 +229,13 @@ public class OverviewActivity extends BaseActivity {
             questionnaireJSON = PreferenceUtil.getString("questionnaireJSON", "");
         }
         this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
+
+        // proband info questionnaire
+        Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
+                (questionnaireJSON);
+        if (probandInfoQuestionnaire != null) {
+            addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
+        }
 
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire : allQuestionnaireList) {
@@ -363,10 +374,9 @@ public class OverviewActivity extends BaseActivity {
      * Get the questionnaire with id <code>questionnaireId</code>
      *
      * @param questionnaireID target questionnaire's id
-     * @return
-     * <br>
-     *     <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
-     *     <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
+     * @return <br>
+     * <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
+     * <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
      */
     private Questionnaire getQuestionnaire(String questionnaireID) {
         Questionnaire questionnaire = null;
@@ -451,11 +461,9 @@ public class OverviewActivity extends BaseActivity {
     /**
      * Change app's language to <code>language</code> immediately
      *
-     * @param language
-     * <br>
-     *     <li>"en" for English</li>
-     *     <li>"de" for Deutsch</li>
-     *
+     * @param language <br>
+     *                 <li>"en" for English</li>
+     *                 <li>"de" for Deutsch</li>
      */
     public void switchLanguageImmediately(String language) {
         super.switchLanguage(language);
@@ -468,6 +476,7 @@ public class OverviewActivity extends BaseActivity {
 
     /**
      * Get actionBar
+     *
      * @return <code>title</code>
      */
     public View ActionBar() {

@@ -14,10 +14,7 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Collection;
 
 public class Proband implements Parcelable {
 
@@ -31,13 +28,10 @@ public class Proband implements Parcelable {
     @SerializedName("gender")
     private String gender;
 
-    private Birthday birthday;
+    private String birthday;
 
     @SerializedName("occupation")
     private String occupation;
-
-    @Expose
-    private Collection<Questionnaire> questionaires;
 
 
     /**
@@ -49,7 +43,7 @@ public class Proband implements Parcelable {
      * @param gender proband's gender
      * @param occupation proband's occupation
      */
-    public Proband(String studyID, String probandID,  Birthday
+    public Proband(String studyID, String probandID,  String
             birthday,String gender, String occupation) {
         this.occupation = occupation;
         this.probandID = probandID;
@@ -93,11 +87,11 @@ public class Proband implements Parcelable {
         this.gender = gender;
     }
 
-    public Birthday getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Birthday birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -107,14 +101,6 @@ public class Proband implements Parcelable {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
-    }
-
-    public Collection<Questionnaire> getQuestionaires() {
-        return questionaires;
-    }
-
-    public void setQuestionaires(Collection<Questionnaire> questionaires) {
-        this.questionaires = questionaires;
     }
 
     // ================== Parcelable =============================================
@@ -129,21 +115,19 @@ public class Proband implements Parcelable {
         dest.writeString(this.probandID);
         dest.writeString(this.studyID);
         dest.writeString(this.gender);
-        dest.writeParcelable(this.birthday, flags);
+        dest.writeString(this.birthday);
         dest.writeString(this.occupation);
-//        dest.writeParcelable(this.questionaires, flags);
     }
 
     protected Proband(Parcel in) {
         this.probandID = in.readString();
         this.studyID = in.readString();
         this.gender = in.readString();
-        this.birthday = in.readParcelable(Birthday.class.getClassLoader());
+        this.birthday = in.readString();
         this.occupation = in.readString();
-//        this.questionaires = in.readParcelable(Collection<Questionnaire>.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Proband> CREATOR = new Parcelable.Creator<Proband>() {
+    public static final Creator<Proband> CREATOR = new Creator<Proband>() {
         @Override
         public Proband createFromParcel(Parcel source) {
             return new Proband(source);

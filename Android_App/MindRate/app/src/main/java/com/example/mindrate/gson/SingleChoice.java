@@ -47,7 +47,7 @@ public class SingleChoice extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "SingleChoice");
 
         RadioGroup radioGroup = new RadioGroup(context);
 

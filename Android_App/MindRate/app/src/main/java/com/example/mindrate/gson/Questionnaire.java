@@ -243,7 +243,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
                  * then compare other attributes.
                  */
                 return this.questionnaireID.equals(questionnaire.questionnaireID) &&
-                        this.studyID.equals(questionnaire.studyID) &&
+//                        this.studyID.equals(questionnaire.studyID) &&
                         this.duration.equals(questionnaire.duration) &&
                         TimeUtil.parseDate(triggerTime).equals(TimeUtil.parseDate(triggerTime));
                 //                        && this.triggerEvent.equals(questionnaire.triggerEvent)e

@@ -1,6 +1,8 @@
 package com.example.mindrate.gson;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,18 +21,19 @@ import java.util.HashMap;
 public class QuestionnaireAnswer  {
 
     private String questionnaireID;
+
+    @SerializedName("questionAnswer")
     private ArrayList<QuestionAnswer> questionAnswerList;
-    private Date submitTime;
-    private String submitTimeString;
+
+//    @Expose(serialize = false, deserialize = false)
+
+    private transient Date finishTime;
+
+    private Time submitTime;
+
     private String probandID;
+    private boolean isValid;
     private HashMap<String,Float> sensorValues;
-
-
-
-
-
-    //======================================
-
 
 
     /**
@@ -43,9 +46,12 @@ public class QuestionnaireAnswer  {
         this.questionnaireID = questionnaireID;
         this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
+        this.isValid = true;
         this.sensorValues = new HashMap<>();
 
     }
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -98,21 +104,14 @@ public class QuestionnaireAnswer  {
         this.questionAnswerList.add(questionAnswer);
     }
 
-    public Date getSubmitTime() {
-        return submitTime;
+    public Date getFinishTime() {
+        return finishTime;
     }
 
-    public void setSubmitTime(Date submitTime) {
-        this.submitTime = submitTime;
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
     }
 
-    public String getSubmitTimeString() {
-        return submitTimeString;
-    }
-
-    public void setSubmitTimeString(String submitTimeString) {
-        this.submitTimeString = submitTimeString;
-    }
 
     public String getProbandID() {
         return probandID;
@@ -120,5 +119,21 @@ public class QuestionnaireAnswer  {
 
     public void setProbandID(String probandID) {
         this.probandID = probandID;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public Time getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Time submitTime) {
+        this.submitTime = submitTime;
     }
 }

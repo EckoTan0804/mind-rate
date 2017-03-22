@@ -47,7 +47,7 @@ public class StepScale extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "StepScale");
 
         RadioGroup radioGroup = new RadioGroup(context);
 

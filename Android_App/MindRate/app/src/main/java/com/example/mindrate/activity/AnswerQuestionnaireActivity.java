@@ -17,9 +17,13 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.gson.Time;
+import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
+
+import java.util.Date;
 
 /**
  * This is the activity in which the proband can answer the triggered questionnaire.
@@ -219,9 +223,41 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
+                            /*
+                                If questionnaireID is null, that means this questionnaire is
+                                probandInfoQuestionnaire
+                             */
+                            if (questionnaire.getQuestionnaireID() == null) {
+                                questionnaire.setQuestionnaireID("probandInfoQuestionnaire");
+                            }
+
                             // mark down the submit time
-                            questionnaireAnswer.setSubmitTimeString(
-                                    TimeUtil.parseDate(TimeUtil.getCurrentTime()));
+                            Date submitTime = TimeUtil.getCurrentTime();
+                            questionnaireAnswer.setFinishTime(submitTime);
+                            String timeString = TimeUtil.parseDate(submitTime);
+                            String[] array = timeString.split(",");
+                            String[] yearMonthDay = array[0].split("\\.");
+                            String[] hourMinSec = array[1].split(":");
+                            questionnaireAnswer.setSubmitTime(new Time(yearMonthDay[0],
+                                                                       yearMonthDay[1],
+                                                                       yearMonthDay[2],
+                                                                       hourMinSec[0],
+                                                                       hourMinSec[1],
+                                                                       hourMinSec[2]));
+
+                            /*
+                                Check whether the answer is valid or not.
+                                probandInfoQuestionnaire is always valid!
+                             */
+                            if (!questionnaire.getQuestionnaireID().equals
+                                    ("probandInfoQuestionnaire")) {
+                                if (submitTime.after(TimeUtil.calculateTime(questionnaire
+                                                                                    .getTriggerTime()
+                                        , questionnaire.getDuration()))) {
+                                    questionnaireAnswer.setValid(false);
+                                }
+                            }
+
 
                             // create Json
                             String questionnaireAnswerJSON = JsonUtil.createJSON
@@ -245,11 +281,11 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                             //                            UploadService.addToAnswerUploadList
                             // (questionnaireAnswerJSON);
 
-                            // start IntentService
-//                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
-//                                                              UploadService.class);
-//                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
-//                            startService(uploadService);
+                            // start IntentService to upload answer
+                            Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
+                                                              UploadService.class);
+                            uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
+                            startService(uploadService);
 
 
                             // back to OverviewActivity
