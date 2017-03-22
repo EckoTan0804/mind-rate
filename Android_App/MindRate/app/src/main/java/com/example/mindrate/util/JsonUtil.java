@@ -268,7 +268,7 @@ public class JsonUtil {
         triggerEvent1.setLightMinValue(1000);
         triggerEvent1.setLightMaxValue(2000);
         triggerEvent1.setMinTimeSpace(5);
-        triggerEvent1.setAirTemperature(true);
+        triggerEvent1.setAmbientTemperature(true);
         triggerEvent1.setAmbientTemperatureMaxValue(20);
         triggerEvent1.setAmbientTemperatureMinValue(19);
         questionnaireA.setTriggerEvent(triggerEvent1);

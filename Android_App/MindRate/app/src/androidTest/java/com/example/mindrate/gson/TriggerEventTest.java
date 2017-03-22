@@ -137,7 +137,7 @@ public class TriggerEventTest {
 
     @Test
     public void setAirTemperature() throws Exception {
-        triggerEvent.setAirTemperature(true);
+        triggerEvent.setAmbientTemperature(true);
         assertTrue(triggerEvent.isAmbientTemperature());
 
     }

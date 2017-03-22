@@ -21,6 +21,7 @@ import com.example.mindrate.gson.QuestionnaireAnswer;
 import com.example.mindrate.gson.SingleChoice;
 import com.example.mindrate.gson.StepScale;
 import com.example.mindrate.gson.TextAnswer;
+import com.example.mindrate.gson.TriggerEvent;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -44,6 +45,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 /**
@@ -111,6 +113,19 @@ public class AnswerQuestionnaireActivityEspressoTest {
         assertEquals(answerQuestionnaireActivity.getQuestionnaireAnswer(), test);
 
     }
+    @Test
+    public void testSetTriggeredSensorData(){
+        assertEquals(-10000,answerQuestionnaireActivity.getQuestionnaireAnswer().getSensorValues
+                ().get("light"),0);
+        assertEquals(-10000,answerQuestionnaireActivity.getQuestionnaireAnswer().getSensorValues
+                ().get("ambientTemperature"),0);
+        assertEquals(2,answerQuestionnaireActivity.getQuestionnaireAnswer().getSensorValues()
+                .size());
+        assertNull(answerQuestionnaireActivity.getQuestionnaireAnswer().getSensorValues().get
+                ("pressure"));
+
+    }
+
 
     @Ignore
     private void simulateAnswerQuestionnaire() {
@@ -143,6 +158,7 @@ public class AnswerQuestionnaireActivityEspressoTest {
         // finish
         onView(withId(R.id.questionContent)).check(matches(withText(R.string.finish)));
     }
+
 
     @Ignore
     private Questionnaire initTestQuestionnaire() {
@@ -206,7 +222,10 @@ public class AnswerQuestionnaireActivityEspressoTest {
         Question q6 = new Question("Will you recommand our app to your friend?", new DragScale
                 (10), "Q6", true);
         questionnaireA.addQuestion(q6);
-
+        TriggerEvent triggerEvent = new TriggerEvent("A");
+        triggerEvent.setLight(true);
+        triggerEvent.setAmbientTemperature(true);
+        questionnaireA.setTriggerEvent(triggerEvent);
         return questionnaireA;
     }
 

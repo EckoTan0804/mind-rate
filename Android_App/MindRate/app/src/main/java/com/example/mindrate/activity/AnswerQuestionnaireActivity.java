@@ -80,7 +80,9 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         String probandID = intent.getStringExtra("probandID");
         this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID
                 (), probandID);
-        this.setTriggeredSensorData(this.questionnaireAnswer,this.questionnaire);
+        if(this.questionnaire.getTriggerEvent()!=null) {
+            this.setTriggeredSensorData(this.questionnaireAnswer, this.questionnaire);
+        }
     }
 
     /**

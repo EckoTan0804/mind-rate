@@ -38,6 +38,9 @@ public class TriggerEvent implements Parcelable {
     private boolean linearAcceleration;
     private boolean gravity;
     private boolean rotation;
+
+
+
     private boolean ambientTemperature;
     private boolean pressure;
     private boolean light;
@@ -235,6 +238,14 @@ public class TriggerEvent implements Parcelable {
         this.linearAcceleration = linearAcceleration;
     }
 
+    public boolean isAmbientTemperature() {
+        return ambientTemperature;
+    }
+
+    public void setAmbientTemperature(boolean ambientTemperature) {
+        this.ambientTemperature = ambientTemperature;
+    }
+
     public boolean isGravity() {
         return gravity;
     }
@@ -251,13 +262,7 @@ public class TriggerEvent implements Parcelable {
         this.rotation = rotation;
     }
 
-    public boolean isAmbientTemperature() {
-        return ambientTemperature;
-    }
 
-    public void setAirTemperature(boolean airTemperature) {
-        this.ambientTemperature = airTemperature;
-    }
 
     public boolean isPressure() {
         return pressure;
