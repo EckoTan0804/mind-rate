@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 
 import com.example.mindrate.gson.AllSensorEventListener;
@@ -39,7 +40,9 @@ import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 public class DeviceSensorService extends Service {
     //==============for test and debug================
     private static final String TAG = "DeviceSensorService";
+    PowerManager.WakeLock wakeLock =null;
     //================================================
+
     private SensorManager sensorManager;
     private List<Sensor> allSensors;
     private List<AllSensorEventListener> allSensorEventListeners;
@@ -90,6 +93,13 @@ public class DeviceSensorService extends Service {
         for (Sensor sensor : usedSensorList) {
             this.addSensorEventListener(sensor);
         }
+        //===========for power manager=======================
+
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, DeviceSensorService.class
+                .getName());
+        wakeLock.acquire();
+
 
     }
 
@@ -115,6 +125,10 @@ public class DeviceSensorService extends Service {
                 sensorManager.unregisterListener(listener);
             }
 
+        }
+        if (wakeLock != null) {
+            wakeLock.release();
+            wakeLock = null;
         }
     }
 
