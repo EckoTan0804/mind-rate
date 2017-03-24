@@ -233,18 +233,24 @@ public class OverviewActivity extends BaseActivity {
         // proband info questionnaire
         Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
                 (questionnaireJSON);
-        if (probandInfoQuestionnaire != null) {
+        // bug2 22;12 03.22
+        if (probandInfoQuestionnaire != null&&(probandInfoQuestionnaire.getQuestionList().size()
+                !=0)) {
             addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
         }
+        //modified bug for nullpointerexception
+        this.allQuestionnaireList.remove(probandInfoQuestionnaire);
 
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire : allQuestionnaireList) {
-            TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
-            if (triggerEvent.getSensorList() == null) {
-                triggerEvent.setSensorList(new boolean[12]);
-            }
-            triggerEvent.setSensor();
-            TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
+
+                TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
+                if (triggerEvent.getSensorList() == null) {
+                    triggerEvent.setSensorList(new boolean[12]);
+                }
+                triggerEvent.setSensor();
+                TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
+
         }
         //        TriggerEventManager.getTriggerEventManager().setQuestionnaireList
         // (allQuestionnaireList);
@@ -656,7 +662,7 @@ public class OverviewActivity extends BaseActivity {
         triggerEvent1.setLightMinValue(1000);
         triggerEvent1.setLightMaxValue(2000);
         triggerEvent1.setMinTimeSpace(5);
-        triggerEvent1.setAirTemperature(true);
+        triggerEvent1.setAmbientTemperature(true);
         //triggerEvent1.setTime("10-55-10");
         //Date date = TimeUtil.getCurrentTime();
         // Calendar calendar = Calendar.getInstance();
