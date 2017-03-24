@@ -39,8 +39,8 @@ public class QuestionAnswer implements Parcelable {
     /**
      * Constructor
      *
-     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
-     * @param questionType type of the question that the <code>questionAnswer</code> belongs to
+     * @param questionID    id of the question that the <code>questionAnswer</code> belongs to
+     * @param questionType  type of the question that the <code>questionAnswer</code> belongs to
      * @param answerContent content of the answer
      */
     public QuestionAnswer(String questionID, String questionType, String answerContent) {
@@ -73,8 +73,8 @@ public class QuestionAnswer implements Parcelable {
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof QuestionAnswer) {
             QuestionAnswer questionAnswer = (QuestionAnswer) obj;
-            return this.questionID.equals(questionAnswer.questionID) && this.answerContent.equals
-                    (questionAnswer.answerContent);
+            return this.questionID.equals(questionAnswer.questionID) && this.questionType.equals
+                    (questionAnswer.questionType) && this.answerContent.equals(questionAnswer.answerContent);
         } else {
             return false;
         }
