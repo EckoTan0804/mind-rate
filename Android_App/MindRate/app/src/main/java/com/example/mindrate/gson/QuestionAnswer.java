@@ -40,6 +40,19 @@ public class QuestionAnswer implements Parcelable {
      * Constructor
      *
      * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+     * @param questionType type of the question that the <code>questionAnswer</code> belongs to
+     * @param answerContent content of the answer
+     */
+    public QuestionAnswer(String questionID, String questionType, String answerContent) {
+        this.questionID = questionID;
+        this.questionType = questionType;
+        this.answerContent = answerContent;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
      */
     public QuestionAnswer(String questionID) {
         this.questionID = questionID;
