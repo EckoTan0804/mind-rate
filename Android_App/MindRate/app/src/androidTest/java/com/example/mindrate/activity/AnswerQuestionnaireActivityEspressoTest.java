@@ -44,6 +44,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -104,14 +105,15 @@ public class AnswerQuestionnaireActivityEspressoTest {
         simulateAnswerQuestionnaire();
 
         QuestionnaireAnswer test = new QuestionnaireAnswer("A", "123");
-        test.getQuestionAnswerList().add(new QuestionAnswer("Q1", "happy"));
-        test.getQuestionAnswerList().add(new QuestionAnswer("Q2", "I don't know"));
-        test.getQuestionAnswerList().add(new QuestionAnswer("Q4", "[Coding, Studying]"));
-        test.getQuestionAnswerList().add(new QuestionAnswer("Q5", "very good!"));
-        test.getQuestionAnswerList().add(new QuestionAnswer("Q6", "8"));
+        test.getQuestionAnswerList().add(new QuestionAnswer("Q1", "SingleChoice", "happy"));
+        test.getQuestionAnswerList().add(new QuestionAnswer("Q2", "TextAnswer", "I don't know"));
+        test.getQuestionAnswerList().add(new QuestionAnswer("Q4", "MultipleChoice", "[Coding, " +
+                "Studying]"));
+        test.getQuestionAnswerList().add(new QuestionAnswer("Q5", "StepScale",  "very good!"));
+        test.getQuestionAnswerList().add(new QuestionAnswer("Q6", "DragScale", "8"));
 
-        assertEquals(answerQuestionnaireActivity.getQuestionnaireAnswer(), test);
-
+//        assertEquals(answerQuestionnaireActivity.getQuestionnaireAnswer(), test);
+        assertTrue(answerQuestionnaireActivity.getQuestionnaireAnswer().equals(test));
     }
     @Test
     public void testSetTriggeredSensorData(){

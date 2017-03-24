@@ -27,7 +27,7 @@ import java.util.Date;
 
 /**
  * This is the activity in which the proband can answer the triggered questionnaire.
- *
+ * <p>
  * <p>
  * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.activity</br>
@@ -90,7 +90,8 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
      */
     private void initView() {
 
-//        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
+        //        ll_displayAnswerOption = (LinearLayout) findViewById(R.id
+        // .activity_answer_questionnaire);
 
         tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
@@ -159,10 +160,12 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         ll_displayAnswerOption.removeAllViews();
 
                         // 2. determine whether nextQuestionID is default or specified
-                        if (!TextUtils.isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
+                        if (!TextUtils
+                                .isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
                             nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
                         } else {
-                            nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
+                            nextQuestionID = this.questionnaire
+                                    .defaultNextQuestionID(currentQuestion);
                         }
 
                         if (nextQuestionID != null) {
@@ -171,10 +174,12 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                             Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
 
                             // 4. next question inflates its view
-                            nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
+                            nextQuestion
+                                    .inflateView(tv_question, this, ll_displayAnswerOption, null);
 
                             // 5. determine whether next question is the last question
-                            //                        if (this.questionnaire.isLastQuestion(nextQuestion)) {
+                            //                        if (this.questionnaire.isLastQuestion
+                            // (nextQuestion)) {
                             //                            setButtonAsSubmit();
                             //                        }
 
@@ -190,11 +195,6 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         Toast.makeText(this, R.string.question_not_answered, Toast.LENGTH_LONG)
                                 .show();
                     }
-
-
-
-
-
 
 
                 } else if (this.nextOrSubmit == SUBMIT) {
@@ -314,30 +314,36 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 break;
         }
     }
-//===============set Data of Triggered Sensor=================
-    private void setTriggeredSensorData(QuestionnaireAnswer questionnaireAnswer,Questionnaire questionnaire){
-        if(questionnaire.getTriggerEvent().isAmbientTemperature()){
-            questionnaireAnswer.getSensorValues().put("ambientTemperature",questionnaire
-                    .getAmbientTemperatureValue());
-        }
-        if(questionnaire.getTriggerEvent().isLight()){
-            questionnaireAnswer.getSensorValues().put("light",questionnaire.getLightValue());
-        }
-        if(questionnaire.getTriggerEvent().isPressure()){
-            questionnaireAnswer.getSensorValues().put("pressure",questionnaire
-                    .getPressureValue());
-        }
-        if(questionnaire.getTriggerEvent().isProximity()){
-            questionnaireAnswer.getSensorValues().put("proximity",questionnaire
-                    .getProximityValue());
-        }
-        if(questionnaire.getTriggerEvent().isRelativeHumidity()){
-            questionnaireAnswer.getSensorValues().put("relativeHumidity",questionnaire
-                    .getRelativeHumidityValue());
+
+    //===============set Data of Triggered Sensor=================
+    private void setTriggeredSensorData(QuestionnaireAnswer questionnaireAnswer,
+            Questionnaire questionnaire) {
+        if (questionnaire.getTriggerEvent() != null) {
+
+            if (questionnaire.getTriggerEvent().isAmbientTemperature()) {
+                questionnaireAnswer.getSensorValues().put("ambientTemperature", questionnaire
+                        .getAmbientTemperatureValue());
+            }
+            if (questionnaire.getTriggerEvent().isLight()) {
+                questionnaireAnswer.getSensorValues().put("light", questionnaire.getLightValue());
+            }
+            if (questionnaire.getTriggerEvent().isPressure()) {
+                questionnaireAnswer.getSensorValues().put("pressure", questionnaire
+                        .getPressureValue());
+            }
+            if (questionnaire.getTriggerEvent().isProximity()) {
+                questionnaireAnswer.getSensorValues().put("proximity", questionnaire
+                        .getProximityValue());
+            }
+            if (questionnaire.getTriggerEvent().isRelativeHumidity()) {
+                questionnaireAnswer.getSensorValues().put("relativeHumidity", questionnaire
+                        .getRelativeHumidityValue());
+            }
         }
 
     }
-//=========================
+    //=========================
+
     /**
      * Record questionnaire's answer
      */

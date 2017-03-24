@@ -181,10 +181,15 @@ public class JsonUtil {
         if (TextUtils.isEmpty(json)) {
             throw new IllegalArgumentException("Json should not be empty!");
         }
+        Questionnaire probandInfoQuestionnaire = null;
         JsonObject obj = new JsonParser().parse(json).getAsJsonObject();
         JsonObject study = obj.getAsJsonObject("study");
-        JsonObject probandInfoQuestionnaire = study.getAsJsonObject("probandInfoQuestionnaire");
-        return fromJsonToQuestionnaire(probandInfoQuestionnaire);
+        if (study.has("probandInfoQuestionnaire")) {
+            JsonObject probandInfoQuestionnaireJSON = study.getAsJsonObject
+                    ("probandInfoQuestionnaire");
+            probandInfoQuestionnaire =  fromJsonToQuestionnaire(probandInfoQuestionnaireJSON);
+        }
+        return probandInfoQuestionnaire;
     }
 
     /**

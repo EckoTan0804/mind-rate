@@ -2,9 +2,11 @@ package com.example.mindrate.activity;
 
 import android.content.Intent;
 import android.support.test.espresso.contrib.DrawerActions;
+import android.support.test.espresso.matcher.BoundedMatcher;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.text.TextUtils;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.DragScale;
@@ -23,6 +25,8 @@ import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.TimeUtil;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -33,12 +37,16 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Created by Renhan on 2017/3/19.
@@ -54,6 +62,7 @@ public class OverviewActivityTest  {
             (OverviewActivity.class, false, false);
 
     private OverviewActivity overviewActivity;
+    private Questionnaire questionnaireA;
 
     @Before
     public void setUp() throws Exception {
@@ -63,6 +72,7 @@ public class OverviewActivityTest  {
         intent.putExtra("questionnaire_JSON", initTestJson());
 
         overviewActivity = overviewActivityRule.launchActivity(intent);
+        overviewActivity.getTriggeredQuestionnaireList().add(questionnaireA);
     }
 
     @After
@@ -123,12 +133,40 @@ public class OverviewActivityTest  {
 
     }
 
+    @Test
+    public void testChooseQuestionnaire() {
+
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withText(R.string.nav_questionnaire)).perform(click());
+        onData(allOf(is(instanceOf(Questionnaire.class)), searchQuestionnaireWithID("A")))
+                .perform(click());
+        onView(withId(R.id.title_questionnaireID)).check(matches(withText("A")));
+        onView(withId(R.id.questionContent)).check(matches(withText("Are you happy?")));
+
+    }
+
+    public static Matcher<Object> searchQuestionnaireWithID(final String name) {
+        return new BoundedMatcher<Object, Questionnaire>(Questionnaire.class) {
+            @Override
+            protected boolean matchesSafely(Questionnaire item) {
+                return item != null
+                        && !TextUtils.isEmpty(item.getQuestionnaireID())
+                        && item.getQuestionnaireID().equals(name);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("SearchItem has Name: " + name);
+            }
+        };
+    }
+
     @Ignore
     private String initTestJson() {
 
         List<Questionnaire> questionnaireList = new ArrayList<>();
 
-        Questionnaire questionnaireA = new Questionnaire("1", "A", new Duration(48, 0, 0));
+        questionnaireA = new Questionnaire("1", "A", new Duration(48, 0, 0));
         questionnaireA.setTriggerTime(TimeUtil.getCurrentTime());
         // q1
         ArrayList<Option> optionList = new ArrayList<>();
