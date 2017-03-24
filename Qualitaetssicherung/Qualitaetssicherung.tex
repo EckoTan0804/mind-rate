@@ -1,0 +1,157 @@
+\documentclass[a4paper]{scrreprt}
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[bookmarks,bookmarksnumbered]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{soul}
+\graphicspath{ {Images/} }
+\setcounter{secnumdepth}{5}
+
+\begin{document}
+
+    \begin{flushright}
+        \includegraphics[scale = 0.7]{kit-logo.jpg}\\[0.5cm]
+    \end{flushright}
+    \vspace*{2cm}
+
+    \begin{center} \large
+
+        Praxis der Softwareentwicklung
+        \vspace * {1.5cm}
+
+        \textbf{\huge Mind Rate}
+
+        \vspace*{1cm}
+
+
+        {\Large Ein interaktives System mit Android-Client f\"ur Studien nach Experience-Sampling-Method (ESM)}
+
+        \vspace*{1cm}
+
+        \textbf{\Large Qualit\"atssicherung}
+        \vspace*{2cm}
+
+        Shanshan Du, Yi Ge, Renhan Lou, Ruoheng Ma, Haobin Tan
+        \vspace*{1cm}
+
+        26. M\"arz 2017
+        \vspace*{2.5cm}
+
+        Betreuung: Anja Exler, Dr. Andrea Schankin\\[0.5cm]
+        Forschungsgruppe TECO: Technology for Pervasive Computing\\[0.5cm]
+
+        Karlsruher Institut für Technologie
+    \end{center}
+    \thispagestyle{empty}
+
+    \tableofcontents
+
+    \chapter{Einleitung}
+
+        Nach der Implementierungsphase erhalten wir die funktionsf\"ahige Software, die in ein Web-Interface und eine Android-App unterteilt.
+
+
+			
+
+      \newpage
+      \chapter{Integrationstest}
+      Folgende Testf\"alle wurden durchgef\"uhrt:
+
+
+	      \section{Web-Interface}
+		      \begin{itemize}
+		          \item \textbf{/TF10/ Registrieren des Studienleiters}
+		          \begin{enumerate}
+		               \item \par \textbf{Stand: }Offene Homepage des Web-Interface
+		                \par \textbf{Aktion: }Benutzer klickt auf den Button ``Sign up''
+		                \par \textbf{Ergebnis: }Der browser wird zu der Registrieren-Seite umgeleitet
+			            \item \par \textbf{Stand: }Benutzer ist in der Registrieren-Seite
+		                \par \textbf{Aktion: }Benutzer gibt eine Email-Adresse und ein Passwort wird ein
+		                \par \textbf{Ergebnis: }Eine Bestätigungsmail wird nach dieser Email-Adresse geschenkt
+		           \end{enumerate}
+		       \end{itemize}
+	
+	
+	      \section{Android-App}
+              \begin{itemize}
+                  \item \textbf{/TF80/ Erstes Anmelden der Probanden}
+                  \begin{enumerate}
+                        \item \par \textbf{Stand: }Der Proband hat sich noch nicht in der App angemeldet
+                        \par \textbf{Aktion: }Der Proband öffnet die App
+                        \par \textbf{Reaktion: }{\color{red}{\st{Die App wechselt auf die ``User Login'' Seite}}} {\color{blue}{Die App wechselt auf die ``choose Language'' Seite}}
+                        \item \par \textbf{Stand: }Die ``User Login'' Seite liegt vor
+                        \par \textbf{Aktion: }Der Proband gibt Studie-ID und die angeforderte Information ein, und klickt den Button ``Submit''
+                        \par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet
+            \end{enumerate}
+
+              \end{itemize}
+	
+	
+	  \newpage
+	  \chapter{Systemtest}
+	  Folgende modifizierten Testszenarien wurden durchgef\"uhrt:
+	
+		\section{Szenario 1}
+                Ein super psychologischer Expert Prof. Dr. Mata beschließt, eine Studie nach ESM Methode durchzuf\"uhren. Er \"offnet den Browser und die Mind-Rate Web-Anwendung. Nach Eingeben g\"ultiger Email-Adresse und Passwort gelingt ihm zu registrieren und erh\"alt er dann eine Bestätigungsmail. \\
+                Nach Anmeldung setzt Prof. Dr. Mata zun\"achst die Name, ID, Zeitraum seiner Studie. Er entscheidet sich, die Studie ``Hello World'' mit ID ``9527'' zu nennen und die Studie wird 2 Monate dauern. Dann klickt er auf den Button ``Set Questionnaire'' und er wird zu die Seite geleitet, wo er die auslösende Ereiginisse und G\"ultigkeitszeitbereich eines Fragebogens setzen kann. Daf\"ur setzt er ``everyday 10am'' und ``30 minute''. \\
+                Danach klickt Prof. Dr. Mata auf den Button ``Go to question settings''. Die Seite ``Question setting'' kommt vor. Auf dieser Seite ist Prof. Dr. Mata in der Lage, die Frage einzugeben und Art der Frage auszuw\"ahlen. F\"unf Fragenarten sind verf\"ugbar: ``Single-Choice-Frage'', ``Multiple-Choice-Frage'', ``Skala-mit-Stufen-Frage'', ``Skala-ohne-Stufe-Frage'' und ``Offene Frage''. \\
+                Prof. Dr. Mata schreibt die erste Frage ``Where are you?'' und setzt sie als ``Single-Choice-Frage''. Für Antwort stellt er 4 Optionen zur Verf\"ugung: ``Home'', ``Work'', ``Travel'', ``On the way''. Die erste Frage tritt dann rechts auf, wo sich die Preview des Fragebogens befindet. Dann klickt er auf den Button ``+'', f\"ugt er die zweite Frage ``Where are you heading to?'' hinzu und setzt er diese Frage als ``Offene Frage''. Danach schreibt er die dritte Frage ``How do you feel?'' und beschließt, diese Frage als ``Skala-mit-Stufen-Frage'' zu definieren. Deswegen erstellt er 5 Stufen: ``really bad'', ``bad'', ``Ok'', ``good'', ``very good''. \\
+                Danach findet Prof. Dr. Mata, dass die Dauer der Studie, 2 Monate,  zu lang ist. Daher klickt er den Button ``Go to questionnaire settings'' und er ist zu der Seite ``Questionnaire settings'' geleitet. Nachdem er die \"Anderung erledigt, klickt er auf den Button ``Go to question settings'' und er ist wieder zu der Seite ``Question setting'' geleitet. \\
+                Prof. Dr. Mata denkt sich, dass es sinnlos ist, die zweite Frage zu beantworten, falls die Probanden Optionen ``Home'' und ``Work'' f\"ur die erste Frage gew\"ahlt haben. Deswegen ruft er die Seite f\"ur die erste Frage auf und w\"ahlt er ``3'' f\"ur'``jump to question''-Setzung unter Optionen ``Home'' und ``Work''. \\
+                Schließlich hat Prof. Dr. Mata diesen Fragebogen fertig erstellt. Er klickt dann auf den Button ``save'' und ``submit''. Danach macht er eine Pause. Nach der Pause macht er weiter seine Arbeit...\\
+
+            \section{Szenario 2}
+	            \par Informatikstudentin Elsa nimmt an einer ESM-Studie teil. Dafür bekommt sie eine Studien-ID ``9527'' von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID und ihres Alter und Geschlecht einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' und noch keinen Fragebogen wird gezeigt.
+
+	            \par In der Nacht regnet es draussen und Elsa bekommt auf ihrem Handy eine Notifikation zum neuen Fragebogen. Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weitergeleitet. Jetzt gibt es einen Fragebogen ``Questionnaire 01: Your feelings in a raining night'' in ``My Questionnaires''. Die Antwortzeit des Fragebogens wird auf 2 Stunden begrenzt. Sie klickt auf den Fragebogen und die App wechselt auf die Seite der ersten Frage ``Where are you now?''. Sie w\"ahlt die Antwort ``At home'' aus und klickt auf ``Next Question''. Dann wird die Zweite Frage ``How do you feel at the moment?'' gezeigt. Diese ist die letzte Frage des Fragebogens. Elsa beantwortet sie mit der Stufe ``good'' und klickt auf den Button ``Submit''. Die App zeigt “You have successfully submitted your answers!” und wechselt auf die Hauptseite.
+
+            \section{Szenario 3}
+                \par Jetzt hat Prof. Dr. Mata schon mehreren Fragebogen. Und er möchte noch einen neuen Fragebogen erstellen, aber zahlreiche Fragen sind schon vorhanden. Deshalb möchte er einen vorliegenden Fragebogen verändern, dann wird dieser geänderte Fragebogen als einen neuen Fragebogen gespeichert.
+
+                \par Zuerst klickt Prof. Dr. Mata auf ``Set questionnaire'' Button, dann wechselt der Browser zur Webseite für die Verwaltung des Fragebogens. Er stellt auch die Erscheinungsereignisse des Fragebogens ein, weil die Erscheinungsereignisse des Fragebogens anders sind. Anschließend wählt er einen Fragebogen aus der Fragenbogensliste aus, klickt auf ``Go to question settings'', um Fragen zu dem Fragebogen hinzuzufügen.
+
+                \par Prof. Dr. Mata klickt auf ``+'' Button, um eine neue Frage zu erstellen. Danach stellt er diese neue Frage ein. Zuerst wählt er diese Frage aus, und gibt er eine konkrete Frage ein. Nachdem er eine konkrete Frage eingegeben hat, wählt er auch den Fragetyp dieser Frage aus. Schließlich klickt er auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt, um eine neue Option (oder Textfeld für offene Frage, Skala für Skala-Frage) für die Frage zu erstellen. Er stellet auch die Beziehungen zwischen Fragen ein.
+
+                \par Jetzt liegt diese neue Frage in dem Fragebogen vor. Durch obige Schritte hat Prof. Dr. Mata alle neue Frage zu dem Fragebogen hinzugefügt. Wenn alle Fragen vorhanden sind, klickt er auf ``Refresh'' Button, um die Vorschau zu sehen.
+
+                \par Schließlich klickt Prof. Dr. Mata auf ``Go to questionnaire settings''. Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens. Auf der Webseite klickt er auf ``save'' Button und wählt die Auswahl ``save as a new Questionnaire'' aus. Dann ist dieser neuer Fragebogen zu der neuen Studie hinzugefügt.
+
+	
+	
+
+
+      \newpage
+      \chapter{Problemmeldungen}
+	      \section{Web-Interface}
+		
+		     \begin{itemize}
+		     \item \textbf{Fehlersymptom:}
+		     \par \textbf{Fehlergrund:}
+		     \par \textbf{Fehlerbehebung:}
+		     \end{itemize}
+		
+		  \section{Android-App}
+		
+			  \begin{itemize}
+				  \item \textbf{Fehlersymptom:}
+				  	\par \textbf{Fehlergrund:}
+			  		\par \textbf{Fehlerbehebung:}
+			  \end{itemize}
+			
+			
+		\newpage
+		\chapter{Test\"uberdeckung}
+			\section{Web-Interface}
+			
+			
+			\section{Android-App}
+
+
+
+\end{document}
