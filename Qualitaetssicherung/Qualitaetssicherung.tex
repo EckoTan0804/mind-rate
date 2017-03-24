@@ -53,7 +53,7 @@
 
     \chapter{Einleitung}
 
-        Nach der Implementierungsphase erhalten wir die funktionsf\"ahige Software, die in ein Web-Interface und eine Android-App unterteilt. In der Qualit\"atssicherungsphase testen wir die Software sowohl weiter in dieser zwei Teilen als auch als eine Einheit. Die Teste bestehen aus Integrationstest und Systemtest. Sie werden automatisch durch Unittest und auch manuell ausgef\"uhrt.
+        Nach der Implementierungsphase erhalten wir die funktionsf\"ahige Software, die in ein Web-Interface und eine Android-App unterteilt. In der Qualit\"atssicherungsphase testen wir die Software sowohl weiter in dieser zwei Teilen als auch als eine Einheit. Die Teste bestehen aus Integrationstest und Systemtest. Dabei nehmen wir die (modifizierten) globalen Testf\"alle und Testszenarien aus dem Pflichtenheft und f\"uhren sie automatisch durch Unit-test und auch manuell durch.
 
 
 			
@@ -69,13 +69,13 @@
 		          \begin{enumerate}
 		               \item \par \textbf{Stand: }Offene Homepage des Web-Interface
 		                \par \textbf{Aktion: }Benutzer klickt auf den Button ``Sign up''
-		                \par \textbf{Ergebnis: }Der browser wird zu der Registrieren-Seite umgeleitet
+		                \par \textbf{Reaktion: }Der browser wird zu der Registrieren-Seite umgeleitet
 			            \item \par \textbf{Stand: }Benutzer ist in der Registrieren-Seite
 		                \par \textbf{Aktion: }Benutzer gibt eine Email-Adresse und ein Passwort wird ein
-		                \par \textbf{Ergebnis: }Eine Bestätigungsmail wird nach dieser Email-Adresse geschenkt
+		                \par \textbf{Reaktion: }Eine Bestätigungsmail wird nach dieser Email-Adresse geschenkt
 		           \end{enumerate}
 		           \vspace*{0.3cm}
-		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolgreich}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
 		           \vspace*{0.6cm}
 		           
                     \item \textbf{/TF20/ Anmelden des Studienleiters}
@@ -85,17 +85,212 @@
                                 \par \textbf{Reaktion: }Erfolgreich eingeloggt. Der browser wird zum Dashboard umgeleitet.
                         \end{enumerate}		         
 		           \vspace*{0.3cm}
-		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolgreich}
-		           \vspace*{0.6cm}                                           
-		       \end{itemize}
-	      
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}  
+		       
+                \item \textbf{/TF30/ Vergessenes Passwort neu setzen}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Offene Homepage des Web-Interface
+                              \par \textbf{Aktion: }Auf ``Forgot Passwort'' klicken
+                              \par \textbf{Reaktion: }Der browser wird zu der Email-Adresse-Eingeben-Seite umgeleitet
+                        \item \par \textbf{Stand: }Offene Email-Adresse-Eingeben-Seite
+                              \par \textbf{Aktion: }Email-Adresse eingeben, und auf ``Send email'' klicken
+                              \par \textbf{Reaktion: }Ein Mail mit einem neuen zufällig generierten Passwort wird zu dieser Email-Adresse geschenkt
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}                    
+                
+                \item \textbf{/TF35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
+                \begin{itemize}
+	                \item \textbf{Sensoren}
+		                \begin{enumerate}
+		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
+		                	\par \textbf{Aktion: }Einen oder mehrere Sensoren aus einem List auswählen
+		                	\par \textbf{Reaktion: }Der zugehörige Sensor-Wert-Kasten kommt auf
+		                	\item \par \textbf{Stand: }Sensoren ausgewählt
+		                	\par \textbf{Aktion: }Einen Wert in den Sensor-Wert-Kasten eingeben oder in dem Kasten auswählen
+		                	\par \textbf{Reaktion: }-keine-
+		                	\item \par \textbf{Stand: }Werte der Sensoren festgelegt
+		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
+		                	\par \textbf{Reaktion: }Erscheinungsereignis erfolgreich gesetzt
+		                \end{enumerate}
+	                \item \textbf{Andere Erscheinungsereignisse (Systemzeit, Kalender und Notifikationen von anderen Apps)}
+		                \begin{enumerate}
+		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
+		                	\par \textbf{Aktion: }Ein oder mehrere Erscheinungsereignisse aus einem List auswählen
+		                	\par \textbf{Reaktion: }Der zugehörige Erscheinungsereignisse-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
+		                	\item \par \textbf{Stand: }Erscheinungsereignisse ausgewählt
+		                	\par \textbf{Aktion: }Einen Wert in den Erscheinungsereignisse-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
+		                	\par \textbf{Reaktion: }-keine-
+		                	\item \par \textbf{Stand: }Werte der Erscheinungsereignisse festgelegt
+		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
+		                	\par \textbf{Reaktion: }Erscheinungsereignisse erfolgreich gesetzt
+		                \end{enumerate}
+                \end{itemize}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}                 
+
+                \item \textbf{/TF40/ Verwaltung des Fragebogens}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Go to question settings'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
+                        \item \par \textbf{Stand: } Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``save'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
+                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``new'' Button
+                              \par \textbf{Reaktion: }Der Studienleiter kann der Name eines Fragebogens eingeben und dieser Fragebogen wird erstellt
+                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Go to question settings'' Button
+                              \par \textbf{Reaktion: }Der Browser wechselt zur Webseite für die Verwaltung der Fragen
+                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt und eingestellt
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``save'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be saved'' erscheint
+                        \item \par \textbf{Stand: }Ein Fragebogen gespeichert
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Refresh'' Button
+                              \par \textbf{Reaktion: }Die Voransicht des Fragebogens erscheint
+                        \item \par \textbf{Stand: }Alle Einstellung fertig aber keine Frage haben
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Please min. 1 question add'' erscheint
+                        \item \par \textbf{Stand: }Alle Einstellung fertig und Frage vorhanden
+                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
+                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be uploaded'' erscheint
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}                     
+
+                \item \textbf{/TF50/ Verwaltung der Fragen}
+                        \begin{enumerate}
+                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``+'' Button, der links neben den Fragenliste liegt
+                              \par \textbf{Reaktion: } Eine neue Frage wird in die Fragenliste hinzugefügt
+
+                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen und eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: }  Der Studienleiter klickt auf ``-'' Button, der links neben den Fragenliste liegt
+                              \par \textbf{Reaktion: } die ausgewählte Frage wird in die Fragenliste gelöscht
+
+                        \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Question type'' Combobox
+                              \par \textbf{Reaktion: } Er kann einen Fragetyp auswählen
+
+                        \item \par \textbf{Stand: }  Eine Frage von der Frageliste ausgewählt
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt
+                              \par \textbf{Reaktion: } Eine neue Option für die Antwort erstellt
+
+                        \item \par \textbf{Stand: } Eine Frage hat Optionen
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf der Fragenliste, die unten eine Option der Frage liegt
+                              \par \textbf{Reaktion: }Der Studienleiter kann eine vorhandene Frage auswählen
+
+                        \item \par \textbf{Stand: }  Verwaltung der Fragen fertig
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Refresh'' Button
+                              \par \textbf{Reaktion: } Die Voransicht des Fragebogens erneuet
+
+                        \item \par \textbf{Stand: } Verwaltung der Fragen fertig
+                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Go to questionnaire settings'' Button
+                              \par \textbf{Reaktion: } Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens
+
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm} 
+
+
+                \item \textbf{/TF60/ Antwortsstatus besichtigen}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: } Der Studienleiter ist noch nicht angemeldet.
+                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``View Answers''
+                              \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
+
+                        \item \par \textbf{Stand: } Der Studienleiter ist angemeldet.
+                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``View Answers''
+                              \par \textbf{Reaktion: } Der Studienleiter kann die \"ubersicht von allen Antwort sehen.
+
+                        \item \par \textbf{Stand: } Der Studienleiter bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``Refresh''
+                              \par \textbf{Reaktion: } Die neue \"ubersicht von allen Antwort wird gezeigt.
+
+                        \item \par \textbf{Stand: } Der Studienleiter bleibt in der Seite ``View Answers''
+                              \par \textbf{Aktion: } Der Studienleiter gibt einige Bedingungen ein und klickt er den Button ``Confirm''
+                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht
+                    \end{enumerate}		       
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm} 	
+		           
+				\item /TF65/ Feedback (Motivation) senden \textbf{(Entfernt)}	
+				\vspace*{0.6cm}	
+				
+                \item \textbf{/TF70/ Exportieren von Daten}
+                \begin{enumerate}
+                    \item \par \textbf{Stand: }Sein angemeldet
+                          \par \textbf{Aktion: }Klicken auf ``Export data''
+                          \par \textbf{Reaktion: }Daten sind exportiert
+                \end{enumerate}	
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}                 			           
+		           
+		           \end{itemize}      
 	      
 	      \section{Android-App} 
+	      
+            \begin{itemize}
+
+            \item \textbf{/TF80/ Erstes Anmelden der Probanden}
+            \begin{enumerate}
+                \item \par \textbf{Stand: }Der Proband hat sich noch nicht in der App angemeldet
+                \par \textbf{Aktion: }Der Proband öffnet die App
+                \par \textbf{Reaktion: }Die App wechselt auf die ``User Login'' Seite
+                \item \par \textbf{Stand: }Die ``User Login'' Seite liegt vor
+                \par \textbf{Aktion: }Der Proband gibt Studie-ID und die angeforderte Information ein, und klickt den Button ``Submit''
+                \par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet
+            \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}          
+
+	        \item \textbf{/TF85/ Automatisches Anmelden der Probanden}
+	        \begin{enumerate}
+	        	\item \par \textbf{Stand: }Der Proband hat sich schon einmal in der App angemeldet
+	        	\par \textbf{Aktion: }Der Proband öffnet die App
+	        	\par \textbf{Reaktion: }Der Proband wird automatisch auf die Hauptseite weitergeleitet
+	        \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm} 	        
+
+	        \item \textbf{/TF90/ Antworten eines Fragebogens}
+	        \begin{enumerate}
+	        	\item \par \textbf{Stand: }Die Hauptseite der App liegt vor
+	        	\par \textbf{Aktion: }Der Proband wählt einen Fragebogen aus ``My Questionnaires''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die erste Frage des gewählten Fragebogens weitergeleitet
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	\par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Next Question''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die nächste Frage des Fragebogens weitergeleitet
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	\par \textbf{Aktion: }Der Proband klickt den Button ``Homepage''
+	        	\par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet und die schon eingegebenen Antworten des Fragebogens werden nicht gespeichert
+	        	\item \par \textbf{Stand: }Der Proband ist auf der Seite letzter Frage des Fragebogens
+	        	\par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Submit''
+	        	\par \textbf{Reaktion: }Die App zeigt ``You have successfully submitted your answers!'' und wechselt auf die Hauptseite
+	        \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm} 	        
+
+            \end{itemize}	
 	      
 	  
 	  \newpage
 	  \chapter{Systemtest}         
-	  Folgende modifizierten Testszenarien wurden durchgef\"uhrt:
+	  Folgende Testszenarien wurden durchgef\"uhrt:
 	  
 		\section{Szenario 1}
                 Ein super psychologischer Expert Prof. Dr. Mata beschließt, eine Studie nach ESM Methode durchzuf\"uhren. Er \"offnet den Browser und die Mind-Rate Web-Anwendung. Nach Eingeben g\"ultiger Email-Adresse und Passwort gelingt ihm zu registrieren und erh\"alt er dann eine Bestätigungsmail. \\
