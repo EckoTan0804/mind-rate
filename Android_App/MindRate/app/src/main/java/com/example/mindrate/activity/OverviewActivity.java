@@ -531,6 +531,14 @@ public class OverviewActivity extends BaseActivity {
         this.selectedQuestionnaireIndex = selectedQuestionnaireIndex;
     }
 
+    public static boolean isNeedIntent() {
+        return needIntent;
+    }
+
+    public static void setNeedIntent(boolean needIntent) {
+        OverviewActivity.needIntent = needIntent;
+    }
+
     // =========================================================================
 
     // test data

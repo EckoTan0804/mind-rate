@@ -79,6 +79,13 @@ public class StepScale extends QuestionType implements Parcelable {
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof StepScale) {
             StepScale stepScale = (StepScale) obj;
+            if (this.optionList == null && stepScale.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && stepScale.optionList != null) || (this.optionList
+                    != null && stepScale.optionList == null)) {
+                return false;
+            }
             if (this.optionList.size() != stepScale.optionList.size()) {
                 return false;
             } else {

@@ -79,6 +79,13 @@ public class SingleChoice extends QuestionType implements Parcelable {
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof SingleChoice) {
             SingleChoice singleChoice = (SingleChoice) obj;
+            if (this.optionList == null && singleChoice.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && singleChoice.optionList != null) || (this.optionList
+                    != null && singleChoice.optionList == null)) {
+                return false;
+            }
             if (this.optionList.size() != singleChoice.optionList.size()) {
                 return false;
             } else {
