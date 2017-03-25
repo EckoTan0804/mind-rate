@@ -8,6 +8,9 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{color}
+\usepackage{color,soul}
+\setstcolor{red}
+
 \usepackage{pdfpages}
 \usepackage{soul}
 \graphicspath{ {Images/} }
@@ -84,11 +87,44 @@
                   \begin{enumerate}
                         \item \par \textbf{Stand: }Der Proband hat sich noch nicht in der App angemeldet
                         \par \textbf{Aktion: }Der Proband öffnet die App
-                        \par \textbf{Reaktion: }{\color{red}{\st{Die App wechselt auf die ``User Login'' Seite}}} {\color{blue}{Die App wechselt auf die ``choose Language'' Seite}}
+                        \par {\color{red}{\textbf{\st{Reaktion: }}\st{Die App wechselt auf die ``User Login'' Seite}}}
+                        
+                        \par \textbf{{\color{blue}{Reaktion: }}} {\color{blue}{Die App wechselt auf die ``choose Language'' Seite}}
+                        \item \par \textbf{{\color{blue}{Stand: }}}{\color{blue} Die ``choose Language'' Seite liegt vor}
+                        \par \textbf{{\color{blue}{Aktion: }}}{\color{blue}Der Proband wählt die Sprache aus, und klickt den Button ``OK''}
+                        \par \textbf{{\color{blue}{Reaktion: }}}{\color{blue}Der Proband wird auf die ``User Login'' Seite weitergeleitet}
                         \item \par \textbf{Stand: }Die ``User Login'' Seite liegt vor
-                        \par \textbf{Aktion: }Der Proband gibt Studie-ID und die angeforderte Information ein, und klickt den Button ``Submit''
+                        \par \textbf{{\color{red}{\st{Aktion: }}}}{\color{red}{\st{Der Proband gibt Studie-ID und die angeforderte Information ein, und klickt den Button ``Submit''}}}
+                        \par \textbf{{\color{blue}{Aktion: }}}{\color{blue}Der Proband gibt Studie-ID und Proband-ID ein,dann gibt er auch die angeforderte Information ein, und klickt den Button ``Log In''}
                         \par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet
-            \end{enumerate}
+                  \end{enumerate}
+                  \item \textbf{/TF85/ Automatisches Anmelden der Probanden}
+	              \begin{enumerate}
+	        	        \item \par \textbf{Stand: }Der Proband hat sich schon einmal in der App angemeldet
+	        	        \par \textbf{Aktion: }Der Proband öffnet die App
+	        	        \par \textbf{Reaktion: }Der Proband wird automatisch auf die Hauptseite weitergeleitet
+	              \end{enumerate}
+                  \item \textbf{/TF90/ Antworten eines Fragebogens}
+	              \begin{enumerate}
+                        \item \par \textbf{Stand: }Die Hauptseite der App liegt vor
+                        \par {\color{red}{\textbf{\st{Aktion: }}\st{Der Proband w\"ahlt einen Fragebogen aus ``My Questionnaires'' }}}
+                        \par {\color{blue}{\textbf{Aktion: }Der Proband klickt den Men\"u-Button und den Button`` Questionnaires'' im Men\"u}}
+                        \par {\color{red}{\textbf{\st{Reaktion: }}\st{Der Proband wird auf die erste Frage des gew\"ahlten Fragebogens weitergeleitet}}}
+                        \par {\color{blue}{\textbf{Reaktion: }Der Fragebogen \"uber die Informationen des Probandes ``Hello World! '' ist vorliegend. Proband kann zuerst diesen Proband-Info-Fragebogen antworten.}}
+                        \item \par {\color{blue}{\textbf{Stand: }Der Proband hat diesen Proband-Info-Fragebogen beantwortet und ein Fragebogen ist ausgel\"ost. }}
+                        \par {\color{blue}{\textbf{Aktion: }Der Proband w\"ahlt diesen ausgelösten Fragebogen aus ``Questionnaires'' }}
+                        \par {\color{blue}{\textbf{Reaktion: }Der Proband wird auf die erste Frage des gew\"ahlten Fragebogens weitergeleitet}}
+                             
+	        	        \item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	        \par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Next Question''
+	        	        \par \textbf{Reaktion: }Der Proband wird auf die nächste Frage des Fragebogens weitergeleitet
+	        	        \item \par \textbf{Stand: }Der Proband ist auf der Seite einer Frage
+	        	        \par \textbf{Aktion: }Der Proband klickt den Button ``Homepage''
+	        	        \par \textbf{Reaktion: }Der Proband wird auf die Hauptseite weitergeleitet und die schon eingegebenen Antworten des Fragebogens werden nicht gespeichert
+	        	        \item \par \textbf{Stand: }Der Proband ist auf der Seite letzter Frage des Fragebogens
+	        	        \par \textbf{Aktion: }Der Proband beantwortet die Frage und klickt den Button ``Submit''
+	        	        \par \textbf{Reaktion: }Die App zeigt ``You have successfully submitted your answers!'' und wechselt auf die Hauptseite
+	              \end{enumerate}
 
               \end{itemize}
 	
