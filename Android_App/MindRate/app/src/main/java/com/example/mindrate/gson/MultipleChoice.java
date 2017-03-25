@@ -84,6 +84,13 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof MultipleChoice) {
             MultipleChoice multipleChoice = (MultipleChoice) obj;
+            if (this.optionList == null && multipleChoice.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && multipleChoice.optionList != null) || (this.optionList
+                    != null && multipleChoice.optionList == null)) {
+                return false;
+            }
             if (this.optionList.size() != multipleChoice.optionList.size()) {
                 return false;
             } else {
