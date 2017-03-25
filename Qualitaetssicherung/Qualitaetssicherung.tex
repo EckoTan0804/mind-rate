@@ -68,11 +68,11 @@
 		          \item \textbf{/TF10/ Registrieren des Studienleiters}
 		          \begin{enumerate}
 		               \item \par \textbf{Stand: }Offene Homepage des Web-Interface
-		                \par \textbf{Aktion: }Benutzer klickt auf den Button ``Sign up''
-		                \par \textbf{Reaktion: }Der browser wird zu der Registrieren-Seite umgeleitet
-			            \item \par \textbf{Stand: }Benutzer ist in der Registrieren-Seite
-		                \par \textbf{Aktion: }Benutzer gibt eine Email-Adresse und ein Passwort wird ein
-		                \par \textbf{Reaktion: }Eine Bestätigungsmail wird nach dieser Email-Adresse geschenkt
+		                \par \textbf{Aktion: }Studienleiter klickt auf den Button ``Sign up''
+		                \par \textbf{Reaktion: }Der Browser wird zu der Registrieren-Seite umgeleitet
+			            \item \par \textbf{Stand: }Studienleiter ist in der Registrieren-Seite
+		                \par \textbf{Aktion: }Studienleiter gibt einen Username, eine Email-Adresse und ein Passwort ein
+		                \par \textbf{Reaktion: }Eine Bestätigungsmail wird nach dieser Email-Adresse geschickt
 		           \end{enumerate}
 		           \vspace*{0.3cm}
 		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
@@ -81,144 +81,126 @@
                     \item \textbf{/TF20/ Anmelden des Studienleiters}
                         \begin{enumerate}
                             \item \par \textbf{Stand: }Offene Homepage des Web-Interface
-                                \par \textbf{Aktion: }Registrierte Email-Adresse und Passwort eingeben, und auf “Sign in” klicken
-                                \par \textbf{Reaktion: }Erfolgreich eingeloggt. Der browser wird zum Dashboard umgeleitet.
+                                \par \textbf{Aktion: }Registrierte Username, Email-Adresse und Passwort eingeben, und auf “Sign in” klicken
+                                \par \textbf{Reaktion: }Erfolgreich eingeloggt. Der Browser wird zum Dashboard umgeleitet.
                         \end{enumerate}		         
 		           \vspace*{0.3cm}
 		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
 		           \vspace*{0.6cm}  
 		       
-                \item \textbf{/TF30/ Vergessenes Passwort neu setzen}
-                    \begin{enumerate}
-                        \item \par \textbf{Stand: }Offene Homepage des Web-Interface
-                              \par \textbf{Aktion: }Auf ``Forgot Passwort'' klicken
-                              \par \textbf{Reaktion: }Der browser wird zu der Email-Adresse-Eingeben-Seite umgeleitet
-                        \item \par \textbf{Stand: }Offene Email-Adresse-Eingeben-Seite
-                              \par \textbf{Aktion: }Email-Adresse eingeben, und auf ``Send email'' klicken
-                              \par \textbf{Reaktion: }Ein Mail mit einem neuen zufällig generierten Passwort wird zu dieser Email-Adresse geschenkt
-                    \end{enumerate}
-					\vspace*{0.3cm}
-		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
-		           \vspace*{0.6cm}                    
-                
-                \item \textbf{/TF35/ Wählen von verschiedenen Erscheinungsereignissen der Fragebögen}
-                \begin{itemize}
-	                \item \textbf{Sensoren}
-		                \begin{enumerate}
-		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
-		                	\par \textbf{Aktion: }Einen oder mehrere Sensoren aus einem List auswählen
-		                	\par \textbf{Reaktion: }Der zugehörige Sensor-Wert-Kasten kommt auf
-		                	\item \par \textbf{Stand: }Sensoren ausgewählt
-		                	\par \textbf{Aktion: }Einen Wert in den Sensor-Wert-Kasten eingeben oder in dem Kasten auswählen
-		                	\par \textbf{Reaktion: }-keine-
-		                	\item \par \textbf{Stand: }Werte der Sensoren festgelegt
-		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignis erfolgreich gesetzt
-		                \end{enumerate}
-	                \item \textbf{Andere Erscheinungsereignisse (Systemzeit, Kalender und Notifikationen von anderen Apps)}
-		                \begin{enumerate}
-		                	\item \par \textbf{Stand: }Webseite der Erstellung oder Änderung des Fragebogens
-		                	\par \textbf{Aktion: }Ein oder mehrere Erscheinungsereignisse aus einem List auswählen
-		                	\par \textbf{Reaktion: }Der zugehörige Erscheinungsereignisse-Wert-Kasten kommt auf (für ``Notifikationen von anderen Apps'' gibt es keinen Kasten)
-		                	\item \par \textbf{Stand: }Erscheinungsereignisse ausgewählt
-		                	\par \textbf{Aktion: }Einen Wert in den Erscheinungsereignisse-Wert-Kasten eingeben oder in dem Kasten auswählen (für Systemzeit: eine Uhrzeit eingeben; für Kalender: Anfang oder Ende eines Termin auswählen)
-		                	\par \textbf{Reaktion: }-keine-
-		                	\item \par \textbf{Stand: }Werte der Erscheinungsereignisse festgelegt
-		                	\par \textbf{Aktion: }Auf ``Set Trigger Event'' klicken
-		                	\par \textbf{Reaktion: }Erscheinungsereignisse erfolgreich gesetzt
-		                \end{enumerate}
-                \end{itemize}
-					\vspace*{0.3cm}
-		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
-		           \vspace*{0.6cm}                 
-
-                \item \textbf{/TF40/ Verwaltung des Fragebogens}
-                    \begin{enumerate}
-                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Go to question settings'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
-                        \item \par \textbf{Stand: } Kein Fragebogen vorhanden
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``save'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
-                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``No questionnaire exist.'' erscheint
-                        \item \par \textbf{Stand: }Kein Fragebogen vorhanden
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``new'' Button
-                              \par \textbf{Reaktion: }Der Studienleiter kann der Name eines Fragebogens eingeben und dieser Fragebogen wird erstellt
-                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Go to question settings'' Button
-                              \par \textbf{Reaktion: }Der Browser wechselt zur Webseite für die Verwaltung der Fragen
-                        \item \par \textbf{Stand: }Ein Fragebogen ausgewählt und eingestellt
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``save'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be saved'' erscheint
-                        \item \par \textbf{Stand: }Ein Fragebogen gespeichert
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``Refresh'' Button
-                              \par \textbf{Reaktion: }Die Voransicht des Fragebogens erscheint
-                        \item \par \textbf{Stand: }Alle Einstellung fertig aber keine Frage haben
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Please min. 1 question add'' erscheint
-                        \item \par \textbf{Stand: }Alle Einstellung fertig und Frage vorhanden
-                              \par \textbf{Aktion: }Der Studienleiter klickt auf ``submit'' Button
-                              \par \textbf{Reaktion: }Ein Dialogfeld ``Questionnaire will be uploaded'' erscheint
-                    \end{enumerate}
-					\vspace*{0.3cm}
-		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
-		           \vspace*{0.6cm}                     
-
-                \item \textbf{/TF50/ Verwaltung der Fragen}
+                \item /TF30/ Vergessenes Passwort neu setzen \textbf{(Entfernt)}
+		        \vspace*{0.6cm}
+		        
+				\item \textbf{/TF30/ Passwort \"andern}
                         \begin{enumerate}
-                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``+'' Button, der links neben den Fragenliste liegt
-                              \par \textbf{Reaktion: } Eine neue Frage wird in die Fragenliste hinzugefügt
+                            \item \par \textbf{Stand: }Offene Homepage des Web-Interface
+                                \par \textbf{Aktion: }Auf eigenen Username klicken und ``Change password'' w\"ahlen
+                                \par \textbf{Reaktion: }Der Browser wird zur Seite ``Password change'' umgeleitet
+							\item \par \textbf{Stand: }Offene Seite ``Password change''
+                                \par \textbf{Aktion: }Altes und neues Passwort eingeben und auf ``change my password'' klicken
+                                \par \textbf{Reaktion: }Das Passwort wird ge\"andert                                
+                        \end{enumerate}		         
+		           \vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}		        
+		           
+                \item \textbf{/TF40/ Verwaltung der Studien}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Offene Seite ``Site administration''
+                              \par \textbf{Aktion: }Auf der Zeile ``Studies'' auf ``add'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Add study'' umgeleitet
+                        \item \par \textbf{Stand: }Offene Seite ``Add study''
+                              \par \textbf{Aktion: }Studienname, Startzeit und Endzeit eingeben, und auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet und zeigt die gerade erstellte Studie
+                        \item \par \textbf{Stand: }Offene Seite ``Studies''
+                              \par \textbf{Aktion: }Auf den Name einer Studie klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Change study'' umgeleitet  
+                        \item \par \textbf{Stand: }Offene Seite ``Change study''
+                              \par \textbf{Aktion: }Studienname, Startzeit und Endzeit ver\"andern, und auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet und zeigt die ver\"anderte Studie 
+                        \item \par \textbf{Stand: }Offene Seite ``Studies''
+                              \par \textbf{Aktion: }Auf den K\"astchen neben den Name einer Studie klicken, ``Delete selected studies'' w\"ahlen und auf ``Go'' klicken
+                              \par \textbf{Reaktion: }Eine Seite ``Are you sure?'' erscheint 
+						\item \par \textbf{Stand: }Offene Seite ``Are you sure?''
+                              \par \textbf{Aktion: }Auf ``Yes, I'm sure'' klicken
+                              \par \textbf{Reaktion: }Die gew\"ahlte Studie wird gel\"oscht                                                                                                  
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}  
+		           
+                \item \textbf{/TF50/ Verwaltung der Proband-Info-Frageb\"ogen}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Offene Seite ``Change study'' oder ``Add study''
+                              \par \textbf{Aktion: }Auf ``Add another Proband Info Questionnaire'' klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Erstellung des Proband-Info-Fragebogens erscheint
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung des Proband-Info-Fragebogens
+                              \par \textbf{Aktion: }Einen oder mehreren aus ``ask for birthday'', ``ask for occupation'' und ``ask for gender'' w\"ahlen und verschiedene Sorten von Fragen erstellen. Dann auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet   
+                        \item \par \textbf{Stand: }Offene Seite ``Change study''
+                              \par \textbf{Aktion: }Auf bereits existierendes ``proband info questionnaire'' klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Ver\"andern des Proband-Info-Fragebogen erscheint  
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Ver\"andern des Proband-Info-Fragebogens
+                              \par \textbf{Aktion: }Fragebogen ver\"andern und auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet               
+                        \item \par \textbf{Stand: }Offene Seite ``Change study'' oder ``Add study''
+                              \par \textbf{Aktion: }Auf ``-'' bei ``proband info questionnaire'' klicken
+                              \par \textbf{Reaktion: }Der Proband-Info-Fragebogen wird gel\"oscht                                                                           
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}  	
+		           
+                \item \textbf{/TF60/ Verwaltung der Frageb\"ogen}
+                    \begin{enumerate}
+                        \item \par \textbf{Stand: }Offene Seite ``Change study'' oder ``Add study''
+                              \par \textbf{Aktion: }Auf ``Add another Questionnaire'' klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Erstellung des Fragebogens erscheint
+						\item \par \textbf{Stand: }Offene Seite ``Change study'' oder ``Add study''
+                              \par \textbf{Aktion: }Auf einen bereits existierenden Fragebogen klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Ver\"andern des Fragebogens erscheint                              
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern des Fragebogens
+                              \par \textbf{Aktion: }``Questionnaire name'', ``Valid time duration after triggered'' und `Maximal trigger times per day'' eingeben und auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet   
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern des Fragebogens
+                              \par \textbf{Aktion: }Auf ``trigger event'' klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Erstellung oder Ver\"andern der ausl\"osenden Ereignissen erscheint  
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern der ausl\"osenden Ereignissen
+                              \par \textbf{Aktion: }Zugeh\"orige Optionen w\"ahlen, Werte eingeben und auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Ausl\"osende Ereignisse werden erstellt und der Browser wird zur Seite ``Studies'' umgeleitet    
+                        \item \par \textbf{Stand: }Offene Seite ``Change study'' oder ``Add study''
+                              \par \textbf{Aktion: }Auf ``-'' bei einem Fragebogen klicken
+                              \par \textbf{Reaktion: }Der Fragebogen wird gel\"oscht                                                                                                                                     
+                    \end{enumerate}
+					\vspace*{0.3cm}
+		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
+		           \vspace*{0.6cm}                  
 
-                        \item \par \textbf{Stand: } Webseite für die Verwaltung der Fragen ist geladen und eine Frage von der Frageliste ausgewählt
-                              \par \textbf{Aktion: }  Der Studienleiter klickt auf ``-'' Button, der links neben den Fragenliste liegt
-                              \par \textbf{Reaktion: } die ausgewählte Frage wird in die Fragenliste gelöscht
-
-                        \item \par \textbf{Stand: } Eine Frage von der Frageliste ausgewählt
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Question type'' Combobox
-                              \par \textbf{Reaktion: } Er kann einen Fragetyp auswählen
-
-                        \item \par \textbf{Stand: }  Eine Frage von der Frageliste ausgewählt
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``+'' Button, der rechts neben das Textfeld ``new choice'' liegt
-                              \par \textbf{Reaktion: } Eine neue Option für die Antwort erstellt
-
-                        \item \par \textbf{Stand: } Eine Frage hat Optionen
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf der Fragenliste, die unten eine Option der Frage liegt
-                              \par \textbf{Reaktion: }Der Studienleiter kann eine vorhandene Frage auswählen
-
-                        \item \par \textbf{Stand: }  Verwaltung der Fragen fertig
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Refresh'' Button
-                              \par \textbf{Reaktion: } Die Voransicht des Fragebogens erneuet
-
-                        \item \par \textbf{Stand: } Verwaltung der Fragen fertig
-                              \par \textbf{Aktion: } Der Studienleiter klickt auf ``Go to questionnaire settings'' Button
-                              \par \textbf{Reaktion: } Der Browser wechselt zur Webseite für die Verwaltung des Fragebogens
-
+                \item \textbf{/TF70/ Verwaltung der Fragen}
+                        \begin{enumerate}
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern eines Fragebogens
+                              \par \textbf{Aktion: }Auf ``Add another Text Question'', ``Add another Single Choice Question'', ``Add another Multi Choice Question'' oder ``Add another Drag Scale Question'' klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Erstellung der Frage von gew\"ahltem Typ erscheint         
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern eines Fragebogens
+                              \par \textbf{Aktion: }Auf eine bereits existierende Frage klicken
+                              \par \textbf{Reaktion: }Ein Feld f\"ur Ver\"andern der Frage erscheint                                                     
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern einer Frage
+                              \par \textbf{Aktion: }Die Position der Frage bestimmen und entscheiden, ob die Frage standardm\"aßig erscheint. Alle andere geforderten Informationen eingeben. Dann auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Die Frage wird gespeichert und der Browser wird zur Seite ``Studies'' umgeleitet    
+                        \item \par \textbf{Stand: }Offenes Feld f\"ur Erstellung oder Ver\"andern eines Fragebogens
+                              \par \textbf{Aktion: }Auf dem Kreuz neben eine bereits existierende Frage klicken und dann auf ``Save'' klicken
+                              \par \textbf{Reaktion: }Die Frage wird gel\"oscht und der Browser wird zur Seite ``Studies'' umgeleitet
                     \end{enumerate}
 					\vspace*{0.3cm}
 		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
 		           \vspace*{0.6cm} 
 
 
-                \item \textbf{/TF60/ Antwortsstatus besichtigen}
+                \item \textbf{/TF80/ Antwortsstatus besichtigen}
                     \begin{enumerate}
-                        \item \par \textbf{Stand: } Der Studienleiter ist noch nicht angemeldet.
-                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``View Answers''
-                              \par \textbf{Reaktion: } Es wrid zur Anmeldungsseite wechseln.
-
-                        \item \par \textbf{Stand: } Der Studienleiter ist angemeldet.
-                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``View Answers''
-                              \par \textbf{Reaktion: } Der Studienleiter kann die \"ubersicht von allen Antwort sehen.
-
-                        \item \par \textbf{Stand: } Der Studienleiter bleibt in der Seite ``View Answers''
-                              \par \textbf{Aktion: } Der Studienleiter klickt den Button ``Refresh''
-                              \par \textbf{Reaktion: } Die neue \"ubersicht von allen Antwort wird gezeigt.
-
-                        \item \par \textbf{Stand: } Der Studienleiter bleibt in der Seite ``View Answers''
-                              \par \textbf{Aktion: } Der Studienleiter gibt einige Bedingungen ein und klickt er den Button ``Confirm''
-                              \par \textbf{Reaktion: } Die Antwort wird gefiltert. Die \"ubersicht von Antwort der Probanden, die alle eingegebene Bedingungen erf\"ullen, wird geladen.\"ubersicht
+                        \item \par \textbf{Stand: } Der Studienleiter ist angemeldet und der Browser ist auf der Seite ``Site administration''
+                              \par \textbf{Aktion: }Auf ``Studies'' klicken
+                              \par \textbf{Reaktion: }Der Browser wird zur Seite ``Studies'' umgeleitet und bei jeder Studie wird ``Answer updated times'' gezeigt
                     \end{enumerate}		       
 					\vspace*{0.3cm}
 		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
@@ -227,11 +209,11 @@
 				\item /TF65/ Feedback (Motivation) senden \textbf{(Entfernt)}	
 				\vspace*{0.6cm}	
 				
-                \item \textbf{/TF70/ Exportieren von Daten}
+                \item \textbf{/TF90/ Exportieren von Daten}
                 \begin{enumerate}
-                    \item \par \textbf{Stand: }Sein angemeldet
-                          \par \textbf{Aktion: }Klicken auf ``Export data''
-                          \par \textbf{Reaktion: }Daten sind exportiert
+                    \item \par \textbf{Stand: }Offene Seite ``Studies''
+                          \par \textbf{Aktion: }Eine Studie w\"ahlen, im unteren Kombinationsfeld ``Export csv'' w\"ahlen und auf ``Go'' klicken
+                          \par \textbf{Reaktion: }Eine CSV-Datei mit Information der Studie wird heruntergeladen
                 \end{enumerate}	
 					\vspace*{0.3cm}
 		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
