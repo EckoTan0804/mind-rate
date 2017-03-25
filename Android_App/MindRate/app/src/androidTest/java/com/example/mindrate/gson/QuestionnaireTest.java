@@ -4,6 +4,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class QuestionnaireTest {
 
     @Test
     public void sendNotification() throws Exception {
-        
+
     }
 
     @Test
@@ -57,7 +58,8 @@ public class QuestionnaireTest {
     @Test
     public void getQuestion() throws Exception {
         Assert.assertNull(questionnaire.getQuestion("20"));
-        Assert.assertEquals(new Question("A", new SingleChoice(), "1", true), questionnaire.getQuestion("1"));
+        Assert.assertEquals(new Question("A", new SingleChoice(), "1", true),
+                            questionnaire.getQuestion("1"));
     }
 
     @Test
@@ -68,18 +70,18 @@ public class QuestionnaireTest {
         Assert.assertNull(questionnaire.defaultNextQuestionID(currentQuestion));
     }
 
-    @Test
+    @Ignore
     public void trigger() throws Exception {
 
     }
 
     @Test
-    public void initTriggeredData() throws Exception{
-        Assert.assertEquals(-10000,questionnaire.getAmbientTemperatureValue(),0);
-        Assert.assertEquals(-10000,questionnaire.getLightValue(),0);
-        Assert.assertEquals(-10000,questionnaire.getPressureValue(),0);
-        Assert.assertEquals(-10000,questionnaire.getProximityValue(),0);
-        Assert.assertEquals(-10000,questionnaire.getRelativeHumidityValue(),0);
+    public void initTriggeredData() throws Exception {
+        Assert.assertEquals(-10000, questionnaire.getAmbientTemperatureValue(), 0);
+        Assert.assertEquals(-10000, questionnaire.getLightValue(), 0);
+        Assert.assertEquals(-10000, questionnaire.getPressureValue(), 0);
+        Assert.assertEquals(-10000, questionnaire.getProximityValue(), 0);
+        Assert.assertEquals(-10000, questionnaire.getRelativeHumidityValue(), 0);
 
     }
 
