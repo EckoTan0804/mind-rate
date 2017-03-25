@@ -55,7 +55,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class OverviewActivityTest  {
+public class OverviewActivityTest {
 
     @Rule
     public ActivityTestRule<OverviewActivity> overviewActivityRule = new ActivityTestRule<>
@@ -71,8 +71,10 @@ public class OverviewActivityTest  {
         intent.putExtra("proband", new Proband("1", "123"));
         intent.putExtra("questionnaire_JSON", initTestJson());
 
+        OverviewActivity.setNeedIntent(true);
         overviewActivity = overviewActivityRule.launchActivity(intent);
         overviewActivity.getTriggeredQuestionnaireList().add(questionnaireA);
+
     }
 
     @After
@@ -87,14 +89,16 @@ public class OverviewActivityTest  {
 
     @Test
     public void testDrawerLayout() {
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open()).check(matches(isDisplayed()));
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+                .check(matches(isDisplayed()));
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.close());
     }
 
     @Test
     public void testNavigationView() {
 
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open()).check(matches(isDisplayed()));
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+                .check(matches(isDisplayed()));
 
         // check whether the nav items are displayed
         onView(withText(R.string.nav_profile)).check(matches(isDisplayed()));
@@ -113,12 +117,14 @@ public class OverviewActivityTest  {
         onView(withText("123")).check(matches(isDisplayed()));
 
         // questionnaire
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open()).check(matches(isDisplayed()));
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+                .check(matches(isDisplayed()));
         onView(withText(R.string.nav_questionnaire)).perform(click());
         onView(withId(R.id.title_title)).check(matches(withText(R.string.nav_questionnaire)));
 
         // about us
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open()).check(matches(isDisplayed()));
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+                .check(matches(isDisplayed()));
         onView(withText(R.string.nav_about_us)).perform(click());
         onView(withId(R.id.title_title)).check(matches(withText(R.string.nav_about_us)));
         onView(withText(R.string.developer)).check(matches(isDisplayed()));
@@ -126,10 +132,11 @@ public class OverviewActivityTest  {
                 (matches(isDisplayed()));
 
         // settings
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open()).check(matches(isDisplayed()));
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+                .check(matches(isDisplayed()));
         onView(withText(R.string.nav_settings)).perform(click());
         onView(withId(R.id.title_title)).check(matches(withText(R.string.nav_settings)));
-//        onView(withText(R.string.language)).check(matches(isDisplayed()));
+        //        onView(withText(R.string.language)).check(matches(isDisplayed()));
 
     }
 
@@ -145,6 +152,7 @@ public class OverviewActivityTest  {
 
     }
 
+    @Ignore
     public static Matcher<Object> searchQuestionnaireWithID(final String name) {
         return new BoundedMatcher<Object, Questionnaire>(Questionnaire.class) {
             @Override
@@ -240,9 +248,9 @@ public class OverviewActivityTest  {
         questionnaireA.addQuestion(q6);
 
         questionnaireList.add(questionnaireA);
-//        questionnaireList.add(new Questionnaire("B", new Duration(24, 0, 0)));
-//        questionnaireList.add(new Questionnaire("C", new Duration(12, 0, 0)));
-//        questionnaireList.add(new Questionnaire("D", new Duration(6, 0, 0)));
+        //        questionnaireList.add(new Questionnaire("B", new Duration(24, 0, 0)));
+        //        questionnaireList.add(new Questionnaire("C", new Duration(12, 0, 0)));
+        //        questionnaireList.add(new Questionnaire("D", new Duration(6, 0, 0)));
 
         return JsonUtil.createJSON(new Researcher(new Study(questionnaireList)));
     }
