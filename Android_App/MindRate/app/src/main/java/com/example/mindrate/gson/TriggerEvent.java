@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -28,6 +29,7 @@ public class TriggerEvent implements Parcelable {
     private int minTimeSpace;
     @SerializedName("time")
     private String time;
+    private Time datetime;
     private Date dateTime;
     //======Trigger by other event(can be updated)========
     private boolean triggeredWhenCalendarEventBegins;
@@ -772,6 +774,27 @@ public class TriggerEvent implements Parcelable {
         this.sensorList[TYPE_PROXIMITY] = isProximity();
         this.sensorList[TYPE_RELATIVE_HUMIDITY] = isRelativeHumidity();
         this.sensorList[TYPE_ROTATION_VECTOR] = isRotation();
+    }
+    /**
+     * transfer datetime from string to Date.
+     *
+     */
+
+    public void setDate(){
+        String year = this.datetime.getYear().trim();
+        String month = this.datetime.getMonth().trim();
+        String day = this.datetime.getDay().trim();
+        String hour = this.datetime.getHour().trim();
+        String minute = this.datetime.getMinute().trim();
+        String second = this.datetime.getSecond().trim();
+        String date = year+"-"+ month + "-" + day+"-"+hour+"-"+minute+"-"+second;
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        try {
+            this.dateTime = sdf.parse(date);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override

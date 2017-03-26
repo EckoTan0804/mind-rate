@@ -42,7 +42,6 @@ import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
-import com.example.mindrate.util.TimeUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -74,9 +73,9 @@ public class OverviewActivity extends BaseActivity {
     private static OverviewActivity instance = null;
     private static boolean needIntent = true;
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
-
+    //Calendar calendar0 = Calendar.getInstance();
+    //private long timeDiff =calendar0.getTimeInMillis()-TimeZone.getDefault().getRawOffset();
     private Proband proband;
-
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList;
 
@@ -239,7 +238,7 @@ public class OverviewActivity extends BaseActivity {
             addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
         }
         //modified bug for nullpointerexception
-        this.allQuestionnaireList.remove(probandInfoQuestionnaire);
+//        this.allQuestionnaireList.remove(probandInfoQuestionnaire);
 
         TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
         for (Questionnaire questionnaire : allQuestionnaireList) {
@@ -249,6 +248,7 @@ public class OverviewActivity extends BaseActivity {
                     triggerEvent.setSensorList(new boolean[12]);
                 }
                 triggerEvent.setSensor();
+                triggerEvent.setDate();
                 TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
 
         }
@@ -773,17 +773,18 @@ public class OverviewActivity extends BaseActivity {
         AlarmManager alarmManager1 = alarmManager;
         int index = 0;
         for (Questionnaire questionnaire : triggeredByDateQuestionnaireList) {
-            //格式是否正确？
-            long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime();
-
-            if (triggeredtDate >= TimeUtil.getCurrentTime().getTime()) {
-                Log.d(TAG, String.valueOf(triggeredtDate - TimeUtil.getCurrentTime().getTime()));
-                //要不要判断时间点是否已经过去
+            TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
+            Calendar calendar1 = Calendar.getInstance();
+            Log.i(TAG, calendar1.getTimeZone().toString());
+            Date currentDate = calendar1.getTime();
+            long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime() - 7200000;
+            if (triggeredtDate >= currentDate.getTime()) {
+                Log.d(TAG, String.valueOf(triggeredtDate - currentDate.getTime()));
                 Intent intent = new Intent("addQuestionnaireToList");
                 //intent.setAction("addQuestionnaireToList");
                 Log.d(TAG, intent.getAction());
                 intent.putExtra("questionnaireID",
-                                questionnaire.getTriggerEvent().getQuestionnaireID());
+                                questionnaire.getQuestionnaireID());
                 Log.d(TAG, intent.getStringExtra("questionnaireID"));
                 PendingIntent sender = PendingIntent
                         .getBroadcast(OverviewActivity.this, index, intent,
@@ -818,7 +819,7 @@ public class OverviewActivity extends BaseActivity {
             inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i].trim());
             //System.out.println(String.valueOf(time2[i]));
         }
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+1"));
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
         Calendar calendar1 = Calendar.getInstance();
         Log.i(TAG, calendar1.getTimeZone().toString());
         //calendar1.setTimeZone(TimeZone.getTimeZone("GMT+1"));
@@ -835,7 +836,7 @@ public class OverviewActivity extends BaseActivity {
                 inputTimeListOfInteger[2];
         long nowTime = currentTimeListOfInteger[0] * 60 * 60 + currentTimeListOfInteger[1] * 60 +
                 currentTimeListOfInteger[2];
-        Log.i(TAG, String.valueOf(setTime - nowTime));
+        Log.i(TAG, String.valueOf(setTime - nowTime)+" settime");
         if (setTime >= nowTime) {
             todayshouldtriggered = true;
         }
