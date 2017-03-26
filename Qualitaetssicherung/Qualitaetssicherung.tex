@@ -387,9 +387,18 @@ Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weit
 		  \section{Android-App}
 		
 			  \begin{itemize}
-				  \item \textbf{Fehlersymptom:}
-				  	\par \textbf{Fehlergrund:}
-			  		\par \textbf{Fehlerbehebung:}
+				   \item \textbf{Fehlersymptom:} java.lang.illegalstateexception in Klasse OverviewActivity
+				  	\par \textbf{Fehlergrund:} Wenn Proband die App erst mal öffnet,dann ist die ``Proband-Info'' Fragbogen schon vorliegend. Die json-Daten der klasse``TriggerEvent'' des Fragebogenes sind ein Null-Objekt. Deshalb erscheint Exception in Applikation.
+			  		\par \textbf{Fehlerbehebung:} Wenn ein Fragebogen ``Proband-Info'' Fragbogen ist, dann ist dieser Fragebogen ein Sonderfall.
+                  \item \textbf{Fehlersymptom:} Wenn Ein Fragebogen den Temperatur-Sensor aufgerufen hat, wird der Fragebogen nicht ausgel\"ost.
+				  \par \textbf{Fehlergrund:}Es gibt 2  Sensoren \"uber Temperatur in Android. {\color{blue}{TYPE-TEMPERATURE }} und {\color{blue}{TYPE-AMBIENT-TEMPERATURE }}. Aber jetzt ist der Sensor {\color{blue}{TYPE-TEMPERATURE }} entfernt, und nur der Sensor {\color{blue}{TYPE-AMBIENT-TEMPERATURE }} wird benutzt. Leider wird Sensor {\color{blue}{TYPE-TEMPERATURE }} auf Android Virtual Device immer benutzt.
+			  	  \par\textbf{Fehlerbehebung:} ——
+
+                  \item \textbf{Fehlersymptom:} com.google.gson.JsonSyntaxException
+				  \par \textbf{Fehlergrund:} Es gibt Fehler in der Form der Json-Daten von Server zu App.
+			  	  \par\textbf{Fehlerbehebung:} Durch Hilfswebseite f\"ur Json Format.
+
+
 			  \end{itemize}
 			
 			
@@ -408,16 +417,16 @@ Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weit
                  \par Einige nicht getestete Methoden sind noch nicht gelöscht, weil die App eine M\"oglichkeit der Erweiterung hat. Z.B. Die anwendbare Sensoren kann zugenommen werden. Viele Methode f\"ur die nicht genutzte Sensoren sind noch nicht gelöscht.
 
                \begin{itemize}
-               \item Test 
+               \item Test
                \par Es gibt c.a. 80 Teste.
                \begin{figure}[ht]
                     \centering
                     \includegraphics[scale = 0.5]{AndroidTest.jpg}
                     \caption{AndroidTest}
                 \end{figure}
-                
-                \item Test\"uberdeckung  
-                \par Einige Methoden über UI sind nicht getestet. 
+
+                \item Test\"uberdeckung
+                \par Einige Methoden über UI sind nicht getestet.
                 \begin{figure}[ht]
                     \centering
                     \includegraphics[scale = 0.5]{Coverage.jpg}
