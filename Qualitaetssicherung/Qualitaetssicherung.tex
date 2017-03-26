@@ -284,7 +284,7 @@
                         \par {\color{red}{\textbf{\st{Aktion: }}\st{Der Proband w\"ahlt einen Fragebogen aus ``My Questionnaires'' }}}
                         \par {\color{blue}{\textbf{Aktion: }Der Proband klickt den Men\"u-Button und den Button`` Questionnaires'' im Men\"u}}
                         \par {\color{red}{\textbf{\st{Reaktion: }}\st{Der Proband wird auf die erste Frage des gew\"ahlten Fragebogens weitergeleitet}}}
-                        \par {\color{blue}{\textbf{Reaktion: }Der Fragebogen \"uber die Informationen des Probandes ``Hello World! '' ist vorliegend. Proband kann zuerst diesen Proband-Info-Fragebogen antworten.}}
+                        \par {\color{blue}{\textbf{Reaktion: }Der Fragebogen \"uber die Informationen des Probandes ``Hello World! '' ist vorliegend. Proband kann zuerst diesen Proband-Info-Fragebogen beantworten.}}
                         \item \par {\color{blue}{\textbf{Stand: }Der Proband hat diesen Proband-Info-Fragebogen beantwortet und ein Fragebogen ist ausgel\"ost. }}
                         \par {\color{blue}{\textbf{Aktion: }Der Proband w\"ahlt diesen ausgelösten Fragebogen aus ``Questionnaires'' }}
                         \par {\color{blue}{\textbf{Reaktion: }Der Proband wird auf die erste Frage des gew\"ahlten Fragebogens weitergeleitet}}
@@ -333,7 +333,7 @@
 
 
             \section{Szenario 2}
-	            \par Informatikstudentin Elsa nimmt an einer ESM-Studie teil. Dafür bekommt sie eine Studien-ID {\color{red}{\st{``9527'' }}}von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. {\color{blue}{Zuerst muss Elsa auf der ``choose Language'' Seite eine Sprache auswahlen.Sie klickt ``English'' Button und Englisch wird als die Sprache der Applikation ausgew\"ahlt.}} Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID{\color{blue}{, Proband-ID}} und {\color{red}{\st{ihres Alter}}} {\color{blue}{ihrer Geburtstag }} und Geschlecht {\color{blue}{und auch Beruf}} einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' {\color{red}{\st{und noch keinen Fragebogen wird gezeigt}}}.
+	            \par Informatikstudentin Elsa nimmt an einer ESM-Studie teil. Dafür bekommt sie eine Studien-ID {\color{red}{\st{``9527'' }}}von dem Studienleiter Prof. Dr. Mata. Sie ladet die Android-App Mind-Rate herunter und \"offnet sie. {\color{blue}{Zuerst muss Elsa auf der ``choose Language'' Seite eine Sprache auswahlen.Sie klickt ``English'' Button und Englisch wird als die Sprache der Applikation ausgew\"ahlt.}} Dann wird Elsa auf der ``User Login'' Seite angefordert, die Studien-ID{\color{blue}{, Proband-ID}} und {\color{red}{\st{ihres Alter}}} {\color{blue}{ihren Geburtstag }} und Geschlecht {\color{blue}{und auch Beruf}} einzugeben. Nach der Eingabe wechselt die App auf ``Homepage'' {\color{red}{\st{und noch keinen Fragebogen wird gezeigt}}}.
 
 
 
@@ -366,9 +366,9 @@ Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weit
 
                 \par {\color{blue}{Prof. Dr. Mata hat zuf\"allig mitbekommen, dass seine Studentin Elsa gerade einen Fragebogen seiner Studie ``Hello World'' beantwortet hat. Er ist so gespannt auf ihre Antwort und \"offnet die Mind-Rate Webseite. Nachdem er sich angemeldet hat, klickt er auf ``Studies'' und es gibt schon ganz viele Studien.}}
 
-                \par {\color{blue}{Um die Studie ``Hello World'', die er als erste erstellt hat, zu finden, klickt er in der erster Zeile ``ID''. Dann erscheint in diesem K\"astchen ein Pfeil nach oben und die Studien werden nach ihren IDs aufsteigend sortiert. Jetzt steht ganz oben die Studie ``Hello World''. In dieser Zeile sieht Prof. Dr. Mata, dass ``Answer updated times'' nun ``1'' ist.}}
+                \par {\color{blue}{Um die Studie ``Hello World'', die er als Erste erstellt hat, zu finden, klickt er in der erster Zeile ``ID''. Dann erscheint in diesem K\"astchen ein Pfeil nach oben und die Studien werden nach ihren IDs aufsteigend sortiert. Jetzt steht ganz oben die Studie ``Hello World''. In dieser Zeile sieht Prof. Dr. Mata, dass ``Answer updated times'' nun ``1'' ist.}}
 
-				\par {\color{blue}{Er m\"ochte jetzt die Antwort sehen. Daher klickt er auf den K\"astchen neben den Name der Studie, w\"ahlt ``Delete selected studies'' und klickt auf ``Go''. Dann wird eine CSV-Datei heruntergeladen. Er \"offnet die Datei und kann schließlich alle Informationen \"uber die Antwort sehen: Studien-ID, Fragebogen-ID, Frage, Antwort, Antwortzeit und Sensorwert. Er ist mit seiner Arbeit sehr zufrieden.}}
+				\par {\color{blue}{Er m\"ochte jetzt die Antwort sehen. Daher klickt er auf den K\"astchen neben dem Name der Studie, w\"ahlt ``Delete selected studies'' und klickt auf ``Go''. Dann wird eine CSV-Datei heruntergeladen. Er \"offnet die Datei und kann schließlich alle Informationen \"uber die Antwort sehen: Studien-ID, Fragebogen-ID, Frage, Antwort, Antwortzeit und Sensorwert. Er ist mit seiner Arbeit sehr zufrieden.}}
 		      		           \vspace*{0.3cm}
 		      		           \par \textbf{Ergebnis: }\textcolor{green}{Erfolg}
 		      		           \vspace*{0.6cm}  	
@@ -388,7 +388,7 @@ Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weit
 		
 			  \begin{itemize}
 				   \item \textbf{Fehlersymptom:} java.lang.illegalstateexception in Klasse OverviewActivity
-				  	\par \textbf{Fehlergrund:} Wenn Proband die App erst mal öffnet,dann ist die ``Proband-Info'' Fragbogen schon vorliegend. Die json-Daten der klasse``TriggerEvent'' des Fragebogenes sind ein Null-Objekt. Deshalb erscheint Exception in Applikation.
+				  	\par \textbf{Fehlergrund:} Wenn Proband die App erst mal öffnet,dann ist der ``Proband-Info'' Fragbogen schon vorliegend. Die json-Daten der Klasse``TriggerEvent'' des Fragebogenes sind ein Null-Objekt. Deshalb erscheint Exception in Applikation.
 			  		\par \textbf{Fehlerbehebung:} Wenn ein Fragebogen ``Proband-Info'' Fragbogen ist, dann ist dieser Fragebogen ein Sonderfall.
                   \item \textbf{Fehlersymptom:} Wenn Ein Fragebogen den Temperatur-Sensor aufgerufen hat, wird der Fragebogen nicht ausgel\"ost.
 				  \par \textbf{Fehlergrund:}Es gibt 2  Sensoren \"uber Temperatur in Android. {\color{blue}{TYPE-TEMPERATURE }} und {\color{blue}{TYPE-AMBIENT-TEMPERATURE }}. Aber jetzt ist der Sensor {\color{blue}{TYPE-TEMPERATURE }} entfernt, und nur der Sensor {\color{blue}{TYPE-AMBIENT-TEMPERATURE }} wird benutzt. Leider wird Sensor {\color{blue}{TYPE-TEMPERATURE }} auf Android Virtual Device immer benutzt.
@@ -412,9 +412,9 @@ Sie \"offnet erneut die App und wird automatisch auf die Seite ``Homepage'' weit
 			
 			\section{Android-App}
                  Beschreibung:
-                 \par Wir haben viele Methoden noch nicht getestet. Diese nicht getestete Methoden umfasst viele set- und get-Mthoden, einige private Metode in service- und activity-klasse.
-                 \par Die Methoden in den wichtigsten Klassen wird so viel wie m\"oglich getestet.
-                 \par Einige nicht getestete Methoden sind noch nicht gelöscht, weil die App eine M\"oglichkeit der Erweiterung hat. Z.B. Die anwendbare Sensoren kann zugenommen werden. Viele Methode f\"ur die nicht genutzte Sensoren sind noch nicht gelöscht.
+                 \par Wir haben viele Methoden noch nicht getestet. Diese nicht getesteten Methoden umfassen viele set- und get-Mthoden, einige privaten Metoden in service- und Activity-Klasse.
+                 \par Die Methoden in den wichtigsten Klassen werden so viel wie m\"oglich getestet.
+                 \par Einige nicht getesteten Methoden sind noch nicht gelöscht, weil die App eine M\"oglichkeit der Erweiterung hat. Z.B. Die anwendbaren Sensoren können zugenommen werden. Viele Methoden f\"ur die nicht genutzten Sensoren sind noch nicht gelöscht.
 
                \begin{itemize}
                \item Test
