@@ -751,13 +751,13 @@ public class OverviewActivity extends BaseActivity {
             //intent.setAction("addQuestionnaireToList");
             Log.d(TAG, intent.getAction());
             intent.putExtra("questionnaireID",
-                            questionnaire.getTriggerEvent().getQuestionnaireID());
-            Log.d(TAG, intent.getStringExtra("questionnaireID"));
+                            questionnaire.getQuestionnaireID());
+           Log.d(TAG, intent.getStringExtra("questionnaireID"));
             PendingIntent sender = PendingIntent.getBroadcast(OverviewActivity.this, index, intent,
                                                               PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP, triggeredTime, oneDay, sender);
             index++;
-            Log.d(TAG, String.valueOf(index));
+//            Log.d(TAG, String.valueOf(index));
         }
 
     }
@@ -815,7 +815,7 @@ public class OverviewActivity extends BaseActivity {
         String[] inputTimeList = inputTime.split("-");
         Integer[] inputTimeListOfInteger = new Integer[inputTimeList.length];
         for (int i = 0; i < inputTimeList.length; i++) {
-            inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i]);
+            inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i].trim());
             //System.out.println(String.valueOf(time2[i]));
         }
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+1"));
