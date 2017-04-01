@@ -42,6 +42,7 @@ import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
+import com.example.mindrate.util.TimeUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -95,6 +96,8 @@ public class OverviewActivity extends BaseActivity {
     //private List<Sensor> allSensors;
     private TriggerEventManager triggerEventManager;
     private RelativeLayout title;
+    //private int indexForDate = 0;
+    //private int indexForTime = 0;
 
     // =======================================================================
     //    WelcomeFragment welcomeFragment = new WelcomeFragment();
@@ -232,7 +235,7 @@ public class OverviewActivity extends BaseActivity {
         // proband info questionnaire
         Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
                 (questionnaireJSON);
-        // bug2 22;12 03.22
+
         if (probandInfoQuestionnaire != null&&(probandInfoQuestionnaire.getQuestionList().size()
                 !=0)) {
             addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
@@ -740,24 +743,27 @@ public class OverviewActivity extends BaseActivity {
      */
     private void setEveryTriggeredTimeQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
+        /*if(indexForTime<=indexForDate){
+            indexForTime = indexForDate+1;
+        }*/
         int index = 0;
         long oneDay = 1000 * 60 * 60 * 24;
         for (Questionnaire questionnaire : triggeredByTimeQuestionnaireList) {
-            //格式是否正确？
             long triggeredTime = this.transferTriggeredTimeToTriggerAtMillis(questionnaire
                                                                                      .getTriggerEvent()
                                                                                      .getTime());
             Intent intent = new Intent("addQuestionnaireToList");
             //intent.setAction("addQuestionnaireToList");
-            Log.d(TAG, intent.getAction());
+            Log.i(TAG, "Time "+intent.getAction());
             intent.putExtra("questionnaireID",
                             questionnaire.getQuestionnaireID());
-           Log.d(TAG, intent.getStringExtra("questionnaireID"));
+           Log.i(TAG, "Time "+intent.getStringExtra("questionnaireID"));
             PendingIntent sender = PendingIntent.getBroadcast(OverviewActivity.this, index, intent,
                                                               PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP, triggeredTime, oneDay, sender);
+            //indexForTime++;
             index++;
-//            Log.d(TAG, String.valueOf(index));
+           Log.d(TAG, "Time index "+String.valueOf(index));
         }
 
     }
@@ -771,30 +777,39 @@ public class OverviewActivity extends BaseActivity {
 
     private void setEveryTriggeredDateQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
-        int index = 0;
+        int index = 10000;
+        /*if(indexForDate<=indexForTime){
+            indexForDate = indexForTime+1;
+        }*/
         for (Questionnaire questionnaire : triggeredByDateQuestionnaireList) {
             TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
             Calendar calendar1 = Calendar.getInstance();
-            Log.i(TAG, calendar1.getTimeZone().toString());
+           // Log.i(TAG, calendar1.getTimeZone().toString());
             Date currentDate = calendar1.getTime();
-            long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime() - 7200000;
-            if (triggeredtDate >= currentDate.getTime()) {
-                Log.d(TAG, String.valueOf(triggeredtDate - currentDate.getTime()));
+           // Log.i(TAG, currentDate.toString());
+           // Log.i(TAG, "currentDate"+String.valueOf(currentDate.getTime()));
+            long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime();
+           // Log.i(TAG, "triggeredtDate"+String.valueOf(triggeredtDate));
+            // -7200000;
+           // Log.i(TAG, "TimeUtil"+String.valueOf(TimeUtil.getCurrentTime().getTime()));
+            if (triggeredtDate >= TimeUtil.getCurrentTime().getTime()) {
+                Log.i(TAG, "Date "+String.valueOf((triggeredtDate - currentDate.getTime())/1000));
                 Intent intent = new Intent("addQuestionnaireToList");
                 //intent.setAction("addQuestionnaireToList");
-                Log.d(TAG, intent.getAction());
+                Log.i(TAG, "Date "+intent.getAction());
                 intent.putExtra("questionnaireID",
                                 questionnaire.getQuestionnaireID());
-                Log.d(TAG, intent.getStringExtra("questionnaireID"));
+                Log.i(TAG, "Date "+intent.getStringExtra("questionnaireID"));
                 PendingIntent sender = PendingIntent
                         .getBroadcast(OverviewActivity.this, index, intent,
                                       PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, triggeredtDate, sender);
+               // indexForDate++;
                 index++;
-                Log.d(TAG, String.valueOf(index));
+                Log.i(TAG, "Date index "+String.valueOf(index));
 
             } else {
-                Log.d(TAG, "Sorry,time is out,the questionnaire will not be added");
+                Log.i(TAG, "Date "+"Sorry,time is out,the questionnaire will not be added");
             }
 
         }
@@ -821,7 +836,7 @@ public class OverviewActivity extends BaseActivity {
         }
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
         Calendar calendar1 = Calendar.getInstance();
-        Log.i(TAG, calendar1.getTimeZone().toString());
+        Log.i(TAG, "Time "+calendar1.getTimeZone().toString());
         //calendar1.setTimeZone(TimeZone.getTimeZone("GMT+1"));
         Date currentDate = calendar1.getTime();
         DateFormat sdf = new SimpleDateFormat("HH-mm-ss");
@@ -836,15 +851,15 @@ public class OverviewActivity extends BaseActivity {
                 inputTimeListOfInteger[2];
         long nowTime = currentTimeListOfInteger[0] * 60 * 60 + currentTimeListOfInteger[1] * 60 +
                 currentTimeListOfInteger[2];
-        Log.i(TAG, String.valueOf(setTime - nowTime)+" settime");
+        Log.i(TAG, "Time "+String.valueOf(setTime - nowTime)+" settime");
         if (setTime >= nowTime) {
             todayshouldtriggered = true;
         }
         //============test==============
         if (todayshouldtriggered) {
-            Log.i(TAG, "will add a questionnaire");
+            Log.i(TAG, "Time "+"will add a questionnaire");
         } else {
-            Log.i(TAG, "will Tomorrow add a questionnaire");
+            Log.i(TAG, "Time "+"will Tomorrow add a questionnaire");
         }
 
         if (todayshouldtriggered) {

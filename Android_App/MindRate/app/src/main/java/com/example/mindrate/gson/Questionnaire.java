@@ -467,7 +467,7 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         // sensor are triggered.if it has one sensor are not triggered,will return false.
         // (compound condition)
         boolean helpVariate = true;
-        boolean[] sensorList = new boolean[12];//用到的sensor是否达到触发条件
+        boolean[] sensorList = new boolean[12];
         float[][] dataOfAllSensor = inputDataOfAllSensor;
         for (int i = 0; i < this.triggerEvent.getSensorList().length; i++) {
             if (this.triggerEvent.getSensorList()[i]) {
