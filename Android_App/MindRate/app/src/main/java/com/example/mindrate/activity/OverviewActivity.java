@@ -243,6 +243,7 @@ public class OverviewActivity extends BaseActivity {
                     triggerEvent.setSensorList(new boolean[12]);
                 }
                 triggerEvent.setSensor();
+                TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
                 triggerEvent.setDate();
 
                 TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
@@ -781,8 +782,6 @@ public class OverviewActivity extends BaseActivity {
             Date currentDate = calendar1.getTime();
             long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime();
 
-            //For Andorid Emulator only!
-            triggeredtDate = triggeredtDate - 7200000;
             if (triggeredtDate >= TimeUtil.getCurrentTime().getTime()) {
                 Log.i(TAG, "Date "+String.valueOf((triggeredtDate - currentDate.getTime())/1000));
                 Intent intent = new Intent("addQuestionnaireToList");
