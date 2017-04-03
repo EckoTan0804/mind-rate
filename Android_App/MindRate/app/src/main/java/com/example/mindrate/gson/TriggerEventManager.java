@@ -151,7 +151,7 @@ public class TriggerEventManager extends Observable{
      */
     public void setOverviewActivity(OverviewActivity overviewActivity){
 
-        this.overviewActivity = overviewActivity;//应当写成一个static方法
+        this.overviewActivity = overviewActivity;
 
     }
 

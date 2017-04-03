@@ -404,7 +404,6 @@ public class Questionnaire implements Parcelable, Observer, Cloneable {
         float[][] dataOfAllSensor = triggerEventManager.getDataOfAllSensor();
 
 
-        //===================写成一个方法==========================================
         if (this.compareDataOfAllSensor(dataOfAllSensor)) {
             this.setSensorDataWhenTriggered(dataOfAllSensor);
             //TimeUtil?

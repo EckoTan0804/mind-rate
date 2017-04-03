@@ -27,16 +27,8 @@ import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.fragment.SettingFragment;
 import com.example.mindrate.fragment.WelcomeFragment;
-import com.example.mindrate.gson.DragScale;
-import com.example.mindrate.gson.Duration;
-import com.example.mindrate.gson.MultipleChoice;
-import com.example.mindrate.gson.Option;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
-import com.example.mindrate.gson.SingleChoice;
-import com.example.mindrate.gson.StepScale;
-import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
@@ -545,6 +537,7 @@ public class OverviewActivity extends BaseActivity {
     // =========================================================================
 
     // test data
+    /*
     private void initTestData() {
 
         //        String list = PreferenceUtil.getString("questionnaireJSON", "");
@@ -702,7 +695,7 @@ public class OverviewActivity extends BaseActivity {
         //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
 
     }
-
+*/
     /**
      * Helper method.Gets instance for class overviewActivity.
      *
