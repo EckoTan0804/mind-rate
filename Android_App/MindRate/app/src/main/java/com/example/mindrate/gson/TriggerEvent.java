@@ -29,6 +29,11 @@ public class TriggerEvent implements Parcelable {
     private int minTimeSpace;
     @SerializedName("time")
     private String time;
+
+    public Time getDatetime() {
+        return datetime;
+    }
+
     private Time datetime;
     private Date dateTime;
     //======Trigger by other event(can be updated)========
@@ -781,18 +786,22 @@ public class TriggerEvent implements Parcelable {
      */
 
     public void setDate(){
-        String year = this.datetime.getYear().trim();
-        String month = this.datetime.getMonth().trim();
-        String day = this.datetime.getDay().trim();
-        String hour = this.datetime.getHour().trim();
-        String minute = this.datetime.getMinute().trim();
-        String second = this.datetime.getSecond().trim();
-        String date = year+"-"+ month + "-" + day+"-"+hour+"-"+minute+"-"+second;
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-        try {
-            this.dateTime = sdf.parse(date);
-        }catch(Exception e){
-            e.printStackTrace();
+        if(this.datetime!=null) {
+            String year = this.datetime.getYear().trim();
+            String month = this.datetime.getMonth().trim();
+            String day = this.datetime.getDay().trim();
+            String hour = this.datetime.getHour().trim();
+            String minute = this.datetime.getMinute().trim();
+            String second = this.datetime.getSecond().trim();
+            String date = year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+            try {
+                this.dateTime = sdf.parse(date);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            this.dateTime = null;
         }
 
     }
