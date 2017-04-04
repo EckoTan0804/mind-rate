@@ -200,7 +200,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                 } else if (this.nextOrSubmit == SUBMIT) {
 
                     // record last question's answer
-                    recordAnswer();
+                    //recordAnswer();
 
                     //                    StringBuilder builder = new StringBuilder();
                     //                    for (QuestionAnswer answer : this.questionnaireAnswer
