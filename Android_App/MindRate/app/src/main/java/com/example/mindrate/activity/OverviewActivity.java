@@ -243,7 +243,7 @@ public class OverviewActivity extends BaseActivity {
                     triggerEvent.setSensorList(new boolean[12]);
                 }
                 triggerEvent.setSensor();
-                TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
+                TimeZone.setDefault(TimeZone.getTimeZone("GTM+0"));
                 triggerEvent.setDate();
 
                 TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
