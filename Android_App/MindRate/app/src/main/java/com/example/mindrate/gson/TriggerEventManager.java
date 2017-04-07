@@ -48,7 +48,7 @@ public class TriggerEventManager extends Observable{
     private TriggerEventManager(){
         this.questionnaireList = null;
         this.dataOfAllSensor = new float[12][3];
-        this.shouldAnswerQuestionnaire = new CopyOnWriteArrayList();
+        this.shouldAnswerQuestionnaire = new CopyOnWriteArrayList<>();
     }
 
     private static final TriggerEventManager TRIGGER_EVENT_MANAGER = new TriggerEventManager();
