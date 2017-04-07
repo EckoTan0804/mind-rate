@@ -35,7 +35,7 @@
 
     <!--settings-->
     <string name="language">Sprache</string>
-    <string name="language_summary">Klicken Sie, um die Sprache zu wählen.</string>
+    <!--<string name="language_summary">Klicken Sie, um die Sprache zu wählen.</string>-->
     <string name="choose_language_dialog_title">Bitte wahlen Sie Sprache aus.</string>
 
     <!--submit answer-->
@@ -62,4 +62,18 @@
     <string name="edit_text_hint">Bitte geben Sie ein.</string>
     <string name="developer">Entwickler</string>
     <string name="hello_world">Hallo Welt!</string>
+
+    <!--languages-->
+    <string-array name="languages_show">
+        <item>English</item>
+        <item>Deutsch</item>
+        <!--<item></item>-->
+    </string-array>
+
+    <string-array name="languages_value">
+        <item>en</item>
+        <item>de</item>
+        <!--<item></item>-->
+    </string-array>
+
 </resources>
