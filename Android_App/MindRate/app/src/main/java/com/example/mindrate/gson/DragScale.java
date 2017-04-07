@@ -13,18 +13,34 @@ import android.widget.TextView;
 import com.example.mindrate.util.FontUtil;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:20
+ *
+ * This class aims to model DragScale question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:20</br>
  */
 
 public class DragScale extends QuestionType implements Parcelable {
 
+    /**
+     * maximal value for the seekBar
+     */
     private int maxValue;
 
+    public DragScale() {
+        super("DragScale");
+    }
+
+    /**
+     * Constructor
+     *
+     * @param maxValue maximal value for the seekBar
+     */
     public DragScale(int maxValue) {
+        super("DragScale");
         this.maxValue = maxValue;
     }
 
@@ -33,7 +49,7 @@ public class DragScale extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "DragScale");
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -46,6 +62,7 @@ public class DragScale extends QuestionType implements Parcelable {
         // =============== TextView ===============================================
         final TextView tv_seekBarProgress = new TextView(context);
         tv_seekBarProgress.setGravity(Gravity.CENTER_HORIZONTAL);
+        tv_seekBarProgress.setText("  / " + maxValue);
         params.setMargins(0, 20, 0, 0);
         layout.addView(tv_seekBarProgress, params);
 
@@ -55,6 +72,7 @@ public class DragScale extends QuestionType implements Parcelable {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 tv_seekBarProgress.setText(progress + " / " + maxValue);
                 questionAnswer.setAnswerContent(Integer.toString(progress));
+                setAnswered(true);
             }
 
             @Override
@@ -72,6 +90,17 @@ public class DragScale extends QuestionType implements Parcelable {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof DragScale) {
+            DragScale dragScale = (DragScale) obj;
+            return this.maxValue == dragScale.maxValue;
+        } else {
+            return false;
+        }
+    }
+
+    // ================== setters and getters ======================================
     public int getMaxValue() {
         return maxValue;
     }
@@ -79,6 +108,15 @@ public class DragScale extends QuestionType implements Parcelable {
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
+
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
+    }
+
+    // =============================================================================
+
+    // ================= Parcelable ================================================
 
     @Override
     public int describeContents() {

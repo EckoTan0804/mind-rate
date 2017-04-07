@@ -9,25 +9,39 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.example.mindrate.util.FontUtil;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:17
+ * This class aims to model MultipleChoice question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:17</br>
  */
 
 public class MultipleChoice extends QuestionType implements CompoundButton
         .OnCheckedChangeListener, Parcelable {
 
+    @SerializedName("options")
     private ArrayList<Option> optionList;
     private ArrayList<String> answerList;
 
+    public MultipleChoice() {
+        super("MultipleChoice");
+    }
+
+    /**
+     * Constructor
+     *
+     * @param optionList the offered options
+     */
     public MultipleChoice(ArrayList<Option> optionList) {
+        super("MultipleChoice");
         this.optionList = optionList;
         this.answerList = new ArrayList<>();
     }
@@ -37,7 +51,7 @@ public class MultipleChoice extends QuestionType implements CompoundButton
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "MultipleChoice");
 
         for (int i = 0; i <optionList.size(); i++) {
             Option option = optionList.get(i);
@@ -51,6 +65,49 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         FontUtil.changeFonts(layout, context);
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        int checkNum = 0;
+        if (isChecked) {
+            this.answerList.add(compoundButton.getText().toString());
+            checkNum++;
+            setAnswered(true);
+        } else {
+            this.answerList.remove(compoundButton.getText().toString());
+            if (--checkNum == 0) {
+                setAnswered(false);
+            }
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof MultipleChoice) {
+            MultipleChoice multipleChoice = (MultipleChoice) obj;
+            if (this.optionList == null && multipleChoice.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && multipleChoice.optionList != null) || (this.optionList
+                    != null && multipleChoice.optionList == null)) {
+                return false;
+            }
+            if (this.optionList.size() != multipleChoice.optionList.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < this.optionList.size(); i++) {
+                    if (!this.optionList.get(i).equals(multipleChoice.optionList.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // ==================== setters and getters ===========================================
+
     public List<Option> getOptionList() {
         return optionList;
     }
@@ -59,7 +116,6 @@ public class MultipleChoice extends QuestionType implements CompoundButton
         this.optionList = optionList;
     }
 
-
     @Override
     public QuestionAnswer getQuestionAnswer() {
         questionAnswer.setAnswerContent(this.answerList.toString());
@@ -67,14 +123,13 @@ public class MultipleChoice extends QuestionType implements CompoundButton
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        if (isChecked) {
-            this.answerList.add(compoundButton.getText().toString());
-        } else {
-            this.answerList.remove(compoundButton.getText().toString());
-        }
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
     }
 
+    // ====================================================================================
+
+    // =================== Parcelable =====================================================
     @Override
     public int describeContents() {
         return 0;

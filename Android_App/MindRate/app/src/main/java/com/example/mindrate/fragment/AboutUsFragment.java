@@ -9,7 +9,17 @@ import android.view.ViewGroup;
 
 import com.example.mindrate.R;
 
-
+/**
+ * This class is the fragment that displays the developers' information.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.fragment</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class AboutUsFragment extends Fragment {
 
 

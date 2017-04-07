@@ -5,11 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: eckotan@icloud.com
- * Created at 2017/1/18:23:18
+ * This class is to model proband's birthday.
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/1/18:23:18</br>
  */
 
 public class Birthday implements Parcelable {
@@ -18,11 +20,20 @@ public class Birthday implements Parcelable {
     private int month;
     private int day;
 
+    /**
+     * Constructor
+     *
+     * @param year year of birth
+     * @param month month of birth
+     * @param day day of birth
+     */
     public Birthday(int year, int month, int day) {
         this.year = year;
         this.month = month;
         this.day = day;
     }
+
+    // ================= setters and getters =========================
 
     public int getYear() {
         return year;

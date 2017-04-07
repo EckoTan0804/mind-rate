@@ -8,6 +8,7 @@
     >
 
     <TextView
+        android:id="@+id/log_in_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -18,7 +19,8 @@
         android:text="@string/log_in_gender"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/textColorPrimary"
-        android:textSize="15sp">
+        android:textSize="15sp"
+        android:visibility="invisible">
     </TextView>
 
     <RadioGroup
@@ -31,6 +33,7 @@
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:visibility="invisible"
         >
 
         <RadioButton
@@ -42,7 +45,8 @@
             android:buttonTint="@color/textColorPrimary"
             android:text="@string/log_in_gender_male"
             android:textAppearance="@style/TextAppearance.FontPath"
-            android:textColor="#fff">
+            android:textColor="#fff"
+            android:checked="true">
         </RadioButton>
 
         <RadioButton

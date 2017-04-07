@@ -13,7 +13,17 @@ import com.example.mindrate.R;
 import com.example.mindrate.gson.Proband;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
+/**
+ * Main Activity, the app starts from this activity
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class MainActivity extends BaseActivity implements Animation.AnimationListener {
 
     private static final String[] LANGUAGES = {"English", "Deutsch"};
@@ -28,6 +38,14 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        // test json parsing
+
+//        String testJson = JsonUtil.createJSON(JsonUtil.initJsonTestData());
+//        List<Questionnaire> list = JsonUtil.fromJsonToQuestionnaireList(testJson);
+
+        // ===================================================
+
         super.onCreate(savedInstanceState);
 
         // set English as default language
@@ -88,6 +106,11 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
         this.proband = proband;
     }
 
+    /**
+     * Switch to different according to proband's log in state:
+     * <li>If the proband is already logged in, then switch to <code>LogInActivity</code></li>
+     * <li>Otherwise switch to <code>OverviewActivity</code></li>
+     */
     private void redirectTo() {
         // TODO: remove comment symbol for next line
 //        isLogIn = PreferenceUtil.getBoolean("isLogIn", false);
@@ -103,6 +126,9 @@ public class MainActivity extends BaseActivity implements Animation.AnimationLis
 
     // ========================== Animation =====================================
 
+    /**
+     * Animation when the app starts.
+     */
     private void myAnim() {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim
                 .my_anim);

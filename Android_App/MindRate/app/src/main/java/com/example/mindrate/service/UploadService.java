@@ -2,17 +2,33 @@ package com.example.mindrate.service;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.example.mindrate.R;
+import com.example.mindrate.activity.LogInActivity;
 import com.example.mindrate.util.HttpUtil;
 
 import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+/**
+ * This class aims to upload questionnaires' answer to server running in background.
+ * <p>
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.service</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class UploadService extends IntentService {
 
+    private static final String TAG = "UploadService";
+
     private static boolean isBound;
-    private final String SERVER = "129.13.170.45";
 
     public UploadService() {
         super("uploadService");
@@ -38,14 +54,17 @@ public class UploadService extends IntentService {
         // get answer from intent
         String answer = intent.getStringExtra("questionnaireAnswer");
         // upload
-        try {
-            HttpUtil.post(SERVER, answer);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(this, getString(R.string.upload_fail), Toast.LENGTH_SHORT).show();
-        } finally {
-            
-        }
+        HttpUtil.post(LogInActivity.SERVER + "/receive_answer/", answer, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.w(TAG, "onResponse: " + response.body().string());
+            }
+        });
     }
 
     @Override

@@ -9,23 +9,37 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.mindrate.util.FontUtil;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:15
+ * This class aims to model a singleChoice question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:15</br>
  */
 
 public class SingleChoice extends QuestionType implements Parcelable {
 
-    private ArrayList<Option> optionlist;
+    @SerializedName("options")
+    private ArrayList<Option> optionList;
 
-    public SingleChoice(ArrayList<Option> optionlist) {
-        this.optionlist = optionlist;
+    public SingleChoice() {
+        super("SingleChoice");
+    }
+
+    /**
+     * Constructor
+     *
+     * @param optionList list of the offered options
+     */
+    public SingleChoice(ArrayList<Option> optionList) {
+        super("SingleChoice");
+        this.optionList = optionList;
     }
 
     @Override
@@ -33,15 +47,13 @@ public class SingleChoice extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-
-
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "SingleChoice");
 
         RadioGroup radioGroup = new RadioGroup(context);
 
         // add radioButton into radioGroup
-        for (int i = 0; i < optionlist.size(); i++) {
-            Option option = optionlist.get(i);
+        for (int i = 0; i < optionList.size(); i++) {
+            Option option = optionList.get(i);
             RadioButton radioButton = new RadioButton(context);
             radioButton.setId(i);
             radioButton.setText(option.getContent());
@@ -52,14 +64,48 @@ public class SingleChoice extends QuestionType implements Parcelable {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
-                questionAnswer.setAnswerContent(optionlist.get(checkedId).getContent());
+                nextQuestionID = optionList.get(checkedId).getNextQuestionID();
+                questionAnswer.setAnswerContent(optionList.get(checkedId).getContent());
+                setAnswered(true);
             }
         });
 
         layout.addView(radioGroup);
 
         FontUtil.changeFonts(layout, context);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof SingleChoice) {
+            SingleChoice singleChoice = (SingleChoice) obj;
+            if (this.optionList == null && singleChoice.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && singleChoice.optionList != null) || (this.optionList
+                    != null && singleChoice.optionList == null)) {
+                return false;
+            }
+            if (this.optionList.size() != singleChoice.optionList.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < this.optionList.size(); i++) {
+                    if (!this.optionList.get(i).equals(singleChoice.optionList.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // ==================== setters and getters ==================================================
+
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(isAnswered);
     }
 
     @Override
@@ -75,6 +121,15 @@ public class SingleChoice extends QuestionType implements Parcelable {
         this.nextQuestionID = nextQuestionID;
     }
 
+    public ArrayList<Option> getOptionList() {
+        return optionList;
+    }
+
+    public void setOptionList(ArrayList<Option> optionList) {
+        this.optionList = optionList;
+    }
+
+    // =================== Parcelable ============================================================
     @Override
     public int describeContents() {
         return 0;
@@ -82,12 +137,12 @@ public class SingleChoice extends QuestionType implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(this.optionlist);
+        dest.writeTypedList(this.optionList);
         dest.writeString(this.nextQuestionID);
     }
 
     protected SingleChoice(Parcel in) {
-        this.optionlist = in.createTypedArrayList(Option.CREATOR);
+        this.optionList = in.createTypedArrayList(Option.CREATOR);
         this.nextQuestionID = in.readString();
     }
 

@@ -87,47 +87,60 @@
                 "questions": [
                     {
                         "questionID": "A1_1_1", // format: studyID_QuestionnaireNr_questionNr
-                        "questionType": "SingleChoice",
-                        "questionContent": "Where are you now?",
-                        "options": [
-                            {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
-                            {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
-                            {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
-                        ]
+                        "questionType": {
+                            "typeName": "SingleChoice"，
+                            "options": [
+                                {"optionContent": "At work", "nextQuestionID": "A1_1_3"},
+                                {"optionContent": "At home", "nextQuestionID": "A1_1_3"},
+                                {"optionContent": "On the way", "nextQuestionID": "A1_1_2"}
+                            ]
+                        }
+                        "questionContent": "Where are you now?"
                     },
                     {
                         "questionID": "A1_1_2",
-                        "questionType": "TextAnswer",
                         "questionContent": "Where are you heading to?"
+                        "questionType": {
+                            "typeName": "TextAnswer",
+                            
+                        }
                     },
                     {
                         "questionID": "A1_1_3",
-                        "questionType": "DragScale", // correspond to steplessScale 
                         "questionContent": "How are you feeling now?",
-                        "maxValue": 10
+                        "questionType": {
+                            "typeName": "DragScale", // correspond to steplessScale 
+                            "maxValue": 10
+                    }
                     },
                     {
                         "questionID": "A1_1_4",
-                        "questionType": "MultipleChoice",
-                        "questionContent": "What's your hobby?",
-                        "options": [
-                            {"optionContent": "Swimming", "nextQuestionID": "" },
-                            {"optionContent": "Reading", "nextQuestionID": ""},
-                            {"optionContent": "Coding", "nextQuestionID": ""},
-                            {"optionContent": "Studying", "nextQuestionID": ""}
-                        ]
+                        "questionContent": "How are you feeling now?",
+                        "questionType": {
+                            "typeName": "MultipleChoice",
+                            "options": [
+                                {"optionContent": "Swimming", "nextQuestionID": "" },
+                                {"optionContent": "Reading", "nextQuestionID": ""},
+                                {"optionContent": "Coding", "nextQuestionID": ""},
+                                {"optionContent": "Studying", "nextQuestionID": ""}
+                            ]
+                        }
                     },
                     {
                         "questionID": "A1_1_5",
-                        "questionType": "StepScale",
-                        "questionContent": "Do you like this app?",
-                        "options": [
-                            {"optionContent": "very bad", "nextQuestionID": "" },
-                            {"optionContent": "bad", "nextQuestionID": ""},
-                            {"optionContent": "so so", "nextQuestionID": ""},
-                            {"optionContent": "good", "nextQuestionID": ""},
-                            {"optionContent": "very good", "nextQuestionID": ""}
-                        ]
+
+                        "questionContent": "How are you feeling now?",
+                        "questionType": {
+                            "typeName": "stepScale",
+                            "options": [
+                                {"optionContent": "very bad", "nextQuestionID": "" },
+                                {"optionContent": "bad", "nextQuestionID": ""},
+                                {"optionContent": "so so", "nextQuestionID": ""},
+                                {"optionContent": "good", "nextQuestionID": ""},
+                                {"optionContent": "very good", "nextQuestionID": ""}
+                            ]
+                        }
+
                     }
                 ]
             },

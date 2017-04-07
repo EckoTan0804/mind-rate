@@ -4,7 +4,11 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
+ * This class aims to model the options of singleChoice question and stepScale question
+ * <p>
  * Project: MindRate
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
@@ -15,12 +19,38 @@ import android.os.Parcelable;
 
 public class Option implements Parcelable {
 
+    @SerializedName("optionContent")
     private String content;
+    @SerializedName("nextQuestionID")
     private String nextQuestionID;
 
+
+    /**
+     * Constructor
+     *
+     * @param content        content of the option
+     * @param nextQuestionID the id of next question that should occurs if the proband chose this
+     *                       option
+     */
     public Option(String content, String nextQuestionID) {
         this.content = content;
         this.nextQuestionID = nextQuestionID;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Option) {
+            Option option = (Option) obj;
+            if (this.nextQuestionID != null && option.nextQuestionID != null) {
+                return this.content.equals(option.content) && this.nextQuestionID.equals(option.nextQuestionID);
+            } else if (this.nextQuestionID == null && option.nextQuestionID == null){
+                return this.content.equals(option.content);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     public String getContent() {

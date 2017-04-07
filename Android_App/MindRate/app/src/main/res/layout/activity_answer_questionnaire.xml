@@ -13,14 +13,14 @@
 
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/questionContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_weight="3"
-        android:background="?attr/colorPrimary"
-        android:padding="25dp"
+        android:background="@color/windowBackgroundColor"
+        android:padding="30dp"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.FontPath"

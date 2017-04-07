@@ -9,23 +9,37 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.mindrate.util.FontUtil;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:19
+ * This class aims to model StepScale question.
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:19</br>
  */
 
 public class StepScale extends QuestionType implements Parcelable {
 
-    private ArrayList<Option> optionlist;
+    @SerializedName("options")
+    private ArrayList<Option> optionList;
 
-    public StepScale(ArrayList<Option> optionlist) {
-        this.optionlist = optionlist;
+    public StepScale() {
+        super("StepScale");
+    }
+
+    /**
+     * Constructor
+     *
+     * @param optionList the offered options (StepScale is kind of <code>SingleChoice</code>)
+     */
+    public StepScale(ArrayList<Option> optionList) {
+        super("StepScale");
+        this.optionList = optionList;
     }
 
     @Override
@@ -33,13 +47,13 @@ public class StepScale extends QuestionType implements Parcelable {
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "StepScale");
 
         RadioGroup radioGroup = new RadioGroup(context);
 
         // add radioButton into radioGroup
-        for (int i = 0; i < optionlist.size(); i++) {
-            Option option = optionlist.get(i);
+        for (int i = 0; i < optionList.size(); i++) {
+            Option option = optionList.get(i);
             RadioButton radioButton = new RadioButton(context);
             radioButton.setId(i);
             radioButton.setText(option.getContent());
@@ -50,8 +64,9 @@ public class StepScale extends QuestionType implements Parcelable {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                nextQuestionID = optionlist.get(checkedId).getNextQuestionID();
-                questionAnswer.setAnswerContent(optionlist.get(checkedId).getContent());
+                nextQuestionID = optionList.get(checkedId).getNextQuestionID();
+                questionAnswer.setAnswerContent(optionList.get(checkedId).getContent());
+                setAnswered(true);
             }
         });
 
@@ -60,6 +75,37 @@ public class StepScale extends QuestionType implements Parcelable {
         FontUtil.changeFonts(layout, context);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof StepScale) {
+            StepScale stepScale = (StepScale) obj;
+            if (this.optionList == null && stepScale.optionList == null) {
+                return true;
+            }
+            if ((this.optionList == null && stepScale.optionList != null) || (this.optionList
+                    != null && stepScale.optionList == null)) {
+                return false;
+            }
+            if (this.optionList.size() != stepScale.optionList.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < this.optionList.size(); i++) {
+                    if (!this.optionList.get(i).equals(stepScale.optionList.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // ================== setters and getters ==================================================
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(true);
+    }
 
     public String getNextQuestionID() {
         return nextQuestionID;
@@ -69,6 +115,10 @@ public class StepScale extends QuestionType implements Parcelable {
         this.nextQuestionID = nextQuestionID;
     }
 
+    // =========================================================================================
+
+    // ================== Parcelable ===========================================================
+
     @Override
     public int describeContents() {
         return 0;
@@ -76,12 +126,12 @@ public class StepScale extends QuestionType implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(this.optionlist);
+        dest.writeTypedList(this.optionList);
         dest.writeString(this.nextQuestionID);
     }
 
     protected StepScale(Parcel in) {
-        this.optionlist = in.createTypedArrayList(Option.CREATOR);
+        this.optionList = in.createTypedArrayList(Option.CREATOR);
         this.nextQuestionID = in.readString();
     }
 

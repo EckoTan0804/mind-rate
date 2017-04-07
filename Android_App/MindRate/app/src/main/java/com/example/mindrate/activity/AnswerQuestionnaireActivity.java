@@ -5,25 +5,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mindrate.R;
 import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
 import com.example.mindrate.gson.QuestionnaireAnswer;
+import com.example.mindrate.gson.Time;
 import com.example.mindrate.service.UploadService;
 import com.example.mindrate.util.JsonUtil;
 import com.example.mindrate.util.PreferenceUtil;
 import com.example.mindrate.util.TimeUtil;
 
+import java.util.Date;
+
+/**
+ * This is the activity in which the proband can answer the triggered questionnaire.
+ * <p>
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class AnswerQuestionnaireActivity extends BaseActivity implements View.OnClickListener {
 
     private final static int NEXT = 1;
     private final static int SUBMIT = 2;
 
+    /**
+     * The flag for the button whose id is next_or_submit
+     */
     private int nextOrSubmit;
     private String nextQuestionID;
     private Question currentQuestion;
@@ -31,7 +51,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     private Questionnaire questionnaire;
 
-//    private UploadService.UploadBinder mUploadBinder;
+    //    private UploadService.UploadBinder mUploadBinder;
 
     // ==================== view components =====================
     private TextView tv_questionnaireID;
@@ -51,15 +71,27 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         initView();
     }
 
+    /**
+     * Initialize data from intent
+     */
     private void initFromIntent() {
         Intent intent = getIntent();
         this.questionnaire = intent.getParcelableExtra("questionnaire");
-        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID());
+        String probandID = intent.getStringExtra("probandID");
+        this.questionnaireAnswer = new QuestionnaireAnswer(this.questionnaire.getQuestionnaireID
+                (), probandID);
+        if(this.questionnaire.getTriggerEvent()!=null) {
+            this.setTriggeredSensorData(this.questionnaireAnswer, this.questionnaire);
+        }
     }
 
+    /**
+     * Initialize view of the activity
+     */
     private void initView() {
 
-        ll_displayAnswerOption = (LinearLayout) findViewById(R.id.activity_answer_questionnaire);
+        //        ll_displayAnswerOption = (LinearLayout) findViewById(R.id
+        // .activity_answer_questionnaire);
 
         tv_questionnaireID = (TextView) findViewById(R.id.title_questionnaireID);
         tv_questionnaireID.setText(questionnaire.getQuestionnaireID());
@@ -77,7 +109,7 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         // ======================================================================
 
         // ================ TextView question ===================================
-        tv_question = (TextView) findViewById(R.id.question);
+        tv_question = (TextView) findViewById(R.id.questionContent);
         // ======================================================================
 
         // ================ LinearLayout displayAnswerOption ====================
@@ -90,11 +122,21 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
     }
 
+    /**
+     * Set button whose id is next_or_submit as button for switching to next question:
+     * Firstly set the flag as "NEXT",
+     * then set the corresponding icon
+     */
     private void setButtonAsNext() {
         this.nextOrSubmit = NEXT;
         this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_arrow_forward);
     }
 
+    /**
+     * Set button whose id is next_or_submit as button for submitting the answer:
+     * Firstly set the flag as "SUBMIT",
+     * then set the corresponding icon
+     */
     private void setButtonAsSubmit() {
         this.nextOrSubmit = SUBMIT;
         this.btn_nextOrSubmit.setImageResource(R.mipmap.ic_done);
@@ -110,37 +152,55 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
 
                 if (this.nextOrSubmit == NEXT) {
 
-                    // 0. add this question's answer to questionnaireAnswer
-                    recordAnswer();
+                    if (this.currentQuestion.isAnswered()) {
+                        // 0. add this question's answer to questionnaireAnswer
+                        recordAnswer();
 
-                    // 1. remove last questions's view
-                    ll_displayAnswerOption.removeAllViews();
+                        // 1. remove last questions's view
+                        ll_displayAnswerOption.removeAllViews();
 
-                    // 2. determine whether nextQuestionID is default or specified
-                    if (currentQuestion.getQuestionType().getNextQuestionID() != null) {
-                        nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
+                        // 2. determine whether nextQuestionID is default or specified
+                        if (!TextUtils
+                                .isEmpty(currentQuestion.getQuestionType().getNextQuestionID())) {
+                            nextQuestionID = currentQuestion.getQuestionType().getNextQuestionID();
+                        } else {
+                            nextQuestionID = this.questionnaire
+                                    .defaultNextQuestionID(currentQuestion);
+                        }
+
+                        if (nextQuestionID != null) {
+
+                            // 3. get next question
+                            Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
+
+                            // 4. next question inflates its view
+                            nextQuestion
+                                    .inflateView(tv_question, this, ll_displayAnswerOption, null);
+
+                            // 5. determine whether next question is the last question
+                            //                        if (this.questionnaire.isLastQuestion
+                            // (nextQuestion)) {
+                            //                            setButtonAsSubmit();
+                            //                        }
+
+                            // 6. Iteration: set nextQuestion as currentQuestion
+                            currentQuestion = nextQuestion;
+                        } else {
+                            this.tv_question.setText(R.string.finish);
+                            this.tv_question.setGravity(Gravity.CENTER);
+                            this.tv_question.setTextSize(40);
+                            setButtonAsSubmit();
+                        }
                     } else {
-                        nextQuestionID = this.questionnaire.defaultNextQuestionID(currentQuestion);
+                        Toast.makeText(this, R.string.question_not_answered, Toast.LENGTH_LONG)
+                                .show();
                     }
 
-                    // 3. get next question
-                    Question nextQuestion = this.questionnaire.getQuestion(nextQuestionID);
-
-                    // 4. next question inflates its view
-                    nextQuestion.inflateView(tv_question, this, ll_displayAnswerOption, null);
-
-                    // 5. determine whether next question is the last question
-                    if (this.questionnaire.isLastQuestion(nextQuestion)) {
-                        setButtonAsSubmit();
-                    }
-
-                    // 6. Iteration: set nextQuestion as currentQuestion
-                    currentQuestion = nextQuestion;
 
                 } else if (this.nextOrSubmit == SUBMIT) {
 
                     // record last question's answer
-                    recordAnswer();
+                    //recordAnswer();
 
                     //                    StringBuilder builder = new StringBuilder();
                     //                    for (QuestionAnswer answer : this.questionnaireAnswer
@@ -165,28 +225,65 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
+                            /*
+                                If questionnaireID is null, that means this questionnaire is
+                                probandInfoQuestionnaire
+                             */
+                            if (questionnaire.getQuestionnaireID() == null) {
+                                questionnaire.setQuestionnaireID("probandInfoQuestionnaire");
+                            }
+
                             // mark down the submit time
-                            questionnaireAnswer.setSubmitTimeString(
-                                    TimeUtil.parseDate(TimeUtil.getCurrentTime()));
+                            Date submitTime = TimeUtil.getCurrentTime();
+                            questionnaireAnswer.setFinishTime(submitTime);
+                            String timeString = TimeUtil.parseDate(submitTime);
+                            String[] array = timeString.split(",");
+                            String[] yearMonthDay = array[0].split("\\.");
+                            String[] hourMinSec = array[1].split(":");
+                            questionnaireAnswer.setSubmitTime(new Time(yearMonthDay[0],
+                                                                       yearMonthDay[1],
+                                                                       yearMonthDay[2],
+                                                                       hourMinSec[0],
+                                                                       hourMinSec[1],
+                                                                       hourMinSec[2]));
+
+                            /*
+                                Check whether the answer is valid or not.
+                                probandInfoQuestionnaire is always valid!
+                             */
+                            if (!questionnaire.getQuestionnaireID().equals
+                                    ("probandInfoQuestionnaire")) {
+                                if (submitTime.after(TimeUtil.calculateTime(questionnaire
+                                                                                    .getTriggerTime()
+                                        , questionnaire.getDuration()))) {
+                                    questionnaireAnswer.setValid(false);
+                                }
+                            }
+
 
                             // create Json
                             String questionnaireAnswerJSON = JsonUtil.createJSON
                                     (questionnaireAnswer);
 
                             // save answer locally
-                            PreferenceUtil.commitString("questionnaireAnswer", questionnaireAnswerJSON);
+                            PreferenceUtil
+                                    .commitString("questionnaireAnswer", questionnaireAnswerJSON);
 
-//                            // if service is not bind, bind service
-//                            if (!UploadService.isBound()) {
-//                                Intent bindIntent = new Intent(AnswerQuestionnaireActivity.this,
-//                                                               UploadService.class);
-//                                bindService(bindIntent, connection, BIND_AUTO_CREATE);
-//                            }
-//
-//                            // add AnswerJSON to upload list
-//                            UploadService.addToAnswerUploadList(questionnaireAnswerJSON);
+                            //                            // if service is not bind, bind service
+                            //                            if (!UploadService.isBound()) {
+                            //                                Intent bindIntent = new Intent
+                            // (AnswerQuestionnaireActivity.this,
+                            //
+                            // UploadService.class);
+                            //                                bindService(bindIntent, connection,
+                            // BIND_AUTO_CREATE);
+                            //                            }
+                            //
+                            //                            // add AnswerJSON to upload list
+                            //                            UploadService.addToAnswerUploadList
+                            // (questionnaireAnswerJSON);
 
-                            // start IntentService
+                            // start IntentService to upload answer
                             Intent uploadService = new Intent(AnswerQuestionnaireActivity.this,
                                                               UploadService.class);
                             uploadService.putExtra("questionnaireAnswer", questionnaireAnswerJSON);
@@ -218,23 +315,59 @@ public class AnswerQuestionnaireActivity extends BaseActivity implements View.On
         }
     }
 
+    //===============set Data of Triggered Sensor=================
+    private void setTriggeredSensorData(QuestionnaireAnswer questionnaireAnswer,
+            Questionnaire questionnaire) {
+        if (questionnaire.getTriggerEvent() != null) {
+
+            if (questionnaire.getTriggerEvent().isAmbientTemperature()) {
+                questionnaireAnswer.getSensorValues().put("ambientTemperature", questionnaire
+                        .getAmbientTemperatureValue());
+            }
+            if (questionnaire.getTriggerEvent().isLight()) {
+                questionnaireAnswer.getSensorValues().put("light", questionnaire.getLightValue());
+            }
+            if (questionnaire.getTriggerEvent().isPressure()) {
+                questionnaireAnswer.getSensorValues().put("pressure", questionnaire
+                        .getPressureValue());
+            }
+            if (questionnaire.getTriggerEvent().isProximity()) {
+                questionnaireAnswer.getSensorValues().put("proximity", questionnaire
+                        .getProximityValue());
+            }
+            if (questionnaire.getTriggerEvent().isRelativeHumidity()) {
+                questionnaireAnswer.getSensorValues().put("relativeHumidity", questionnaire
+                        .getRelativeHumidityValue());
+            }
+        }
+
+    }
+    //=========================
+
+    /**
+     * Record questionnaire's answer
+     */
     private void recordAnswer() {
-        this.questionnaireAnswer.getQuestionAnswerList().add(this.currentQuestion.getQuestionType().getQuestionAnswer());
+        this.questionnaireAnswer.getQuestionAnswerList()
+                .add(this.currentQuestion.getQuestionType().getQuestionAnswer());
     }
 
-//    private ServiceConnection connection = new ServiceConnection() {
-//        @Override
-//        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-//            UploadService.setBound(true);
-//            mUploadBinder = (UploadService.UploadBinder) iBinder;
-//
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName componentName) {
-//            UploadService.setBound(false);
-//        }
-//    };
+    // =============================== setters and getters ===================================
 
 
+    public Questionnaire getQuestionnaire() {
+        return questionnaire;
+    }
+
+    public void setQuestionnaire(Questionnaire questionnaire) {
+        this.questionnaire = questionnaire;
+    }
+
+    public QuestionnaireAnswer getQuestionnaireAnswer() {
+        return questionnaireAnswer;
+    }
+
+    public void setQuestionnaireAnswer(QuestionnaireAnswer questionnaireAnswer) {
+        this.questionnaireAnswer = questionnaireAnswer;
+    }
 }

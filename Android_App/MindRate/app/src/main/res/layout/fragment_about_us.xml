@@ -55,7 +55,7 @@
             android:drawableLeft="@mipmap/ic_group_gray"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:text="Contributors"
+            android:text="@string/developer"
             android:textSize="20sp"
             android:textColor="@color/textColorPrimary"
             android:textAppearance="@style/TextAppearance.FontPath"

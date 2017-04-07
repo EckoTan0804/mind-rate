@@ -1,11 +1,16 @@
 package com.example.mindrate.gson;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
- * Project: MindRate
+ * This class aims to model a questionnaire's answer that consists of questions' answer
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -16,13 +21,67 @@ import java.util.Date;
 public class QuestionnaireAnswer  {
 
     private String questionnaireID;
-    private ArrayList<QuestionAnswer> questionAnswerList;
-    private Date submitTime;
-    private String submitTimeString;
 
-    public QuestionnaireAnswer(String questionnaireID) {
+    @SerializedName("questionAnswer")
+    private ArrayList<QuestionAnswer> questionAnswerList;
+
+//    @Expose(serialize = false, deserialize = false)
+
+    private transient Date finishTime;
+
+    private Time submitTime;
+
+    private String probandID;
+    private boolean isValid;
+    private HashMap<String,Float> sensorValues;
+
+
+    /**
+     * Constructor
+     *
+     * @param questionnaireID questionnaire's id
+     * @param probandID proband's id
+     */
+    public QuestionnaireAnswer(String questionnaireID, String probandID) {
         this.questionnaireID = questionnaireID;
+        this.probandID = probandID;
         this.questionAnswerList = new ArrayList<>();
+        this.isValid = true;
+        this.sensorValues = new HashMap<>();
+
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof QuestionnaireAnswer) {
+            QuestionnaireAnswer questionnaireAnswer = (QuestionnaireAnswer) obj;
+
+            // different questionAnswerList's size --> not equal
+            if (this.questionAnswerList.size() != questionnaireAnswer.questionAnswerList.size()) {
+                return false;
+            } else {
+                // compare every list item
+                for (int i = 0; i < this.questionAnswerList.size(); i++) {
+                    if (!this.questionAnswerList.get(i).equals(questionnaireAnswer
+                                                                       .questionAnswerList.get(i))) {
+                        // if an list element not equals --> not equals
+                        return false;
+                    }
+                }
+                // questionAnswerList equals, then compare questionnaireID and probandID
+                return this.probandID.equals(questionnaireAnswer.probandID) && this
+                        .questionnaireID.equals(questionnaireAnswer.questionnaireID);
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // ================= setters and getters ===============================================
+    public HashMap<String, Float> getSensorValues() {
+        return sensorValues;
     }
 
     public String getQuestionnaireID() {
@@ -45,19 +104,36 @@ public class QuestionnaireAnswer  {
         this.questionAnswerList.add(questionAnswer);
     }
 
-    public Date getSubmitTime() {
+    public Date getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
+    }
+
+
+    public String getProbandID() {
+        return probandID;
+    }
+
+    public void setProbandID(String probandID) {
+        this.probandID = probandID;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public Time getSubmitTime() {
         return submitTime;
     }
 
-    public void setSubmitTime(Date submitTime) {
+    public void setSubmitTime(Time submitTime) {
         this.submitTime = submitTime;
-    }
-
-    public String getSubmitTimeString() {
-        return submitTimeString;
-    }
-
-    public void setSubmitTimeString(String submitTimeString) {
-        this.submitTimeString = submitTimeString;
     }
 }

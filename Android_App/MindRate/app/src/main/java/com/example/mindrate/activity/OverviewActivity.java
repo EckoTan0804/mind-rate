@@ -27,15 +27,8 @@ import com.example.mindrate.fragment.ChooseQuestionnaireFragment;
 import com.example.mindrate.fragment.ProbandProfileFragment;
 import com.example.mindrate.fragment.SettingFragment;
 import com.example.mindrate.fragment.WelcomeFragment;
-import com.example.mindrate.gson.DragScale;
-import com.example.mindrate.gson.MultipleChoice;
-import com.example.mindrate.gson.Option;
 import com.example.mindrate.gson.Proband;
-import com.example.mindrate.gson.Question;
 import com.example.mindrate.gson.Questionnaire;
-import com.example.mindrate.gson.SingleChoice;
-import com.example.mindrate.gson.StepScale;
-import com.example.mindrate.gson.TextAnswer;
 import com.example.mindrate.gson.TriggerEvent;
 import com.example.mindrate.gson.TriggerEventManager;
 import com.example.mindrate.service.DeviceSensorService;
@@ -51,13 +44,31 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * This is the fragment where the proband can switch to different fragements:
+ * <p><code>AboutUsFragment</code></p>
+ * <p><code>ChooseQuestionnaireFragment</code></p>
+ * <p><code>ProbandProfileFragment</code></p>
+ * <p><code>SettingFragment</code></p>
+ * <p><code>WelcomeFragment</code></p>
+ * <p>
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.activity</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class OverviewActivity extends BaseActivity {
+
     private static final String TAG = "OverviewActivity";
     private static OverviewActivity instance = null;
+    private static boolean needIntent = true;
     //myBroadcastReceiver receiver = new  myBroadcastReceiver();
-
+    //Calendar calendar0 = Calendar.getInstance();
+    //private long timeDiff =calendar0.getTimeInMillis()-TimeZone.getDefault().getRawOffset();
     private Proband proband;
-
     private List<Questionnaire> allQuestionnaireList; // all questionnaires
     private List<Questionnaire> triggeredQuestionnaireList;
 
@@ -77,6 +88,8 @@ public class OverviewActivity extends BaseActivity {
     //private List<Sensor> allSensors;
     private TriggerEventManager triggerEventManager;
     private RelativeLayout title;
+    //private int indexForDate = 0;
+    //private int indexForTime = 0;
 
     // =======================================================================
     //    WelcomeFragment welcomeFragment = new WelcomeFragment();
@@ -117,9 +130,8 @@ public class OverviewActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+
         initFragment();
-        initFromIntent();
-        initView();
 
         if (this.allQuestionnaireList == null) {
             this.allQuestionnaireList = new ArrayList<>();
@@ -128,7 +140,14 @@ public class OverviewActivity extends BaseActivity {
             this.triggeredQuestionnaireList = new ArrayList<>();
         }
 
-        initTestData();
+        if (needIntent) {
+            initFromIntent();
+            needIntent = false;
+        }
+
+        initView();
+
+        //        initTestData();
         addTriggeredByTimeQuestionnaire();
         addTriggeredByDatetimeQuestionnaire();
 
@@ -138,12 +157,15 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize fragments
+     */
     private void initFragment() {
         welcomeFragment = new WelcomeFragment();
-         probandProfileFragment = new ProbandProfileFragment();
-         chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
-         aboutUsFragment = new AboutUsFragment();
-         settingFragment = new SettingFragment();
+        probandProfileFragment = new ProbandProfileFragment();
+        chooseQuestionnaireFragment = new ChooseQuestionnaireFragment();
+        aboutUsFragment = new AboutUsFragment();
+        settingFragment = new SettingFragment();
     }
 
     @Override
@@ -156,6 +178,7 @@ public class OverviewActivity extends BaseActivity {
         //=============================
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setEveryTriggeredDateQuestionnaireAlarm(alarmManager);
+        setEveryTriggeredTimeQuestionnaireAlarm(alarmManager);
 
         Intent intent = getIntent();
         String fromIntent = intent.getStringExtra("notityToAnswer");
@@ -186,6 +209,9 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize data from intent
+     */
     private void initFromIntent() {
 
         Intent intent = getIntent();
@@ -198,6 +224,34 @@ public class OverviewActivity extends BaseActivity {
         }
         this.allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(questionnaireJSON);
 
+        // proband info questionnaire
+        Questionnaire probandInfoQuestionnaire = JsonUtil.fromJsonToProbandInfoQuestionnaire
+                (questionnaireJSON);
+
+        if (probandInfoQuestionnaire != null&&(probandInfoQuestionnaire.getQuestionList().size()
+                !=0)) {
+            addQuestionnaireToTriggeredQuestionnaireList(probandInfoQuestionnaire);
+        }
+        //modified bug for nullpointerexception
+//        this.allQuestionnaireList.remove(probandInfoQuestionnaire);
+
+        TriggerEventManager.getTriggerEventManager().setQuestionnaireList(allQuestionnaireList);
+        for (Questionnaire questionnaire : allQuestionnaireList) {
+
+                TriggerEvent triggerEvent = questionnaire.getTriggerEvent();
+                if (triggerEvent.getSensorList() == null) {
+                    triggerEvent.setSensorList(new boolean[12]);
+                }
+                triggerEvent.setSensor();
+                TimeZone.setDefault(TimeZone.getTimeZone("GTM+0"));
+                triggerEvent.setDate();
+
+                TriggerEventManager.getTriggerEventManager().addObserver(questionnaire);
+
+        }
+        //        TriggerEventManager.getTriggerEventManager().setQuestionnaireList
+        // (allQuestionnaireList);
+
         // proband
         Proband probandFromLogIn = intent.getParcelableExtra("proband");
         if (probandFromLogIn != null) {
@@ -209,17 +263,21 @@ public class OverviewActivity extends BaseActivity {
         }
 
         // pendingIntent from Notification
-//        String fromIntent = intent.getStringExtra("notityToAnswer");
-//        if (!TextUtils.isEmpty(fromIntent)) {
-//            if (fromIntent.equals("chooseQuestionnaireFragment")) {
-//                isFirstLoad = false;
-//                replaceFragment(chooseQuestionnaireFragment);
-//            }
-//
-//        }
+        //        String fromIntent = intent.getStringExtra("notityToAnswer");
+        //        if (!TextUtils.isEmpty(fromIntent)) {
+        //            if (fromIntent.equals("chooseQuestionnaireFragment")) {
+        //                isFirstLoad = false;
+        //                replaceFragment(chooseQuestionnaireFragment);
+        //            }
+        //
+        //        }
 
     }
 
+
+    /**
+     * Initialize the view of activity
+     */
     private void initView() {
 
         title = (RelativeLayout) findViewById(R.id.title_overview);
@@ -292,6 +350,11 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * replace the current fragment with <code>fragment</code>
+     *
+     * @param fragment fragment that the proband wants to switch to
+     */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transition = fragmentManager.beginTransaction();
@@ -302,35 +365,22 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
-    //    private Questionnaire removeQuestionnaireFromTriggeredQuestionnaireList(String
-    // questionnaireID) {
-    //        Questionnaire removeQuestionnaire = null;
-    //        Iterator<Questionnaire> iterator = this.allQuestionnaireList.iterator();
-    //        while (iterator.hasNext()) {
-    //            Questionnaire q = iterator.next();
-    //            if (q.getQuestionnaireID().equals(questionnaireID)) {
-    //                removeQuestionnaire = q;
-    //                if (q.isAnswered()) {
-    //                    iterator.remove();
-    //                }
-    //                break;
-    //            }
-    //        }
-    //        return removeQuestionnaire;
-    //    }
-    //
-    //    private void removeQuestionnaireFromTriggeredQuestionnaireList(Questionnaire
-    // selectedQuestionnaire) {
-    //        int removeIndex = this.allQuestionnaireList.indexOf(selectedQuestionnaire);
-    //        if (selectedQuestionnaire.isAnswered()) {
-    //            this.allQuestionnaireList.remove(removeIndex);
-    //        }
-    //    }
-
+    /**
+     * Remove the questionnaire whose index is <code>selectedQuestionnaireIndex</code> from
+     * <code>triggeredQuestionnaireList</code>
+     */
     private void removeSelectedQuestionByIndex() {
         this.triggeredQuestionnaireList.remove(this.selectedQuestionnaireIndex);
     }
 
+    /**
+     * Get the questionnaire with id <code>questionnaireId</code>
+     *
+     * @param questionnaireID target questionnaire's id
+     * @return <br>
+     * <li>questionnaire instance whose id is <coded>questionnaireID</coded></li>
+     * <li>null, if the target questionnaire is not in <code>allQuestionnaireList</code></li>
+     */
     private Questionnaire getQuestionnaire(String questionnaireID) {
         Questionnaire questionnaire = null;
         for (Questionnaire tempQuestionnaire : this.allQuestionnaireList) {
@@ -343,29 +393,40 @@ public class OverviewActivity extends BaseActivity {
     }
 
 
+    /**
+     * Add questionnaire with id <code>questionnaireID</code> to
+     * <code>triggeredQuestionnaireList</code>
+     *
+     * @param questionnaireID id of the questionnaire that will be added
+     */
     public void addQuestionnaireToTriggeredQuestionnaireList(String questionnaireID) {
         Questionnaire questionnaire = getQuestionnaire(questionnaireID);
         this.addQuestionnaireToTriggeredQuestionnaireList(questionnaire);
     }
 
 
+    /**
+     * Add <code>questionnaire</code> to <code>triggeredQuestionnaireList</code>
+     *
+     * @param questionnaire questionnaire to be added
+     */
     private void addQuestionnaireToTriggeredQuestionnaireList(Questionnaire questionnaire) {
+
         questionnaire.trigger(OverviewActivity.this);
+        Questionnaire q = questionnaire.cloneItself();
+        //        q.setTriggerTime(TimeUtil.getCurrentTime());
 
         if (!this.triggeredQuestionnaireList.isEmpty()) {
 
-            this.triggeredQuestionnaireList.add(questionnaire);
+            this.triggeredQuestionnaireList.add(q);
             if (chooseQuestionnaireFragment.getAdapter() != null) {
                 chooseQuestionnaireFragment.getAdapter().notifyDataSetChanged();
             }
         } else {
-            this.triggeredQuestionnaireList.add(questionnaire);
+            this.triggeredQuestionnaireList.add(q);
         }
     }
 
-    public void addQuestionnaireToTriggeredQuestionnaireList(List<String> questionnaireIdList) {
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode,
@@ -400,6 +461,13 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Change app's language to <code>language</code> immediately
+     *
+     * @param language <br>
+     *                 <li>"en" for English</li>
+     *                 <li>"de" for Deutsch</li>
+     */
     public void switchLanguageImmediately(String language) {
         super.switchLanguage(language);
         finish();
@@ -409,6 +477,11 @@ public class OverviewActivity extends BaseActivity {
 
     }
 
+    /**
+     * Get actionBar
+     *
+     * @return <code>title</code>
+     */
     public View ActionBar() {
         return this.title;
     }
@@ -455,173 +528,29 @@ public class OverviewActivity extends BaseActivity {
         this.selectedQuestionnaireIndex = selectedQuestionnaireIndex;
     }
 
-    // =========================================================================
 
-    // test data
-    private void initTestData() {
-
-        //        String list = PreferenceUtil.getString("questionnaireJSON", "");
-        //        if (!TextUtils.isEmpty(list)) {
-        //            allQuestionnaireList = JsonUtil.fromJsonToQuestionnaireList(list);
-        //        } else {
-        //
-        //            allQuestionnaireList = new ArrayList<>();
-        //
-        //            Questionnaire questionnaire = new Questionnaire("A", "2017.1.2 14:00",
-        // "2017.2.2 " +
-        //                    "14:00");
-        //
-        //            // q1
-        //            ArrayList<Option> optionList = new ArrayList<>();
-        //            optionList.add(new Option("At home", "Q3"));
-        //            optionList.add(new Option("At work", "Q3"));
-        //            optionList.add(new Option("on the way", "Q2"));
-        //            Question q1 = new Question("Where are you?", new SingleChoice(optionList),
-        // "Q1");
-        //            questionnaire.addQuestion(q1);
-        //
-        //            // q2
-        //            Question q2 = new Question("Where are you heading to?", new TextAnswer(),
-        // "Q2");
-        //            questionnaire.addQuestion(q2);
-        //
-        //            // q3
-        //            Question q3 = new Question("How are you feeling?", new DragScale(10), "Q3");
-        //            questionnaire.addQuestion(q3);
-        //
-        //            // q4
-        //            ArrayList<Option> optionArrayList = new ArrayList<>();
-        //            optionArrayList.add(new Option("Swimming", null));
-        //            optionArrayList.add(new Option("Reading", null));
-        //            optionArrayList.add(new Option("Coding", null));
-        //            optionArrayList.add(new Option("Studying", null));
-        //            Question q4 = new Question("What's ur hobby?", new MultipleChoice
-        // (optionArrayList),
-        //                                       "Q4");
-        //            questionnaire.addQuestion(q4);
-        //
-        //            // q5
-        //            ArrayList<Option> options = new ArrayList<>();
-        //            options.add(new Option("very bad", null));
-        //            options.add(new Option("bad", null));
-        //            options.add(new Option("so so", null));
-        //            options.add(new Option("good", null));
-        //            options.add(new Option("very good!", null));
-        //            Question q5 = new Question("Do you like this app?", new StepScale(options),
-        // "Q5");
-        //            questionnaire.addQuestion(q5);
-        //
-        //
-        //            allQuestionnaireList.add(questionnaire);
-        //            allQuestionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        //            allQuestionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
-        //        }
-
-
-        // allQuestionnaireList = new ArrayList<>();
-
-        Questionnaire questionnaireA = new Questionnaire("A",
-                                                         2);
-        // q1
-        ArrayList<Option> optionList = new ArrayList<>();
-        optionList.add(new Option("At home",
-                                  "Q3"));
-        optionList.add(new Option("At work",
-                                  "Q3"));
-        optionList.add(new Option("on the way",
-                                  "Q2"));
-        Question q1 = new Question("Where are you?",
-                                   new SingleChoice(optionList),
-                                   "Q1");
-        questionnaireA.addQuestion(q1);
-
-        // q2
-        Question q2 = new Question("Where are you heading to?",
-                                   new TextAnswer(),
-                                   "Q2");
-        questionnaireA.addQuestion(q2);
-
-        // q3
-        Question q3 = new Question("How are you feeling?",
-                                   new DragScale(10),
-                                   "Q3");
-        questionnaireA.addQuestion(q3);
-
-        // q4
-        ArrayList<Option> optionArrayList = new ArrayList<>();
-        optionArrayList.add(new Option("Swimming",
-                                       null));
-        optionArrayList.add(new Option("Reading",
-                                       null));
-        optionArrayList.add(new Option("Coding",
-                                       null));
-        optionArrayList.add(new Option("Studying",
-                                       null));
-        Question q4 = new Question("What's ur hobby?",
-                                   new MultipleChoice(optionArrayList),
-                                   "Q4");
-        questionnaireA.addQuestion(q4);
-
-        // q5
-        ArrayList<Option> options = new ArrayList<>();
-        options.add(new Option("very bad",
-                               null));
-        options.add(new Option("bad",
-                               null));
-        options.add(new Option("so so",
-                               null));
-        options.add(new Option("good",
-                               null));
-        options.add(new Option("very good!",
-                               null));
-        Question q5 = new Question("Do you like this app?",
-                                   new StepScale(options),
-                                   "Q5");
-        questionnaireA.addQuestion(q5);
-        TriggerEvent triggerEvent1 = new TriggerEvent(questionnaireA.getQuestionnaireID());
-        //triggerEvent1.setLight(true);
-        triggerEvent1.setLightMinValue(1000);
-        triggerEvent1.setLightMaxValue(2000);
-        triggerEvent1.setMinTimeSpace(20);
-        triggerEvent1.setAirTemperature(true);
-        //triggerEvent1.setTime("10-55-10");
-        //Date date = TimeUtil.getCurrentTime();
-       // Calendar calendar = Calendar.getInstance();
-        //calendar.setTime(TimeUtil.getCurrentTime());
-        //calendar.add(Calendar.SECOND, 10);
-        //triggerEvent1.setDateTime(calendar.getTime());
-        //        questionnaireA.setTriggerEvent(triggerEvent1);
-        triggerEvent1.setAmbientTemperatureMaxValue(20);
-        triggerEvent1.setAmbientTemperatureMinValue(19);
-        questionnaireA.setTriggerEvent(triggerEvent1);
-        questionnaireA.setValid(true);
-
-        allQuestionnaireList.add(questionnaireA);
-        TriggerEventManager triggerEventManager = TriggerEventManager.getTriggerEventManager();
-        triggerEventManager.setQuestionnaireList(allQuestionnaireList);
-        for (Questionnaire questionnaire1 : allQuestionnaireList) {
-            triggerEventManager.addObserver(questionnaire1);
-        }
-
-
-
-        //        List<Questionnaire> testquestionnaireList = new ArrayList<>();
-        //        testquestionnaireList.add(questionnaireA);
-        //        questionnaireList.add(new Questionnaire("B", "2017.1.2", "2017.2.2"));
-        //        questionnaireList.add(new Questionnaire("C", "2017.1.3", "2017.2.2"));
-
+    public static boolean isNeedIntent() {
+        return needIntent;
     }
 
+    public static void setNeedIntent(boolean needIntent) {
+        OverviewActivity.needIntent = needIntent;
+    }
+
+
+    /**
+     * Helper method.Gets instance for class overviewActivity.
+     *
+     * @return the instance,overviewActivity itself.
+     */
     public static OverviewActivity getInstance() {
         return instance;
-
     }
 
 
-    //想法是 create的时候先把有date的触发条件的问卷加进来。然后用alarmManager，每拿到一个时间点就新建一个intent，然后用alarmManager
-    // 启动一个intentservice；（把questionnaire的ID传进去）service中直接引用TriggerManager的overview的加问卷方法 添加到触发问卷。
-
-
+    /**
+     * Select questionnaire,which will everyday triggered by Time.
+     */
     private void addTriggeredByTimeQuestionnaire() {
         for (Questionnaire questionnaire : allQuestionnaireList) {
             if (questionnaire.getTriggerEvent().getTime() != null) {
@@ -630,6 +559,9 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Select questionnaire,which will triggered by Date.
+     */
     private void addTriggeredByDatetimeQuestionnaire() {
         for (Questionnaire questionnaire : allQuestionnaireList) {
             if (questionnaire.getTriggerEvent().getDateTime() != null) {
@@ -638,61 +570,90 @@ public class OverviewActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Helper method for each Questionnaire, which will everyday triggered by Time.
+     * <br>For these Questionnaire a alarm will be set.</br>
+     *
+     * @param alarmManager This class provides access to the system alarm services.
+     */
     private void setEveryTriggeredTimeQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
+        /*if(indexForTime<=indexForDate){
+            indexForTime = indexForDate+1;
+        }*/
         int index = 0;
         long oneDay = 1000 * 60 * 60 * 24;
         for (Questionnaire questionnaire : triggeredByTimeQuestionnaireList) {
-            //格式是否正确？
             long triggeredTime = this.transferTriggeredTimeToTriggerAtMillis(questionnaire
                                                                                      .getTriggerEvent()
                                                                                      .getTime());
             Intent intent = new Intent("addQuestionnaireToList");
             //intent.setAction("addQuestionnaireToList");
-            Log.d(TAG, intent.getAction());
+            Log.i(TAG, "Time "+intent.getAction());
             intent.putExtra("questionnaireID",
-                            questionnaire.getTriggerEvent().getQuestionnaireID());
-            Log.d(TAG, intent.getStringExtra("questionnaireID"));
+                            questionnaire.getQuestionnaireID());
+           Log.i(TAG, "Time "+intent.getStringExtra("questionnaireID"));
             PendingIntent sender = PendingIntent.getBroadcast(OverviewActivity.this, index, intent,
                                                               PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP, triggeredTime, oneDay, sender);
+            //indexForTime++;
             index++;
-            Log.d(TAG, String.valueOf(index));
+           Log.d(TAG, "Time index "+String.valueOf(index));
         }
 
     }
 
+    /**
+     * Helper method for each Questionnaire, which will triggered by Date.
+     * <br>For these Questionnaire a alarm will be set.</br>
+     *
+     * @param alarmManager This class provides access to the system alarm services.
+     */
+
     private void setEveryTriggeredDateQuestionnaireAlarm(AlarmManager alarmManager) {
         AlarmManager alarmManager1 = alarmManager;
-        int index = 0;
+        int index = 10000;
+        /*if(indexForDate<=indexForTime){
+            indexForDate = indexForTime+1;
+        }*/
         for (Questionnaire questionnaire : triggeredByDateQuestionnaireList) {
-            //格式是否正确？
+            TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
+            Calendar calendar1 = Calendar.getInstance();
+            Date currentDate = calendar1.getTime();
             long triggeredtDate = questionnaire.getTriggerEvent().getDateTime().getTime();
 
             if (triggeredtDate >= TimeUtil.getCurrentTime().getTime()) {
-                Log.d(TAG, String.valueOf(triggeredtDate - TimeUtil.getCurrentTime().getTime()));
-                //要不要判断时间点是否已经过去
+                Log.i(TAG, "Date "+String.valueOf((triggeredtDate - currentDate.getTime())/1000));
                 Intent intent = new Intent("addQuestionnaireToList");
                 //intent.setAction("addQuestionnaireToList");
-                Log.d(TAG, intent.getAction());
+                Log.i(TAG, "Date "+intent.getAction());
                 intent.putExtra("questionnaireID",
-                                questionnaire.getTriggerEvent().getQuestionnaireID());
-                Log.d(TAG, intent.getStringExtra("questionnaireID"));
+                                questionnaire.getQuestionnaireID());
+                Log.i(TAG, "Date "+intent.getStringExtra("questionnaireID"));
                 PendingIntent sender = PendingIntent
                         .getBroadcast(OverviewActivity.this, index, intent,
                                       PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, triggeredtDate, sender);
+               // indexForDate++;
                 index++;
-                Log.d(TAG, String.valueOf(index));
+                Log.i(TAG, "Date index "+String.valueOf(index));
 
             } else {
-                Log.d(TAG, "Sorry,time is out,the questionnaire will not be added");
+                Log.i(TAG, "Date "+"Sorry,time is out,the questionnaire will not be added");
             }
 
         }
 
     }
 
+    /**
+     * Helper Method.For Method setEveryTriggeredTimeQuestionnaireAlarm.
+     * <br>Input time is as string,output time is as long value.</br>
+     * <p>
+     *
+     * @param time Questionnaire's triggered time
+     * @return time as a long value.
+     */
     private long transferTriggeredTimeToTriggerAtMillis(String time) {
         long timetest;
         boolean todayshouldtriggered = false;
@@ -700,12 +661,12 @@ public class OverviewActivity extends BaseActivity {
         String[] inputTimeList = inputTime.split("-");
         Integer[] inputTimeListOfInteger = new Integer[inputTimeList.length];
         for (int i = 0; i < inputTimeList.length; i++) {
-            inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i]);
+            inputTimeListOfInteger[i] = Integer.valueOf(inputTimeList[i].trim());
             //System.out.println(String.valueOf(time2[i]));
         }
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+1"));
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+2"));
         Calendar calendar1 = Calendar.getInstance();
-        Log.i(TAG, calendar1.getTimeZone().toString());
+        Log.i(TAG, "Time "+calendar1.getTimeZone().toString());
         //calendar1.setTimeZone(TimeZone.getTimeZone("GMT+1"));
         Date currentDate = calendar1.getTime();
         DateFormat sdf = new SimpleDateFormat("HH-mm-ss");
@@ -720,15 +681,15 @@ public class OverviewActivity extends BaseActivity {
                 inputTimeListOfInteger[2];
         long nowTime = currentTimeListOfInteger[0] * 60 * 60 + currentTimeListOfInteger[1] * 60 +
                 currentTimeListOfInteger[2];
-        Log.i(TAG, String.valueOf(setTime - nowTime));
+        Log.i(TAG, "Time "+String.valueOf(setTime - nowTime)+" settime");
         if (setTime >= nowTime) {
             todayshouldtriggered = true;
         }
         //============test==============
         if (todayshouldtriggered) {
-            Log.i(TAG, "will add a questionnaire");
+            Log.i(TAG, "Time "+"will add a questionnaire");
         } else {
-            Log.i(TAG, "will Tomorrow add a questionnaire");
+            Log.i(TAG, "Time "+"will Tomorrow add a questionnaire");
         }
 
         if (todayshouldtriggered) {
@@ -742,9 +703,6 @@ public class OverviewActivity extends BaseActivity {
             calendar1.set(Calendar.SECOND, inputTimeListOfInteger[2]);
         }
         return calendar1.getTime().getTime();
-
-        //DateFormat sdf3 = new SimpleDateFormat("yyyy MM dd HH mm ss");
-        //String s=sdf3.format(date);
 
 
     }

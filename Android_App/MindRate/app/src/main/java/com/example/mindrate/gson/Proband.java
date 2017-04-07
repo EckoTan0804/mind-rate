@@ -2,24 +2,20 @@ package com.example.mindrate.gson;
 
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/8:23:32
+ * This class aims to model the proband who participate in the study
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/8:23:32</br>
  */
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Collection;
-
-/**
- * This class aims to model the participant of this study.
- */
 public class Proband implements Parcelable {
 
 
@@ -32,16 +28,22 @@ public class Proband implements Parcelable {
     @SerializedName("gender")
     private String gender;
 
-    private Birthday birthday;
+    private String birthday;
 
     @SerializedName("occupation")
     private String occupation;
 
-    @Expose
-    private Collection<Questionnaire> questionaires;
 
-
-    public Proband(String studyID, String probandID,  Birthday
+    /**
+     * Constructor
+     *
+     * @param studyID the id of the study the proband participates in
+     * @param probandID id of the proband
+     * @param birthday proband's birthday
+     * @param gender proband's gender
+     * @param occupation proband's occupation
+     */
+    public Proband(String studyID, String probandID,  String
             birthday,String gender, String occupation) {
         this.occupation = occupation;
         this.probandID = probandID;
@@ -51,52 +53,14 @@ public class Proband implements Parcelable {
     }
 
     /**
-     * This method aims to:
-     * <li>firstly save the answer of questionnaire locally</li>
-     * <li>upload the answer to the server if the network is available</li>
+     * Constructor
      *
-     * @param questionnaireID the id of the just answered questionnaire
+     * @param probandID proband's id
+     * @param studyID the id of the study the proband participates in
      */
-    public void submitAnswer(int questionnaireID) {
-        // 1. Questionnaire q = chooseQuestionnaire();
-        // 2. q.saveAnswerLocally();
-        // 3. q.uploadAnswers();
-    }
-
-    /**
-     * The participants can choose a questionnaire they want to answer using this method.
-     * <p> when this method is called,a specified questionnaire will be chosen and this
-     * questionniare object will be returned.</p>
-     *
-     * @param questionnaireID the id of a questionnaire in the questionnaire's list
-     * @return the Questionnaire object whose id is {@code questionnaireID}
-     */
-    public Questionnaire chooseQuestionnaire(int questionnaireID) {
-        // TODO
-        return null;
-    }
-
-    /**
-     * The participant can answer the questions of the chosen questionnaire using this method.
-     *
-     * @param questionnaireID the id of a questionnaire in the questionnaire's list
-     */
-    public void answerQuestionnaire(int questionnaireID) {
-        // TODO: proband answer questions and the answer will be recorded.
-        // questionnaire = chooseQuestionnaire(questionnaireID)
-        // for (Question q : questionnaire.questions) {
-        //     answerQuestion(questionnaireID, q.ID);
-        // }
-    }
-
-    /**
-     * With this method the proband can answer the specified question in specified questionnaire.
-     *
-     * @param questionnaireID the id of a questionnaire in the questionnaire's list.
-     * @param questionID the id of the question in the questionniare with {@code questionnaireID}
-     */
-    public void answerQuestion(int questionnaireID, int questionID) {
-
+    public Proband(String probandID, String studyID) {
+        this.probandID = probandID;
+        this.studyID = studyID;
     }
 
     public String getProbandID() {
@@ -123,11 +87,11 @@ public class Proband implements Parcelable {
         this.gender = gender;
     }
 
-    public Birthday getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Birthday birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -139,13 +103,7 @@ public class Proband implements Parcelable {
         this.occupation = occupation;
     }
 
-    public Collection<Questionnaire> getQuestionaires() {
-        return questionaires;
-    }
-
-    public void setQuestionaires(Collection<Questionnaire> questionaires) {
-        this.questionaires = questionaires;
-    }
+    // ================== Parcelable =============================================
 
     @Override
     public int describeContents() {
@@ -157,21 +115,19 @@ public class Proband implements Parcelable {
         dest.writeString(this.probandID);
         dest.writeString(this.studyID);
         dest.writeString(this.gender);
-        dest.writeParcelable(this.birthday, flags);
+        dest.writeString(this.birthday);
         dest.writeString(this.occupation);
-//        dest.writeParcelable(this.questionaires, flags);
     }
 
     protected Proband(Parcel in) {
         this.probandID = in.readString();
         this.studyID = in.readString();
         this.gender = in.readString();
-        this.birthday = in.readParcelable(Birthday.class.getClassLoader());
+        this.birthday = in.readString();
         this.occupation = in.readString();
-//        this.questionaires = in.readParcelable(Collection<Questionnaire>.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Proband> CREATOR = new Parcelable.Creator<Proband>() {
+    public static final Creator<Proband> CREATOR = new Creator<Proband>() {
         @Override
         public Proband createFromParcel(Parcel source) {
             return new Proband(source);

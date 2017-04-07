@@ -11,7 +11,17 @@ import com.example.mindrate.R;
 import com.example.mindrate.activity.OverviewActivity;
 import com.example.mindrate.util.PreferenceUtil;
 
-
+/**
+ * This is the fragment in which the proband change app's settings.
+ *
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.fragment</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: eckotan@icloud.com</br>
+ * <br>Created at 2017/2/13:22:11</br>
+ * </p>
+ */
 public class SettingFragment extends PreferenceFragmentCompat implements SharedPreferences
         .OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
 
@@ -36,6 +46,9 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
         initPref();
     }
 
+    /**
+     * Initialize the default settings
+     */
     private void initPref() {
 
         OverviewActivity overviewActivity = (OverviewActivity)getActivity();

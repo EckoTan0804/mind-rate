@@ -4,8 +4,12 @@ package com.example.mindrate.gson;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Project: MindRate
+ * This class aims to model a answer of a question
+ * <p>
+ * <br>Project: MindRate</br>
  * <br>Package: com.example.mindrate.gson</br>
  * <br>Author: Ecko Tan</br>
  * <br>E-mail: eckotan@icloud.com</br>
@@ -16,10 +20,64 @@ import android.os.Parcelable;
 public class QuestionAnswer implements Parcelable {
 
     private String questionID;
+    @SerializedName("answer")
     private String answerContent;
 
+    private String questionType;
+
+    /**
+     * Constructor
+     *
+     * @param questionID   id of the question that the <code>questionAnswer</code> belongs to
+     * @param questionType type of the question that the <code>questionAnswer</code> belongs to
+     */
+    public QuestionAnswer(String questionID, String questionType) {
+        this.questionID = questionID;
+        this.questionType = questionType;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param questionID    id of the question that the <code>questionAnswer</code> belongs to
+     * @param questionType  type of the question that the <code>questionAnswer</code> belongs to
+     * @param answerContent content of the answer
+     */
+    public QuestionAnswer(String questionID, String questionType, String answerContent) {
+        this.questionID = questionID;
+        this.questionType = questionType;
+        this.answerContent = answerContent;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+     */
     public QuestionAnswer(String questionID) {
         this.questionID = questionID;
+    }
+
+    //    /**
+    //     * Constructor
+    //     *
+    //     * @param questionID id of the question that the <code>questionAnswer</code> belongs to
+    //     * @param answerContent the input answer for this question
+    //     */
+    //    public QuestionAnswer(String questionID, String answerContent) {
+    //        this.questionID = questionID;
+    //        this.answerContent = answerContent;
+    //    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof QuestionAnswer) {
+            QuestionAnswer questionAnswer = (QuestionAnswer) obj;
+            return this.questionID.equals(questionAnswer.questionID) && this.questionType.equals
+                    (questionAnswer.questionType) && this.answerContent.equals(questionAnswer.answerContent);
+        } else {
+            return false;
+        }
     }
 
     public String getQuestionID() {
@@ -37,6 +95,8 @@ public class QuestionAnswer implements Parcelable {
     public void setAnswerContent(String answerContent) {
         this.answerContent = answerContent;
     }
+
+    // ===================== Parcelable =====================================================
 
     @Override
     public int describeContents() {

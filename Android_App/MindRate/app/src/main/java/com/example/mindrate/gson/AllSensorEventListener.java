@@ -17,20 +17,26 @@ import static android.hardware.Sensor.TYPE_RELATIVE_HUMIDITY;
 import static android.hardware.Sensor.TYPE_ROTATION_VECTOR;
 
 /**
- * Created by Renhan on 2017/2/8.
+ * this class represents Sensor Event Listener.
+ * <br>Used for receiving notifications from the SensorManager when there is new sensor data.</br>
+ * <br>Created by Renhan on 2017/2/8.</br>
  */
-
 public class AllSensorEventListener implements SensorEventListener{
-
-
-    private Sensor sensor;
-    private TriggerEventManager triggerEventManager;
+    //==============for test and debug=============================
     private static final String TAG = "AllSensorEventListener";
 
 
-
+    //==========================================================
+    private Sensor sensor;
+    private TriggerEventManager triggerEventManager;
     private float[] dataOfSensor;
 
+    /**
+     * Instantiates a new sensor event listener.
+     *
+     * @param triggerEventManager the trigger event manager
+     * @param sensor              the specific sensor
+     */
     public AllSensorEventListener(TriggerEventManager triggerEventManager,Sensor sensor){
         this.triggerEventManager = triggerEventManager;
         this.sensor = sensor;
@@ -41,18 +47,7 @@ public class AllSensorEventListener implements SensorEventListener{
 
     }
 
-    /*private void setDataOfSensor(int index,float x,float y,float z){
-        this.dataOfSensor[0] = x;
-        this.dataOfSensor[1] = y;
-        this.dataOfSensor[2] = z;
-        this.triggerEventManager.setDataOfSensor(index,this.dataOfSensor);
 
-    }
-    private void setDataOfSersor(int index,float x){
-
-        this.dataOfSensor[0]=x;
-        this.triggerEventManager.setDataOfSensor(index,this.dataOfSensor);
-    }*/
     public void onSensorChanged(SensorEvent event){
         switch (event.sensor.getType()){
             case TYPE_ACCELEROMETER:
@@ -92,11 +87,7 @@ public class AllSensorEventListener implements SensorEventListener{
                 float light = event.values[0];
                 this.dataOfSensor[0]= light;
                 this.triggerEventManager.setDataOfSensor(4,this.dataOfSensor);
-                /*
-                Float test = this.dataOfSensor[4];
-                String b = test.toString();
-                Log.d(TAG,"b");
-               */
+
                 break;
             case TYPE_LINEAR_ACCELERATION:
                 float xValueLinearAcceleration = event.values[0];
@@ -168,19 +159,40 @@ public class AllSensorEventListener implements SensorEventListener{
     public void onAccuracyChanged(Sensor sensor, int accuracy){
 
     }
+
+    /**
+     * Gets sensor.
+     *
+     * @return the sensor
+     */
 //=====================getter and setter=============================
     public Sensor getSensor() {
         return sensor;
     }
 
+    /**
+     * Sets sensor.
+     *
+     * @param sensor the sensor
+     */
     public void setSensor(Sensor sensor) {
         this.sensor = sensor;
     }
 
+    /**
+     * Get data of sensor float [ ].
+     *
+     * @return the float [ ]
+     */
     public float[] getDataOfSensor() {
         return dataOfSensor;
     }
 
+    /**
+     * Sets data of sensor.
+     *
+     * @param dataOfSensor the data of sensor
+     */
     public void setDataOfSensor(float[] dataOfSensor) {
         this.dataOfSensor = dataOfSensor;
     }

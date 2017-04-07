@@ -20,6 +20,7 @@
     <string name="log_in_occupation">OCCUPATION</string>
     <string name="log_in_occupation_hint">Please enter your occupation</string>
     <string name="log_in_button_log_in">LOG IN</string>
+    <string name="load_fail">Failed to load questionnaire. Please check your network and try again.</string>
 
     <!--OverviewActivity-->
     <string name="nav_profile">Profile</string>
@@ -51,6 +52,7 @@
     <string name="submit_or_not">Do you want to submit your answer?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="finish">Finish</string>
 
     <!--questionnaire-->
 
@@ -66,4 +68,12 @@
 
     <!--upload-->
     <string name="upload_fail">Sorry. The upload failed. Please make sure your Internet is available.</string>
+
+    <!--input empty error-->
+    <string name="input_empty_error">The input can not be empty.</string>
+    <string name="question_not_answered">This question is not answered.</string>
+    <string name="check_network">Please check your network and try again.</string>
+    <string name="edit_text_hint">Please enter</string>
+    <string name="developer">Developer</string>
+    <string name="hello_world">Hello World!</string>
 </resources>

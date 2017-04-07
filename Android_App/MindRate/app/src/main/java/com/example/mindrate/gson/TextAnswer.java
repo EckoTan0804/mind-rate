@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -16,32 +17,47 @@ import com.example.mindrate.R;
 import com.example.mindrate.util.FontUtil;
 
 /**
- * Project: MindRate
- * Package: com.example.mindrate.gson
- * Author: Ecko Tan
- * E-mail: ecko0804@gmail.com
- * Created at 2017/1/10:04:21
+ * This class aims to model TextAnswer question
+ * <p>
+ * <br>Project: MindRate</br>
+ * <br>Package: com.example.mindrate.gson</br>
+ * <br>Author: Ecko Tan</br>
+ * <br>E-mail: ecko0804@gmail.com</br>
+ * <br>Created at 2017/1/10:04:21</br>
  */
 
 public class TextAnswer extends QuestionType implements Parcelable {
 
+    /**
+     * answer input by proband
+     */
     private String inputAnswer;
+
+
+    /**
+     * Constructor
+     */
+    public TextAnswer() {
+        super("TextAnswer");
+    }
 
     @Override
     public void inflateAnswerView(String questionID, Context context, ViewGroup layout, ViewGroup
             .LayoutParams
             layoutParams) {
 
-        super.questionAnswer = new QuestionAnswer(questionID);
+        super.questionAnswer = new QuestionAnswer(questionID, "TextAnswer");
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         EditText mEditText = new EditText(context);
+        mEditText.setHint(R.string.edit_text_hint);
         mEditText.setBackgroundResource(R.drawable.rounded_edittext);
         mEditText.setTextSize(15);
+//        mEditText.setTextColor(ContextCompat.getColor(context,R.color.textColorPrimary));
         mEditText.setTextColor(Color.BLACK);
-        mEditText.setPadding(30, 20, 30, 20);
+        mEditText.setPadding(60, 60, 60, 60);
         mEditText.setGravity(Gravity.CENTER_VERTICAL);
 //        mEditText.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_write, 0, 0, 0);
 //        mEditText.setCompoundDrawablePadding(15);
@@ -62,6 +78,10 @@ public class TextAnswer extends QuestionType implements Parcelable {
             @Override
             public void afterTextChanged(Editable editable) {
                 inputAnswer = editable.toString();
+                if (!TextUtils.isEmpty(inputAnswer)) {
+                    setAnswered(true);
+                }
+
             }
         });
 
@@ -71,14 +91,33 @@ public class TextAnswer extends QuestionType implements Parcelable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof TextAnswer) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // ========================= setters and getters ===========================================
+    @Override
     public QuestionAnswer getQuestionAnswer() {
         questionAnswer.setAnswerContent(inputAnswer);
         return questionAnswer;
     }
 
-    public TextAnswer() {
+    @Override
+    public void setAnswered(boolean isAnswered) {
+        super.setAnswered(isAnswered);
     }
+    // =========================================================================================
+//    @Override
+//    public boolean isAnswered() {
+//        return !TextUtils.isEmpty(this.inputAnswer);
+//    }
 
+
+    // ======================== Parcelable =====================================================
     @Override
     public int describeContents() {
         return 0;

@@ -7,6 +7,7 @@
     >
 
     <TextView
+        android:id="@+id/log_in_birthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -18,6 +19,7 @@
         android:textColor="@color/textColorPrimary"
         android:textSize="15dp"
         android:layout_marginLeft="15dp"
+        android:visibility="invisible"
         >
     </TextView>
 
@@ -34,6 +36,7 @@
         android:spinnersShown="true"
         android:calendarTextColor="#fff"
         android:theme="@style/AppTheme.Picker"
+        android:visibility="invisible"
         >
     </DatePicker>
 

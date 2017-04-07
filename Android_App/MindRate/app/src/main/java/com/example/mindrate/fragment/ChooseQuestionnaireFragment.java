@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * This class is for the fragment, in which:
  * <p>
- * <li>the proband can choose the questionnaires which are
+ * the proband can choose the questionnaires which are
  * already triggered but not answered yet</li>
  * <p>
  * <p>
@@ -85,6 +85,7 @@ public class ChooseQuestionnaireFragment extends Fragment {
                 // 2. put this questionnaire instance into intent
                 Intent intent = new Intent(overviewActivity, AnswerQuestionnaireActivity.class);
                 intent.putExtra("questionnaire", selectedQuestionnaire);
+                intent.putExtra("probandID", overviewActivity.getProband().getProbandID());
 
                 // 3. use this intent to start AnswerQuestionnaireActivity
                 getActivity().startActivityForResult(intent, 1);
