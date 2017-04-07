@@ -84,33 +84,6 @@ public class LogInActivity extends BaseActivity {
     private boolean needGender;
     private boolean needOccupation;
 
-    //    private Handler handler = new Handler() {
-    //        @Override
-    //        public void handleMessage(Message msg) {
-    //            super.handleMessage(msg);
-    //            Bundle data = msg.getData();
-    //            needBirthday = data.getBoolean("birthday");
-    //            needGender = data.getBoolean("gender");
-    //            needOccupation = data.getBoolean("occupation");
-    //            if (!needBirthday) {
-    //                TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
-    //                birthday.setVisibility(View.GONE);
-    //                dtPk_birthday.setVisibility(View.GONE);
-    //            }
-    //            if (!needGender) {
-    //                TextView gender = (TextView) findViewById(R.id.log_in_gender);
-    //                gender.setVisibility(View.GONE);
-    //                rdog_chooseGender.setVisibility(View.GONE);
-    //            }
-    //            if (!needOccupation) {
-    //                TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
-    //                occupation.setVisibility(View.GONE);
-    //                edtTxt_occuptaion.setVisibility(View.GONE);
-    //            }
-    //
-    //
-    //        }
-    //    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -148,10 +121,6 @@ public class LogInActivity extends BaseActivity {
         btn_newPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //                if (isEditTextEmpty(edtTxt_studyID) || isEditTextEmpty
-                // (edtTxt_probandID)) {
-                //                    isEditTextEmpty(edtTxt_studyID);
-                //                    isEditTextEmpty(edtTxt_probandID);
                 boolean studyIDEmpty = isEditTextEmpty(edtTxt_studyID);
                 boolean probandIDEmpty = isEditTextEmpty(edtTxt_probandID);
                 if (!studyIDEmpty && !probandIDEmpty) {
@@ -253,11 +222,7 @@ public class LogInActivity extends BaseActivity {
                 day = dayOfMonth;
             }
         });
-        //        if (!needBirthday) {
-        //            TextView birthday = (TextView) findViewById(R.id.log_in_birthday);
-        //            birthday.setVisibility(View.GONE);
-        //            dtPk_birthday.setVisibility(View.GONE);
-        //        }
+
 
         // ============================================================
 
@@ -284,21 +249,13 @@ public class LogInActivity extends BaseActivity {
                 }
             }
         });
-        //        if (!needGender) {
-        //            TextView gender = (TextView) findViewById(R.id.log_in_gender);
-        //            gender.setVisibility(View.GONE);
-        //            rdog_chooseGender.setVisibility(View.GONE);
-        //        }
+
 
         // ==============================================================================
 
         // ========================= occupation =========================================
         edtTxt_occuptaion = (EditText) findViewById(R.id.occupation);
-        //        if (!needOccupation) {
-        //            TextView occupation = (TextView) findViewById(R.id.log_in_occupation);
-        //            occupation.setVisibility(View.GONE);
-        //            edtTxt_occuptaion.setVisibility(View.GONE);
-        //        }
+
         // ==============================================================================
 
         // ========================= log in =============================================
