@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.example.mindrate.activity.OverviewActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * This class  represents a manager for Trigger Event.
@@ -48,7 +48,7 @@ public class TriggerEventManager extends Observable{
     private TriggerEventManager(){
         this.questionnaireList = null;
         this.dataOfAllSensor = new float[12][3];
-        this.shouldAnswerQuestionnaire = new ArrayList<>();
+        this.shouldAnswerQuestionnaire = new CopyOnWriteArrayList();
     }
 
     private static final TriggerEventManager TRIGGER_EVENT_MANAGER = new TriggerEventManager();
