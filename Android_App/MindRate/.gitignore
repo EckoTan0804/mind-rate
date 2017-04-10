@@ -10,7 +10,7 @@
 .externalNativeBuild
 
 # built application files
-*.apk
+#*.apk
 *.ap_
 
 #OSX
