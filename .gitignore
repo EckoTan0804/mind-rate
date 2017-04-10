@@ -38,8 +38,8 @@ Android_App/UML_diagram/
 # Android Studio:
 
 # built application files
-*.apk
-*.ap_
+# *.apk
+# *.ap_
 
 #OSX
 *.DS_Store
