@@ -11,7 +11,7 @@
 
 # built application files
 #*.apk
-*.ap_
+#*.ap_
 
 #OSX
 *.DS_Store
